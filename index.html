@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Mapa Interactivo</title>
+    <link href="index.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+    
+  </head>
+
+  <body>
+
+  <header>
+     <div id="header_container">
+      <img src="logo.png" class="logo">
+      <img src="logo_metro.png" class="logo_metro">
+       <h1 class="main_message">Bienvenido al mapa interactivo</h1>
+       <h2 class="second">Mapa completo del sistema</h2>
+       <h3 class="instructions">Haga click en una estación para ver informacion</h3>
+     </div>
+  </header>
+
+  <main>
+ 
+    <div class="mapa">  
+      <img src="underground.png" alt="Mapa del sistema">
+      <button class="station_rosario" title="El Rosario" onclick="mostrarModal('El Rosario', 'Línea 7, transbordo con línea 6')"></button>
+      <button class="station_aquiles_serdan" title="Aquiles Serdán" onclick="window.location.href='station.html'"></button>
+    </div>    
+  </main>
+
+  <footer>
+  </footer>
+
+
+     <!-- Ventana Emergente uwu-->
+    <div id="ventanaModal" class="modal">
+      <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <h2 id="tituloEstacion">Nombre de la estación: </h2>
+        <p id="infoEstacion">Línea: .</p>
+      </div>
+    </div>
+
+    <script>
+      function mostrarModal(nombre, info) {
+        document.getElementById('tituloEstacion').textContent = nombre;
+        document.getElementById('infoEstacion').textContent = info;
+        document.getElementById('ventanaModal').style.display = 'block';
+      }
+
+      function cerrarModal() {
+        document.getElementById('ventanaModal').style.display = 'none';
+      }
+    </script>
+  </body>
+
+</html>

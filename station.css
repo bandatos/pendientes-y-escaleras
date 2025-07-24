@@ -1,0 +1,16 @@
+
+
+h1.station_name{
+  font-size:30px;
+  font-family:"Times New Roman";
+  text-alignement:center;
+  color:hsl(0,0,100%);
+  background-color:hsl(18,100%,60%);
+
+}
+ul{
+  font-family:"Times New Roman";
+  font-size:20px;
+  text-alignement: left;
+
+}
