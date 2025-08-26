@@ -52,7 +52,38 @@ export class LocalStorageService {
   // Add methods for: addToSyncQueue, getSyncQueue, removeFromSyncQueue
   // These methods should manage a separate queue of items that need to be synced to the API
 
+  //Agregar a la queue
+  static addToSyncQueue(data) {
+    try {
+      const queue = this.getSyncQueue();
+      queue.push(data);
 
+      localStorage.setItem(STORAGE_KEYS.SYNC_QUEUE, JSON.stringify(queue));
+
+    } catch (error) {
+      console.error('Error to try to add to Queue');
+    }
+  }
+
+  //getSyncQueue
+  static getSyncQueue() {
+    //Siempre tenemos strings
+    const queueString = localStorage.getItem(STORAGE_KEYS.SYNC_QUEUE);
+    return queueString ? JSON.parse(queueString) : []; //Convertimso string -> array
+  }
+
+  static removeFromSyncQueue(id) {
+    try {
+      let queue = this.getSyncQueue();
+      queue = queue.filter(data => data.id != id);
+
+      //Actualizar una vez que removimos
+      localStorage.setItem(STORAGE_KEYS.SYNC_QUEUE, JSON.stringify(queue));
+
+    } catch (error) {
+      console.error('Error to remove', error);
+    }
+  }
 
   // Marcar datos como sincronizados
   static markAsSynced(id) {
