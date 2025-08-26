@@ -47,10 +47,6 @@ export class LocalStorageService {
     }
   }
 
-  // TODO(human)
-  // Implement the sync queue management methods
-  // Add methods for: addToSyncQueue, getSyncQueue, removeFromSyncQueue
-  // These methods should manage a separate queue of items that need to be synced to the API
 
   //Agregar a la queue
   static addToSyncQueue(data) {
