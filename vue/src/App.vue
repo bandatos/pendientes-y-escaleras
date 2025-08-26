@@ -3,37 +3,12 @@ import Form from "./components/Form.vue";
 </script>
 
 <template>
-  <header></header>
-  <main>
-    <Form />
-  </main>
+  <v-container fluid class="fill-height">
+    <v-row justify="center" class="fill-height" align="center">
+      <v-col cols="12" sm="10" md="6" lg="4" xl="4">
+        <Form />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
