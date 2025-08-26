@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "pinia": "^3.0.3",
     "vue": "^3.5.18",
     "vuetify": "^3.9.5"
   },
