@@ -1,19 +1,20 @@
 <script setup>
 import TextField from "./TextField.vue";
 import Button from "./Button.vue";
-let line = defineModel("line");
-let station = defineModel("station");
-let typeElevation = defineModel("typeElevation"); //Stair, Elevator or...
-let isWorking = defineModel("isWorking");
-let evidenceImage = defineModel("evidenceImage");
+import { ref } from "vue";
+let line = ref("");
+let station = ref("");
+let typeElevation = ref(""); //Stair, Elevator or...
+let isWorking = ref(true);
+let evidenceImage = ref("");
 
 const handleSubmit = () => {
-  console.log('Form data:', {
+  console.log("Form data:", {
     line: line.value,
     station: station.value,
     typeElevation: typeElevation.value,
     isWorking: isWorking.value,
-    evidenceImage: evidenceImage.value
+    evidenceImage: evidenceImage.value,
   });
 };
 </script>
@@ -35,15 +36,11 @@ const handleSubmit = () => {
         <v-radio label="No" value="false"></v-radio>
       </v-radio-group>
       <TextField
-        v-if="isWorking === 'false'"
+        v-if="!isWorking"
         v-model="evidenceImage"
         :label="'Subir Evidencia'"
       ></TextField>
-      <Button 
-        :label="'Enviar'"
-        color="primary"
-        @click="handleSubmit"
-      ></Button>
+      <Button :label="'Enviar'" color="primary" @click="handleSubmit"></Button>
     </v-form>
   </v-container>
 </template>
