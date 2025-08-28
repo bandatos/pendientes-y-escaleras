@@ -1,11 +1,10 @@
 /**
  * Local Storage Service para manejo de datos offline
  */
-
 const STORAGE_KEYS = {
-  SYNC_QUEUE: 'surveyApp_syncQueue',
-  FORM_DATA: 'surveyApp_formData',
-  LAST_SYNC: 'surveyApp_lastSync'
+  PENDING_SYNC_QUEUE: 'pendingSyncQueue',
+  FORM_DATA: 'formData',
+  LAST_SYNC: 'lastSync'
 }
 
 export class LocalStorageService {
@@ -54,7 +53,7 @@ export class LocalStorageService {
       const queue = this.getSyncQueue();
       queue.push(data);
 
-      localStorage.setItem(STORAGE_KEYS.SYNC_QUEUE, JSON.stringify(queue));
+      localStorage.setItem(STORAGE_KEYS.PENDING_SYNC_QUEUE, JSON.stringify(queue));
 
     } catch (error) {
       console.error('Error to try to add to Queue');
@@ -64,7 +63,7 @@ export class LocalStorageService {
   //getSyncQueue
   static getSyncQueue() {
     //Siempre tenemos strings
-    const queueString = localStorage.getItem(STORAGE_KEYS.SYNC_QUEUE);
+    const queueString = localStorage.getItem(STORAGE_KEYS.PENDING_SYNC_QUEUE);
     return queueString ? JSON.parse(queueString) : []; //Convertimso string -> array
   }
 
@@ -74,7 +73,7 @@ export class LocalStorageService {
       queue = queue.filter(data => data.id != id);
 
       //Actualizar una vez que removimos
-      localStorage.setItem(STORAGE_KEYS.SYNC_QUEUE, JSON.stringify(queue));
+      localStorage.setItem(STORAGE_KEYS.PENDING_SYNC_QUEUE, JSON.stringify(queue));
 
     } catch (error) {
       console.error('Error to remove', error);
