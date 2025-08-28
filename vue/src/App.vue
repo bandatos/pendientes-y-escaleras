@@ -11,4 +11,3 @@ import Form from "./components/Form.vue";
     </v-row>
   </v-container>
 </template>
-

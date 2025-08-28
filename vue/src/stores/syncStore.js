@@ -12,13 +12,15 @@ export const useSyncStore = defineStore('sync', () => {
   // Estado reactivo
   const isOnline = ref(navigator.onLine)
   const isSyncing = ref(false)
+  // Valores que tenemos para saber el estado.
   const syncStats = ref({
-    total: 0,
+    total: 0, 
     synced: 0,
     pending: 0
   })
   const lastSyncTime = ref(null)
   const syncHistory = ref([])
+  
 
   // Servicios
   const apiSync = getApiSync()

@@ -1,7 +1,6 @@
 /**
  * API Sync Service - Coordina la sincronización con el servidor
  */
-
 import { LocalStorageService } from './localStorage.js'
 import { getNetworkDetection } from './networkDetection.js'
 
@@ -54,10 +53,6 @@ export class ApiSyncService {
     }
   }
 
-  // TODO(human)
-  // Implement the syncBatch method
-  // This should iterate through pendingData array, call syncSingleItem for each item
-  // Keep track of successful and failed syncs, return { synced: number, failed: number }
 
   async syncBatch(pendingData) {
     let synced = 0;
