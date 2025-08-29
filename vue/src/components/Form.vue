@@ -66,12 +66,7 @@ const handleSubmit = async () => {
         "💾 Datos guardados localmente - Se sincronizarán cuando haya conexión";
     }
 
-    // Limpiar formulario
-    line.value = "";
-    station.value = "";
-    typeElevation.value = "";
-    isWorking.value = true;
-    evidenceImage.value = "";
+    cleanForm();
   } catch (error) {
     console.error("❌ Error al enviar formulario:", error);
     submitMessage.value = "❌ Error al guardar los datos";
@@ -80,6 +75,15 @@ const handleSubmit = async () => {
 
     // Limpiar mensaje después de 5 segundos
     setTimeout(() => (submitMessage.value = ""), 5000);
+  }
+
+  function cleanForm() {
+    // Limpiar formulario
+    line.value = "";
+    station.value = "";
+    typeElevation.value = "";
+    isWorking.value = true;
+    evidenceImage.value = "";
   }
 };
 </script>
