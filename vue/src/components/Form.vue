@@ -11,6 +11,9 @@ let typeElevation = ref(""); //Stair, Elevator or Stair Lift
 let isWorking = ref(true);
 let evidenceImage = ref("");
 
+/* Connectar con el uso del store para su uso con los componentes
+
+*/
 // Store
 const syncStore = useSyncStore();
 

@@ -21,10 +21,14 @@ export const useSyncStore = defineStore('sync', () => {
   const lastSyncTime = ref(null)
   const syncHistory = ref([])
   
+/* Aquí en CompositionAPI a diferencia de optionsAPI, tenemos los servicios aparte, los
+  envolvemos dentro de una const, para poder llamar a sus métodos */
 
   // Servicios
   const apiSync = getApiSync()
   const networkDetection = getNetworkDetection()
+
+
 
   // Computed properties
   const syncProgress = computed(() => {
