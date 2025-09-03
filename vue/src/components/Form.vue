@@ -133,11 +133,11 @@ const handleSubmit = async () => {
         <v-radio label="Sí" value="true"></v-radio>
         <v-radio label="No" value="false"></v-radio>
       </v-radio-group>
-      <TextField
+      <v-file-input
         v-if="isWorking === 'false'"
         v-model="evidenceImage"
         :label="'Subir Evidencia'"
-      ></TextField>
+      ></v-file-input>
 
       <!-- Submit button with loading state -->
       <Button
