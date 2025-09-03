@@ -4,22 +4,20 @@ import Button from "./Button.vue";
 import { ref, onMounted, computed } from "vue";
 import { useSyncStore } from "../stores/syncStore.js";
 
+/* Estado del formulario -> Equivalente al data dentro de OptionsAPI */
 // Form data
-let line = ref("");
-let station = ref("");
-let typeElevation = ref(""); //Stair, Elevator or Stair Lift
-let isWorking = ref(true);
-let evidenceImage = ref("");
+const line = ref("");
+const station = ref("");
+const typeElevation = ref(""); //Stair, Elevator or Stair Lift
+const isWorking = ref(true);
+const evidenceImage = ref("");
 
-/* Connectar con el uso del store para su uso con los componentes
-
-*/
-// Store
-const syncStore = useSyncStore();
-
-// Estado del formulario
 const isSubmitting = ref(false);
 const submitMessage = ref("");
+
+/* Connectar con el uso del store para su uso con los componentes*/
+// Store
+const syncStore = useSyncStore();
 
 // Computed properties para mostrar estado
 const connectionStatus = computed(() =>
@@ -80,8 +78,13 @@ const handleSubmit = async () => {
     setTimeout(() => (submitMessage.value = ""), 5000);
   }
 
+  // Limpiar formulario
   function cleanForm() {
-    // Limpiar formulario
+    /* Cuando hacemos esto y es declarando arriba
+      const line = ref(''); Aquí no estamos reasignado que sería el papel que uno observa
+      dentro de JS cuando tienes una const, más bien estamos mutando el contenido, no la
+      referencia.
+    */
     line.value = "";
     station.value = "";
     typeElevation.value = "";
@@ -116,6 +119,10 @@ const handleSubmit = async () => {
   </div>
   <v-container>
     <v-form>
+      <!-- Sin embargo, no se requiere acceder a line.value en el template
+          esto nos los brindará un unwrapped de la variable.
+        -->
+      <!--<p>{{ line }}</p> -->
       <TextField v-model="line" :label="'Número de Línea'"></TextField>
       <TextField v-model="station" :label="'Estación'"></TextField>
       <TextField
@@ -127,7 +134,7 @@ const handleSubmit = async () => {
         <v-radio label="No" value="false"></v-radio>
       </v-radio-group>
       <TextField
-        v-if="!isWorking"
+        v-if="isWorking === 'false'"
         v-model="evidenceImage"
         :label="'Subir Evidencia'"
       ></TextField>
