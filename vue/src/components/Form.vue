@@ -5,6 +5,21 @@ import { ref, onMounted, computed } from "vue";
 import { useSyncStore } from "../stores/syncStore.js";
 
 /* Estado del formulario -> Equivalente al data dentro de OptionsAPI */
+const lines = ref([
+  "Línea 1",
+  "Línea 2",
+  "Línea 3",
+  "Línea 4",
+  "Línea 5",
+  "Línea 6",
+  "Línea 7",
+  "Línea 8",
+  "Línea 9",
+  "Línea A",
+  "Línea B",
+  "Línea 12",
+]);
+
 // Form data
 const line = ref("");
 const station = ref("");
@@ -124,6 +139,7 @@ const handleSubmit = async () => {
         -->
       <!--<p>{{ line }}</p> -->
       <TextField v-model="line" :label="'Número de Línea'"></TextField>
+      <!-- <v-autocomplete label="Número de Línea" :items="lines"></v-autocomplete> -->
       <TextField v-model="station" :label="'Estación'"></TextField>
       <TextField
         v-model="typeElevation"
