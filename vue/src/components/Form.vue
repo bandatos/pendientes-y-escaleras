@@ -29,11 +29,11 @@ const lines = ref([
 ]);
 
 // Form data
-const line = ref("");
+/* const line = ref("");
 const station = ref("");
 const typeElevation = ref(""); //Stair, Elevator or Stair Lift
 const isWorking = ref(true);
-const evidenceImage = ref("");
+const evidenceImage = ref(""); */
 
 const isSubmitting = ref(false);
 const submitMessage = ref("");
@@ -59,7 +59,7 @@ const handleSubmit = async () => {
   if (isSubmitting.value) return;
 
   // Validación básica
-  if (!line.value.trim() || !station.value.trim()) {
+  if (!syncStore.report.line.trim() || !syncStore.report.station.trim()) {
     submitMessage.value = "❌ Por favor completa los campos obligatorios";
     setTimeout(() => (submitMessage.value = ""), 3000);
     return;
@@ -70,11 +70,11 @@ const handleSubmit = async () => {
 
   try {
     const formData = {
-      line: line.value.trim(),
-      station: station.value.trim(),
-      typeElevation: typeElevation.value.trim(),
-      isWorking: isWorking.value,
-      evidenceImage: evidenceImage.value.trim(),
+      line: syncStore.report.line.trim(),
+      station: syncStore.report.station.trim(),
+      typeElevation: syncStore.report.typeElevation.trim(),
+      isWorking: syncStore.report.isWorking,
+      evidenceImage: syncStore.report.evidenceImage,
     };
 
     console.log("📋 Enviando formulario:", formData);
@@ -108,11 +108,11 @@ const handleSubmit = async () => {
       dentro de JS cuando tienes una const, más bien estamos mutando el contenido, no la
       referencia.
     */
-    line.value = "";
-    station.value = "";
-    typeElevation.value = "";
-    isWorking.value = true;
-    evidenceImage.value = "";
+    syncStore.report.line = "";
+    syncStore.report.station = "";
+    syncStore.report.typeElevation = "";
+    syncStore.report.isWorking = true;
+    syncStore.report.evidenceImage = "";
   }
 };
 </script>
@@ -146,7 +146,7 @@ const handleSubmit = async () => {
           esto nos los brindará un unwrapped de la variable.
         -->
       <v-autocomplete
-        v-model="line"
+        v-model="syncStore.report.line"
         :items="lines"
         label="Número de Línea"
         item-title="line"
@@ -164,18 +164,25 @@ const handleSubmit = async () => {
           </v-list-item>
         </template>
       </v-autocomplete>
-      <TextField v-model="station" :label="'Estación'"></TextField>
       <TextField
-        v-model="typeElevation"
+        v-model="syncStore.report.station"
+        :label="'Estación'"
+      ></TextField>
+      <TextField
+        v-model="syncStore.report.typeElevation"
         :label="'Número de Escalera'"
       ></TextField>
-      <v-radio-group v-model="isWorking" label="¿Funciona?" inline>
+      <v-radio-group
+        v-model="syncStore.report.isWorking"
+        label="¿Funciona?"
+        inline
+      >
         <v-radio label="Sí" value="true"></v-radio>
         <v-radio label="No" value="false"></v-radio>
       </v-radio-group>
       <v-file-input
-        v-if="isWorking === 'false'"
-        v-model="evidenceImage"
+        v-if="syncStore.report.isWorking === 'false'"
+        v-model="syncStore.report.evidenceImage"
         :label="'Subir Evidencia'"
       ></v-file-input>
 
