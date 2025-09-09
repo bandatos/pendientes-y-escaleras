@@ -43,15 +43,15 @@ const submitMessage = ref("");
 const syncStore = useSyncStore();
 
 // Computed properties para mostrar estado
-const connectionStatus = computed(() =>
-  syncStore.isOnline ? "🟢 Conectado" : "🔴 Sin conexión"
+const connectionStatus = computed(
+  () => (syncStore.isOnline ? "🟢 Conectado" : "🔴 Sin conexión") //Acceso al state
 );
 
 const pendingCount = computed(() => syncStore.syncStats.pending);
 
 // Inicializar store cuando se monta el componente
 onMounted(() => {
-  syncStore.init();
+  syncStore.init(); //Acceso a una action
 });
 
 // Manejar envío del formulario

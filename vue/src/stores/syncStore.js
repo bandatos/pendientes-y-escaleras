@@ -1,15 +1,26 @@
 /**
- * Store único para manejar el estado de sincronización de Pinia
+ ** Store único para manejar el estado de sincronización de Pinia
  */
-
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+//Servicios propios:
 import { LocalStorageService } from '../services/localStorage.js'
 import { getApiSync } from '../services/apiSync.js'
 import { getNetworkDetection } from '../services/networkDetection.js'
 
 export const useSyncStore = defineStore('sync', () => {
-  // Estado reactivo                     ⬆️id único     
+  // Estado reactivo                     ⬆️id único    
+  const report = ref({
+    line: "",
+    station: "",
+    typeElevation: "",
+    isWorking: true,
+    evidenceImage: null,
+    notes: "",
+    date: new Date(),
+  });
+  //Add the dummy data.
+
   const isOnline = ref(navigator.onLine)
   const isSyncing = ref(false)
   // Valores que tenemos para saber el estado.
@@ -30,7 +41,7 @@ export const useSyncStore = defineStore('sync', () => {
 
 
 
-  // Computed properties
+  // Computed properties (getters)
   const syncProgress = computed(() => {
     if (syncStats.value.total === 0) return 100
     return Math.round((syncStats.value.synced / syncStats.value.total) * 100)
@@ -162,7 +173,8 @@ export const useSyncStore = defineStore('sync', () => {
   }
 
   return {
-    // Estado
+    // State
+    report,
     isOnline,
     isSyncing,
     syncStats,
@@ -173,7 +185,7 @@ export const useSyncStore = defineStore('sync', () => {
     syncProgress,
     hasPendingData,
     
-    // Acciones
+    // Actions
     init,
     saveFormData,
     syncPendingData,
