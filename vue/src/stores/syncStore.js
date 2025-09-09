@@ -1,5 +1,5 @@
 /**
- * Pinia Store para manejar el estado de sincronización
+ * Store único para manejar el estado de sincronización de Pinia
  */
 
 import { defineStore } from 'pinia'
@@ -9,7 +9,7 @@ import { getApiSync } from '../services/apiSync.js'
 import { getNetworkDetection } from '../services/networkDetection.js'
 
 export const useSyncStore = defineStore('sync', () => {
-  // Estado reactivo
+  // Estado reactivo                     ⬆️id único     
   const isOnline = ref(navigator.onLine)
   const isSyncing = ref(false)
   // Valores que tenemos para saber el estado.

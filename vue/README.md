@@ -10,8 +10,14 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 ## Project Setup
 
 ```sh
-yarn
+yarn || yarn install
 ```
+
+### Dependencies
+- Vue
+- Pinia
+- Vite
+- Vuetify
 
 ### Compile and Hot-Reload for Development
 
