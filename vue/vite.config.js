@@ -12,7 +12,7 @@ export default defineConfig({
   ],
   server: {
     host: '0.0.0.0',
-    allowedHosts: [],
+    allowedHosts: true,
     port: 5174,
   },
   resolve: {
