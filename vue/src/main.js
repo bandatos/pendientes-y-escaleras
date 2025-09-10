@@ -2,7 +2,7 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createPinia } from 'pinia'
+import { pinia } from './stores'
 
 //Vuetify 3
 import 'vuetify/styles'
@@ -15,6 +15,6 @@ const vuetify = createVuetify({
     directives,
 })
 
-const pinia = createPinia()
+
 
 createApp(App).use(vuetify).use(pinia).mount('#app')

@@ -6,26 +6,34 @@ import { useSyncStore } from "../stores/syncStore.js";
 
 /* Estado del formulario -> Equivalente al data dentro de OptionsAPI */
 const lines = ref([
-  "Línea 1",
-  "Línea 2",
-  "Línea 3",
-  "Línea 4",
-  "Línea 5",
-  "Línea 6",
-  "Línea 7",
-  "Línea 8",
-  "Línea 9",
-  "Línea A",
-  "Línea B",
-  "Línea 12",
+  { line: "Línea 1", color: "#e9468f", name: "Observatorio - Pantitlán" },
+  { line: "Línea 2", color: "#00599f", name: "Cuatro Caminos - Tasqueña" },
+  { line: "Línea 3", color: "#b69c13", name: "Indios Verdes - Universidad" },
+  { line: "Línea 4", color: "#6cbab1", name: "Martín Carrera - Santa Anita" },
+  { line: "Línea 5", color: "#fdd200", name: "Pantitlán - Politécnico" },
+  { line: "Línea 6", color: "#da1715", name: "El Rosario - Martín Carrera" },
+  {
+    line: "Línea 7",
+    color: "#e97009",
+    name: "El Rosario - Barranca del Muerto",
+  },
+  {
+    line: "Línea 8",
+    color: "#008e3d",
+    name: "Garibaldi/Lagunilla - Constitución de 1917",
+  },
+  { line: "Línea 9", color: "#5b352e", name: "Tacubaya - Pantitlán" },
+  { line: "Línea A", color: "#9e1a81", name: "Pantitlán - La Paz" },
+  { line: "Línea B", color: "#bbb9b8", name: "Buenavista - Ciudad Azteca" },
+  { line: "Línea 12", color: "#c49955", name: "Mixcoac - Tláhuac" },
 ]);
 
 // Form data
-const line = ref("");
+/* const line = ref("");
 const station = ref("");
 const typeElevation = ref(""); //Stair, Elevator or Stair Lift
 const isWorking = ref(true);
-const evidenceImage = ref("");
+const evidenceImage = ref(""); */
 
 const isSubmitting = ref(false);
 const submitMessage = ref("");
@@ -35,15 +43,15 @@ const submitMessage = ref("");
 const syncStore = useSyncStore();
 
 // Computed properties para mostrar estado
-const connectionStatus = computed(() =>
-  syncStore.isOnline ? "🟢 Conectado" : "🔴 Sin conexión"
+const connectionStatus = computed(
+  () => (syncStore.isOnline ? "🟢 Conectado" : "🔴 Sin conexión") //Acceso al state
 );
 
 const pendingCount = computed(() => syncStore.syncStats.pending);
 
 // Inicializar store cuando se monta el componente
 onMounted(() => {
-  syncStore.init();
+  syncStore.init(); //Acceso a una action
 });
 
 // Manejar envío del formulario
@@ -51,7 +59,7 @@ const handleSubmit = async () => {
   if (isSubmitting.value) return;
 
   // Validación básica
-  if (!line.value.trim() || !station.value.trim()) {
+  if (!syncStore.report.line.trim() || !syncStore.report.station.trim()) {
     submitMessage.value = "❌ Por favor completa los campos obligatorios";
     setTimeout(() => (submitMessage.value = ""), 3000);
     return;
@@ -62,11 +70,11 @@ const handleSubmit = async () => {
 
   try {
     const formData = {
-      line: line.value.trim(),
-      station: station.value.trim(),
-      typeElevation: typeElevation.value.trim(),
-      isWorking: isWorking.value,
-      evidenceImage: evidenceImage.value.trim(),
+      line: syncStore.report.line.trim(),
+      station: syncStore.report.station.trim(),
+      typeElevation: syncStore.report.typeElevation.trim(),
+      isWorking: syncStore.report.isWorking,
+      evidenceImage: syncStore.report.evidenceImage,
     };
 
     console.log("📋 Enviando formulario:", formData);
@@ -100,11 +108,11 @@ const handleSubmit = async () => {
       dentro de JS cuando tienes una const, más bien estamos mutando el contenido, no la
       referencia.
     */
-    line.value = "";
-    station.value = "";
-    typeElevation.value = "";
-    isWorking.value = true;
-    evidenceImage.value = "";
+    syncStore.report.line = "";
+    syncStore.report.station = "";
+    syncStore.report.typeElevation = "";
+    syncStore.report.isWorking = true;
+    syncStore.report.evidenceImage = "";
   }
 };
 </script>
@@ -137,21 +145,44 @@ const handleSubmit = async () => {
       <!-- Sin embargo, no se requiere acceder a line.value en el template
           esto nos los brindará un unwrapped de la variable.
         -->
-      <!--<p>{{ line }}</p> -->
-      <TextField v-model="line" :label="'Número de Línea'"></TextField>
-      <!-- <v-autocomplete label="Número de Línea" :items="lines"></v-autocomplete> -->
-      <TextField v-model="station" :label="'Estación'"></TextField>
+      <v-autocomplete
+        v-model="syncStore.report.line"
+        :items="lines"
+        label="Número de Línea"
+        item-title="line"
+      >
+        <template v-slot:item="{ props, item }">
+          <v-list-item
+            v-bind="props"
+            :title="item?.raw?.name"
+            :subtitle="item?.raw?.line"
+            :value="item?.raw?.line"
+          >
+            <template v-slot:append>
+              <v-chip :color="item?.raw?.color">{{ item?.raw?.name }}</v-chip>
+            </template>
+          </v-list-item>
+        </template>
+      </v-autocomplete>
       <TextField
-        v-model="typeElevation"
+        v-model="syncStore.report.station"
+        :label="'Estación'"
+      ></TextField>
+      <TextField
+        v-model="syncStore.report.typeElevation"
         :label="'Número de Escalera'"
       ></TextField>
-      <v-radio-group v-model="isWorking" label="¿Funciona?" inline>
+      <v-radio-group
+        v-model="syncStore.report.isWorking"
+        label="¿Funciona?"
+        inline
+      >
         <v-radio label="Sí" value="true"></v-radio>
         <v-radio label="No" value="false"></v-radio>
       </v-radio-group>
       <v-file-input
-        v-if="isWorking === 'false'"
-        v-model="evidenceImage"
+        v-if="syncStore.report.isWorking === 'false'"
+        v-model="syncStore.report.evidenceImage"
         :label="'Subir Evidencia'"
       ></v-file-input>
 

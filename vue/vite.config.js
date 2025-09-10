@@ -9,8 +9,8 @@ import vueDevTools from "vite-plugin-vue-devtools";
 export default defineConfig({
   plugins: [vue(), vueDevTools(), dsv()],
   server: {
-    host: "0.0.0.0",
-    allowedHosts: [""],
+    host: '0.0.0.0',
+    allowedHosts: [],
     port: 5174,
   },
   resolve: {
