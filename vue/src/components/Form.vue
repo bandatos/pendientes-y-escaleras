@@ -5,28 +5,6 @@ import { ref, onMounted, computed } from "vue";
 import { useSyncStore } from "../stores/syncStore.js";
 
 /* Estado del formulario -> Equivalente al data dentro de OptionsAPI */
-const lines = ref([
-  { line: "Línea 1", color: "#e9468f", name: "Observatorio - Pantitlán" },
-  { line: "Línea 2", color: "#00599f", name: "Cuatro Caminos - Tasqueña" },
-  { line: "Línea 3", color: "#b69c13", name: "Indios Verdes - Universidad" },
-  { line: "Línea 4", color: "#6cbab1", name: "Martín Carrera - Santa Anita" },
-  { line: "Línea 5", color: "#fdd200", name: "Pantitlán - Politécnico" },
-  { line: "Línea 6", color: "#da1715", name: "El Rosario - Martín Carrera" },
-  {
-    line: "Línea 7",
-    color: "#e97009",
-    name: "El Rosario - Barranca del Muerto",
-  },
-  {
-    line: "Línea 8",
-    color: "#008e3d",
-    name: "Garibaldi/Lagunilla - Constitución de 1917",
-  },
-  { line: "Línea 9", color: "#5b352e", name: "Tacubaya - Pantitlán" },
-  { line: "Línea A", color: "#9e1a81", name: "Pantitlán - La Paz" },
-  { line: "Línea B", color: "#bbb9b8", name: "Buenavista - Ciudad Azteca" },
-  { line: "Línea 12", color: "#c49955", name: "Mixcoac - Tláhuac" },
-]);
 
 // Form data
 /* const line = ref("");
@@ -147,7 +125,7 @@ const handleSubmit = async () => {
         -->
       <v-autocomplete
         v-model="syncStore.report.line"
-        :items="lines"
+        :items="syncStore.lines"
         label="Número de Línea"
         item-title="line"
       >
