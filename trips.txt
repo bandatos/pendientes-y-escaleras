@@ -1,0 +1,1205 @@
+route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id,shape_id
+CMX01001C,0,010001C000_1, Canal de Chalco - Barranca del Muerto,C.Base Periférico Canal de Chalco to Base Barranca del Muerto,1,SH01001C000_1
+CMX01001C,0,010001C000_0, Barranca del Muerto - Canal de Chalco,C.Base Barranca del Muerto to Base Periférico Canal de Chalco,0,SH01001C000_0
+CMX01001B,0,010001B000_1, Canal de Chalco - Tacubaya,B.Base Periférico Canal de Chalco to Base Tacubaya,1,SH01001B000_1
+CMX01001B,0,010001B000_0, Tacubaya - Canal de Chalco,B.Base Tacubaya to Base Periférico Canal de Chalco,0,SH01001B000_0
+CMX01001A,0,010001A000_1, Canal de Chalco - Cuatro Caminos,A.Base Canal de Chalco to Base Cuatro Caminos,1,SH01001A000_1
+CMX01001A,0,010001A000_0, Cuatro Caminos- Canal de Chalco,A. Base Cuatro Caminos to Base Periférico Canal de Chalco,0,SH01001A000_0
+CMX01002F,7,017002F000_1,Moras - Taxqueña,CASSUR 19:47 to Base Cetram Taxqueña,1,SH01002F000_1
+CMX01002F,7,017002F000_0,Taxqueña - Moras,CASSUR 19:47 to Base ISSFAM,0,SH01002F000_0
+CMX01002F,6,016002F000_1,Moras - Taxqueña,CASSUR 19:47 to Base Cetram Taxqueña,1,SH01002F000_1
+CMX01002F,6,016002F000_0,Taxqueña - Moras,CASSUR 19:47 to Base ISSFAM,0,SH01002F000_0
+CMX01002E,7,017002E000_1,Moras - C.U. ,CASSUR 19:30 to Base Cetram CU,1,SH01002E000_1
+CMX01002E,7,017002E000_0,C.U. - Moras,CASSUR 19:30 to Base ISSFAM,0,SH01002E000_0
+CMX01002E,6,016002E000_1,Moras - C.U. ,CASSUR 19:30 to Base Cetram CU,1,SH01002E000_1
+CMX01002E,6,016002E000_0,C.U. - Moras,CASSUR 19:30 to Base ISSFAM,0,SH01002E000_0
+CMX01002D,0,010002D000_1,Taxqueña - Tlaxopan,CASSUR 15:17 to Base Cetram Taxqueña,1,SH01002D000_1
+CMX01002D,0,010002D000_0,Tlaxopan - Taxqueña,CASSUR 15:17 to Base Tlaxopan,0,SH01002D000_0
+CMX01002C,0,010002C000_1,Tlaxopan - C.U.,CASSUR 14:22 to Base Cetram CU,1,SH01002C000_1
+CMX01002C,0,010002C000_0,C.U. - Tlaxopan,CASSUR 14:22 to Base Tlaxopan,0,SH01002C000_0
+CMX01002B,9,019002B000_1,Pirul - C.U.,CASSUR 13:28 to Base Cetram CU,1,SH01002B000_1
+CMX01002B,9,019002B000_0,C.U. - Pirul,CASSUR 13:28 to Base El Pirul,0,SH01002B000_0
+CMX01002B,8,018002B000_1,Pirul - C.U.,CASSUR 13:28 to Base Cetram CU,1,SH01002B000_1
+CMX01002B,8,018002B000_0,C.U. - Pirul,CASSUR 13:28 to Base El Pirul,0,SH01002B000_0
+CMX01002A,7,017002A000_1,Pirul  - Taxqueña,CASSUR 12:51 to Base Cetram Taxqueña,1,SH01002A000_1
+CMX01002A,7,017002A000_0,Taxqueña - Pirul ,CASSUR 12:51 to Base El Pirul,0,SH01002A000_0
+CMX01002A,6,016002A000_1,Pirul  - Taxqueña,CASSUR 12:51 to Base Cetram Taxqueña,1,SH01002A000_1
+CMX01002A,6,016002A000_0,Taxqueña - Pirul ,CASSUR 12:51 to Base El Pirul,0,SH01002A000_0
+CMX01003A,0,010003A000_1,Politécnico - Iztacala,Metro Politécnico  to Reyes Iztacala,1,SH01003A000_1
+CMX01003A,0,010003A000_0,Iztacala - Politécnico,Reyes Iztacala to Metro Politécnico ,0,SH01003A000_0
+CMX01004C,0,010004C000_1,Alameda Oriente - Central de Abasto,Base Alameda Oriente to Base Central de Abasto,1,SH01004C000_1
+CMX01004C,0,010004C000_0,Central de Abasto -  Alameda Oriente,Base Central de Abasto to Base Alameda Oriente,0,SH01004C000_0
+CMX01004B,0,010004B000_1,Constitución - Canal de San Juan,Base Constitución to Base Canal de San Juan,1,SH01004B000_1
+CMX01004B,0,010004B000_0, Canal de San Juan - Constitución,Base Canal de San Juan to Base Constitución,0,SH01004B000_0
+CMX01004A,0,010004A000_1, Constitución - Alameda Oriente,Base Constitución to Base Alameda Oriente,1,SH01004A000_1
+CMX01004A,0,010004A000_0, Alameda Oriente - Constitución,Base Alameda Oriente to Base Constitución,0,SH01004A000_0
+CMX01005A,0,010005A000_1,Martín Carrera - Escuela Naval,Victoria to Escuela Naval M. y WalMart,1,SH01005A000_1
+CMX01005A,0,010005A000_0,Escuela Naval - Martín Carrera,Escuela Naval to Martín Carrera ,0,SH01005A000_0
+CMX01006A,0,010006A000_1,Barranca del Muerto - Ermita,Barranca del Muerto to Ermita,1,SH01006A000_1
+CMX01006A,0,010006A000_0,Ermita - Barranca del Muerto,Ermita to Barranca del Muerto,0,SH01006A000_0
+CMX01007D,0,010007D000_1,Chapultepec - Odontología por Av.504 por puente,D. Base Av. 504 to Metro Chapultepec,1,SH01007D000_1
+CMX01007D,0,010007D000_0,Odontología - Chapultepec por Av.504 por puente,D. Metro Chapultepec to Base Av. 504,0,SH01007D000_0
+CMX01007C,0,010007C000_1,Odontología por Av. 504 - Chapultepec,C. Base Av. 504 to Metro Chapultepec,1,SH01007C000_1
+CMX01007C,0,010007C000_0,Chapultepec - Odontología por Av. 504,C. Metro Chapultepec to Base Av. 504,0,SH01007C000_0
+CMX01007B,0,010007B000_1,Odontología - Chapultepec,B. Base Deportivo Oceanía to Metro Chapultepec,1,SH01007B000_1
+CMX01007B,0,010007B000_0,Chapultepec - Odontología,B. Metro Chapultepec to Base Deportivo Oceanía ,0,SH01007B000_0
+CMX01007A,0,010007A000_1,Odontología - Chapultepec por puente,A. Base Deportivo Oceanía  to Metro Chapultepec por puente,1,SH01007A000_1
+CMX01007A,0,010007A000_0,Chapultepec - Odontología por puente,A. Metro Chapultepec to Base Deportivo Oceanía por puente,0,SH01007A000_0
+CMX01008D,0,010008D000_1,Chapultepec - Tecamachalco ,D. Base Metro Chapultepec to Base Tecamachalco Superama Anáhuac,1,SH01008D000_1
+CMX01008D,0,010008D000_0,Tecamachalco - Chapultepec,D. Base Tecamachalco to Base Metro Chapultepec,0,SH01008D000_0
+CMX01008C,0,010008C000_1,Chapultepec - Duraznos ,C. Base Metro Chapultepec to Plaza Bosques,1,SH01008C000_1
+CMX01008C,0,010008C000_0,Duraznos - Chapultepec,C. Duraznos to Base Metro Chapultepec,0,SH01008C000_0
+CMX01008B,0,010008B000_1,Chapultepec - Palmas,B. Base Metro Chapultepec to Base Paseo de los Tamarindos,1,SH01008B000_1
+CMX01008B,0,010008B000_0,Palmas - Chapultepec,B. Palmas to Base Metro Chapultepec,0,SH01008B000_0
+CMX01008A,0,010008A000_1,Chapultepec - Bosques,A. Base Metro Chapultepec to Base Paseo de los Tamarindos,1,SH01008A000_1
+CMX01008A,0,010008A000_0,Bosques - Chapultepec,A. Bosques to Base Metro Chapultepec,0,SH01008A000_0
+CMX01009E,3,013009E000_1,Tepalcates - Tacubaya por Campeche ,CETRAM Tepalcates to Tacubaya por Campeche,1,SH01009E000_1
+CMX01009E,3,013009E000_0,Tacubaya por Campeche - Tepalcates,Tacubaya to CETRAM Tepalcates por Campeche,0,SH01009E000_0
+CMX01009E,4,014009E000_1,Tepalcates - Tacubaya por Campeche ,CETRAM Tepalcates to Tacubaya por Campeche,1,SH01009E000_1
+CMX01009E,4,014009E000_0,Tacubaya por Campeche - Tepalcates,Tacubaya to CETRAM Tepalcates por Campeche,0,SH01009E000_0
+CMX01009A,3,013009A000_1,La Valenciana - Tacubaya por Qro. ,La Valenciana to Tacubaya por Qro,1,SH01009A000_1
+CMX01009A,3,013009A000_0,Tacubaya por Qro. - La Valenciana ,Tacubaya to La Valenciana por Qro,0,SH01009A000_0
+CMX01009A,4,014009A000_1,La Valenciana - Tacubaya por Qro. ,La Valenciana to Tacubaya por Qro,1,SH01009A000_1
+CMX01009A,4,014009A000_0,Tacubaya por Qro. - La Valenciana ,Tacubaya to La Valenciana por Qro,0,SH01009A000_0
+CMX01009C,3,013009C000_1,La Valenciana - Tacubaya por contraflujo,La Valenciana to Tacubaya por Contraflujo,1,SH01009C000_1
+CMX01009C,3,013009C000_0,Tacubaya por contraflujo - La Valenciana,Tacubaya to La Valenciana por Contraflujo,0,SH01009C000_0
+CMX01009C,4,014009C000_1,La Valenciana - Tacubaya por contraflujo,La Valenciana to Tacubaya por Contraflujo,1,SH01009C000_1
+CMX01009C,4,014009C000_0,Tacubaya por contraflujo - La Valenciana,Tacubaya to La Valenciana por Contraflujo,0,SH01009C000_0
+CMX01009D,3,013009D000_1,La Valenciana - Metro Puebla por Sur 20,La Valenciana to Metro Puebla por Sur 20,1,SH01009D000_1
+CMX01009D,3,013009D000_0,Metro Puebla por Sur 20 - La Valenciana,Metro Puebla to La Valenciana (base) por Sur 20,0,SH01009D000_0
+CMX01009D,4,014009D000_1,La Valenciana - Metro Puebla por Sur 20,La Valenciana to Metro Puebla por Sur 20,1,SH01009D000_1
+CMX01009D,4,014009D000_0,Metro Puebla por Sur 20 - La Valenciana,Metro Puebla to La Valenciana (base) por Sur 20,0,SH01009D000_0
+CMX01009B,3,013009B000_1,La Valenciana - Metro Puebla por Sur 8,La Valenciana to Metro Puebla por Sur 8,1,SH01009B000_1
+CMX01009B,3,013009B000_0,Metro Puebla por Sur 8 - La Valenciana,Metro Puebla to La Valenciana (base) por Sur 8,0,SH01009B000_0
+CMX01009B,4,014009B000_1,La Valenciana - Metro Puebla por Sur 8,La Valenciana to Metro Puebla por Sur 8,1,SH01009B000_1
+CMX01009B,4,014009B000_0,Metro Puebla por Sur 8 - La Valenciana,Metro Puebla to La Valenciana (base) por Sur 8,0,SH01009B000_0
+CMX01010C,5,015010C000_1,RCA Víctor - Peñón,RCA Víctor to Peñón,1,SH01010C000_1
+CMX01010C,5,015010C000_0,Peñón - RCA Víctor,Peñón to RCA Víctor,0,SH01010C000_0
+CMX01010C,1,011010C000_1,RCA Víctor - Peñón,RCA Víctor to Peñón,1,SH01010C000_1
+CMX01010C,1,011010C000_0,Peñón - RCA Víctor,Peñón to RCA Víctor,0,SH01010C000_0
+CMX01010A,5,015010A000_1,Panteón San Isidro - Metro Oceanía Norte 172 ,Panteón San Isidro to Metro Oceanía,1,SH01010A000_1
+CMX01010A,5,015010A000_0,Metro Oceanía Norte 172 - Panteón San Isidro,Metro Oceanía to Panteón San Isidro,0,SH01010A000_0
+CMX01010A,1,011010A000_1,Panteón San Isidro - Metro Oceanía Norte 172 ,Panteón San Isidro to Metro Oceanía,1,SH01010A000_1
+CMX01010A,1,011010A000_0,Metro Oceanía Norte 172 - Panteón San Isidro,Metro Oceanía to Panteón San Isidro,0,SH01010A000_0
+CMX01010E,5,015010E000_1,Metro Camarones - Manchurias,Camarones to Manchurias,1,SH01010E000_1
+CMX01010E,5,015010E000_0,Manchurias - Metro Camarones,Manchurias to Metro Camarones,0,SH01010E000_0
+CMX01010E,1,011010E000_1,Metro Camarones - Manchurias,Camarones to Manchurias,1,SH01010E000_1
+CMX01010E,1,011010E000_0,Manchurias - Metro Camarones,Manchurias to Metro Camarones,0,SH01010E000_0
+CMX01010D,5,015010D000_1,Metro Camarones - Peñón,Metro Camarones to Peñón,1,SH01010D000_1
+CMX01010D,5,015010D000_0,Peñón - Metro Camarones,Peñón to Metro Camarones,0,SH01010D000_0
+CMX01010D,1,011010D000_1,Metro Camarones - Peñón,Metro Camarones to Peñón,1,SH01010D000_1
+CMX01010D,1,011010D000_0,Peñón - Metro Camarones,Peñón to Metro Camarones,0,SH01010D000_0
+CMX01010B,5,015010B000_1,Panteón San Isidro - Peñón ,Panteón San Isidro to Peñón,1,SH01010B000_1
+CMX01010B,5,015010B000_0,Peñón - Panteón San Isidro,Peñón to Lucio Blanco,0,SH01010B000_0
+CMX01010B,1,011010B000_1,Panteón San Isidro - Peñón ,Panteón San Isidro to Peñón,1,SH01010B000_1
+CMX01010B,1,011010B000_0,Peñón - Panteón San Isidro,Peñón to Panteón San Isidro,0,SH01010B000_0
+CMX01011D,0,010011D000_1,Aeropuerto  - Cuatro Caminos por flores Magón,D. Aeropuerto por flores Magón-Cuatro Caminos,1,SH01011D000_1
+CMX01011D,0,010011D000_0,Cuatro Caminos por flores Magón - Aeropuerto ,D. Cuatro Caminos - Aeropuerto por flores Magón,0,SH01011D000_0
+CMX01011E,0,010011E000_1,Canal de San Juan - Metro Normal,E. Canal de San Juan to Base Salvador Díaz Mirón - Plan de San Luis,1,SH01011E000_1
+CMX01011E,0,010011E000_0,Metro Normal - Canal de San Juan,E. Metro Normal to Base Anillo Periférico Canal de San Juan,0,SH01011E000_0
+CMX01011C,0,010011C000_1,Pantitlán - Metro Normal,C. Base Metro Pantitlan to Base Salvador Díaz Mirón - Plan de San Luis,1,SH01011C000_1
+CMX01011C,0,010011C000_0,Metro Normal - Pantitlán,C. Metro Normal to Base Metro Pantitlan,0,SH01011C000_0
+CMX01011B,0,010011B000_1,Pantitlán Calle 7 - Metro Normal,B.  Base Calle 7 to Base Salvador Díaz Mirón - Plan de San Luis,1,SH01011B000_1
+CMX01011B,0,010011B000_0,Metro Normal - Pantitlán Calle 7,B. Metro Normal to Base Calle 7,0,SH01011B000_0
+CMX01011A,0,010011A000_1,Metro Pantitlán - Cuatro Caminos,A.Base Metro Pantitlán to Base Cuatro Caminos,1,SH01011A000_1
+CMX01011A,0,010011A000_0,Cuatro Caminos - Metro Pantitlán,A.Base Cuatro Caminos to Base Metro Pantitlán,0,SH01011A000_0
+CMX01012C,0,010012C000_1,Cuatro Caminos - San Cosme ,CETRAM Toreo to Rosas Moreno y Ribera de San Cosme,1,SH01012C000_1
+CMX01012C,0,010012C000_0,San Cosme - Cuatro Caminos,Rosas Moreno y Ribera de San Cosme to CETRAM Toreo,0,SH01012C000_0
+CMX01012D,0,010012D000_1,Lomas de Sotelo - San Cosme,Lomas de Sotelo to Rosas Moreno y Ribera de San Cosme,1,SH01012D000_1
+CMX01012D,0,010012D000_0,San Cosme - Lomas de Sotelo,Rosas Moreno y Ribera de San Cosme to Lomas de Sotelo,0,SH01012D000_0
+CMX01012A,0,010012A000_1,Cuatro Caminos - Buenavista ,CETRAM Toreo to CETRAM Buenavista,1,SH01012A000_1
+CMX01012A,0,010012A000_0,Buenavista - Cuatro Caminos,CETRAM Buenavista to CETRAM Toreo,0,SH01012A000_0
+CMX01012B,0,010012B000_1,Lomas de Sotelo - Buenavista ,Lomas de Sotelo to CETRAM Buenavista,1,SH01012B000_1
+CMX01012B,0,010012B000_0,Buenavista - Lomas de Sotelo,CETRAM Buenavista to Lomas de Sotelo,0,SH01012B000_0
+CMX01013B,0,010013B000_1,Av.Homero - Chapultepec ,Homero to Chapultepec,1,SH01013B000_1
+CMX01013B,0,010013B000_0,Chapultepec - Av.Homero,Chapultepec to Homero,0,SH01013B000_0
+CMX01013D,0,010013D000_1,Av. Homero - Metro Sevilla,Homero to Metro Sevilla,1,SH01013D000_1
+CMX01013D,0,010013D000_0,Metro Sevilla - Av. Homero,Metro Sevilla to Homero,0,SH01013D000_0
+CMX01013A,0,010013A000_1,Ingenieros Militares - Chapultepec ,Av. Ingenieros Militares  to Chapultepec,1,SH01013A000_1
+CMX01013A,0,010013A000_0,Chapultepec - Ingenieros Militares ,Chapultepec to Av. Ingenieros Militares ,0,SH01013A000_0
+CMX01013E,0,010013E000_1,Lomas de Sotelo por Homero - Chapultepec ,Lomas de Sotelo to Chapultepec,1,SH01013E000_1
+CMX01013E,0,010013E000_0,Chapultepec - Lomas de Sotelo por Homero,Chapultepec to Lomas de Sotelo,0,SH01013E000_0
+CMX01013C,0,010013C000_1,Ejército Nacional - Metro Sevilla,Ejército Nacional to Metro Sevilla,1,SH01013C000_1
+CMX01013C,0,010013C000_0,Metro Sevilla - Ejército Nacional,Metro Sevilla to Av. Ejército Nacional y Moliere,0,SH01013C000_0
+CMX01014A,0,010014A000_1,San Antonio Abad - Metro Tepalcates,Manuel Gutierrez Nájera to Fray Jesús Almaza y Zaragoza (base),1,SH01014A000_1
+CMX01014A,0,010014A000_0,Metro Tepalcates - San Antonio Abad,Fray Jesús Almaza y Zaragoza to Manuel Gutierrez Nájera (base),0,SH01014A000_0
+CMX01015B,0,010015B000_1,Pradera - Metro Basilica,Base Pradera to Base Montiel,1,SH01015B000_1
+CMX01015B,0,010015B000_0,Metro Basilica -  Pradera,Base Montiel to Base Pradera,0,SH01015B000_0
+CMX01015A,0,010015A000_1,Av. Central - Av. Ceylan,Av. Central to Base Av. Ceylan,1,SH01015A000_1
+CMX01015A,0,010015A000_0,Av. Ceylan - Av. Central,Base Av. Ceylan to Francisco Morazán - Carlos Hank González,0,SH01015A000_0
+CMX01015C,0,010015C000_1,Bosques de Aragón - Metro Potrero,Bosques de Aragón to Base Metro Potrero,1,SH01015C000_1
+CMX01015C,0,010015C000_0,Metro Potrero - Bosques de Aragón,Base Metro Potrero to Francisco Morazán - Carlos Hank González,0,SH01015C000_0
+CMX01016D,0,010016D000_1,Metro Cuitlahuac - Echegaray,Cuitlahuac to Cuauhtémoc - Hacienda Emiliano Zapata Base,1,SH01016D000_1
+CMX01016D,0,010016D000_0,Echegaray - Metro Cuitlahuac,Echegaray to México-Tacuba - Ferrocarril de Cuernavaca,0,SH01016D000_0
+CMX01016C,0,010016C000_1,Metro Cuitlahuac - Lomas Verdes,Metro Cuitlahuac to Base Lomas Verdes,1,SH01016C000_1
+CMX01016C,0,010016C000_0,Lomas Verdes - Metro Cuitlahuac,Base Lomas Verdes to México-Tacuba - Ferrocarril de Cuernavaca,0,SH01016C000_0
+CMX01016B,0,010016B000_1,Revolución - Cuatro Caminos,Metro Revolución to Base Rodolfo Gaona,1,SH01016B000_1
+CMX01016B,0,010016B000_0,Cuatro Caminos - Revolución ,Base Rodolfo Gaona to Puente de Alvarado - Metro Revolución,0,SH01016B000_0
+CMX01016A,0,010016A000_1,Alameda - Cuatro Caminos,Baseo Museo Franz Mayer to Base Rodolfo Gaona,1,SH01016A000_1
+CMX01016A,0,010016A000_0,Cuatro Caminos - Alameda,Base Rodolfo Gaona to Baseo Museo Franz Mayer,0,SH01016A000_0
+CMX01017K,0,010017K000_1,Izazaga - Tepeximilpa,K.Izazaga to Base Cantera,1,SH01017K000_1
+CMX01017K,0,010017K000_0,Tepeximilpa - Izazaga,K.Base Cantera to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017K000_0
+CMX01017J,0,010017J000_1,Izazaga - Totoltepec,J. Izazaga to Base Tlalaxco México-Cuernavaca Libre,1,SH01017J000_1
+CMX01017J,0,010017J000_0,Totoltepec - Izazaga,J. Totoltepec to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017J000_0
+CMX01017I,0,010017I000_1,Izazaga - Coapa,I. Izazaga to Base Canal de Miramontes - Emiliano Zapata ,1,SH01017I000_1
+CMX01017I,0,010017I000_0,Coapa - Izazaga,I. Coapa Base San Jerónimo y José María Pino Suárez,0,SH01017I000_0
+CMX01017H,0,010017H000_1,Izazaga - Fuentes Brotantes,H.Izazaga to Base Fuentes Brotantes,1,SH01017H000_1
+CMX01017H,0,010017H000_0,Fuentes Brotantes - Izazaga,H.Base Fuentes Brotantes to Base Flamencos y José María Pino Suárez,0,SH01017H000_0
+CMX01017G,0,010017G000_1,Izazaga - La Joya Hospitales,G.Izazaga to Tlalpan y La Joya,1,SH01017G000_1
+CMX01017G,0,010017G000_0,La Joya Hospitales - Izazaga,G.La Joya to Base San Jerónimo y José María Pino Suárez,0,SH01017G000_0
+CMX01017F,0,010017F000_1,Corregidora - La Joya ,F.Corregidora to Tlalpan y La Joya,1,SH01017F000_1
+CMX01017F,0,010017F000_0,La Joya - Corregidora,F.La Joya to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017F000_0
+CMX01017E,0,010017E000_1,Izazaga - Allende,E. Izazaga to Tlalpan y San Fernando,1,SH01017E000_1
+CMX01017E,0,010017E000_0,Allende - Izazaga,E.Tlalpan y San Fernando to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017E000_0
+CMX01017D,0,010017D000_1, Izazaga - Santiago Tepalcatlalpan,D.Izazaga to Base Santiago,1,SH01017D000_1
+CMX01017D,0,010017D000_0, Santiago Tepalcatlalpan - Izazaga,D.Base Santiago to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017D000_0
+CMX01017C,0,010017C000_1,Izazaga - Deportivo Xochimilco,C.Izazaga to Base Deportivo Xochimilco,1,SH01017C000_1
+CMX01017C,0,010017C000_0,Deportivo Xochimilco - Izazaga,C.Base Deportivo Xochimilco to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017C000_0
+CMX01017B,0,010017B000_1,Izazaga por Miramontes - Xochimilco ,B.Izazaga to Base Pino - Benito Juárez,1,SH01017B000_1
+CMX01017B,0,010017B000_0,Xochimilco - Izazaga por Miramontes,B.Xochimilco to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017B000_0
+CMX01017A,0,010017A000_1,Izazaga - Caseta a Cuernavaca,A.Izazaga to Base Carretera México-Cuernavaca - Caseta de Cobro,1,SH01017A000_1
+CMX01017A,0,010017A000_0,Caseta a Cuernavaca - Izazaga,A.Cuernavaca to Base Nezahualcoyotl-José María Pino Suárez,0,SH01017A000_0
+CMX01018B,0,010018B000_1,Chapultepec - 1ro de Mayo,Blvd. Manuel Avila C. y Las Torres/1 de Mayo to CETRAM Chapultepec (base),1,SH01018B000_1
+CMX01018B,0,010018B000_0,1ro de Mayo - Chapultepec ,CETRAM Chapultepec to Blvd. Manuel Avila C. y Las Torres/1 de Mayo,0,SH01018B000_0
+CMX01018D,0,010018D000_1,Satélite - Chapultepec ,Suburbia Satélite to CETRAM Chapultepec (base),1,SH01018D000_1
+CMX01018D,0,010018D000_0,Chapultepec  - Satélite,CETRAM Chapultepec to Blvd. Manuel Avila C. y Suburbia Satélite,0,SH01018D000_0
+CMX01018C,0,010018C000_1,Valle Dorado - Insurgentes,Blvd. de los Continente to CETRAM Chapultepec (base),1,SH01018C000_1
+CMX01018C,0,010018C000_0,Insurgentes - Valle Dorado,CETRAM Chapultepec to Blvd. de los Continentes (base),0,SH01018C000_0
+CMX01018A,0,010018A000_1,Valle Dorado - Chapultepec,Blvd. de los Continentes to Oaxaca (base),1,SH01018A000_1
+CMX01018A,0,010018A000_0,Chapultepec - Valle Dorado,Oaxaca to Blvd. de los Continentes (base),0,SH01018A000_0
+CMX0100Z1,0,01000Z1022_1,7.4 18 de marzo-Cecilia,7.4 18 de marzo-Cecilia,1,SH0100Z1022_1
+CMX0100Z1,0,01000Z1022_0,7.4 Cecilia-18 de marzo,7.4 Cecilia-18 de marzo,0,SH0100Z1022_0
+CMX0100Z1,0,01000Z1021_1,7.3 18 de marzo-piramide,7.3 18 de marzo-piramide,1,SH0100Z1021_1
+CMX0100Z1,0,01000Z1021_0,7.3 piramide-18 de marzo,7.3 piramide-18 de marzo,0,SH0100Z1021_0
+CMX0100Z1,0,01000Z1020_1,7.2 18 de marzo-tenayo,7.2 18 de marzo-tenayo,1,SH0100Z1020_1
+CMX0100Z1,0,01000Z1020_0,7.2 tenayo-18 de marzo,7.2 tenayo-18 de marzo,0,SH0100Z1020_0
+CMX0100Z1,0,01000Z1019_1,7.1 18 de marzo-Acueducto,7.1 18 de marzo-Acueducto,1,SH0100Z1019_1
+CMX0100Z1,0,01000Z1019_0,7.1 Acueducto-18 de marzo,7.1 Acueducto-18 de marzo,0,SH0100Z1019_0
+CMX0100Z1,0,01000Z1018_1,5.6 San Andres-Colosio,5.6 San Andres-Colosio,1,SH0100Z1018_1
+CMX0100Z1,0,01000Z1018_0,5.6 Colosio-San Andres,5.6 Colosio-San Andres,0,SH0100Z1018_0
+CMX0100Z1,0,01000Z1017_1,5.5 San Andres-Chiapas ,5.5 San Andres-Chiapas ,1,SH0100Z1017_1
+CMX0100Z1,0,01000Z1017_0,5.5 Chiapas - San Andres,5.5 Chiapas - San Andres,0,SH0100Z1017_0
+CMX0100Z1,0,01000Z1016_1,5.4 La Raza-Guadalupe Chalma Puerto,5.4 La Raza-Guadalupe Chalma Puerto,1,SH0100Z1016_1
+CMX0100Z1,0,01000Z1016_0,5.4 Guadalupe Chalma Puerto - La Raza,5.4 Guadalupe Chalma Puerto - La Raza,0,SH0100Z1016_0
+CMX0100Z1,0,01000Z1015_1,5.3 La Raza-Guadalupe Chalma ,5.3 La Raza-Guadalupe Chalma ,1,SH0100Z1015_1
+CMX0100Z1,0,01000Z1015_0,5.3Guadalupe Chalma - La Raza,5.3Guadalupe Chalma - La Raza,0,SH0100Z1015_0
+CMX0100Z1,0,01000Z1014_1,5.2 La Raza-Colosio,5.2 La Raza-Colosio,1,SH0100Z1014_1
+CMX0100Z1,0,01000Z1014_0,5.2 Colosio-La Raza,5.2 Colosio-La Raza,0,SH0100Z1014_0
+CMX0100Z1,0,01000Z1013_1,5.1 Metro La Raza - Gpe. Chalma Chiapas,5.1 Metro La Raza - Gpe. Chalma Chiapas,1,SH0100Z1013_1
+CMX0100Z1,0,01000Z1013_0,5.1 Gpe. Chalma Chiapas - Metro La Raza,5.1 Gpe. Chalma Chiapas - Metro La Raza,0,SH0100Z1013_0
+CMX0100Z1,0,01000Z1012_1,4.5 San andrés-Lomas,4.5 San andrés-Lomas,1,SH0100Z1012_1
+CMX0100Z1,0,01000Z1012_0,4.5 Lomas- San andrés,4.5 Lomas- San andrés,0,SH0100Z1012_0
+CMX0100Z1,0,01000Z1011_1,4.4 San Andrés-Tokio,4.4 San Andrés-Tokio,1,SH0100Z1011_1
+CMX0100Z1,0,01000Z1011_0,4.4 Tokio-San Andrés,4.4 Tokio-San Andrés,0,SH0100Z1011_0
+CMX0100Z1,0,01000Z1010_1,4.3 Politécnico-Peñas Negras,4.3 Politécnico-Peñas Negras,1,SH0100Z1010_1
+CMX0100Z1,0,01000Z1010_0,4.3 Peñas Negras-Politécnico,4.3 Peñas Negras-Politécnico,0,SH0100Z1010_0
+CMX0100Z1,0,01000Z1009_1,4.2 Politécnico-Lomas,4.2 Politécnico-Lomas,1,SH0100Z1009_1
+CMX0100Z1,0,01000Z1009_0,4.2 Lomas-Politécnico,4.2 Lomas-Politécnico,0,SH0100Z1009_0
+CMX0100Z1,0,01000Z1008_1,4.1 Politécnico-Tokio,4.1 Politécnico-Tokio,1,SH0100Z1008_1
+CMX0100Z1,0,01000Z1008_0,4.1 Tokio-Politécnico,4.1 Tokio-Politécnico,0,SH0100Z1008_0
+CMX0100Z1,0,01000Z1007_1,2.8 Revolución-Acueducto,2.8 Revolución-Acueducto,1,SH0100Z1007_1
+CMX0100Z1,0,01000Z1007_0,2.8 Acueducto-Revolución,2.8 Acueducto-Revolución,0,SH0100Z1007_0
+CMX0100Z1,0,01000Z1006_1,2.7 La Raza-Cantil,2.7 La Raza-Cantil,1,SH0100Z1006_1
+CMX0100Z1,0,01000Z1006_0,2.7 Cantil-La Raza,2.7 Cantil-La Raza,0,SH0100Z1006_0
+CMX0100Z1,0,01000Z1005_1,2.6 Poniente 112-Cantil,2.6 Poniente 112-Cantil,1,SH0100Z1005_1
+CMX0100Z1,0,01000Z1005_0,2.6 Cantil-Poniente 112,2.6 Cantil-Poniente 112,0,SH0100Z1005_0
+CMX0100Z1,0,01000Z1004_1,2.5 Metro Politécnico-Cantil,2.5 Metro Politécnico-Cantil,1,SH0100Z1004_1
+CMX0100Z1,0,01000Z1004_0,2.5 Cantil-Metro Politécnico,2.5 Cantil-Metro Politécnico,0,SH0100Z1004_0
+CMX0100Z1,0,01000Z1003_1,2.4 Balderas-Cantil,2.4 Balderas-Cantil,1,SH0100Z1003_1
+CMX0100Z1,0,01000Z1003_0,2.4 Cantil-Balderas,2.4 Cantil-Balderas,0,SH0100Z1003_0
+CMX0100Z1,0,01000Z1002_1,2.3 Candelaria-Balderas,2.3 Candelaria-Balderas,1,SH0100Z1002_1
+CMX0100Z1,0,01000Z1002_0,2.3 Balderas-Candelaria,2.3 Balderas-Candelaria,0,SH0100Z1002_0
+CMX0100Z1,0,01000Z1001_1,2.2 Miguel Hidalgo-Acueducto,2.2 Miguel Hidalgo-Acueducto,1,SH0100Z1001_1
+CMX0100Z1,0,01000Z1001_0,2.2 Acueducto-Miguel Hidalgo,2.2 Acueducto-Miguel Hidalgo,0,SH0100Z1001_0
+CMX0100Z1,0,01000Z1000_1,2.1 Balderas-Acueducto,2.1 Balderas-Acueducto,1,SH0100Z012_1
+CMX0100Z1,0,01000Z1000_0,2.1 Acueducto-Balderas,2.1 Acueducto-Balderas,0,SH0100Z012_0
+CMX01019F,0,010019F000_1,Metro Pantitlán - Chapultepec por Boturini,19 18:10 to Base Cetram Chapultepec,1,SH01019F000_1
+CMX01019F,0,010019F000_0,Chapultepec por Boturini - Metro Pantitlán,19 18:10 to Base Cetram Pantitlan,0,SH01019F000_0
+CMX01019H,0,010019H000_1,Calle 81 - Metro Tacuba,H.Base Calle 81 to Base Metro Tacuba,1,SH01019H000_1
+CMX01019H,0,010019H000_0,Metro Tacuba - Calle 81,H. Base Metro Tacuba to Base Calle 81,0,SH01019H000_0
+CMX01019G,0,010019G000_1,Balneario  - Periférico,G.Base Balneario Olímpico to Base Periférico,1,SH01019G000_1
+CMX01019G,0,010019G000_0,Periférico - Balneario ,G.Base Periférico to Base Balneario Olímpico,0,SH01019G000_0
+CMX01019E,0,010019E000_1,Central de Abastos - Metro Chapultepec,E.Base Central de Abastos to Metro Chapultepec,1,SH01019E000_1
+CMX01019E,0,010019E000_0,Metro Chapultepec - Central de Abastos,E.Metro Chapultepec to Base Central de Abastos,0,SH01019E000_0
+CMX01019D,0,010019D000_1,Central de Abastos - Tacuba ,D.Base Central de Abastos to Base Metro Tacuba,1,SH01019D000_1
+CMX01019D,0,010019D000_0,Tacuba - Central de Abastos,D.Base Metro Tacuba to Base Central de Abastos,0,SH01019D000_0
+CMX01019C,0,010019C000_1,Calle 81 - Metro Chapultepec,C.Base Calle 81 to Base Cetram Chapultepec,1,SH01019C000_1
+CMX01019C,0,010019C000_0,Metro Chapultepec - Calle 81,C.Base Chapultepec to Base Calle 81,0,SH01019C000_0
+CMX01019B,0,010019B000_1,Metro Pantitlan - PEMEX por Fray Servando,B.Base Cetram Pantitlan to Marina Nacional y lago Zirahuen/ Base Pemex,1,SH01019B000_1
+CMX01019B,0,010019B000_0,PEMEX por Fray Servando - Metro Pantitlan,B.Base PEMEX to Base Cetram Pantitlan,0,SH01019B000_0
+CMX01019A,0,010019A000_1,Metro Pantitlan - Metro Tacuba por Fray Servando,A.Base Cetram Pantitlan to Base Metro Tacuba,1,SH01019A000_1
+CMX01019A,0,010019A000_0,Metro Tacuba por Fray Servando - Metro Pantitlan,A.Base Metro Tacuba to Base Cetram Pantitlan,0,SH01019A000_0
+CMX0200L2,3,02300L2000_1,Cuatro Caminos,Línea 2 to Cuatro Caminos,1,SH0200L2000_1
+CMX0200L2,3,02300L2000_0,Tasqueña,Línea 2 to Tasqueña,0,SH0200L2000_0
+CMX0200L2,2,02200L2000_1,Cuatro Caminos,Línea 2 to Cuatro Caminos,1,SH0200L2000_1
+CMX0200L2,2,02200L2000_0,Tasqueña,Línea 2 to Tasqueña,0,SH0200L2000_0
+CMX0200L2,1,02100L2000_1,Cuatro Caminos,Línea 2 to Cuatro Caminos,1,SH0200L2000_1
+CMX0200L2,1,02100L2000_0,Tasqueña,Línea 2 to Tasqueña,0,SH0200L2000_0
+CMX0200L3,3,02300L3000_1,Indios Verdes,to Indios Verdes,1,SH0200L3000_1
+CMX0200L3,3,02300L3000_0,Universidad,to Universidad,0,SH0200L3000_0
+CMX0200L3,2,02200L3000_1,Indios Verdes,to Indios Verdes,1,SH0200L3000_1
+CMX0200L3,2,02200L3000_0,Universidad,to Universidad,0,SH0200L3000_0
+CMX0200L3,1,02100L3000_1,Indios Verdes,to Indios Verdes,1,SH0200L3000_1
+CMX0200L3,1,02100L3000_0,Universidad,to Universidad,0,SH0200L3000_0
+CMX0200L4,3,02300L4000_1,Santa Anita,to Santa Anita,1,SH0200L4000_1
+CMX0200L4,3,02300L4000_0,Martín Carrera,to Martín Carrera,0,SH0200L4000_0
+CMX0200L4,2,02200L4000_1,Santa Anita,to Santa Anita,1,SH0200L4000_1
+CMX0200L4,2,02200L4000_0,Martín Carrera,to Martín Carrera,0,SH0200L4000_0
+CMX0200L4,1,02100L4000_1,Santa Anita,to Santa Anita,1,SH0200L4000_1
+CMX0200L4,1,02100L4000_0,Martín Carrera,to Martín Carrera,0,SH0200L4000_0
+CMX0200L5,3,02300L5000_1,Politécnico,to Politécnico,1,SH0200L5000_1
+CMX0200L5,3,02300L5000_0,Pantitlán,to Pantitlán,0,SH0200L5000_0
+CMX0200L5,2,02200L5000_1,Politécnico,to Politécnico,1,SH0200L5000_1
+CMX0200L5,2,02200L5000_0,Pantitlán,to Pantitlán,0,SH0200L5000_0
+CMX0200L5,1,02100L5000_1,Politécnico,to Politécnico,1,SH0200L5000_1
+CMX0200L5,1,02100L5000_0,Pantitlán,to Pantitlán,0,SH0200L5000_0
+CMX0200L6,3,02300L6000_1,El Rosario,to El Rosario,1,SH0200L6000_1
+CMX0200L6,3,02300L6000_0,Martín Carrera,to Martín Carrera,0,SH0200L6000_0
+CMX0200L6,2,02200L6000_1,El Rosario,to El Rosario,1,SH0200L6000_1
+CMX0200L6,2,02200L6000_0,Martín Carrera,to Martín Carrera,0,SH0200L6000_0
+CMX0200L6,1,02100L6000_1,El Rosario,to El Rosario,1,SH0200L6000_1
+CMX0200L6,1,02100L6000_0,Martín Carrera,to Martín Carrera,0,SH0200L6000_0
+CMX0200L7,3,02300L7000_1,El Rosario,to El Rosario,1,SH0200L7000_1
+CMX0200L7,3,02300L7000_0,Barranca del Muerto,to Barranca del Muerto,0,SH0200L7000_0
+CMX0200L7,2,02200L7000_1,El Rosario,to El Rosario,1,SH0200L7000_1
+CMX0200L7,2,02200L7000_0,Barranca del Muerto,to Barranca del Muerto,0,SH0200L7000_0
+CMX0200L7,1,02100L7000_1,El Rosario,to El Rosario,1,SH0200L7000_1
+CMX0200L7,1,02100L7000_0,Barranca del Muerto,to Barranca del Muerto,0,SH0200L7000_0
+CMX0200L8,3,02300L8000_1,Garibaldi/Lagunilla,to Garibaldi/Lagunilla,1,SH0200L8000_1
+CMX0200L8,3,02300L8000_0,Constitución de 1917,to Constitución de 1917,0,SH0200L8000_0
+CMX0200L8,2,02200L8000_1,Garibaldi/Lagunilla,to Garibaldi/Lagunilla,1,SH0200L8000_1
+CMX0200L8,2,02200L8000_0,Constitución de 1917,to Constitución de 1917,0,SH0200L8000_0
+CMX0200L8,1,02100L8000_1,Garibaldi/Lagunilla,to Garibaldi/Lagunilla,1,SH0200L8000_1
+CMX0200L8,1,02100L8000_0,Constitución de 1917,to Constitución de 1917,0,SH0200L8000_0
+CMX0200LA,3,02300LA000_1,Pantitlán,to Pantitlán,1,SH0200LA000_1
+CMX0200LA,3,02300LA000_0,La Paz,to La Paz,0,SH0200LA000_0
+CMX0200LA,2,02200LA000_1,Pantitlán,to Pantitlán,1,SH0200LA000_1
+CMX0200LA,2,02200LA000_0,La Paz,to La Paz,0,SH0200LA000_0
+CMX0200LA,1,02100LA000_1,Pantitlán,to Pantitlán,1,SH0200LA000_1
+CMX0200LA,1,02100LA000_0,La Paz,to La Paz,0,SH0200LA000_0
+CMX0200LB,3,02300LB000_1,Buenavista,to Buenavista,1,SH0200LB000_1
+CMX0200LB,3,02300LB000_0,Ciudad Azteca,to Ciudad Azteca,0,SH0200LB000_0
+CMX0200LB,2,02200LB000_1,Buenavista,to Buenavista,1,SH0200LB000_1
+CMX0200LB,2,02200LB000_0,Ciudad Azteca,to Ciudad Azteca,0,SH0200LB000_0
+CMX0200LB,1,02100LB000_1,Buenavista,to Buenavista,1,SH0200LB000_1
+CMX0200LB,1,02100LB000_0,Ciudad Azteca,to Ciudad Azteca,0,SH0200LB000_0
+CMX0600L1,3,06300L1000_0,Xochimilco,Tasqueña to Xochimilco,1,SH0600L1000_0
+CMX0600L1,3,06300L1000_1,Tasqueña,Xochimilco to Tasqueña,0,SH0600L1000_1
+CMX0600L1,2,06200L1000_0,Xochimilco,Tasqueña to Xochimilco,1,SH0600L1000_0
+CMX0600L1,2,06200L1000_1,Tasqueña,Xochimilco to Tasqueña,0,SH0600L1000_1
+CMX0600L1,1,06100L1000_0,Xochimilco,Tasqueña to Xochimilco,1,SH0600L1000_0
+CMX0600L1,1,06100L1000_1,Tasqueña,Xochimilco to Tasqueña,0,SH0600L1000_1
+CMX0700L1,3,07300L1000_1,Buenavista,Cuautitlán to Buenavista,1,SH0700L1000_1
+CMX0700L1,3,07300L1000_0,Cuautitlán,Buenavista to Cuautitlán,0,SH0700L1000_0
+CMX0700L1,2,07200L1000_1,Buenavista,Cuautitlán to Buenavista,1,SH0700L1000_1
+CMX0700L1,2,07200L1000_0,Cuautitlán,Buenavista to Cuautitlán,0,SH0700L1000_0
+CMX0700L1,1,07100L1000_1,Buenavista,Cuautitlán to Buenavista,1,SH0700L1000_1
+CMX0700L1,1,07100L1000_0,Cuautitlán,Buenavista to Cuautitlán,0,SH0700L1000_0
+CMX050101,5,0550101000_1,Cuautepec,Ferroplaza La Villa to Cuautepec,1,SH050101000_1
+CMX050101,5,0550101000_0,Ferroplaza La Villa,Cuautepec to Ferroplaza La Villa,0,SH050101000_0
+CMX050101,1,0510101000_1,Cuautepec,Ferroplaza La Villa to Cuautepec,1,SH050101000_1
+CMX050101,1,0510101000_0,Ferroplaza La Villa,Cuautepec to Ferroplaza La Villa,0,SH050101000_0
+CMX05101A,5,055101A000_1,Amp. Malacates,Ferroplaza La Villa to Amp. Malacates,1,SH05101A000_1
+CMX05101A,5,055101A000_0,Ferroplaza La Villa,Amp. Malacates to Ferroplaza La Villa,0,SH05101A000_0
+CMX05101A,1,051101A000_1,Amp. Malacates,Ferroplaza La Villa to Amp. Malacates,1,SH05101A000_1
+CMX05101A,1,051101A000_0,Ferroplaza La Villa,Amp. Malacates to Ferroplaza La Villa,0,SH05101A000_0
+CMX05101B,5,055101B000_1,Col. Forestal,Ferroplaza La Villa to Col. Forestal,1,SH05101B000_1
+CMX05101B,5,055101B000_0,Ferroplaza La Villa,Col. Forestal to Ferroplaza La Villa,0,SH05101B000_0
+CMX05101B,1,051101B000_1,Col. Forestal,Ferroplaza La Villa to Col. Forestal,1,SH05101B000_1
+CMX05101B,1,051101B000_0,Ferroplaza La Villa,Col. Forestal to Ferroplaza La Villa,0,SH05101B000_0
+CMX05101D,5,055101D000_1,Colonia Cocoyotes (La Brecha),La Villa Ferroplaza to Colonia Cocoyotes (La Brecha),1,SH05101D000_1
+CMX05101D,5,055101D000_0,La Villa Ferroplaza,Colonia Cocoyotes (La Brecha) to La Villa Ferroplaza,0,SH05101D000_0
+CMX05101D,1,051101D000_1,Colonia Cocoyotes (La Brecha),La Villa Ferroplaza to Colonia Cocoyotes (La Brecha),1,SH05101D000_1
+CMX05101D,1,051101D000_0,La Villa Ferroplaza,Colonia Cocoyotes (La Brecha) to La Villa Ferroplaza,0,SH05101D000_0
+CMX050102,5,0550102000_1,Cocoyotes ,Metro Indios Verdes to Cocoyotes ,1,SH050102000_1
+CMX050102,5,0550102000_0,Metro Indios Verdes,Cocoyotes to Metro Indios Verdes,0,SH050102000_0
+CMX050102,1,0510102000_1,Cocoyotes ,Metro Indios Verdes to Cocoyotes ,1,SH050102000_1
+CMX050102,1,0510102000_0,Metro Indios Verdes,Cocoyotes to Metro Indios Verdes,0,SH050102000_0
+CMX050103,5,0550103000_1,Amp. Malacates,La Raza to Amp. Malacates,1,SH050103000_1
+CMX050103,5,0550103000_0,La Raza,Amp. Malacates to La Raza,0,SH050103000_0
+CMX050103,1,0510103000_1,Amp. Malacates,La Raza to Amp. Malacates,1,SH050103000_1
+CMX050103,1,0510103000_0,La Raza,Amp. Malacates to La Raza,0,SH050103000_0
+CMX050104,5,0550104000_1,Joaquin Pardave/José Rolon,Metro Potrero to Joaquin Pardave/José Rolon,1,SH050104000_1
+CMX050104,5,0550104000_0,Metro Potrero,104 18:36 to Metro Potrero,0,SH050104000_0
+CMX050104,1,0510104000_1,Joaquin Pardave/José Rolon,Metro Potrero to Joaquin Pardave/José Rolon,1,SH050104000_1
+CMX050104,1,0510104000_0,Metro Potrero,104 18:36 to Metro Potrero,0,SH050104000_0
+CMX050108,5,0550108000_1,Tepetatal,Metro Indios Verdes to Tepetatal,1,SH050108000_1
+CMX050108,5,0550108000_0,Metro Indios Verdes,Tepetatal to Metro Indios Verdes,0,SH050108000_0
+CMX050108,1,0510108000_1,Tepetatal,Metro Indios Verdes to Tepetatal,1,SH050108000_1
+CMX050108,1,0510108000_0,Metro Indios Verdes,Tepetatal to Metro Indios Verdes,0,SH050108000_0
+CMX0511AX,5,05511AX000_1,Aragon,Chapultepec to Aragon,1,SH05011A000_1
+CMX0511AX,5,05511AX000_0,Chapultepec,Aragon to Chapultepec,0,SH05011A000_0
+CMX0511AX,1,05111AX000_1,Aragon,Chapultepec to Aragon,1,SH05011A000_1
+CMX0511AX,1,05111AX000_0,Chapultepec,Aragon to Chapultepec,0,SH05011A000_0
+CMX050110,5,0550110000_1,Chimalpa,Metro Tacubaya to Chimalpa,1,SH050110000_1
+CMX050110,5,0550110000_0,Metro Tacubaya,Chimalpa to Metro Tacubaya,0,SH050110000_0
+CMX050110,1,0510110000_1,Chimalpa,Metro Tacubaya to Chimalpa,1,SH050110000_1
+CMX050110,1,0510110000_0,Metro Tacubaya,Chimalpa to Metro Tacubaya,0,SH050110000_0
+CMX05110B,5,055110B000_1,Acopilco,Metro Tacubaya to Acopilco,1,SH05110B000_1
+CMX05110B,5,055110B000_0,Metro Tacubaya,Acopilco to Metro Tacubaya,0,SH05110B000_0
+CMX05110B,1,051110B000_1,Acopilco,Metro Tacubaya to Acopilco,1,SH05110B000_1
+CMX05110B,1,051110B000_0,Metro Tacubaya,Acopilco to Metro Tacubaya,0,SH05110B000_0
+CMX05110C,5,055110C000_1,La Pila,Metro Tacubaya to La Pila,1,SH05110C000_1
+CMX05110C,5,055110C000_0,Metro Tacubaya,La Pila to Metro Tacubaya,0,SH05110C000_0
+CMX05110C,1,051110C000_1,La Pila,Metro Tacubaya to La Pila,1,SH05110C000_1
+CMX05110C,1,051110C000_0,Metro Tacubaya,La Pila to Metro Tacubaya,0,SH05110C000_0
+CMX050112,5,0550112000_0,Metro Tacubaya ,Amp. Jalapa  to Metro Tacubaya,0,SH050112000_0
+CMX050112,1,0510112000_1,Amp. Jalapa ,Metro Tacubaya to Amp. Jalapa ,1,SH050112000_1
+CMX05113B,5,055113B000_1,Col. Navidad,Metro Tacubaya to Col. Navidad,1,SH05113B000_1
+CMX05113B,5,055113B000_0,Metro Tacubaya,Col. Navidad to Metro Tacubaya,0,SH05113B000_0
+CMX05113B,1,051113B000_1,Col. Navidad,Metro Tacubaya to Col. Navidad,1,SH05113B000_1
+CMX05113B,1,051113B000_0,Metro Tacubaya,Col. Navidad to Metro Tacubaya,0,SH05113B000_0
+CMX05115A,3,053115A000_1,Puente Colorado,CETRAM Chapultepec to Puente Colorado,1,SH05115A000_1
+CMX05115A,3,053115A000_0,CETRAM Chapultepec,Puente Colorado to CETRAM Chapultepec,0,SH05115A000_0
+CMX05115A,2,052115A000_1,Puente Colorado,CETRAM Chapultepec to Puente Colorado,1,SH05115A000_1
+CMX05115A,2,052115A000_0,CETRAM Chapultepec,Puente Colorado to CETRAM Chapultepec,0,SH05115A000_0
+CMX05115A,1,051115A000_1,Puente Colorado,CETRAM Chapultepec to Puente Colorado,1,SH05115A000_1
+CMX05115A,1,051115A000_0,CETRAM Chapultepec,Puente Colorado to CETRAM Chapultepec,0,SH05115A000_0
+CMX050116,3,0530116000_1,Santa Rosa Xochiac,Metro Mixcoac to Santa Rosa Xochiac,1,SH050116000_1
+CMX050116,3,0530116000_0,Metro Mixcoac ,Santa Rosa Xochiac to Metro Mixcoac ,0,SH050116000_0
+CMX050116,2,0520116000_1,Santa Rosa Xochiac,Metro Mixcoac  to Santa Rosa Xochiac,1,SH050116000_1
+CMX050116,2,0520116000_0,Metro Mixcoac ,Santa Rosa Xochiac to Metro Mixcoac ,0,SH050116000_0
+CMX050116,1,0510116000_1,Santa Rosa Xochiac,Metro Mixcoac  to Santa Rosa Xochiac,1,SH050116000_1
+CMX050116,1,0510116000_0,Metro Mixcoac ,Santa Rosa Xochiac to Metro Mixcoac ,0,SH050116000_0
+CMX050118,5,0550118000_1,Santa Rosa,Metro Tacubaya to Santa Rosa,1,SH050118000_1
+CMX050118,5,0550118000_0,Metro Tacubaya,Santa Rosa to Metro Tacubaya,0,SH050118000_0
+CMX050118,1,0510118000_1,Santa Rosa,Metro Tacubaya to Santa Rosa,1,SH050118000_1
+CMX050118,1,0510118000_0,Metro Tacubaya,Santa Rosa to Metro Tacubaya,0,SH050118000_0
+CMX050119,5,0550119000_1,Puerto Vallarta,Metro Tacubaya to Puerto Vallarta,1,SH050119000_1
+CMX050119,5,0550119000_0,Metro Tacubaya,119 10:17 to Metro Tacubaya,0,SH050119000_0
+CMX050119,1,0510119000_1,Puerto Vallarta,Metro Tacubaya to Puerto Vallarta,1,SH050119000_1
+CMX050119,1,0510119000_0,Metro Tacubaya,119 10:17 to Metro Tacubaya,0,SH050119000_0
+CMX05119B,3,053119B000_1,Presidentes,Metro Mixcoac to Presidentes,1,SH05119B000_1
+CMX05119B,3,053119B000_0,Metro Mixcoac,Presidentes to Metro Mixcoac,0,SH05119B000_0
+CMX05119B,2,052119B000_1,Presidentes,Metro Mixcoac to Presidentes,1,SH05119B000_1
+CMX05119B,2,052119B000_0,Metro Mixcoac,Presidentes to Metro Mixcoac,0,SH05119B000_0
+CMX05119B,1,051119B000_1,Presidentes,Metro Mixcoac to Presidentes,1,SH05119B000_1
+CMX05119B,1,051119B000_0,Metro Mixcoac,Presidentes to Metro Mixcoac,0,SH05119B000_0
+CMX050120,3,0530120000_1,Mina/Allende,120 14:08 to Mina/Allende,1,SH050120000_1
+CMX050120,3,0530120000_0,Av. Universidad,120 14:08 to Av. Universidad,0,SH050120000_0
+CMX050120,2,0520120000_1,Mina/Allende,120 14:08 to Mina/Allende,1,SH050120000_1
+CMX050120,2,0520120000_0,Av. Universidad,120 14:08 to Av. Universidad,0,SH050120000_0
+CMX050120,1,0510120000_1,Mina/Allende,120 14:08 to Mina/Allende,1,SH050120000_1
+CMX050120,1,0510120000_0,Av. Universidad,120 14:08 to Av. Universidad,0,SH050120000_0
+CMX05123A,5,055123A000_1,Tinum y Dzemul,123-A 16:04 to Tinum y Dzemul,1,SH05123A000_1
+CMX05123A,5,055123A000_0,Cetram Universidad anden B,123-A 16:04 to Cetram Universidad anden B,0,SH05123A000_0
+CMX05123A,1,051123A000_1,Tinum y Dzemul,123-A 16:04 to Tinum y Dzemul,1,SH05123A000_1
+CMX05123A,1,051123A000_0,Cetram Universidad anden B,123-A 16:04 to Cetram Universidad anden B,0,SH05123A000_0
+CMX050124,3,0530124000_1,Boulevard del Durazno/Av. Centenario,124 17:54 to Boulevard del Durazno/Av. Centenario,1,SH050124000_1
+CMX050124,3,0530124000_0,Benvenuto Cellini/Av. Revolución,124 17:54 to Benvenuto Cellini/Av. Revolución,0,SH050124000_0
+CMX050124,2,0520124000_1,Boulevard del Durazno/Av. Centenario,124 17:54 to Boulevard del Durazno/Av. Centenario,1,SH050124000_1
+CMX050124,2,0520124000_0,Benvenuto Cellini/Av. Revolución,124 17:54 to Benvenuto Cellini/Av. Revolución,0,SH050124000_0
+CMX050124,1,0510124000_1,Boulevard del Durazno/Av. Centenario,124 17:54 to Boulevard del Durazno/Av. Centenario,1,SH050124000_1
+CMX050124,1,0510124000_0,Benvenuto Cellini/Av. Revolución,124 17:54 to Benvenuto Cellini/Av. Revolución,0,SH050124000_0
+CMX05124A,3,053124A000_1,Herradero/Frente a Presa Mixcoac,124-A 18:35 to Herradero/Frente a Presa Mixcoac,1,SH05124A000_1
+CMX05124A,3,053124A000_0,Benvenuto Cellini/Av. Revolución,124-A 18:35 to Benvenuto Cellini/Av. Revolución,0,SH05124A000_0
+CMX05124A,2,052124A000_1,Herradero/Frente a Presa Mixcoac,124-A 18:35 to Herradero/Frente a Presa Mixcoac,1,SH05124A000_1
+CMX05124A,2,052124A000_0,Benvenuto Cellini/Av. Revolución,124-A 18:35 to Benvenuto Cellini/Av. Revolución,0,SH05124A000_0
+CMX05124A,1,051124A000_1,Herradero/Frente a Presa Mixcoac,124-A 18:35 to Herradero/Frente a Presa Mixcoac,1,SH05124A000_1
+CMX05124A,1,051124A000_0,Benvenuto Cellini/Av. Revolución,124-A 18:35 to Benvenuto Cellini/Av. Revolución,0,SH05124A000_0
+CMX050125,5,0550125000_1,Regadera y Bosques,125 19:31 to Regadera y Bosques,1,SH050125000_1
+CMX050125,5,0550125000_0,Cetram Universidad anden B,125 19:31 to Cetram Universidad anden B,0,SH050125000_0
+CMX050125,1,0510125000_1,Regadera y Bosques,125 19:31 to Regadera y Bosques,1,SH050125000_1
+CMX050125,1,0510125000_0,Cetram Universidad anden B,125 19:31 to Cetram Universidad anden B,0,SH050125000_0
+CMX05013A,3,053013A000_1,Av. Sonora y Av. México,13-A 09:05 to Av. Sonora y Av. México,1,SH05013A000_1
+CMX05013A,3,053013A000_0,Tinum y Dzemul,13-A 09:05 to Tinum y Dzemul,0,SH05013A000_0
+CMX05013A,2,052013A000_1,Av. Sonora y Av. México,13-A 09:05 to Av. Sonora y Av. México,1,SH05013A000_1
+CMX05013A,2,052013A000_0,Tinum y Dzemul,13-A 09:05 to Tinum y Dzemul,0,SH05013A000_0
+CMX05013A,1,051013A000_1,Av. Sonora y Av. México,13-A 09:05 to Av. Sonora y Av. México,1,SH05013A000_1
+CMX05013A,1,051013A000_0,Tinum y Dzemul,13-A 09:05 to Tinum y Dzemul,0,SH05013A000_0
+CMX050131,3,0530131000_1,Autopista México-Cuernavaca,131 11:27 to Autopista México-Cuernavaca,1,SH050131000_1
+CMX050131,3,0530131000_0,Cetram Estadio Azteca Anden A,131 11:27 to Cetram Estadio Azteca Anden A,0,SH050131000_0
+CMX050131,2,0520131000_1,Autopista México-Cuernavaca,131 11:27 to Autopista México-Cuernavaca,1,SH050131000_1
+CMX050131,2,0520131000_0,Cetram Estadio Azteca Anden A,131 11:27 to Cetram Estadio Azteca Anden A,0,SH050131000_0
+CMX050131,1,0510131000_1,Autopista México-Cuernavaca,131 11:27 to Autopista México-Cuernavaca,1,SH050131000_1
+CMX050131,1,0510131000_0,Cetram Estadio Azteca Anden A,131 11:27 to Cetram Estadio Azteca Anden A,0,SH050131000_0
+CMX050134,5,0550134000_1,José María Morelos/Mariano Matamoros,134 12:27 to José María Morelos/Mariano Matamoros,1,SH050134000_1
+CMX050134,5,0550134000_0,Cetram Estadio Azteca Anden A,134 12:27 to Cetram Estadio Azteca Anden A,0,SH050134000_0
+CMX050134,1,0510134000_1,José María Morelos/Mariano Matamoros,134 12:27 to José María Morelos/Mariano Matamoros,1,SH050134000_1
+CMX050134,1,0510134000_0,Cetram Estadio Azteca Anden A,134 12:27 to Cetram Estadio Azteca Anden A,0,SH050134000_0
+CMX05134B,5,055134B000_1,Arenal,134-B 11:40 to Arenal,1,SH05134B000_1
+CMX05134B,5,055134B000_0,Cetram Estadio Azteca Anden A,134-B 11:40 to Cetram Estadio Azteca Anden A,0,SH05134B000_0
+CMX05134B,1,051134B000_1,Arenal,134-B 11:40 to Arenal,1,SH05134B000_1
+CMX05134B,1,051134B000_0,Cetram Estadio Azteca Anden A,134-B 11:40 to Cetram Estadio Azteca Anden A,0,SH05134B000_0
+CMX05134C,5,055134C000_1,José María Morelos/Mariano Matamoros,134-C 12:40 to José María Morelos/Mariano Matamoros,1,SH05134C000_1
+CMX05134C,5,055134C000_0,Cetram Universidad anden B,134-C 12:40 to Cetram Universidad anden B,0,SH05134C000_0
+CMX05134C,1,051134C000_1,José María Morelos/Mariano Matamoros,134-C 12:40 to José María Morelos/Mariano Matamoros,1,SH05134C000_1
+CMX05134C,1,051134C000_0,Cetram Universidad anden B,134-C 12:40 to Cetram Universidad anden B,0,SH05134C000_0
+CMX05134D,5,055134D000_1,Arenal,134-D 13:26 to Arenal,1,SH05134D000_1
+CMX05134D,5,055134D000_0,Cetram Universidad anden B,134-D 13:26 to Cetram Universidad anden B,0,SH05134D000_0
+CMX05134D,1,051134D000_1,Arenal,134-D 13:26 to Arenal,1,SH05134D000_1
+CMX05134D,1,051134D000_0,Cetram Universidad anden B,134-D 13:26 to Cetram Universidad anden B,0,SH05134D000_0
+CMX050141,5,0550141000_1,Michoacan Oriente/Sonora Norte,141 14:11 to Michoacan Oriente/Sonora Norte,1,SH050141000_1
+CMX050141,5,0550141000_0,Antonio Bejar,141 14:11 to Antonio Bejar,0,SH050141000_0
+CMX050141,1,0510141000_1,Michoacan Oriente/Sonora Norte,141 14:11 to Michoacan Oriente/Sonora Norte,1,SH050141000_1
+CMX050141,1,0510141000_0,Antonio Bejar,141 14:11 to Antonio Bejar,0,SH050141000_0
+CMX050142,5,0550142000_1,Josefa Ortíz de Domíngez/Aquiles Serdan,142 15:45 to Josefa Ortíz de Domíngez/Aquiles Serdan,1,SH050142000_1
+CMX050142,5,0550142000_0,Vicente Guerrero/José María Morelos,142 15:45 to Vicente Guerrero/José María Morelos,0,SH050142000_0
+CMX050142,1,0510142000_1,Josefa Ortíz de Domíngez/Aquiles Serdan,142 15:45 to Josefa Ortíz de Domíngez/Aquiles Serdan,1,SH050142000_1
+CMX050142,1,0510142000_0,Vicente Guerrero/José María Morelos,142 15:45 to Vicente Guerrero/José María Morelos,0,SH050142000_0
+CMX050143,5,0550143000_1,Michoacan Oriente/Sonora Norte,143 18:52 to Michoacan Oriente/Sonora Norte,1,SH050143000_1
+CMX050143,5,0550143000_0,Cetram Tasqueña Anden B,143 18:52 to Cetram Tasqueña Anden B,0,SH050143000_0
+CMX050143,1,0510143000_1,Michoacan Oriente/Sonora Norte,143 18:52 to Michoacan Oriente/Sonora Norte,1,SH050143000_1
+CMX050143,1,0510143000_0,Cetram Tasqueña Anden B,143 18:52 to Cetram Tasqueña Anden B,0,SH050143000_0
+CMX050144,5,0550144000_1,Vicente Guerrero/José María Morelos,144 15:07 to Vicente Guerrero/José María Morelos,1,SH050144000_1
+CMX050144,5,0550144000_0,Av. Fabián Flores - Guerrero,144 15:07 to Av. Fabián Flores - Guerrero,0,SH050144000_0
+CMX050144,1,0510144000_1,Vicente Guerrero/José María Morelos,144 15:07 to Vicente Guerrero/José María Morelos,1,SH050144000_1
+CMX050144,1,0510144000_0,Av. Fabián Flores - Guerrero,144 15:07 to Av. Fabián Flores - Guerrero,0,SH050144000_0
+CMX05144C,5,055144C000_1,Av. José María Morelos-Emiliano Zapata,144-C 09:04 to Av. José María Morelos-Emiliano Zapata,1,SH05144C000_1
+CMX05144C,5,055144C000_0,Michoacan Oriente/Sonora Norte,144-C 09:04 to Michoacan Oriente/Sonora Norte,0,SH05144C000_0
+CMX05144C,1,051144C000_1,Av. José María Morelos-Emiliano Zapata,144-C 09:04 to Av. José María Morelos-Emiliano Zapata,1,SH05144C000_1
+CMX05144C,1,051144C000_0,Michoacan Oriente/Sonora Norte,144-C 09:04 to Michoacan Oriente/Sonora Norte,0,SH05144C000_0
+CMX050145,5,0550145000_1,Prol. 16 de Septiembre - Emiliano Zapata,145 11:22 to Prol. 16 de Septiembre - Emiliano Zapata,1,SH050145000_1
+CMX050145,5,0550145000_0,Vicente Guerrero/José María Morelos,145 11:22 to Vicente Guerrero/José María Morelos,0,SH050145000_0
+CMX050145,1,0510145000_1,Prol. 16 de Septiembre - Emiliano Zapata,145 11:22 to Prol. 16 de Septiembre - Emiliano Zapata,1,SH050145000_1
+CMX050145,1,0510145000_0,Vicente Guerrero/José María Morelos,145 11:22 to Vicente Guerrero/José María Morelos,0,SH050145000_0
+CMX05145A,5,055145A000_1,C. C. Santiago Tepalcatlalpan - Emiliano Zapata/2 de Abril,145-A 14:01 to C. C. Santiago Tepalcatlalpan - Emiliano Zapata/2 de Abril,1,SH05145A000_1
+CMX05145A,5,055145A000_0,C. C. República del Salvador - José María Pino Suarez/Mesones,145-A 14:01 to C. C. República del Salvador - José María Pino Suarez/Mesones,0,SH05145A000_0
+CMX05145A,1,051145A000_1,C. C. Santiago Tepalcatlalpan - Emiliano Zapata/2 de Abril,145-A 14:01 to C. C. Santiago Tepalcatlalpan - Emiliano Zapata/2 de Abril,1,SH05145A000_1
+CMX05145A,1,051145A000_0,C. C. República del Salvador - José María Pino Suarez/Mesones,145-A 14:01 to C. C. República del Salvador - José María Pino Suarez/Mesones,0,SH05145A000_0
+CMX050146,5,0550146000_1,Camino a la Cima - Carretera Federal a Cuernavaca,146 17:41 to Camino a la Cima - Carretera Federal a Cuernavaca,1,SH050146000_1
+CMX050146,5,0550146000_0,Vicente Guerrero/José María Morelos,146 17:41 to Vicente Guerrero/José María Morelos,0,SH050146000_0
+CMX050146,1,0510146000_1,Camino a la Cima - Carretera Federal a Cuernavaca,146 17:41 to Camino a la Cima - Carretera Federal a Cuernavaca,1,SH050146000_1
+CMX050146,1,0510146000_0,Vicente Guerrero/José María Morelos,146 17:41 to Vicente Guerrero/José María Morelos,0,SH050146000_0
+CMX050147,5,0550147000_1,San Bartolomé Xicomulco - Av. Juárez/Francisco I. Madero,147 19:58 to San Bartolomé Xicomulco - Av. Juárez/Francisco I. Madero,1,SH050147000_1
+CMX050147,5,0550147000_0,Vicente Guerrero/José María Morelos,147 19:58 to Vicente Guerrero/José María Morelos,0,SH050147000_0
+CMX050147,1,0510147000_1,San Bartolomé Xicomulco - Av. Juárez/Francisco I. Madero,147 19:58 to San Bartolomé Xicomulco - Av. Juárez/Francisco I. Madero,1,SH050147000_1
+CMX050147,1,0510147000_0,Vicente Guerrero/José María Morelos,147 19:58 to Vicente Guerrero/José María Morelos,0,SH050147000_0
+CMX050148,5,0550148000_1,C. C. San Nicolas Tetelco - 20 de Noviembre/Puebla,148 16:14 to C. C. San Nicolas Tetelco - 20 de Noviembre/Puebla,1,SH050148000_1
+CMX050148,5,0550148000_0,C. C. Metro Tláhuac - CETRAM Tláhuac,148 16:14 to C. C. Metro Tláhuac - CETRAM Tláhuac,0,SH050148000_0
+CMX050148,1,0510148000_1,C. C. San Nicolas Tetelco - 20 de Noviembre/Puebla,148 16:14 to C. C. San Nicolas Tetelco - 20 de Noviembre/Puebla,1,SH050148000_1
+CMX050148,1,0510148000_0,C. C. Metro Tláhuac - CETRAM Tláhuac,148 16:14 to C. C. Metro Tláhuac - CETRAM Tláhuac,0,SH050148000_0
+CMX050149,5,0550149000_1,C. C. Mixquic - Plutarco Elias Calles/Río Ameca,149 18:14 to C. C. Mixquic - Plutarco Elias Calles/Río Ameca,1,SH050149000_1
+CMX050149,5,0550149000_0,C. C. Metro Tláhuac - CETRAM Tláhuac,149 18:14 to C. C. Metro Tláhuac - CETRAM Tláhuac,0,SH050149000_0
+CMX050149,1,0510149000_1,C. C. Mixquic - Plutarco Elias Calles/Río Ameca,149 18:14 to C. C. Mixquic - Plutarco Elias Calles/Río Ameca,1,SH050149000_1
+CMX050149,1,0510149000_0,C. C. Metro Tláhuac - CETRAM Tláhuac,149 18:14 to C. C. Metro Tláhuac - CETRAM Tláhuac,0,SH050149000_0
+CMX050159,5,0550159000_1,C. C. Palmitas - Manuel Acuña/Jacarandas,159 10:37 to C. C. Palmitas - Manuel Acuña/Jacarandas,1,SH050159000_1
+CMX050159,5,0550159000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,159 10:37 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH050159000_0
+CMX050159,1,0510159000_1,C. C. Palmitas - Manuel Acuña/Jacarandas,159 10:37 to C. C. Palmitas - Manuel Acuña/Jacarandas,1,SH050159000_1
+CMX050159,1,0510159000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,159 10:37 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH050159000_0
+CMX050161,5,0550161000_1,C. C. Ampl. Santiago-Girasol/Gladiolas,161 12:03 to C. C. Ampl. Santiago-Girasol/Gladiolas,1,SH050161000_1
+CMX050161,5,0550161000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,161 12:03 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH050161000_0
+CMX050161,1,0510161000_1,C. C. Ampl. Santiago-Girasol/Gladiolas,161 12:03 to C. C. Ampl. Santiago-Girasol/Gladiolas,1,SH050161000_1
+CMX050161,1,0510161000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,161 12:03 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH050161000_0
+CMX05161D,5,055161D000_1,Nuevo León / Las Torres,161-D 14:56 to Nuevo León / Las Torres,1,SH05161D000_1
+CMX05161D,5,055161D000_0,C. C. Central de Abasto - Abarrotes,161-D 14:56 to C. C. Central de Abasto - Abarrotes,0,SH05161D000_0
+CMX05161D,1,051161D000_1,Nuevo León / Las Torres,161-D 14:56 to Nuevo León / Las Torres,1,SH05161D000_1
+CMX05161D,1,051161D000_0,C. C. Central de Abasto - Abarrotes,161-D 14:56 to C. C. Central de Abasto - Abarrotes,0,SH05161D000_0
+CMX05161E,5,055161E000_1,Villa Cid/Juan Escutia,161-E 15:45 to Villa Cid/Juan Escutia,1,SH05161E000_1
+CMX05161E,5,055161E000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,161-E 15:45 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH05161E000_0
+CMX05161E,1,051161E000_1,Villa Cid/Juan Escutia,161-E 15:45 to Villa Cid/Juan Escutia,1,SH05161E000_1
+CMX05161E,1,051161E000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,161-E 15:45 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH05161E000_0
+CMX05161F,5,055161F000_1,C. C. Barranca de Guadalupe,161-F 10:09 to C. C. Barranca de Guadalupe,1,SH05161F000_1
+CMX05161F,5,055161F000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,161-F 10:09 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH05161F000_0
+CMX05161F,1,051161F000_1,C. C. Barranca de Guadalupe,161-F 10:09 to C. C. Barranca de Guadalupe,1,SH05161F000_1
+CMX05161F,1,051161F000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,161-F 10:09 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH05161F000_0
+CMX050162,5,0550162000_1,Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,162 12:54 to Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,1,SH050162000_1
+CMX050162,5,0550162000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,162 12:54 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH050162000_0
+CMX050162,1,0510162000_1,Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,162 12:54 to Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,1,SH050162000_1
+CMX050162,1,0510162000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,162 12:54 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH050162000_0
+CMX05162B,5,055162B000_1,Cedro - Josefa Ortiz de Domínguez,162-B 14:02 to Cedro - Josefa Ortiz de Domínguez,1,SH05162B000_1
+CMX05162B,5,055162B000_0,C. C. Metro Zaragoza - Metro Tepalcates Anden A,162-B 14:02 to C. C. Metro Zaragoza - Metro Tepalcates Anden A,0,SH05162B000_0
+CMX05162B,1,051162B000_1,Cedro - Josefa Ortiz de Domínguez,162-B 14:02 to Cedro - Josefa Ortiz de Domínguez,1,SH05162B000_1
+CMX05162B,1,051162B000_0,C. C. Metro Zaragoza - Metro Tepalcates Anden A,162-B 14:02 to C. C. Metro Zaragoza - Metro Tepalcates Anden A,0,SH05162B000_0
+CMX05162D,5,055162D000_1,Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,162-D 11:48 to Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,1,SH05162D000_1
+CMX05162D,5,055162D000_0,Cetram Universidad anden B,162-D 11:48 to Cetram Universidad anden B,0,SH05162D000_0
+CMX05162D,1,051162D000_1,Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,162-D 11:48 to Santa Catarina/Eje 10 Sur - Hospital Psiquiatrico,1,SH05162D000_1
+CMX05162D,1,051162D000_0,Cetram Universidad anden B,162-D 11:48 to Cetram Universidad anden B,0,SH05162D000_0
+CMX050163,5,0550163000_1,Cordoba,163 13:09 to Cordoba,1,SH050163000_1
+CMX050163,5,0550163000_0,Cetram Metro Zaragoza/Metro Tepalcates,163 13:09 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH050163000_0
+CMX050163,1,0510163000_1,Cordoba,163 13:09 to Cordoba,1,SH050163000_1
+CMX050163,1,0510163000_0,Cetram Metro Zaragoza/Metro Tepalcates,163 13:09 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH050163000_0
+CMX05163A,5,055163A000_1,Calz. Ermita Iztapalapa - 5 de Febrero,163-A 13:43 to Calz. Ermita Iztapalapa - 5 de Febrero,1,SH05163A000_1
+CMX05163A,5,055163A000_0,Cetram Metro Zaragoza/Metro Tepalcates,163-A 13:43 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH05163A000_0
+CMX05163A,1,051163A000_1,Calz. Ermita Iztapalapa - 5 de Febrero,163-A 13:43 to Calz. Ermita Iztapalapa - 5 de Febrero,1,SH05163A000_1
+CMX05163A,1,051163A000_0,Cetram Metro Zaragoza/Metro Tepalcates,163-A 13:43 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH05163A000_0
+CMX05163B,5,055163B000_1,Calz. Ermita Iztapalapa - Cuauhtémoc,163-B 14:03 to Calz. Ermita Iztapalapa - Cuauhtémoc,1,SH05163B000_1
+CMX05163B,5,055163B000_0,Cetram Metro Zaragoza/Metro Tepalcates,163-B 14:03 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH05163B000_0
+CMX05163B,1,051163B000_1,Calz. Ermita Iztapalapa - Cuauhtémoc,163-B 14:03 to Calz. Ermita Iztapalapa - Cuauhtémoc,1,SH05163B000_1
+CMX05163B,1,051163B000_0,Cetram Metro Zaragoza/Metro Tepalcates,163-B 14:03 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH05163B000_0
+CMX050164,3,0530164000_1,Oaxaca - Lisboa/Campeche,164 16:18 to Oaxaca - Lisboa/Campeche,1,SH050164000_1
+CMX050164,3,0530164000_0,Cetram Metro Zaragoza/Metro Tepalcates,164 16:18 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH050164000_0
+CMX050164,2,0520164000_1,Oaxaca - Lisboa/Campeche,164 16:18 to Oaxaca - Lisboa/Campeche,1,SH050164000_1
+CMX050164,2,0520164000_0,Cetram Metro Zaragoza/Metro Tepalcates,164 16:18 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH050164000_0
+CMX050164,1,0510164000_1,Oaxaca - Lisboa/Campeche,164 16:18 to Oaxaca - Lisboa/Campeche,1,SH050164000_1
+CMX050164,1,0510164000_0,Cetram Metro Zaragoza/Metro Tepalcates,164 16:18 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH050164000_0
+CMX05165AO,5,055165AO000_1,Fuente de Loreto - Carlos Pacheco,Fuente de Loreto - Carlos Pacheco,1,SH05165A000_1
+CMX05165AO,5,055165AO000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05165A000_0
+CMX05165AO,1,051165AO000_1,Fuente de Loreto - Carlos Pacheco,Fuente de Loreto - Carlos Pacheco,1,SH05165A000_1
+CMX05165AO,1,051165AO000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05165A000_0
+CMX050166,5,0550166000_1,Cetram Metro Zaragoza/Metro Tepalcates,166 19:31 to Cetram Metro Zaragoza/Metro Tepalcates,1,SH050166000_1
+CMX050166,5,0550166000_0,Av. Revolución - Peras,166 19:31 to Av. Revolución - Peras,0,SH050166000_0
+CMX050166,1,0510166000_1,Cetram Metro Zaragoza/Metro Tepalcates,166 19:31 to Cetram Metro Zaragoza/Metro Tepalcates,1,SH050166000_1
+CMX050166,1,0510166000_0,Av. Revolución - Peras,166 19:31 to Av. Revolución - Peras,0,SH050166000_0
+CMX050167,5,0550167000_1,Av. Revolución - Peras,167 11:36 to Av. Revolución - Peras,1,SH050167000_1
+CMX050167,5,0550167000_0,Cetram Metro Zaragoza/Metro Tepalcates,167 11:36 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH050167000_0
+CMX050167,1,0510167000_1,Av. Revolución - Peras,167 11:36 to Av. Revolución - Peras,1,SH050167000_1
+CMX050167,1,0510167000_0,Cetram Metro Zaragoza/Metro Tepalcates,167 11:36 to Cetram Metro Zaragoza/Metro Tepalcates,0,SH050167000_0
+CMX050168,3,0530168000_1,Cetram Pantitlán,168 13:25 to Cetram Pantitlán,1,SH050168000_1
+CMX050168,3,0530168000_0,C. C. Arenal Cuarta Sección - Xocoyote/Xanticas,168 13:25 to C. C. Arenal Cuarta Sección - Xocoyote/Xanticas,0,SH050168000_0
+CMX050168,2,0520168000_1,Cetram Pantitlán,168 13:25 to Cetram Pantitlán,1,SH050168000_1
+CMX050168,2,0520168000_0,C. C. Arenal Cuarta Sección - Xocoyote/Xanticas,168 13:25 to C. C. Arenal Cuarta Sección - Xocoyote/Xanticas,0,SH050168000_0
+CMX050168,1,0510168000_1,Cetram Pantitlán,168 13:25 to Cetram Pantitlán,1,SH050168000_1
+CMX050168,1,0510168000_0,C. C. Arenal Cuarta Sección - Xocoyote/Xanticas,168 13:25 to C. C. Arenal Cuarta Sección - Xocoyote/Xanticas,0,SH050168000_0
+CMX05017E,5,055017E000_1,C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,17-E 15:19 to C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,1,SH05017E000_1
+CMX05017E,5,055017E000_0,Cetram Universidad anden B,17-E 15:19 to Cetram Universidad anden B,0,SH05017E000_0
+CMX05017E,1,051017E000_1,C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,17-E 15:19 to C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,1,SH05017E000_1
+CMX05017E,1,051017E000_0,Cetram Universidad anden B,17-E 15:19 to Cetram Universidad anden B,0,SH05017E000_0
+CMX05017F,5,055017F000_1,Cetram Tasqueña Anden B,17-F 16:12 to Cetram Tasqueña Anden B,1,SH05017F000_1
+CMX05017F,5,055017F000_0,C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,17-F 16:12 to C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,0,SH05017F000_0
+CMX05017F,1,051017F000_1,Cetram Tasqueña Anden B,17-F 16:12 to Cetram Tasqueña Anden B,1,SH05017F000_1
+CMX05017F,1,051017F000_0,C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,17-F 16:12 to C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,0,SH05017F000_0
+CMX050018,5,0550018000_1,Cierre de Circuito Col Moctezuma,18 13:47 to Cierre de Circuito Col Moctezuma,1,SH050018000_1
+CMX050018,5,0550018000_0,Cetram Metro Cuatro Caminos ,18 13:47 to Cetram Metro Cuatro Caminos ,0,SH050018000_0
+CMX050018,1,0510018000_1,Cierre de Circuito Col Moctezuma,18 13:47 to Cierre de Circuito Col Moctezuma,1,SH050018000_1
+CMX050018,1,0510018000_0,Cetram Metro Cuatro Caminos ,18 13:47 to Cetram Metro Cuatro Caminos ,0,SH050018000_0
+CMX050019,5,0550019000_1,Metro el Rosario Anden A,19 16:26 to Metro el Rosario Anden A,1,SH050019000_1
+CMX050019,5,0550019000_0,Presidente Masarik,19 16:26 to Presidente Masarik,0,SH050019000_0
+CMX050019,1,0510019000_1,Metro el Rosario Anden A,19 16:26 to Metro el Rosario Anden A,1,SH050019000_1
+CMX050019,1,0510019000_0,Presidente Masarik,19 16:26 to Presidente Masarik,0,SH050019000_0
+CMX05019A,5,055019A000_1,Metro el Rosario Anden A,19-A 17:39 to Metro el Rosario Anden A,1,SH05019A000_1
+CMX05019A,5,055019A000_0,Av. Sonora y Av. México,19-A 17:39 to Av. Sonora y Av. México,0,SH05019A000_0
+CMX05019A,1,051019A000_1,Metro el Rosario Anden A,19-A 17:39 to Metro el Rosario Anden A,1,SH05019A000_1
+CMX05019A,1,051019A000_0,Av. Sonora y Av. México,19-A 17:39 to Av. Sonora y Av. México,0,SH05019A000_0
+CMX05200X,3,053200X000_1,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,1,SH050200000_1
+CMX05200X,3,053200X000_0,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,0,SH050200000_0
+CMX05200X,2,052200X000_1,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,1,SH050200000_1
+CMX05200X,2,052200X000_0,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,0,SH050200000_0
+CMX05200X,1,051200X000_1,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,1,SH050200000_1
+CMX05200X,1,051200X000_0,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,0,SH050200000_0
+CMX050025,5,0550025000_1,C. C. Zacatenco - Cerro del Chiquihuite,25 19:57 to C. C. Zacatenco - Cerro del Chiquihuite,1,SH050025000_1
+CMX050025,5,0550025000_0,Av. Insurgentes Norte 2,25 19:57 to Av. Insurgentes Norte 2,0,SH050025000_0
+CMX050025,1,0510025000_1,C. C. Zacatenco - Cerro del Chiquihuite,25 19:57 to C. C. Zacatenco - Cerro del Chiquihuite,1,SH050025000_1
+CMX050025,1,0510025000_0,Av. Insurgentes Norte 2,25 19:57 to Av. Insurgentes Norte 2,0,SH050025000_0
+CMX050033,3,0530033000_1,C. C. León de los Aldama,33 13:19 to C. C. León de los Aldama,1,SH050033000_1
+CMX050033,3,0530033000_0,Calz. San Antonio Abad - Calz. Chabacano,33 13:19 to Calz. San Antonio Abad - Calz. Chabacano,0,SH050033000_0
+CMX050033,2,0520033000_1,C. C. León de los Aldama,33 13:19 to C. C. León de los Aldama,1,SH050033000_1
+CMX050033,2,0520033000_0,Calz. San Antonio Abad - Calz. Chabacano,33 13:19 to Calz. San Antonio Abad - Calz. Chabacano,0,SH050033000_0
+CMX050033,1,0510033000_1,C. C. León de los Aldama,33 13:19 to C. C. León de los Aldama,1,SH050033000_1
+CMX050033,1,0510033000_0,Calz. San Antonio Abad - Calz. Chabacano,33 13:19 to Calz. San Antonio Abad - Calz. Chabacano,0,SH050033000_0
+CMX05034A,3,053034A000_1,C. C. Metro Balderas - Tolsa/Av. Chapultepec,34-A 15:58 to C. C. Metro Balderas - Tolsa/Av. Chapultepec,1,SH05034A000_1
+CMX05034A,3,053034A000_0,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,34-A 15:58 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,0,SH05034A000_0
+CMX05034A,2,052034A000_1,C. C. Metro Balderas - Tolsa/Av. Chapultepec,34-A 15:58 to C. C. Metro Balderas - Tolsa/Av. Chapultepec,1,SH05034A000_1
+CMX05034A,2,052034A000_0,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,34-A 15:58 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,0,SH05034A000_0
+CMX05034A,1,051034A000_1,C. C. Metro Balderas - Tolsa/Av. Chapultepec,34-A 15:58 to C. C. Metro Balderas - Tolsa/Av. Chapultepec,1,SH05034A000_1
+CMX05034A,1,051034A000_0,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,34-A 15:58 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,0,SH05034A000_0
+CMX0534BO,3,05334BO000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05034B000_1
+CMX0534BO,3,05334BO000_0,Av. Universidad - Metro Miguel Ángel de Quevedo,Av. Universidad - Metro Miguel Ángel de Quevedo,0,SH05034B000_0
+CMX0534BO,B,05B34BO000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05034B000_1
+CMX0534BO,B,05B34BO000_0,Av. Universidad - Metro Miguel Ángel de Quevedo,Av. Universidad - Metro Miguel Ángel de Quevedo,0,SH05034B000_0
+CMX0534BO,A,05A34BO000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05034B000_1
+CMX0534BO,A,05A34BO000_0,Av. Universidad - Metro Miguel Ángel de Quevedo,Av. Universidad - Metro Miguel Ángel de Quevedo,0,SH05034B000_0
+CMX050037,3,0530037000_1,Unidad CTM Atzacoalco - Fernando Amilpa/Francisco J. Macin,37 18:43 to Unidad CTM Atzacoalco - Fernando Amilpa/Francisco J. Macin,1,SH050037000_1
+CMX050037,3,0530037000_0,C. C. Carmen Serdan - Candelaria Pérez/Nimes,37 18:43 to C. C. Carmen Serdan - Candelaria Pérez/Nimes,0,SH050037000_0
+CMX050037,2,0520037000_1,Unidad CTM Atzacoalco - Fernando Amilpa/Francisco J. Macin,37 18:43 to Unidad CTM Atzacoalco - Fernando Amilpa/Francisco J. Macin,1,SH050037000_1
+CMX050037,2,0520037000_0,C. C. Carmen Serdan - Candelaria Pérez/Nimes,37 18:43 to C. C. Carmen Serdan - Candelaria Pérez/Nimes,0,SH050037000_0
+CMX050037,1,0510037000_1,Unidad CTM Atzacoalco - Fernando Amilpa/Francisco J. Macin,37 18:43 to Unidad CTM Atzacoalco - Fernando Amilpa/Francisco J. Macin,1,SH050037000_1
+CMX050037,1,0510037000_0,C. C. Carmen Serdan - Candelaria Pérez/Nimes,37 18:43 to C. C. Carmen Serdan - Candelaria Pérez/Nimes,0,SH050037000_0
+CMX05039B,3,053039B000_1,C. C. Xochimilco Bosque de Nativitas por Miramontes - Zacapa/Camino a Nativitas,39-B 11:16 to C. C. Xochimilco Bosque de Nativitas por Miramontes - Zacapa/Camino a Nativitas,1,SH05039B000_1
+CMX05039B,3,053039B000_0,Av. Santa Ana - Mercedes Abrego,39-B 11:16 to Av. Santa Ana - Mercedes Abrego,0,SH05039B000_0
+CMX05039B,2,052039B000_1,C. C. Xochimilco Bosque de Nativitas por Miramontes - Zacapa/Camino a Nativitas,39-B 11:16 to C. C. Xochimilco Bosque de Nativitas por Miramontes - Zacapa/Camino a Nativitas,1,SH05039B000_1
+CMX05039B,2,052039B000_0,Av. Santa Ana - Mercedes Abrego,39-B 11:16 to Av. Santa Ana - Mercedes Abrego,0,SH05039B000_0
+CMX05039B,1,051039B000_1,C. C. Xochimilco Bosque de Nativitas por Miramontes - Zacapa/Camino a Nativitas,39-B 11:16 to C. C. Xochimilco Bosque de Nativitas por Miramontes - Zacapa/Camino a Nativitas,1,SH05039B000_1
+CMX05039B,1,051039B000_0,Av. Santa Ana - Mercedes Abrego,39-B 11:16 to Av. Santa Ana - Mercedes Abrego,0,SH05039B000_0
+CMX050043,3,0530043000_1,C. C. León de los Aldama,43 12:55 to C. C. León de los Aldama,1,SH050043000_1
+CMX050043,3,0530043000_0,C. C. Central de Abasto - Frente a Anden C Paradero/Central de Abasto,43 12:55 to C. C. Central de Abasto - Frente a Anden C Paradero/Central de Abasto,0,SH050043000_0
+CMX050043,2,0520043000_1,C. C. León de los Aldama,43 12:55 to C. C. León de los Aldama,1,SH050043000_1
+CMX050043,2,0520043000_0,C. C. Central de Abasto - Frente a Anden C Paradero/Central de Abasto,43 12:55 to C. C. Central de Abasto - Frente a Anden C Paradero/Central de Abasto,0,SH050043000_0
+CMX050043,1,0510043000_1,C. C. León de los Aldama,43 12:55 to C. C. León de los Aldama,1,SH050043000_1
+CMX050043,1,0510043000_0,C. C. Central de Abasto - Frente a Anden C Paradero/Central de Abasto,43 12:55 to C. C. Central de Abasto - Frente a Anden C Paradero/Central de Abasto,0,SH050043000_0
+CMX05052C,5,055052C000_1,C. C. Metro Santa Marta - Cetram Santa Marta Anden A,52-C 19:15 to C. C. Metro Santa Marta - Cetram Santa Marta Anden A,1,SH05052C000_1
+CMX05052C,5,055052C000_0,C. C. Metro Zapata - Av. Universidad/San Lorenzo,52-C 19:15 to C. C. Metro Zapata - Av. Universidad/San Lorenzo,0,SH05052C000_0
+CMX05052C,1,051052C000_1,C. C. Metro Santa Marta - Cetram Santa Marta Anden A,52-C 19:15 to C. C. Metro Santa Marta - Cetram Santa Marta Anden A,1,SH05052C000_1
+CMX05052C,1,051052C000_0,C. C. Metro Zapata - Av. Universidad/San Lorenzo,52-C 19:15 to C. C. Metro Zapata - Av. Universidad/San Lorenzo,0,SH05052C000_0
+CMX05057C,0,050057C000_1,Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,57-C 18:44 to Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,1,SH05057C000_1
+CMX05057C,0,050057C000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,57-C 18:44 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH05057C000_0
+CMX05057C,5,055057C000_1,Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,57-C 18:44 to Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,1,SH05057C000_1
+CMX05057C,5,055057C000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,57-C 18:44 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH05057C000_0
+CMX05057C,1,051057C000_1,Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,57-C 18:44 to Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,1,SH05057C000_1
+CMX05057C,1,051057C000_0,C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,57-C 18:44 to C. C. Metro Constitución de 1917 - Cetram Constitución de 1917 Anden B,0,SH05057C000_0
+CMX050059,5,0550059000_1,Cetram Metro Rosario Anden A,59 19:45 to Cetram Metro Rosario Anden A,1,SH050059000_1
+CMX050059,5,0550059000_0,Cierre de Circuito Cetram Chapultepec,59 19:45 to Cierre de Circuito Cetram Chapultepec,0,SH050059000_0
+CMX050059,1,0510059000_1,Cetram Metro Rosario Anden A,59 19:45 to Cetram Metro Rosario Anden A,1,SH050059000_1
+CMX050059,1,0510059000_0,Cierre de Circuito Cetram Chapultepec,59 19:45 to Cierre de Circuito Cetram Chapultepec,0,SH050059000_0
+CMX05059A,5,055059A000_1,Cetram Metro Rosario Anden A,59-A 20:42 to Cetram Metro Rosario Anden A,1,SH05059A000_1
+CMX05059A,5,055059A000_0,Serapio Rendón - Antonio Caso,59-A 20:42 to Serapio Rendón - Antonio Caso,0,SH05059A000_0
+CMX05059A,1,051059A000_1,Cetram Metro Rosario Anden A,59-A 20:42 to Cetram Metro Rosario Anden A,1,SH05059A000_1
+CMX05059A,1,051059A000_0,Serapio Rendón - Antonio Caso,59-A 20:42 to Serapio Rendón - Antonio Caso,0,SH05059A000_0
+CMX05009C,3,053009C000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,9-C 17:25 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05009C000_1
+CMX05009C,3,053009C000_0,Av. Centenario - Frente a No. 2760,9-C 17:25 to Av. Centenario - Frente a No. 2760,0,SH05009C000_0
+CMX05009C,2,052009C000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,9-C 17:25 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05009C000_1
+CMX05009C,2,052009C000_0,Av. Centenario - Frente a No. 2760,9-C 17:25 to Av. Centenario - Frente a No. 2760,0,SH05009C000_0
+CMX05009C,1,051009C000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,9-C 17:25 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05009C000_1
+CMX05009C,1,051009C000_0,Av. Centenario - Frente a No. 2760,9-C 17:25 to Av. Centenario - Frente a No. 2760,0,SH05009C000_0
+CMX05046C,5,055046C000_1,C. C. Lienzo Charro - Santa Catarina Eje 10 Sur/Temoayac,46-C 15:42 to C. C. Lienzo Charro - Santa Catarina Eje 10 Sur/Temoayac,1,SH05046C000_1
+CMX05046C,5,055046C000_0,C. C. Central de Abasto - Abarrotes,46-C 15:42 to C. C. Central de Abasto - Abarrotes,0,SH05046C000_0
+CMX05046C,1,051046C000_1,C. C. Lienzo Charro - Santa Catarina Eje 10 Sur/Temoayac,46-C 15:42 to C. C. Lienzo Charro - Santa Catarina Eje 10 Sur/Temoayac,1,SH05046C000_1
+CMX05046C,1,051046C000_0,C. C. Central de Abasto - Abarrotes,46-C 15:42 to C. C. Central de Abasto - Abarrotes,0,SH05046C000_0
+CMX0547AX,0,05047AX000_1,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,1,SH05047A000_1
+CMX0547AX,0,05047AX000_0,Madre Selva,Madre Selva,0,SH05047A000_0
+CMX0547AX,3,05347AX000_1,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,1,SH05047A000_1
+CMX0547AX,3,05347AX000_0,Madre Selva, Madre Selva,0,SH05047A000_0
+CMX0547AX,2,05247AX000_1,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,1,SH05047A000_1
+CMX0547AX,2,05247AX000_0,Madre Selva, Madre Selva,0,SH05047A000_0
+CMX0547AX,1,05147AX000_1,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,1,SH05047A000_1
+CMX0547AX,1,05147AX000_0,Madre Selva,Madre Selva,0,SH05047A000_0
+CMX050023,5,0550023000_1,Joaquin Pardave/ José Rolon,23 13:40 to Joaquin Pardave/ José Rolon,1,SH050023000_1
+CMX050023,5,0550023000_0,Frente a Metro La Raza,23 13:40 to Frente a Metro La Raza,0,SH050023000_0
+CMX050023,1,0510023000_1,Joaquin Pardave/ José Rolon,23 13:40 to Joaquin Pardave/ José Rolon,1,SH050023000_1
+CMX050023,1,0510023000_0,Frente a Metro La Raza,23 13:40 to Frente a Metro La Raza,0,SH050023000_0
+CMX05076A,5,055076A000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,76-A 16:49 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05076A000_1
+CMX05076A,5,055076A000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,76-A 16:49 to C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH05076A000_0
+CMX05076A,1,051076A000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,76-A 16:49 to C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05076A000_1
+CMX05076A,1,051076A000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,76-A 16:49 to C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH05076A000_0
+CMX050012,5,0550012000_1,Aragon,San Isidro to Aragon,1,SH050012000_1
+CMX050012,5,0550012000_0,Calz. San Isidro,Aragon to Calz. San Isidro,0,SH050012000_0
+CMX050012,1,0510012000_1,Aragon,San Isidro to Aragon,1,SH050012000_1
+CMX050012,1,0510012000_0,Calz. San Isidro,Aragon to Calz. San Isidro,0,SH050012000_0
+CMX05001D,5,055001D000_1,C. C. Metro Santa Marta - Cetram Santa Marta Anden A,1-D 18:01 to C. C. Metro Santa Marta - Cetram Santa Marta Anden A,1,SH05001D000_1
+CMX05001D,5,055001D000_0,C. C. Metro Mixcoac,1-D 18:01 to C. C. Metro Mixcoac,0,SH05001D000_0
+CMX05001D,1,051001D000_1,C. C. Metro Santa Marta - Cetram Santa Marta Anden A,1-D 18:01 to C. C. Metro Santa Marta - Cetram Santa Marta Anden A,1,SH05001D000_1
+CMX05001D,1,051001D000_0,C. C. Metro Mixcoac,1-D 18:01 to C. C. Metro Mixcoac,0,SH05001D000_0
+CMX050132,3,0530132000_1,Cerro de las Batallas - Calle Sierra Acapaxtla,132 18:53 to Cerro de las Batallas - Calle Sierra Acapaxtla,1,SH050132000_1
+CMX050132,3,0530132000_0,Cierre de Circuito Cetram Estadio Azteca,132 18:53 to Cierre de Circuito Cetram Estadio Azteca,0,SH050132000_0
+CMX050132,2,0520132000_1,Cerro de las Batallas - Calle Sierra Acapaxtla,132 18:53 to Cerro de las Batallas - Calle Sierra Acapaxtla,1,SH050132000_1
+CMX050132,2,0520132000_0,Cierre de Circuito Cetram Estadio Azteca,132 18:53 to Cierre de Circuito Cetram Estadio Azteca,0,SH050132000_0
+CMX050132,1,0510132000_1,Cerro de las Batallas - Calle Sierra Acapaxtla,132 18:53 to Cerro de las Batallas - Calle Sierra Acapaxtla,1,SH050132000_1
+CMX050132,1,0510132000_0,Cierre de Circuito Cetram Estadio Azteca,132 18:53 to Cierre de Circuito Cetram Estadio Azteca,0,SH050132000_0
+CMX05081A,3,053081A000_1,Carretera a Oaxtepec 2,81-A 21:12 to Carretera a Oaxtepec 2,1,SH05081A000_1
+CMX05081A,3,053081A000_0,Cetram Tasqueña Anden B,81-A 21:12 to Cetram Tasqueña Anden B,0,SH05081A000_0
+CMX05081A,2,052081A000_1,Carretera a Oaxtepec 2,81-A 21:12 to Carretera a Oaxtepec 2,1,SH05081A000_1
+CMX05081A,2,052081A000_0,Cetram Tasqueña Anden B,81-A 21:12 to Cetram Tasqueña Anden B,0,SH05081A000_0
+CMX05081A,1,051081A000_1,Carretera a Oaxtepec 2,81-A 21:12 to Carretera a Oaxtepec 2,1,SH05081A000_1
+CMX05081A,1,051081A000_0,Cetram Tasqueña Anden B,81-A 21:12 to Cetram Tasqueña Anden B,0,SH05081A000_0
+CMX05111A,3,053111A000_1,Autopista México-Cuernavaca,111-A 11:48 to Autopista México-Cuernavaca,1,SH05111A000_1
+CMX05111A,3,053111A000_0,Flamencos,111-A 11:48 to Flamencos,0,SH05111A000_0
+CMX05111A,2,052111A000_1,Autopista México-Cuernavaca,111-A 11:48 to Autopista México-Cuernavaca,1,SH05111A000_1
+CMX05111A,2,052111A000_0,Flamencos,111-A 11:48 to Flamencos,0,SH05111A000_0
+CMX05111A,1,051111A000_1,Autopista México-Cuernavaca,111-A 11:48 to Autopista México-Cuernavaca,1,SH05111A000_1
+CMX05111A,1,051111A000_0,Flamencos,111-A 11:48 to Flamencos,0,SH05111A000_0
+CMX05002A,3,053002A000_1,C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,2-A 14:57 to C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,1,SH05002A000_1
+CMX05002A,3,053002A000_0,Flamencos,2-A 14:57 to Flamencos,0,SH05002A000_0
+CMX05002A,2,052002A000_1,C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,2-A 14:57 to C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,1,SH05002A000_1
+CMX05002A,2,052002A000_0,Flamencos,2-A 14:57 to Flamencos,0,SH05002A000_0
+CMX05002A,1,051002A000_1,C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,2-A 14:57 to C. C. San Pedro Martir por Carretera Federal - 5 de Mayo/Cuauhtémoc,1,SH05002A000_1
+CMX05002A,1,051002A000_0,Flamencos,2-A 14:57 to Flamencos,0,SH05002A000_0
+CMX050069,3,0530069000_1,Carretera Federal a Cuernavaca - Km 30.5 Las margaritas,69 15:48 to Carretera Federal a Cuernavaca - Km 30.5 Las margaritas,1,SH050069000_1
+CMX050069,3,0530069000_0,Cierre de Circuito Cetram Estadio Azteca,69 15:48 to Cierre de Circuito Cetram Estadio Azteca,0,SH050069000_0
+CMX050069,2,0520069000_1,Carretera Federal a Cuernavaca - Km 30.5 Las margaritas,69 15:48 to Carretera Federal a Cuernavaca - Km 30.5 Las margaritas,1,SH050069000_1
+CMX050069,2,0520069000_0,Cierre de Circuito Cetram Estadio Azteca,69 15:48 to Cierre de Circuito Cetram Estadio Azteca,0,SH050069000_0
+CMX050069,1,0510069000_1,Carretera Federal a Cuernavaca - Km 30.5 Las margaritas,69 15:48 to Carretera Federal a Cuernavaca - Km 30.5 Las margaritas,1,SH050069000_1
+CMX050069,1,0510069000_0,Cierre de Circuito Cetram Estadio Azteca,69 15:48 to Cierre de Circuito Cetram Estadio Azteca,0,SH050069000_0
+CMX05121A,3,053121A000_1,Cedros,121-A 17:48 to Cedros,1,SH05121A000_1
+CMX05121A,3,053121A000_0,Terminal Metro Zapata,121-A 17:48 to Terminal Metro Zapata,0,SH05121A000_0
+CMX05121A,2,052121A000_1,Cedros,121-A 17:48 to Cedros,1,SH05121A000_1
+CMX05121A,2,052121A000_0,Terminal Metro Zapata,121-A 17:48 to Terminal Metro Zapata,0,SH05121A000_0
+CMX05121A,1,051121A000_1,Cedros,121-A 17:48 to Cedros,1,SH05121A000_1
+CMX05121A,1,051121A000_0,Terminal Metro Zapata,121-A 17:48 to Terminal Metro Zapata,0,SH05121A000_0
+CMX0557AN,0,05057AN000_1,Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,Anillo Periférico Blvd. Manuel Avila Camacho - Antonio Velazquez,1,SH05057A000_1
+CMX0557AN,0,05057AN000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05057A000_0
+CMX0557AX,3,05357AX000_1,Anillo Periférico Blvd. Manuel Avila Camacho - Calz. Legaria,Anillo Periférico Blvd. Manuel Avila Camacho - Calz. Legaria,1,SH05057A000_1
+CMX0557AX,3,05357AX000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05057A000_0
+CMX0557AX,2,05257AX000_1,Anillo Periférico Blvd. Manuel Avila Camacho - Calz. Legaria ,Anillo Periférico Blvd. Manuel Avila Camacho - Calz. Legaria,1,SH05057A000_1
+CMX0557AX,2,05257AX000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05057A000_0
+CMX0557AX,1,05157AX000_1,Anillo Periférico Blvd. Manuel Avila Camacho - Calz. Legaria ,Anillo Periférico Blvd. Manuel Avila Camacho - Calz. Legaria,1,SH05057A000_1
+CMX0557AX,1,05157AX000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05057A000_0
+CMX05027A,0,050027A000_1,Estado de México,27-A 19:19 to Estado de México,1,SH05027A000_1
+CMX05027A,0,050027A000_0,C. C. Metro Hidalgo/Alameda Central - Valerio Trujano/Av. Hidalgo,27-A 19:19 to C. C. Metro Hidalgo/Alameda Central - Valerio Trujano/Av. Hidalgo,0,SH05027A000_0
+CMX05076X,3,053076X000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH050076000_1
+CMX05076X,3,053076X000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH050076000_0
+CMX05076X,2,052076X000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz, C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH050076000_1
+CMX05076X,2,052076X000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH050076000_0
+CMX05076X,1,051076X000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH050076000_1
+CMX05076X,1,051076X000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH050076000_0
+CMX05076N,3,053076N000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz, C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH050076000_1
+CMX05076N,3,053076N000_0,C. B. Auditorio Nacional-Paseo de la Reforma - , C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH050076000_0
+CMX05076N,2,052076N000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH050076000_1
+CMX05076N,2,052076N000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH050076000_0
+CMX05076N,1,051076N000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH050076000_1
+CMX05076N,1,051076N000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH050076000_0
+CMX05134A,5,055134A000_1,C. C. Parres - Carretera Federal a Cuernavaca/Circunvalación,134-A 20:41 to C. C. Parres - Carretera Federal a Cuernavaca/Circunvalación,1,SH05134A000_1
+CMX05134A,5,055134A000_0,Cierre de Circuito Cetram Estadio Azteca,134-A 20:41 to Cierre de Circuito Cetram Estadio Azteca,0,SH05134A000_0
+CMX05134A,1,051134A000_1,C. C. Parres - Carretera Federal a Cuernavaca/Circunvalación,134-A 20:41 to C. C. Parres - Carretera Federal a Cuernavaca/Circunvalación,1,SH05134A000_1
+CMX05134A,1,051134A000_0,Cierre de Circuito Cetram Estadio Azteca,134-A 20:41 to Cierre de Circuito Cetram Estadio Azteca,0,SH05134A000_0
+CMX050128,3,0530128000_1,Av. Ojo de Agua - Chabacano,128 22:08 to Av. Ojo de Agua - Chabacano,1,SH050128000_1
+CMX050128,3,0530128000_0,Cetram Universidad anden B,128 22:08 to Cetram Universidad anden B,0,SH050128000_0
+CMX050128,2,0520128000_1,Av. Ojo de Agua - Chabacano,128 22:08 to Av. Ojo de Agua - Chabacano,1,SH050128000_1
+CMX050128,2,0520128000_0,Cetram Universidad anden B,128 22:08 to Cetram Universidad anden B,0,SH050128000_0
+CMX050128,1,0510128000_1,Av. Ojo de Agua - Chabacano,128 22:08 to Av. Ojo de Agua - Chabacano,1,SH050128000_1
+CMX050128,1,0510128000_0,Cetram Universidad anden B,128 22:08 to Cetram Universidad anden B,0,SH050128000_0
+CMX05107B,5,055107B000_1,Metro La Villa,107-B 22:04 to Metro La Villa,1,SH05107B000_1
+CMX05107B,5,055107B000_0,Mar Caribe - México Tacuba,107-B 22:04 to Mar Caribe - México Tacuba,0,SH05107B000_0
+CMX05107B,1,051107B000_1,Metro La Villa,107-B 22:04 to Metro La Villa,1,SH05107B000_1
+CMX05107B,1,051107B000_0,Mar Caribe - México Tacuba,107-B 22:04 to Mar Caribe - México Tacuba,0,SH05107B000_0
+CMX05161C,5,055161C000_1,Camino a Minas - Col. Palmas Calle Las Margaritas,161-C 23:30 to Camino a Minas - Col. Palmas Calle Las Margaritas,1,SH05161C000_1
+CMX05161C,5,055161C000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,161-C 23:30 to C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05161C000_0
+CMX05161C,1,051161C000_1,Camino a Minas - Col. Palmas Calle Las Margaritas,161-C 23:30 to Camino a Minas - Col. Palmas Calle Las Margaritas,1,SH05161C000_1
+CMX05161C,1,051161C000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,161-C 23:30 to C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05161C000_0
+CMX01011F,0,010011F000_1,Aeropuerto - Cuatro Caminos,F. Aeropuerto - Cuatro Caminos,1,SH01011D000_1
+CMX01011F,0,010011F000_0,Cuatro Caminos - Aeropuerto,F. Cuatro Caminos - Aeropuerto,0,SH01011D000_0
+CMX05116A,5,055116A000_1,Río Guadalupe/Río Colorado,Metro Gral. Anaya to Río Guadalupe,1,SH05116A000_1
+CMX05116A,5,055116A000_0,Metro Gral. Anaya,Río Guadalupe to Metro Gral. Anaya,0,SH05116A000_0
+CMX05116A,1,051116A000_1,Río Guadalupe/Río Colorado,Metro Gral. Anaya to Río Guadalupe,1,SH05116A000_1
+CMX05116A,1,051116A000_0,Metro Gral. Anaya,Río Guadalupe to Metro Gral. Anaya,0,SH05116A000_0
+CMX01023A,0,010023A000_1,CETRAM Tacuba,Especialidades Médicas to CETRAM Tacuba,1,SH01023A000_1
+CMX01023A,0,010023A000_0,Especialidades Médicas,CETRAM Tacuba to Especialidades Médicas,0,SH01023A000_0
+CMX01023B,0,010023B000_1,CETRAM Tacuba,San Isidro to CETRAM Tacuba,1,SH01023B000_1
+CMX01023B,0,010023B000_0,San Isidro,CETRAM Tacuba to San Isidro,0,SH01023B000_0
+CMX01023C,0,010023C000_1,CETRAM Tacuba,Texacalco to CETRAM Tacuba,1,SH01023C000_1
+CMX01023C,0,010023C000_0,Texacalco , CETRAM Tacuba to Texacalco ,0,SH01023C000_0
+CMX01023D,0,010023D000_1,CETRAM Tacuba,ESIA to CETRAM Tacuba,1,SH01023D000_1
+CMX01023D,0,010023D000_0,ESIA,CETRAM Tacuba to ESIA,0,SH01023D000_0
+CMX05031B,3,053031B000_1,16 de Septiembre - Lobelia,31-B 13:57 to 16 de Septiembre - Lobelia,1,SH05031B000_1
+CMX05031B,3,053031B000_0,Flamencos,31-B 13:57 to Flamencos,0,SH05031B000_0
+CMX05031B,2,052031B000_1,16 de Septiembre - Lobelia,31-B 13:57 to 16 de Septiembre - Lobelia,1,SH05031B000_1
+CMX05031B,2,052031B000_0,Flamencos,31-B 13:57 to Flamencos,0,SH05031B000_0
+CMX05031B,1,051031B000_1,16 de Septiembre - Lobelia,31-B 13:57 to 16 de Septiembre - Lobelia,1,SH05031B000_1
+CMX05031B,1,051031B000_0,Flamencos,31-B 13:57 to Flamencos,0,SH05031B000_0
+CMX0900R1,2,09200R1000_0,Base Metro Universidad,PUMA1 Base Metro Universidad - Islas,0,SH0900R1000_0
+CMX0900R1,1,09100R1000_0,Base Metro Universidad,PUMA1  Base Metro Universidad - Islas,0,SH0900R1000_0
+CMX0900R3,5,09500R3000_0,Base Metro Universidad,Base Metro Universidad - Av. Iman,0,SH0900R3000_0
+CMX0900R3,1,09100R3000_0,Base Metro Universidad,Base Metro Universidad - Av. Iman,0,SH0900R3000_0
+CMX0900R6,1,09100R6000_0,Base Metrobús CU,Base Metrobús CU - Estadio,0,SH0900R6000_0
+CMX0900R7,1,09100R7000_0,Base Estadio Olímpico,Base Estadio Olímpico - Medicina,0,SH0900R7000_0
+CMX0900R2,2,09200R2000_0,Base Metro Universidad,Base Metro Universidad - MB CU,0,SH0900R2000_0
+CMX0900R2,1,09100R2000_0,Base Metro Universidad,Base Metro Universidad - MB CU,0,SH0900R2000_0
+CMX090R13,1,0910R13000_0,Base Metrobús CU,Base Metrobús CU - Unidad de Posgrado,0,SH090R13000_0
+CMX090R11,1,0910R11000_0,Base Metrobús CU,Base Metrobús CU - AAPAUNAM,0,SH090R11000_0
+CMX090R10,5,0950R10000_0,Metrobús CU,Metrobús CU - Av. Iman,0,SH090R10000_0
+CMX090R10,1,0910R10000_0,Metrobús CU,Metrobús CU - Av. Iman,0,SH090R10000_0
+CMX0900R9,2,09200R9000_0,Base Metrobús CU, Base Metrobús CU - Islas,0,SH0900R9000_0
+CMX0900R9,1,09100R9000_0,Base Metrobús CU,Base Metrobús CU - Islas,0,SH0900R9000_0
+CMX0900R4,2,09200R4000_0,Base Metro Universidad,Base Metro Universidad - Jardín Botánico,0,SH0900R4000_0
+CMX0900R4,1,09100R4000_0,Base Metro Universidad,Base Metro Universidad - Jardín Botánico,0,SH0900R4000_0
+CMX0900R5,2,09200R5000_0,Base Metro Universidad,Base Metro Universidad - Av. Universidad,0,SH0900R5000_0
+CMX0900R5,1,09100R5000_0,Base Metro Universidad,Base Metro Universidad - Av. Universidad,0,SH0900R5000_0
+CMX0900R8,1,09100R8000_0,Base Metrobús CU,Base Metrobús CU - Estadio (por alberca),0,SH0900R8000_0
+CMX0200L1,3,02300L1000_1,Observatorio,Línea 1 to Observatorio,1,SH0200L1000_1
+CMX0200L1,3,02300L1000_0,Pantitlán,Línea 1 to Pantitlán,0,SH0200L1000_0
+CMX0200L1,2,02200L1000_1,Observatorio,Línea 1 to Observatorio,1,SH0200L1000_1
+CMX0200L1,2,02200L1000_0,Pantitlán,Línea 1 to Pantitlán,0,SH0200L1000_0
+CMX0200L1,1,02100L1000_1,Observatorio,Línea 1 to Observatorio,1,SH0200L1000_1
+CMX0200L1,1,02100L1000_0,Pantitlán,Línea 1 to Pantitlán,0,SH0200L1000_0
+CMX020L12,3,0230L12000_1,Mixcoac,to Mixcoac,1,SH020L12000_1
+CMX020L12,3,0230L12000_0,Tláhuac,to Tláhuac,0,SH020L12000_0
+CMX020L12,2,0220L12000_1,Mixcoac,to Mixcoac,1,SH020L12000_1
+CMX020L12,2,0220L12000_0,Tláhuac,to Tláhuac,0,SH020L12000_0
+CMX020L12,1,0210L12000_1,Mixcoac,to Mixcoac,1,SH020L12000_1
+CMX020L12,1,0210L12000_0,Tláhuac,to Tláhuac,0,SH020L12000_0
+CMX01019I,5,015019I000_1,Base Cetram Chapultepec,Pantitlan to Chapultepec,1,SH01019I000_1
+CMX01019I,5,015019I000_0,Base Cetram Pantitlan,Chapultepec to Pantitlan,0,SH01019I000_0
+CMX01019I,1,011019I000_1,Base Cetram Chapultepec,Pantitlan to Chapultepec,1,SH01019I000_1
+CMX01019I,1,011019I000_0,Base Cetram Pantitlan,Chapultepec to Pantitlan,0,SH01019I000_0
+CMX01009F,5,015009F000_1,Tacubaya (base),Pantitlán to Tacubaya ,1,SH01009F000_1
+CMX01009F,5,015009F000_0,Pantitlán,Tacubaya  to Pantitlán,0,SH01009F000_0
+CMX01009F,1,011009F000_1,Tacubaya (base),Pantitlán to Tacubaya ,1,SH01009F000_1
+CMX01009F,1,011009F000_0,Pantitlán,Tacubaya  to Pantitlán,0,SH01009F000_0
+CMX01017L,5,015017L000_1,San Antonio Abad - Metro Chabacano,Tlalpan  to San Antonio Abad - Metro Chabacano,1,SH01017L000_1
+CMX01017L,5,015017L000_0,Tlalpan - Miguel Ángel de Quevedo,San Lázaro to Tlalpan - Miguel Ángel de Quevedo,0,SH01017L000_0
+CMX01017L,1,011017L000_1,San Antonio Abad - Metro Chabacano,Tlalpan  to San Antonio Abad - Metro Chabacano,1,SH01017L000_1
+CMX01017L,1,011017L000_0,Tlalpan - Miguel Ángel de Quevedo,San Lázaro to Tlalpan - Miguel Ángel de Quevedo,0,SH01017L000_0
+CMX0300L6,1,03100L6002_1,El Rosario,Deportivo 18 de Marzo to El Rosario,1,SH0300L6002_1
+CMX0300L6,1,03100L6002_0,Deportivo 18 de Marzo,El Rosario to Deportivo 18 de Marzo,0,SH0300L6002_0
+CMX0300L6,1,03100L6001_1,Instituto Politécnico Nacional,Villa de Aragón to Instituto Politécnico Nacional,1,SH0300L6001_1
+CMX0300L6,1,03100L6001_0,Villa de Aragón,Instituto Politécnico Nacional to Villa de Aragón,0,SH0300L6001_0
+CMX0300L6,3,03300L6000_1,El Rosario,Villa de Aragón to El Rosario,1,SH0300L6000_1
+CMX0300L6,3,03300L6000_0,Villa de Aragón,El Rosario to Villa de Aragón,0,SH0300L6000_0
+CMX0300L6,2,03200L6000_1,El Rosario,Villa de Aragón to El Rosario,1,SH0300L6000_1
+CMX0300L6,2,03200L6000_0,Villa de Aragón,El Rosario to Villa de Aragón,0,SH0300L6000_0
+CMX0300L6,1,03100L6000_1,El Rosario,Villa de Aragón to El Rosario,1,SH0300L6000_1
+CMX0300L6,1,03100L6000_0,Villa de Aragón,El Rosario to Villa de Aragón,0,SH0300L6000_0
+CMX0300L1,3,03300L1006_1,Indios Verdes,Pueblo Sta. Cruz Atoyac to Indios Verdes,1,SH0300L1006_1
+CMX0300L1,3,03300L1006_0,Pueblo Sta. Cruz Atoyac,Indios Verdes to Pueblo Sta. Cruz Atoyac,0,SH0300L1006_0
+CMX0300L1,2,03200L1006_1,Indios Verdes,Pueblo Sta. Cruz Atoyac to Indios Verdes,1,SH0300L1006_1
+CMX0300L1,2,03200L1006_0,Pueblo Sta. Cruz Atoyac,Indios Verdes to Pueblo Sta. Cruz Atoyac,0,SH0300L1006_0
+CMX0300L1,1,03100L1006_1,Indios Verdes,Pueblo Sta. Cruz Atoyac to Indios Verdes,1,SH0300L1006_1
+CMX0300L1,1,03100L1006_0,Pueblo Sta. Cruz Atoyac,Indios Verdes to Pueblo Sta. Cruz Atoyac,0,SH0300L1006_0
+CMX0300L1,3,03300L1003_1,Buenavista,El Caminero to Buenavista,1,SH0300L1003_1
+CMX0300L1,3,03300L1003_0,El Caminero,Buenavista to El Caminero,0,SH0300L1003_0
+CMX0300L1,2,03200L1003_1,Buenavista,El Caminero to Buenavista,1,SH0300L1003_1
+CMX0300L1,2,03200L1003_0,El Caminero,Buenavista to El Caminero,0,SH0300L1003_0
+CMX0300L1,1,03100L1003_1,Buenavista,El Caminero to Buenavista,1,SH0300L1003_1
+CMX0300L1,1,03100L1003_0,El Caminero,Buenavista to El Caminero,0,SH0300L1003_0
+CMX0300L1,2,03200L1002_1,Indios Verdes,Dr. Gálvez to Indios Verdes,1,SH0300L1002_1
+CMX0300L1,2,03200L1002_0,Dr. Gálvez,Indios Verdes to Dr. Gálvez,0,SH0300L1002_0
+CMX0300L1,1,03100L1002_1,Indios Verdes,Dr. Gálvez to Indios Verdes,1,SH0300L1002_1
+CMX0300L1,1,03100L1002_0,Dr. Gálvez,Indios Verdes to Dr. Gálvez,0,SH0300L1002_0
+CMX0300L1,3,03300L1001_1,Indios Verdes,Glorieta Insurgentes to Indios Verdes,1,SH0300L1001_1
+CMX0300L1,3,03300L1001_0,Glorieta Insurgentes,Indios Verdes to Glorieta Insurgentes,0,SH0300L1001_0
+CMX0300L1,2,03200L1001_1,Indios Verdes,Glorieta Insurgentes to Indios Verdes,1,SH0300L1001_1
+CMX0300L1,2,03200L1001_0,Glorieta Insurgentes,Indios Verdes to Glorieta Insurgentes,0,SH0300L1001_0
+CMX0300L1,1,03100L1001_1,Indios Verdes,Glorieta Insurgentes to Indios Verdes,1,SH0300L1001_1
+CMX0300L1,1,03100L1001_0,Glorieta Insurgentes,Indios Verdes to Glorieta Insurgentes,0,SH0300L1001_0
+CMX0300L1,3,03300L1000_1,Indios Verdes,El Caminero to Indios Verdes,1,SH0300L1000_1
+CMX0300L1,3,03300L1000_0,El Caminero,Indios Verdes to El Caminero,0,SH0300L1000_0
+CMX0300L1,2,03200L1000_1,Indios Verdes,El Caminero to Indios Verdes,1,SH0300L1000_1
+CMX0300L1,2,03200L1000_0,El Caminero,Indios Verdes to El Caminero,0,SH0300L1000_0
+CMX0300L1,1,03100L1000_1,Indios Verdes,El Caminero to Indios Verdes,1,SH0300L1000_1
+CMX0300L1,1,03100L1000_0,El Caminero,Indios Verdes to El Caminero,0,SH0300L1000_0
+CMX01024A,0,010024A000_1,Chapultepec,Preparatoria 5 - Chapultepec,1,SH01024A000_1
+CMX01024A,0,010024A000_0,Preparatoria 5,Chapultepec - Preparatoria 5,0,SH01024A000_0
+CMX01024B,0,010024B000_1,Merced,Cuemanco-Salto del Agua - Merced,1,SH01024B000_1
+CMX01024B,0,010024B000_0,Cuemanco,Merced - Salto del Agua - Cuemanco,0,SH01024B000_0
+CMX01024C,0,010024C000_1,División del Norte,Sauzales - División del Norte,1,SH01024C000_1
+CMX01024C,0,010024C000_0,Av. Sauzales ,División del Norte - Sauzales,0,SH01024C000_0
+CMX01024D,0,010024D000_1,Estadio Azteca,Santo Domingo - Estadio Azteca,1,SH01024D000_1
+CMX01024D,0,010024D000_0,Santo Domingo,Estadio Azteca - Santo Domingo,0,SH01024D000_0
+CMX050126,3,0530126000_1,Metro Copilco,Contreras to Metro Copilco,1,SH050126000_1
+CMX050126,3,0530126000_0,C. C. Contreras,Metro Copilco to C. C. Contreras,0,SH050126000_0
+CMX050126,2,0520126000_1,Metro Copilco,Contreras to Metro Copilco,1,SH050126000_1
+CMX050126,2,0520126000_0,C. C. Contreras,Metro Copilco to C. C. Contreras,0,SH050126000_0
+CMX050126,1,0510126000_1,Metro Copilco,Contreras to Metro Copilco,1,SH050126000_1
+CMX050126,1,0510126000_0,C. C. Contreras,Metro Copilco to C. C. Contreras,0,SH050126000_0
+CMX0800L1,3,08300L1001_1,Indios Verdes,Tlalpexco to Indios Verdes,1,SH0800L1001_1
+CMX0800L1,3,08300L1001_0,Tlalpexco,Indios Verdes to Tlalpexco,0,SH0800L1001_0
+CMX0800L1,2,08200L1001_1,Indios Verdes,Tlalpexco to Indios Verdes,1,SH0800L1001_1
+CMX0800L1,2,08200L1001_0,Tlalpexco,Indios Verdes to Tlalpexco,0,SH0800L1001_0
+CMX0800L1,1,08100L1001_1,Indios Verdes,Tlalpexco to Indios Verdes,1,SH0800L1001_1
+CMX0800L1,1,08100L1001_0,Tlalpexco,Indios Verdes to Tlalpexco,0,SH0800L1001_0
+CMX0800L1,3,08300L1000_1,Indios Verdes,Cuautepec to Indios Verdes,1,SH0800L1000_1
+CMX0800L1,3,08300L1000_0,Cuautepec,Indios Verdes to Cuautepec,0,SH0800L1000_0
+CMX0800L1,2,08200L1000_1,Indios Verdes,Cuautepec to Indios Verdes,1,SH0800L1000_1
+CMX0800L1,2,08200L1000_0,Cuautepec,Indios Verdes to Cuautepec,0,SH0800L1000_0
+CMX0800L1,1,08100L1000_1,Indios Verdes,Cuautepec to Indios Verdes,1,SH0800L1000_1
+CMX0800L1,1,08100L1000_0,Cuautepec,Indios Verdes to Cuautepec,0,SH0800L1000_0
+CMX0800L2,3,08300L2001_1,Xalpa,Santa Marta to Xalpa,1,SH0800L2001_1
+CMX0800L2,3,08300L2001_0,Santa Marta,Xalpa to Santa Marta,0,SH0800L2001_0
+CMX0800L2,2,08200L2001_1,Xalpa,Santa Marta to Xalpa,1,SH0800L2001_1
+CMX0800L2,2,08200L2001_0,Santa Marta,Xalpa to Santa Marta,0,SH0800L2001_0
+CMX0800L2,1,08100L2001_1,Xalpa,Santa Marta to Xalpa,1,SH0800L2001_1
+CMX0800L2,1,08100L2001_0,Santa Marta,Xalpa to Santa Marta,0,SH0800L2001_0
+CMX0800L2,3,08300L2000_1,Constitución de 1917,Xalpa to Constitución de 1917,1,SH0800L2000_1
+CMX0800L2,3,08300L2000_0,Xalpa,Constitución de 1917 to Xalpa,0,SH0800L2000_0
+CMX0800L2,2,08200L2000_1,Constitución de 1917,Xalpa to Constitución de 1917,1,SH0800L2000_1
+CMX0800L2,2,08200L2000_0,Xalpa,Constitución de 1917 to Xalpa,0,SH0800L2000_0
+CMX0800L2,1,08100L2000_1,Constitución de 1917,Xalpa to Constitución de 1917,1,SH0800L2000_1
+CMX0800L2,1,08100L2000_0,Xalpa,Constitución de 1917 to Xalpa,0,SH0800L2000_0
+CMX050112,5,0550112000_1,Amp. Jalapa ,Metro Tacubaya to Amp. Jalapa ,1,SH050112000_1
+CMX050112,1,0510112000_0,Metro Tacubaya ,Amp. Jalapa  to Metro Tacubaya,0,SH050112000_0
+CMX0300L4,3,03300L4002_1,Buenavista (Norte),San Lázaro to Buenavista (Norte),1,SH0300L4002_1
+CMX0300L4,3,03300L4002_0,San Lázaro (Norte),Buenavista to San Lázaro (Norte),0,SH0300L4002_0
+CMX0300L4,2,03200L4002_1,Buenavista (Norte),San Lázaro to Buenavista (Norte),1,SH0300L4002_1
+CMX0300L4,2,03200L4002_0,San Lázaro (Norte),Buenavista to San Lázaro (Norte),0,SH0300L4002_0
+CMX0300L4,1,03100L4002_1,Buenavista (Norte),San Lázaro to Buenavista (Norte),1,SH0300L4002_1
+CMX0300L4,1,03100L4002_0,San Lázaro (Norte),Buenavista to San Lázaro (Norte),0,SH0300L4002_0
+CMX0300L4,3,03300L4001_1,Buenavista (Sur),San Lázaro to Buenavista (Sur),1,SH0300L4001_1
+CMX0300L4,3,03300L4001_0,San Lázaro (Sur),Buenavista to San Lázaro (Sur),0,SH0300L4001_0
+CMX0300L4,2,03200L4001_1,Buenavista (Sur),San Lázaro to Buenavista (Sur),1,SH0300L4001_1
+CMX0300L4,2,03200L4001_0,San Lázaro (Sur),Buenavista to San Lázaro (Sur),0,SH0300L4001_0
+CMX0300L4,1,03100L4001_1,Buenavista (Sur),San Lázaro to Buenavista (Sur),1,SH0300L4001_1
+CMX0300L4,1,03100L4001_0,San Lázaro (Sur),Buenavista to San Lázaro (Sur),0,SH0300L4001_0
+CMX0300L4,2,03200L4004_1,Hidalgo,Pantitlán to Hidalgo,1,SH0300L4004_1
+CMX0300L4,2,03200L4004_0,Pantitlán,Hidalgo to Pantitlán,0,SH0300L4004_0
+CMX0300L4,1,03100L4004_1,Hidalgo,Pantitlán to Hidalgo,1,SH0300L4004_1
+CMX0300L4,1,03100L4004_0,Pantitlán,Hidalgo to Pantitlán,0,SH0300L4004_0
+CMX0300L4,3,03300L4003_1,Hidalgo,Alameda Oriente to Hidalgo,1,SH0300L4003_1
+CMX0300L4,3,03300L4003_0,Alameda Oriente,Hidalgo to Alameda Oriente,0,SH0300L4003_0
+CMX0300L4,2,03200L4003_1,Hidalgo,Alameda Oriente to Hidalgo,1,SH0300L4003_1
+CMX0300L4,2,03200L4003_0,Alameda Oriente,Hidalgo to Alameda Oriente,0,SH0300L4003_0
+CMX0300L4,1,03100L4003_1,Hidalgo,Alameda Oriente to Hidalgo,1,SH0300L4003_1
+CMX0300L4,1,03100L4003_0,Alameda Oriente,Hidalgo to Alameda Oriente,0,SH0300L4003_0
+CMX0300L4,3,03300L4000_0,San Lázaro,San Lázaro to T1/T2,0,SH0300L4000_0
+CMX0300L4,2,03200L4000_0,San Lázaro,San Lázaro to T1/T2,0,SH0300L4000_0
+CMX0300L4,1,03100L4000_0,San Lázaro,San Lázaro to T1/T2,0,SH0300L4000_0
+CMX0511AN,5,05511AN000_1,Aragon,Chapultepec to Aragon,1,SH05011A000_1
+CMX0511AN,5,05511AN000_0,Chapultepec,Aragon to Chapultepec,0,SH05011A000_0
+CMX0511AN,1,05111AN000_1,Aragon,Chapultepec to Aragon,1,SH05011A000_1
+CMX0511AN,1,05111AN000_0,Chapultepec,Aragon to Chapultepec,0,SH05011A000_0
+CMX05165AX,5,055165AX000_1,Fuente de Loreto - Carlos Pacheco, Fuente de Loreto - Carlos Pacheco,1,SH05165A000_1
+CMX05165AX,5,055165AX000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico, C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05165A000_0
+CMX05165AX,1,051165AX000_1,Fuente de Loreto - Carlos Pacheco,Fuente de Loreto - Carlos Pacheco,1,SH05165A000_1
+CMX05165AX,1,051165AX000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05165A000_0
+CMX05165AE,5,055165AE000_1,Fuente de Loreto - Carlos Pacheco,Fuente de Loreto - Carlos Pacheco,1,SH05165A000_1
+CMX05165AE,5,055165AE000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05165A000_0
+CMX05165AE,1,051165AE000_1,Fuente de Loreto - Carlos Pacheco, Fuente de Loreto - Carlos Pacheco,1,SH05165A000_1
+CMX05165AE,1,051165AE000_0,C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico, C. C. Constitución de 1917 - Calz. Ermita Iztapalapa Entre Hortencia y Periferico,0,SH05165A000_0
+CMX05200N,3,053200N000_1,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,1,SH050200000_1
+CMX05200N,3,053200N000_0,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,0,SH050200000_0
+CMX05200N,2,052200N000_1,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,1,SH050200000_1
+CMX05200N,2,052200N000_0,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,0,SH050200000_0
+CMX05200N,1,051200N000_1,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,1,SH050200000_1
+CMX05200N,1,051200N000_0,Circuito Interior - Manuel Carpio,Circuito Interior - Manuel Carpio,0,SH050200000_0
+CMX0534BE,3,05334BE000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05034B000_1
+CMX0534BE,3,05334BE000_0,Av. Universidad - Metro Miguel Ángel de Quevedo,Av. Universidad - Metro Miguel Ángel de Quevedo,0,SH05034B000_0
+CMX0534BE,B,05B34BE000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05034B000_1
+CMX0534BE,B,05B34BE000_0,Av. Universidad - Metro Miguel Ángel de Quevedo,Av. Universidad - Metro Miguel Ángel de Quevedo,0,SH05034B000_0
+CMX0534BE,A,05A34BE000_1,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,C. C. Centro Comercial Santa Fe - Av. Vasco de Quiroga/Juan Salvador Agraz,1,SH05034B000_1
+CMX0534BE,A,05A34BE000_0,Av. Universidad - Metro Miguel Ángel de Quevedo,Av. Universidad - Metro Miguel Ángel de Quevedo,0,SH05034B000_0
+CMX0547AN,0,05047AN000_1,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,C. C. Alameda Oriente - Av. Bordo de Xochiaca/Xiutetelco,1,SH05047A000_1
+CMX0547AN,0,05047AN000_0,Madre Selva,Madre Selva,0,SH05047A000_0
+CMX050107,0,0500107000_1,Cetram Metro Rosario Anden A,Calz. México Tacuba - Frente a Metro Tacuba to Cetram Metro Rosario Anden A,1,SH050107000_1
+CMX050107,0,0500107000_0,Calz. México Tacuba - Frente a Metro Tacuba,Cetram Metro Rosario Anden A to Calz. México Tacuba - Frente a Metro Tacuba,0,SH050107000_0
+CMX05300A,0,050300A000_1,Calz. Acoxpa - Av. de las Torres,C. B. Auditorio Nacional-Paseo de la Reforma -  to Calz. Acoxpa - Av. de las Torres,1,SH05300A000_1
+CMX05300A,0,050300A000_0,C. B. Auditorio Nacional-Paseo de la Reforma - ,Calz. Acoxpa - Av. de las Torres to C. B. Auditorio Nacional-Paseo de la Reforma - ,0,SH05300A000_0
+CMX0300L2,0,03000L2006_1,Río Frío,Juárez to Río Frío,1,SH0300L2006_1
+CMX0300L2,0,03000L2006_0,Juárez,Río Frío to Juárez,0,SH0300L2006_0
+CMX0300L2,2,03200L2001_1,Etiopía,Tepalcates to Etiopía,1,SH0300L2001_1
+CMX0300L2,2,03200L2001_0,Tepalcates,Etiopía to Tepalcates,0,SH0300L2001_0
+CMX0300L2,1,03100L2001_1,Etiopía,Tepalcates to Etiopía,1,SH0300L2001_1
+CMX0300L2,1,03100L2001_0,Tepalcates,Etiopía to Tepalcates,0,SH0300L2001_0
+CMX0300L2,3,03300L2000_1,Tacubaya,Tepalcates to Tacubaya,1,SH0300L2000_1
+CMX0300L2,3,03300L2000_0,Tepalcates,Tacubaya to Tepalcates,0,SH0300L2000_0
+CMX0300L2,2,03200L2000_1,Tacubaya,Tepalcates to Tacubaya,1,SH0300L2000_1
+CMX0300L2,2,03200L2000_0,Tepalcates,Tacubaya to Tepalcates,0,SH0300L2000_0
+CMX0300L2,1,03100L2000_1,Tacubaya,Tepalcates to Tacubaya,1,SH0300L2000_1
+CMX0300L2,1,03100L2000_0,Tepalcates,Tacubaya to Tepalcates,0,SH0300L2000_0
+CMX0300L2,3,03300L2002_1,Colonia del Valle,Tepalcates to Colonia del Valle,1,SH0300L2002_1
+CMX0300L2,3,03300L2002_0,Tepalcates,Colonia del Valle to Tepalcates,0,SH0300L2002_0
+CMX0300L2,2,03200L2002_1,Colonia del Valle,Tepalcates to Colonia del Valle,1,SH0300L2002_1
+CMX0300L2,2,03200L2002_0,Tepalcates,Colonia del Valle to Tepalcates,0,SH0300L2002_0
+CMX0300L2,1,03100L2002_1,Colonia del Valle,Tepalcates to Colonia del Valle,1,SH0300L2002_1
+CMX0300L2,1,03100L2002_0,Tepalcates,Colonia del Valle to Tepalcates,0,SH0300L2002_0
+CMX0300L2,0,03000L2005_1,Dr. Gálvez,Rojo Gómez to Dr. Gálvez,1,SH0300L2005_1
+CMX0300L2,0,03000L2005_0,Rojo Gómez,Dr. Gálvez to Rojo Gómez,0,SH0300L2005_0
+CMX0300L3,3,03300L3004_1,Indios Verdes,Pueblo Sta. Cruz Atoyac to Indios Verdes,1,SH0300L3004_1
+CMX0300L3,3,03300L3004_0,Pueblo Sta. Cruz Atoyac,Indios Verdes to Pueblo Sta. Cruz Atoyac,0,SH0300L3004_0
+CMX0300L3,2,03200L3004_1,Indios Verdes,Pueblo Sta. Cruz Atoyac to Indios Verdes,1,SH0300L3004_1
+CMX0300L3,2,03200L3004_0,Pueblo Sta. Cruz Atoyac,Indios Verdes to Pueblo Sta. Cruz Atoyac,0,SH0300L3004_0
+CMX0300L3,1,03100L3004_1,Indios Verdes,Pueblo Sta. Cruz Atoyac to Indios Verdes,1,SH0300L3004_1
+CMX0300L3,1,03100L3004_0,Pueblo Sta. Cruz Atoyac,Indios Verdes to Pueblo Sta. Cruz Atoyac,0,SH0300L3004_0
+CMX0300L3,3,03300L3003_1,Tenayuca,Buenavista to Tenayuca,1,SH0300L3003_1
+CMX0300L3,3,03300L3003_0,Buenavista,Tenayuca to Buenavista,0,SH0300L3003_0
+CMX0300L3,2,03200L3003_1,Tenayuca,Buenavista to Tenayuca,1,SH0300L3003_1
+CMX0300L3,2,03200L3003_0,Buenavista,Tenayuca to Buenavista,0,SH0300L3003_0
+CMX0300L3,1,03100L3003_1,Tenayuca,Buenavista to Tenayuca,1,SH0300L3003_1
+CMX0300L3,1,03100L3003_0,Buenavista,Tenayuca to Buenavista,0,SH0300L3003_0
+CMX0300L3,3,03300L3002_1,Tenayuca,La Raza to Tenayuca,1,SH0300L3002_1
+CMX0300L3,3,03300L3002_0,La Raza,Tenayuca to La Raza,0,SH0300L3002_0
+CMX0300L3,2,03200L3002_1,Tenayuca,La Raza to Tenayuca,1,SH0300L3002_1
+CMX0300L3,2,03200L3002_0,La Raza,Tenayuca to La Raza,0,SH0300L3002_0
+CMX0300L3,1,03100L3002_1,Tenayuca,La Raza to Tenayuca,1,SH0300L3002_1
+CMX0300L3,1,03100L3002_0,La Raza,Tenayuca to La Raza,0,SH0300L3002_0
+CMX0300L3,2,03200L3001_1,Tenayuca,Balderas to Tenayuca,1,SH0300L3001_1
+CMX0300L3,2,03200L3001_0,Balderas,Tenayuca to Balderas,0,SH0300L3001_0
+CMX0300L3,1,03100L3001_1,Tenayuca,Balderas to Tenayuca,1,SH0300L3001_1
+CMX0300L3,1,03100L3001_0,Balderas,Tenayuca to Balderas,0,SH0300L3001_0
+CMX0300L3,3,03300L3000_1,Tenayuca,Pueblo Sta. Cruz Atoyac to Tenayuca,1,SH0300L3000_1
+CMX0300L3,3,03300L3000_0,Pueblo Sta. Cruz Atoyac,Tenayuca to Pueblo Sta. Cruz Atoyac,0,SH0300L3000_0
+CMX0300L3,2,03200L3000_1,Tenayuca,Pueblo Sta. Cruz Atoyac to Tenayuca,1,SH0300L3000_1
+CMX0300L3,2,03200L3000_0,Pueblo Sta. Cruz Atoyac,Tenayuca to Pueblo Sta. Cruz Atoyac,0,SH0300L3000_0
+CMX0300L3,1,03100L3000_1,Tenayuca,Pueblo Sta. Cruz Atoyac to Tenayuca,1,SH0300L3000_1
+CMX0300L3,1,03100L3000_0,Pueblo Sta. Cruz Atoyac,Tenayuca to Pueblo Sta. Cruz Atoyac,0,SH0300L3000_0
+CMX0300L7,2,03200L7007_1,Garibaldi,Campo Marte to Garibaldi,1,SH0300L7007_1
+CMX0300L7,2,03200L7007_0,Campo Marte,Garibaldi to Campo Marte,0,SH0300L7007_0
+CMX0300L7,1,03100L7007_1,Garibaldi,Campo Marte to Garibaldi,1,SH0300L7007_1
+CMX0300L7,1,03100L7007_0,Campo Marte,Garibaldi to Campo Marte,0,SH0300L7007_0
+CMX0300L7,1,03100L7005_1,Indios Verdes,Hamburgo to Indios Verdes,1,SH0300L7005_1
+CMX0300L7,1,03100L7005_0,Hamburgo,Indios Verdes to Hamburgo,0,SH0300L7005_0
+CMX0300L7,1,03100L7004_1,Hospital Infantil La Villa,La Diana to Hospital Infantil La Villa,1,SH0300L7004_1
+CMX0300L7,1,03100L7004_0,La Diana,Hospital Infantil La Villa to La Diana,0,SH0300L7004_0
+CMX0300L7,3,03300L7003_1,Indios Verdes,La Diana to Indios Verdes,1,SH0300L7003_1
+CMX0300L7,3,03300L7003_0,La Diana,Indios Verdes to La Diana,0,SH0300L7003_0
+CMX0300L7,1,03100L7003_1,Indios Verdes,La Diana to Indios Verdes,1,SH0300L7003_1
+CMX0300L7,1,03100L7003_0,La Diana,Indios Verdes to La Diana,0,SH0300L7003_0
+CMX0300L7,2,03200L7001_1,Hospital Infantil La Villa,Campo Marte to Hospital Infantil La Villa,1,SH0300L7001_1
+CMX0300L7,2,03200L7001_0,Campo Marte,Hospital Infantil La Villa to Campo Marte,0,SH0300L7001_0
+CMX0300L7,3,03300L7001_1,Hospital Infantil La Villa,Campo Marte to Hospital Infantil La Villa,1,SH0300L7001_1
+CMX0300L7,3,03300L7001_0,Campo Marte,Hospital Infantil La Villa to Campo Marte,0,SH0300L7001_0
+CMX0300L7,1,03100L7001_1,Hospital Infantil La Villa,Campo Marte Hospital Infantil La Villa,1,SH0300L7001_1
+CMX0300L7,1,03100L7001_0,Campo Marte,Hospital Infantil La Villa to Campo Marte,0,SH0300L7001_0
+CMX0300L7,3,03300L7000_1,Indios Verdes,Campo Marte to Indios Verdes,1,SH0300L7000_1
+CMX0300L7,3,03300L7000_0,Campo Marte,Indios Verdes to Campo Marte,0,SH0300L7000_0
+CMX0300L7,2,03200L7000_1,Indios Verdes,Campo Marte to Indios Verdes,1,SH0300L7000_1
+CMX0300L7,2,03200L7000_0,Campo Marte,Indios Verdes to Campo Marte,0,SH0300L7000_0
+CMX0300L7,1,03100L7000_1,Indios Verdes,Campo Marte to Indios Verdes,1,SH0300L7000_1
+CMX0300L7,1,03100L7000_0,Campo Marte,Indios Verdes to Campo Marte,0,SH0300L7000_0
+CMX0400L7,3,04300L7000_1,CETRAM Periférico,Ciudad Universitaria - Estadio C.U. to CETRAM Periférico,1,SH0400L7000_1
+CMX0400L7,3,04300L7000_0,Ciudad Universitaria - Estadio C.U.,CETRAM Periférico to Ciudad Universitaria - Estadio C.U.,0,SH0400L7000_0
+CMX0400L7,4,04400L7000_1,CETRAM Periférico,Ciudad Universitaria - Estadio C.U. to CETRAM Periférico,1,SH0400L7000_1
+CMX0400L7,4,04400L7000_0,Ciudad Universitaria - Estadio C.U.,CETRAM Periférico to Ciudad Universitaria - Estadio C.U.,0,SH0400L7000_0
+CMX01025A,0,010025A000_1,Cam. a Nativitas y C. Madreselva,Tasqueña to Madreselva,1,SH01025A000_1
+CMX01025A,0,010025A000_0,Canal de Miramontes y Calz. Tasqueña,Madreselva - Tasqueña,0,SH01025A000_0
+CMX01025B,0,010025B000_1,Av. H. Galena y Ciclamen,Metro Tasqueña - Galeana,1,SH01025B000_1
+CMX01025B,0,010025B000_0,Canal de Miramontes y Calz. Tasqueña,Galeana - Metro Tasqueña,0,SH01025B000_0
+CMX01025C,0,010025C000_1,México Norte y Michoacán Ote.,Tasqueña to Milpa Alta,1,SH01025C000_1
+CMX01025C,0,010025C000_0,Canal de Miramontes y Calz. Tasqueña,Milpa Alta to Tasqueña,0,SH01025C000_0
+CMX01025D,0,010025D000_1,Base San Gregorio,Metro Tasqueña to San Gregorio,1,SH01025D000_1
+CMX01025D,0,010025D000_0,Canal de Miramontes y Calz. Tasqueña,San Gregorio to Metro Tasqueña,0,SH01025D000_0
+CMX01025E,0,010025E000_1,México Norte y Michoacán Ote.,Xochimilco to Milpa Alta,1,SH01025E000_1
+CMX01025E,0,010025E000_0,Gladiolas y Girasol,Milpa Alta to Xochimilco,0,SH01025E000_0
+CMX010Z3A,0,0100Z3A000_1,Base Cetram Taxqueña,Los Reyes Culhuacán to Metro Taxqueña,1,SH010Z3A000_1
+CMX010Z3A,0,0100Z3A000_0,Base Tlatolcatzin y Cacama,Metro Taxqueña to Los Reyes Culhuacán,0,SH010Z3A000_0
+CMX010Z3B,0,0100Z3B000_1,Base Cetram Taxqueña,Unidad San Marcos to Metro Taxqueña,1,SH010Z3B000_1
+CMX010Z3B,0,0100Z3B000_0,Unidad San Marcos - Luna,Metro Taxqueña to Unidad San Marcos,0,SH010Z3B000_0
+CMX010Z3C,0,0100Z3C000_1,CETRAM STC Metro Tasqueña,UAM Xochimilco to Metro Taxqueña x Bachilleres 4,1,SH010Z3C000_1
+CMX010Z3C,0,0100Z3C000_0,Candelaria Pérez y Calz. de las Bombas,Metro Taxqueña to UAM Xochimilco x Bachilleres 4,0,SH010Z3C000_0
+CMX010Z3D,0,0100Z3D000_1,CETRAM STC Metro Tasqueña,UAM Xochimilco to Metro Taxqueña x Carmen 8-9,1,SH010Z3D000_1
+CMX010Z3D,0,0100Z3D000_0,Calz. de las Bombas y Candelaria Pérez,Metro Taxqueña to UAM Xochimilco x Carmen 8-9,0,SH010Z3D000_0
+CMX010Z3E,0,0100Z3E000_1,CETRAM STC Metro Tasqueña,UAM Xochimilco to Metro Taxqueña x 18-19,1,SH010Z3E000_1
+CMX010Z3E,0,0100Z3E000_0,Candelaria Pérez y Calz. de las Bombas,Metro Taxqueña to UAM Xochimilco x 18-19,0,SH010Z3E000_0
+CMX010Z3F,0,0100Z3F000_1,CETRAM STC Metro Tasqueña,Técnicos y Manuales to Metro Taxqueña,1,SH010Z3F000_1
+CMX010Z3F,0,0100Z3F000_0,Base Canal de Chalco y Periférico,Metro Taxqueña to Técnicos y Manuales,0,SH010Z3F000_0
+CMX010Z3G,0,0100Z3G000_1,CETRAM STC Metro Tasqueña,UACM Tezonco to Metro Taxqueña x Escuela,1,SH010Z3G000_1
+CMX010Z3G,0,0100Z3G000_0,Base Av. 4 UACM Tezonco,Metro Taxqueña to UACM Tezonco x Escuela,0,SH010Z3G000_0
+CMX010Z3H,0,0100Z3H000_1,CETRAM STC Metro Tasqueña,UACM Tezonco to Metro Taxqueña x Torres,1,SH010Z3H000_1
+CMX010Z3H,0,0100Z3H000_0,Base Av. 4 UACM Tezonco,Metro Taxqueña to UACM Tezonco x Torres,0,SH010Z3H000_0
+CMX05300B,4,054300B000_1,Frente Centro comercial paseos Acoxpa,Santa Fe to Paseo Acoxpa,1,SH05300B000_1
+CMX05300B,4,054300B000_0,Av. Carlos Fernandez Graez,Paseo Acoxpa to Santa Fe,0,SH05300B000_0
+CMX010Z4A,0,0100Z4A000_1,Base Av. de las Torres y Av. Central,Metro Santa Anita - Vergel,1,SH010Z4A000_1
+CMX010Z4A,0,0100Z4A000_0,Base Metro Santa Anita,Vergel - Metro Santa Anita,0,SH010Z4A000_0
+CMX010Z4B,0,0100Z4B000_1,Base Eje 6 Norte Villa de Ayala y Tixtla,Santa Anita to San Felipe,1,SH010Z4B000_1
+CMX010Z4B,0,0100Z4B000_0,Base Eje 2 Ote. H. Congreso de la Unión y Prol. Canal Nacional,San Felipe - Santa Anita,0,SH010Z4B000_0
+CMX010Z4C,0,0100Z4C000_1,Base CETRAM Metro Potrero y,Gertrudis Sánchez to Metro Potrero,1,SH010Z4C000_1
+CMX010Z4C,0,0100Z4C000_0,Base Av. Victoria Ote. y Norte 88-A,Metro Potrero - Gertrudis Sánchez,0,SH010Z4C000_0
+CMX010Z4D,0,0100Z4D000_1,Base CETRAM Metro Potrero y,Metro Eduardo Molina To Metro Potrero,1,SH010Z4D000_1
+CMX010Z4D,0,0100Z4D000_0,Base Oriente 83 y Norte 86,Metro Potrero To Metro Eduardo Molina,0,SH010Z4D000_0
+CMX010Z4E,0,0100Z4E000_1,Eje 1 Ote. Anillo de Circunvalación y Plaza de san Pablo,Carretones -Tepito,1,SH010Z4E000_1
+CMX010Z4E,0,0100Z4E000_0,Eje 1 Ote. Anillo de Circunvalación y Plaza de san Pablo,Carretones -Tepito,0,SH010Z4E000_0
+CMX010Z4F,0,0100Z4F000_1,Retorno en U Valle de Guadania y Valle del Tajo,Metro San Lázaro To Valle de Aragón To Múzquiz,1,SH010Z4F000_1
+CMX010Z4F,0,0100Z4F000_0,Base CETRAM Metro San Lázaro,Valle de Aragón To Metro San Lázaro,0,SH010Z4F000_0
+CMX010Z4G,0,0100Z4G000_1,Base Av. Valle de Guadania y Av. Valle de Santiago,Metro San Lázaro to Valle de Guadalupe to Múzquiz,1,SH010Z4G000_1
+CMX010Z4G,0,0100Z4G000_0,Base CETRAM Metro San Lázaro,Valle de Guadalupe to Metro San Lázaro,0,SH010Z4G000_0
+CMX010Z4H,0,0100Z4H000_1,Base Av. del  Valle del Yang-Tse y Valle de La Mota,Pino Suárez to Metro Impulsora,1,SH010Z4H000_1
+CMX010Z4H,0,0100Z4H000_0,Base Metro Pino Suárez y,Metro Impulsora to Pino Suárez,0,SH010Z4H000_0
+CMX010Z4I,0,0100Z4I000_1,Base Av. del  Valle del Yang-Tse y Valle de La Mota,Metro Balbuena - Metro Impulsora,1,SH010Z4I000_1
+CMX010Z4I,0,0100Z4I000_0,Base Calz. Ignacio Zaragoza y C. 17,Metro Impulsora - Metro Balbuena,0,SH010Z4I000_0
+CMX010Z4J,0,0100Z4J000_1,Base Cuautla y Villa de Ayala,Metro Aeropuerto - Esmeralda,1,SH010Z4J000_1
+CMX010Z4J,0,0100Z4J000_0,Base Metro Aeropuerto,Esmeralda - Metro Aeropuerto,0,SH010Z4J000_0
+CMX010Z4K,0,0100Z4K000_1,Base Blvd. Río de los Remedios y Av. Central,Metro Aeropuerto - Metro Rio de los Remedios,1,SH010Z4K000_1
+CMX010Z4K,0,0100Z4K000_0,Base Metro Aeropuerto,Metro Rio de los Remedios - Metro Aeropuerto,0,SH010Z4K000_0
+CMX03SL01,1,031SEL1001_1,Glorieta Cuitláhuac,Alameda Tacubaya to Glorieta Cuitláhuac,1,SH03SL01001_1
+CMX03SL01,1,031SEL1001_0,Alameda Tacubaya,Glorieta Cuitláhuac to Alameda Tacubaya,0,SH03SL01001_0
+CMX03SL01,3,033SEL1000_1,París,Alameda Tacubaya a París,1,SH03SL01000_1
+CMX03SL01,3,033SEL1000_0,Alameda Tacubaya,París a Alameda Tacubaya,0,SH03SL01000_0
+CMX03SL01,4,034SEL1000_1,París,Alameda Tacubaya a París,1,SH03SL01000_1
+CMX03SL01,4,034SEL1000_0,Alameda Tacubaya,París a Alameda Tacubaya,0,SH03SL01000_0
+CMX010Z2A,0,0100Z2A000_1,Base Plateros,San Ángel to Santa Lucía,1,SH010Z2A000_1
+CMX010Z2A,0,0100Z2A000_0,Base Dr. Galvez,Santa Lucía to San Ángel,0,SH010Z2A000_0
+CMX010Z2B,0,0100Z2B000_1,Base Llano Redondo,Metro Barranca del Muerto to Llano Redondo,1,SH010Z2B000_1
+CMX010Z2B,0,0100Z2B000_0,Base CETRAM Barranca del Muerto,Llano Redondo to Metro Barranca del Muerto,0,SH010Z2B000_0
+CMX010Z2C,0,0100Z2C000_1,Base Bosques,Metro Barranca del Muerto to Llano Redondo,1,SH010Z2C000_1
+CMX010Z2C,0,0100Z2C000_0,Base CETRAM Barranca del Muerto,Llano Redondo to Metro Barranca del Muerto,0,SH010Z2C000_0
+CMX010Z2D,0,0100Z2D000_1,Base Tarango,Metro Barranca del Muerto to Tarango,1,SH010Z2D000_1
+CMX010Z2D,0,0100Z2D000_0,Base CETRAM Barranca del Muerto,Tarango to Metro Barranca del Muerto,0,SH010Z2D000_0
+CMX010Z2E,0,0100Z2E000_1,Base Puente Colorado,Metro Mixcoac to Puente Colorado,1,SH010Z2E000_1
+CMX010Z2E,0,0100Z2E000_0,Base CETRAM Mixcoac,Puente Colorado to Metro Mixcoac,0,SH010Z2E000_0
+CMX010Z2F,0,0100Z2F000_1,Base San Bartolo,Metro Mixcoac to San Bartolo,1,SH010Z2F000_1
+CMX010Z2F,0,0100Z2F000_0,Base CETRAM Mixcoac,San Bartolo to Metro Mixcoac,0,SH010Z2F000_0
+CMX010Z2G,0,0100Z2G000_1,Llano Redondo,Metro Mixcoac to Puerta Grande,1,SH010Z2G000_1
+CMX010Z2G,0,0100Z2G000_0,Base CETRAM Mixcoac,Puerta Grande to Metro Mixcoac,0,SH010Z2G000_0
+CMX010Z2H,0,0100Z2H000_1,Base Queso,Metro Mixcoac - Queso,1,SH010Z2H000_1
+CMX010Z2H,0,0100Z2H000_0,Base CETRAM Mixcoac,Queso - Mixcoac,0,SH010Z2H000_0
+CMX010Z2I,0,0100Z2I000_1,Base Cehuayo,Metro Tacubaya to Cehuayo,1,SH010Z2I000_1
+CMX010Z2I,0,0100Z2I000_0,Base CETRAM Tacubaya,Cehuayo to Metro Tacubaya,0,SH010Z2I000_0
+CMX010Z2J,0,0100Z2J000_1,Base Tepeaca,Metro Tacubaya to Tepeaca,1,SH010Z2J000_1
+CMX010Z2J,0,0100Z2J000_0,Base CETRAM Tacubaya,Tepeaca to Metro Tacubaya,0,SH010Z2J000_0
+CMX0400L1,3,04300L1000_1,Central del Norte,Central del Sur to Central del Norte,1,SH0400L1000_1
+CMX0400L1,3,04300L1000_0,Central del Sur,Central del Norte to Central del Sur,0,SH0400L1000_0
+CMX0400L1,4,04400L1000_1,Central del Norte,Central del Sur to Central del Norte,1,SH0400L1000_1
+CMX0400L1,4,04400L1000_0,Central del Sur,Central del Norte to Central del Sur,0,SH0400L1000_0
+CMX0400L2,3,04300L2000_1,Chapultepec,Pantitlán to Chapultepec,1,SH0400L2000_1
+CMX0400L2,3,04300L2000_0,Pantitlán,Chapultepec to Pantitlán,0,SH0400L2000_0
+CMX0400L2,4,04400L2000_1,Chapultepec,Pantitlán to Chapultepec,1,SH0400L2000_1
+CMX0400L2,4,04400L2000_0,Pantitlán,Chapultepec to Pantitlán,0,SH0400L2000_0
+CMX0400L3,3,04300L3000_1,Museo de Transportes Eléctricos,Mixcoac Sur to Museo de Transportes Eléctricos,1,SH0400L3000_1
+CMX0400L3,3,04300L3000_0,Mixcoac Norte,Museo de Transportes Eléctricos to Mixcoac Norte,0,SH0400L3000_0
+CMX0400L3,4,04400L3000_1,Museo de Transportes Eléctricos,Mixcoac Sur to Museo de Transportes Eléctricos,1,SH0400L3000_1
+CMX0400L3,4,04400L3000_0,Mixcoac Norte,Museo de Transportes Eléctricos to Mixcoac Norte,0,SH0400L3000_0
+CMX0400L4,4,04400L4000_1,Metro Boulevard Puerto Aéreo,El Rosario to Metro Boulevard Puerto Aéreo,1,SH0400L4000_1
+CMX0400L4,4,04400L4000_0,El Rosario,Metro Boulevard Puerto Aéreo to El Rosario,0,SH0400L4000_0
+CMX0400L4,3,04300L4000_1,Metro Boulevard Puerto Aéreo,El Rosario to Metro Boulevard Puerto Aéreo,1,SH0400L4000_1
+CMX0400L4,3,04300L4000_0,El Rosario,Metro Boulevard Puerto Aéreo to El Rosario,0,SH0400L4000_0
+CMX0400L6,4,04400L6000_1,El Rosario,Chapultepec to El Rosario,1,SH0400L6000_1
+CMX0400L6,4,04400L6000_0,Chapultepec,Metro el Rosario to Chapultepec,0,SH0400L6000_0
+CMX0400L6,3,04300L6000_1,El Rosario,Chapultepec to El Rosario,1,SH0400L6000_1
+CMX0400L6,3,04300L6000_0,Chapultepec,Metro el Rosario to Chapultepec,0,SH0400L6000_0
+CMX0400L9,3,04300L9000_1,Villa de Cortés,Tepalcates to Villa de Cortés,1,SH0400L9000_1
+CMX0400L9,3,04300L9000_0,Tepalcates,Villa de Cortés to  Tepalcates,0,SH0400L9000_0
+CMX0400L9,4,04400L9000_1,Villa de Cortés,Tepalcates to Villa de Cortés,1,SH0400L9000_1
+CMX0400L9,4,04400L9000_0,Tepalcates,Villa de Cortés to  Tepalcates,0,SH0400L9000_0
+CMX01020A,0,010020A000_1,Observatorio y Parque Lira,Metro Aeropuerto to Metro Tacubaya,1,SH01020A000_1
+CMX01020A,0,010020A000_0,Bulevar Puerto Aéreo BASE,Metro Tacubaya to Metro Aeropuerto,0,SH01020A000_0
+CMX01020B,0,010020B000_1,Circuito Interior - Metro Chapultepec,Metro Aeropuerto (Platino) - Metro Tacubaya,1,SH01020B000_1
+CMX01020B,0,010020B000_0,Bulevar Puerto Aéreo BASE,Metro Tacubaya to Metro Aeropuerto por Platino,0,SH01020B000_0
+CMX01020C,0,010020C000_1,Circuito Interior - Metro Chapultepec,La Raza Línea 3 to Juanacatlán,1,SH01020C000_1
+CMX01020C,0,010020C000_0,CETRAM La Raza BASE,Juanacatlán to La Raza Línea 3,0,SH01020C000_0
+CMX01020D,0,010020D000_1,Circuito Interior - Metro Chapultepec,La Raza Línea 5 to Juanacatlán,1,SH01020D000_1
+CMX01020D,0,010020D000_0,CETRAM La Raza BASE,Juanacatlán to La Raza Línea 5,0,SH01020D000_0
+CMX01021A,0,010021A000_1,Eje 10 sur y Melchor Ocampo (BASE),Chapultepec to San Ángel Clínica 4 y 8,1,SH01021A000_1
+CMX01021A,0,010021A000_0,Av. Chapultepec - Metro Chapultepec,San Ángel to Chapultepec por Mazatlán,0,SH01021A000_0
+CMX01021B,0,010021B000_1,Estadio CU (BASE),Chapultepec to San Ángel Estadio CU,1,SH01021B000_1
+CMX01021B,0,010021B000_0,Av. Chapultepec - Metro Chapultepec,San Ángel to Chapultepec por Circuito,0,SH01021B000_0
+CMX01021C,0,010021C000_1,Eje 10 sur y Melchor Ocampo (BASE),Chapultepec to San Ángel Clínica 4 y 8,1,SH01021C000_1
+CMX01021C,0,010021C000_0,Revolución y Metro Barranca del Muerto,San Ángel to Barranca del Muerto,0,SH01021C000_0
+CMX01021D,0,010021D000_1,Eje 10 sur y Melchor Ocampo (BASE),Metro Observatorio to San Ángel Clínica 4 y 8,1,SH01021D000_1
+CMX01021D,0,010021D000_0,CETRAM Observatorio,Clínica 4 y 8 to Metro Observatorio,0,SH01021D000_0
+CMX01022A,0,010022A000_1,Base Metro Aeropuerto,Mixcoac to Metro Aeropuerto,1,SH01022A000_1
+CMX01022A,0,010022A000_0,Mixcoac BASE,Metro Aeropuerto to Mixcoac,0,SH01022A000_0
+CMX01022B,0,010022B000_1,Blvd Puerto Aéreo y UPPICSA BASE,Aeropuerto to UPPICSA,1,SH01022B000_1
+CMX01022B,0,010022B000_0,Base Metro Aeropuerto,UPPICSA to Metro Aeropuerto,0,SH01022B000_0
+CMX01022C,0,010022C000_1,Base Central de Abastos,Metro Aeropuerto to Central de Abastos,1,SH01022C000_1
+CMX01022C,0,010022C000_0,Base Metro Aeropuerto,Central de Abastos to Metro Aeropuerto,0,SH01022C000_0
+CMX01022D,0,010022D000_1,Granjeros BASE,Metro Aeropuerto to Av. 5,1,SH01022D000_1
+CMX01022D,0,010022D000_0,Base Metro Aeropuerto,Av. 5 to Metro Aeropuerto,0,SH01022D000_0
+CMX040L12,3,0430L12000_1,Perisur,Tasqueña to Perisur,1,SH040L12000_1
+CMX040L12,3,0430L12000_0,Tasqueña,Perisur to Tasqueña,0,SH040L12000_0
+CMX040L12,4,0440L12000_1,Perisur,Tasqueña to Perisur,1,SH040L12000_1
+CMX040L12,4,0440L12000_0,Tasqueña,Perisur to Tasqueña,0,SH040L12000_0
+CMX0300L5,1,03100L5003_1,Las Bombas,Preparatoria 1 to San Lázaro Sur,1,SH0300L5003_1
+CMX0300L5,1,03100L5003_0,Río de los Remedios,San Lázaro Sur to Preparatoria 1,0,SH0300L5003_0
+CMX0300L5,1,03100L5004_1,Las Bombas,Río de los Remedios to Las Bombas,1,SH0300L5004_1
+CMX0300L5,1,03100L5004_0,Río de los Remedios,Las Bombas to Río de los Remedios,0,SH0300L5004_0
+CMX0300L5,1,03100L5002_1,San Lázaro Sur,Las Bombas to San Lázaro Sur,1,SH0300L5002_1
+CMX0300L5,1,03100L5002_0,Las Bombas,San Lázaro Sur to Las Bombas,0,SH0300L5002_0
+CMX0300L5,1,03100L5001_1,Río de los Remedios,San Lázaro Norte to Río de los Remedios,1,SH0300L5001_1
+CMX0300L5,1,03100L5001_0,San Lázaro,Río de los Remedios to San Lázaro Norte,0,SH0300L5001_0
+CMX0300L5,3,03300L5000_1,Río de los Remedios,Preparatoria 1 to Río de los Remedios,1,SH0300L5000_1
+CMX0300L5,3,03300L5000_0,Preparatoria 1,Río de los Remedios to Preparatoria 1,0,SH0300L5000_0
+CMX0300L5,2,03200L5000_1,Río de los Remedios,Preparatoria 1 to Río de los Remedios,1,SH0300L5000_1
+CMX0300L5,2,03200L5000_0,Preparatoria 1,Río de los Remedios to Preparatoria 1,0,SH0300L5000_0
+CMX0300L5,1,03100L5000_1,Río de los Remedios,Preparatoria 1 to Río de los Remedios,1,SH0300L5000_1
+CMX0300L5,1,03100L5000_0,Preparatoria 1,Río de los Remedios to Preparatoria 1,0,SH0300L5000_0
+CMX040L10,0,0400L10000_1,Constitución de 1917,Acahualtepec to Constitución de 1917,1,SH040L10000_1
+CMX040L10,0,0400L10000_0,Acahualtepec,Constitución de 1917 to Acahualtepec,0,SH040L10000_0
+CMX0400L8,3,04300L8000_0,Zacatenco,Circuito Zacatenco,0,SH0400L8000_0
+CMX0400L8,4,04400L8000_0,Zacatenco,Circuito Zacatenco,0,SH0400L8000_0
+CMX0400L5,4,04400L5001_1,San Felipe de Jesús,La Diana to San Felipe de Jesús,1,SH0400L5002_1
+CMX0400L5,4,04400L5001_0,La Diana,San Felipe de Jesús to La Diana,0,SH0400L5002_0
+CMX0400L5,3,04300L5000_1,San Felipe de Jesús,Metro Hidalgo to San Felipe de Jesús,1,SH0400L5000_1
+CMX0400L5,3,04300L5000_0,Metro Hidalgo,San Felipe de Jesús to Metro Hidalgo,0,SH0400L5000_0
+CMX0400L5,4,04400L5000_1,San Felipe de Jesús,Metro Hidalgo to San Felipe de Jesús,1,SH0400L5000_1
+CMX0400L5,4,04400L5000_0,Metro Hidalgo,San Felipe de Jesús to Metro Hidalgo,0,SH0400L5000_0
+CMX100001,0,1000001000_1,Zinacantepec,Zinacantepec - Santa Fe,1,SH100001000_1
+CMX100001,0,1000001000_0,Santa Fe,Santa Fe - Zinacantepec,0,SH100001000_0
+CMX0200L9,3,02300L9000_1,Pantitlán,Tacubaya to Pantitlán,1,SH0200L9000_1
+CMX0200L9,3,02300L9000_0,Tacubaya,Pantitlán to Tacubaya,0,SH0200L9000_0
+CMX0200L9,2,02200L9000_1,Pantitlán,Tacubaya to Pantitlán,1,SH0200L9000_1
+CMX0200L9,2,02200L9000_0,Tacubaya,Pantitlán to Tacubaya,0,SH0200L9000_0
+CMX0200L9,1,02100L9000_1,Pantitlán,Tacubaya to Pantitlán,1,SH0200L9000_1
+CMX0200L9,1,02100L9000_0,Tacubaya,Pantitlán to Tacubaya,0,SH0200L9000_0
+CMX05E1L1,3,053SEL1001_1,Balderas,Observatorio to Balderas,1,SH05SEL1001_1
+CMX05E1L1,3,053SEL1001_0,Observatorio,Balderas to Observatorio,0,SH05SEL1001_0
+CMX05E1L1,2,052SEL1001_1,Balderas,Observatorio to Balderas,1,SH05SEL1001_1
+CMX05E1L1,2,052SEL1001_0,Observatorio,Balderas to Observatorio,0,SH05SEL1001_0
+CMX05E1L1,1,051SEL1001_1,Balderas,Observatorio to Balderas,1,SH05SEL1001_1
+CMX05E1L1,1,051SEL1001_0,Observatorio,Balderas to Observatorio,0,SH05SEL1001_0
+CMX05E2L1,3,053SEL1002_1,Balderas,CETRAM Chapultepec to Balderas,1,SH05SEL1002_1
+CMX05E2L1,3,053SEL1002_0,CETRAM Chapultepec,Balderas to CETRAM Chapultepec,0,SH05SEL1002_0
+CMX05E2L1,2,052SEL1002_1,Balderas,CETRAM Chapultepec to Balderas,1,SH05SEL1002_1
+CMX05E2L1,2,052SEL1002_0,CETRAM Chapultepec,Balderas to CETRAM Chapultepec,0,SH05SEL1002_0
+CMX05E2L1,1,051SEL1002_1,Balderas,CETRAM Chapultepec to Balderas,1,SH05SEL1002_1
+CMX05E2L1,1,051SEL1002_0,CETRAM Chapultepec,Balderas to CETRAM Chapultepec,0,SH05SEL1002_0
+CMX05E3L1,3,053SEL1003_1,Balderas,Alameda Tacubaya to Balderas,1,SH05SEL1003_1
+CMX05E3L1,3,053SEL1003_0,Alameda Tacubaya,Balderas to Alameda Tacubaya,0,SH05SEL1003_0
+CMX05E3L1,2,052SEL1003_1,Balderas,Alameda Tacubaya to Balderas,1,SH05SEL1003_1
+CMX05E3L1,2,052SEL1003_0,Alameda Tacubaya,Balderas to Alameda Tacubaya,0,SH05SEL1003_0
+CMX05E3L1,1,051SEL1003_1,Balderas,Alameda Tacubaya to Balderas,1,SH05SEL1003_1
+CMX05E3L1,1,051SEL1003_0,Alameda Tacubaya,Balderas to Alameda Tacubaya,0,SH05SEL1003_0
+CMX05E4L1,3,053SEL1004_1,Observatorio,Tacubaya to Observatorio,1,SH05SEL1004_1
+CMX05E4L1,3,053SEL1004_0,CETRAM Tacubaya,Observatorio to Tacubaya,0,SH05SEL1004_0
+CMX05E4L1,2,052SEL1004_1,Observatorio,Tacubaya to Observatorio,1,SH05SEL1004_1
+CMX05E4L1,2,052SEL1004_0,CETRAM Tacubaya,Observatorio to Tacubaya,0,SH05SEL1004_0
+CMX05E4L1,1,051SEL1004_1,Observatorio,Tacubaya to Observatorio,1,SH05SEL1004_1
+CMX05E4L1,1,051SEL1004_0,CETRAM Tacubaya,Observatorio to Tacubaya,0,SH05SEL1004_0
+CMX0800L3,3,08300L3000_1,Vasco de Quiroga,Los Pinos Constituyentes to Vasco de Quiroga,1,SH0800L3000_1
+CMX0800L3,3,08300L3000_0,Los Pinos Constituyentes,Vasco de Quiroga to Los Pinos Constituyentes,0,SH0800L3000_0
+CMX0800L3,2,08200L3000_1,Vasco de Quiroga,Los Pinos Constituyentes to Vasco de Quiroga,1,SH0800L3000_1
+CMX0800L3,2,08200L3000_0,Los Pinos Constituyentes,Vasco de Quiroga to Los Pinos Constituyentes,0,SH0800L3000_0
+CMX0800L3,1,08100L3000_1,Vasco de Quiroga,Los Pinos Constituyentes to Vasco de Quiroga,1,SH0800L3000_1
+CMX0800L3,1,08100L3000_0,Los Pinos Constituyentes,Vasco de Quiroga to Los Pinos Constituyentes,0,SH0800L3000_0
+CMX05115N,0,050115N000_1,Av. Jesús del Monte y Ocote,Metro Chapultepec to Jesús del Monte (Cuajimalpa),1,SH050115000_1
+CMX05115N,0,050115N000_0,Circuito Interior - Metro Chapultepec,Jesús del Monte (Cuajimalpa) to Metro Chapultepec,0,SH050115000_0
+CMX05115O,5,055115O000_1,Av. Jesús del Monte y Ocote,Metro Tacubaya (Av. Jalisco) to Jesús del Monte (Cuajimalpa),1,SH050115001_1
+CMX05115O,5,055115O000_0,Iturbe y Av. Jalisco,Jesús del Monte (Cuajimalpa) to Metro Tacubaya (Av. Jalisco),0,SH050115001_0
+CMX05115O,1,051115O000_1,Av. Jesús del Monte y Ocote,Metro Tacubaya (Av. Jalisco) to Jesús del Monte (Cuajimalpa),1,SH050115001_1
+CMX05115O,1,051115O000_0,Iturbe y Av. Jalisco,Jesús del Monte (Cuajimalpa) to Metro Tacubaya (Av. Jalisco),0,SH050115001_0
