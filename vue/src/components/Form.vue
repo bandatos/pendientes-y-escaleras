@@ -129,6 +129,11 @@ const handleSubmit = async () => {
         label="Número de Línea"
         item-title="line"
       >
+        <template v-slot:chip="{ props, item }">
+          <v-chip v-bind="props" :color="item?.raw?.color">
+            {{ item.raw.name }}
+          </v-chip>
+        </template>
         <template v-slot:item="{ props, item }">
           <v-list-item
             v-bind="props"

@@ -11,7 +11,7 @@ import { getNetworkDetection } from '../services/networkDetection.js'
 export const useSyncStore = defineStore('sync', () => {
   // Estado reactivo                     ⬆️id único    
   const report = ref({
-    line: "",
+    line: null,
     station: "",
     typeElevation: "",
     isWorking: true,
