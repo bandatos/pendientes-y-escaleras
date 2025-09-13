@@ -159,12 +159,13 @@ const handleSubmit = async () => {
         v-model="syncStore.report.isWorking"
         label="¿Funciona?"
         inline
+        color="primary"
       >
-        <v-radio label="Sí" value="true"></v-radio>
-        <v-radio label="No" value="false"></v-radio>
+        <v-radio label="Sí" :value="true" color="success" />
+        <v-radio label="No" :value="false" color="error" />
       </v-radio-group>
       <v-file-input
-        v-if="syncStore.report.isWorking === 'false'"
+        v-if="syncStore.report.isWorking === false"
         v-model="syncStore.report.evidenceImage"
         :label="'Subir Evidencia'"
       ></v-file-input>
