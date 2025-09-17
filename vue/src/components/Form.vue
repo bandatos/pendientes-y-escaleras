@@ -4,6 +4,8 @@ import UploadImage from "./UploadImage.vue";
 import Button from "./Button.vue";
 import { ref, onMounted, computed } from "vue";
 import { useSyncStore } from "../stores/syncStore.js";
+import useImageStore from "../stores/imageStore";
+import { storeToRefs } from "pinia";
 
 /* Estado del formulario -> Equivalente al data dentro de OptionsAPI */
 const isSubmitting = ref(false);
@@ -12,6 +14,9 @@ const submitMessage = ref("");
 /* Connectar con el uso del store para su uso con los componentes*/
 // Store
 const syncStore = useSyncStore();
+const imageStore = useImageStore();
+
+const { modelPhoto } = storeToRefs(imageStore);
 
 // Computed properties para mostrar estado
 const connectionStatus = computed(
@@ -24,6 +29,21 @@ const pendingCount = computed(() => syncStore.syncStats.pending);
 onMounted(() => {
   syncStore.init(); //Acceso a una action
 });
+
+const transformImage = async () => {
+  try {
+    let file = await convertBase64(modelPhoto);
+    return {
+      file,
+      status: "success",
+    };
+  } catch (error) {
+    return {
+      file: "",
+      status: "error",
+    };
+  }
+};
 
 // Manejar envío del formulario
 const handleSubmit = async () => {
@@ -38,6 +58,14 @@ const handleSubmit = async () => {
 
   isSubmitting.value = true;
   submitMessage.value = "";
+
+  //Converir imagen primero
+  const fileTransform = transformImage();
+  if (fileTransform.status == "error") {
+    submitMessage.value = "❌ Error al transfomra el archivo";
+  } else {
+    syncStore.report.evidenceImage = fileTransform.file;
+  }
 
   try {
     const formData = {

@@ -1,6 +1,8 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue"
 
+import { parseDocToB64 } from "../helpers/helpers.js"
+
 export const useImageStore = defineStore('imageStore', () => {
 
 //State
@@ -15,7 +17,7 @@ export const useImageStore = defineStore('imageStore', () => {
     //Actions
     async function convertBase64(document) {
         const file = await parseDocToB64(document);
-
+        return file;
     }
 
 
@@ -23,6 +25,9 @@ export const useImageStore = defineStore('imageStore', () => {
         //State
         tag,
         modelPhoto,
+
+        //Actions
+        convertBase64,
     }
 });
 

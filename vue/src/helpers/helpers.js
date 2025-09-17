@@ -13,3 +13,7 @@ function transformToB64(file) {
         reader.onerror = (error) => reject(error);
     });
 }
+
+export {
+    parseDocToB64
+}
