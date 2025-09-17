@@ -205,7 +205,7 @@ const lines = ref([
     //dummy data
     lines,
     
-    // Computed
+    // Computed or getters
     syncProgress,
     hasPendingData,
     

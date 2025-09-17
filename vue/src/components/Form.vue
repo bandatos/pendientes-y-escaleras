@@ -1,18 +1,11 @@
 <script setup>
 import TextField from "./TextField.vue";
+import UploadImage from "./UploadImage.vue";
 import Button from "./Button.vue";
 import { ref, onMounted, computed } from "vue";
 import { useSyncStore } from "../stores/syncStore.js";
 
 /* Estado del formulario -> Equivalente al data dentro de OptionsAPI */
-
-// Form data
-/* const line = ref("");
-const station = ref("");
-const typeElevation = ref(""); //Stair, Elevator or Stair Lift
-const isWorking = ref(true);
-const evidenceImage = ref(""); */
-
 const isSubmitting = ref(false);
 const submitMessage = ref("");
 
@@ -164,11 +157,11 @@ const handleSubmit = async () => {
         <v-radio label="Sí" :value="true" color="success" />
         <v-radio label="No" :value="false" color="error" />
       </v-radio-group>
-      <v-file-input
+
+      <UploadImage
         v-if="syncStore.report.isWorking === false"
         v-model="syncStore.report.evidenceImage"
-        :label="'Subir Evidencia'"
-      ></v-file-input>
+      />
 
       <!-- Submit button with loading state -->
       <Button
