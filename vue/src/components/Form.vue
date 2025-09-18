@@ -32,12 +32,30 @@ onMounted(() => {
 
 const transformImage = async () => {
   try {
-    let file = await convertBase64(modelPhoto);
+    // Verificar que hay archivo para procesar
+    if (!modelPhoto.value) {
+      return {
+        file: "",
+        status: "no_file",
+      };
+    }
+
+    // Debug: verificar qué contiene modelPhoto
+    console.log("🔍 modelPhoto.value:", modelPhoto.value);
+    console.log("🔍 Es array?", Array.isArray(modelPhoto.value));
+    console.log("🔍 Es File?", modelPhoto.value instanceof File);
+
+    // Obtener el File object (directo, no array)
+    const fileToConvert = modelPhoto.value;
+
+    // Convertir archivo a base64
+    let file = await imageStore.convertBase64(fileToConvert);
     return {
       file,
       status: "success",
     };
   } catch (error) {
+    console.error("Error transformando imagen:", error);
     return {
       file: "",
       status: "error",
@@ -59,13 +77,16 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
   submitMessage.value = "";
 
-  //Converir imagen primero
-  const fileTransform = transformImage();
-  if (fileTransform.status == "error") {
-    submitMessage.value = "❌ Error al transfomra el archivo";
-  } else {
+  //Convertir imagen primero
+  const fileTransform = await transformImage();
+  if (fileTransform.status === "error") {
+    submitMessage.value = "❌ Error al transformar el archivo";
+    isSubmitting.value = false;
+    return;
+  } else if (fileTransform.status === "success") {
     syncStore.report.evidenceImage = fileTransform.file;
   }
+  // Si es "no_file", continúa sin imagen
 
   try {
     const formData = {
@@ -188,7 +209,8 @@ const handleSubmit = async () => {
 
       <UploadImage
         v-if="syncStore.report.isWorking === false"
-        v-model="syncStore.report.evidenceImage"
+        :title="'Subir Evidencia'"
+        :typeFiles="'image/*'"
       />
 
       <!-- Submit button with loading state -->
