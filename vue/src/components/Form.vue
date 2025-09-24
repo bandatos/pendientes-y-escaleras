@@ -1,46 +1,22 @@
 <script setup>
 import TextField from "./TextField.vue";
+import UploadImage from "./UploadImage.vue";
 import Button from "./Button.vue";
 import { ref, onMounted, computed } from "vue";
 import { useSyncStore } from "../stores/syncStore.js";
+import useImageStore from "../stores/imageStore";
+import { storeToRefs } from "pinia";
 
 /* Estado del formulario -> Equivalente al data dentro de OptionsAPI */
-const lines = ref([
-  { line: "Línea 1", color: "#e9468f", name: "Observatorio - Pantitlán" },
-  { line: "Línea 2", color: "#00599f", name: "Cuatro Caminos - Tasqueña" },
-  { line: "Línea 3", color: "#b69c13", name: "Indios Verdes - Universidad" },
-  { line: "Línea 4", color: "#6cbab1", name: "Martín Carrera - Santa Anita" },
-  { line: "Línea 5", color: "#fdd200", name: "Pantitlán - Politécnico" },
-  { line: "Línea 6", color: "#da1715", name: "El Rosario - Martín Carrera" },
-  {
-    line: "Línea 7",
-    color: "#e97009",
-    name: "El Rosario - Barranca del Muerto",
-  },
-  {
-    line: "Línea 8",
-    color: "#008e3d",
-    name: "Garibaldi/Lagunilla - Constitución de 1917",
-  },
-  { line: "Línea 9", color: "#5b352e", name: "Tacubaya - Pantitlán" },
-  { line: "Línea A", color: "#9e1a81", name: "Pantitlán - La Paz" },
-  { line: "Línea B", color: "#bbb9b8", name: "Buenavista - Ciudad Azteca" },
-  { line: "Línea 12", color: "#c49955", name: "Mixcoac - Tláhuac" },
-]);
-
-// Form data
-/* const line = ref("");
-const station = ref("");
-const typeElevation = ref(""); //Stair, Elevator or Stair Lift
-const isWorking = ref(true);
-const evidenceImage = ref(""); */
-
 const isSubmitting = ref(false);
 const submitMessage = ref("");
 
 /* Connectar con el uso del store para su uso con los componentes*/
 // Store
 const syncStore = useSyncStore();
+const imageStore = useImageStore();
+
+const { modelPhoto } = storeToRefs(imageStore);
 
 // Computed properties para mostrar estado
 const connectionStatus = computed(
@@ -53,6 +29,39 @@ const pendingCount = computed(() => syncStore.syncStats.pending);
 onMounted(() => {
   syncStore.init(); //Acceso a una action
 });
+
+const transformImage = async () => {
+  try {
+    // Verificar que hay archivo para procesar
+    if (!modelPhoto.value) {
+      return {
+        file: "",
+        status: "no_file",
+      };
+    }
+
+    // Debug: verificar qué contiene modelPhoto
+    console.log("🔍 modelPhoto.value:", modelPhoto.value);
+    console.log("🔍 Es array?", Array.isArray(modelPhoto.value));
+    console.log("🔍 Es File?", modelPhoto.value instanceof File);
+
+    // Obtener el File object (directo, no array)
+    const fileToConvert = modelPhoto.value;
+
+    // Convertir archivo a base64
+    let file = await imageStore.convertBase64(fileToConvert);
+    return {
+      file,
+      status: "success",
+    };
+  } catch (error) {
+    console.error("Error transformando imagen:", error);
+    return {
+      file: "",
+      status: "error",
+    };
+  }
+};
 
 // Manejar envío del formulario
 const handleSubmit = async () => {
@@ -67,6 +76,17 @@ const handleSubmit = async () => {
 
   isSubmitting.value = true;
   submitMessage.value = "";
+
+  //Convertir imagen primero
+  const fileTransform = await transformImage();
+  if (fileTransform.status === "error") {
+    submitMessage.value = "❌ Error al transformar el archivo";
+    isSubmitting.value = false;
+    return;
+  } else if (fileTransform.status === "success") {
+    syncStore.report.evidenceImage = fileTransform.file;
+  }
+  // Si es "no_file", continúa sin imagen
 
   try {
     const formData = {
@@ -108,7 +128,7 @@ const handleSubmit = async () => {
       dentro de JS cuando tienes una const, más bien estamos mutando el contenido, no la
       referencia.
     */
-    syncStore.report.line = "";
+    syncStore.report.line = null;
     syncStore.report.station = "";
     syncStore.report.typeElevation = "";
     syncStore.report.isWorking = true;
@@ -147,10 +167,15 @@ const handleSubmit = async () => {
         -->
       <v-autocomplete
         v-model="syncStore.report.line"
-        :items="lines"
+        :items="syncStore.lines"
         label="Número de Línea"
         item-title="line"
       >
+        <template v-slot:chip="{ props, item }">
+          <v-chip v-bind="props" :color="item?.raw?.color">
+            {{ item.raw.name }}
+          </v-chip>
+        </template>
         <template v-slot:item="{ props, item }">
           <v-list-item
             v-bind="props"
@@ -176,15 +201,17 @@ const handleSubmit = async () => {
         v-model="syncStore.report.isWorking"
         label="¿Funciona?"
         inline
+        color="primary"
       >
-        <v-radio label="Sí" value="true"></v-radio>
-        <v-radio label="No" value="false"></v-radio>
+        <v-radio label="Sí" :value="true" color="success" />
+        <v-radio label="No" :value="false" color="error" />
       </v-radio-group>
-      <v-file-input
-        v-if="syncStore.report.isWorking === 'false'"
-        v-model="syncStore.report.evidenceImage"
-        :label="'Subir Evidencia'"
-      ></v-file-input>
+
+      <UploadImage
+        v-if="syncStore.report.isWorking === false"
+        :title="'Subir Evidencia'"
+        :typeFiles="'image/*'"
+      />
 
       <!-- Submit button with loading state -->
       <Button
