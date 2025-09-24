@@ -128,7 +128,7 @@ const handleSubmit = async () => {
       dentro de JS cuando tienes una const, más bien estamos mutando el contenido, no la
       referencia.
     */
-    syncStore.report.line = "";
+    syncStore.report.line = null;
     syncStore.report.station = "";
     syncStore.report.typeElevation = "";
     syncStore.report.isWorking = true;
