@@ -1,0 +1,29 @@
+,,,,,,,,,,,,,,,
+,PathwayID,Pathway_number,ID,Línea,Dirección,Estación,from,to,wallway,stairs,moving walk,escalera elec,elevador,"bi (es bi si se puede 
+regresar utilizando 
+cualquiera de los 
+pathway_mode) ","stair count 
+(positivo sube, 
+negativo baja)"
+,7BARCAMFandTand-01,01,7BARCAMFandTand,7-Naranja,BARRANCA,CAMARONES,anden,anden,0,1,0,0,0,1,40
+,7ROSCAMFandTand-02,02,7ROSCAMFandTand,7-Naranja,ROSARIO,CAMARONES,anden,anden,0,1,0,0,0,1,40
+,7ROSCAMFandTmez-03,03,7ROSCAMFandTmez,7-Naranja,ROSARIO,CAMARONES,anden,mezzanine,1,1,0,1,0,0,26
+,7ROSCAMFmezTmez-04,04,7ROSCAMFmezTmez,7-Naranja,ROSARIO,CAMARONES,mezzanine,mezzanine,1,1,0,1,0,0,35
+,7ROSCAMFmezTmez-05,05,7ROSCAMFmezTmez,7-Naranja,ROSARIO,CAMARONES,mezzanine ,mezzanine ,1,1,0,1,0,0,35
+,7ROSCAMFmezTtor-06,06,7ROSCAMFmezTtor,7-Naranja,ROSARIO,CAMARONES,mezzanine ,torniquetes,1,1,0,1,0,0,35
+,7ROSCAMFtorTsal-07,07,7ROSCAMFtorTsal,7-Naranja,ROSARIO,CAMARONES,torniquete,salida (izquierda),1,1,0,0,0,1,37
+,7ROSCAMFtorTsal-08,08,7ROSCAMFtorTsal,7-Naranja,ROSARIO,CAMARONES,torniquete,salida (derecha),1,1,0,0,0,1,37
+,7ROSCAMFtorTmez-09,09,7ROSCAMFtorTmez,7-Naranja,ROSARIO,CAMARONES,torniquete,mezzanine,1,1,0,1,0,0,35
+,7ROSCAMFmezTmez-10,10,7ROSCAMFmezTmez,7-Naranja,ROSARIO,CAMARONES,mezzanine,mezzanine,1,1,0,1,0,0,35
+,7ROSCAMFmezTmez-11,11,7ROSCAMFmezTmez,7-Naranja,ROSARIO,CAMARONES,mezzanine,mezzanine,1,1,0,1,0,0,35
+,7ROSCAMFmezTand-12,12,7ROSCAMFmezTand,7-Naranja,ROSARIO,CAMARONES,mezzanine,andén ,1,1,0,1,0,0,26
+,7ROSAUDFandTand-01,01,7ROSAUDFandTand,7-Naranja,ROSARIO,AUDITORIO,anden,anden,1,1,0,0,0,1,40
+,7BARAUDFandTand-02,02,7BARAUDFandTand,7-Naranja,BARRANCA,AUDITORIO,anden,anden,1,1,0,0,0,1,40
+,7BARAUDFandTmez-03,03,7BARAUDFandTmez,7-Naranja,BARRANCA,AUDITORIO,anden,mezzanine,1,1,0,2,0,1,55
+,7BARAUDFmezTtor-04,04,7BARAUDFmezTtor,7-Naranja,BARRANCA,AUDITORIO,mezzanine,torniquete,1,1,0,2,0,1,55
+,7BARAUDFtorTsal-05,05,7BARAUDFtorTsal,7-Naranja,BARRANCA,AUDITORIO,torniquete,salida,1,1,0,0,0,1,45
+,7BARAUDFtorTsal-06,06,7BARAUDFtorTsal,7-Naranja,BARRANCA,AUDITORIO,torniquete,salida,1,1,0,0,0,1,45
+,7ROSAUDFandTmez-07,07,7ROSAUDFandTmez,7-Naranja,ROSARIO,AUDITORIO,anden,mezzanine,1,1,0,2,0,1,55
+,7ROSAUDFmezTtor-08,08,7ROSAUDFmezTtor,7-Naranja,ROSARIO,AUDITORIO,mezzanine,torniquetes,1,1,0,2,0,1,55
+,7ROSAUDFtorTsal-09,09,7ROSAUDFtorTsal,7-Naranja,ROSARIO,AUDITORIO,torniquete,salida,1,1,0,0,0,1,45
+,7ROSAUDFtorTsal-10,10,7ROSAUDFtorTsal,7-Naranja,ROSARIO,AUDITORIO,torniquete ,salida ,1,1,0,0,0,1,45
