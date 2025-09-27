@@ -21,7 +21,11 @@ const props = defineProps({
   <span>{{ tag }}</span>
   <v-row>
     <v-col>
-      <v-file-input v-model="modelPhoto" :label="title"></v-file-input>
+      <v-file-input
+        v-model="modelPhoto"
+        :label="title"
+        accept="image/png, image/jpeg, image/jpg"
+      ></v-file-input>
     </v-col>
   </v-row>
 </template>
