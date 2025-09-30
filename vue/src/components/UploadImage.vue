@@ -16,6 +16,10 @@ const props = defineProps({
     type: String,
   },
 });
+
+const rules = [
+  (files) => !files || files.length <= 3 || "Máximo 3 imágenes por escalera.",
+];
 </script>
 <template>
   <span>{{ tag }}</span>
@@ -25,7 +29,26 @@ const props = defineProps({
         v-model="modelPhoto"
         :label="title"
         accept="image/png, image/jpeg, image/jpg"
-      ></v-file-input>
+        multiple
+        counter
+        show-size
+        chips
+        :rules="rules"
+      >
+        <template v-slot:selection="{ fileNames }">
+          <template v-for="(fileName, index) in fileNames" :key="fileName">
+            <v-chip
+              v-if="index < 3"
+              color="primary"
+              size="small"
+              label
+              class="me-2"
+            >
+              {{ fileName }}
+            </v-chip>
+          </template>
+        </template>
+      </v-file-input>
     </v-col>
   </v-row>
 </template>

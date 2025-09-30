@@ -32,33 +32,41 @@ onMounted(() => {
 
 const transformImage = async () => {
   try {
-    // Verificar que hay archivo para procesar
-    if (!modelPhoto.value) {
+    // Verificar que hay archivos para procesar
+    if (!modelPhoto.value || modelPhoto.value.length === 0) {
       return {
-        file: "",
+        files: [],
         status: "no_file",
       };
     }
 
     // Debug: verificar qué contiene modelPhoto
     console.log("🔍 modelPhoto.value:", modelPhoto.value);
+    console.log("🔍 Cantidad de archivos:", modelPhoto.value.length);
     console.log("🔍 Es array?", Array.isArray(modelPhoto.value));
-    console.log("🔍 Es File?", modelPhoto.value instanceof File);
 
-    // Obtener el File object (directo, no array)
-    const fileToConvert = modelPhoto.value;
+    // Validar que no sean más de 3 imágenes
+    if (modelPhoto.value.length > 3) {
+      return {
+        files: [],
+        status: "error",
+        message: "Máximo 3 imágenes permitidas"
+      };
+    }
 
-    // Convertir archivo a base64
-    let file = await imageStore.convertBase64(fileToConvert);
+    // Convertir todos los archivos a base64
+    const convertedFiles = await imageStore.convertMultipleBase64(modelPhoto.value);
+
     return {
-      file,
+      files: convertedFiles,
       status: "success",
     };
   } catch (error) {
-    console.error("Error transformando imagen:", error);
+    console.error("Error transformando imágenes:", error);
     return {
-      file: "",
+      files: [],
       status: "error",
+      message: error.message
     };
   }
 };
@@ -77,16 +85,17 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
   submitMessage.value = "";
 
-  //Convertir imagen primero
+  //Convertir imágenes primero
   const fileTransform = await transformImage();
   if (fileTransform.status === "error") {
-    submitMessage.value = "❌ Error al transformar el archivo";
+    submitMessage.value = `❌ Error al transformar archivos: ${fileTransform.message || 'Error desconocido'}`;
     isSubmitting.value = false;
     return;
   } else if (fileTransform.status === "success") {
-    syncStore.report.evidenceImage = fileTransform.file;
+    syncStore.report.evidenceImage = fileTransform.files; // Array de base64
+  } else {
+    syncStore.report.evidenceImage = []; // No hay imágenes
   }
-  // Si es "no_file", continúa sin imagen
 
   try {
     const formData = {
@@ -94,7 +103,7 @@ const handleSubmit = async () => {
       station: syncStore.report.station.trim(),
       typeElevation: syncStore.report.typeElevation.trim(),
       isWorking: syncStore.report.isWorking,
-      evidenceImage: syncStore.report.evidenceImage,
+      evidenceImages: syncStore.report.evidenceImage, // Array de imágenes
     };
 
     console.log("📋 Enviando formulario:", formData);
