@@ -9,20 +9,18 @@ db.version(1).stores({
 
 console.log('🗄️ IndexedDB inicializada:', db.name);
 
-async function startingDB() {
+async function addRegister(itemRequest) {
     try {
-        console.log('📥 Agregando estación de prueba...');
-        
+                
         // Verificar si ya existe la estación
-        /* const existing = await db.stations.where('station').equals('Chapultepec').first();
+        const existing = await db.stations.get(itemRequest.stair_id);
         
-        if (!existing) { */
-        await db.stations.add({ stair_id: 1, station: 'Chapultepec', line: 'Línea 1' });
-        await db.stations.add({ stair_id: 5, station: 'Salud', line: "Línea A" });
+        if (!existing) {
+        await db.stations.add(itemRequest);
             console.log('✅ Estación agregada correctamente');
-        /* } else {
-            console.log('ℹ️ La estación ya existe en la base de datos');
-        } */
+        } else {
+            console.log(`ℹ️ La estación ${itemRequest.station}  ya existe en la base de datos `);
+        }
     
         const info = await db.stations.toArray();
         console.log('📋 Estaciones en IndexedDB:', info);
@@ -36,4 +34,6 @@ async function startingDB() {
 }
 
 // Inicializar la base de datos
-startingDB();
+addRegister({ stair_id: 1, station: 'Chapultepec', line: 'Línea 1' });
+addRegister({ stair_id: 5, station: 'Salud', line: "Línea A" });
+addRegister({ stair_id: 2, station: 'División del Norte', line: "Línea 3" });
