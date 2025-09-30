@@ -4,6 +4,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { pinia } from './stores'
 
+// Importar IndexedDB para inicializarlo
+import './services/indexDB.js'
+
 //Vuetify 3
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
