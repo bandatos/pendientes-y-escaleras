@@ -1,48 +1,81 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue"
-
-import { parseDocToB64 } from "../helpers/helpers.js"
+import { IndexedDBService } from "../services/indexDB.js"
 
 export const useImageStore = defineStore('imageStore', () => {
 
 //State
-    /* const evidencesImages = ref([]); */
     const isUpdating = ref(false);
     const tag = ref('Componente para subir foto o tomar foto.');
-    const modelPhoto = ref([]);
-
-   
+    const modelPhoto = ref([]); // Array de File objects
 
 
     //Actions
-    // Convertir un solo archivo a base64
-    async function convertBase64(document) {
-        const file = await parseDocToB64(document);
-        return file;
+    // Validar imágenes (hasta 3)
+    function validateImages(files) {
+        if (!files || files.length === 0) {
+            return { valid: false, message: 'No se seleccionaron imágenes' };
+        }
+
+        if (files.length > 3) {
+            return { valid: false, message: 'Máximo 3 imágenes permitidas' };
+        }
+
+        // Validar que sean imágenes
+        const invalidFiles = files.filter(file => !file.type.startsWith('image/'));
+        if (invalidFiles.length > 0) {
+            return { valid: false, message: 'Algunos archivos no son imágenes' };
+        }
+
+        // Validar tamaño (por ejemplo, 5MB por imagen)
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        const oversized = files.filter(file => file.size > maxSize);
+        if (oversized.length > 0) {
+            return { valid: false, message: 'Algunas imágenes superan 5MB' };
+        }
+
+        return { valid: true };
     }
 
-    // Convertir múltiples archivos a base64
-    async function convertMultipleBase64(files) {
+    // Guardar imágenes directamente en IndexedDB (sin conversión base64)
+    async function saveImages(formId, files) {
         try {
             isUpdating.value = true;
 
-            // Validar que no haya más de 3 archivos
-            if (files.length > 3) {
-                throw new Error('Máximo 3 imágenes permitidas');
+            // Validar
+            const validation = validateImages(files);
+            if (!validation.valid) {
+                throw new Error(validation.message);
             }
 
-            // Convertir todos los archivos en paralelo
-            const conversions = files.map(file => parseDocToB64(file));
-            const results = await Promise.all(conversions);
+            // Guardar File objects directamente en IndexedDB
+            const imageIds = await IndexedDBService.saveImages(formId, files);
 
-            console.log(`✅ Convertidas ${results.length} imágenes a base64`);
-            return results;
+            console.log(`✅ ${files.length} imágenes guardadas en IndexedDB (File objects)`);
+            return imageIds;
+
         } catch (error) {
-            console.error('❌ Error convirtiendo múltiples imágenes:', error);
+            console.error('❌ Error guardando imágenes:', error);
             throw error;
         } finally {
             isUpdating.value = false;
         }
+    }
+
+    // Obtener imágenes de un formulario
+    async function getImages(formId) {
+        try {
+            const images = await IndexedDBService.getImagesByFormId(formId);
+            return images;
+        } catch (error) {
+            console.error('❌ Error obteniendo imágenes:', error);
+            return [];
+        }
+    }
+
+    // Limpiar selección de imágenes
+    function clearSelection() {
+        modelPhoto.value = [];
     }
 
 
@@ -53,8 +86,10 @@ export const useImageStore = defineStore('imageStore', () => {
         isUpdating,
 
         //Actions
-        convertBase64,
-        convertMultipleBase64,
+        validateImages,
+        saveImages,
+        getImages,
+        clearSelection,
     }
 });
 
