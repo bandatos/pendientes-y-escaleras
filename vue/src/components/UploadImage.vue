@@ -1,11 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { computed } from "vue";
 import { useImageStore } from "../stores/imageStore";
-import { storeToRefs } from "pinia";
 
 const store = useImageStore();
-/* Destructuring from a store */
-const { tag, modelPhoto } = storeToRefs(store);
 
 const props = defineProps({
   title: {
@@ -15,6 +12,20 @@ const props = defineProps({
   typeFiles: {
     type: String,
   },
+  stairId: {
+    type: [String, Number],
+    required: true,
+  },
+});
+
+// Computed para manejar v-model con el estado específico de esta escalera
+const localPhotos = computed({
+  get() {
+    return store.getStairPhotos(props.stairId);
+  },
+  set(files) {
+    store.setStairPhotos(props.stairId, files);
+  }
 });
 
 const rules = [
@@ -22,11 +33,10 @@ const rules = [
 ];
 </script>
 <template>
-  <span>{{ tag }}</span>
   <v-row>
     <v-col>
       <v-file-input
-        v-model="modelPhoto"
+        v-model="localPhotos"
         :label="title"
         accept="image/png, image/jpeg, image/jpg"
         multiple
