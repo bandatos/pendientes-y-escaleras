@@ -12,13 +12,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "d3": "^7.9.0",
     "dexie": "^4.2.0",
     "pinia": "^3.0.3",
     "vue": "^3.5.18",
     "vuetify": "^3.9.5"
   },
   "devDependencies": {
+    "@rollup/plugin-dsv": "^3.0.5",
     "@vitejs/plugin-vue": "^6.0.1",
+    "sass": "^1.92.1",
     "vite": "^7.0.6",
     "vite-plugin-vue-devtools": "^8.0.0"
   }
