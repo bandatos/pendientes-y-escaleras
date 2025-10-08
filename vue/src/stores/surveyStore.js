@@ -2,11 +2,16 @@
  * Store para manejar el progreso del relevamiento de una estación
  */
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, toRaw } from 'vue'
 import { IndexedDBService } from '../services/indexDB.js'
 import { useStationStore } from './stationStore.js'
 
 export const useSurveyStore = defineStore('survey', () => {
+
+  // Función helper: Convertir objeto reactivo a objeto plano (deep)
+  function toPlainObject(obj) {
+    return JSON.parse(JSON.stringify(toRaw(obj)))
+  }
 
   // Estado reactivo
   const currentSurvey = ref(null) // Relevamiento en progreso
@@ -183,8 +188,11 @@ export const useSurveyStore = defineStore('survey', () => {
       currentSurvey.value.surveyCompletedAt = Date.now()
       currentSurvey.value.status = 'completed'
 
+      // Convertir a objeto plano (sin reactividad) antes de guardar
+      const plainSurvey = toPlainObject(currentSurvey.value)
+
       // Guardar en IndexedDB
-      const savedRecord = await IndexedDBService.saveStationRecord(currentSurvey.value)
+      const savedRecord = await IndexedDBService.saveStationRecord(plainSurvey)
 
       console.log('✅ Relevamiento completado y guardado:', savedRecord.id)
 
