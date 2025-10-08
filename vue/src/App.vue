@@ -1,45 +1,45 @@
 <script setup>
-import { ref } from 'vue'
-import StationSelector from './views/StationSelector.vue'
-import StationSummary from './views/StationSummary.vue'
+import { ref } from "vue";
+import StationSelector from "./views/StationSelector.vue";
+import StationSummary from "./views/StationSummary.vue";
 
 // Estado de navegación
-const currentView = ref('selector') // 'selector' | 'summary'
+const currentView = ref("selector"); // 'selector' | 'summary'
 
 // Navegar entre vistas
 const goToSummary = () => {
-  currentView.value = 'summary'
-}
+  currentView.value = "summary";
+};
 
 const goToSelector = () => {
-  currentView.value = 'selector'
-}
+  currentView.value = "selector";
+};
 
 // Handlers de eventos
 const handleStationSelected = () => {
-  goToSummary()
-}
+  goToSummary();
+};
 
 const handleSaveComplete = () => {
   // Relevamiento completo guardado
-  alert('✅ Relevamiento guardado exitosamente')
-  goToSelector()
-}
+  alert("✅ Relevamiento guardado exitosamente");
+  goToSelector();
+};
 
 const handleBack = () => {
-  goToSelector()
-}
+  goToSelector();
+};
 </script>
 
 <template>
   <v-app>
-    <!-- Vista 1: Selector de Estación -->
+    <!-- Vista 1: Vista General -->
     <StationSelector
       v-if="currentView === 'selector'"
       @station-selected="handleStationSelected"
     />
 
-    <!-- Vista 2: Resumen de Escaleras (con expansion panels) -->
+    <!-- Vista 2: Form Station -->
     <StationSummary
       v-else-if="currentView === 'summary'"
       @save-complete="handleSaveComplete"

@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useStationStore } from '../stores/stationStore'
 import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
+import MapaMetro from '../components/vis/MapaMetro.vue'
 
 const emit = defineEmits(['station-selected'])
 
@@ -117,24 +118,9 @@ const handleSelectStation = () => {
               </template>
             </v-autocomplete>
 
-            <!-- Placeholder del mapa -->
-            <div class="map-placeholder mt-4">
-              <v-card
-                variant="tonal"
-                color="grey-lighten-3"
-                height="300"
-                class="d-flex align-center justify-center"
-              >
-                <div class="text-center">
-                  <v-icon size="64" color="grey">mdi-map-outline</v-icon>
-                  <p class="text-body-2 text-medium-emphasis mt-2">
-                    Mapa del metro
-                  </p>
-                  <p class="text-caption text-disabled">
-                    (Próximamente)
-                  </p>
-                </div>
-              </v-card>
+            <!-- Mapa del metro -->
+            <div class="map-container mt-4">
+              <MapaMetro />
             </div>
           </v-card-text>
 
@@ -167,7 +153,7 @@ const handleSelectStation = () => {
 </template>
 
 <style scoped>
-.map-placeholder {
+.map-container {
   border-radius: 8px;
   overflow: hidden;
 }
