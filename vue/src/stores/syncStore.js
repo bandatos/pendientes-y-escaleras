@@ -1,10 +1,11 @@
 /**
  ** Store único para manejar el estado de sincronización de Pinia
+ * Migrado de localStorage a IndexedDB
  */
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 //Servicios propios:
-import { LocalStorageService } from '../services/localStorage.js'
+import { IndexedDBService } from '../services/indexDB.js'
 import { getApiSync } from '../services/apiSync.js'
 import { getNetworkDetection } from '../services/networkDetection.js'
 
@@ -98,22 +99,22 @@ const lines = ref([
   // Guardar datos del formulario
   async function saveFormData(formData) {
     try {
-      console.log('💾 Store: Guardando datos del formulario')
-      
-      // Guardar en localStorage
-      const savedData = LocalStorageService.saveFormData(formData)
-      
+      console.log('💾 Store: Guardando datos del formulario en IndexedDB')
+
+      // Guardar en IndexedDB (ahora es async)
+      const savedData = await IndexedDBService.saveFormData(formData)
+
       // Actualizar estadísticas
-      updateSyncStats()
-      
+      await updateSyncStats()
+
       // Intentar sync inmediato si hay conexión
       if (isOnline.value) {
         console.log('🔄 Store: Intentando sync inmediato')
         syncPendingData()
       } else {
-        console.log('⏸️ Store: Sin conexión - datos guardados localmente')
+        console.log('⏸️ Store: Sin conexión - datos guardados localmente en IndexedDB')
       }
-      
+
       return savedData
     } catch (error) {
       console.error('❌ Store: Error guardando datos:', error)
@@ -171,13 +172,13 @@ const lines = ref([
   }
 
   // Obtener todos los datos guardados
-  function getAllSavedData() {
-    return LocalStorageService.getAllFormData()
+  async function getAllSavedData() {
+    return await IndexedDBService.getAllFormData()
   }
 
   // Obtener datos no sincronizados
-  function getUnsyncedData() {
-    return LocalStorageService.getUnsyncedData()
+  async function getUnsyncedData() {
+    return await IndexedDBService.getUnsyncedData()
   }
 
   // Forzar sincronización manual
@@ -187,9 +188,9 @@ const lines = ref([
   }
 
   // Limpiar datos antiguos
-  function cleanOldData() {
-    LocalStorageService.cleanOldData()
-    updateSyncStats()
+  async function cleanOldData() {
+    await IndexedDBService.cleanOldData()
+    await updateSyncStats()
     console.log('🧹 Store: Datos antiguos limpiados')
   }
 

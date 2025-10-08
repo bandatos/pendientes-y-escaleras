@@ -30,35 +30,43 @@ onMounted(() => {
   syncStore.init(); //Acceso a una action
 });
 
-const transformImage = async () => {
+// Ya NO se necesita convertir a base64
+// Las imágenes se guardan como File objects directamente en IndexedDB
+const validateAndPrepareImages = () => {
   try {
-    // Verificar que hay archivo para procesar
-    if (!modelPhoto.value) {
+    // Verificar que hay archivos para procesar
+    if (!modelPhoto.value || modelPhoto.value.length === 0) {
       return {
-        file: "",
+        files: [],
         status: "no_file",
       };
     }
 
-    // Debug: verificar qué contiene modelPhoto
-    console.log("🔍 modelPhoto.value:", modelPhoto.value);
-    console.log("🔍 Es array?", Array.isArray(modelPhoto.value));
-    console.log("🔍 Es File?", modelPhoto.value instanceof File);
+    console.log("🔍 Imágenes seleccionadas:", modelPhoto.value.length);
 
-    // Obtener el File object (directo, no array)
-    const fileToConvert = modelPhoto.value;
+    // Validar usando el store
+    const validation = imageStore.validateImages(modelPhoto.value);
 
-    // Convertir archivo a base64
-    let file = await imageStore.convertBase64(fileToConvert);
+    if (!validation.valid) {
+      return {
+        files: [],
+        status: "error",
+        message: validation.message
+      };
+    }
+
+    // Retornar File objects directamente (SIN conversión)
     return {
-      file,
+      files: modelPhoto.value, // Array de File objects
       status: "success",
     };
+
   } catch (error) {
-    console.error("Error transformando imagen:", error);
+    console.error("Error validando imágenes:", error);
     return {
-      file: "",
+      files: [],
       status: "error",
+      message: error.message
     };
   }
 };
@@ -77,37 +85,43 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
   submitMessage.value = "";
 
-  //Convertir imagen primero
-  const fileTransform = await transformImage();
-  if (fileTransform.status === "error") {
-    submitMessage.value = "❌ Error al transformar el archivo";
+  // Validar imágenes (SIN conversión a base64)
+  const imageValidation = validateAndPrepareImages();
+  if (imageValidation.status === "error") {
+    submitMessage.value = `❌ ${imageValidation.message}`;
     isSubmitting.value = false;
     return;
-  } else if (fileTransform.status === "success") {
-    syncStore.report.evidenceImage = fileTransform.file;
   }
-  // Si es "no_file", continúa sin imagen
 
   try {
+    // Guardar formulario primero
     const formData = {
       line: syncStore.report.line.trim(),
       station: syncStore.report.station.trim(),
       typeElevation: syncStore.report.typeElevation.trim(),
       isWorking: syncStore.report.isWorking,
-      evidenceImage: syncStore.report.evidenceImage,
+      hasImages: imageValidation.status === "success", // Flag si tiene imágenes
     };
 
     console.log("📋 Enviando formulario:", formData);
 
-    // Guardar usando el store (maneja local + sync automático)
-    await syncStore.saveFormData(formData);
+    // Guardar formulario en IndexedDB
+    const savedForm = await syncStore.saveFormData(formData);
+
+    // Guardar imágenes asociadas al formulario (si hay)
+    if (imageValidation.status === "success" && imageValidation.files.length > 0) {
+      await imageStore.saveImages(savedForm.id, imageValidation.files);
+      console.log(`📸 ${imageValidation.files.length} imágenes guardadas en IndexedDB`);
+    }
 
     // Mostrar mensaje de éxito
     if (syncStore.isOnline) {
       submitMessage.value = "✅ Datos enviados y sincronizados";
     } else {
-      submitMessage.value =
-        "💾 Datos guardados localmente - Se sincronizarán cuando haya conexión";
+      const imgCount = imageValidation.files.length;
+      submitMessage.value = imgCount > 0
+        ? `💾 Formulario y ${imgCount} imagen(es) guardados localmente`
+        : "💾 Datos guardados localmente - Se sincronizarán cuando haya conexión";
     }
 
     cleanForm();
@@ -133,6 +147,9 @@ const handleSubmit = async () => {
     syncStore.report.typeElevation = "";
     syncStore.report.isWorking = true;
     syncStore.report.evidenceImage = "";
+
+    // Limpiar selección de imágenes
+    imageStore.clearSelection();
   }
 };
 </script>
