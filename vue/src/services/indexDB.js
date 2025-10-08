@@ -15,8 +15,17 @@ db.version(1).stores({
     stations: '++id, stair_id, station, line'
 });
 
-// Schema versión 2 - Nuevo modelo: 1 registro por estación con N escaleras
+// Schema versión 2 - DEPRECADO (tenía conflicto de índices)
 db.version(2).stores({
+    formData: null, // Eliminar tabla antigua
+    stationRecords: 'id, stationId, timestamp, synced, status, line',
+    images: null, // Eliminar para recrear
+    stations: '++id, stationId, name, line, totalStairs',
+    syncQueue: '++id, type, entityId, priority, timestamp'
+});
+
+// Schema versión 3 - Modelo final corregido
+db.version(3).stores({
     // Registros completos de estaciones con todas sus escaleras
     stationRecords: 'id, stationId, timestamp, synced, status, line',
 
@@ -29,12 +38,8 @@ db.version(2).stores({
     // Cola de sincronización
     syncQueue: '++id, type, entityId, priority, timestamp'
 }).upgrade(async tx => {
-    // Migración de datos de v1 a v2 (si hay datos antiguos)
-    console.log('🔄 Migrando datos de versión 1 a versión 2...');
-
-    // Los datos antiguos quedan en formData (deprecated)
-    // Nuevos datos usan stationRecords
-    // Puedes migrar manualmente si es necesario
+    console.log('🔄 Actualizando a versión 3 - esquema limpio');
+    // Las tablas se recrean automáticamente con el nuevo esquema
 });
 
 // Hooks de inicialización
@@ -401,6 +406,28 @@ export class IndexedDBService {
         } catch (error) {
             console.error('❌ Error getting station:', error);
             return null;
+        }
+    }
+
+    // DESARROLLO: Eliminar completamente la base de datos
+    static async deleteDatabase() {
+        try {
+            await db.delete();
+            console.log('🗑️ Base de datos eliminada completamente');
+            console.log('🔄 Recarga la página para recrear la base de datos');
+        } catch (error) {
+            console.error('❌ Error deleting database:', error);
+        }
+    }
+
+    // DESARROLLO: Resetear y recrear la base de datos
+    static async resetDatabase() {
+        try {
+            await this.deleteDatabase();
+            // La recarga automática recreará la DB con el esquema v3
+            window.location.reload();
+        } catch (error) {
+            console.error('❌ Error resetting database:', error);
         }
     }
 }
