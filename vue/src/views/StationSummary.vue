@@ -2,6 +2,8 @@
 import { ref, computed } from 'vue'
 import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
+import { useImageStore } from '../stores/imageStore'
+import { IndexedDBService } from '../services/indexDB.js'
 import UploadImage from '../components/UploadImage.vue'
 
 const emit = defineEmits(['save-complete', 'back'])
@@ -9,6 +11,7 @@ const emit = defineEmits(['save-complete', 'back'])
 // Stores
 const surveyStore = useSurveyStore()
 const syncStore = useSyncStore()
+const imageStore = useImageStore()
 
 // Estado local
 const expandedPanels = ref([0]) // Primer panel abierto por defecto
@@ -97,8 +100,27 @@ const handleSave = async () => {
       return
     }
 
-    // Guardar en IndexedDB
-    await surveyStore.completeSurvey()
+    // 1. Guardar registro de estación en IndexedDB
+    const savedRecord = await surveyStore.completeSurvey()
+
+    // 2. Guardar imágenes de cada escalera
+    for (let stairIndex = 0; stairIndex < surveyStore.totalStairs; stairIndex++) {
+      const photos = imageStore.getStairPhotos(stairIndex)
+
+      if (photos && photos.length > 0) {
+        await IndexedDBService.saveStairImages(
+          savedRecord.id,
+          stairIndex + 1, // stairNumber es 1-based
+          photos
+        )
+        console.log(`📸 ${photos.length} imágenes guardadas para escalera ${stairIndex + 1}`)
+      }
+    }
+
+    // 3. Limpiar el imageStore
+    imageStore.clearSelection()
+
+    console.log('✅ Estación y todas las imágenes guardadas exitosamente')
 
     emit('save-complete')
 
