@@ -1,5 +1,5 @@
 <script setup>
-import estaciones from "@/assets/datos/estaciones-vis.csv";
+import estaciones from "@/assets/datos/estaciones-match-stops.csv";
 import lineas from "@/assets/datos/lineas-vis.csv";
 
 import * as d3 from "d3";
