@@ -1,48 +1,57 @@
 <script setup>
-import { watch } from "vue";
+import { computed } from 'vue'
+import { useSnackbarStore } from '../stores/snackbarStore'
+import { storeToRefs } from 'pinia'
 
-defineProps({
-  show: {
-    type: Boolean,
-    default: false,
-  },
-  text: {
-    text: String,
-    required: true,
-    default: "",
-  },
-  timer: {
-    type: String,
-    default: "5000",
-  },
-  type: {
-    type: String,
-  },
-});
+const snackbarStore = useSnackbarStore()
 
-const showSnackBar = ref(false);
+// Usar refs del store para mantener reactividad
+const { show, text, type, timeout } = storeToRefs(snackbarStore)
 
-watch(())
+// Computed para manejar v-model
+const showSnackbar = computed({
+  get() {
+    return show.value
+  },
+  set(value) {
+    if (!value) {
+      snackbarStore.close()
+    }
+  }
+})
 
+// Computed para determinar el texto del botón según el tipo
+const buttonText = computed(() => {
+  switch (type.value) {
+    case 'success':
+      return 'OK'
+    case 'warning':
+      return 'ENTENDIDO'
+    case 'error':
+      return 'CERRAR'
+    default:
+      return 'ACEPTAR'
+  }
+})
 </script>
 <template>
   <v-snackbar
-    v-model="showSnackBar"
+    v-model="showSnackbar"
     :color="type"
-    :timeout="timer != '0' && timer != '' ? timer : '-1'"
+    :timeout="timeout"
     elevation="10"
     :max-width="1000"
+    location="top"
   >
-    <template v-slot:action="{ attrs }">
+    {{ text }}
+
+    <template v-slot:actions>
       <v-btn
-        light
-        v-bind="attrs"
-        @click="showSnackBar = false"
+        variant="text"
+        @click="showSnackbar = false"
         class="text-caption"
       >
-        <span v-if="type == 'success'">OK</span>
-        <span v-else-if="type == 'warning'">ENTENDIDO</span>
-        <span v-else>ACEPTAR</span>
+        {{ buttonText }}
       </v-btn>
     </template>
   </v-snackbar>
