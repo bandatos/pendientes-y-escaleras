@@ -58,7 +58,7 @@ onMounted(() => {
 
     .attr("text-anchor", (d) => d.text_anchor)
     .text((d) => d.texto)
-    .style("fill", "#fff")
+    .style("fill", "#000")
     .style("fill-opacity", "0.5");
   estaciones_g.value
     .on("mouseover", function (e, d) {
