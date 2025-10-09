@@ -16,6 +16,7 @@
     "dexie": "^4.2.1",
     "pinia": "^3.0.3",
     "vue": "^3.5.18",
+    "material-design-icons-iconfont": "^6.7.0",
     "vuetify": "^3.9.5"
   },
   "devDependencies": {

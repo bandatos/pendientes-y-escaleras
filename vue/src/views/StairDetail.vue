@@ -146,11 +146,13 @@ const handleClose = () => {
             <v-spacer></v-spacer>
 
             <v-btn
-              icon="mdi-close"
+              icon
               size="small"
               variant="text"
               @click="handleClose"
-            ></v-btn>
+            >
+              <v-icon>close</v-icon>
+            </v-btn>
           </v-card-text>
         </v-card>
 
@@ -178,7 +180,7 @@ const handleClose = () => {
                       v-bind="props"
                       size="small"
                       class="ml-1"
-                    >mdi-help-circle-outline</v-icon>
+                    >help_outline</v-icon>
                   </template>
                   Por ejemplo: KSG3-43, ALT-01, etc.
                 </v-tooltip>
@@ -195,7 +197,7 @@ const handleClose = () => {
                   @keyup.enter="addIdentificationCode"
                 ></v-text-field>
                 <v-btn
-                  icon="mdi-plus"
+                  icon="add"
                   color="primary"
                   @click="addIdentificationCode"
                 ></v-btn>
@@ -226,7 +228,7 @@ const handleClose = () => {
                       v-bind="props"
                       size="small"
                       class="ml-1"
-                    >mdi-help-circle-outline</v-icon>
+                    >help_outline</v-icon>
                   </template>
                   Por ejemplo: anden línea 7 dirección barranca
                 </v-tooltip>
@@ -265,7 +267,7 @@ const handleClose = () => {
                       v-bind="props"
                       size="small"
                       class="ml-1"
-                    >mdi-help-circle-outline</v-icon>
+                    >help_outline</v-icon>
                   </template>
                   Por ejemplo, si hay dos escaleras juntas, una es izquierda
                   y la otra derecha (bajando desde abajo). O extremo izquierdo, etc.
@@ -324,7 +326,7 @@ const handleClose = () => {
               variant="text"
               @click="handlePrevious"
             >
-              <v-icon start>mdi-chevron-left</v-icon>
+              <v-icon start>chevron_left</v-icon>
               Anterior
             </v-btn>
 
@@ -333,7 +335,7 @@ const handleClose = () => {
               @click="handleSaveAndNext"
             >
               {{ canGoNext ? 'Siguiente' : 'Terminar' }}
-              <v-icon end>{{ canGoNext ? 'mdi-chevron-right' : 'mdi-check' }}</v-icon>
+              <v-icon end>{{ canGoNext ? 'chevron_right' : 'check' }}</v-icon>
             </v-btn>
           </v-card-actions>
         </v-card>

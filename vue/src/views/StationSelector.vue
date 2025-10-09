@@ -54,9 +54,9 @@ const handleSelectStation = () => {
 </script>
 
 <template>
-  <v-container fluid class="fill-height">
+  <v-container fluid class="fill-height pt-0">
     <v-row justify="center" align="center" class="fill-height">
-      <v-col cols="12" sm="10" md="8" lg="6">
+      <v-col cols="12" sm="10" md="8" lg="6" class="pt-0">
 
         <!-- Status bar -->
         <v-card class="mb-4 pa-2" variant="outlined">
@@ -70,23 +70,23 @@ const handleSelectStation = () => {
 
         <!-- Título principal -->
         <div class="text-center mb-6">
-          <h1 class="text-h4 mb-2">Relevamiento de Escaleras</h1>
-          <p class="text-subtitle-1 text-medium-emphasis">
+          <h1 class="text-h5 text-sm-h4 mb-2">Relevamiento de Escaleras</h1>
+          <p v-if="false" class="text-subtitle-1 text-medium-emphasis">
             Elige la estación en la que te encuentras
           </p>
         </div>
 
         <!-- Selector de estación -->
-        <v-card elevation="2">
+        <v-card elevation="2" class="mb-4">
           <v-card-text>
             <v-autocomplete
               v-model="selectedStationId"
               :items="stationStore.stationsCatalog"
               item-title="name"
               item-value="stationId"
-              label="Selecciona una estación"
+              label="Selecciona la estación en la que estás"
               variant="outlined"
-              clearable
+              hide-details
               :loading="stationStore.isLoading"
             >
               <template v-slot:chip="{ props, item }">
@@ -118,10 +118,6 @@ const handleSelectStation = () => {
               </template>
             </v-autocomplete>
 
-            <!-- Mapa del metro -->
-            <div class="map-container mt-4">
-              <MapaMetro />
-            </div>
           </v-card-text>
 
           <v-card-actions>
@@ -133,16 +129,23 @@ const handleSelectStation = () => {
               @click="handleSelectStation"
               block
             >
-              Continuar
-              <v-icon end>mdi-arrow-right</v-icon>
+              Registrar
+              <v-icon end>keyboard_arrow_right</v-icon>
             </v-btn>
           </v-card-actions>
+        </v-card>
+        <v-card>
+            <!-- Mapa del metro -->
+            <div class="map-container mt-4">
+              <MapaMetro />
+            </div>
+
         </v-card>
 
         <!-- Info adicional -->
         <v-card class="mt-4" variant="outlined">
           <v-card-text class="text-caption text-center">
-            <v-icon size="small" class="mb-1">mdi-information-outline</v-icon>
+            <v-icon size="small" class="mb-1">info</v-icon>
             Selecciona la estación donde realizarás el relevamiento de escaleras
           </v-card-text>
         </v-card>

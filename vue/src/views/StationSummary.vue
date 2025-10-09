@@ -32,8 +32,8 @@ const getStairStatusColor = (stair) => {
 
 // Obtener icono del estado
 const getStairStatusIcon = (stair) => {
-  if (stair.status === 'pending') return 'mdi-circle-outline'
-  return stair.isWorking ? 'mdi-check-circle' : 'mdi-close-circle'
+  if (stair.status === 'pending') return 'circle'
+  return stair.isWorking ? 'check_circle' : 'cancel'
 }
 
 // Agregar código de identificación
@@ -167,7 +167,7 @@ const handleBack = () => {
                 Estación {{ surveyStore.currentSurvey?.stationName }}
               </h2>
               <v-btn
-                icon="mdi-close"
+                icon="close"
                 size="small"
                 variant="text"
                 @click="handleBack"
@@ -220,13 +220,14 @@ const handleBack = () => {
             :value="index"
           >
             <!-- Panel Title -->
-            <v-expansion-panel-title>
+            <v-expansion-panel-title color="grey-lighten-4">
               <div class="d-flex align-center w-100">
                 <v-icon
                   :color="getStairStatusColor(stair)"
-                  :icon="getStairStatusIcon(stair)"
                   class="mr-3"
-                ></v-icon>
+                >
+                  {{getStairStatusIcon(stair)}}
+                </v-icon>
                 <div>
                   <div class="font-weight-bold">Escalera {{ stair.stairNumber }}</div>
                   <div class="text-caption text-medium-emphasis" v-if="stair.status === 'completed'">
@@ -257,10 +258,10 @@ const handleBack = () => {
                   <div class="mb-4">
                     <label class="text-subtitle-2 mb-2 d-block">
                       Códigos de identificación
-                      <v-tooltip location="top">
+                      <v-tooltip activator="parent" location="left">
                         <template v-slot:activator="{ props }">
                           <v-icon v-bind="props" size="small" class="ml-1">
-                            mdi-help-circle-outline
+                            help_outline
                           </v-icon>
                         </template>
                         Por ejemplo: KSG3-43, ALT-01, etc.
@@ -277,11 +278,15 @@ const handleBack = () => {
                         @keyup.enter="addCode(index)"
                       ></v-text-field>
                       <v-btn
-                        icon="mdi-plus"
                         color="primary"
                         size="small"
+                        icon
                         @click="addCode(index)"
-                      ></v-btn>
+                      >
+                        <v-icon size="large">
+                          add
+                        </v-icon>
+                      </v-btn>
                     </div>
 
                     <div class="d-flex flex-wrap gap-2">
@@ -306,7 +311,7 @@ const handleBack = () => {
                       <v-tooltip location="top">
                         <template v-slot:activator="{ props }">
                           <v-icon v-bind="props" size="small" class="ml-1">
-                            mdi-help-circle-outline
+                            help_outline
                           </v-icon>
                         </template>
                         Ejemplo: anden línea 7 dirección barranca
@@ -383,7 +388,7 @@ const handleBack = () => {
                     @click="markStairComplete(index)"
                     :variant="stair.status === 'completed' ? 'outlined' : 'elevated'"
                   >
-                    <v-icon start>{{ stair.status === 'completed' ? 'mdi-check-circle' : 'mdi-check' }}</v-icon>
+                    <v-icon start>{{ stair.status === 'completed' ? 'check_circle' : 'check' }}</v-icon>
                     {{ stair.status === 'completed' ? 'Completada' : 'Marcar como completada' }}
                   </v-btn>
 
@@ -394,17 +399,18 @@ const handleBack = () => {
         </v-expansion-panels>
 
         <!-- Botón guardar todo -->
-        <v-card class="rounded-0" variant="flat">
+        <v-card class="rounded-0" _variant="flat" _color="primary">
           <v-card-actions class="pa-4">
             <v-btn
               color="primary"
               size="large"
               block
+              variant="elevated"
               :disabled="surveyStore.completedStairs < surveyStore.totalStairs"
               @click="handleSave"
             >
               Guardar datos
-              <v-icon end>mdi-content-save</v-icon>
+              <v-icon end>save</v-icon>
             </v-btn>
           </v-card-actions>
         </v-card>
