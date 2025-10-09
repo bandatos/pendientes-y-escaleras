@@ -2,6 +2,10 @@
 import { ref } from "vue";
 import StationSelector from "./views/StationSelector.vue";
 import StationSummary from "./views/StationSummary.vue";
+import MessageSnackBar from "./components/MessageSnackBar.vue";
+import { useSnackbarStore } from "./stores/snackbarStore";
+
+const snackbarStore = useSnackbarStore();
 
 // Estado de navegación
 const currentView = ref("selector"); // 'selector' | 'summary'
@@ -22,7 +26,7 @@ const handleStationSelected = () => {
 
 const handleSaveComplete = () => {
   // Relevamiento completo guardado
-  alert("✅ Relevamiento guardado exitosamente");
+  snackbarStore.showSuccess("Relevamiento guardado exitosamente");
   goToSelector();
 };
 
@@ -45,6 +49,9 @@ const handleBack = () => {
       @save-complete="handleSaveComplete"
       @back="handleBack"
     />
+
+    <!-- Snackbar global -->
+    <MessageSnackBar />
   </v-app>
 </template>
 
