@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useStationStore } from '../stores/stationStore'
 import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
+import { useSnackbarStore } from '../stores/snackbarStore'
 import MapaMetro from '../components/vis/MapaMetro.vue'
 
 const emit = defineEmits(['station-selected'])
@@ -11,6 +12,7 @@ const emit = defineEmits(['station-selected'])
 const stationStore = useStationStore()
 const surveyStore = useSurveyStore()
 const syncStore = useSyncStore()
+const snackbarStore = useSnackbarStore()
 
 // Estado local
 const selectedStationId = ref(null)
@@ -32,7 +34,7 @@ onMounted(async () => {
 const handleSelectStation = () => {
   console.log('Estación seleccionada:', selectedStationId.value)
   if (!selectedStationId.value) {
-    alert('Por favor selecciona una estación')
+    snackbarStore.showWarning('Por favor selecciona una estación')
     return
   }
 

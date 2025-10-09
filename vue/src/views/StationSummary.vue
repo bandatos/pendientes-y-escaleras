@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
 import { useImageStore } from '../stores/imageStore'
+import { useSnackbarStore } from '../stores/snackbarStore'
 import { IndexedDBService } from '../services/indexDB.js'
 import UploadImage from '../components/UploadImage.vue'
 
@@ -12,6 +13,7 @@ const emit = defineEmits(['save-complete', 'back'])
 const surveyStore = useSurveyStore()
 const syncStore = useSyncStore()
 const imageStore = useImageStore()
+const snackbarStore = useSnackbarStore()
 
 // Estado local
 const expandedPanels = ref([0]) // Primer panel abierto por defecto
@@ -61,17 +63,17 @@ const markStairComplete = (stairIndex) => {
 
   // Validaciones básicas
   if (!stair.identificationCodes || stair.identificationCodes.length === 0) {
-    alert('⚠️ Agrega al menos un código de identificación')
+    snackbarStore.showWarning('Agrega al menos un código de identificación')
     return
   }
 
   if (!stair.connectionPoints?.pointA?.trim()) {
-    alert('⚠️ Especifica el punto A de conexión')
+    snackbarStore.showWarning('Especifica el punto A de conexión')
     return
   }
 
   if (stair.isWorking === null) {
-    alert('⚠️ Indica si la escalera funciona')
+    snackbarStore.showWarning('Indica si la escalera funciona')
     return
   }
 
@@ -98,7 +100,7 @@ const handleSave = async () => {
     )
 
     if (!allCompleted) {
-      alert('⚠️ Debes completar todas las escaleras antes de guardar')
+      snackbarStore.showWarning('Debes completar todas las escaleras antes de guardar')
       return
     }
 
@@ -129,7 +131,7 @@ const handleSave = async () => {
 
   } catch (error) {
     console.error('Error guardando:', error)
-    alert('❌ Error al guardar los datos')
+    snackbarStore.showError('Error al guardar los datos')
   }
 }
 

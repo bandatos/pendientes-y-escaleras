@@ -1,12 +1,14 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { useSurveyStore } from '../stores/surveyStore'
+import { useSnackbarStore } from '../stores/snackbarStore'
 import UploadImage from '../components/UploadImage.vue'
 
 const emit = defineEmits(['back-to-summary', 'stair-completed'])
 
 // Stores
 const surveyStore = useSurveyStore()
+const snackbarStore = useSnackbarStore()
 
 // Estado local del formulario
 const formData = ref({
@@ -80,7 +82,7 @@ const handleSaveAndNext = async () => {
   const errors = validateForm()
 
   if (errors.length > 0) {
-    alert('⚠️ Faltan datos:\n' + errors.join('\n'))
+    snackbarStore.showWarning('Faltan datos: ' + errors.join(', '))
     return
   }
 
@@ -105,7 +107,7 @@ const handleSaveAndNext = async () => {
 
   } catch (error) {
     console.error('Error guardando escalera:', error)
-    alert('❌ Error al guardar')
+    snackbarStore.showError('Error al guardar')
   }
 }
 
