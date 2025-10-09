@@ -20,19 +20,19 @@ x,y,class,href,texto,x_texto,y_texto,text_anchor,transform,color
 21,41,linea2,                                                    #clg-005fff,Cuitlahuac,21.75,41,,,#005fff
 22,65,linea1,                                                    #clg-ff9cce,Juanacatlan,22.75,65,,,#ff9cce
 24,44,lineaB,                                                    #clg-005fff,Popotla,25.5,44,,,#005fff
-25,26,linea6,                                                    #clg-ff0800,UAM,20.25,25,end,rotate(-45),#ff0800
+25,26,linea6,                                                    #clg-ff0800,UAM Azcapotzalco,20.25,25,end,rotate(-45),#ff0800
 25,62,linea1,                                                    #clg-ff9cce,Chapultepec,25.75,62,,,#ff9cce
 26,69,linea9,                                                    #clg-92535d,Patriotismo,26.75,69,,rotate(45),#92535d
 26,83,linea12,                                                   #clg-fff0b5,Insurgentes Sur,26.75,83,,rotate(-45),#fff0b5
 27,47,linea2,                                                    #clg-005fff,Colegio Militar,26.25,47,end,rotate(-45),#005fff
 28,59,linea1,                                                    #clg-ff9cce,Sevilla,28.75,59,,,#ff9cce
-29,26,linea6,                                                    #clg-ff0800,Ferrería,29.75,25.5,,rotate(-45),#ff0800
+29,26,linea6,                                                    #clg-ff0800,Ferrería y Arena Ciudad de México,29.75,25.5,,rotate(-45),#ff0800
 31,47,linea2,                                                    #clg-005fff,Normal,30.25,47,end,rotate(-45),#005fff
 31,57,linea1,                                                    #clg-ff9cce,Insurgentes,31.75,57,,rotate(-45),#ff9cce
 34,26,linea6,                                                    #clg-ff0800,Norte 45,34.75,26,,rotate(-45),#ff0800
 35,47,linea2,                                                    #clg-005fff,San Cosme,34.25,47,end,rotate(-45),#005fff
 35,69,linea9,                                                    #clg-92535d,Chilpancingo,35.75,69,,rotate(45),#92535d
-35,83,linea12,                                                   #clg-fff0b5,Hospital,35.75,82.5,,rotate(-45),#fff0b5
+35,83,linea12,                                                   #clg-fff0b5,Hospital 20 de Noviembre,35.75,82.5,,rotate(-45),                                        #fff0b5
 37,57,linea1,                                                    #clg-ff9cce,Cuauhtemoc,36.25,57,end,rotate(-45),#ff9cce
 38,26,linea6,                                                    #clg-ff0800,Vallejo,38.75,26,,rotate(-45),#ff0800
 38,43,lineaB,                                                    #clg-xf-a4a5a7,Buenavista,39.5,43,,rotate(-45),#a4a5a7
@@ -74,7 +74,7 @@ x,y,class,href,texto,x_texto,y_texto,text_anchor,transform,color
 55,88,linea12,                                                   #clg-fff0b5,Eje Central,54.25,88,end,rotate(-45),#fff0b5
 56,43,lineaB,                                                    #clg-a4a5a7,Lagunilla,57,43,,rotate(-45),#a4a5a7
 56,49,linea2,                                                    #clg-005fff,Allende,56.75,49,,,#005fff
-60,54,linea2,                                                    #clg-005fff,Zocalo,60.75,53.5,,,#005fff
+60,54,linea2,                                                    #clg-005fff,Zocalo Tenochtitlan,60.75,53.5,,,#005fff
 60,57,linea1,                                                    #clg-xf-ff9cce,Pino Suarez,58.5,57,end,rotate(-45),#ff9cce
 60,64,linea2,                                                    #clg-005fff,San Antonio Abad,60.75,64,,rotate(-45),#005fff
 60,69,linea8,                                                    #clg-xf-00be00,Chabacano,61.5,69,,rotate(-45),#00be00
@@ -114,7 +114,7 @@ x,y,class,href,texto,x_texto,y_texto,text_anchor,transform,color
 76,97,linea12,                                                   #clg-fff0b5,Culhuacan,76.75,97,,,#fff0b5
 76,100,linea12,                                                  #clg-fff0b5,San Andres Tomatlan,76.75,100,,,#fff0b5
 77,38,linea5,                                                    #clg-fff200,Eduardo Molina,77.75,38,,,#fff200
-77,51,lineaB,                                                    #clg-a4a5a7,Ricardo,77.75,50.5,,rotate(45),#a4a5a7
+77,51,lineaB,                                                    #clg-a4a5a7,Ricardo Flores Magon,77.75,50.5,,rotate(45),#a4a5a7
 78,69,linea9,                                                    #clg-92535d,Velodromo,77.25,69,end,rotate(-45),#92535d
 78,102,linea12,                                                  #clg-fff0b5,Lomas Estrella,78.75,102,,,#fff0b5
 79,56,linea1,                                                    #clg-ff9cce,Balbuena,78.25,56,end,,#ff9cce
