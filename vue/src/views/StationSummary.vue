@@ -43,14 +43,16 @@ const addCode = (stairIndex) => {
     if (!surveyStore.currentSurvey.stairs[stairIndex].identificationCodes) {
       surveyStore.currentSurvey.stairs[stairIndex].identificationCodes = []
     }
-    surveyStore.currentSurvey.stairs[stairIndex].identificationCodes.push(code.trim())
+    surveyStore.currentSurvey.stairs[stairIndex].identificationCodes.push(
+      code.trim())
     newCodes.value[stairIndex] = ''
   }
 }
 
 // Remover código
 const removeCode = (stairIndex, codeIndex) => {
-  surveyStore.currentSurvey.stairs[stairIndex].identificationCodes.splice(codeIndex, 1)
+  surveyStore.currentSurvey.stairs[stairIndex].identificationCodes.splice(
+    codeIndex, 1)
 }
 
 // Marcar escalera como completada
@@ -113,7 +115,8 @@ const handleSave = async () => {
           stairIndex + 1, // stairNumber es 1-based
           photos
         )
-        console.log(`📸 ${photos.length} imágenes guardadas para escalera ${stairIndex + 1}`)
+        console.log(`📸 ${photos.length}
+          imágenes guardadas para escalera ${stairIndex + 1}`)
       }
     }
 
@@ -157,7 +160,9 @@ const handleBack = () => {
             <!-- Estación seleccionada -->
             <div class="d-flex align-center">
               <v-chip
-                :style="{ backgroundColor: surveyStore.currentSurvey?.lineColor, color: 'white' }"
+                :style="{
+                  backgroundColor: surveyStore.currentSurvey?.lineColor,
+                  color: 'white' }"
                 class="mr-2"
                 size="small"
               >
@@ -208,6 +213,9 @@ const handleBack = () => {
         </v-card>
 
         <v-divider></v-divider>
+        <v-card-subtitle>
+          Completa la info en el orden en el que recorras la estación
+        </v-card-subtitle>
 
         <!-- Expansion Panels de Escaleras -->
         <v-expansion-panels
@@ -229,12 +237,21 @@ const handleBack = () => {
                   {{getStairStatusIcon(stair)}}
                 </v-icon>
                 <div>
-                  <div class="font-weight-bold">Escalera {{ stair.stairNumber }}</div>
-                  <div class="text-caption text-medium-emphasis" v-if="stair.status === 'completed'">
-                    {{ stair.isWorking ? 'Funciona' : 'No funciona' }}
-                    <span v-if="stair.photoIds?.length > 0"> • 📷 {{ stair.photoIds.length }}</span>
+                  <div class="font-weight-bold">
+                    Escalera {{ stair.stairNumber }}
                   </div>
-                  <div class="text-caption text-warning" v-else>Pendiente</div>
+                  <div
+                    v-if="stair.status === 'completed'"
+                    class="text-caption text-medium-emphasis"
+                  >
+                    {{ stair.isWorking ? 'Funciona' : 'No funciona' }}
+                    <span v-if="stair.photoIds?.length > 0">
+                      • 📷 {{ stair.photoIds.length }}
+                    </span>
+                  </div>
+                  <div class="text-caption text-warning" v-else>
+                    Pendiente
+                  </div>
                 </div>
               </div>
             </v-expansion-panel-title>
@@ -251,21 +268,19 @@ const handleBack = () => {
                     density="compact"
                     class="mb-4"
                   >
-                    A veces las escaleras tienen varios códigos o identificadores
+                    Toma en cuenta que pueden tener varios identificadores
                   </v-alert>
 
                   <!-- Códigos de identificación -->
                   <div class="mb-4">
                     <label class="text-subtitle-2 mb-2 d-block">
                       Códigos de identificación
-                      <v-tooltip activator="parent" location="left">
-                        <template v-slot:activator="{ props }">
-                          <v-icon v-bind="props" size="small" class="ml-1">
-                            help_outline
-                          </v-icon>
-                        </template>
-                        Por ejemplo: KSG3-43, ALT-01, etc.
-                      </v-tooltip>
+                      <v-icon size="small" class="ml-1">
+                        help_outline
+                        <v-tooltip activator="parent" location="left">
+                          Por ejemplo: KSG3-43, ALT-01, etc.
+                        </v-tooltip>
+                      </v-icon>
                     </label>
 
                     <div class="d-flex gap-2 mb-2">
@@ -289,6 +304,18 @@ const handleBack = () => {
                       </v-btn>
                     </div>
 
+                      <v-checkbox
+                        v-if="!stair.identificationCodes ||
+                          stair.identificationCodes.length === 0"
+                        color="error"
+                        variant="text"
+                        size="small"
+                        class="mb-2"
+                        hide-details
+                        label="No hay visible ningún código"
+                      >
+
+                      </v-checkbox>
                     <div class="d-flex flex-wrap gap-2">
                       <v-chip
                         v-for="(code, codeIndex) in stair.identificationCodes"
@@ -319,7 +346,9 @@ const handleBack = () => {
                     </label>
 
                     <div class="mb-2">
-                      <label class="text-caption text-medium-emphasis">Punto A</label>
+                      <label class="text-caption text-medium-emphasis">
+                        Origen (de dónde parte)
+                      </label>
                       <v-text-field
                         v-model="stair.connectionPoints.pointA"
                         variant="outlined"
@@ -330,7 +359,9 @@ const handleBack = () => {
                     </div>
 
                     <div>
-                      <label class="text-caption text-medium-emphasis">Punto B</label>
+                      <label class="text-caption text-medium-emphasis">
+                        Destino (a dónde llega)
+                      </label>
                       <v-text-field
                         v-model="stair.connectionPoints.pointB"
                         variant="outlined"
@@ -350,6 +381,7 @@ const handleBack = () => {
                       v-model="stair.details"
                       variant="outlined"
                       rows="2"
+                      auto-grow
                       placeholder="Detalles adicionales..."
                       hide-details
                       density="compact"
@@ -358,21 +390,30 @@ const handleBack = () => {
 
                   <!-- ¿Funciona? -->
                   <div class="mb-4">
-                    <label class="text-subtitle-2 mb-2 d-block">¿Funciona?</label>
+                    <label class="text-subtitle-2 mb-2 d-block">
+                      ¿Funciona la escalera?
+                    </label>
                     <v-radio-group
                       v-model="stair.isWorking"
                       inline
                       hide-details
                     >
-                      <v-radio label="Sí" :value="true" color="success"></v-radio>
-                      <v-radio label="No" :value="false" color="error"></v-radio>
+                      <v-radio
+                        label="Sí"
+                        :value="true"
+                        color="success"
+                        class="mr-3"
+                      ></v-radio>
+                      <v-radio label="No" :value="false" color="error">
+
+                      </v-radio>
                     </v-radio-group>
                   </div>
 
                   <!-- Fotos -->
                   <div class="mb-4">
                     <label class="text-subtitle-2 mb-2 d-block">
-                      Adjunta hasta 3 fotos de la escalera
+                      Adjunta fotos de la escalera y sus identificadores
                     </label>
                     <UploadImage
                       :title="'Subir fotos'"
@@ -386,10 +427,15 @@ const handleBack = () => {
                     color="primary"
                     block
                     @click="markStairComplete(index)"
-                    :variant="stair.status === 'completed' ? 'outlined' : 'elevated'"
+                    :variant="stair.status === 'completed'
+                      ? 'outlined' : 'elevated'"
                   >
-                    <v-icon start>{{ stair.status === 'completed' ? 'check_circle' : 'check' }}</v-icon>
-                    {{ stair.status === 'completed' ? 'Completada' : 'Marcar como completada' }}
+                    <v-icon start>
+                      {{ stair.status === 'completed' ? 'check_circle' : 'check' }}
+                    </v-icon>
+                    {{ stair.status === 'completed'
+                      ? 'Completada'
+                      : 'Completar escalera' }}
                   </v-btn>
 
                 </v-card-text>

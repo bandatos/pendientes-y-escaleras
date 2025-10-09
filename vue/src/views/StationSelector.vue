@@ -30,6 +30,7 @@ onMounted(async () => {
 
 // Manejar selección de estación
 const handleSelectStation = () => {
+  console.log('Estación seleccionada:', selectedStationId.value)
   if (!selectedStationId.value) {
     alert('Por favor selecciona una estación')
     return
@@ -88,6 +89,7 @@ const handleSelectStation = () => {
               variant="outlined"
               hide-details
               :loading="stationStore.isLoading"
+              @update:modelValue="handleSelectStation"
             >
               <template v-slot:chip="{ props, item }">
                 <v-chip
@@ -120,19 +122,20 @@ const handleSelectStation = () => {
 
           </v-card-text>
 
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
-              color="primary"
-              size="large"
-              :disabled="!selectedStationId"
-              @click="handleSelectStation"
-              block
-            >
-              Registrar
-              <v-icon end>keyboard_arrow_right</v-icon>
-            </v-btn>
-          </v-card-actions>
+<!--          Comento esto porque me parece que con elegirla es suficiente-->
+<!--          <v-card-actions>-->
+<!--            <v-spacer></v-spacer>-->
+<!--            <v-btn-->
+<!--              color="primary"-->
+<!--              size="large"-->
+<!--              :disabled="!selectedStationId"-->
+<!--              @click="handleSelectStation"-->
+<!--              block-->
+<!--            >-->
+<!--              Comenzar-->
+<!--              <v-icon end>keyboard_arrow_right</v-icon>-->
+<!--            </v-btn>-->
+<!--          </v-card-actions>-->
         </v-card>
         <v-card>
             <!-- Mapa del metro -->
