@@ -1,5 +1,5 @@
 <script setup>
-import estaciones from "@/assets/datos/estaciones-vis.csv";
+import estaciones from "@/assets/datos/estaciones-match-stops.csv";
 import lineas from "@/assets/datos/lineas-vis.csv";
 
 import * as d3 from "d3";
@@ -58,7 +58,7 @@ onMounted(() => {
 
     .attr("text-anchor", (d) => d.text_anchor)
     .text((d) => d.texto)
-    .style("fill", "#fff")
+    .style("fill", "#000")
     .style("fill-opacity", "0.5");
   estaciones_g.value
     .on("mouseover", function (e, d) {
