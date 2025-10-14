@@ -30,3 +30,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+#Files to ignores
+DEVELOPMENT_LOG.md
