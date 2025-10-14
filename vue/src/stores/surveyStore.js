@@ -69,6 +69,7 @@ export const useSurveyStore = defineStore('survey', () => {
       stairTemplates.push({
         stairNumber: i,
         identificationCodes: [],
+        hasCodes: false,
         connectionPoints: {
           pointA: '',
           pointB: ''

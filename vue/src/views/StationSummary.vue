@@ -62,8 +62,12 @@ const markStairComplete = (stairIndex) => {
   const stair = surveyStore.currentSurvey.stairs[stairIndex]
 
   // Validaciones básicas
-  if (!stair.identificationCodes || stair.identificationCodes.length === 0) {
-    snackbarStore.showWarning('Agrega al menos un código de identificación')
+  // Solo validar códigos si hasCodes no está explícitamente marcado como true (sin códigos)
+  const hasNoCodes = stair.hasCodes === true
+  const hasCodesEmpty = !stair.identificationCodes || stair.identificationCodes.length === 0
+
+  if (!hasNoCodes && hasCodesEmpty) {
+    snackbarStore.showWarning('Agrega al menos un código de identificación o marca que no hay códigos visibles')
     return
   }
 
@@ -148,7 +152,6 @@ const handleBack = () => {
   <v-container fluid class="fill-height pa-0">
     <v-row no-gutters class="fill-height">
       <v-col cols="12">
-
         <!-- Header con status -->
         <v-card class="rounded-0" variant="flat" color="grey-lighten-5">
           <v-card-text>
@@ -164,7 +167,8 @@ const handleBack = () => {
               <v-chip
                 :style="{
                   backgroundColor: surveyStore.currentSurvey?.lineColor,
-                  color: 'white' }"
+                  color: 'white',
+                }"
                 class="mr-2"
                 size="small"
               >
@@ -220,10 +224,7 @@ const handleBack = () => {
         </v-card-subtitle>
 
         <!-- Expansion Panels de Escaleras -->
-        <v-expansion-panels
-          v-model="expandedPanels"
-          multiple
-        >
+        <v-expansion-panels v-model="expandedPanels" multiple>
           <v-expansion-panel
             v-for="(stair, index) in surveyStore.currentSurvey?.stairs"
             :key="index"
@@ -232,11 +233,8 @@ const handleBack = () => {
             <!-- Panel Title -->
             <v-expansion-panel-title color="grey-lighten-4">
               <div class="d-flex align-center w-100">
-                <v-icon
-                  :color="getStairStatusColor(stair)"
-                  class="mr-3"
-                >
-                  {{getStairStatusIcon(stair)}}
+                <v-icon :color="getStairStatusColor(stair)" class="mr-3">
+                  {{ getStairStatusIcon(stair) }}
                 </v-icon>
                 <div>
                   <div class="font-weight-bold">
@@ -246,14 +244,12 @@ const handleBack = () => {
                     v-if="stair.status === 'completed'"
                     class="text-caption text-medium-emphasis"
                   >
-                    {{ stair.isWorking ? 'Funciona' : 'No funciona' }}
+                    {{ stair.isWorking ? "Funciona" : "No funciona" }}
                     <span v-if="stair.photoIds?.length > 0">
                       • 📷 {{ stair.photoIds.length }}
                     </span>
                   </div>
-                  <div class="text-caption text-warning" v-else>
-                    Pendiente
-                  </div>
+                  <div class="text-caption text-warning" v-else>Pendiente</div>
                 </div>
               </div>
             </v-expansion-panel-title>
@@ -262,7 +258,6 @@ const handleBack = () => {
             <v-expansion-panel-text>
               <v-card flat>
                 <v-card-text>
-
                   <!-- Nota informativa -->
                   <v-alert
                     type="info"
@@ -300,24 +295,24 @@ const handleBack = () => {
                         icon
                         @click="addCode(index)"
                       >
-                        <v-icon size="large">
-                          add
-                        </v-icon>
+                        <v-icon size="large"> add </v-icon>
                       </v-btn>
                     </div>
 
-                      <v-checkbox
-                        v-if="!stair.identificationCodes ||
-                          stair.identificationCodes.length === 0"
-                        color="error"
-                        variant="text"
-                        size="small"
-                        class="mb-2"
-                        hide-details
-                        label="No hay visible ningún código"
-                      >
-
-                      </v-checkbox>
+                    <v-checkbox
+                      v-if="
+                        !stair.identificationCodes ||
+                        stair.identificationCodes.length === 0
+                      "
+                      v-model="stair.hasCodes"
+                      color="error"
+                      variant="text"
+                      size="small"
+                      class="mb-2"
+                      hide-details
+                      label="No hay visible ningún código"
+                    >
+                    </v-checkbox>
                     <div class="d-flex flex-wrap gap-2">
                       <v-chip
                         v-for="(code, codeIndex) in stair.identificationCodes"
@@ -407,7 +402,6 @@ const handleBack = () => {
                         class="mr-3"
                       ></v-radio>
                       <v-radio label="No" :value="false" color="error">
-
                       </v-radio>
                     </v-radio-group>
                   </div>
@@ -429,17 +423,21 @@ const handleBack = () => {
                     color="primary"
                     block
                     @click="markStairComplete(index)"
-                    :variant="stair.status === 'completed'
-                      ? 'outlined' : 'elevated'"
+                    :variant="
+                      stair.status === 'completed' ? 'outlined' : 'elevated'
+                    "
                   >
                     <v-icon start>
-                      {{ stair.status === 'completed' ? 'check_circle' : 'check' }}
+                      {{
+                        stair.status === "completed" ? "check_circle" : "check"
+                      }}
                     </v-icon>
-                    {{ stair.status === 'completed'
-                      ? 'Completada'
-                      : 'Completar escalera' }}
+                    {{
+                      stair.status === "completed"
+                        ? "Completada"
+                        : "Completar escalera"
+                    }}
                   </v-btn>
-
                 </v-card-text>
               </v-card>
             </v-expansion-panel-text>
@@ -462,7 +460,6 @@ const handleBack = () => {
             </v-btn>
           </v-card-actions>
         </v-card>
-
       </v-col>
     </v-row>
   </v-container>
