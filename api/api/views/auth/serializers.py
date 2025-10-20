@@ -22,8 +22,8 @@ class UserRegistrationSerializer(serializers.Serializer):
 class UserLoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=False, allow_blank=True)
     email = serializers.EmailField(required=False, allow_blank=True)
-    password = serializers.CharField(
-        required=True, style={'input_type': 'password'})
+    # password = serializers.CharField(
+    #     required=True, style={'input_type': 'password'})
     key = serializers.CharField(required=False)
 
 

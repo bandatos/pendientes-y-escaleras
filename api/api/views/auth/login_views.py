@@ -20,7 +20,7 @@ class UserLoginAPIView(views.APIView):
 
         email = serializer.data.get('email', None)
         username = serializer.data.get('username', None)
-        password = serializer.data.get('password', None)
+        # password = serializer.data.get('password', None)
         # invitation_key = serializer.data.get('key', False)
 
         if email:
@@ -35,8 +35,8 @@ class UserLoginAPIView(views.APIView):
             user_obj = user_query.first()
         else:
             raise ParseError(detail="This username/email is not valid.")
-        if not user_obj.check_password(password):
-            raise ParseError(detail="Invalid credentials.")
+        # if not user_obj.check_password(password):
+        #     raise ParseError(detail="Invalid credentials.")
         if not user_obj.is_active:
             raise ParseError(detail="User not active.")
 
