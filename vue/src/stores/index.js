@@ -9,3 +9,6 @@ export { useImageStore } from './imageStore.js'
 export { useStationStore } from './stationStore.js'
 export { useSurveyStore } from './surveyStore.js'
 export { useSnackbarStore } from './snackbarStore.js'
+
+//Login
+export { useAuthStore } from './authStore.js'
