@@ -55,9 +55,15 @@ python manage.py createsuperuser
 ```
 
 ## Correr el servidor localmente
+- Antes de correr el servicio, genera los archivos estáticos con el siguiente comando:
+```bash
+python manage.py collectstatic
+```
 - Correr el servidor localmente con el siguiente comando:
 ```console
 python manage.py runserver
 ```
 - Acceder a la aplicación en el navegador web en la dirección http://localhost:8013
+
+
 

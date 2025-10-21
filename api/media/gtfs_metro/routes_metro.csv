@@ -1,0 +1,13 @@
+route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route_text_color
+CMX0200LB,METRO,B,Ciudad Azteca - Buenavista,1,118751,FFFFFF
+CMX0200LA,METRO,A,Pantitlán - La Paz,1,A02D96,FFFFFF
+CMX0200L9,METRO,9,Pantitlán - Tacubaya,1,512826,FFFFFF
+CMX0200L8,METRO,8,Garibaldi - Constitución de 1917,1,118749,FFFFFF
+CMX0200L7,METRO,7,El Rosario - Barranca del Muerto,1,E87511,FFFFFF
+CMX0200L6,METRO,6,El Rosario - Martín Carrera,1,D81E05,FFFFFF
+CMX0200L5,METRO,5,Politécnico - Pantitlán,1,F9D616,FFFFFF
+CMX0200L4,METRO,4,Santa Anita - Martín Carrera,1,7FBCAA,FFFFFF
+CMX0200L3,METRO,3,Indios verdes - Universidad,1,AD9B0C,FFFFFF
+CMX0200L2,METRO,2,Cuatro Caminos - Tasqueña,1,0071C1,FFFFFF
+CMX0200L1,METRO,1,Pantitlán - Observatorio,1,F94F8E,FFFFFF
+CMX020L12,METRO,12,Tláhuac-Mixcoac,1,B99E51,FFFFFF
