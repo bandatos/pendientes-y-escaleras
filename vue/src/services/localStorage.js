@@ -4,10 +4,33 @@
 const STORAGE_KEYS = {
   PENDING_SYNC_QUEUE: 'pendingSyncQueue',
   FORM_DATA: 'formData',
-  LAST_SYNC: 'lastSync'
+  LAST_SYNC: 'lastSync',
+  TOKEN: 'token',
+  USER: 'user',
 }
 
 export class LocalStorageService {
+
+  saveToKen(token) {
+    localStorage.setItem(STORAGE_KEYS.TOKEN, JSON.stringify(token))
+  }
+  getToken() {
+    localStorage.getItem(STORAGE_KEYS.TOKEN)
+  }
+  deleteToken() {
+    localStorage.deleteToken;
+  }
+
+  saveUser(user) {
+    localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user))
+  }
+  getUser() {
+    localStorage.getItem(STORAGE_KEYS.USER)
+  }
+  deleteUser() {
+    localStorage.deleteUser;
+  }
+
   
   // Guardar datos del formulario
   /* Método estático para solo usarse con el constructor */
