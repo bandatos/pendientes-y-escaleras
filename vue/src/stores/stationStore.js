@@ -54,44 +54,44 @@ export const useStationStore = defineStore('station', () => {
   async function seedInitialStations() {
     const initialStations = [
       // Línea 1
-      { stationId: 'observatorio', name: 'Observatorio', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'tacubaya_l1', name: 'Tacubaya', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 4 },
-      { stationId: 'juanacatlan', name: 'Juanacatlán', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'chapultepec', name: 'Chapultepec', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 3 },
-      { stationId: 'sevilla', name: 'Sevilla', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'insurgentes', name: 'Insurgentes', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 4 },
-      { stationId: 'cuauhtemoc', name: 'Cuauhtémoc', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'balderas_l1', name: 'Balderas', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 3 },
-      { stationId: 'salto_agua', name: 'Salto del Agua', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 3 },
-      { stationId: 'isabel_catolica', name: 'Isabel la Católica', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'pino_suarez_l1', name: 'Pino Suárez', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 4 },
-      { stationId: 'merced', name: 'Merced', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'candelaria', name: 'Candelaria', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 3 },
-      { stationId: 'san_lazaro', name: 'San Lázaro', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 4 },
-      { stationId: 'moctezuma', name: 'Moctezuma', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'balbuena', name: 'Balbuena', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 2 },
-      { stationId: 'pantitlan_l1', name: 'Pantitlán', line: 'Línea 1', lineColor: '#e9468f', totalStairs: 5 },
+      { station_id: 'observatorio', name: 'Observatorio', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'tacubaya_l1', name: 'Tacubaya', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
+      { station_id: 'juanacatlan', name: 'Juanacatlán', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'chapultepec', name: 'Chapultepec', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
+      { station_id: 'sevilla', name: 'Sevilla', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'insurgentes', name: 'Insurgentes', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
+      { station_id: 'cuauhtemoc', name: 'Cuauhtémoc', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'balderas_l1', name: 'Balderas', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
+      { station_id: 'salto_agua', name: 'Salto del Agua', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
+      { station_id: 'isabel_catolica', name: 'Isabel la Católica', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'pino_suarez_l1', name: 'Pino Suárez', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
+      { station_id: 'merced', name: 'Merced', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'candelaria', name: 'Candelaria', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
+      { station_id: 'san_lazaro', name: 'San Lázaro', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
+      { station_id: 'moctezuma', name: 'Moctezuma', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'balbuena', name: 'Balbuena', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
+      { station_id: 'pantitlan_l1', name: 'Pantitlán', line: 'Línea 1', line_color: '#e9468f', total_stairs: 5 },
 
       // Línea 8 (ejemplo)
-      { stationId: 'garibaldi', name: 'Garibaldi/Lagunilla', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 3 },
-      { stationId: 'bellas_artes', name: 'Bellas Artes', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 4 },
-      { stationId: 'san_juan_letran', name: 'San Juan de Letrán', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'salto_agua_l8', name: 'Salto del Agua', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 3 },
-      { stationId: 'doctores', name: 'Doctores', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'obrera', name: 'Obrera', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'chabacano_l8', name: 'Chabacano', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 3 },
-      { stationId: 'la_viga', name: 'La Viga', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'santa_anita_l8', name: 'Santa Anita', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 3 },
-      { stationId: 'coyuya', name: 'Coyuya', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'iztacalco', name: 'Iztacalco', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'apatlaco', name: 'Apatlaco', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'aculco', name: 'Aculco', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'escuadron_201', name: 'Escuadrón 201', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'atlalilco', name: 'Atlalilco', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 3 },
-      { stationId: 'iztapalapa', name: 'Iztapalapa', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'cerro_estrella', name: 'Cerro de la Estrella', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'uam_i', name: 'UAM-I', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 2 },
-      { stationId: 'constitucion_1917', name: 'Constitución de 1917', line: 'Línea 8', lineColor: '#008e3d', totalStairs: 4 },
+      { station_id: 'garibaldi', name: 'Garibaldi/Lagunilla', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
+      { station_id: 'bellas_artes', name: 'Bellas Artes', line: 'Línea 8', line_color: '#008e3d', total_stairs: 4 },
+      { station_id: 'san_juan_letran', name: 'San Juan de Letrán', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'salto_agua_l8', name: 'Salto del Agua', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
+      { station_id: 'doctores', name: 'Doctores', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'obrera', name: 'Obrera', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'chabacano_l8', name: 'Chabacano', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
+      { station_id: 'la_viga', name: 'La Viga', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'santa_anita_l8', name: 'Santa Anita', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
+      { station_id: 'coyuya', name: 'Coyuya', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'iztacalco', name: 'Iztacalco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'apatlaco', name: 'Apatlaco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'aculco', name: 'Aculco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'escuadron_201', name: 'Escuadrón 201', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'atlalilco', name: 'Atlalilco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
+      { station_id: 'iztapalapa', name: 'Iztapalapa', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'cerro_estrella', name: 'Cerro de la Estrella', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'uam_i', name: 'UAM-I', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
+      { station_id: 'constitucion_1917', name: 'Constitución de 1917', line: 'Línea 8', line_color: '#008e3d', total_stairs: 4 },
     ]
 
     await IndexedDBService.seedStations(initialStations)
@@ -111,8 +111,8 @@ export const useStationStore = defineStore('station', () => {
   }
 
   // Buscar estación por ID
-  async function getStationById(stationId) {
-    const station = await IndexedDBService.getStationById(stationId)
+  async function getStationById(station_id) {
+    const station = await IndexedDBService.getStationById(station_id)
     return station
   }
 

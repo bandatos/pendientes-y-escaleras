@@ -99,7 +99,7 @@ const handleSubmit = async () => {
       line: syncStore.report.line.trim(),
       station: syncStore.report.station.trim(),
       typeElevation: syncStore.report.typeElevation.trim(),
-      isWorking: syncStore.report.isWorking,
+      is_working: syncStore.report.is_working,
       hasImages: imageValidation.status === "success", // Flag si tiene imágenes
     };
 
@@ -145,7 +145,7 @@ const handleSubmit = async () => {
     syncStore.report.line = null;
     syncStore.report.station = "";
     syncStore.report.typeElevation = "";
-    syncStore.report.isWorking = true;
+    syncStore.report.is_working = true;
     syncStore.report.evidenceImage = "";
 
     // Limpiar selección de imágenes
@@ -215,7 +215,7 @@ const handleSubmit = async () => {
         :label="'Número de Escalera'"
       ></TextField>
       <v-radio-group
-        v-model="syncStore.report.isWorking"
+        v-model="syncStore.report.is_working"
         label="¿Funciona?"
         inline
         color="primary"
@@ -225,7 +225,7 @@ const handleSubmit = async () => {
       </v-radio-group>
 
       <UploadImage
-        v-if="syncStore.report.isWorking === false"
+        v-if="syncStore.report.is_working === false"
         :title="'Subir Evidencia'"
         :typeFiles="'image/*'"
       />
