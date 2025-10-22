@@ -159,3 +159,36 @@ REST_FRAMEWORK = {
     ),
 
 }
+
+
+# ---------------------------------STORAGE-----------------------------------
+COMPRESS_ENABLED = getenv_bool("COMPRESS_ENABLED", True)
+COMPRESS_OFFLINE = getenv_bool("COMPRESS_OFFLINE", True)
+
+
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+AWS_PRELOAD_METADATA = getenv_bool('AWS_PRELOAD_METADATA', True)
+
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+
+AWS_LOCATION = os.getenv('AWS_LOCATION')
+AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL', 'public-read')
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+
+AWS_STATIC_LOCATION = os.getenv('AWS_STATIC_LOCATION', 'static_compressed')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_FILE_OVERWRITE = getenv_bool('AWS_S3_FILE_OVERWRITE', False)
+
+URL_AMAZON_S3_FILES_UPLOADED = os.getenv('URL_AMAZON_S3_FILES_UPLOADED')
+
+AWS_IS_GZIPPED = getenv_bool('AWS_IS_GZIPPED', False)
+GZIP_CONTENT_TYPES = set(getenv_list('GZIP_CONTENT_TYPES', []))
+
+if AWS_STORAGE_BUCKET_NAME:
+    INSTALLED_APPS += ("storages", )
+# -------------------------------END STORAGE---------------------------------
+

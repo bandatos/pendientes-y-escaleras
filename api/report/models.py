@@ -83,7 +83,7 @@ class StairReport(models.Model):
     )
 
     def __str__(self):
-        return f"Reporte de escalera {self.stair} asociado al {self.station_report}"
+        return f"Reporte de escalera {self.stair} por {self.user}"
 
     class Meta:
         verbose_name = "Reporte de escalera"

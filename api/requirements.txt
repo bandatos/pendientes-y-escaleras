@@ -9,3 +9,5 @@ Unidecode==1.4.0
 Pillow==12.0.0
 pytest==8.4.2
 pytest-django==4.11.1
+django-storages==1.14.6
+boto3==1.40.56
