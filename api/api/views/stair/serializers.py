@@ -11,7 +11,7 @@ class StairCatSerializer(serializers.ModelSerializer):
         model = Stair
         fields = [
             "id",
-            "stop",
             "number",
+            "stop",
             "station",
         ]

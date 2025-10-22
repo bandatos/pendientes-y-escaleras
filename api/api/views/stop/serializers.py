@@ -6,7 +6,15 @@ from stop.models import Route, Station, Stop
 class RouteCatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Route
-        fields = "__all__"
+        fields = [
+            "id",
+            "route_id",
+            "route_short_name",
+            "route_long_name",
+            "route_desc",
+            "route_color",
+            "route_text_color",
+        ]
 
 
 class StationCatSerializer(serializers.ModelSerializer):
@@ -21,6 +29,7 @@ class StopCatSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stop
         fields = [
+            "id",
             "stop_id",
             "name",
             "station",

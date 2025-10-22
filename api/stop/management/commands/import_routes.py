@@ -40,10 +40,12 @@ class Command(BaseCommand):
                         # Si el script se corre de nuevo, no creará duplicados.
                         # Buscará por 'route_id' y si existe, actualizará
                         # los campos en 'defaults'. Si no, creará un nuevo objeto.
+                        route_short_name = row['route_short_name'].replace('L', '')
                         obj, created = Route.objects.update_or_create(
                             route_id=row['route_id'],
                             defaults={
-                                'route_short_name': row['route_short_name'],
+                                'route_short_name': route_short_name,
+                                'route_desc': f'Línea {route_short_name}',
                                 'route_long_name': row['route_long_name'],
                                 'route_type': int(row['route_type']),
                                 'route_color': row['route_color'],
