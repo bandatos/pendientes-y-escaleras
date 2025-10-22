@@ -4,6 +4,8 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { IndexedDBService } from '../services/indexDB.js'
+import { catalogsService } from '../services'
+const SERVICE = catalogsService
 
 export const useStationStore = defineStore('station', () => {
 
@@ -26,7 +28,7 @@ export const useStationStore = defineStore('station', () => {
     return grouped
   })
 
-  // Inicializar catálogo de estaciones
+  // Request the data to the endpoint.
   async function init() {
     try {
       isLoading.value = true
@@ -36,8 +38,19 @@ export const useStationStore = defineStore('station', () => {
 
       if (catalog.length === 0) {
         // Si no hay datos, poblar con datos iniciales
-        console.log('📋 Catálogo vacío, poblando con datos iniciales...')
-        await seedInitialStations()
+        console.log('📋 Catálogo vacío, requiriendo catálogo')
+
+        await SERVICE.getCatalogs()
+          .then(response => {
+            //Store in the state.
+            console.debug(response);  
+          }, error => {
+            console.error('Error al obtener los catálogos', error);
+          })
+          .finally(() => {
+            console.log('Finish :>> ');
+          })
+
       } else {
         stationsCatalog.value = catalog
         console.log(`✅ Catálogo cargado: ${catalog.length} estaciones`)
