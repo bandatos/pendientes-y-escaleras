@@ -19,7 +19,7 @@ async function getCatalogs() {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`)
     }
 
-    // Parsear JSON - ESTO ES CRÍTICO
+    // Parsear JSON 
     const data = await response.json()
 
     return data
