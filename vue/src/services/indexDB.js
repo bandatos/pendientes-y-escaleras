@@ -30,7 +30,7 @@ db.version(3).stores({
     stationRecords: 'id, station_id, timestamp, synced, status, line',
 
     // Imágenes vinculadas a estación + escalera específica
-    images: '++id, stationRecordId, stair_number, synced, timestamp, s3Key',
+    images: '++id, stationRecordId, number, synced, timestamp, s3Key',
 
     // Catálogo de estaciones (metadata estática del sistema)
     stations: '++id, station_id, name, line, total_stairs',
@@ -307,11 +307,11 @@ export class IndexedDBService {
     }
 
     // Guardar imágenes para una escalera específica de una estación
-    static async saveStairImages(stationRecordId, stair_number, fileObjects) {
+    static async saveStairImages(stationRecordId, number, fileObjects) {
         try {
             const imageRecords = fileObjects.map((file, index) => ({
                 stationRecordId: stationRecordId,
-                stair_number: stair_number,
+                number: number,
                 file: file,
                 order: index,
                 timestamp: Date.now(),
@@ -322,7 +322,7 @@ export class IndexedDBService {
 
             const ids = await db.images.bulkAdd(imageRecords, { allKeys: true });
 
-            console.log(`✅ ${fileObjects.length} imágenes guardadas para estación ${stationRecordId}, escalera ${stair_number}`);
+            console.log(`✅ ${fileObjects.length} imágenes guardadas para estación ${stationRecordId}, escalera ${number}`);
             return ids;
 
         } catch (error) {
@@ -332,11 +332,11 @@ export class IndexedDBService {
     }
 
     // Obtener imágenes de una escalera específica
-    static async getStairImages(stationRecordId, stair_number) {
+    static async getStairImages(stationRecordId, number) {
         try {
             const images = await db.images
-                .where('[stationRecordId+stair_number]')
-                .equals([stationRecordId, stair_number])
+                .where('[stationRecordId+number]')
+                .equals([stationRecordId, number])
                 .sortBy('order');
             return images;
         } catch (error) {

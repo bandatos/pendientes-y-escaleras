@@ -4,9 +4,11 @@
 import { defineStore } from 'pinia'
 import { ref, computed, toRaw } from 'vue'
 import { IndexedDBService } from '../services/indexDB.js'
-import { useStationStore } from './stationStore.js'
+import { useStationStore } from '../stores/stationStore'
 
 export const useSurveyStore = defineStore('survey', () => {
+
+  const stationStore = useStationStore()
 
   // Función helper: Convertir objeto reactivo a objeto plano (deep)
   function toPlainObject(obj) {
@@ -16,6 +18,7 @@ export const useSurveyStore = defineStore('survey', () => {
   // Estado reactivo
   const currentSurvey = ref(null) // Relevamiento en progreso
   const currentStairIndex = ref(0) // Índice de escalera actual (0-based)
+  const currentStairs = ref([]) // Escaleras de la estación seleccionada
   const isSaving = ref(false)
 
   // Computed properties
@@ -62,24 +65,33 @@ export const useSurveyStore = defineStore('survey', () => {
 
   // Iniciar nuevo relevamiento de estación
   function startSurvey(station) {
-    const stairTemplates = []
+    // console.log("stationStore", stationStore);
+    // console.log("rawStairs", stationStore.rawStairs);
+    currentStairs.value = stationStore.rawStairs.filter(
+      s => s.station === station.id)
+    console.log("currentStairs", currentStairs.value);
 
-    // Crear plantilla para cada escalera
-    for (let i = 1; i <= station.total_stairs; i++) {
-      stairTemplates.push({
-        stair_number: i,
+    // id: 1853
+    // number: 2
+    // station: 1203
+    // stop: 2144
+    const stairTemplates = currentStairs.value.map(s => {
+      return {
+        stair: s.id,
+        number: s.number,
+        stair_full: s,
         code_identifiers: [],
         hasCodes: false,
-        connection_points: {
-          pointA: '',
-          pointB: ''
-        },
+        route_start: '',
+        path_start: '',
+        path_end: '',
+        route_end: '',
         details: '',
         is_working: null,
         photo_ids: [],
         status: 'pending' // 'pending' | 'completed'
-      })
-    }
+      }
+    })
 
     currentSurvey.value = {
       // Datos de la estación
@@ -159,7 +171,7 @@ export const useSurveyStore = defineStore('survey', () => {
     try {
       const imageIds = await IndexedDBService.saveStairImages(
         stationRecordId,
-        currentStair.value.stair_number,
+        currentStair.value.number,
         fileObjects
       )
 
@@ -232,8 +244,8 @@ export const useSurveyStore = defineStore('survey', () => {
       errors.push('Debe tener al menos un código de identificación')
     }
 
-    if (!currentStair.value.connection_points.pointA) {
-      errors.push('Debe especificar el punto A de conexión')
+    if (!currentStair.value.route_start) {
+      errors.push('Debe especificar el punto inicial')
     }
 
     if (currentStair.value.is_working === null) {
@@ -255,6 +267,7 @@ export const useSurveyStore = defineStore('survey', () => {
     currentSurvey,
     currentStairIndex,
     isSaving,
+    currentStairs,
 
     // Computed
     isActive,

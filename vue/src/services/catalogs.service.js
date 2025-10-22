@@ -12,6 +12,7 @@ async function getCatalogs() {
         }
     }
 
+
     const response = await fetch(`${config.API_URL}api/catalogs/all`, requestOptions)
 
     // Validar status HTTP

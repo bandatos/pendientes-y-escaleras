@@ -21,6 +21,8 @@ export const useStationStore = defineStore('station', () => {
   const rawStops = ref([]) // Stops (paradas por línea)
   const rawStations = ref([]) // Estaciones físicas
   const rawStairs = ref([]) // Escaleras
+  const dictRoutesById = ref({}) // Lookup de líneas por ID
+  const fullStations = ref([])
 
   // Computed properties
   const hasStations = computed(() => stationsCatalog.value.length > 0)
@@ -74,7 +76,7 @@ export const useStationStore = defineStore('station', () => {
         total_stairs: stairsByStation[station.id] || 0,
 
         // Datos adicionales útiles
-        main_route_id: mainRoute.id,
+        main_route: mainRoute.id,
         viz_params: station.viz_params // Para el mapa D3.js Futura consideración
       }
     }).filter(Boolean) // Eliminar nulls
@@ -166,6 +168,7 @@ export const useStationStore = defineStore('station', () => {
   // Limpiar selección
   function clearSelection() {
     selectedStation.value = null
+    // currentStairs.value = []
   }
 
   // Buscar estación por ID
@@ -190,6 +193,8 @@ export const useStationStore = defineStore('station', () => {
     rawStops,
     rawStations,
     rawStairs,
+    dictRoutesById,
+    fullStations,
 
     // Computed
     hasStations,

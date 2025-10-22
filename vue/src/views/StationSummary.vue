@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useSurveyStore } from '../stores/surveyStore'
+import { useStationStore } from '../stores/stationStore'
 import { useSyncStore } from '../stores/syncStore'
 import { useImageStore } from '../stores/imageStore'
 import { useSnackbarStore } from '../stores/snackbarStore'
@@ -13,9 +14,13 @@ const emit = defineEmits(['save-complete', 'back'])
 
 // Stores
 const surveyStore = useSurveyStore()
+const stationStore = useStationStore()
 const syncStore = useSyncStore()
 const imageStore = useImageStore()
 const snackbarStore = useSnackbarStore()
+
+const { currentSurvey } = surveyStore
+const { selectedStation } = stationStore
 
 // Estado local
 const expandedPanels = ref([])
@@ -74,8 +79,8 @@ const markStairComplete = (stairIndex) => {
     return
   }
 
-  if (!stair.connection_points?.pointA?.trim()) {
-    snackbarStore.showWarning('Especifica el punto A de conexión')
+  if (!stair.route_start?.trim()) {
+    snackbarStore.showWarning('Especifica el punto de inicio')
     return
   }
 
@@ -121,7 +126,7 @@ const handleSave = async () => {
       if (photos && photos.length > 0) {
         await IndexedDBService.saveStairImages(
           savedRecord.id,
-          stairIndex + 1, // stair_number es 1-based
+          stairIndex + 1, // number es 1-based
           photos
         )
         console.log(`📸 ${photos.length}
@@ -169,16 +174,16 @@ const handleBack = () => {
             <div class="d-flex align-center">
               <v-chip
                 :style="{
-                  backgroundColor: surveyStore.currentSurvey?.line_color,
+                  backgroundColor: selectedStation?.line_color || 'grey',
                   color: 'white',
                 }"
                 class="mr-2"
                 size="small"
               >
-                {{ surveyStore.currentSurvey?.line }}
+                {{ selectedStation?.lines || selectedStation?.first_route?.route_short_name }}
               </v-chip>
               <h2 class="text-subtitle-1 font-weight-bold">
-                Estación {{ surveyStore.currentSurvey?.station_name }}
+                Estación {{ selectedStation?.name }}
               </h2>
               <v-btn
                 icon="close"
@@ -196,7 +201,6 @@ const handleBack = () => {
           class="mb-2"
         />
 
-
         <v-divider></v-divider>
         <v-card-subtitle>
           Completa la info en el orden en el que recorras la estación
@@ -211,8 +215,6 @@ const handleBack = () => {
             :stair_index="index"
             :all_status="all_status"
           />
-
-
         </v-expansion-panels>
 
         <!-- Botón guardar todo -->

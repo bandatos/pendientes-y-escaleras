@@ -56,6 +56,12 @@ const handleBack = () => {
   </v-app>
 </template>
 
-<style scoped>
-/* Global app styles */
+<style lang="scss">
+
+.stripe-square {
+  height: 40px;
+  width: 40px;
+  border-radius: 0 16px 0 0 !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 </style>

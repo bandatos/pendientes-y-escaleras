@@ -55,12 +55,12 @@ function addCode() {
     <!-- Panel Title -->
     <v-expansion-panel-title color="grey-lighten-4">
       <div class="d-flex align-center w-100">
-        <v-icon :color="full_status?.icon || 'grey'" class="mr-3">
+        <v-icon :color="full_status?.color || 'grey'" class="mr-3">
           {{ full_status?.icon || "help_outline" }}
         </v-icon>
         <div>
           <div class="font-weight-bold">
-            Escalera {{ stair.stair_number }}
+            Escalera {{ stair.number }}
           </div>
           <div
             v-if="stair.status === 'completed'"
@@ -151,7 +151,7 @@ function addCode() {
           </div>
 
           <ConnectionPoints
-            :connection-points="stair.connection_points"
+            :stair="stair"
           />
 
           <!-- Detalles -->
