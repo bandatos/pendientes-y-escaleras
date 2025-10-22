@@ -44,21 +44,27 @@ class StationCatSerializer(serializers.ModelSerializer):
         ]
 
 
-class StopCatSerializer(serializers.ModelSerializer):
-    name = serializers.CharField(source='stop_name')
+class StationFullSerializer(serializers.ModelSerializer):
+
+    routes = RoutesSerializer(
+        many=True, read_only=True, source='stops')
+    stairs = serializers.SerializerMethodField()
+
+    def get_stairs(self, obj):
+        stairs = StairCatSerializer(
+            Stair.objects.filter(stop__station=obj), many=True).data
+        return stairs
 
     class Meta:
-        model = Stop
-        fields = [
-            "id",
-            "stop_id",
-            "name",
-            "station",
-            "route"
+        model = Station
+        fields = "__all__"
+        read_only_fields = [
+            "routes",
+            "stairs",
         ]
 
 
-class StopFullSerializer(serializers.ModelSerializer):
+class StopCatSerializer(serializers.ModelSerializer):
     name = serializers.CharField(source='stop_name')
 
     class Meta:

@@ -70,7 +70,7 @@ class StairReport(models.Model):
         default=False, verbose_name="¿Está alineada con el ID"
     )
     is_working = models.BooleanField(
-        default=False, verbose_name="¿Está funcionando?"
+        blank=True, null=True, verbose_name="¿Está funcionando?"
     )
     details = models.TextField(
         blank=True, null=True, verbose_name="Detalles adicionales"
