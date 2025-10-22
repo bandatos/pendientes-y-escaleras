@@ -5,14 +5,22 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { IndexedDBService } from '../services/indexDB.js'
 import { catalogsService } from '../services'
+import { useSnackbarStore } from './snackbarStore.js'
+
 const SERVICE = catalogsService
 
 export const useStationStore = defineStore('station', () => {
 
   // Estado reactivo
-  const stationsCatalog = ref([]) // Catálogo completo de estaciones
+  const stationsCatalog = ref([]) // Catálogo transformado para la UI
   const selectedStation = ref(null) // Estación actualmente seleccionada
   const isLoading = ref(false)
+
+  // Datos raw del API (estructura relacional)
+  const rawRoutes = ref([]) // Líneas del metro
+  const rawStops = ref([]) // Stops (paradas por línea)
+  const rawStations = ref([]) // Estaciones físicas
+  const rawStairs = ref([]) // Escaleras
 
   // Computed properties
   const hasStations = computed(() => stationsCatalog.value.length > 0)
@@ -28,8 +36,56 @@ export const useStationStore = defineStore('station', () => {
     return grouped
   })
 
+  /**
+   * Transforma los datos relacionales del API al formato normalizado para la UI
+   * Entrada: { routes: [], stops: [], stations: [], stairs: [] }
+   * Salida: [{ station_id, name, line, line_color, total_stairs, ... }, ...]
+   */
+  function transformCatalogData(apiData) {
+    // Crear lookups para acceso rápido
+    const routesById = {}
+    apiData.routes.forEach(route => {
+      routesById[route.id] = route
+    })
+
+    // Contar escaleras por estación
+    const stairsByStation = {}
+    apiData.stairs.forEach(stair => {
+      const stationId = stair.station
+      stairsByStation[stationId] = (stairsByStation[stationId] || 0) + 1
+    })
+
+    // Transformar cada estación física
+    const transformed = apiData.stations.map(station => {
+      // Obtener la línea principal de esta estación
+      const mainRoute = routesById[station.main_route]
+
+      if (!mainRoute) {
+        console.warn(`Estación ${station.name} no tiene main_route válida`)
+        return null
+      }
+
+      return {
+        // Usar el ID del backend directamente (normalizado)
+        station_id: station.id,
+        name: station.name,
+        line: `Línea ${mainRoute.route_short_name}`,
+        line_color: `#${mainRoute.route_color}`,
+        total_stairs: stairsByStation[station.id] || 0,
+
+        // Datos adicionales útiles
+        main_route_id: mainRoute.id,
+        viz_params: station.viz_params // Para el mapa D3.js Futura consideración
+      }
+    }).filter(Boolean) // Eliminar nulls
+
+    return transformed
+  }
+
   // Request the data to the endpoint.
   async function init() {
+    const snackbarStore = useSnackbarStore()
+
     try {
       isLoading.value = true
 
@@ -37,79 +93,46 @@ export const useStationStore = defineStore('station', () => {
       const catalog = await IndexedDBService.getStationsCatalog()
 
       if (catalog.length === 0) {
-        // Si no hay datos, poblar con datos iniciales
-        console.log('📋 Catálogo vacío, requiriendo catálogo')
+        // Si no hay datos en cache, obtener del API
+        console.log('📋 Catálogo vacío, fetching desde API...')
 
-        await SERVICE.getCatalogs()
-          .then(response => {
-            //Store in the state.
-            console.debug(response);  
-          }, error => {
-            console.error('Error al obtener los catálogos', error);
-          })
-          .finally(() => {
-            console.log('Finish :>> ');
-          })
+        const apiData = await SERVICE.getCatalogs()
+
+        if (!apiData || !apiData.stations) {
+          throw new Error('Datos del API inválidos')
+        }
+
+        // Guardar datos raw en el store
+        rawRoutes.value = apiData.routes || []
+        rawStops.value = apiData.stops || []
+        rawStations.value = apiData.stations || []
+        rawStairs.value = apiData.stairs || []
+
+        // Transformar datos al formato de la UI
+        const transformedCatalog = transformCatalogData(apiData)
+        stationsCatalog.value = transformedCatalog
+
+        // Guardar en IndexedDB para uso offline
+        await IndexedDBService.seedStations(transformedCatalog)
+
+        console.log(`✅ Catálogo descargado y transformado: ${transformedCatalog.length} estaciones`)
+        console.log(`   - ${rawRoutes.value.length} líneas`)
+        console.log(`   - ${rawStops.value.length} stops`)
+        console.log(`   - ${rawStations.value.length} estaciones físicas`)
+        console.log(`   - ${rawStairs.value.length} escaleras`)
 
       } else {
+        // Cargar desde cache
         stationsCatalog.value = catalog
-        console.log(`✅ Catálogo cargado: ${catalog.length} estaciones`)
+        console.log(`✅ Catálogo cargado desde cache: ${catalog.length} estaciones`)
       }
 
     } catch (error) {
       console.error('❌ Error inicializando catálogo:', error)
+      snackbarStore.showError(`Error cargando catálogo: ${error.message}`)
     } finally {
       isLoading.value = false
     }
-  }
-
-  // Poblar catálogo inicial (datos del metro de CDMX)
-  async function seedInitialStations() {
-    const initialStations = [
-      // Línea 1
-      { station_id: 'observatorio', name: 'Observatorio', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'tacubaya_l1', name: 'Tacubaya', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
-      { station_id: 'juanacatlan', name: 'Juanacatlán', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'chapultepec', name: 'Chapultepec', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
-      { station_id: 'sevilla', name: 'Sevilla', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'insurgentes', name: 'Insurgentes', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
-      { station_id: 'cuauhtemoc', name: 'Cuauhtémoc', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'balderas_l1', name: 'Balderas', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
-      { station_id: 'salto_agua', name: 'Salto del Agua', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
-      { station_id: 'isabel_catolica', name: 'Isabel la Católica', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'pino_suarez_l1', name: 'Pino Suárez', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
-      { station_id: 'merced', name: 'Merced', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'candelaria', name: 'Candelaria', line: 'Línea 1', line_color: '#e9468f', total_stairs: 3 },
-      { station_id: 'san_lazaro', name: 'San Lázaro', line: 'Línea 1', line_color: '#e9468f', total_stairs: 4 },
-      { station_id: 'moctezuma', name: 'Moctezuma', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'balbuena', name: 'Balbuena', line: 'Línea 1', line_color: '#e9468f', total_stairs: 2 },
-      { station_id: 'pantitlan_l1', name: 'Pantitlán', line: 'Línea 1', line_color: '#e9468f', total_stairs: 5 },
-
-      // Línea 8 (ejemplo)
-      { station_id: 'garibaldi', name: 'Garibaldi/Lagunilla', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
-      { station_id: 'bellas_artes', name: 'Bellas Artes', line: 'Línea 8', line_color: '#008e3d', total_stairs: 4 },
-      { station_id: 'san_juan_letran', name: 'San Juan de Letrán', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'salto_agua_l8', name: 'Salto del Agua', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
-      { station_id: 'doctores', name: 'Doctores', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'obrera', name: 'Obrera', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'chabacano_l8', name: 'Chabacano', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
-      { station_id: 'la_viga', name: 'La Viga', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'santa_anita_l8', name: 'Santa Anita', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
-      { station_id: 'coyuya', name: 'Coyuya', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'iztacalco', name: 'Iztacalco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'apatlaco', name: 'Apatlaco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'aculco', name: 'Aculco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'escuadron_201', name: 'Escuadrón 201', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'atlalilco', name: 'Atlalilco', line: 'Línea 8', line_color: '#008e3d', total_stairs: 3 },
-      { station_id: 'iztapalapa', name: 'Iztapalapa', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'cerro_estrella', name: 'Cerro de la Estrella', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'uam_i', name: 'UAM-I', line: 'Línea 8', line_color: '#008e3d', total_stairs: 2 },
-      { station_id: 'constitucion_1917', name: 'Constitución de 1917', line: 'Línea 8', line_color: '#008e3d', total_stairs: 4 },
-    ]
-
-    await IndexedDBService.seedStations(initialStations)
-    stationsCatalog.value = initialStations
-    console.log('✅ Catálogo inicial poblado')
   }
 
   // Seleccionar una estación
@@ -140,17 +163,23 @@ export const useStationStore = defineStore('station', () => {
     selectedStation,
     isLoading,
 
+    // Datos raw del API
+    rawRoutes,
+    rawStops,
+    rawStations,
+    rawStairs,
+
     // Computed
     hasStations,
     stationsByLine,
 
     // Acciones
     init,
+    transformCatalogData,
     selectStation,
     clearSelection,
     getStationById,
-    getStationsByLine,
-    seedInitialStations
+    getStationsByLine
   }
 })
 
