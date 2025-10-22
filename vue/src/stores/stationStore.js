@@ -12,7 +12,7 @@ const SERVICE = catalogsService
 export const useStationStore = defineStore('station', () => {
 
   // Estado reactivo
-  const stationsCatalog = ref([]) // Catálogo transformado para la UI
+  const stationsCatalog = ref([]) // Catálogo transformado
   const selectedStation = ref(null) // Estación actualmente seleccionada
   const isLoading = ref(false)
 
@@ -89,42 +89,64 @@ export const useStationStore = defineStore('station', () => {
     try {
       isLoading.value = true
 
-      // Cargar desde IndexedDB
-      const catalog = await IndexedDBService.getStationsCatalog()
+      // Cargar desde IndexedDB primero (para mostrar algo mientras carga del API)
+      const cachedCatalog = await IndexedDBService.getStationsCatalog()
 
-      if (catalog.length === 0) {
-        // Si no hay datos en cache, obtener del API
-        console.log('📋 Catálogo vacío, fetching desde API...')
+      if (navigator.onLine) {
+        // Con conexión: Siempre intentar actualizar desde el API
+        console.log('🌐 Conexión disponible, actualizando catálogo desde API...')
 
-        const apiData = await SERVICE.getCatalogs()
-        console.debug(apiData);
-        if (!apiData || !apiData.stations) {
-          throw new Error('Datos del API inválidos')
+        try {
+          const apiData = await SERVICE.getCatalogs()
+
+          if (!apiData || !apiData.stations) {
+            throw new Error('Datos del API inválidos')
+          }
+
+          // Guardar datos raw en el store
+          rawRoutes.value = apiData.routes || []
+          rawStops.value = apiData.stops || []
+          rawStations.value = apiData.stations || []
+          rawStairs.value = apiData.stairs || []
+
+          // Transformar datos al formato de la UI
+          const transformedCatalog = transformCatalogData(apiData)
+          stationsCatalog.value = transformedCatalog
+
+          // Guardar en IndexedDB para uso offline
+          await IndexedDBService.seedStations(transformedCatalog)
+
+          console.log(`✅ Catálogo actualizado desde API: ${transformedCatalog.length} estaciones`)
+          console.log(`   - ${rawRoutes.value.length} líneas`)
+          console.log(`   - ${rawStops.value.length} stops`)
+          console.log(`   - ${rawStations.value.length} estaciones físicas`)
+          console.log(`   - ${rawStairs.value.length} escaleras`)
+
+        } catch (error) {
+          // Si falla el API pero hay cache, usar el cache
+          console.warn('⚠️ Error del API, usando cache:', error.message)
+
+          if (cachedCatalog.length > 0) {
+            stationsCatalog.value = cachedCatalog
+            console.log(`✅ Usando catálogo en cache: ${cachedCatalog.length} estaciones`)
+            snackbarStore.showWarning('Usando catálogo local (sin actualizar)')
+          } else {
+            // Sin cache y sin API = error fatal
+            throw new Error('No hay conexión al servidor y no hay datos en cache')
+          }
         }
 
-        // Guardar datos raw en el store
-        rawRoutes.value = apiData.routes || []
-        rawStops.value = apiData.stops || []
-        rawStations.value = apiData.stations || []
-        rawStairs.value = apiData.stairs || []
-
-        // Transformar datos al formato de la UI
-        const transformedCatalog = transformCatalogData(apiData)
-        stationsCatalog.value = transformedCatalog
-
-        // Guardar en IndexedDB para uso offline
-        await IndexedDBService.seedStations(transformedCatalog)
-
-        console.log(`✅ Catálogo descargado y transformado: ${transformedCatalog.length} estaciones`)
-        console.log(`   - ${rawRoutes.value.length} líneas`)
-        console.log(`   - ${rawStops.value.length} stops`)
-        console.log(`   - ${rawStations.value.length} estaciones físicas`)
-        console.log(`   - ${rawStairs.value.length} escaleras`)
-
       } else {
-        // Cargar desde cache
-        stationsCatalog.value = catalog
-        console.log(`✅ Catálogo cargado desde cache: ${catalog.length} estaciones`)
+        // Sin conexión: Usar cache
+        console.log('📴 Sin conexión, usando catálogo en cache...')
+
+        if (cachedCatalog.length > 0) {
+          stationsCatalog.value = cachedCatalog
+          console.log(`✅ Catálogo cargado desde cache: ${cachedCatalog.length} estaciones`)
+          snackbarStore.showInfo('Modo offline: usando catálogo local')
+        } else {
+          throw new Error('No hay datos en cache y no hay conexión')
+        }
       }
 
     } catch (error) {
