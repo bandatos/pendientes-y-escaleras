@@ -15,7 +15,6 @@ from stair.models import Stair
 from api.views.stair.serializers import StairCatSerializer
 
 
-
 class CatalogsView(APIView):
     permission_classes = (permissions.AllowAny,)
 
@@ -23,6 +22,7 @@ class CatalogsView(APIView):
 
         metro_stops = Stop.objects.filter(location_type=0)
         all_stairs = Stair.objects.all().select_related('stop')
+        all_stations = Station.objects.all().prefetch_related('stops')
         catalogs = {
             # "user": UserProfileSerializer(
             #     User.objects.all(), many=True).data,
@@ -31,7 +31,7 @@ class CatalogsView(APIView):
             "stops": StopCatSerializer(
                 metro_stops, many=True).data,
             "stations": StationCatSerializer(
-                Station.objects.all(), many=True).data,
+                all_stations, many=True).data,
             "stairs": StairCatSerializer(
                 all_stairs, many=True).data,
         }

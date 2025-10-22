@@ -225,6 +225,7 @@ class Trip(models.Model):
 
 
 class Station(models.Model):
+
     name = models.CharField(max_length=255)
     main_route = models.ForeignKey(
         Route, on_delete=models.CASCADE,
@@ -238,14 +239,8 @@ class Station(models.Model):
         max_digits=9, decimal_places=6,
         blank=True, null=True, verbose_name="Posición Y",
     )
-    end_anchor = models.BooleanField(
-        default=False,
-        help_text="Indicates if the station is an end anchor of a route"
-    )
-    rotation = models.SmallIntegerField(
-        blank=True, null=True,
-        help_text="Rotation angle for visualization purposes"
-    )
+    end_anchor = models.BooleanField(default=False)
+    rotation = models.SmallIntegerField(blank=True, null=True)
     viz_params = models.JSONField(default=dict, blank=True, null=True)
 
     def __str__(self):

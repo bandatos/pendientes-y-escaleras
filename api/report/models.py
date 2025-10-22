@@ -70,7 +70,7 @@ class StairReport(models.Model):
         default=False, verbose_name="¿Está alineada con el ID"
     )
     is_working = models.BooleanField(
-        default=False, verbose_name="¿Está funcionando?"
+        blank=True, null=True, verbose_name="¿Está funcionando?"
     )
     details = models.TextField(
         blank=True, null=True, verbose_name="Detalles adicionales"
@@ -83,7 +83,7 @@ class StairReport(models.Model):
     )
 
     def __str__(self):
-        return f"Reporte de escalera {self.stair} asociado al {self.station_report}"
+        return f"Reporte de escalera {self.stair} por {self.user}"
 
     class Meta:
         verbose_name = "Reporte de escalera"

@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
 from stop.models import Route, Station, Stop
+from api.views.stair.serializers import StairCatSerializer
+from stair.models import Stair
 
 
 class RouteCatSerializer(serializers.ModelSerializer):
@@ -17,10 +19,49 @@ class RouteCatSerializer(serializers.ModelSerializer):
         ]
 
 
+class RoutesSerializer(serializers.ModelSerializer):
+    def to_representation(self, value):
+        return value.route_id
+
+
 class StationCatSerializer(serializers.ModelSerializer):
+
+    routes = RoutesSerializer(
+        many=True, read_only=True, source='stops')
+    # stairs = serializers.SerializerMethodField()
+
+    def get_stairs(self, obj):
+        stairs = StairCatSerializer(
+            Stair.objects.filter(stop__station=obj), many=True).data
+        return stairs
+
     class Meta:
         model = Station
         fields = "__all__"
+        read_only_fields = [
+            "routes",
+            # "stairs",
+        ]
+
+
+class StationFullSerializer(serializers.ModelSerializer):
+
+    routes = RoutesSerializer(
+        many=True, read_only=True, source='stops')
+    stairs = serializers.SerializerMethodField()
+
+    def get_stairs(self, obj):
+        stairs = StairCatSerializer(
+            Stair.objects.filter(stop__station=obj), many=True).data
+        return stairs
+
+    class Meta:
+        model = Station
+        fields = "__all__"
+        read_only_fields = [
+            "routes",
+            "stairs",
+        ]
 
 
 class StopCatSerializer(serializers.ModelSerializer):

@@ -1,17 +1,21 @@
 from django.urls import include, path
-
-from api.views.auth.login_views import UserLoginAPIView
-
-# from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework.routers import DefaultRouter
+
 from .views import health_check
+from api.views.auth.login_views import UserLoginAPIView
+from api.views.stop import StationViewSet
+from api.views.report import StairReportViewSet, AscertainableViewSet
+
 
 router = DefaultRouter()
 
-
-# router.register(r'note', NoteViewSet, basename='note')
-# router.register(r'note_file', NoteFileViewSet, basename='note file')
-# router.register(r'article', ArticleViewSet, basename='article')
+router.register(r'station', StationViewSet, basename='station')
+router.register(r'stair_report', StairReportViewSet, basename='stair_report')
+router.register(
+    r'^stair_report/(?P<stair_report_id>[-\d]+)/evidence_image',
+    AscertainableViewSet,
+    basename='stair_report_evidence_image'
+)
 
 
 urlpatterns = [
