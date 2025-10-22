@@ -50,6 +50,9 @@ export const useStationStore = defineStore('station', () => {
       routesById[route.id] = route
     })
 
+    // Guardar en dictRoutesById para acceso global
+    dictRoutesById.value = routesById
+
     // Contar escaleras por estación
     const stairsByStation = {}
     apiData.stairs.forEach(stair => {
@@ -57,7 +60,17 @@ export const useStationStore = defineStore('station', () => {
       stairsByStation[stationId] = (stairsByStation[stationId] || 0) + 1
     })
 
-    // Transformar cada estación física
+    // Agrupar stops por estación para saber qué rutas pasan por cada estación
+    const stopsByStation = {}
+    apiData.stops.forEach(stop => {
+      const stationId = stop.station
+      if (!stopsByStation[stationId]) {
+        stopsByStation[stationId] = []
+      }
+      stopsByStation[stationId].push(stop)
+    })
+
+    // Transformar cada estación física (versión simple para stationsCatalog)
     const transformed = apiData.stations.map(station => {
       // Obtener la línea principal de esta estación
       const mainRoute = routesById[station.main_route]
@@ -80,6 +93,56 @@ export const useStationStore = defineStore('station', () => {
         viz_params: station.viz_params // Para el mapa D3.js Futura consideración
       }
     }).filter(Boolean) // Eliminar nulls
+
+    // Transformar para fullStations (versión completa con todas las rutas)
+    const fullTransformed = apiData.stations.map(station => {
+      const mainRoute = routesById[station.main_route]
+
+      if (!mainRoute) {
+        return null
+      }
+
+      // Obtener todas las rutas que pasan por esta estación
+      const stopsOfStation = stopsByStation[station.id] || []
+      const routesOfStation = stopsOfStation
+        .map(stop => routesById[stop.route])
+        .filter(Boolean)
+        .filter((route, index, self) =>
+          // Eliminar duplicados por ID
+          index === self.findIndex(r => r.id === route.id)
+        )
+
+      // Crear arrays de colores y números de línea
+      const lineColors = routesOfStation.map(r => `#${r.route_color}`)
+      const lineNumbers = routesOfStation.map(r => r.route_short_name)
+      const linesText = routesOfStation.map(r => `Línea ${r.route_short_name}`).join(', ')
+
+      return {
+        id: station.id,
+        name: station.name,
+        total_stairs: stairsByStation[station.id] || 0,
+
+        // Primera ruta (principal)
+        first_route: {
+          id: mainRoute.id,
+          route_short_name: mainRoute.route_short_name,
+          route_desc: mainRoute.route_desc,
+          line_color: `#${mainRoute.route_color}`
+        },
+
+        // Todas las rutas
+        routes: routesOfStation,
+        line_colors: lineColors,
+        lines: lineNumbers.join('-'),
+        lines_text: linesText,
+
+        // Datos adicionales
+        viz_params: station.viz_params
+      }
+    }).filter(Boolean)
+
+    // Guardar fullStations
+    fullStations.value = fullTransformed
 
     return transformed
   }
