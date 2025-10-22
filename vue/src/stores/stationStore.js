@@ -21,6 +21,7 @@ export const useStationStore = defineStore('station', () => {
   const rawStops = ref([]) // Stops (paradas por línea)
   const rawStations = ref([]) // Estaciones físicas
   const rawStairs = ref([]) // Escaleras
+  const dictRoutesById = ref({}) // Lookup de líneas por ID
 
   // Computed properties
   const hasStations = computed(() => stationsCatalog.value.length > 0)
@@ -107,6 +108,10 @@ export const useStationStore = defineStore('station', () => {
         rawStops.value = apiData.stops || []
         rawStations.value = apiData.stations || []
         rawStairs.value = apiData.stairs || []
+        dictRoutesById.value = {}
+        rawRoutes.value.forEach(route => {
+          dictRoutesById.value[route.id] = route
+        })
 
         // Transformar datos al formato de la UI
         const transformedCatalog = transformCatalogData(apiData)
@@ -168,6 +173,7 @@ export const useStationStore = defineStore('station', () => {
     rawStops,
     rawStations,
     rawStairs,
+    dictRoutesById,
 
     // Computed
     hasStations,

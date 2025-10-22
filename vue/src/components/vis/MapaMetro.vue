@@ -158,9 +158,9 @@ div.contenedor-svg {
     .c12 {
       stroke: #8ae5bf;
     }
-    .c13 {
-      stroke: #ffb700;
-    }
+    //.c13 {
+    //  stroke: #ffb700;
+    //}
     g {
       &.linea2 {
         circle {

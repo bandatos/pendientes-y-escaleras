@@ -55,7 +55,7 @@ function addCode() {
     <!-- Panel Title -->
     <v-expansion-panel-title color="grey-lighten-4">
       <div class="d-flex align-center w-100">
-        <v-icon :color="full_status?.icon || 'grey'" class="mr-3">
+        <v-icon :color="full_status?.color || 'grey'" class="mr-3">
           {{ full_status?.icon || "help_outline" }}
         </v-icon>
         <div>

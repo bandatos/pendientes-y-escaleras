@@ -124,8 +124,6 @@ const handleSelectStation = () => {
                       :colors="[item.raw.line_color, '#164ec9']"
                       :line_text="item.raw.line.replace('Línea ', '')"
                     />
-
-
                   </template>
                 </v-list-item>
               </template>

@@ -12,7 +12,7 @@ function getCatalogs(itemRequest) {
         body: JSON.stringify(itemRequest)
     }
 
-    return fetch(`${config.API_URL}api/catalogs/all`, requestOptions)
+    return fetch(`${config.API_URL}api/catalogs/all/`, requestOptions)
         .then(response => {
             // Status Code:
 
