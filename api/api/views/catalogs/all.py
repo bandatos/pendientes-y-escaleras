@@ -22,6 +22,7 @@ class CatalogsView(APIView):
     def get(self, request):
 
         metro_stops = Stop.objects.filter(location_type=0)
+        all_stairs = Stair.objects.all().select_related('stop')
         catalogs = {
             # "user": UserProfileSerializer(
             #     User.objects.all(), many=True).data,
@@ -32,6 +33,6 @@ class CatalogsView(APIView):
             "stations": StationCatSerializer(
                 Station.objects.all(), many=True).data,
             "stairs": StairCatSerializer(
-                Stair.objects.all(), many=True).data,
+                all_stairs, many=True).data,
         }
         return Response(catalogs)

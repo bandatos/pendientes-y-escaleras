@@ -4,8 +4,8 @@ from stair.models import Stair
 
 
 class StairCatSerializer(serializers.ModelSerializer):
-    station = serializers.CharField(
-        source='stop.station', read_only=True)
+    station = serializers.IntegerField(
+        source='stop.station_id', read_only=True)
 
     class Meta:
         model = Stair
@@ -13,4 +13,5 @@ class StairCatSerializer(serializers.ModelSerializer):
             "id",
             "stop",
             "number",
+            "station",
         ]
