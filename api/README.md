@@ -41,10 +41,10 @@ pip install -r requirements.txt
 - Crear una base de datos en PostgreSQL llamada 'escaleras-local' (o el nombre que desees, pero debe coincidir con el que se encuentra en tu archivo .env)
 - Pobla todas la variables de .env con los datos correspondientes a tu base de datos y otros servicios (correo, etc) 
 
-## Migración inicial de datos
+### Migración inicial de datos
 - Si se desea migrar los datos desde la base de datos antigua, seguir los pasos indicados en el archivo migrate_data.md
 
-## Crear las tablas en la base de datos
+### Crear las tablas en la base de datos
 - Correr las migraciones iniciales con el siguiente comando:
 ```bash
 python manage.py migrate
@@ -53,6 +53,18 @@ python manage.py migrate
 ```bash
 python manage.py createsuperuser
 ```
+
+### Cargar los datos iniciales
+
+```bash
+python manage.py import_routes
+python manage.py import_stops
+python manage.py create_stations
+python manage.py import_stairs
+python manage.py recover_viz_features media/estaciones-match-stops.csv
+
+```
+
 
 ## Correr el servidor localmente
 - Antes de correr el servicio, genera los archivos estáticos con el siguiente comando:

@@ -79,7 +79,8 @@ class Command(BaseCommand):
                         if not stop:
                             self.stdout.write(
                                 self.style.ERROR(
-                                    f'✗ Stop no encontrado: {estacion} en Línea {linea}'
+                                    f'✗ Stop no encontrado: '
+                                    f'{estacion} en Línea {linea}'
                                 )
                             )
                             error_count += 1

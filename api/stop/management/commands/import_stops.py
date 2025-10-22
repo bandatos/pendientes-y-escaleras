@@ -5,7 +5,7 @@ import os
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from django.db import transaction
-from stop.models import Route, Stop
+from stop.models import Route, Stop, Station
 
 
 class Command(BaseCommand):
@@ -75,6 +75,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # Borra todas las paradas:
         Stop.objects.all().delete()
+        Station.objects.all().delete()
         # Construye la ruta completa al archivo CSV
         file_path = os.path.join(settings.BASE_DIR, 'media', 'gtfs_metro', 'stops_metro.csv')
 

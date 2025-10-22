@@ -4,26 +4,19 @@ from stop.models import Station
 from stair.models import Stair
 
 
-class StationReport(models.Model):
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    station = models.ForeignKey(
-        Station, on_delete=models.CASCADE,
-        verbose_name="Estación reportada"
-    )
-    date_reported = models.DateTimeField(
-        auto_now=True, verbose_name="Fecha/hora de reporte"
-    )
-    date_received = models.DateTimeField(
-        auto_now=True, verbose_name="Fecha/hora de recepción"
-    )
-
-    def __str__(self):
-        return f"Reporte de estación {self.station} por {self.user}"
-
-    class Meta:
-        verbose_name = "Reporte de estación"
-        verbose_name_plural = "Reportes de estaciones"
+# class StationReport(models.Model):
+#
+#     station = models.ForeignKey(
+#         Station, on_delete=models.CASCADE,
+#         verbose_name="Estación reportada"
+#     )
+#
+#     def __str__(self):
+#         return f"Reporte de estación {self.station} por {self.user}"
+#
+#     class Meta:
+#         verbose_name = "Reporte de estación"
+#         verbose_name_plural = "Reportes de estaciones"
 
 
 class StairReport(models.Model):
@@ -40,11 +33,11 @@ class StairReport(models.Model):
         Stair, on_delete=models.CASCADE,
         verbose_name="Escalera reportada"
     )
-
-    station_report = models.ForeignKey(
-        StationReport, on_delete=models.CASCADE,
-        verbose_name="Reporte de estación asociado"
-    )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # station_report = models.ForeignKey(
+    #     StationReport, on_delete=models.CASCADE,
+    #     verbose_name="Reporte de estación asociado"
+    # )
     status_maintenance = models.CharField(
         max_length=10, choices=STATUS_MAINTENANCE_CHOICES,
         blank=True, null=True, verbose_name="Estado de mantenimiento"
@@ -81,6 +74,12 @@ class StairReport(models.Model):
     )
     details = models.TextField(
         blank=True, null=True, verbose_name="Detalles adicionales"
+    )
+    date_reported = models.DateTimeField(
+        auto_now=True, verbose_name="Fecha/hora de reporte"
+    )
+    date_received = models.DateTimeField(
+        auto_now=True, verbose_name="Fecha/hora de recepción"
     )
 
     def __str__(self):
