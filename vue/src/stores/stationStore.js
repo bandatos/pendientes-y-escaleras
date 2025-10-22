@@ -97,7 +97,7 @@ export const useStationStore = defineStore('station', () => {
         console.log('📋 Catálogo vacío, fetching desde API...')
 
         const apiData = await SERVICE.getCatalogs()
-
+        console.debug(apiData);
         if (!apiData || !apiData.stations) {
           throw new Error('Datos del API inválidos')
         }
