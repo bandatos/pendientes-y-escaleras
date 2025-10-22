@@ -15,7 +15,7 @@ export const useSyncStore = defineStore('sync', () => {
     line: null,
     station: "",
     typeElevation: "",
-    isWorking: true,
+    is_working: true,
     evidenceImage: null,
     notes: "",
     date: new Date(),

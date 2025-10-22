@@ -6,6 +6,8 @@ import { useImageStore } from '../stores/imageStore'
 import { useSnackbarStore } from '../stores/snackbarStore'
 import { IndexedDBService } from '../services/indexDB.js'
 import UploadImage from '../components/UploadImage.vue'
+import Stats from "@/components/form/Stats.vue";
+import StairForm from "@/components/form/StairForm.vue";
 
 const emit = defineEmits(['save-complete', 'back'])
 
@@ -16,7 +18,7 @@ const imageStore = useImageStore()
 const snackbarStore = useSnackbarStore()
 
 // Estado local
-const expandedPanels = ref([0]) // Primer panel abierto por defecto
+const expandedPanels = ref([])
 const newCodes = ref({}) // Códigos temporales por escalera
 
 // Computed
@@ -26,26 +28,27 @@ const connectionStatus = computed(() =>
 
 const pendingCount = computed(() => syncStore.syncStats.pending)
 
-// Obtener color del estado de escalera
-const getStairStatusColor = (stair) => {
-  if (stair.status === 'pending') return 'grey'
-  return stair.isWorking ? 'success' : 'error'
-}
+
+const all_status = [
+  { label: 'Pendiente', icon: 'circle', color: 'grey', key: 'pending' },
+  { label: 'Funciona', icon: 'check_circle', color: 'green', is_working: true, },
+  { label: 'No funciona', icon: 'cancel', color: 'red', },
+]
 
 // Obtener icono del estado
 const getStairStatusIcon = (stair) => {
   if (stair.status === 'pending') return 'circle'
-  return stair.isWorking ? 'check_circle' : 'cancel'
+  return stair.is_working ? 'check_circle' : 'cancel'
 }
 
 // Agregar código de identificación
 const addCode = (stairIndex) => {
   const code = newCodes.value[stairIndex]
   if (code?.trim()) {
-    if (!surveyStore.currentSurvey.stairs[stairIndex].identificationCodes) {
-      surveyStore.currentSurvey.stairs[stairIndex].identificationCodes = []
+    if (!surveyStore.currentSurvey.stairs[stairIndex].code_identifiers) {
+      surveyStore.currentSurvey.stairs[stairIndex].code_identifiers = []
     }
-    surveyStore.currentSurvey.stairs[stairIndex].identificationCodes.push(
+    surveyStore.currentSurvey.stairs[stairIndex].code_identifiers.push(
       code.trim())
     newCodes.value[stairIndex] = ''
   }
@@ -53,7 +56,7 @@ const addCode = (stairIndex) => {
 
 // Remover código
 const removeCode = (stairIndex, codeIndex) => {
-  surveyStore.currentSurvey.stairs[stairIndex].identificationCodes.splice(
+  surveyStore.currentSurvey.stairs[stairIndex].code_identifiers.splice(
     codeIndex, 1)
 }
 
@@ -64,19 +67,19 @@ const markStairComplete = (stairIndex) => {
   // Validaciones básicas
   // Solo validar códigos si hasCodes no está explícitamente marcado como true (sin códigos)
   const hasNoCodes = stair.hasCodes === true
-  const hasCodesEmpty = !stair.identificationCodes || stair.identificationCodes.length === 0
+  const hasCodesEmpty = !stair.code_identifiers || stair.code_identifiers.length === 0
 
   if (!hasNoCodes && hasCodesEmpty) {
     snackbarStore.showWarning('Agrega al menos un código de identificación o marca que no hay códigos visibles')
     return
   }
 
-  if (!stair.connectionPoints?.pointA?.trim()) {
+  if (!stair.connection_points?.pointA?.trim()) {
     snackbarStore.showWarning('Especifica el punto A de conexión')
     return
   }
 
-  if (stair.isWorking === null) {
+  if (stair.is_working === null) {
     snackbarStore.showWarning('Indica si la escalera funciona')
     return
   }
@@ -90,7 +93,7 @@ const markStairComplete = (stairIndex) => {
     expandedPanels.value.splice(currentIndex, 1)
   }
 
-  if (stairIndex < surveyStore.totalStairs - 1) {
+  if (stairIndex < surveyStore.total_stairs - 1) {
     expandedPanels.value.push(stairIndex + 1)
   }
 }
@@ -112,13 +115,13 @@ const handleSave = async () => {
     const savedRecord = await surveyStore.completeSurvey()
 
     // 2. Guardar imágenes de cada escalera
-    for (let stairIndex = 0; stairIndex < surveyStore.totalStairs; stairIndex++) {
+    for (let stairIndex = 0; stairIndex < surveyStore.total_stairs; stairIndex++) {
       const photos = imageStore.getStairPhotos(stairIndex)
 
       if (photos && photos.length > 0) {
         await IndexedDBService.saveStairImages(
           savedRecord.id,
-          stairIndex + 1, // stairNumber es 1-based
+          stairIndex + 1, // stair_number es 1-based
           photos
         )
         console.log(`📸 ${photos.length}
@@ -166,7 +169,7 @@ const handleBack = () => {
             <div class="d-flex align-center">
               <v-chip
                 :style="{
-                  backgroundColor: surveyStore.currentSurvey?.lineColor,
+                  backgroundColor: surveyStore.currentSurvey?.line_color,
                   color: 'white',
                 }"
                 class="mr-2"
@@ -188,35 +191,11 @@ const handleBack = () => {
           </v-card-text>
         </v-card>
 
-        <!-- Estadísticas -->
-        <v-card class="rounded-0" variant="flat">
-          <v-card-text class="py-3">
-            <div class="d-flex justify-space-around text-center">
-              <div>
-                <div class="text-h6">{{ surveyStore.totalStairs }}</div>
-                <div class="text-caption text-medium-emphasis">
-                  escaleras en total
-                </div>
-              </div>
-              <v-divider vertical></v-divider>
-              <div>
-                <div class="text-h6 text-success">
-                  {{ surveyStore.stats.working }}
-                </div>
-                <div class="text-caption text-medium-emphasis">funcionan</div>
-              </div>
-              <v-divider vertical></v-divider>
-              <div>
-                <div class="text-h6 text-error">
-                  {{ surveyStore.stats.notWorking }}
-                </div>
-                <div class="text-caption text-medium-emphasis">
-                  no funcionan
-                </div>
-              </div>
-            </div>
-          </v-card-text>
-        </v-card>
+        <Stats
+          :surveyStore="surveyStore"
+          class="mb-2"
+        />
+
 
         <v-divider></v-divider>
         <v-card-subtitle>
@@ -225,223 +204,15 @@ const handleBack = () => {
 
         <!-- Expansion Panels de Escaleras -->
         <v-expansion-panels v-model="expandedPanels" multiple>
-          <v-expansion-panel
+          <StairForm
             v-for="(stair, index) in surveyStore.currentSurvey?.stairs"
             :key="index"
-            :value="index"
-          >
-            <!-- Panel Title -->
-            <v-expansion-panel-title color="grey-lighten-4">
-              <div class="d-flex align-center w-100">
-                <v-icon :color="getStairStatusColor(stair)" class="mr-3">
-                  {{ getStairStatusIcon(stair) }}
-                </v-icon>
-                <div>
-                  <div class="font-weight-bold">
-                    Escalera {{ stair.stairNumber }}
-                  </div>
-                  <div
-                    v-if="stair.status === 'completed'"
-                    class="text-caption text-medium-emphasis"
-                  >
-                    {{ stair.isWorking ? "Funciona" : "No funciona" }}
-                    <span v-if="stair.photoIds?.length > 0">
-                      • 📷 {{ stair.photoIds.length }}
-                    </span>
-                  </div>
-                  <div class="text-caption text-warning" v-else>Pendiente</div>
-                </div>
-              </div>
-            </v-expansion-panel-title>
+            :stair="stair"
+            :stair_index="index"
+            :all_status="all_status"
+          />
 
-            <!-- Panel Content - Formulario completo -->
-            <v-expansion-panel-text>
-              <v-card flat>
-                <v-card-text>
-                  <!-- Nota informativa -->
-                  <v-alert
-                    type="info"
-                    variant="tonal"
-                    density="compact"
-                    class="mb-4"
-                  >
-                    Toma en cuenta que pueden tener varios identificadores
-                  </v-alert>
 
-                  <!-- Códigos de identificación -->
-                  <div class="mb-4">
-                    <label class="text-subtitle-2 mb-2 d-block">
-                      Códigos de identificación
-                      <v-icon size="small" class="ml-1">
-                        help_outline
-                        <v-tooltip activator="parent" location="left">
-                          Por ejemplo: KSG3-43, ALT-01, etc.
-                        </v-tooltip>
-                      </v-icon>
-                    </label>
-
-                    <div class="d-flex gap-2 mb-2">
-                      <v-text-field
-                        v-model="newCodes[index]"
-                        variant="outlined"
-                        density="compact"
-                        placeholder="Ej: KSG3-43"
-                        hide-details
-                        @keyup.enter="addCode(index)"
-                      ></v-text-field>
-                      <v-btn
-                        color="primary"
-                        size="small"
-                        icon
-                        @click="addCode(index)"
-                      >
-                        <v-icon size="large"> add </v-icon>
-                      </v-btn>
-                    </div>
-
-                    <v-checkbox
-                      v-if="
-                        !stair.identificationCodes ||
-                        stair.identificationCodes.length === 0
-                      "
-                      v-model="stair.hasCodes"
-                      color="error"
-                      variant="text"
-                      size="small"
-                      class="mb-2"
-                      hide-details
-                      label="No hay visible ningún código"
-                    >
-                    </v-checkbox>
-                    <div class="d-flex flex-wrap gap-2">
-                      <v-chip
-                        v-for="(code, codeIndex) in stair.identificationCodes"
-                        :key="codeIndex"
-                        closable
-                        @click:close="removeCode(index, codeIndex)"
-                        color="primary"
-                        variant="outlined"
-                        size="small"
-                      >
-                        {{ code }}
-                      </v-chip>
-                    </div>
-                  </div>
-
-                  <!-- Puntos de conexión -->
-                  <div class="mb-4">
-                    <label class="text-subtitle-2 mb-2 d-block">
-                      ¿Qué puntos o nodos comunica la escalera?
-                      <v-tooltip location="top">
-                        <template v-slot:activator="{ props }">
-                          <v-icon v-bind="props" size="small" class="ml-1">
-                            help_outline
-                          </v-icon>
-                        </template>
-                        Ejemplo: anden línea 7 dirección barranca
-                      </v-tooltip>
-                    </label>
-
-                    <div class="mb-2">
-                      <label class="text-caption text-medium-emphasis">
-                        Origen (de dónde parte)
-                      </label>
-                      <v-text-field
-                        v-model="stair.connectionPoints.pointA"
-                        variant="outlined"
-                        density="compact"
-                        placeholder="Ej: Anden dirección barranca"
-                        hide-details
-                      ></v-text-field>
-                    </div>
-
-                    <div>
-                      <label class="text-caption text-medium-emphasis">
-                        Destino (a dónde llega)
-                      </label>
-                      <v-text-field
-                        v-model="stair.connectionPoints.pointB"
-                        variant="outlined"
-                        density="compact"
-                        placeholder="Ej: Vestíbulo principal"
-                        hide-details
-                      ></v-text-field>
-                    </div>
-                  </div>
-
-                  <!-- Detalles -->
-                  <div class="mb-4">
-                    <label class="text-subtitle-2 mb-2 d-block">
-                      Describe detalles para identificar la escalera
-                    </label>
-                    <v-textarea
-                      v-model="stair.details"
-                      variant="outlined"
-                      rows="2"
-                      auto-grow
-                      placeholder="Detalles adicionales..."
-                      hide-details
-                      density="compact"
-                    ></v-textarea>
-                  </div>
-
-                  <!-- ¿Funciona? -->
-                  <div class="mb-4">
-                    <label class="text-subtitle-2 mb-2 d-block">
-                      ¿Funciona la escalera?
-                    </label>
-                    <v-radio-group
-                      v-model="stair.isWorking"
-                      inline
-                      hide-details
-                    >
-                      <v-radio
-                        label="Sí"
-                        :value="true"
-                        color="success"
-                        class="mr-3"
-                      ></v-radio>
-                      <v-radio label="No" :value="false" color="error">
-                      </v-radio>
-                    </v-radio-group>
-                  </div>
-
-                  <!-- Fotos -->
-                  <div class="mb-4">
-                    <label class="text-subtitle-2 mb-2 d-block">
-                      Adjunta fotos de la escalera y sus identificadores
-                    </label>
-                    <UploadImage
-                      :title="'Subir fotos'"
-                      :typeFiles="'image/*'"
-                      :stairId="index"
-                    />
-                  </div>
-
-                  <!-- Botón confirmar escalera -->
-                  <v-btn
-                    color="primary"
-                    block
-                    @click="markStairComplete(index)"
-                    :variant="
-                      stair.status === 'completed' ? 'outlined' : 'elevated'
-                    "
-                  >
-                    <v-icon start>
-                      {{
-                        stair.status === "completed" ? "check_circle" : "check"
-                      }}
-                    </v-icon>
-                    {{
-                      stair.status === "completed"
-                        ? "Completada"
-                        : "Completar escalera"
-                    }}
-                  </v-btn>
-                </v-card-text>
-              </v-card>
-            </v-expansion-panel-text>
-          </v-expansion-panel>
         </v-expansion-panels>
 
         <!-- Botón guardar todo -->
@@ -452,7 +223,7 @@ const handleBack = () => {
               size="large"
               block
               variant="elevated"
-              :disabled="surveyStore.completedStairs < surveyStore.totalStairs"
+              :disabled="surveyStore.completedStairs < surveyStore.total_stairs"
               @click="handleSave"
             >
               Guardar datos

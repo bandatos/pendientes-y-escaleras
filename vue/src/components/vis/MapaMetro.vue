@@ -49,15 +49,15 @@ onMounted(() => {
     .attr(
       "transform",
       (d) =>
-        `translate(${escala * (d.x_texto - d.x)} , ${
-          escala * (d.y_texto - d.y)
+        `translate(${escala * (d.x_name - d.x)} , ${
+          escala * (d.y_name - d.y)
         }) ${d.transform}`
     )
     .style("dominant-baseline", "middle")
     .style("font-size", `${escala * 1.2}px`)
 
-    .attr("text-anchor", (d) => d.text_anchor)
-    .text((d) => d.texto)
+    .attr("text-anchor", (d) => d.name_anchor)
+    .text((d) => d.name)
     .style("fill", "#000")
     .style("fill-opacity", "0.5");
   estaciones_g.value
@@ -67,7 +67,7 @@ onMounted(() => {
       divTooltip.value.style.top = escala * +d.y + 10 + "px";
 
       divTooltip.value.innerHTML = `
-      ${d.texto}<br/>
+      ${d.name}<br/>
       <b>Total de escaleras:</b> XX <br/>
       <b>Descompuestas:</b> XX <br/>
       <b>Último reporte:</b> dd-mm-yyyy <br/>

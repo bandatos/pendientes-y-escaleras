@@ -5,6 +5,7 @@ import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
 import { useSnackbarStore } from '../stores/snackbarStore'
 import MapaMetro from '../components/vis/MapaMetro.vue'
+import AvatarStation from "@/components/select_station/AvatarStation.vue";
 
 const emit = defineEmits(['station-selected'])
 
@@ -40,7 +41,7 @@ const handleSelectStation = () => {
 
   // Buscar estación completa
   const station = stationStore.stationsCatalog.find(
-    s => s.stationId === selectedStationId.value
+    s => s.station_id === selectedStationId.value
   )
 
   if (station) {
@@ -86,8 +87,8 @@ const handleSelectStation = () => {
               v-model="selectedStationId"
               :items="stationStore.stationsCatalog"
               item-title="name"
-              item-value="stationId"
-              label="Selecciona la estación en la que estás"
+              item-value="station_id"
+              label="Escribe/Selecciona una estación"
               variant="outlined"
               hide-details
               :loading="stationStore.isLoading"
@@ -96,7 +97,7 @@ const handleSelectStation = () => {
               <template v-slot:chip="{ props, item }">
                 <v-chip
                   v-bind="props"
-                  :style="{ backgroundColor: item.raw.lineColor, color: 'white' }"
+                  :style="{ backgroundColor: item.raw.line_color, color: 'white' }"
                 >
                   {{ item.raw.name }}
                 </v-chip>
@@ -106,17 +107,25 @@ const handleSelectStation = () => {
                 <v-list-item
                   v-bind="props"
                   :title="item.raw.name"
-                  :subtitle="`${item.raw.line} • ${item.raw.totalStairs} escaleras`"
+                  :subtitle="`${item.raw.line} • ${item.raw.total_stairs} escaleras`"
                 >
                   <template v-slot:prepend>
                     <v-avatar
-                      :style="{ backgroundColor: item.raw.lineColor }"
+                      v-if="false"
+                      :style="{ backgroundColor: item.raw.line_color }"
                       size="40"
                     >
                       <span class="text-white text-caption">
                         {{ item.raw.line.replace('Línea ', '') }}
                       </span>
                     </v-avatar>
+                    <!-- RICK: Esto de las franjas es solo experimental -->
+                    <AvatarStation
+                      :colors="[item.raw.line_color, '#164ec9']"
+                      :line_text="item.raw.line.replace('Línea ', '')"
+                    />
+
+
                   </template>
                 </v-list-item>
               </template>

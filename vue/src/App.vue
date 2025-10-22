@@ -21,6 +21,7 @@ const goToSelector = () => {
 
 // Handlers de eventos
 const handleStationSelected = () => {
+  console.log("Navegando a resumen de estación");
   goToSummary();
 };
 

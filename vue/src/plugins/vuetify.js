@@ -7,6 +7,7 @@
 // Styles
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import { aliases, md } from 'vuetify/iconsets/md'
+import colors from 'vuetify/lib/util/colors'
 import 'vuetify/styles'
 
 // Composables
@@ -20,6 +21,7 @@ export default createVuetify({
         colors: {
           primary: '#1867C0',
           secondary: '#5CBBF6',
+          surface: '#D81B60',
         },
       },
     },

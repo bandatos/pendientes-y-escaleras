@@ -18,22 +18,22 @@ db.version(1).stores({
 // Schema versión 2 - DEPRECADO (tenía conflicto de índices)
 db.version(2).stores({
     formData: null, // Eliminar tabla antigua
-    stationRecords: 'id, stationId, timestamp, synced, status, line',
+    stationRecords: 'id, station_id, timestamp, synced, status, line',
     images: null, // Eliminar para recrear
-    stations: '++id, stationId, name, line, totalStairs',
+    stations: '++id, station_id, name, line, total_stairs',
     syncQueue: '++id, type, entityId, priority, timestamp'
 });
 
 // Schema versión 3 - Modelo final corregido
 db.version(3).stores({
     // Registros completos de estaciones con todas sus escaleras
-    stationRecords: 'id, stationId, timestamp, synced, status, line',
+    stationRecords: 'id, station_id, timestamp, synced, status, line',
 
     // Imágenes vinculadas a estación + escalera específica
-    images: '++id, stationRecordId, stairNumber, synced, timestamp, s3Key',
+    images: '++id, stationRecordId, stair_number, synced, timestamp, s3Key',
 
     // Catálogo de estaciones (metadata estática del sistema)
-    stations: '++id, stationId, name, line, totalStairs',
+    stations: '++id, station_id, name, line, total_stairs',
 
     // Cola de sincronización
     syncQueue: '++id, type, entityId, priority, timestamp'
@@ -307,11 +307,11 @@ export class IndexedDBService {
     }
 
     // Guardar imágenes para una escalera específica de una estación
-    static async saveStairImages(stationRecordId, stairNumber, fileObjects) {
+    static async saveStairImages(stationRecordId, stair_number, fileObjects) {
         try {
             const imageRecords = fileObjects.map((file, index) => ({
                 stationRecordId: stationRecordId,
-                stairNumber: stairNumber,
+                stair_number: stair_number,
                 file: file,
                 order: index,
                 timestamp: Date.now(),
@@ -322,7 +322,7 @@ export class IndexedDBService {
 
             const ids = await db.images.bulkAdd(imageRecords, { allKeys: true });
 
-            console.log(`✅ ${fileObjects.length} imágenes guardadas para estación ${stationRecordId}, escalera ${stairNumber}`);
+            console.log(`✅ ${fileObjects.length} imágenes guardadas para estación ${stationRecordId}, escalera ${stair_number}`);
             return ids;
 
         } catch (error) {
@@ -332,11 +332,11 @@ export class IndexedDBService {
     }
 
     // Obtener imágenes de una escalera específica
-    static async getStairImages(stationRecordId, stairNumber) {
+    static async getStairImages(stationRecordId, stair_number) {
         try {
             const images = await db.images
-                .where('[stationRecordId+stairNumber]')
-                .equals([stationRecordId, stairNumber])
+                .where('[stationRecordId+stair_number]')
+                .equals([stationRecordId, stair_number])
                 .sortBy('order');
             return images;
         } catch (error) {
@@ -396,11 +396,11 @@ export class IndexedDBService {
     }
 
     // Buscar estación en catálogo por ID
-    static async getStationById(stationId) {
+    static async getStationById(station_id) {
         try {
             const station = await db.stations
-                .where('stationId')
-                .equals(stationId)
+                .where('station_id')
+                .equals(station_id)
                 .first();
             return station;
         } catch (error) {

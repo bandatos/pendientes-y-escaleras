@@ -21,8 +21,8 @@ export const useSurveyStore = defineStore('survey', () => {
   // Computed properties
   const isActive = computed(() => currentSurvey.value !== null)
 
-  const totalStairs = computed(() =>
-    currentSurvey.value?.totalStairs || 0
+  const total_stairs = computed(() =>
+    currentSurvey.value?.total_stairs || 0
   )
 
   const completedStairs = computed(() =>
@@ -30,7 +30,7 @@ export const useSurveyStore = defineStore('survey', () => {
   )
 
   const pendingStairs = computed(() =>
-    totalStairs.value - completedStairs.value
+    total_stairs.value - completedStairs.value
   )
 
   const currentStair = computed(() =>
@@ -38,11 +38,11 @@ export const useSurveyStore = defineStore('survey', () => {
   )
 
   const isLastStair = computed(() =>
-    currentStairIndex.value === totalStairs.value - 1
+    currentStairIndex.value === total_stairs.value - 1
   )
 
   const progress = computed(() =>
-    totalStairs.value > 0 ? Math.round((completedStairs.value / totalStairs.value) * 100) : 0
+    total_stairs.value > 0 ? Math.round((completedStairs.value / total_stairs.value) * 100) : 0
   )
 
   // Estadísticas del relevamiento
@@ -50,11 +50,11 @@ export const useSurveyStore = defineStore('survey', () => {
     if (!currentSurvey.value) return { working: 0, notWorking: 0 }
 
     const working = currentSurvey.value.stairs.filter(s =>
-      s.status === 'completed' && s.isWorking === true
+      s.status === 'completed' && s.is_working === true
     ).length
 
     const notWorking = currentSurvey.value.stairs.filter(s =>
-      s.status === 'completed' && s.isWorking === false
+      s.status === 'completed' && s.is_working === false
     ).length
 
     return { working, notWorking }
@@ -65,29 +65,29 @@ export const useSurveyStore = defineStore('survey', () => {
     const stairTemplates = []
 
     // Crear plantilla para cada escalera
-    for (let i = 1; i <= station.totalStairs; i++) {
+    for (let i = 1; i <= station.total_stairs; i++) {
       stairTemplates.push({
-        stairNumber: i,
-        identificationCodes: [],
+        stair_number: i,
+        code_identifiers: [],
         hasCodes: false,
-        connectionPoints: {
+        connection_points: {
           pointA: '',
           pointB: ''
         },
         details: '',
-        isWorking: null,
-        photoIds: [],
+        is_working: null,
+        photo_ids: [],
         status: 'pending' // 'pending' | 'completed'
       })
     }
 
     currentSurvey.value = {
       // Datos de la estación
-      stationId: station.stationId,
+      station_id: station.station_id,
       stationName: station.name,
       line: station.line,
-      lineColor: station.lineColor,
-      totalStairs: station.totalStairs,
+      line_color: station.line_color,
+      total_stairs: station.total_stairs,
 
       // Array de escaleras
       stairs: stairTemplates,
@@ -105,7 +105,7 @@ export const useSurveyStore = defineStore('survey', () => {
 
     currentStairIndex.value = 0
 
-    console.log(`📋 Relevamiento iniciado para: ${station.name} (${station.totalStairs} escaleras)`)
+    console.log(`📋 Relevamiento iniciado para: ${station.name} (${station.total_stairs} escaleras)`)
   }
 
   // Actualizar datos de escalera actual
@@ -124,7 +124,7 @@ export const useSurveyStore = defineStore('survey', () => {
 
   // Navegar a siguiente escalera
   function nextStair() {
-    if (currentStairIndex.value < totalStairs.value - 1) {
+    if (currentStairIndex.value < total_stairs.value - 1) {
       currentStairIndex.value++
       console.log(`➡️ Avanzando a escalera ${currentStairIndex.value + 1}`)
       return true
@@ -144,7 +144,7 @@ export const useSurveyStore = defineStore('survey', () => {
 
   // Ir a escalera específica
   function goToStair(index) {
-    if (index >= 0 && index < totalStairs.value) {
+    if (index >= 0 && index < total_stairs.value) {
       currentStairIndex.value = index
       console.log(`🎯 Navegando a escalera ${index + 1}`)
       return true
@@ -159,12 +159,12 @@ export const useSurveyStore = defineStore('survey', () => {
     try {
       const imageIds = await IndexedDBService.saveStairImages(
         stationRecordId,
-        currentStair.value.stairNumber,
+        currentStair.value.stair_number,
         fileObjects
       )
 
       // Guardar IDs en el survey
-      currentStair.value.photoIds = imageIds
+      currentStair.value.photo_ids = imageIds
 
       return imageIds
     } catch (error) {
@@ -228,19 +228,19 @@ export const useSurveyStore = defineStore('survey', () => {
     const errors = []
 
     // Validaciones
-    if (currentStair.value.identificationCodes.length === 0) {
+    if (currentStair.value.code_identifiers.length === 0) {
       errors.push('Debe tener al menos un código de identificación')
     }
 
-    if (!currentStair.value.connectionPoints.pointA) {
+    if (!currentStair.value.connection_points.pointA) {
       errors.push('Debe especificar el punto A de conexión')
     }
 
-    if (currentStair.value.isWorking === null) {
+    if (currentStair.value.is_working === null) {
       errors.push('Debe indicar si la escalera funciona')
     }
 
-    if (currentStair.value.isWorking === false && currentStair.value.photoIds.length === 0) {
+    if (currentStair.value.is_working === false && currentStair.value.photo_ids.length === 0) {
       errors.push('Si no funciona, debe adjuntar al menos 1 foto')
     }
 
@@ -258,7 +258,7 @@ export const useSurveyStore = defineStore('survey', () => {
 
     // Computed
     isActive,
-    totalStairs,
+    total_stairs,
     completedStairs,
     pendingStairs,
     currentStair,
