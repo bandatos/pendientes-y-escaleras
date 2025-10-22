@@ -15,7 +15,7 @@ async function saveStair(stairData) {
     body: JSON.stringify(stairData)
   }
 
-  const response = await fetch(`${config.API_URL}api/stairs/`, requestOptions)
+  const response = await fetch(`${config.API_URL}api/stair_report/`, requestOptions)
 
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`)
@@ -43,7 +43,7 @@ async function uploadStairImages(stairId, images) {
     body: formData
   }
 
-  const response = await fetch(`${config.API_URL}api/stairs/images/`, requestOptions)
+  const response = await fetch(`${config.API_URL}api/stair_report/${stairId}/evidence_image/`, requestOptions)
 
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`)
