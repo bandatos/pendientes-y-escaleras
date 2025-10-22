@@ -60,7 +60,7 @@ function addCode() {
         </v-icon>
         <div>
           <div class="font-weight-bold">
-            Escalera {{ stair.stair_number }}
+            Escalera {{ stair.number }}
           </div>
           <div
             v-if="stair.status === 'completed'"
@@ -151,7 +151,7 @@ function addCode() {
           </div>
 
           <ConnectionPoints
-            :connection-points="stair.connection_points"
+            :stair="stair"
           />
 
           <!-- Detalles -->

@@ -25,13 +25,17 @@ const connectionStatus = computed(() =>
 
 const pendingCount = computed(() => syncStore.syncStats.pending)
 
-// Inicializar
 onMounted(async () => {
   await stationStore.init()
   await syncStore.init()
+  // console.log("fullStations", stationStore.fullStations)
+  // console.log("stationsCatalog,", stationStore.stationsCatalog)
+  // stationStore.fullStations.forEach(s => {
+  //   if (s.routes.length > 1)
+  //     console.log(`Estación: ${s.name} - Líneas: ${s.line_colors}`)
+  // })
 })
 
-// Manejar selección de estación
 const handleSelectStation = () => {
   console.log('Estación seleccionada:', selectedStationId.value)
   if (!selectedStationId.value) {
@@ -40,9 +44,8 @@ const handleSelectStation = () => {
   }
 
   // Buscar estación completa
-  const station = stationStore.stationsCatalog.find(
-    s => s.station_id === selectedStationId.value
-  )
+  const station = stationStore.fullStations.find(
+    s => s.id === selectedStationId.value)
 
   if (station) {
     // Seleccionar en store
@@ -83,11 +86,13 @@ const handleSelectStation = () => {
         <!-- Selector de estación -->
         <v-card elevation="2" class="mb-4">
           <v-card-text>
+
             <v-autocomplete
               v-model="selectedStationId"
-              :items="stationStore.stationsCatalog"
+              xitems="stationStore.stationsCatalog"
+              :items="stationStore.fullStations"
               item-title="name"
-              item-value="station_id"
+              item-value="id"
               label="Escribe/Selecciona una estación"
               variant="outlined"
               hide-details
@@ -97,7 +102,7 @@ const handleSelectStation = () => {
               <template v-slot:chip="{ props, item }">
                 <v-chip
                   v-bind="props"
-                  :style="{ backgroundColor: item.raw.line_color, color: 'white' }"
+                  :style="{ backgroundColor: item.raw.first_route.line_color, color: 'white' }"
                 >
                   {{ item.raw.name }}
                 </v-chip>
@@ -106,24 +111,33 @@ const handleSelectStation = () => {
               <template v-slot:item="{ props, item }">
                 <v-list-item
                   v-bind="props"
-                  :title="item.raw.name"
-                  :subtitle="`${item.raw.line} • ${item.raw.total_stairs} escaleras`"
                 >
+                  <template v-slot:title>
+                    <span class="text-body-1 font-weight-medium">
+                      {{ item.raw.name }}
+                    </span>
+                  </template>
+                  <template v-slot:subtitle>
+                    {{ item.raw.lines_text || item.raw.first_route.route_desc || 'Línea ??' }}
+                    • {{ item.raw.total_stairs || '??' }} escaleras
+                  </template>
                   <template v-slot:prepend>
+                    <AvatarStation
+                      v-if="item.raw.line_colors"
+                      :colors="item.raw.line_colors"
+                      :line_text="item.raw.lines || 'O'"
+                    />
                     <v-avatar
-                      v-if="false"
+                      v-else
                       :style="{ backgroundColor: item.raw.line_color }"
                       size="40"
+                      class="stripe-square"
                     >
-                      <span class="text-white text-caption">
-                        {{ item.raw.line.replace('Línea ', '') }}
+                      <span class="text-white text-h6s">
+<!--                        {{ item.raw.line.replace('Línea ', '') }}-->
+                        {{item.raw.first_route.route_short_name || '?'}}
                       </span>
                     </v-avatar>
-                    <!-- RICK: Esto de las franjas es solo experimental -->
-                    <AvatarStation
-                      :colors="[item.raw.line_color, '#164ec9']"
-                      :line_text="item.raw.line.replace('Línea ', '')"
-                    />
                   </template>
                 </v-list-item>
               </template>
@@ -167,7 +181,7 @@ const handleSelectStation = () => {
   </v-container>
 </template>
 
-<style scoped>
+<style lang="scss">
 .map-container {
   border-radius: 8px;
   overflow: hidden;
@@ -176,4 +190,6 @@ const handleSelectStation = () => {
 h1 {
   font-weight: 500;
 }
+
+
 </style>

@@ -3,7 +3,7 @@
 import { ref } from 'vue';
 
 const props = defineProps({
-  connectionPoints: {
+  stair: {
     type: Object,
     required: true,
   },
@@ -39,7 +39,7 @@ const same_end_as_route = ref(false);
         <b>Origen:</b> Dónde comenzó el recorrido
       </label>
       <v-text-field
-        v-model="connectionPoints.route_start"
+        v-model="stair.route_start"
         variant="outlined"
         density="comfortable"
         placeholder="Ej: Andén dirección barranca"
@@ -53,7 +53,7 @@ const same_end_as_route = ref(false);
           <b>Inicio:</b> En qué punto inicia la escalera
         </label>
         <v-text-field
-          v-model="connectionPoints.path_start"
+          v-model="stair.path_start"
           variant="outlined"
           density="comfortable"
           placeholder="Ej: Mezanine nivel 1"
@@ -77,7 +77,7 @@ const same_end_as_route = ref(false);
         <b>Final:</b> En qué punto termina la escalera
       </label>
       <v-text-field
-        v-model="connectionPoints.path_end"
+        v-model="stair.path_end"
         variant="outlined"
         density="comfortable"
         placeholder="Ej: Torniquetes"
@@ -95,7 +95,7 @@ const same_end_as_route = ref(false);
           <b>Destino:</b> Dónde termina el recorrido
         </label>
         <v-text-field
-          v-model="connectionPoints.route_end"
+          v-model="stair.route_end"
           variant="outlined"
           class="text-purple"
           color="purple"

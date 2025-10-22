@@ -52,10 +52,5 @@ const generateGradient = (colors) => {
 </template>
 
 <style scoped>
-.stripe-square {
-  height: 40px;
-  width: 40px;
-  border-radius: 0 16px 0 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+
 </style>

@@ -22,6 +22,7 @@ export const useStationStore = defineStore('station', () => {
   const rawStations = ref([]) // Estaciones físicas
   const rawStairs = ref([]) // Escaleras
   const dictRoutesById = ref({}) // Lookup de líneas por ID
+  const fullStations = ref([])
 
   // Computed properties
   const hasStations = computed(() => stationsCatalog.value.length > 0)
@@ -75,7 +76,7 @@ export const useStationStore = defineStore('station', () => {
         total_stairs: stairsByStation[station.id] || 0,
 
         // Datos adicionales útiles
-        main_route_id: mainRoute.id,
+        main_route: mainRoute.id,
         viz_params: station.viz_params // Para el mapa D3.js Futura consideración
       }
     }).filter(Boolean) // Eliminar nulls
@@ -93,12 +94,12 @@ export const useStationStore = defineStore('station', () => {
       // Cargar desde IndexedDB
       const catalog = await IndexedDBService.getStationsCatalog()
 
-      if (catalog.length === 0) {
+      // if (catalog.length === 0) {
         // Si no hay datos en cache, obtener del API
         console.log('📋 Catálogo vacío, fetching desde API...')
 
         const apiData = await SERVICE.getCatalogs()
-
+        console.debug(apiData);
         if (!apiData || !apiData.stations) {
           throw new Error('Datos del API inválidos')
         }
@@ -111,6 +112,28 @@ export const useStationStore = defineStore('station', () => {
         dictRoutesById.value = {}
         rawRoutes.value.forEach(route => {
           dictRoutesById.value[route.id] = route
+        })
+
+        fullStations.value = rawStations.value.map(station => {
+          const routes_full = station.routes.map(routeId =>
+              dictRoutesById.value[routeId] || null)
+          const first_route = routes_full[0] || {}
+          let station_full = {
+            ...station,
+            // routes_full,
+            line_color: `#${first_route.route_color || '000000'}`,
+            first_route: first_route,
+          }
+          if (station.routes.length > 1) {
+            // console.log(`Estación con múltiples líneas: ${station.name} (${station.routes.length})`)
+            // console.log("routes_full:", routes_full);
+            station_full.line_colors = routes_full.map(
+              r => `#${r.route_color}`)
+            const lines = routes_full.map(r => r.route_short_name)
+            station_full.lines = lines.join(', ')
+            station_full.lines_text = `Líneas ${station_full.lines}`
+          }
+          return station_full
         })
 
         // Transformar datos al formato de la UI
@@ -126,11 +149,11 @@ export const useStationStore = defineStore('station', () => {
         console.log(`   - ${rawStations.value.length} estaciones físicas`)
         console.log(`   - ${rawStairs.value.length} escaleras`)
 
-      } else {
+      // } else {
         // Cargar desde cache
-        stationsCatalog.value = catalog
+        // stationsCatalog.value = catalog
         console.log(`✅ Catálogo cargado desde cache: ${catalog.length} estaciones`)
-      }
+      // }
 
     } catch (error) {
       console.error('❌ Error inicializando catálogo:', error)
@@ -149,6 +172,7 @@ export const useStationStore = defineStore('station', () => {
   // Limpiar selección
   function clearSelection() {
     selectedStation.value = null
+    // currentStairs.value = []
   }
 
   // Buscar estación por ID
@@ -174,6 +198,7 @@ export const useStationStore = defineStore('station', () => {
     rawStations,
     rawStairs,
     dictRoutesById,
+    fullStations,
 
     // Computed
     hasStations,
