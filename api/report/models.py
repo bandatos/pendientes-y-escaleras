@@ -27,9 +27,31 @@ class StationReport(models.Model):
 
 
 class StairReport(models.Model):
+
+    # maintenance
+    STATUS_MAINTENANCE_CHOICES = (
+        ('full', 'En Reconstrucción'),
+        ('medium', 'Mantenimiento Mayor (Tablas)'),
+        ('minor', 'Mantenimiento Menor (Sin tablas)'),
+        ('other', 'Otro tipo de mantenimiento'),
+    )
+
     stair = models.ForeignKey(
         Stair, on_delete=models.CASCADE,
         verbose_name="Escalera reportada"
+    )
+
+    station_report = models.ForeignKey(
+        StationReport, on_delete=models.CASCADE,
+        verbose_name="Reporte de estación asociado"
+    )
+    status_maintenance = models.CharField(
+        max_length=10, choices=STATUS_MAINTENANCE_CHOICES,
+        blank=True, null=True, verbose_name="Estado de mantenimiento"
+    )
+    other_status_maintenance = models.CharField(
+        max_length=255, blank=True, null=True,
+        verbose_name="Otro estado de mantenimiento"
     )
     code_identifiers = models.JSONField(
         blank=True, null=True, default=list,
@@ -54,6 +76,36 @@ class StairReport(models.Model):
     is_aligned = models.BooleanField(
         default=False, verbose_name="¿Está alineada con el ID"
     )
+    is_working = models.BooleanField(
+        default=False, verbose_name="¿Está funcionando?"
+    )
+    details = models.TextField(
+        blank=True, null=True, verbose_name="Detalles adicionales"
+    )
 
+    def __str__(self):
+        return f"Reporte de escalera {self.stair} asociado al {self.station_report}"
+
+    class Meta:
+        verbose_name = "Reporte de escalera"
+        verbose_name_plural = "Reportes de escaleras"
+
+
+class EvidenceImage(models.Model):
+    stair_report = models.ForeignKey(
+        StairReport, on_delete=models.CASCADE,
+        verbose_name="Reporte de escalera asociado"
+    )
+    image = models.ImageField(
+        upload_to='evidence_images/',
+        verbose_name="Imagen de evidencia"
+    )
+
+    def __str__(self):
+        return f"Imagen de evidencia para {self.stair_report}"
+
+    class Meta:
+        verbose_name = "Imagen de evidencia"
+        verbose_name_plural = "Imágenes de evidencia"
 
 
