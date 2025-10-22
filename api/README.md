@@ -37,9 +37,52 @@ pip install -r requirements.txt
 
 ## Base de datos
 
+### Opción 1: SQLite (Recomendado para desarrollo local)
+
+**SQLite es más simple y no requiere instalación de servidor de base de datos.**
+
+Para usar SQLite, configura tu archivo `.env` de la siguiente manera:
+```env
+POSTRGRESQL_DB=  # Dejar vacío o comentar esta línea
+DATABASE_NAME=db.sqlite3
+```
+
+**Cambios necesarios en el código para SQLite:**
+1. En `core/settings/__init__.py`, comentar la línea:
+   ```python
+   # 'django.contrib.postgres',  # Comentado para SQLite
+   ```
+
+2. La configuración de `DATABASE_SCHEMA` solo debe aplicarse para PostgreSQL:
+   ```python
+   # Only apply schema options for PostgreSQL
+   if DATABASE_SCHEMA and POSTRGRESQL_DB:
+       default_database['OPTIONS'] = {
+           'options': f'-c search_path={DATABASE_SCHEMA}',
+       }
+   ```
+
+**Dependencias adicionales necesarias:**
+```bash
+pip install Pillow  # Para campos de imagen
+pip install unidecode  # Para el comando import_stairs
+```
+
+### Opción 2: PostgreSQL (Para producción o equipos que ya lo usan)
+
 - Deberás tener instalado PostgreSQL
-- Crear una base de datos en PostgreSQL llamada 'escaleras-local' (o el nombre que desees, pero debe coincidir con el que se encuentra en tu archivo .env)
-- Pobla todas la variables de .env con los datos correspondientes a tu base de datos y otros servicios (correo, etc) 
+- Crear una base de datos en PostgreSQL llamada 'escaleras-local' (o el nombre que desees)
+- Configurar tu archivo `.env` con las credenciales de PostgreSQL:
+  ```env
+  POSTRGRESQL_DB=True
+  DATABASE_NAME=escaleras-local
+  DATABASE_USER=tu_usuario
+  DATABASE_PASSWORD=tu_contraseña
+  DATABASE_HOST=localhost
+  DATABASE_PORT=5432
+  DATABASE_SCHEMA=public
+  ```
+- Descomentar `'django.contrib.postgres'` en `INSTALLED_APPS` (en `core/settings/__init__.py`) 
 
 ### Migración inicial de datos
 - Si se desea migrar los datos desde la base de datos antigua, seguir los pasos indicados en el archivo migrate_data.md
