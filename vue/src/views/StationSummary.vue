@@ -178,7 +178,7 @@ const handleBack = () => {
                 {{ surveyStore.currentSurvey?.line }}
               </v-chip>
               <h2 class="text-subtitle-1 font-weight-bold">
-                Estación {{ surveyStore.currentSurvey?.stationName }}
+                Estación {{ surveyStore.currentSurvey?.station_name }}
               </h2>
               <v-btn
                 icon="close"

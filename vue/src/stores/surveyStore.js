@@ -84,7 +84,7 @@ export const useSurveyStore = defineStore('survey', () => {
     currentSurvey.value = {
       // Datos de la estación
       station_id: station.station_id,
-      stationName: station.name,
+      station_name: station.name,
       line: station.line,
       line_color: station.line_color,
       total_stairs: station.total_stairs,

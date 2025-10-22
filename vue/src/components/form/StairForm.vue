@@ -123,8 +123,8 @@ function addCode() {
 
             <v-checkbox
               v-if="
-                !stair.identificationCodes ||
-                stair.identificationCodes.length === 0
+                !stair.code_identifiers ||
+                stair.code_identifiers.length === 0
               "
               v-model="stair.hasCodes"
               color="error"
