@@ -1,3 +1,4 @@
+import { config } from '../main.js'
 import { LocalStorageService } from './localStorage.js'
 const Storage = LocalStorageService;
 /* Autenticación del login as user */
@@ -14,7 +15,7 @@ function login(itemRequest) {
         body: JSON.stringify(itemRequest)
     }
 
-    return fetch('login', requestOptions)
+    return fetch(`${config.API_URL  }login`, requestOptions)
         .then(response => {
             // Status Code:
 
