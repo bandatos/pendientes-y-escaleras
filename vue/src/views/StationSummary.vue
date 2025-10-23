@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useSurveyStore } from '../stores/surveyStore'
 import { useStationStore } from '../stores/stationStore'
 import { useSyncStore } from '../stores/syncStore'
@@ -12,6 +12,11 @@ import StairForm from "@/components/form/StairForm.vue";
 import AvatarStation from "@/components/select_station/AvatarStation.vue";
 
 const emit = defineEmits(['save-complete', 'back'])
+
+// Actualizar estadísticas de sincronización al montar
+onMounted(async () => {
+  await syncStore.updateSyncStats()
+})
 
 // Stores
 const surveyStore = useSurveyStore()
@@ -32,6 +37,15 @@ const connectionStatus = computed(() =>
 )
 
 const pendingCount = computed(() => syncStore.syncStats.pending)
+
+// Sincronización manual
+const handleSync = async () => {
+  try {
+    await syncStore.forceSync()
+  } catch (error) {
+    console.error('Error durante sincronización manual:', error)
+  }
+}
 
 
 const all_status = [
@@ -93,6 +107,9 @@ const handleSave = async () => {
     // 3. Limpiar el imageStore
     imageStore.clearSelection()
 
+    // 4. Actualizar estadísticas de sincronización
+    await syncStore.updateSyncStats()
+
     console.log('✅ Estación y todas las imágenes guardadas exitosamente')
 
     emit('save-complete')
@@ -120,7 +137,21 @@ const handleBack = () => {
         <v-card class="rounded-0" variant="flat" color="grey-lighten-5">
           <v-card-text>
             <div class="d-flex justify-space-between align-center mb-2">
-              <span class="text-body-2">{{ connectionStatus }}</span>
+              <div class="d-flex align-center gap-2">
+                <span class="text-body-2">{{ connectionStatus }}</span>
+                <!-- Botón de sincronización manual (solo si hay pendientes) -->
+                <v-btn
+                  v-if="pendingCount > 0 && syncStore.isOnline"
+                  size="x-small"
+                  color="primary"
+                  variant="tonal"
+                  @click="handleSync"
+                  :loading="syncStore.isSyncing"
+                  prepend-icon="sync"
+                >
+                  Sincronizar ({{ pendingCount }})
+                </v-btn>
+              </div>
               <span v-if="pendingCount > 0" class="text-warning text-body-2">
                 📋 {{ pendingCount }} pendientes
               </span>
