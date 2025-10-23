@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.postgres',
+    'django.contrib.postgres',  # Commented out for SQLite - uncomment when using PostgreSQL
 
     'rest_framework',
     'corsheaders',
@@ -92,7 +92,8 @@ else:
         'NAME': os.path.join(BASE_DIR, DATABASE_NAME)
     }
 
-if DATABASE_SCHEMA:
+# Only apply schema options for PostgreSQL
+if DATABASE_SCHEMA and POSTRGRESQL_DB:
     default_database['OPTIONS'] = {  # type: ignore
         'options': f'-c search_path={DATABASE_SCHEMA}',
     }
