@@ -187,8 +187,6 @@ export const useSyncStore = defineStore('sync', () => {
     lastSyncTime,
     syncHistory,
 
-    //dummy data
-    lines,
     
     // Computed or getters
     syncProgress,
