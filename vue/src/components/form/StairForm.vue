@@ -58,27 +58,36 @@ const markStairComplete = (stairIndex) => {
   const stair = props.stair;
   const hasCodes = stair.code_identifiers && stair.code_identifiers.length > 0;
   const hasCodesEmpty = !stair.code_identifiers || stair.code_identifiers.length === 0
-  // Validaciones básicas
-  // Solo validar códigos si hasCodes no está explícitamente marcado como true (sin códigos)
 
   let warningMessage = ''
-  if (hasCodes && hasCodesEmpty) {
+
+  // Validar códigos (solo si no marcó "sin códigos")
+  if (!stair.hasCodes && hasCodesEmpty) {
     warningMessage = 'Agrega al menos un código de identificación o marca que no hay códigos visibles'
   }
   else if (!stair.route_start?.trim()) {
-    warningMessage = 'Especifica el punto de inicio'
+    warningMessage = 'Especifica el punto de inicio (Origen)'
   }
   else if (stair.is_working === null) {
     warningMessage = 'Indica si la escalera funciona'
   }
-  else
+  else if (!stair.status_maintenance) {
+    warningMessage = 'Selecciona el estado de mantenimiento'
+  }
+  else if (stair.status_maintenance === 'other' && !stair.other_status_maintenance?.trim()) {
+    warningMessage = 'Especifica el estado de mantenimiento personalizado'
+  }
+  else if (stair.is_aligned === null) {
+    warningMessage = 'Indica si la escalera está alineada'
+  }
+  else {
     props.stair.status = 'completed'
+  }
 
   if (warningMessage) {
     emits("show-warning", warningMessage);
   }
   else {
-
     emits("mark-complete", stairIndex);
   }
 
@@ -228,6 +237,75 @@ const markStairComplete = (stairIndex) => {
                 class="mr-3"
               ></v-radio>
               <v-radio label="No" :value="false" color="error">
+              </v-radio>
+            </v-radio-group>
+          </div>
+
+          <!-- Estado de mantenimiento -->
+          <div class="mb-4">
+            <label class="text-subtitle-2 mb-2 d-block">
+              Estado de mantenimiento
+              <v-icon size="small" class="ml-1">
+                help_outline
+                <v-tooltip activator="parent" location="top">
+                  Indica el nivel de deterioro o estado general
+                </v-tooltip>
+              </v-icon>
+            </label>
+            <v-select
+              v-model="stair.status_maintenance"
+              :items="[
+                { title: 'Menor (funcional, desgaste leve)', value: 'minor' },
+                { title: 'Moderado (requiere atención pronto)', value: 'major' },
+                { title: 'Crítico (requiere atención urgente)', value: 'critical' },
+                { title: 'Otro (especificar)', value: 'other' }
+              ]"
+              variant="outlined"
+              density="compact"
+              placeholder="Selecciona el estado"
+              hide-details
+            ></v-select>
+          </div>
+
+          <!-- Otro estado de mantenimiento (solo si eligió 'other') -->
+          <v-expand-transition>
+            <div v-if="stair.status_maintenance === 'other'" class="mb-4">
+              <label class="text-subtitle-2 mb-2 d-block">
+                Especifica el estado de mantenimiento
+              </label>
+              <v-text-field
+                v-model="stair.other_status_maintenance"
+                variant="outlined"
+                density="compact"
+                placeholder="Ej: Escalones sueltos en la parte superior"
+                hide-details
+              ></v-text-field>
+            </div>
+          </v-expand-transition>
+
+          <!-- ¿Está alineada? -->
+          <div class="mb-4">
+            <label class="text-subtitle-2 mb-2 d-block">
+              ¿La escalera está alineada correctamente?
+              <v-icon size="small" class="ml-1">
+                help_outline
+                <v-tooltip activator="parent" location="top">
+                  Indica si los escalones están nivelados y en buena posición
+                </v-tooltip>
+              </v-icon>
+            </label>
+            <v-radio-group
+              v-model="stair.is_aligned"
+              inline
+              hide-details
+            >
+              <v-radio
+                label="Sí"
+                :value="true"
+                color="success"
+                class="mr-3"
+              ></v-radio>
+              <v-radio label="No" :value="false" color="warning">
               </v-radio>
             </v-radio-group>
           </div>
