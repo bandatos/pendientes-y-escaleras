@@ -11,27 +11,67 @@ const STORAGE_KEYS = {
 
 export class LocalStorageService {
 
-  saveToKen(token) {
-    localStorage.setItem(STORAGE_KEYS.TOKEN, JSON.stringify(token))
-  }
-  getToken() {
-    localStorage.getItem(STORAGE_KEYS.TOKEN)
-  }
-  deleteToken() {
-    localStorage.deleteToken;
-  }
-
-  saveUser(user) {
-    localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user))
-  }
-  getUser() {
-    localStorage.getItem(STORAGE_KEYS.USER)
-  }
-  deleteUser() {
-    localStorage.deleteUser;
+  // Métodos de autenticación (Token)
+  static saveToken(token) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.TOKEN, JSON.stringify(token))
+    } catch (error) {
+      console.error('Error guardando token:', error)
+    }
   }
 
-  
+  static getToken() {
+    try {
+      const token = localStorage.getItem(STORAGE_KEYS.TOKEN)
+      return token ? JSON.parse(token) : null
+    } catch (error) {
+      console.error('Error obteniendo token:', error)
+      return null
+    }
+  }
+
+  static deleteToken() {
+    try {
+      localStorage.removeItem(STORAGE_KEYS.TOKEN)
+    } catch (error) {
+      console.error('Error eliminando token:', error)
+    }
+  }
+
+  // Métodos de usuario
+  static saveUser(user) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user))
+    } catch (error) {
+      console.error('Error guardando usuario:', error)
+    }
+  }
+
+  static getUser() {
+    try {
+      const user = localStorage.getItem(STORAGE_KEYS.USER)
+      return user ? JSON.parse(user) : null
+    } catch (error) {
+      console.error('Error obteniendo usuario:', error)
+      return null
+    }
+  }
+
+  static deleteUser() {
+    try {
+      localStorage.removeItem(STORAGE_KEYS.USER)
+    } catch (error) {
+      console.error('Error eliminando usuario:', error)
+    }
+  }
+
+  // Limpiar toda la sesión
+  static clearSession() {
+    this.deleteToken()
+    this.deleteUser()
+  }
+
+
   // Guardar datos del formulario
   /* Método estático para solo usarse con el constructor */
   static saveFormData(formData) {
