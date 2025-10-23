@@ -209,6 +209,74 @@ export const useSurveyStore = defineStore('survey', () => {
     }
   }
 
+  /**
+   * ----------Sincronzar escalera por escalera.-------
+   * @param {Object} stair - Objeto de escalera con todos sus datos
+   * @param {Array<File>} images - Array de imágenes (opcional)
+   * @returns {Promise<Object>} - { success: boolean, reportId: number, error?: string }
+   */
+  async function syncSingleStair(stair, images = []) {
+    try {
+      // Preparar datos del reporte para api/stair_report/
+      const reportData = {
+        stair: stair.stair, // ID de la escalera del catálogo
+        status_maintenance: stair.status_maintenance || 'minor',
+        other_status_maintenance: stair.other_status_maintenance || '',
+        code_identifiers: stair.code_identifiers || [],
+        route_start: stair.route_start || '',
+        path_start: stair.path_start || '',
+        path_end: stair.path_end || '',
+        route_end: stair.route_end || '',
+        is_aligned: stair.is_aligned !== null ? stair.is_aligned : true,
+        is_working: stair.is_working,
+        details: stair.details || ''
+      }
+
+      console.log(`📤 Guardando escalera ${stair.number} (ID catálogo: ${stair.stair})...`)
+
+      // 1. Guardar datos de la escalera
+      const savedReport = await stairsService.saveStair(toPlainObject(reportData))
+
+      console.log(`✅ Escalera ${stair.number} guardada con ID: ${savedReport.id}`)
+
+      // 2. Subir imágenes si existen
+      if (images && images.length > 0) {
+        console.log(`📤 Subiendo ${images.length} imágenes para escalera ${stair.number}...`)
+
+        try {
+          const imageResponse = await stairsService.uploadStairImages(stair.stair, images)
+          console.log(`✅ Imágenes subidas para escalera ${stair.number}`)
+
+          // Guardar referencias de imágenes
+          stair.photo_ids = imageResponse.photo_ids || []
+          stair.image_urls = imageResponse.image_urls || []
+        } catch (imageError) {
+          console.warn(`⚠️ Error subiendo imágenes de escalera ${stair.number}:`, imageError.message)
+          // No lanzar error, las imágenes son opcionales
+        }
+      }
+
+      // 3. Marcar como sincronizada
+      stair.backend_id = savedReport.id
+      stair.synced = true
+      stair.synced_at = Date.now()
+
+      return {
+        success: true,
+        reportId: savedReport.id
+      }
+
+    } catch (error) {
+      console.error(`❌ Error sincronizando escalera ${stair.number}:`, error.message)
+      stair.synced = false
+
+      return {
+        success: false,
+        error: error.message
+      }
+    }
+  }
+
   // Completar relevamiento y guardar (con sincronización al backend si hay conexión)
   async function completeSurvey() {
     if (!currentSurvey.value) {
@@ -231,59 +299,15 @@ export const useSurveyStore = defineStore('survey', () => {
       if (isOnline) {
         for (let i = 0; i < currentStairs.value.length; i++) {
           const stair = currentStairs.value[i]
+          const photos = imageStore.getStairPhotos(i)
 
-          try {
-            // Preparar datos del reporte para api/stair_report/
-            const reportData = {
-              stair: stair.stair, // ID de la escalera del catálogo
-              status_maintenance: stair.status_maintenance || 'minor',
-              other_status_maintenance: stair.other_status_maintenance || '',
-              code_identifiers: stair.code_identifiers || [],
-              route_start: stair.route_start || '',
-              path_start: stair.path_start || '',
-              path_end: stair.path_end || '',
-              route_end: stair.route_end || '',
-              is_aligned: stair.is_aligned !== null ? stair.is_aligned : true,
-              is_working: stair.is_working,
-              details: stair.details || ''
-            }
+          // Sincronizar escalera opr escalera.
+          const result = await syncSingleStair(stair, photos)
 
-            console.log(`📤 Guardando escalera ${stair.number} (ID: ${stair.stair})...`)
-
-            // 1. Guardar datos de la escalera
-            const savedReport = await stairsService.saveStair(toPlainObject(reportData))
-
-            console.log(`✅ Escalera ${stair.number} guardada con ID: ${savedReport.id}`)
-
-            // 2. Subir imágenes si existen
-            const photos = imageStore.getStairPhotos(i)
-            if (photos && photos.length > 0) {
-              console.log(`📤 Subiendo ${photos.length} imágenes para escalera ${stair.number}...`)
-
-              try {
-                const imageResponse = await stairsService.uploadStairImages(stair.stair, photos)
-                console.log(`✅ Imágenes subidas para escalera ${stair.number}`)
-
-                // Guardar referencias de imágenes
-                stair.photo_ids = imageResponse.photo_ids || []
-                stair.image_urls = imageResponse.image_urls || []
-              } catch (imageError) {
-                console.warn(`⚠️ Error subiendo imágenes de escalera ${stair.number}:`, imageError.message)
-                // Continuar aunque fallen las imágenes
-              }
-            }
-
-            // Marcar como sincronizada
-            stair.backend_id = savedReport.id
-            stair.synced = true
-            stair.synced_at = Date.now()
+          if (result.success) {
             syncedCount++
-
-          } catch (stairError) {
-            console.error(`❌ Error guardando escalera ${stair.number}:`, stairError.message)
-            stair.synced = false
+          } else {
             failedCount++
-            // Continuar con las demás escaleras
           }
         }
 
@@ -370,7 +394,7 @@ export const useSurveyStore = defineStore('survey', () => {
       errors.push('Debe indicar el estado de mantenimiento')
     }
 
-    // Si eligió "other", debe escribir el texto
+    // Validar queel campo other sea completado
     if (stair.status_maintenance === 'other' && !stair.other_status_maintenance) {
       errors.push('Debe especificar el estado de mantenimiento personalizado')
     }
@@ -388,6 +412,135 @@ export const useSurveyStore = defineStore('survey', () => {
     return {
       valid: errors.length === 0,
       errors
+    }
+  }
+
+  /**
+   * Re-sincronizar escaleras pendientes
+   * Busca en IndexedDB todas las escaleras con synced: false y las envía al servidor
+   */
+  async function syncPendingStairs() {
+    const imageStore = useImageStore()
+    const snackbarStore = useSnackbarStore()
+
+    if (!navigator.onLine) {
+      console.log('📴 Sin conexión - no se puede sincronizar')
+      snackbarStore.showWarning('Sin conexión a internet')
+      return { synced: 0, failed: 0, total: 0 }
+    }
+
+    try {
+      console.log('🔄 Buscando escaleras pendientes de sincronización...')
+
+      // Obtener todos los registros de estaciones desde IndexedDB
+      const allRecords = await IndexedDBService.getAllStationRecords()
+
+      if (!allRecords || allRecords.length === 0) {
+        console.log('✅ No hay registros guardados')
+        return { synced: 0, failed: 0, total: 0 }
+      }
+
+      // Buscar escaleras no sincronizadas en todos los registros
+      const pendingStairs = []
+      allRecords.forEach(record => {
+        if (record.stairs && Array.isArray(record.stairs)) {
+          record.stairs.forEach((stair, index) => {
+            if (!stair.synced) {
+              pendingStairs.push({
+                stair,
+                stairIndex: index,
+                recordId: record.id,
+                station_id: record.station_id
+              })
+            }
+          })
+        }
+      })
+
+      if (pendingStairs.length === 0) {
+        console.log('✅ No hay escaleras pendientes de sincronización')
+        return { synced: 0, failed: 0, total: 0 }
+      }
+
+      console.log(`📊 Encontradas ${pendingStairs.length} escaleras pendientes`)
+
+      let syncedCount = 0
+      let failedCount = 0
+
+      // Sincronizar cada escalera usando la función modular
+      for (const { stair, stairIndex, recordId } of pendingStairs) {
+        // Usar la función modular para sincronizar
+        const result = await syncSingleStair(stair)
+
+        if (result.success) {
+          // Actualizar el registro en IndexedDB
+          const record = allRecords.find(r => r.id === recordId)
+          if (record) {
+            await IndexedDBService.updateStationRecord(recordId, { stairs: record.stairs })
+          }
+          syncedCount++
+        } else {
+          failedCount++
+        }
+      }
+
+      const result = {
+        synced: syncedCount,
+        failed: failedCount,
+        total: pendingStairs.length
+      }
+
+      // Mostrar resultado al usuario
+      if (syncedCount > 0) {
+        snackbarStore.showSuccess(`${syncedCount} escalera(s) sincronizada(s)`)
+      }
+      if (failedCount > 0) {
+        snackbarStore.showWarning(`${failedCount} escalera(s) no se pudieron sincronizar`)
+      }
+
+      console.log(`✅ Re-sincronización completa:`, result)
+      return result
+
+    } catch (error) {
+      console.error('❌ Error durante re-sincronización:', error)
+      snackbarStore.showError(`Error en sincronización: ${error.message}`)
+      throw error
+    }
+  }
+
+  /**
+   * Obtener estadísticas de sincronización
+   * Cuenta cuántas escaleras están pendientes de sincronizar
+   */
+  async function getSyncStats() {
+    try {
+      const allRecords = await IndexedDBService.getAllStationRecords()
+
+      let totalStairs = 0
+      let syncedStairs = 0
+      let pendingStairs = 0
+
+      allRecords.forEach(record => {
+        if (record.stairs && Array.isArray(record.stairs)) {
+          record.stairs.forEach(stair => {
+            totalStairs++
+            if (stair.synced) {
+              syncedStairs++
+            } else {
+              pendingStairs++
+            }
+          })
+        }
+      })
+
+      return {
+        total: totalStairs,
+        synced: syncedStairs,
+        pending: pendingStairs
+      }
+    } catch (error) {
+      console.error('Error obteniendo stats de sincronización:', error)
+      return { total: 0, synced: 0, pending: 0 }
     }
   }
 
@@ -418,7 +571,9 @@ export const useSurveyStore = defineStore('survey', () => {
     completeSurvey,
     cancelSurvey,
     clearSurvey,
-    validateCurrentStair
+    validateCurrentStair,
+    syncPendingStairs,
+    getSyncStats
   }
 })
 
