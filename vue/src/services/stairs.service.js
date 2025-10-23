@@ -30,9 +30,6 @@ async function uploadStairImages(stair_id, images) {
   // Crear FormData para enviar archivos
   const formData = new FormData()
 
-  // Agregar el stairId
-  formData.append('stair_id', stair_id)
-
   // Agregar cada imagen
   images.forEach((image, index) => {
     formData.append(`image_${index}`, image, image.name)
@@ -40,14 +37,11 @@ async function uploadStairImages(stair_id, images) {
 
   const requestOptions = {
     method: 'POST',
-    body: formData,
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
+    body: formData
   }
 
   const response = await fetch(
-    `${config.API_URL}api/stair_report/${stairId}/evidence_image/`,
+    `${config.API_URL}api/stair_report/${stair_id}/evidence_image/`,
     requestOptions
   )
 
