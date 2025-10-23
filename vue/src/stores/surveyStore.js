@@ -5,6 +5,9 @@ import { defineStore } from 'pinia'
 import { ref, computed, toRaw } from 'vue'
 import { IndexedDBService } from '../services/indexDB.js'
 import { useStationStore } from '../stores/stationStore'
+import { useImageStore } from '../stores/imageStore'
+import { useSnackbarStore } from '../stores/snackbarStore'
+import { stairsService } from '../services'
 
 export const useSurveyStore = defineStore('survey', () => {
 
@@ -86,14 +89,30 @@ export const useSurveyStore = defineStore('survey', () => {
         stair_full: s,
         code_identifiers: [],
         hasCodes: false,
+
+        // Puntos de conexión
         route_start: '',
         path_start: '',
         path_end: '',
         route_end: '',
-        details: '',
+
+        // Estado de mantenimiento
+        status_maintenance: null, // 'minor' | 'major' | 'critical' | 'other'
+        other_status_maintenance: '',
+
+        // Estado operativo
         is_working: null,
+        is_aligned: null, // Si la escalera está alineada correctamente
+
+        details: '',
         photo_ids: [],
-        status: 'pending' // 'pending' | 'completed'
+        image_urls: [],
+        status: 'pending', // 'pending' | 'completed'
+
+        // Sincronización con backend
+        backend_id: null,
+        synced: false,
+        synced_at: null
       }
     })
     currentStairs.value = stairTemplates
@@ -190,14 +209,95 @@ export const useSurveyStore = defineStore('survey', () => {
     }
   }
 
-  // Completar relevamiento y guardar en IndexedDB
+  // Completar relevamiento y guardar (con sincronización al backend si hay conexión)
   async function completeSurvey() {
     if (!currentSurvey.value) {
       throw new Error('No hay relevamiento activo')
     }
 
+    const imageStore = useImageStore()
+    const snackbarStore = useSnackbarStore()
+    const isOnline = navigator.onLine
+
     try {
       isSaving.value = true
+
+      console.log(`🔄 Guardando relevamiento (${isOnline ? 'online' : 'offline'})...`)
+
+      let syncedCount = 0
+      let failedCount = 0
+
+      // Intentar sincronizar cada escalera con el backend (si hay conexión)
+      if (isOnline) {
+        for (let i = 0; i < currentStairs.value.length; i++) {
+          const stair = currentStairs.value[i]
+
+          try {
+            // Preparar datos del reporte para api/stair_report/
+            const reportData = {
+              stair: stair.stair, // ID de la escalera del catálogo
+              status_maintenance: stair.status_maintenance || 'minor',
+              other_status_maintenance: stair.other_status_maintenance || '',
+              code_identifiers: stair.code_identifiers || [],
+              route_start: stair.route_start || '',
+              path_start: stair.path_start || '',
+              path_end: stair.path_end || '',
+              route_end: stair.route_end || '',
+              is_aligned: stair.is_aligned !== null ? stair.is_aligned : true,
+              is_working: stair.is_working,
+              details: stair.details || ''
+            }
+
+            console.log(`📤 Guardando escalera ${stair.number} (ID: ${stair.stair})...`)
+
+            // 1. Guardar datos de la escalera
+            const savedReport = await stairsService.saveStair(toPlainObject(reportData))
+
+            console.log(`✅ Escalera ${stair.number} guardada con ID: ${savedReport.id}`)
+
+            // 2. Subir imágenes si existen
+            const photos = imageStore.getStairPhotos(i)
+            if (photos && photos.length > 0) {
+              console.log(`📤 Subiendo ${photos.length} imágenes para escalera ${stair.number}...`)
+
+              try {
+                const imageResponse = await stairsService.uploadStairImages(stair.stair, photos)
+                console.log(`✅ Imágenes subidas para escalera ${stair.number}`)
+
+                // Guardar referencias de imágenes
+                stair.photo_ids = imageResponse.photo_ids || []
+                stair.image_urls = imageResponse.image_urls || []
+              } catch (imageError) {
+                console.warn(`⚠️ Error subiendo imágenes de escalera ${stair.number}:`, imageError.message)
+                // Continuar aunque fallen las imágenes
+              }
+            }
+
+            // Marcar como sincronizada
+            stair.backend_id = savedReport.id
+            stair.synced = true
+            stair.synced_at = Date.now()
+            syncedCount++
+
+          } catch (stairError) {
+            console.error(`❌ Error guardando escalera ${stair.number}:`, stairError.message)
+            stair.synced = false
+            failedCount++
+            // Continuar con las demás escaleras
+          }
+        }
+
+        // Mostrar resultado de sincronización
+        if (syncedCount > 0) {
+          snackbarStore.showSuccess(`${syncedCount} escalera(s) sincronizada(s) con el servidor`)
+        }
+        if (failedCount > 0) {
+          snackbarStore.showWarning(`${failedCount} escalera(s) quedaron pendientes de sincronización`)
+        }
+      } else {
+        console.log('📴 Sin conexión - guardando solo en local')
+        snackbarStore.showInfo('Guardado en local (se sincronizará cuando haya conexión)')
+      }
 
       // Actualizar estadísticas finales
       currentSurvey.value.completedStairs = completedStairs.value
@@ -209,15 +309,16 @@ export const useSurveyStore = defineStore('survey', () => {
       // Convertir a objeto plano (sin reactividad) antes de guardar
       const plainSurvey = toPlainObject(currentSurvey.value)
 
-      // Guardar en IndexedDB
+      // SIEMPRE guardar en IndexedDB (backup local)
       const savedRecord = await IndexedDBService.saveStationRecord(plainSurvey)
 
-      console.log('✅ Relevamiento completado y guardado:', savedRecord.id)
+      console.log('✅ Relevamiento completado y guardado localmente:', savedRecord.id)
 
       return savedRecord
 
     } catch (error) {
       console.error('❌ Error completando relevamiento:', error)
+      snackbarStore.showError(`Error al guardar: ${error.message}`)
       throw error
     } finally {
       isSaving.value = false
@@ -243,21 +344,44 @@ export const useSurveyStore = defineStore('survey', () => {
     if (!currentStair.value) return { valid: false, errors: ['No hay escalera actual'] }
 
     const errors = []
+    const stair = currentStair.value
 
-    // Validaciones
-    if (currentStair.value.code_identifiers.length === 0) {
+    // Validar códigos (solo si no marcó "sin códigos")
+    if (!stair.hasCodes && stair.code_identifiers.length === 0) {
       errors.push('Debe tener al menos un código de identificación')
     }
 
-    if (!currentStair.value.route_start) {
-      errors.push('Debe especificar el punto inicial')
+    // Validar puntos de conexión
+    if (!stair.route_start) {
+      errors.push('Debe especificar el origen del recorrido')
     }
 
-    if (currentStair.value.is_working === null) {
+    if (!stair.path_end) {
+      errors.push('Debe especificar dónde termina la escalera')
+    }
+
+    // Validar estado operativo
+    if (stair.is_working === null) {
       errors.push('Debe indicar si la escalera funciona')
     }
 
-    if (currentStair.value.is_working === false && currentStair.value.photo_ids.length === 0) {
+    // Validar estado de mantenimiento
+    if (!stair.status_maintenance) {
+      errors.push('Debe indicar el estado de mantenimiento')
+    }
+
+    // Si eligió "other", debe escribir el texto
+    if (stair.status_maintenance === 'other' && !stair.other_status_maintenance) {
+      errors.push('Debe especificar el estado de mantenimiento personalizado')
+    }
+
+    // Validar alineación
+    if (stair.is_aligned === null) {
+      errors.push('Debe indicar si la escalera está alineada')
+    }
+
+    // Si no funciona, requiere foto
+    if (stair.is_working === false && stair.photo_ids.length === 0) {
       errors.push('Si no funciona, debe adjuntar al menos 1 foto')
     }
 
