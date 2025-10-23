@@ -1,4 +1,5 @@
 import { config } from '../main.js'
+import { authHeader } from '../utils/helpers.js'
 
 export const stairsService = {
   saveStair,
@@ -9,9 +10,7 @@ export const stairsService = {
 async function saveStair(stairData) {
   const requestOptions = {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    headers: authHeader(), // false = JSON con Content-Type
     body: JSON.stringify(stairData)
   }
 
@@ -37,6 +36,7 @@ async function uploadStairImages(stair_id, images) {
 
   const requestOptions = {
     method: 'POST',
+    headers: authHeader(true), // true = FormData sin Content-Type
     body: formData
   }
 
