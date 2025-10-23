@@ -286,6 +286,17 @@ export class IndexedDBService {
         }
     }
 
+    // Actualizar un registro de estación
+    static async updateStationRecord(stationRecordId, updates) {
+        try {
+            await db.stationRecords.update(stationRecordId, updates);
+            console.log(`✅ Registro de estación ${stationRecordId} actualizado`);
+        } catch (error) {
+            console.error('❌ Error updating station record:', error);
+            throw error;
+        }
+    }
+
     // Marcar estación como sincronizada
     static async markStationAsSynced(stationRecordId) {
         try {

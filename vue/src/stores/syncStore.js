@@ -8,6 +8,7 @@ import { ref, computed } from 'vue'
 import { IndexedDBService } from '../services/indexDB.js'
 import { getApiSync } from '../services/apiSync.js'
 import { getNetworkDetection } from '../services/networkDetection.js'
+import { useSurveyStore } from './surveyStore.js'
 
 export const useSyncStore = defineStore('sync', () => {
   // Estado reactivo                     ⬆️id único    
@@ -20,29 +21,7 @@ export const useSyncStore = defineStore('sync', () => {
     notes: "",
     date: new Date(),
   });
-  //Add the dummy data.
-const lines = ref([
-  { line: "Línea 1", color: "#e9468f", name: "Observatorio - Pantitlán" },
-  { line: "Línea 2", color: "#00599f", name: "Cuatro Caminos - Tasqueña" },
-  { line: "Línea 3", color: "#b69c13", name: "Indios Verdes - Universidad" },
-  { line: "Línea 4", color: "#6cbab1", name: "Martín Carrera - Santa Anita" },
-  { line: "Línea 5", color: "#fdd200", name: "Pantitlán - Politécnico" },
-  { line: "Línea 6", color: "#da1715", name: "El Rosario - Martín Carrera" },
-  {
-    line: "Línea 7",
-    color: "#e97009",
-    name: "El Rosario - Barranca del Muerto",
-  },
-  {
-    line: "Línea 8",
-    color: "#008e3d",
-    name: "Garibaldi/Lagunilla - Constitución de 1917",
-  },
-  { line: "Línea 9", color: "#5b352e", name: "Tacubaya - Pantitlán" },
-  { line: "Línea A", color: "#9e1a81", name: "Pantitlán - La Paz" },
-  { line: "Línea B", color: "#bbb9b8", name: "Buenavista - Ciudad Azteca" },
-  { line: "Línea 12", color: "#c49955", name: "Mixcoac - Tláhuac" },
-]);
+
   const isOnline = ref(navigator.onLine)
   const isSyncing = ref(false)
   // Valores que tenemos para saber el estado.
@@ -72,28 +51,32 @@ const lines = ref([
   const hasPendingData = computed(() => syncStats.value.pending > 0)
 
   // Inicializar store
-  function init() {
-    // Listener para cambios de conectividad
-    networkDetection.addListener((online) => {
+  async function init() {
+    // Listener para cambios de conectividad con auto-sync
+    networkDetection.addListener(async (online) => {
       isOnline.value = online
       if (online) {
-        console.log('🟢 Store: Conexión restaurada')
+        console.log('🟢 Store: Conexión restaurada - iniciando auto-sync')
+        // Auto-sync cuando se restaura la conexión
+        setTimeout(async () => {
+          await syncPendingData()
+        }, 2000) // Dos segundo de tiempo para checar sincronización.
       } else {
         console.log('🔴 Store: Conexión perdida')
       }
     })
 
     // Actualizar stats iniciales
-    updateSyncStats()
+    await updateSyncStats()
 
     console.log('🏪 SyncStore inicializado')
   }
 
   // Actualizar estadísticas de sync
-  function updateSyncStats() {
-    const stats = apiSync.getSyncStats()
+  async function updateSyncStats() {
+    const surveyStore = useSurveyStore()
+    const stats = await surveyStore.getSyncStats()
     syncStats.value = stats
-    isSyncing.value = stats.isSyncing
   }
 
   // Guardar datos del formulario
@@ -122,22 +105,23 @@ const lines = ref([
     }
   }
 
-  // Sincronizar datos pendientes
+  // Sincronizar datos pendientes (escaleras)
   async function syncPendingData() {
     if (isSyncing.value) {
-      console.log('⏳ Store: Sync ya en progreso')
+      console.log('⏳ SyncStore: Sync ya en progreso')
       return
     }
 
     try {
       isSyncing.value = true
-      console.log('🔄 Store: Iniciando sincronización')
-      
-      const result = await apiSync.syncPendingData()
-      
+      console.log('🔄 SyncStore: Iniciando sincronización de escaleras')
+
+      const surveyStore = useSurveyStore()
+      const result = await surveyStore.syncPendingStairs()
+
       // Actualizar estadísticas
-      updateSyncStats()
-      
+      await updateSyncStats()
+
       // Actualizar historial
       if (result.synced > 0 || result.failed > 0) {
         addToSyncHistory({
@@ -146,15 +130,15 @@ const lines = ref([
           failed: result.failed,
           success: result.failed === 0
         })
-        
+
         lastSyncTime.value = Date.now()
       }
-      
-      console.log(`✅ Store: Sync completo - ${result.synced} exitosos, ${result.failed} fallidos`)
+
+      console.log(`✅ SyncStore: Sync completo - ${result.synced} exitosos, ${result.failed} fallidos`)
       return result
-      
+
     } catch (error) {
-      console.error('❌ Store: Error durante sync:', error)
+      console.error('❌ SyncStore: Error durante sync:', error)
       throw error
     } finally {
       isSyncing.value = false
