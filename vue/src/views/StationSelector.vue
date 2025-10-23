@@ -5,7 +5,8 @@ import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
 import { useSnackbarStore } from '../stores/snackbarStore'
 import MapaMetro from '../components/vis/MapaMetro.vue'
-import AvatarStation from "@/components/select_station/AvatarStation.vue";
+import AvatarStation from "@/components/select_station/AvatarStation.vue"
+import SyncStatusBar from "@/components/SyncStatusBar.vue"
 
 const emit = defineEmits(['station-selected'])
 
@@ -17,13 +18,6 @@ const snackbarStore = useSnackbarStore()
 
 // Estado local
 const selectedStationId = ref(null)
-
-// Computed
-const connectionStatus = computed(() =>
-  syncStore.isOnline ? '🟢 Conectado' : '🔴 Sin conexión'
-)
-
-const pendingCount = computed(() => syncStore.syncStats.pending)
 
 onMounted(async () => {
   await stationStore.init()
@@ -66,14 +60,7 @@ const handleSelectStation = () => {
       <v-col cols="12" sm="10" md="8" lg="6" class="pt-0">
 
         <!-- Status bar -->
-        <v-card class="mb-4 pa-2" variant="outlined">
-          <div class="d-flex justify-space-between align-center">
-            <span class="text-body-2">{{ connectionStatus }}</span>
-            <span v-if="pendingCount > 0" class="text-warning text-body-2">
-              📋 {{ pendingCount }} pendientes
-            </span>
-          </div>
-        </v-card>
+        <SyncStatusBar :show-sync-button="true"/>
 
         <!-- Título principal -->
         <div class="text-center mb-6">

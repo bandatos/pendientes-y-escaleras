@@ -1,132 +1,119 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useSurveyStore } from '../stores/surveyStore'
-import { useStationStore } from '../stores/stationStore'
-import { useSyncStore } from '../stores/syncStore'
-import { useImageStore } from '../stores/imageStore'
-import { useSnackbarStore } from '../stores/snackbarStore'
-import { IndexedDBService } from '../services/indexDB.js'
-import UploadImage from '../components/UploadImage.vue'
+import { ref, computed, onMounted } from "vue";
+import { useSurveyStore } from "../stores/surveyStore";
+import { useStationStore } from "../stores/stationStore";
+import { useSyncStore } from "../stores/syncStore";
+import { useImageStore } from "../stores/imageStore";
+import { useSnackbarStore } from "../stores/snackbarStore";
+import { IndexedDBService } from "../services/indexDB.js";
+import UploadImage from "../components/UploadImage.vue";
 import Stats from "@/components/form/Stats.vue";
 import StairForm from "@/components/form/StairForm.vue";
 import AvatarStation from "@/components/select_station/AvatarStation.vue";
+import SyncStatusBar from "@/components/SyncStatusBar.vue";
 
-const emit = defineEmits(['save-complete', 'back'])
+const emit = defineEmits(["save-complete", "back"]);
 
 // Actualizar estadísticas de sincronización al montar
 onMounted(async () => {
-  await syncStore.updateSyncStats()
-})
+  await syncStore.updateSyncStats();
+});
 
 // Stores
-const surveyStore = useSurveyStore()
-const stationStore = useStationStore()
-const syncStore = useSyncStore()
-const imageStore = useImageStore()
-const snackbarStore = useSnackbarStore()
+const surveyStore = useSurveyStore();
+const stationStore = useStationStore();
+const syncStore = useSyncStore();
+const imageStore = useImageStore();
+const snackbarStore = useSnackbarStore();
 
-const { currentSurvey, currentStairs } = surveyStore
-const { selectedStation } = stationStore
+const { currentSurvey, currentStairs } = surveyStore;
+const { selectedStation } = stationStore;
 
 // Estado local
-const expandedPanels = ref([])
-
-// Computed
-const connectionStatus = computed(() =>
-  syncStore.isOnline ? '🟢 Conectado' : '🔴 Sin conexión'
-)
-
-const pendingCount = computed(() => syncStore.syncStats.pending)
-
-// Sincronización manual
-const handleSync = async () => {
-  try {
-    await syncStore.forceSync()
-  } catch (error) {
-    console.error('Error durante sincronización manual:', error)
-  }
-}
-
+const expandedPanels = ref([]);
 
 const all_status = [
-  { label: 'Pendiente', icon: 'circle', color: 'grey', key: 'pending' },
-  { label: 'Funciona', icon: 'check_circle', color: 'green', is_working: true, },
-  { label: 'No funciona', icon: 'cancel', color: 'red', },
-]
-
+  { label: "Pendiente", icon: "circle", color: "grey", key: "pending" },
+  { label: "Funciona", icon: "check_circle", color: "green", is_working: true },
+  { label: "No funciona", icon: "cancel", color: "red" },
+];
 
 // Marcar escalera como completada
 const markStairComplete = (stairIndex) => {
-
   // Cerrar panel actual y abrir siguiente (si existe)
-  const currentIndex = expandedPanels.value.indexOf(stairIndex)
+  const currentIndex = expandedPanels.value.indexOf(stairIndex);
   if (currentIndex > -1) {
-    expandedPanels.value.splice(currentIndex, 1)
+    expandedPanels.value.splice(currentIndex, 1);
   }
 
   if (stairIndex < surveyStore.total_stairs - 1) {
-    expandedPanels.value.push(stairIndex + 1)
+    expandedPanels.value.push(stairIndex + 1);
   }
-}
+};
 
 function showWarning(message) {
-  snackbarStore.showWarning(message)
+  snackbarStore.showWarning(message);
 }
 
 // Guardar datos completos
 const handleSave = async () => {
   try {
     // Validar que todas las escaleras estén completadas
-    const allCompleted = currentStairs.every(
-      s => s.status === 'completed'
-    )
+    const allCompleted = currentStairs.every((s) => s.status === "completed");
 
     if (!allCompleted) {
-      snackbarStore.showWarning('Debes completar todas las escaleras antes de guardar')
-      return
+      snackbarStore.showWarning(
+        "Debes completar todas las escaleras antes de guardar"
+      );
+      return;
     }
 
     // 1. Guardar registro de estación en IndexedDB
-    const savedRecord = await surveyStore.completeSurvey()
+    const savedRecord = await surveyStore.completeSurvey();
 
     // 2. Guardar imágenes de cada escalera
-    for (let stairIndex = 0; stairIndex < surveyStore.total_stairs; stairIndex++) {
-      const photos = imageStore.getStairPhotos(stairIndex)
+    for (
+      let stairIndex = 0;
+      stairIndex < surveyStore.total_stairs;
+      stairIndex++
+    ) {
+      const photos = imageStore.getStairPhotos(stairIndex);
 
       if (photos && photos.length > 0) {
         await IndexedDBService.saveStairImages(
           savedRecord.id,
           stairIndex + 1, // number es 1-based
           photos
-        )
+        );
         console.log(`📸 ${photos.length}
-          imágenes guardadas para escalera ${stairIndex + 1}`)
+          imágenes guardadas para escalera ${stairIndex + 1}`);
       }
     }
 
     // 3. Limpiar el imageStore
-    imageStore.clearSelection()
+    imageStore.clearSelection();
 
     // 4. Actualizar estadísticas de sincronización
-    await syncStore.updateSyncStats()
+    await syncStore.updateSyncStats();
 
-    console.log('✅ Estación y todas las imágenes guardadas exitosamente')
+    console.log("✅ Estación y todas las imágenes guardadas exitosamente");
 
-    emit('save-complete')
-
+    emit("save-complete");
   } catch (error) {
-    console.error('Error guardando:', error)
-    snackbarStore.showError('Error al guardar los datos')
+    console.error("Error guardando:", error);
+    snackbarStore.showError("Error al guardar los datos");
   }
-}
+};
 
 // Volver a selector
 const handleBack = () => {
-  if (confirm('¿Seguro que quieres salir? Se perderá el progreso no guardado')) {
-    surveyStore.cancelSurvey()
-    emit('back')
+  if (
+    confirm("¿Seguro que quieres salir? Se perderá el progreso no guardado")
+  ) {
+    surveyStore.cancelSurvey();
+    emit("back");
   }
-}
+};
 </script>
 
 <template>
@@ -136,33 +123,12 @@ const handleBack = () => {
         <!-- Header con status -->
         <v-card class="rounded-0" variant="flat" color="grey-lighten-5">
           <v-card-text>
-            <div class="d-flex justify-space-between align-center mb-2">
-              <div class="d-flex align-center gap-2">
-                <span class="text-body-2">{{ connectionStatus }}</span>
-                <!-- Botón de sincronización manual (solo si hay pendientes) -->
-                <v-btn
-                  v-if="pendingCount > 0 && syncStore.isOnline"
-                  size="x-small"
-                  color="primary"
-                  variant="tonal"
-                  @click="handleSync"
-                  :loading="syncStore.isSyncing"
-                  prepend-icon="sync"
-                >
-                  Sincronizar ({{ pendingCount }})
-                </v-btn>
-              </div>
-              <span v-if="pendingCount > 0" class="text-warning text-body-2">
-                📋 {{ pendingCount }} pendientes
-              </span>
-            </div>
+            <!-- Status bar con botón de sincronización -->
+            <SyncStatusBar :show-sync-button="true" variant="flat" class="pa-0 mb-2" />
 
             <!-- Estación seleccionada -->
             <div class="d-flex align-center">
-              <AvatarStation
-                :station-data="selectedStation"
-                class="mr-3"
-              />
+              <AvatarStation :station-data="selectedStation" class="mr-3" />
               <h2 class="text-subtitle-1 font-weight-bold">
                 Estación {{ selectedStation?.name }}
               </h2>
@@ -177,10 +143,7 @@ const handleBack = () => {
           </v-card-text>
         </v-card>
 
-        <Stats
-          :surveyStore="surveyStore"
-          class="mb-2"
-        />
+        <Stats :surveyStore="surveyStore" class="mb-2" />
 
         <v-divider></v-divider>
         <v-card-subtitle>
