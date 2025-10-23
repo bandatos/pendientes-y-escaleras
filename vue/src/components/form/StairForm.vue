@@ -60,7 +60,6 @@ const markStairComplete = (stairIndex) => {
   const hasCodesEmpty = !stair.code_identifiers || stair.code_identifiers.length === 0
   // Validaciones básicas
   // Solo validar códigos si hasCodes no está explícitamente marcado como true (sin códigos)
-  const hasNoCodes = !hasCodes
 
   let warningMessage = ''
   if (hasCodes && hasCodesEmpty) {
@@ -79,6 +78,7 @@ const markStairComplete = (stairIndex) => {
     emits("show-warning", warningMessage);
   }
   else {
+
     emits("mark-complete", stairIndex);
   }
 
@@ -295,7 +295,7 @@ const markStairComplete = (stairIndex) => {
             </v-icon>
             {{
               stair.status === "completed"
-                ? "Completada"
+                ? "Guardar cambios"
                 : "Completar escalera"
             }}
           </v-btn>

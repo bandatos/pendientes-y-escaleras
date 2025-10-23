@@ -26,12 +26,12 @@ async function saveStair(stairData) {
 }
 
 
-async function uploadStairImages(stairId, images) {
+async function uploadStairImages(stair_id, images) {
   // Crear FormData para enviar archivos
   const formData = new FormData()
 
   // Agregar el stairId
-  formData.append('stair_id', stairId)
+  formData.append('stair_id', stair_id)
 
   // Agregar cada imagen
   images.forEach((image, index) => {
@@ -40,10 +40,16 @@ async function uploadStairImages(stairId, images) {
 
   const requestOptions = {
     method: 'POST',
-    body: formData
+    body: formData,
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
   }
 
-  const response = await fetch(`${config.API_URL}api/stair_report/${stairId}/evidence_image/`, requestOptions)
+  const response = await fetch(
+    `${config.API_URL}api/stair_report/${stairId}/evidence_image/`,
+    requestOptions
+  )
 
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}: ${response.statusText}`)

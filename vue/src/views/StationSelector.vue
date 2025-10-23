@@ -28,7 +28,7 @@ const pendingCount = computed(() => syncStore.syncStats.pending)
 onMounted(async () => {
   await stationStore.init()
   await syncStore.init()
-  console.log("fullStations", stationStore.fullStations)
+  // console.log("fullStations", stationStore.fullStations)
   // console.log("stationsCatalog,", stationStore.stationsCatalog)
   // stationStore.fullStations.forEach(s => {
   //   if (s.routes.length > 1)
@@ -118,7 +118,7 @@ const handleSelectStation = () => {
                   </template>
                   <template v-slot:subtitle>
                     {{ item.raw.lines_text || item.raw.first_route.route_desc || 'Línea ??' }}
-                    • {{ item.raw.total_stairs || '??' }} escaleras
+                    • {{ item.raw.total_stairs }} escalera {{ item.raw.total_stairs === 1 ? '' : 's' }}
                   </template>
                   <template v-slot:prepend>
                     <AvatarStation :station-data="item.raw" />

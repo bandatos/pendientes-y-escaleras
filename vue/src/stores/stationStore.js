@@ -98,6 +98,7 @@ export const useStationStore = defineStore('station', () => {
       const first_route = routes_full[0] || {}
       let station_full = {
         ...station,
+        ...station.viz_params,
         // routes_full,
         line_color: `#${first_route.route_color || '000000'}`,
         first_route: first_route,
@@ -226,7 +227,6 @@ export const useStationStore = defineStore('station', () => {
 
     // Acciones
     init,
-    transformCatalogData,
     selectStation,
     clearSelection,
     getStationById,

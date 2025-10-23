@@ -80,6 +80,7 @@ export const useSurveyStore = defineStore('survey', () => {
     // stop: 2144
     const stairTemplates = currentStairs.value.map(s => {
       return {
+        id: s.id,
         stair: s.id,
         number: s.number,
         stair_full: s,

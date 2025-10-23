@@ -4,6 +4,7 @@ import lineas from "@/assets/datos/lineas-vis.csv";
 
 import * as d3 from "d3";
 import { ref, onMounted } from "vue";
+import {useStationStore} from "@/stores/index.js";
 const svg = ref(null);
 const estaciones_g = ref(null);
 const lineas_g = ref(null);
@@ -11,7 +12,13 @@ const tooltipActivo = ref(false);
 const ancho = ref();
 const divTooltip = ref();
 let escala = 1;
-onMounted(() => {
+
+const stationStore = useStationStore()
+// const { fullStations } = stationStore
+
+onMounted(async () => {
+  await stationStore.init()
+  console.log("fullStations", stationStore.fullStations);
   ancho.value = document.querySelector("div.contenedor-svg").clientWidth;
   escala = ancho.value / 120;
   svg.value = d3
@@ -34,37 +41,41 @@ onMounted(() => {
 
   estaciones_g.value = svg.value
     .selectAll("g.estacion")
-    .data(estaciones)
+    .data(stationStore.fullStations)
     .enter()
     .append("g")
     .style("cursor", "pointer")
-    .attr("transform", (d) => `translate(${escala * d.x},${escala * d.y})`)
-    .attr("class", (d) => "estacion " + d.class);
+    .attr("transform", (d) =>
+        `translate(${escala * d.x_position},${escala * d.y_position})`)
+    // .attr("class", (d) => "estacion " + d.class);
+    .attr("fill", (d) => d.total_stairs ? d.line_color : 'black');
   estaciones_g.value
     .append("circle")
-    .attr("r", (d) => escala * (0.2 + Math.sqrt(1 * Math.random())))
-    .style("fill-opacity", (d) => 0.2 + Math.random());
+    // .attr("r", (d) => escala * (0.2 + Math.sqrt(1 * Math.random())))
+    .attr("r", (d) =>
+        d.total_stairs ? 2 + escala * Math.sqrt(d.total_stairs / 12) : 1.5)
+    .style("fill-opacity", (d) => d.total_stairs ? 0.2 + Math.random() : 0.7);
   estaciones_g.value
     .append("text")
     .attr(
       "transform",
       (d) =>
-        `translate(${escala * (d.x_name - d.x)} , ${
-          escala * (d.y_name - d.y)
-        }) ${d.transform}`
+        `translate(${escala * (d.x_name - d.x_position)} , ${
+          escala * (d.y_name - d.y_position)
+        }) rotate(${d.rotation || 0})`
     )
     .style("dominant-baseline", "middle")
     .style("font-size", `${escala * 1.2}px`)
 
-    .attr("text-anchor", (d) => d.name_anchor)
+    .attr("text-anchor", (d) => d.end_anchor ? 'end' : null)
     .text((d) => d.name)
     .style("fill", "#000")
     .style("fill-opacity", "0.5");
   estaciones_g.value
     .on("mouseover", function (e, d) {
       tooltipActivo.value = true;
-      divTooltip.value.style.left = escala * +d.x - 100 + "px";
-      divTooltip.value.style.top = escala * +d.y + 10 + "px";
+      divTooltip.value.style.left = escala * +d.x_position - 100 + "px";
+      divTooltip.value.style.top = escala * +d.y_position + 10 + "px";
 
       divTooltip.value.innerHTML = `
       ${d.name}<br/>
