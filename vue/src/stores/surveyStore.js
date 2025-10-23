@@ -52,11 +52,14 @@ export const useSurveyStore = defineStore('survey', () => {
   const stats = computed(() => {
     if (!currentSurvey.value) return { working: 0, notWorking: 0 }
 
-    const working = currentSurvey.value.stairs.filter(s =>
+    // const working = currentSurvey.value.stairs.filter(s =>
+    //   s.status === 'completed' && s.is_working === true
+    // ).length
+    const working = currentStairs.value.filter(s =>
       s.status === 'completed' && s.is_working === true
     ).length
 
-    const notWorking = currentSurvey.value.stairs.filter(s =>
+    const notWorking = currentStairs.value.filter(s =>
       s.status === 'completed' && s.is_working === false
     ).length
 
@@ -92,6 +95,7 @@ export const useSurveyStore = defineStore('survey', () => {
         status: 'pending' // 'pending' | 'completed'
       }
     })
+    currentStairs.value = stairTemplates
 
     currentSurvey.value = {
       // Datos de la estación
@@ -117,7 +121,7 @@ export const useSurveyStore = defineStore('survey', () => {
 
     currentStairIndex.value = 0
 
-    console.log(`📋 Relevamiento iniciado para: ${station.name} (${station.total_stairs} escaleras)`)
+    // console.log(`📋 Relevamiento iniciado para: ${station.name} (${station.total_stairs} escaleras)`)
   }
 
   // Actualizar datos de escalera actual

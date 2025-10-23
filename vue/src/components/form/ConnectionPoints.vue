@@ -18,7 +18,7 @@ const same_end_as_route = ref(false);
   <v-card
     class="mb-4 px-2 py-3"
     variant="tonal"
-    color="deep-purple"
+    color="light-blue"
   >
     <v-card-title
       class="text-subtitle-2 mb-2 d-block px-0 py-1 text-primary"
@@ -35,7 +35,7 @@ const same_end_as_route = ref(false);
     </v-card-title>
 
     <div class="pb-2">
-      <label class="text-body-2">
+      <label class="text-body-2 text-deep-purple">
         <b>Origen:</b> Dónde comenzó el recorrido
       </label>
       <v-text-field
@@ -45,11 +45,13 @@ const same_end_as_route = ref(false);
         placeholder="Ej: Andén dirección barranca"
         hide-details
         prepend-inner-icon="trip_origin"
+        class="text-deep-purple"
+        color="deep-purple"
       ></v-text-field>
     </div>
     <v-expand-transition>
       <div v-if="!same_start_as_route" class="ml-4">
-        <label class="text-body-2">
+        <label class="text-body-2 text-deep-purple">
           <b>Inicio:</b> En qué punto inicia la escalera
         </label>
         <v-text-field
@@ -59,6 +61,8 @@ const same_end_as_route = ref(false);
           placeholder="Ej: Mezanine nivel 1"
           hide-details
           prepend-inner-icon="airline_stops"
+          class="text-deep-purple"
+          color="deep-purple"
         ></v-text-field>
       </div>
     </v-expand-transition>
@@ -69,6 +73,7 @@ const same_end_as_route = ref(false);
         color="deep-purple"
         hide-details
         density="compact"
+        class="text-deep-purple"
       ></v-checkbox>
     </div>
 

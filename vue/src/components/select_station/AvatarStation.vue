@@ -2,19 +2,14 @@
 import { computed } from 'vue'
 
 const props = defineProps({
-  colors: {
-    type: Array,
-    required: true,
-    validator: (value) => value.length >= 1 && value.length <= 4
+  stationData: {
+    type: Object,
+    required: true
   },
-  line_text: {
-    type: String,
-    default: '◯'
-  }
 })
 
 const squareStyle = computed(() => {
-  const gradient = generateGradient(props.colors)
+  const gradient = generateGradient(props.stationData.line_colors)
   return {
     background: gradient
   }
@@ -43,12 +38,26 @@ const generateGradient = (colors) => {
 </script>
 
 <template>
-  <v-avatar class="stripe-square" :style="squareStyle">
+  <v-avatar
+    v-if="stationData.line_colors"
+    class="stripe-square"
+    :style="squareStyle"
+  >
     <span class="text-white text-caption">
-      {{ line_text }}
+      {{ stationData.lines }}
     </span>
-
   </v-avatar>
+  <v-avatar
+    v-else
+    :style="{ backgroundColor: stationData.line_color }"
+    size="40"
+    class="stripe-square"
+  >
+    <span class="text-white text-h6s">
+      {{stationData.first_route.route_short_name || '?'}}
+    </span>
+  </v-avatar>
+
 </template>
 
 <style scoped>

@@ -3,6 +3,11 @@
 import {computed, ref} from "vue";
 import UploadImage from "@/components/UploadImage.vue";
 import ConnectionPoints from "@/components/form/ConnectionPoints.vue";
+import {useSurveyStore} from "@/stores/surveyStore.js";
+
+const surveyStore = useSurveyStore()
+
+const { currentSurvey, currentStairs } = surveyStore
 
 const props = defineProps({
   stair: {
@@ -19,7 +24,9 @@ const props = defineProps({
   },
 });
 
-const emits = defineEmits(["add-new-code"])
+const emits = defineEmits(
+  ["add-new-code", "show-warning", "mark-complete"]
+);
 
 const full_status = computed(() => {
   if (props.stair.status === "pending") {
@@ -35,15 +42,48 @@ const directions = [
   { label: "Baja", value: "move_down", key: "down" },
 ];
 
-const new_codes = ref([])
+const new_codes = ref("");
 
 function addCode() {
   const code = new_codes.value;
   if (code?.trim()) {
-    emits("add-new-code", code.trim());
+    props.stair.code_identifiers.push(code.trim());
     new_codes.value = "";
   }
 }
+function removeCode(codeIndex) {
+  props.stair.code_identifiers.splice(codeIndex, 1);
+}
+const markStairComplete = (stairIndex) => {
+  const stair = props.stair;
+  const hasCodes = stair.code_identifiers && stair.code_identifiers.length > 0;
+  const hasCodesEmpty = !stair.code_identifiers || stair.code_identifiers.length === 0
+  // Validaciones básicas
+  // Solo validar códigos si hasCodes no está explícitamente marcado como true (sin códigos)
+  const hasNoCodes = !hasCodes
+
+  let warningMessage = ''
+  if (hasCodes && hasCodesEmpty) {
+    warningMessage = 'Agrega al menos un código de identificación o marca que no hay códigos visibles'
+  }
+  else if (!stair.route_start?.trim()) {
+    warningMessage = 'Especifica el punto de inicio'
+  }
+  else if (stair.is_working === null) {
+    warningMessage = 'Indica si la escalera funciona'
+  }
+  else
+    props.stair.status = 'completed'
+
+  if (warningMessage) {
+    emits("show-warning", warningMessage);
+  }
+  else {
+    emits("mark-complete", stairIndex);
+  }
+
+}
+
 
 </script>
 
@@ -140,10 +180,11 @@ function addCode() {
                 v-for="(code, codeIndex) in stair.code_identifiers"
                 :key="codeIndex"
                 closable
-                @click:close="removeCode(index, codeIndex)"
+                @click:close="removeCode(codeIndex)"
                 color="primary"
                 variant="outlined"
                 size="small"
+                class="mr-2 mb-2"
               >
                 {{ code }}
               </v-chip>
@@ -234,7 +275,7 @@ function addCode() {
             <UploadImage
               :title="'Subir fotos'"
               :typeFiles="'image/*'"
-              :stairId="index"
+              :stairId="stair.id"
             />
           </div>
 

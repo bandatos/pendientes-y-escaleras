@@ -9,6 +9,7 @@ import { IndexedDBService } from '../services/indexDB.js'
 import UploadImage from '../components/UploadImage.vue'
 import Stats from "@/components/form/Stats.vue";
 import StairForm from "@/components/form/StairForm.vue";
+import AvatarStation from "@/components/select_station/AvatarStation.vue";
 
 const emit = defineEmits(['save-complete', 'back'])
 
@@ -19,12 +20,11 @@ const syncStore = useSyncStore()
 const imageStore = useImageStore()
 const snackbarStore = useSnackbarStore()
 
-const { currentSurvey } = surveyStore
+const { currentSurvey, currentStairs } = surveyStore
 const { selectedStation } = stationStore
 
 // Estado local
 const expandedPanels = ref([])
-const newCodes = ref({}) // Códigos temporales por escalera
 
 // Computed
 const connectionStatus = computed(() =>
@@ -40,57 +40,9 @@ const all_status = [
   { label: 'No funciona', icon: 'cancel', color: 'red', },
 ]
 
-// Obtener icono del estado
-const getStairStatusIcon = (stair) => {
-  if (stair.status === 'pending') return 'circle'
-  return stair.is_working ? 'check_circle' : 'cancel'
-}
-
-// Agregar código de identificación
-const addCode = (stairIndex) => {
-  const code = newCodes.value[stairIndex]
-  if (code?.trim()) {
-    if (!surveyStore.currentSurvey.stairs[stairIndex].code_identifiers) {
-      surveyStore.currentSurvey.stairs[stairIndex].code_identifiers = []
-    }
-    surveyStore.currentSurvey.stairs[stairIndex].code_identifiers.push(
-      code.trim())
-    newCodes.value[stairIndex] = ''
-  }
-}
-
-// Remover código
-const removeCode = (stairIndex, codeIndex) => {
-  surveyStore.currentSurvey.stairs[stairIndex].code_identifiers.splice(
-    codeIndex, 1)
-}
 
 // Marcar escalera como completada
 const markStairComplete = (stairIndex) => {
-  const stair = surveyStore.currentSurvey.stairs[stairIndex]
-
-  // Validaciones básicas
-  // Solo validar códigos si hasCodes no está explícitamente marcado como true (sin códigos)
-  const hasNoCodes = stair.hasCodes === true
-  const hasCodesEmpty = !stair.code_identifiers || stair.code_identifiers.length === 0
-
-  if (!hasNoCodes && hasCodesEmpty) {
-    snackbarStore.showWarning('Agrega al menos un código de identificación o marca que no hay códigos visibles')
-    return
-  }
-
-  if (!stair.route_start?.trim()) {
-    snackbarStore.showWarning('Especifica el punto de inicio')
-    return
-  }
-
-  if (stair.is_working === null) {
-    snackbarStore.showWarning('Indica si la escalera funciona')
-    return
-  }
-
-  // Marcar como completada
-  stair.status = 'completed'
 
   // Cerrar panel actual y abrir siguiente (si existe)
   const currentIndex = expandedPanels.value.indexOf(stairIndex)
@@ -103,11 +55,15 @@ const markStairComplete = (stairIndex) => {
   }
 }
 
+function showWarning(message) {
+  snackbarStore.showWarning(message)
+}
+
 // Guardar datos completos
 const handleSave = async () => {
   try {
     // Validar que todas las escaleras estén completadas
-    const allCompleted = surveyStore.currentSurvey.stairs.every(
+    const allCompleted = currentStairs.every(
       s => s.status === 'completed'
     )
 
@@ -172,16 +128,10 @@ const handleBack = () => {
 
             <!-- Estación seleccionada -->
             <div class="d-flex align-center">
-              <v-chip
-                :style="{
-                  backgroundColor: selectedStation?.line_color || 'grey',
-                  color: 'white',
-                }"
-                class="mr-2"
-                size="small"
-              >
-                {{ selectedStation?.lines || selectedStation?.first_route?.route_short_name }}
-              </v-chip>
+              <AvatarStation
+                :station-data="selectedStation"
+                class="mr-3"
+              />
               <h2 class="text-subtitle-1 font-weight-bold">
                 Estación {{ selectedStation?.name }}
               </h2>
@@ -209,11 +159,13 @@ const handleBack = () => {
         <!-- Expansion Panels de Escaleras -->
         <v-expansion-panels v-model="expandedPanels" multiple>
           <StairForm
-            v-for="(stair, index) in surveyStore.currentSurvey?.stairs"
-            :key="index"
+            v-for="(stair, stair_index) in currentStairs"
+            :key="stair.id"
             :stair="stair"
-            :stair_index="index"
+            :stair_index="stair_index"
             :all_status="all_status"
+            @showWarning="showWarning"
+            @markComplete="markStairComplete(stair_index)"
           />
         </v-expansion-panels>
 

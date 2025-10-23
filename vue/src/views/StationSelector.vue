@@ -28,7 +28,7 @@ const pendingCount = computed(() => syncStore.syncStats.pending)
 onMounted(async () => {
   await stationStore.init()
   await syncStore.init()
-  // console.log("fullStations", stationStore.fullStations)
+  console.log("fullStations", stationStore.fullStations)
   // console.log("stationsCatalog,", stationStore.stationsCatalog)
   // stationStore.fullStations.forEach(s => {
   //   if (s.routes.length > 1)
@@ -89,7 +89,6 @@ const handleSelectStation = () => {
 
             <v-autocomplete
               v-model="selectedStationId"
-              xitems="stationStore.stationsCatalog"
               :items="stationStore.fullStations"
               item-title="name"
               item-value="id"
@@ -122,22 +121,7 @@ const handleSelectStation = () => {
                     • {{ item.raw.total_stairs || '??' }} escaleras
                   </template>
                   <template v-slot:prepend>
-                    <AvatarStation
-                      v-if="item.raw.line_colors"
-                      :colors="item.raw.line_colors"
-                      :line_text="item.raw.lines || 'O'"
-                    />
-                    <v-avatar
-                      v-else
-                      :style="{ backgroundColor: item.raw.line_color }"
-                      size="40"
-                      class="stripe-square"
-                    >
-                      <span class="text-white text-h6s">
-<!--                        {{ item.raw.line.replace('Línea ', '') }}-->
-                        {{item.raw.first_route.route_short_name || '?'}}
-                      </span>
-                    </v-avatar>
+                    <AvatarStation :station-data="item.raw" />
                   </template>
                 </v-list-item>
               </template>

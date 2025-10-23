@@ -33,7 +33,7 @@ db.version(3).stores({
     images: '++id, stationRecordId, number, synced, timestamp, s3Key',
 
     // Catálogo de estaciones (metadata estática del sistema)
-    stations: '++id, station_id, name, line, total_stairs',
+    stations: '++id, station_id, name, first_route, total_stairs',
 
     // Cola de sincronización
     syncQueue: '++id, type, entityId, priority, timestamp'
@@ -381,6 +381,20 @@ export class IndexedDBService {
             console.log(`✅ ${stationsData.length} estaciones agregadas al catálogo`);
         } catch (error) {
             console.error('❌ Error seeding stations:', error);
+        }
+    }
+    // Seed: Actualizar catálogo de estaciones (reemplazar todo)
+    static async updateStationsCatalog(stationsData) {
+        try {
+            // Borrar catálogo existente
+            await db.stations.clear();
+            console.log('🗑️ Catálogo de estaciones limpiado');
+
+            // Agregar nuevo catálogo
+            await db.stations.bulkAdd(stationsData);
+            console.log(`✅ Catálogo actualizado con ${stationsData.length} estaciones`);
+        } catch (error) {
+            console.error('❌ Error updating stations catalog:', error);
         }
     }
 

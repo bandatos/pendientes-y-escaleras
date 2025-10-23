@@ -12,7 +12,6 @@ const SERVICE = catalogsService
 export const useStationStore = defineStore('station', () => {
 
   // Estado reactivo
-  const stationsCatalog = ref([]) // Catálogo transformado
   const selectedStation = ref(null) // Estación actualmente seleccionada
   const isLoading = ref(false)
 
@@ -21,22 +20,10 @@ export const useStationStore = defineStore('station', () => {
   const rawStops = ref([]) // Stops (paradas por línea)
   const rawStations = ref([]) // Estaciones físicas
   const rawStairs = ref([]) // Escaleras
-  const dictRoutesById = ref({}) // Lookup de líneas por ID
   const fullStations = ref([])
 
   // Computed properties
-  const hasStations = computed(() => stationsCatalog.value.length > 0)
-
-  const stationsByLine = computed(() => {
-    const grouped = {}
-    stationsCatalog.value.forEach(station => {
-      if (!grouped[station.line]) {
-        grouped[station.line] = []
-      }
-      grouped[station.line].push(station)
-    })
-    return grouped
-  })
+  // Empty computed properties for future use
 
   /**
    * Transforma los datos relacionales del API al formato normalizado para la UI
@@ -44,14 +31,11 @@ export const useStationStore = defineStore('station', () => {
    * Salida: [{ station_id, name, line, line_color, total_stairs, ... }, ...]
    */
   function transformCatalogData(apiData) {
-    // Crear lookups para acceso rápido
-    const routesById = {}
-    apiData.routes.forEach(route => {
-      routesById[route.id] = route
-    })
 
-    // Guardar en dictRoutesById para acceso global
-    dictRoutesById.value = routesById
+    const routesById = apiData.routes.reduce((acc, route) => {
+      acc[route.id] = route
+      return acc
+    }, {})
 
     // Contar escaleras por estación
     const stairsByStation = {}
@@ -71,7 +55,7 @@ export const useStationStore = defineStore('station', () => {
     })
 
     // Transformar cada estación física (versión simple para stationsCatalog)
-    const transformed = apiData.stations.map(station => {
+    return apiData.stations.map(station => {
       // Obtener la línea principal de esta estación
       const mainRoute = routesById[station.main_route]
 
@@ -93,58 +77,43 @@ export const useStationStore = defineStore('station', () => {
         viz_params: station.viz_params // Para el mapa D3.js Futura consideración
       }
     }).filter(Boolean) // Eliminar nulls
+  }
 
-    // Transformar para fullStations (versión completa con todas las rutas)
-    const fullTransformed = apiData.stations.map(station => {
-      const mainRoute = routesById[station.main_route]
+  function buildFullStations(apiData) {
+    const routesById = apiData.routes.reduce((acc, route) => {
+      acc[route.id] = route
+      return acc
+    }, {})
 
-      if (!mainRoute) {
-        return null
+    const stairsCountByStation = {}
+    apiData.stairs.forEach(stair => {
+      const station_id = stair.station
+      stairsCountByStation[station_id] =
+        (stairsCountByStation[station_id] || 0) + 1
+    })
+
+    return apiData.stations.map(station => {
+      const routes_full = station.routes.map(routeId =>
+          routesById[routeId] || null)
+      const first_route = routes_full[0] || {}
+      let station_full = {
+        ...station,
+        // routes_full,
+        line_color: `#${first_route.route_color || '000000'}`,
+        first_route: first_route,
+        total_stairs: stairsCountByStation[station.id] || 0,
       }
-
-      // Obtener todas las rutas que pasan por esta estación
-      const stopsOfStation = stopsByStation[station.id] || []
-      const routesOfStation = stopsOfStation
-        .map(stop => routesById[stop.route])
-        .filter(Boolean)
-        .filter((route, index, self) =>
-          // Eliminar duplicados por ID
-          index === self.findIndex(r => r.id === route.id)
-        )
-
-      // Crear arrays de colores y números de línea
-      const lineColors = routesOfStation.map(r => `#${r.route_color}`)
-      const lineNumbers = routesOfStation.map(r => r.route_short_name)
-      const linesText = routesOfStation.map(r => `Línea ${r.route_short_name}`).join(', ')
-
-      return {
-        id: station.id,
-        name: station.name,
-        total_stairs: stairsByStation[station.id] || 0,
-
-        // Primera ruta (principal)
-        first_route: {
-          id: mainRoute.id,
-          route_short_name: mainRoute.route_short_name,
-          route_desc: mainRoute.route_desc,
-          line_color: `#${mainRoute.route_color}`
-        },
-
-        // Todas las rutas
-        routes: routesOfStation,
-        line_colors: lineColors,
-        lines: lineNumbers.join('-'),
-        lines_text: linesText,
-
-        // Datos adicionales
-        viz_params: station.viz_params
+      if (station.routes.length > 1) {
+        // console.log(`Estación con múltiples líneas: ${station.name} (${station.routes.length})`)
+        // console.log("routes_full:", routes_full);
+        station_full.line_colors = routes_full.map(
+          r => `#${r.route_color}`)
+        const lines = routes_full.map(r => r.route_short_name)
+        station_full.lines = lines.join(', ')
+        station_full.lines_text = `Líneas ${station_full.lines}`
       }
-    }).filter(Boolean)
-
-    // Guardar fullStations
-    fullStations.value = fullTransformed
-
-    return transformed
+      return station_full
+    })
   }
 
   // Request the data to the endpoint.
@@ -175,13 +144,15 @@ export const useStationStore = defineStore('station', () => {
           rawStairs.value = apiData.stairs || []
 
           // Transformar datos al formato de la UI
-          const transformedCatalog = transformCatalogData(apiData)
-          stationsCatalog.value = transformedCatalog
+
+          const full_stations = buildFullStations(apiData)
+          fullStations.value = full_stations
 
           // Guardar en IndexedDB para uso offline
-          await IndexedDBService.seedStations(transformedCatalog)
+          await IndexedDBService.updateStationsCatalog(full_stations)
+          // await IndexedDBService.seedStations(full_stations)
 
-          console.log(`✅ Catálogo actualizado desde API: ${transformedCatalog.length} estaciones`)
+          console.log(`✅ Catálogo actualizado desde API: ${full_stations.length} estaciones`)
           console.log(`   - ${rawRoutes.value.length} líneas`)
           console.log(`   - ${rawStops.value.length} stops`)
           console.log(`   - ${rawStations.value.length} estaciones físicas`)
@@ -192,7 +163,7 @@ export const useStationStore = defineStore('station', () => {
           console.warn('⚠️ Error del API, usando cache:', error.message)
 
           if (cachedCatalog.length > 0) {
-            stationsCatalog.value = cachedCatalog
+            fullStations.value = cachedCatalog
             console.log(`✅ Usando catálogo en cache: ${cachedCatalog.length} estaciones`)
             snackbarStore.showWarning('Usando catálogo local (sin actualizar)')
           } else {
@@ -206,7 +177,7 @@ export const useStationStore = defineStore('station', () => {
         console.log('📴 Sin conexión, usando catálogo en cache...')
 
         if (cachedCatalog.length > 0) {
-          stationsCatalog.value = cachedCatalog
+          fullStations.value = cachedCatalog
           console.log(`✅ Catálogo cargado desde cache: ${cachedCatalog.length} estaciones`)
           snackbarStore.showInfo('Modo offline: usando catálogo local')
         } else {
@@ -240,14 +211,8 @@ export const useStationStore = defineStore('station', () => {
     return station
   }
 
-  // Buscar estaciones por línea
-  function getStationsByLine(line) {
-    return stationsCatalog.value.filter(s => s.line === line)
-  }
-
   return {
     // Estado
-    stationsCatalog,
     selectedStation,
     isLoading,
 
@@ -256,12 +221,8 @@ export const useStationStore = defineStore('station', () => {
     rawStops,
     rawStations,
     rawStairs,
-    dictRoutesById,
     fullStations,
-
     // Computed
-    hasStations,
-    stationsByLine,
 
     // Acciones
     init,
@@ -269,7 +230,6 @@ export const useStationStore = defineStore('station', () => {
     selectStation,
     clearSelection,
     getStationById,
-    getStationsByLine
   }
 })
 

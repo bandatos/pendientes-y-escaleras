@@ -1,11 +1,16 @@
 <script setup>
 
-const props = defineProps({
-  surveyStore: {
-    type: Object,
-    required: true,
-  },
-})
+
+import {useSurveyStore} from "@/stores/index.js";
+
+const surveyStore = useSurveyStore()
+// const props = defineProps({
+//   surveyStore: {
+//     type: Object,
+//     required: true,
+//   },
+// })
+const {stats} = surveyStore
 
 </script>
 
@@ -26,14 +31,14 @@ const props = defineProps({
         <v-divider vertical></v-divider>
         <div>
           <div class="text-h6 text-success">
-            {{ surveyStore.stats.working }}
+            {{ stats.working }}
           </div>
           <div class="text-caption text-medium-emphasis">funcionan</div>
         </div>
         <v-divider vertical></v-divider>
         <div>
           <div class="text-h6 text-error">
-            {{ surveyStore.stats.notWorking }}
+            {{ stats.notWorking }}
           </div>
           <div class="text-caption text-medium-emphasis">
             no funcionan
