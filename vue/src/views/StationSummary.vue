@@ -5,6 +5,7 @@ import { useStationStore } from "../stores/stationStore";
 import { useSyncStore } from "../stores/syncStore";
 import { useImageStore } from "../stores/imageStore";
 import { useSnackbarStore } from "../stores/snackbarStore";
+import { useAuthStore } from "../stores/authStore";
 import { IndexedDBService } from "../services/indexDB.js";
 import UploadImage from "../components/UploadImage.vue";
 import Stats from "@/components/form/Stats.vue";
@@ -14,17 +15,28 @@ import SyncStatusBar from "@/components/SyncStatusBar.vue";
 
 const emit = defineEmits(["save-complete", "back"]);
 
-// Actualizar estadísticas de sincronización al montar
-onMounted(async () => {
-  await syncStore.updateSyncStats();
-});
-
 // Stores
 const surveyStore = useSurveyStore();
 const stationStore = useStationStore();
 const syncStore = useSyncStore();
 const imageStore = useImageStore();
 const snackbarStore = useSnackbarStore();
+const authStore = useAuthStore();
+
+// Actualizar estadísticas de sincronización al montar
+onMounted(async () => {
+  // Cargar sesión si existe
+  authStore.loadSession();
+
+  // Validar autenticación
+  if (!authStore.isAuthenticated) {
+    snackbarStore.showError('Debes autenticarte para realizar relevamientos');
+    emit('back');
+    return;
+  }
+
+  await syncStore.updateSyncStats();
+});
 
 const { currentSurvey, currentStairs } = surveyStore;
 const { selectedStation } = stationStore;

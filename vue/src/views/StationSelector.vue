@@ -4,9 +4,11 @@ import { useStationStore } from '../stores/stationStore'
 import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
 import { useSnackbarStore } from '../stores/snackbarStore'
+import { useAuthStore } from '../stores/authStore'
 import MapaMetro from '../components/vis/MapaMetro.vue'
 import AvatarStation from "@/components/select_station/AvatarStation.vue"
 import SyncStatusBar from "@/components/SyncStatusBar.vue"
+import LoginDialog from "@/components/LoginDialog.vue"
 
 const emit = defineEmits(['station-selected'])
 
@@ -15,11 +17,17 @@ const stationStore = useStationStore()
 const surveyStore = useSurveyStore()
 const syncStore = useSyncStore()
 const snackbarStore = useSnackbarStore()
+const authStore = useAuthStore()
 
 // Estado local
 const selectedStationId = ref(null)
+const showLoginDialog = ref(false)
+const pendingStation = ref(null)
 
 onMounted(async () => {
+  // Cargar sesión guardada
+  authStore.loadSession()
+
   await stationStore.init()
   await syncStore.init()
   // console.log("fullStations", stationStore.fullStations)
@@ -41,16 +49,43 @@ const handleSelectStation = () => {
   const station = stationStore.fullStations.find(
     s => s.id === selectedStationId.value)
 
-  if (station) {
-    // Seleccionar en store
-    stationStore.selectStation(station)
+  if (!station) return
 
-    // Iniciar relevamiento
-    surveyStore.startSurvey(station)
-
-    // Emitir evento para cambiar de vista
-    emit('station-selected', station)
+  // Verificar autenticación
+  if (!authStore.isAuthenticated) {
+    // Guardar estación pendiente y mostrar diálogo de login
+    pendingStation.value = station
+    showLoginDialog.value = true
+    return
   }
+
+  // Si está autenticado, continuar con el flujo normal
+  proceedWithStation(station)
+}
+
+const proceedWithStation = (station) => {
+  // Seleccionar en store
+  stationStore.selectStation(station)
+
+  // Iniciar relevamiento
+  surveyStore.startSurvey(station)
+
+  // Emitir evento para cambiar de vista
+  emit('station-selected', station)
+}
+
+const handleLoginSuccess = () => {
+  // Una vez autenticado, proceder con la estación pendiente
+  if (pendingStation.value) {
+    proceedWithStation(pendingStation.value)
+    pendingStation.value = null
+  }
+}
+
+const handleLoginCancel = () => {
+  // Limpiar selección si cancela el login
+  selectedStationId.value = null
+  pendingStation.value = null
 }
 </script>
 
@@ -58,6 +93,14 @@ const handleSelectStation = () => {
   <v-container fluid class="fill-height pt-0">
     <v-row justify="center" align="center" class="fill-height">
       <v-col cols="12" sm="10" md="8" lg="6" class="pt-0">
+
+        <!-- Login Dialog -->
+        <LoginDialog
+          v-model="showLoginDialog"
+          :station-name="pendingStation?.name || ''"
+          @login-success="handleLoginSuccess"
+          @login-cancel="handleLoginCancel"
+        />
 
         <!-- Status bar -->
         <SyncStatusBar :show-sync-button="true"/>

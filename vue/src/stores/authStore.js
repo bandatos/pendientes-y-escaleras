@@ -19,7 +19,7 @@ export const useAuthStore = defineStore('auth', () => {
     // Actions
     async function login(email) {
         //Inicializar dentro de la función, ya que fuera es el estado global aún.
-        const snackbarStore = useSnackbarStore();
+        const snackbarStore = useSnackbarStore();   
 
         let itemRequest = {
             email,
