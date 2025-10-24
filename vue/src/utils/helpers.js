@@ -1,6 +1,11 @@
 import { LocalStorageService } from '../services/localStorage.js'
 const storage = LocalStorageService;
 
+export function isAuthValid() {
+    const token = storage.getToken();
+    return token !== null && token !== undefined;
+}
+
 export function authHeader(isFormData) {
     // return authorization header with jwt token
 
@@ -10,13 +15,13 @@ export function authHeader(isFormData) {
         if (token) {
             if (!isFormData) {
                 return {
-                    'Authorization': 'Token' + token,
+                    'Authorization': 'Token ' + token,
                     'Content-Type': 'application/json'
                 };
             } else {
                 /* Si se manda argumento, entonces no es tipo JSON */
                 return {
-                    'Authorization': 'Token' + token,
+                    'Authorization': 'Token ' + token,
                 };
             }
         } else {

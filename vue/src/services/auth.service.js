@@ -6,7 +6,7 @@ export const authService = {
     login,
 }
 
-function login(itemRequest) {
+async function login(itemRequest) {
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -15,17 +15,28 @@ function login(itemRequest) {
         body: JSON.stringify(itemRequest)
     }
 
-    return fetch(`${config.API_URL  }login`, requestOptions)
-        .then(response => {
-            // Status Code:
+    try {
+        const response = await fetch(`${config.API_URL}/api/login/`, requestOptions)
 
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
 
-            // Add to the storage to keep it.
-            Storage.saveToKen(response.token);
-            Storage.saveUser(response.user);
+        // Parse JSON response
+        const data = await response.json()
 
+        // Save to localStorage
+        if (data.token) {
+            LocalStorageService.saveToken(data.token)
+        }
 
-            //Finally
-            return response;
-        });
+        if (data.user) {
+            LocalStorageService.saveUser(data.user)
+        }
+
+        return data
+    } catch (error) {
+        console.error('Error en login:', error)
+        throw error
+    }
 }
