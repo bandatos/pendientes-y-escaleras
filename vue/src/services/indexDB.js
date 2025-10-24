@@ -385,6 +385,21 @@ export class IndexedDBService {
         }
     }
 
+    // Eliminar imágenes de una escalera específica (después de sincronizar)
+    static async deleteStairImages(stationRecordId, number) {
+        try {
+            const deleted = await db.images
+                .where('[stationRecordId+number]')
+                .equals([stationRecordId, number])
+                .delete();
+            console.log(`🗑️ ${deleted} imágenes eliminadas para estación ${stationRecordId}, escalera ${number}`);
+            return deleted;
+        } catch (error) {
+            console.error('❌ Error deleting stair images:', error);
+            throw error;
+        }
+    }
+
     // Seed: Poblar catálogo de estaciones (solo desarrollo/testing)
     static async seedStations(stationsData) {
         try {
