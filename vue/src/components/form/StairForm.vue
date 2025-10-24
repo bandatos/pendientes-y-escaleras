@@ -255,9 +255,9 @@ const markStairComplete = (stairIndex) => {
             <v-select
               v-model="stair.status_maintenance"
               :items="[
-                { title: 'Menor (funcional, desgaste leve)', value: 'minor' },
-                { title: 'Moderado (requiere atención pronto)', value: 'major' },
-                { title: 'Crítico (requiere atención urgente)', value: 'critical' },
+                { title: 'Menor (funcional, desgaste leve | sin tablas)', value: 'minor' },
+                { title: 'Mayor (requiere atención pronto | con tablas)', value: 'medium' },
+                { title: 'Crítico | Reconstrucción completa (requiere atención urgente)', value: 'full' },
                 { title: 'Otro (especificar)', value: 'other' }
               ]"
               variant="outlined"
