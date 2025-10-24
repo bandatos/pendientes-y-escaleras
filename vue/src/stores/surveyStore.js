@@ -244,7 +244,8 @@ export const useSurveyStore = defineStore('survey', () => {
         console.log(`📤 Subiendo ${images.length} imágenes para escalera ${stair.number}...`)
 
         try {
-          const imageResponse = await stairsService.uploadStairImages(stair.stair, images)
+          // Usar el id que me devuelve el registro una vez guardado.
+          const imageResponse = await stairsService.uploadStairImages(savedReport.id, images)
           console.log(`✅ Imágenes subidas para escalera ${stair.number}`)
 
           // Guardar referencias de imágenes
@@ -291,6 +292,7 @@ export const useSurveyStore = defineStore('survey', () => {
       isSaving.value = true
 
       console.log(`🔄 Guardando relevamiento (${isOnline ? 'online' : 'offline'})...`)
+      console.log('📸 Estado del imageStore.modelPhoto:', imageStore.modelPhoto)
 
       let syncedCount = 0
       let failedCount = 0
@@ -299,7 +301,9 @@ export const useSurveyStore = defineStore('survey', () => {
       if (isOnline) {
         for (let i = 0; i < currentStairs.value.length; i++) {
           const stair = currentStairs.value[i]
-          const photos = imageStore.getStairPhotos(i)
+          const photos = imageStore.getStairPhotos(stair.id) // ✅ Usar stair.id en lugar de índice
+
+          console.log(`📸 Escalera ${stair.number} (ID: ${stair.id}): ${photos?.length || 0} foto(s) encontrada(s)`)
 
           // Sincronizar escalera opr escalera.
           const result = await syncSingleStair(stair, photos)
@@ -469,8 +473,14 @@ export const useSurveyStore = defineStore('survey', () => {
 
       // Sincronizar cada escalera usando la función modular
       for (const { stair, stairIndex, recordId } of pendingStairs) {
-        // Usar la función modular para sincronizar
-        const result = await syncSingleStair(stair)
+        // Obtener imágenes de IndexedDB para esta escalera
+        const imageRecords = await IndexedDBService.getStairImages(recordId, stair.number)
+        const imageFiles = imageRecords.map(img => img.file) // Extraer File objects
+
+        console.log(`📸 ${imageFiles.length} imágenes encontradas para escalera ${stair.number} (record ${recordId})`)
+
+        // Usar la función modular para sincronizar con imágenes
+        const result = await syncSingleStair(stair, imageFiles)
 
         if (result.success) {
           // Actualizar el registro en IndexedDB
@@ -478,6 +488,13 @@ export const useSurveyStore = defineStore('survey', () => {
           if (record) {
             await IndexedDBService.updateStationRecord(recordId, { stairs: record.stairs })
           }
+
+          // Eliminar imágenes de IndexedDB ya que fueron sincronizadas exitosamente
+          if (imageFiles.length > 0) {
+            await IndexedDBService.deleteStairImages(recordId, stair.number)
+            console.log(`🗑️ Imágenes eliminadas de IndexedDB para escalera ${stair.number}`)
+          }
+
           syncedCount++
         } else {
           failedCount++
