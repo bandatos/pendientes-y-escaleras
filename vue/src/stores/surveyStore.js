@@ -228,7 +228,8 @@ export const useSurveyStore = defineStore('survey', () => {
         path_end: stair.path_end || '',
         route_end: stair.route_end || '',
         is_aligned: stair.is_aligned !== null ? stair.is_aligned : true,
-        is_working: stair.is_working,
+        // Si es estado crítico y is_working es null, asumimos false (no funciona)
+        is_working: stair.is_working !== null ? stair.is_working : (stair.status_maintenance === 'full' ? false : null),
         details: stair.details || ''
       }
 
@@ -374,6 +375,26 @@ export const useSurveyStore = defineStore('survey', () => {
     const errors = []
     const stair = currentStair.value
 
+    // Validar estado de mantenimiento (siempre requerido)
+    if (!stair.status_maintenance) {
+      errors.push('Debe indicar el estado de mantenimiento')
+    }
+
+    // Validar que el campo other sea completado
+    if (stair.status_maintenance === 'other' && !stair.other_status_maintenance) {
+      errors.push('Debe especificar el estado de mantenimiento personalizado')
+    }
+
+    // ⚠️ CASO ESPECIAL: Si es estado CRÍTICO (full), solo validar el estado de mantenimiento
+    // Los demás campos son opcionales para permitir guardado rápido
+    if (stair.status_maintenance === 'full') {
+      return {
+        valid: errors.length === 0,
+        errors
+      }
+    }
+
+    // Para estados no críticos, validar todos los campos normalmente
     // Validar códigos (solo si no marcó "sin códigos")
     if (!stair.hasCodes && stair.code_identifiers.length === 0) {
       errors.push('Debe tener al menos un código de identificación')
@@ -391,16 +412,6 @@ export const useSurveyStore = defineStore('survey', () => {
     // Validar estado operativo
     if (stair.is_working === null) {
       errors.push('Debe indicar si la escalera funciona')
-    }
-
-    // Validar estado de mantenimiento
-    if (!stair.status_maintenance) {
-      errors.push('Debe indicar el estado de mantenimiento')
-    }
-
-    // Validar queel campo other sea completado
-    if (stair.status_maintenance === 'other' && !stair.other_status_maintenance) {
-      errors.push('Debe especificar el estado de mantenimiento personalizado')
     }
 
     // COMENTADO TEMPORALMENTE - No se requiere por el momento
