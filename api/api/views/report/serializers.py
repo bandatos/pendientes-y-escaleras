@@ -9,6 +9,7 @@ class StairReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = StairReport
         fields = "__all__"
+        read_only_fields = ['user']  # El user se asigna automáticamente en el ViewSet
 
 
 class EvidenceImageSerializer(serializers.ModelSerializer):
