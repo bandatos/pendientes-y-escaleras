@@ -98,11 +98,11 @@ export const useSurveyStore = defineStore('survey', () => {
 
         // Estado de mantenimiento
         status_maintenance: null, // 'minor' | 'major' | 'critical' | 'other'
+        direction_observed: null,
         other_status_maintenance: '',
 
         // Estado operativo
         is_working: null,
-        is_aligned: null, // Si la escalera está alineada correctamente
 
         details: '',
         photo_ids: [],
@@ -220,16 +220,16 @@ export const useSurveyStore = defineStore('survey', () => {
       // Preparar datos del reporte para api/stair_report/
       const reportData = {
         stair: stair.stair, // ID de la escalera del catálogo
-        status_maintenance: stair.status_maintenance || 'minor',
+        status_maintenance: stair.status_maintenance || null,
+        direction_observed: stair.direction_observed || null,
         other_status_maintenance: stair.other_status_maintenance || '',
         code_identifiers: stair.code_identifiers || [],
         route_start: stair.route_start || '',
         path_start: stair.path_start || '',
         path_end: stair.path_end || '',
         route_end: stair.route_end || '',
-        is_aligned: stair.is_aligned !== null ? stair.is_aligned : true,
         // Si es estado crítico y is_working es null, asumimos false (no funciona)
-        is_working: stair.is_working !== null ? stair.is_working : (stair.status_maintenance === 'full' ? false : null),
+        is_working: stair.is_working,
         details: stair.details || ''
       }
 

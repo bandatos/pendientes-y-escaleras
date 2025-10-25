@@ -399,35 +399,6 @@ async function markStairComplete() {
                 </v-input>
               </div>
 
-              <!-- ¿Está alineada? -->
-              <!-- COMENTADO TEMPORALMENTE - No se requiere por el momento
-              <div class="mb-4">
-                <label class="text-subtitle-2 mb-2 d-block">
-                  ¿La escalera está alineada correctamente?
-                  <v-icon size="small" class="ml-1">
-                    help_outline
-                    <v-tooltip activator="parent" location="top">
-                      Indica si los escalones están nivelados y en buena posición
-                    </v-tooltip>
-                  </v-icon>
-                </label>
-                <v-radio-group
-                  v-model="stair.is_aligned"
-                  inline
-                  hide-details
-                >
-                  <v-radio
-                    label="Sí"
-                    :value="true"
-                    color="success"
-                    class="mr-3"
-                  ></v-radio>
-                  <v-radio label="No" :value="false" color="warning">
-                  </v-radio>
-                </v-radio-group>
-              </div>
-              -->
-
               <!-- En qué dirección funciona -->
               <div v-if="stair.is_working === true" class="mb-4">
                 <label class="text-subtitle-2 mb-2 d-block">
