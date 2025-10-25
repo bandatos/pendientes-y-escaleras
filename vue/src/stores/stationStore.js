@@ -30,7 +30,8 @@ export const useStationStore = defineStore('station', () => {
    * Entrada: { routes: [], stops: [], stations: [], stairs: [] }
    * Salida: [{ station_id, name, line, line_color, total_stairs, ... }, ...]
    */
-  function transformCatalogData(apiData) {
+
+  function buildFullStations(apiData) {
 
     const routesById = apiData.routes.reduce((acc, route) => {
       acc[route.id] = route
@@ -41,56 +42,25 @@ export const useStationStore = defineStore('station', () => {
     const stairsByStation = {}
     apiData.stairs.forEach(stair => {
       const stationId = stair.station
-      stairsByStation[stationId] = (stairsByStation[stationId] || 0) + 1
-    })
+      let total = (stairsByStation[stationId]?.total || 0) + 1
+      let is_working = (stairsByStation[stationId]?.is_working || 0)
+      let is_not_working = (stairsByStation[stationId]?.is_not_working || 0)
+      let with_report = (stairsByStation[stationId]?.with_report || 0)
 
-    // Agrupar stops por estación para saber qué rutas pasan por cada estación
-    const stopsByStation = {}
-    apiData.stops.forEach(stop => {
-      const stationId = stop.station
-      if (!stopsByStation[stationId]) {
-        stopsByStation[stationId] = []
+      stairsByStation[stationId] = {
+        total: total,
+        is_working: is_working + (stair.is_working === true ? 1 : 0),
+        is_not_working: is_not_working + (stair.is_working === false ? 1 : 0),
+        with_report: typeof(stair.is_working) === 'boolean' ? with_report + 1 : with_report,
       }
-      stopsByStation[stationId].push(stop)
     })
-
-    // Transformar cada estación física (versión simple para stationsCatalog)
-    return apiData.stations.map(station => {
-      // Obtener la línea principal de esta estación
-      const mainRoute = routesById[station.main_route]
-
-      if (!mainRoute) {
-        console.warn(`Estación ${station.name} no tiene main_route válida`)
-        return null
-      }
-
-      return {
-        // Usar el ID del backend directamente (normalizado)
-        station_id: station.id,
-        name: station.name,
-        line: `Línea ${mainRoute.route_short_name}`,
-        line_color: `#${mainRoute.route_color}`,
-        total_stairs: stairsByStation[station.id] || 0,
-
-        // Datos adicionales útiles
-        main_route: mainRoute.id,
-        viz_params: station.viz_params // Para el mapa D3.js Futura consideración
-      }
-    }).filter(Boolean) // Eliminar nulls
-  }
-
-  function buildFullStations(apiData) {
-    const routesById = apiData.routes.reduce((acc, route) => {
-      acc[route.id] = route
-      return acc
-    }, {})
-
-    const stairsCountByStation = {}
-    apiData.stairs.forEach(stair => {
-      const station_id = stair.station
-      stairsCountByStation[station_id] =
-        (stairsCountByStation[station_id] || 0) + 1
-    })
+    //
+    // const stairsCountByStation = {}
+    // apiData.stairs.forEach(stair => {
+    //   const station_id = stair.station
+    //   stairsCountByStation[station_id] =
+    //     (stairsCountByStation[station_id] || 0) + 1
+    // })
 
     return apiData.stations.map(station => {
       const routes_full = station.routes.map(routeId =>
@@ -102,7 +72,10 @@ export const useStationStore = defineStore('station', () => {
         // routes_full,
         line_color: `#${first_route.route_color || '000000'}`,
         first_route: first_route,
-        total_stairs: stairsCountByStation[station.id] || 0,
+        total_stairs: stairsByStation[station.id]?.total || 0,
+        stairs_working: stairsByStation[station.id]?.is_working || 0,
+        stairs_not_working: stairsByStation[station.id]?.is_not_working || 0,
+        stairs_with_report: stairsByStation[station.id]?.with_report || 0,
       }
       if (station.routes.length > 1) {
         // console.log(`Estación con múltiples líneas: ${station.name} (${station.routes.length})`)

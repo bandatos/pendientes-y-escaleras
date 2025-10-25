@@ -54,7 +54,20 @@ onMounted(async () => {
     // .attr("r", (d) => escala * (0.2 + Math.sqrt(1 * Math.random())))
     .attr("r", (d) =>
         d.total_stairs ? 2 + escala * Math.sqrt(d.total_stairs / 12) : 1.5)
-    .style("fill-opacity", (d) => d.total_stairs ? 0.2 + Math.random() : 0.7);
+    .style("stroke", (d) => d.total_stairs
+        ? d.stairs_with_report
+          ? 'none'
+          : d.line_color
+        : 'none'
+    )
+    .style("fill-opacity", (d) =>
+        d.total_stairs ?
+            d.stairs_with_report
+                ? (d.stairs_working / d.total_stairs)
+                : 0.1
+            : 0.7
+    );
+        // d.total_stairs ? 0.2 + Math.random() : 0.7
   estaciones_g.value
     .append("text")
     .attr(
@@ -83,8 +96,11 @@ onMounted(async () => {
       <b>Total de escaleras:</b>
       ${d.total_stairs}
       <br/>
-      <b>No en funcionamiento:</b>
-      ${d.disabled || 0}
+      <b>Inoperativa:</b>
+      ${d.stairs_not_working || 0}
+      <br/>
+      <b>Sí funcionan:</b>
+      ${d.stairs_not_working || 0}
       <br/>
       <b>Último reporte:</b>
       dd-mm-yyyy
