@@ -100,7 +100,7 @@ onMounted(async () => {
       ${d.stairs_not_working || 0}
       <br/>
       <b>Sí funcionan:</b>
-      ${d.stairs_not_working || 0}
+      ${d.stairs_working || 0}
       <br/>
       <b>Último reporte:</b>
       dd-mm-yyyy
@@ -115,7 +115,13 @@ onMounted(async () => {
 
       console.log(e, d);
       d3.select(this).select("text").style("fill-opacity", "0.5");
-      d3.select(this).select("circle").style("stroke", "none");
+      d3.select(this).select("circle").style("stroke", d =>
+        d.total_stairs
+          ? d.stairs_with_report
+            ? 'none'
+            : d.line_color
+          : 'none'
+      );
     });
 });
 </script>
