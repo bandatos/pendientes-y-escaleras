@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = getenv_bool("DJANGO_DEBUG", False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = getenv_list("ALLOWED_HOSTS", ["*"])
 CORS_ALLOW_ALL_ORIGINS = getenv_bool("CORS_ALLOW_ALL_ORIGINS", False)
 CORS_ORIGIN_ALLOW_ALL = getenv_bool("CORS_ORIGIN_ALLOW_ALL", False)
 # Application definition

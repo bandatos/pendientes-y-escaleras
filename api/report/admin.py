@@ -4,7 +4,6 @@ from .models import StairReport, EvidenceImage
 
 class EvidenceImageAdmin(admin.ModelAdmin):
     list_display = ('stair_report', 'image')
-    search_fields = ('stair_report__id',)
 
 
 class EvidenceImageInline(admin.TabularInline):
@@ -17,7 +16,8 @@ class StairReportAdmin(admin.ModelAdmin):
         'stair', 'user', 'status_maintenance', 'is_working', 'date_reported')
     search_fields = ('user__email', 'status_maintenance')
     list_filter = (
-        'status_maintenance', 'is_working', 'date_reported', 'stair__stop__route')
+        'status_maintenance', 'is_working', 'date_reported',
+        'stair__stop__route')
     inlines = [EvidenceImageInline]
 
 
