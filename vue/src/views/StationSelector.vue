@@ -48,8 +48,16 @@ const handleSelectStation = () => {
   // Buscar estación completa
   const station = stationStore.fullStations.find(
     s => s.id === selectedStationId.value)
+  if (station.total_stairs === 0) {
+    snackbarStore.showWarning(
+      'La estación seleccionada no tiene escaleras para relevar \n ' +
+      'Por favor elige otra estación')
+    selectedStationId.value = null
+    return
+  }
 
-  if (!station) return
+  if (!station)
+    return
 
   // Verificar autenticación
   if (!authStore.isAuthenticated) {
@@ -127,6 +135,7 @@ const handleLoginCancel = () => {
               hide-details
               :loading="stationStore.isLoading"
               @update:modelValue="handleSelectStation"
+
             >
               <template v-slot:chip="{ props, item }">
                 <v-chip
@@ -140,6 +149,7 @@ const handleLoginCancel = () => {
               <template v-slot:item="{ props, item }">
                 <v-list-item
                   v-bind="props"
+                  :diabled="!item.raw.total_stairs"
                 >
                   <template v-slot:title>
                     <span class="text-body-1 font-weight-medium">
@@ -148,7 +158,8 @@ const handleLoginCancel = () => {
                   </template>
                   <template v-slot:subtitle>
                     {{ item.raw.lines_text || item.raw.first_route.route_desc || 'Línea ??' }}
-                    • {{ item.raw.total_stairs }} escalera {{ item.raw.total_stairs === 1 ? '' : 's' }}
+                    • {{ item.raw.total_stairs }}
+                    escalera{{ item.raw.total_stairs === 1 ? '' : 's' }}
                   </template>
                   <template v-slot:prepend>
                     <AvatarStation :station-data="item.raw" />
