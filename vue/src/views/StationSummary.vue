@@ -13,8 +13,6 @@ import StairForm from "@/components/form/StairForm.vue";
 import AvatarStation from "@/components/select_station/AvatarStation.vue";
 import SyncStatusBar from "@/components/SyncStatusBar.vue";
 
-const emit = defineEmits(["save-complete", "back"]);
-
 // Stores
 const surveyStore = useSurveyStore();
 const stationStore = useStationStore();
@@ -22,6 +20,10 @@ const syncStore = useSyncStore();
 const imageStore = useImageStore();
 const snackbarStore = useSnackbarStore();
 const authStore = useAuthStore();
+
+const loading_station = ref(false);
+
+const emit = defineEmits(["save-complete", "back"]);
 
 // Actualizar estadísticas de sincronización al montar
 onMounted(async () => {
@@ -56,9 +58,9 @@ const markStairComplete = (stairIndex) => {
     expandedPanels.value.splice(currentIndex, 1);
   }
 
-  if (stairIndex < surveyStore.total_stairs - 1) {
-    expandedPanels.value.push(stairIndex + 1);
-  }
+  // if (stairIndex < surveyStore.total_stairs - 1) {
+  //   expandedPanels.value.push(stairIndex + 1);
+  // }
 };
 
 function showWarning(message) {
@@ -77,7 +79,7 @@ const handleSave = async () => {
       );
       return;
     }
-
+    loading_station.value = true;
     // 1. Guardar registro de estación en IndexedDB
     const savedRecord = await surveyStore.completeSurvey();
 
@@ -110,11 +112,12 @@ const handleSave = async () => {
     await syncStore.updateSyncStats();
 
     console.log("✅ Estación y todas las imágenes guardadas exitosamente");
-
+    loading_station.value = false
     emit("save-complete");
   } catch (error) {
     console.error("Error guardando:", error);
     snackbarStore.showError("Error al guardar los datos");
+    loading_station.value = false
   }
 };
 
@@ -184,6 +187,7 @@ const handleBack = () => {
               size="large"
               block
               variant="elevated"
+              :loading="loading_station"
               :disabled="surveyStore.completedStairs < surveyStore.total_stairs"
               @click="handleSave"
             >

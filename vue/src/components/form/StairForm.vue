@@ -69,8 +69,8 @@ const full_status = computed(() => {
 });
 
 const directions = [
-  { label: "Sube", value: "up", key: "up" },
-  { label: "Baja", value: "down", key: "down" },
+  { label: "Sube", value: "up", key: "up", icon: "move_up" },
+  { label: "Baja", value: "down", key: "down", icon: "move_down" },
 ];
 
 const accessible_options = [
@@ -104,6 +104,9 @@ function removeCode(codeIndex) {
   props.stair.code_identifiers.splice(codeIndex, 1);
 }
 async function markStairComplete() {
+  if (new_codes.value?.trim()) {
+    addCode();
+  }
   const { valid } = await stairForm.value.validate()
   errors.value = null
   if (!valid){
@@ -424,7 +427,7 @@ async function markStairComplete() {
                           @click="toggle"
                         >
                           <v-icon size="24" class="mr-2">
-                            {{ direction.value }}
+                            {{ direction.icon }}
                           </v-icon>
                           <div class="text-h6">
                             {{ direction.label }}
@@ -473,7 +476,7 @@ async function markStairComplete() {
               color="primary"
               block
               @click="markStairComplete"
-              xvariant="
+              :variant="
                 stair.status === 'completed' ? 'outlined' : 'elevated'
               "
             >
