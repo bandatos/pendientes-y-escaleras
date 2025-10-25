@@ -17,7 +17,7 @@ async function login(itemRequest) {
     }
 
     try {
-        const response = await fetch(`${config.API_URL}/api/login/`, requestOptions)
+        const response = await fetch(`${config.API_URL}api/login/`, requestOptions)
 
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`)
