@@ -46,21 +46,29 @@ const handleBack = () => {
 
 <template>
   <v-app>
-    <!-- Vista 1: Vista General -->
-    <StationSelector
-      v-if="currentView === 'selector'"
-      @station-selected="handleStationSelected"
-    />
+    <v-main>
+      <v-container
+        class="px-2 pt-0 fill-height"
+        fluid
+        max-width="1440"
+      >
+        <!-- Vista 1: Vista General -->
+        <StationSelector
+          v-if="currentView === 'selector'"
+          @station-selected="handleStationSelected"
+        />
 
-    <!-- Vista 2: Form Station -->
-    <StationSummary
-      v-else-if="currentView === 'summary'"
-      @save-complete="handleSaveComplete"
-      @back="handleBack"
-    />
+        <!-- Vista 2: Form Station -->
+        <StationSummary
+          v-else-if="currentView === 'summary'"
+          @save-complete="handleSaveComplete"
+          @back="handleBack"
+        />
 
-    <!-- Snackbar global -->
-    <MessageSnackBar />
+        <!-- Snackbar global -->
+        <MessageSnackBar />
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 

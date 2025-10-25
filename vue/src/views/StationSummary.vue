@@ -133,72 +133,74 @@ const handleBack = () => {
 </script>
 
 <template>
-  <v-container fluid class="fill-height pa-0">
-    <v-row no-gutters class="fill-height">
-      <v-col cols="12">
-        <!-- Header con status -->
-        <v-card class="rounded-0" variant="flat" color="grey-lighten-5">
-          <v-card-text>
-            <!-- Status bar con botón de sincronización -->
-            <SyncStatusBar :show-sync-button="true" variant="flat" class="pa-0 mb-2" />
+  <v-row no-gutters class="fill-height">
+    <v-col cols="12">
+      <!-- Header con status -->
+      <v-card class="rounded-0" variant="flat" color="grey-lighten-5">
+        <v-card-text>
+          <!-- Status bar con botón de sincronización -->
+          <SyncStatusBar :show-sync-button="true" variant="flat" class="pa-0 mb-2" />
 
-            <!-- Estación seleccionada -->
-            <div class="d-flex align-center">
-              <AvatarStation :station-data="selectedStation" class="mr-3" />
-              <h2 class="text-subtitle-1 font-weight-bold">
-                Estación {{ selectedStation?.name }}
-              </h2>
-              <v-btn
-                icon="close"
-                size="small"
-                variant="text"
-                @click="handleBack"
-                class="ml-auto"
-              ></v-btn>
-            </div>
-          </v-card-text>
-        </v-card>
-
-        <Stats :surveyStore="surveyStore" class="mb-2" />
-
-        <v-divider></v-divider>
-        <v-card-subtitle>
-          Completa la info en el orden en el que recorras la estación
-        </v-card-subtitle>
-
-        <!-- Expansion Panels de Escaleras -->
-        <v-expansion-panels v-model="expandedPanels" multiple>
-          <StairForm
-            v-for="(stair, stair_index) in currentStairs"
-            :key="stair.id"
-            :stair="stair"
-            :stair_index="stair_index"
-            :all_status="all_status"
-            @showWarning="showWarning"
-            @markComplete="markStairComplete(stair_index)"
-          />
-        </v-expansion-panels>
-
-        <!-- Botón guardar todo -->
-        <v-card class="rounded-0" _variant="flat" _color="primary">
-          <v-card-actions class="pa-4">
+          <!-- Estación seleccionada -->
+          <div class="d-flex align-center">
+            <AvatarStation :station-data="selectedStation" class="mr-3" />
+            <h2 class="text-subtitle-1 font-weight-bold">
+              Estación {{ selectedStation?.name }}
+            </h2>
             <v-btn
-              color="primary"
-              size="large"
-              block
-              variant="elevated"
-              :loading="loading_station"
-              :disabled="surveyStore.completedStairs < surveyStore.total_stairs"
-              @click="handleSave"
-            >
-              Guardar datos
-              <v-icon end>save</v-icon>
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+              icon="close"
+              size="small"
+              variant="text"
+              @click="handleBack"
+              class="ml-auto"
+            ></v-btn>
+          </div>
+        </v-card-text>
+      </v-card>
+
+      <Stats  :surveyStore="surveyStore" class="mb-2" />
+
+      <v-divider></v-divider>
+      <v-alert
+        type="info"
+        density="compact"
+        class="mb-2"
+      >
+        Completa la info en el orden en el que recorras la estación
+      </v-alert>
+
+      <!-- Expansion Panels de Escaleras -->
+      <v-expansion-panels  v-model="expandedPanels" multiple>
+        <StairForm
+          v-for="(stair, stair_index) in currentStairs"
+          :key="stair.id"
+          :stair="stair"
+          :stair_index="stair_index"
+          :all_status="all_status"
+          @showWarning="showWarning"
+          @markComplete="markStairComplete(stair_index)"
+        />
+      </v-expansion-panels>
+
+      <!-- Botón guardar todo -->
+      <v-card  v-if="false" class="rounded-0" _variant="flat" _color="primary">
+        <v-card-actions class="pa-4">
+          <v-btn
+            color="primary"
+            size="large"
+            block
+            variant="elevated"
+            :loading="loading_station"
+            :disabled="surveyStore.completedStairs < surveyStore.total_stairs"
+            @click="handleSave"
+          >
+            Guardar datos
+            <v-icon end>save</v-icon>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <style scoped>

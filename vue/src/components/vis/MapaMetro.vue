@@ -78,10 +78,17 @@ onMounted(async () => {
       divTooltip.value.style.top = escala * +d.y_position + 10 + "px";
 
       divTooltip.value.innerHTML = `
-      ${d.name}<br/>
-      <b>Total de escaleras:</b> XX <br/>
-      <b>Descompuestas:</b> XX <br/>
-      <b>Último reporte:</b> dd-mm-yyyy <br/>
+      <span class="text-subtitle-1">${d.name}</span>
+      <br/>
+      <b>Total de escaleras:</b>
+      ${d.total_stairs}
+      <br/>
+      <b>No en funcionamiento:</b>
+      ${d.disabled || 0}
+      <br/>
+      <b>Último reporte:</b>
+      dd-mm-yyyy
+      <br/>
       `;
 
       d3.select(this).select("text").style("fill-opacity", "1");
