@@ -30,7 +30,7 @@ const props = defineProps({
 
 const is_accessible = ref(null);
 const errors = ref(null);
-const save_errors = ref(null);
+const save_errors = ref([]);
 const stairForm = ref(null);
 
 const emits = defineEmits(
@@ -114,7 +114,7 @@ async function markStairComplete() {
     return
   }
 
-  if (!valid) return
+  save_errors.value = []
 
   props.stair.status = 'completed'
   emits("mark-complete");
