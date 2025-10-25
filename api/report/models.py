@@ -29,6 +29,11 @@ class StairReport(models.Model):
         ('other', 'Otro tipo de mantenimiento'),
     )
 
+    DIRECTION_CHOICES = (
+        ('up', 'Hacia arriba'),
+        ('down', 'Hacia abajo'),
+    )
+
     stair = models.ForeignKey(
         Stair, on_delete=models.CASCADE,
         verbose_name="Escalera reportada"
@@ -74,6 +79,10 @@ class StairReport(models.Model):
     )
     details = models.TextField(
         blank=True, null=True, verbose_name="Detalles adicionales"
+    )
+    direction_observed = models.CharField(
+        max_length=10, choices=DIRECTION_CHOICES,
+        blank=True, null=True, verbose_name="Dirección observada"
     )
     date_reported = models.DateTimeField(
         auto_now=True, verbose_name="Fecha/hora de reporte"
