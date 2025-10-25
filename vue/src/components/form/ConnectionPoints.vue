@@ -2,11 +2,15 @@
 
 import { ref } from 'vue';
 
+import rulesMixin from "@/composables/rulesMixin.js";
+const { rules } = rulesMixin;
+
 const props = defineProps({
   stair: {
     type: Object,
     required: true,
   },
+  is_accessible: Boolean,
 });
 
 const same_start_as_route = ref(false);
@@ -43,10 +47,11 @@ const same_end_as_route = ref(false);
         variant="outlined"
         density="comfortable"
         placeholder="Ej: Andén dirección barranca"
-        hide-details
+        hide-details="auto"
         prepend-inner-icon="trip_origin"
         class="text-deep-purple"
         color="deep-purple"
+        :rules="is_accessible === true ? [rules.required] : []"
       ></v-text-field>
     </div>
     <v-expand-transition>
@@ -59,10 +64,11 @@ const same_end_as_route = ref(false);
           variant="outlined"
           density="comfortable"
           placeholder="Ej: Mezanine nivel 1"
-          hide-details
+          hide-details="auto"
           prepend-inner-icon="airline_stops"
           class="text-deep-purple"
           color="deep-purple"
+          :rules="is_accessible === true ? [rules.required] : []"
         ></v-text-field>
       </div>
     </v-expand-transition>
@@ -71,7 +77,6 @@ const same_end_as_route = ref(false);
         v-model="same_start_as_route"
         label="El inicio es el mismo punto de Origen"
         color="deep-purple"
-        hide-details
         density="compact"
         class="text-deep-purple"
       ></v-checkbox>
@@ -86,11 +91,12 @@ const same_end_as_route = ref(false);
         variant="outlined"
         density="comfortable"
         placeholder="Ej: Torniquetes"
-        hide-details
+        hide-details="auto"
         color="purple"
         prepend-inner-icon="add_road"
         follow_the_signs
         class="text-purple"
+        :rules="is_accessible === true ? [rules.required] : []"
       ></v-text-field>
     </div>
 
@@ -106,8 +112,9 @@ const same_end_as_route = ref(false);
           color="purple"
           density="comfortable"
           placeholder="Ej: Torniquetes"
-          hide-details
+          hide-details="auto"
           prepend-inner-icon="outlined_flag"
+          :rules="is_accessible === true ? [rules.required] : []"
         ></v-text-field>
       </div>
     </v-expand-transition>

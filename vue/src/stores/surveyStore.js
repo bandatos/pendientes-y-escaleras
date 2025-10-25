@@ -88,7 +88,7 @@ export const useSurveyStore = defineStore('survey', () => {
         number: s.number,
         stair_full: s,
         code_identifiers: [],
-        hasCodes: false,
+        without_codes: false,
 
         // Puntos de conexión
         route_start: '',
@@ -396,7 +396,7 @@ export const useSurveyStore = defineStore('survey', () => {
 
     // Para estados no críticos, validar todos los campos normalmente
     // Validar códigos (solo si no marcó "sin códigos")
-    if (!stair.hasCodes && stair.code_identifiers.length === 0) {
+    if (!stair.without_codes && stair.code_identifiers.length === 0) {
       errors.push('Debe tener al menos un código de identificación')
     }
 
