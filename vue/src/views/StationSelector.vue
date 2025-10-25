@@ -25,17 +25,9 @@ const showLoginDialog = ref(false)
 const pendingStation = ref(null)
 
 onMounted(async () => {
-  // Cargar sesión guardada
-  authStore.loadSession()
-
+  // Iniciando los stores.
   await stationStore.init()
   await syncStore.init()
-  // console.log("fullStations", stationStore.fullStations)
-  // console.log("stationsCatalog,", stationStore.stationsCatalog)
-  // stationStore.fullStations.forEach(s => {
-  //   if (s.routes.length > 1)
-  //     console.log(`Estación: ${s.name} - Líneas: ${s.line_colors}`)
-  // })
 })
 
 const handleSelectStation = () => {

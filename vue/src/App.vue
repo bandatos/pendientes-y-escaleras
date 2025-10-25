@@ -1,11 +1,19 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import StationSelector from "./views/StationSelector.vue";
 import StationSummary from "./views/StationSummary.vue";
 import MessageSnackBar from "./components/MessageSnackBar.vue";
 import { useSnackbarStore } from "./stores/snackbarStore";
+import { useAuthStore } from "./stores/authStore";
 
 const snackbarStore = useSnackbarStore();
+const authStore = useAuthStore();
+
+// Cargar sesión al iniciar la aplicación
+onMounted(() => {
+  console.log('🚀 App iniciada - verificando sesión guardada...');
+  authStore.loadSession();
+});
 
 // Estado de navegación
 const currentView = ref("selector"); // 'selector' | 'summary'

@@ -25,8 +25,6 @@ const authStore = useAuthStore();
 
 // Actualizar estadísticas de sincronización al montar
 onMounted(async () => {
-  // Cargar sesión si existe
-  authStore.loadSession();
 
   // Validar autenticación
   if (!authStore.isAuthenticated) {
