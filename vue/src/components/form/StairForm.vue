@@ -139,6 +139,59 @@ const markStairComplete = (stairIndex) => {
             Toma en cuenta que pueden tener varios identificadores
           </v-alert>
 
+          <!-- Estado de mantenimiento -->
+          <div class="mb-4">
+            <label class="text-subtitle-2 mb-2 d-block">
+              Estado de mantenimiento
+              <v-icon size="small" class="ml-1">
+                help_outline
+                <v-tooltip activator="parent" location="top">
+                  Indica el nivel de deterioro o estado general
+                </v-tooltip>
+              </v-icon>
+            </label>
+            <v-select
+              v-model="stair.status_maintenance"
+              :items="[
+                { title: 'Menor (funcional, desgaste leve | sin tablas)', value: 'minor' },
+                { title: 'Mayor (requiere atención pronto | con tablas)', value: 'medium' },
+                { title: 'Crítico | Reconstrucción completa (requiere atención urgente)', value: 'full' },
+                { title: 'Otro (especificar)', value: 'other' }
+              ]"
+              variant="outlined"
+              density="compact"
+              placeholder="Selecciona el estado"
+              hide-details
+            ></v-select>
+          </div>
+
+          <!-- Otro estado de mantenimiento (solo si eligió 'other') -->
+          <v-expand-transition>
+            <div v-if="stair.status_maintenance === 'other'" class="mb-4">
+              <label class="text-subtitle-2 mb-2 d-block">
+                Especifica el estado de mantenimiento
+              </label>
+              <v-text-field
+                v-model="stair.other_status_maintenance"
+                variant="outlined"
+                density="compact"
+                placeholder="Ej: Escalones sueltos en la parte superior"
+                hide-details
+              ></v-text-field>
+            </div>
+          </v-expand-transition>
+
+          <!-- Si es crítico, mostrar alerta y permitir guardar directamente -->
+          <v-alert
+            v-if="stair.status_maintenance === 'full'"
+            type="warning"
+            variant="tonal"
+            density="compact"
+            class="mb-4"
+          >
+            ⚠️ Estado crítico detectado. Puedes guardar sin completar los demás campos. Si es necesario agrega fotos del estado.
+          </v-alert>
+
           <!-- Códigos de identificación -->
           <div class="mb-4">
             <label class="text-subtitle-2 mb-2 d-block">
@@ -241,49 +294,8 @@ const markStairComplete = (stairIndex) => {
             </v-radio-group>
           </div>
 
-          <!-- Estado de mantenimiento -->
-          <div class="mb-4">
-            <label class="text-subtitle-2 mb-2 d-block">
-              Estado de mantenimiento
-              <v-icon size="small" class="ml-1">
-                help_outline
-                <v-tooltip activator="parent" location="top">
-                  Indica el nivel de deterioro o estado general
-                </v-tooltip>
-              </v-icon>
-            </label>
-            <v-select
-              v-model="stair.status_maintenance"
-              :items="[
-                { title: 'Menor (funcional, desgaste leve)', value: 'minor' },
-                { title: 'Moderado (requiere atención pronto)', value: 'major' },
-                { title: 'Crítico (requiere atención urgente)', value: 'critical' },
-                { title: 'Otro (especificar)', value: 'other' }
-              ]"
-              variant="outlined"
-              density="compact"
-              placeholder="Selecciona el estado"
-              hide-details
-            ></v-select>
-          </div>
-
-          <!-- Otro estado de mantenimiento (solo si eligió 'other') -->
-          <v-expand-transition>
-            <div v-if="stair.status_maintenance === 'other'" class="mb-4">
-              <label class="text-subtitle-2 mb-2 d-block">
-                Especifica el estado de mantenimiento
-              </label>
-              <v-text-field
-                v-model="stair.other_status_maintenance"
-                variant="outlined"
-                density="compact"
-                placeholder="Ej: Escalones sueltos en la parte superior"
-                hide-details
-              ></v-text-field>
-            </div>
-          </v-expand-transition>
-
           <!-- ¿Está alineada? -->
+          <!-- COMENTADO TEMPORALMENTE - No se requiere por el momento
           <div class="mb-4">
             <label class="text-subtitle-2 mb-2 d-block">
               ¿La escalera está alineada correctamente?
@@ -309,6 +321,7 @@ const markStairComplete = (stairIndex) => {
               </v-radio>
             </v-radio-group>
           </div>
+          -->
 
           <!-- En qué dirección funciona -->
           <div class="mb-4">

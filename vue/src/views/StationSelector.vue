@@ -61,6 +61,7 @@ const handleSelectStation = () => {
 
   // Verificar autenticación
   if (!authStore.isAuthenticated) {
+    console.log('🔒 Usuario no autenticado - mostrando diálogo de login')
     // Guardar estación pendiente y mostrar diálogo de login
     pendingStation.value = station
     showLoginDialog.value = true
@@ -68,6 +69,7 @@ const handleSelectStation = () => {
   }
 
   // Si está autenticado, continuar con el flujo normal
+  console.log('✅ Usuario autenticado - continuando con selección de estación')
   proceedWithStation(station)
 }
 
@@ -119,6 +121,18 @@ const handleLoginCancel = () => {
           <p v-if="false" class="text-subtitle-1 text-medium-emphasis">
             Elige la estación en la que te encuentras
           </p>
+
+          <!-- Indicador de autenticación -->
+          <v-chip
+            v-if="authStore.isAuthenticated"
+            color="success"
+            variant="tonal"
+            size="small"
+            prepend-icon="check_circle"
+            class="mt-2"
+          >
+            {{ authStore.user?.email || 'Autenticado' }}
+          </v-chip>
         </div>
 
         <!-- Selector de estación -->

@@ -228,7 +228,8 @@ export const useSurveyStore = defineStore('survey', () => {
         path_end: stair.path_end || '',
         route_end: stair.route_end || '',
         is_aligned: stair.is_aligned !== null ? stair.is_aligned : true,
-        is_working: stair.is_working,
+        // Si es estado crítico y is_working es null, asumimos false (no funciona)
+        is_working: stair.is_working !== null ? stair.is_working : (stair.status_maintenance === 'full' ? false : null),
         details: stair.details || ''
       }
 
@@ -244,7 +245,8 @@ export const useSurveyStore = defineStore('survey', () => {
         console.log(`📤 Subiendo ${images.length} imágenes para escalera ${stair.number}...`)
 
         try {
-          const imageResponse = await stairsService.uploadStairImages(stair.stair, images)
+          // Usar el id que me devuelve el registro una vez guardado.
+          const imageResponse = await stairsService.uploadStairImages(savedReport.id, images)
           console.log(`✅ Imágenes subidas para escalera ${stair.number}`)
 
           // Guardar referencias de imágenes
@@ -291,6 +293,7 @@ export const useSurveyStore = defineStore('survey', () => {
       isSaving.value = true
 
       console.log(`🔄 Guardando relevamiento (${isOnline ? 'online' : 'offline'})...`)
+      console.log('📸 Estado del imageStore.modelPhoto:', imageStore.modelPhoto)
 
       let syncedCount = 0
       let failedCount = 0
@@ -299,7 +302,9 @@ export const useSurveyStore = defineStore('survey', () => {
       if (isOnline) {
         for (let i = 0; i < currentStairs.value.length; i++) {
           const stair = currentStairs.value[i]
-          const photos = imageStore.getStairPhotos(i)
+          const photos = imageStore.getStairPhotos(stair.id) // ✅ Usar stair.id en lugar de índice
+
+          console.log(`📸 Escalera ${stair.number} (ID: ${stair.id}): ${photos?.length || 0} foto(s) encontrada(s)`)
 
           // Sincronizar escalera opr escalera.
           const result = await syncSingleStair(stair, photos)
@@ -370,6 +375,26 @@ export const useSurveyStore = defineStore('survey', () => {
     const errors = []
     const stair = currentStair.value
 
+    // Validar estado de mantenimiento (siempre requerido)
+    if (!stair.status_maintenance) {
+      errors.push('Debe indicar el estado de mantenimiento')
+    }
+
+    // Validar que el campo other sea completado
+    if (stair.status_maintenance === 'other' && !stair.other_status_maintenance) {
+      errors.push('Debe especificar el estado de mantenimiento personalizado')
+    }
+
+    // ⚠️ CASO ESPECIAL: Si es estado CRÍTICO (full), solo validar el estado de mantenimiento
+    // Los demás campos son opcionales para permitir guardado rápido
+    if (stair.status_maintenance === 'full') {
+      return {
+        valid: errors.length === 0,
+        errors
+      }
+    }
+
+    // Para estados no críticos, validar todos los campos normalmente
     // Validar códigos (solo si no marcó "sin códigos")
     if (!stair.hasCodes && stair.code_identifiers.length === 0) {
       errors.push('Debe tener al menos un código de identificación')
@@ -389,20 +414,11 @@ export const useSurveyStore = defineStore('survey', () => {
       errors.push('Debe indicar si la escalera funciona')
     }
 
-    // Validar estado de mantenimiento
-    if (!stair.status_maintenance) {
-      errors.push('Debe indicar el estado de mantenimiento')
-    }
-
-    // Validar queel campo other sea completado
-    if (stair.status_maintenance === 'other' && !stair.other_status_maintenance) {
-      errors.push('Debe especificar el estado de mantenimiento personalizado')
-    }
-
+    // COMENTADO TEMPORALMENTE - No se requiere por el momento
     // Validar alineación
-    if (stair.is_aligned === null) {
-      errors.push('Debe indicar si la escalera está alineada')
-    }
+    // if (stair.is_aligned === null) {
+    //   errors.push('Debe indicar si la escalera está alineada')
+    // }
 
     // Si no funciona, requiere foto
     if (stair.is_working === false && stair.photo_ids.length === 0) {
@@ -469,8 +485,14 @@ export const useSurveyStore = defineStore('survey', () => {
 
       // Sincronizar cada escalera usando la función modular
       for (const { stair, stairIndex, recordId } of pendingStairs) {
-        // Usar la función modular para sincronizar
-        const result = await syncSingleStair(stair)
+        // Obtener imágenes de IndexedDB para esta escalera
+        const imageRecords = await IndexedDBService.getStairImages(recordId, stair.number)
+        const imageFiles = imageRecords.map(img => img.file) // Extraer File objects
+
+        console.log(`📸 ${imageFiles.length} imágenes encontradas para escalera ${stair.number} (record ${recordId})`)
+
+        // Usar la función modular para sincronizar con imágenes
+        const result = await syncSingleStair(stair, imageFiles)
 
         if (result.success) {
           // Actualizar el registro en IndexedDB
@@ -478,6 +500,13 @@ export const useSurveyStore = defineStore('survey', () => {
           if (record) {
             await IndexedDBService.updateStationRecord(recordId, { stairs: record.stairs })
           }
+
+          // Eliminar imágenes de IndexedDB ya que fueron sincronizadas exitosamente
+          if (imageFiles.length > 0) {
+            await IndexedDBService.deleteStairImages(recordId, stair.number)
+            console.log(`🗑️ Imágenes eliminadas de IndexedDB para escalera ${stair.number}`)
+          }
+
           syncedCount++
         } else {
           failedCount++

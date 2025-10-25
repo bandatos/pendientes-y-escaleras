@@ -83,22 +83,25 @@ const handleSave = async () => {
     // 1. Guardar registro de estación en IndexedDB
     const savedRecord = await surveyStore.completeSurvey();
 
-    // 2. Guardar imágenes de cada escalera
+    // 2. Guardar imágenes SOLO para escaleras que NO fueron sincronizadas
     for (
       let stairIndex = 0;
       stairIndex < surveyStore.total_stairs;
       stairIndex++
     ) {
-      const photos = imageStore.getStairPhotos(stairIndex);
+      const stair = currentStairs[stairIndex];
+      const photos = imageStore.getStairPhotos(stair.id); // ✅ Usar stair.id en lugar de índice
 
-      if (photos && photos.length > 0) {
+      // Solo guardar en IndexedDB si la escalera NO fue sincronizada al backend
+      if (photos && photos.length > 0 && !stair.synced) {
         await IndexedDBService.saveStairImages(
           savedRecord.id,
           stairIndex + 1, // number es 1-based
           photos
         );
-        console.log(`📸 ${photos.length}
-          imágenes guardadas para escalera ${stairIndex + 1}`);
+        console.log(`📸 ${photos.length} imágenes guardadas localmente para escalera ${stairIndex + 1} (pendiente de sync)`);
+      } else if (photos && photos.length > 0 && stair.synced) {
+        console.log(`✅ Escalera ${stairIndex + 1} ya sincronizada - imágenes no guardadas en IndexedDB`);
       }
     }
 
