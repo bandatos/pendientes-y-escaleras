@@ -183,7 +183,7 @@ const handleBack = () => {
       </v-expansion-panels>
 
       <!-- Botón guardar todo -->
-      <v-card  v-if="false" class="rounded-0" _variant="flat" _color="primary">
+      <v-card  v-if="true" class="rounded-0" _variant="flat" _color="primary">
         <v-card-actions class="pa-4">
           <v-btn
             color="primary"
