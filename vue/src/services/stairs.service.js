@@ -1,4 +1,5 @@
-import { config } from '../main.js'
+// import { config } from '../main.js'
+import { config } from '@/config.js'
 import { authHeader } from '../utils/helpers.js'
 
 export const stairsService = {

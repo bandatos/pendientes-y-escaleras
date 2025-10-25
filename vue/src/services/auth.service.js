@@ -1,4 +1,5 @@
-import { config } from '../main.js'
+// import { config } from '../main.js'
+import { config } from '@/config.js'
 import { LocalStorageService } from './localStorage.js'
 const Storage = LocalStorageService;
 /* Autenticación del login as user */
