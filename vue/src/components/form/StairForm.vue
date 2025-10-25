@@ -284,6 +284,7 @@ const markStairComplete = (stairIndex) => {
           </v-expand-transition>
 
           <!-- ¿Está alineada? -->
+          <!-- COMENTADO TEMPORALMENTE - No se requiere por el momento
           <div class="mb-4">
             <label class="text-subtitle-2 mb-2 d-block">
               ¿La escalera está alineada correctamente?
@@ -309,6 +310,7 @@ const markStairComplete = (stairIndex) => {
               </v-radio>
             </v-radio-group>
           </div>
+          -->
 
           <!-- En qué dirección funciona -->
           <div class="mb-4">

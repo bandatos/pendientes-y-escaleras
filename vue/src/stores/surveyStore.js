@@ -403,10 +403,11 @@ export const useSurveyStore = defineStore('survey', () => {
       errors.push('Debe especificar el estado de mantenimiento personalizado')
     }
 
+    // COMENTADO TEMPORALMENTE - No se requiere por el momento
     // Validar alineación
-    if (stair.is_aligned === null) {
-      errors.push('Debe indicar si la escalera está alineada')
-    }
+    // if (stair.is_aligned === null) {
+    //   errors.push('Debe indicar si la escalera está alineada')
+    // }
 
     // Si no funciona, requiere foto
     if (stair.is_working === false && stair.photo_ids.length === 0) {
