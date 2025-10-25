@@ -29,7 +29,7 @@ const localPhotos = computed({
 });
 
 const rules = [
-  (files) => !files || files.length <= 3 || "Máximo 3 imágenes por escalera.",
+  (files) => !files || files.length <= 3 || "-- Máximo 3 imágenes por escalera.",
 ];
 </script>
 <template>
@@ -43,7 +43,6 @@ const rules = [
         counter
         show-size
         chips
-        :rules="rules"
       >
         <template v-slot:selection="{ fileNames }">
           <template v-for="(fileName, index) in fileNames" :key="fileName">
