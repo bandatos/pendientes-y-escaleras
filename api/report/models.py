@@ -36,7 +36,8 @@ class StairReport(models.Model):
 
     stair = models.ForeignKey(
         Stair, on_delete=models.CASCADE,
-        verbose_name="Escalera reportada"
+        verbose_name="Escalera reportada",
+        related_name="stair_reports"
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # station_report = models.ForeignKey(

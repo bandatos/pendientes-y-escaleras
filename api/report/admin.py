@@ -14,7 +14,7 @@ class EvidenceImageInline(admin.TabularInline):
 class StairReportAdmin(admin.ModelAdmin):
     list_display = (
         'stair', 'user', 'status_maintenance', 'is_working', 'date_reported')
-    search_fields = ('user__email', 'status_maintenance')
+    search_fields = ('user__email', 'stair__stop__name')
     list_filter = (
         'status_maintenance', 'is_working', 'date_reported',
         'stair__stop__route')
