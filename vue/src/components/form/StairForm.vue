@@ -69,8 +69,8 @@ const full_status = computed(() => {
 });
 
 const directions = [
-  { label: "Sube", value: "move_up", key: "up" },
-  { label: "Baja", value: "move_down", key: "down" },
+  { label: "Sube", value: "up", key: "up" },
+  { label: "Baja", value: "down", key: "down" },
 ];
 
 const accessible_options = [
