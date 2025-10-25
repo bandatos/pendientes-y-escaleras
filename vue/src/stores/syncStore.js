@@ -38,7 +38,7 @@ export const useSyncStore = defineStore('sync', () => {
 
   // Servicios
   const apiSync = getApiSync()
-  const networkDetection = getNetworkDetection()
+  let networkDetection = null;
 
 
 
@@ -52,24 +52,27 @@ export const useSyncStore = defineStore('sync', () => {
 
   // Inicializar store
   async function init() {
-    // Listener para cambios de conectividad con auto-sync
-    networkDetection.addListener(async (online) => {
-      isOnline.value = online
-      if (online) {
-        console.log('🟢 Store: Conexión restaurada - iniciando auto-sync')
-        // Auto-sync cuando se restaura la conexión
-        setTimeout(async () => {
-          await syncPendingData()
-        }, 2000) // Dos segundo de tiempo para checar sincronización.
-      } else {
-        console.log('🔴 Store: Conexión perdida')
-      }
-    })
-
-    // Actualizar stats iniciales
-    await updateSyncStats()
-
-    console.log('🏪 SyncStore inicializado')
+    if (!networkDetection) {
+      networkDetection = getNetworkDetection()
+      // Listener para cambios de conectividad con auto-sync
+      networkDetection.addListener(async (online) => {
+        isOnline.value = online
+        if (online) {
+          console.log('🟢 Store: Conexión restaurada - iniciando auto-sync')
+          // Auto-sync cuando se restaura la conexión
+          setTimeout(async () => {
+            await syncPendingData()
+          }, 2000) // Dos segundo de tiempo para checar sincronización.
+        } else {
+          console.log('🔴 Store: Conexión perdida')
+        }
+      })
+  
+      // Actualizar stats iniciales
+      await updateSyncStats()
+  
+      console.log('🏪 SyncStore inicializado')
+    }
   }
 
   // Actualizar estadísticas de sync
@@ -203,5 +206,3 @@ export const useSyncStore = defineStore('sync', () => {
     updateSyncStats
   }
 })
-
-export default useSyncStore

@@ -605,5 +605,3 @@ export const useSurveyStore = defineStore('survey', () => {
     getSyncStats
   }
 })
-
-export default useSurveyStore
