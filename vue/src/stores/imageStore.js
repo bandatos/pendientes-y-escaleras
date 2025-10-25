@@ -75,22 +75,23 @@ export const useImageStore = defineStore('imageStore', () => {
 
     // Limpiar selección de imágenes de una escalera específica
     function clearSelection(stairId) {
-        if (stairId !== undefined) {
-            delete modelPhoto.value[stairId];
-        } else {
-            // Limpiar todas
-            modelPhoto.value = {};
-        }
+      if (stairId !== undefined) {
+        delete modelPhoto.value[stairId];
+      } else {
+        // Limpiar todas
+        modelPhoto.value = {};
+      }
     }
 
     // Obtener imágenes de una escalera específica
     function getStairPhotos(stairId) {
-        return modelPhoto.value[stairId] || [];
+      return modelPhoto.value[stairId] || [];
     }
 
     // Establecer imágenes para una escalera específica
     function setStairPhotos(stairId, files) {
-        modelPhoto.value[stairId] = files;
+      const existingPhotos = modelPhoto.value[stairId] || [];
+      modelPhoto.value[stairId] = existingPhotos.concat(files);
     }
 
 
