@@ -233,4 +233,3 @@ export const useStationStore = defineStore('station', () => {
   }
 })
 
-export default useStationStore

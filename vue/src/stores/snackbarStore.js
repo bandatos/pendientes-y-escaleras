@@ -70,5 +70,3 @@ export const useSnackbarStore = defineStore('snackbar', () => {
     close
   }
 })
-
-export default useSnackbarStore

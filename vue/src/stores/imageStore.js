@@ -109,5 +109,3 @@ export const useImageStore = defineStore('imageStore', () => {
         setStairPhotos,
     }
 });
-
-export default useImageStore;

@@ -66,26 +66,37 @@ const markStairComplete = (stairIndex) => {
 
   let warningMessage = ''
 
-  // Validar códigos (solo si no marcó "sin códigos")
-  if (!stair.hasCodes && hasCodesEmpty) {
-    warningMessage = 'Agrega al menos un código de identificación o marca que no hay códigos visibles'
-  }
-  else if (!stair.route_start?.trim()) {
-    warningMessage = 'Especifica el punto de inicio (Origen)'
-  }
-  else if (stair.is_working === null) {
-    warningMessage = 'Indica si la escalera funciona'
-  }
-  else if (!stair.status_maintenance) {
+  // Validar estado de mantenimiento (siempre requerido)
+  if (!stair.status_maintenance) {
     warningMessage = 'Selecciona el estado de mantenimiento'
   }
   else if (stair.status_maintenance === 'other' && !stair.other_status_maintenance?.trim()) {
     warningMessage = 'Especifica el estado de mantenimiento personalizado'
   }
-  else if (stair.is_aligned === null) {
-    warningMessage = 'Indica si la escalera está alineada'
+  // ⚠️ CASO ESPECIAL: Si es estado CRÍTICO (full), permitir guardar sin validar otros campos
+  else if (stair.status_maintenance === 'full') {
+    console.log('✅ Estado crítico detectado - marcando como completada sin más validaciones')
+    props.stair.status = 'completed'
   }
+  // Validamos casos no críticos
+  else if (!stair.hasCodes && hasCodesEmpty) {
+    warningMessage = 'Agrega al menos un código de identificación o marca que no hay códigos visibles'
+    
+  }
+  else if (!stair.route_start?.trim()) {
+    warningMessage = 'Especifica el punto de inicio (Origen)'
+    
+  }
+  else if (stair.is_working === null) {
+    warningMessage = 'Indica si la escalera funciona'
+    
+  }
+  // is_aligned
+  // else if (stair.is_aligned === null) {
+  //   warningMessage = 'Indica si la escalera está alineada'
+  // }
   else {
+    // All completed
     props.stair.status = 'completed'
   }
 
