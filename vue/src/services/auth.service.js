@@ -30,8 +30,8 @@ async function login(itemRequest) {
             LocalStorageService.saveToken(data.token)
         }
 
-        if (data.user) {
-            LocalStorageService.saveUser(data.user)
+        if (data.email) {
+            LocalStorageService.saveUser(data.email)
         }
 
         return data
