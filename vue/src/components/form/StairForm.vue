@@ -43,8 +43,8 @@ const directions = [
 ];
 
 const is_accesible = [
-  { label: "Sí", value: true, key: "yes" },
-  { label: "No", value: false, key: "no" },
+  { label: "Sí", value: true, key: "yes", color: "green" },
+  { label: "No", value: false, key: "no", color: "red" },
 ];
 
 const new_codes = ref("");
@@ -155,9 +155,9 @@ const markStairComplete = (stairIndex) => {
                   >
                     <v-item v-slot="{ isSelected, toggle }">
                       <v-card
-                        :color="isSelected ? 'secondary' : ''"
                         class="d-flex align-center px-3 py-1 align-center justify-center"
                         dark
+                        :color="isSelected ? option.color : `${option.color}-lighten-5`"
                         @click="toggle"
                       >
                         <div class="text-h6">
