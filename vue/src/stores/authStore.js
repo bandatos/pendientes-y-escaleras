@@ -55,6 +55,11 @@ export const useAuthStore = defineStore('auth', () => {
         if (savedToken && savedUser) {
             token.value = savedToken
             user.value = savedUser
+            console.log('✅ Sesión cargada desde localStorage:', { user: savedUser.email || savedUser.name || 'Usuario' })
+            return true
+        } else {
+            console.log('ℹ️ No hay sesión guardada en localStorage')
+            return false
         }
     }
 
