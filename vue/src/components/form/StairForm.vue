@@ -42,6 +42,11 @@ const directions = [
   { label: "Baja", value: "move_down", key: "down" },
 ];
 
+const is_accesible = [
+  { label: "Sí", value: true, key: "yes" },
+  { label: "No", value: false, key: "no" },
+];
+
 const new_codes = ref("");
 
 function addCode() {
@@ -129,17 +134,45 @@ const markStairComplete = (stairIndex) => {
     <v-expansion-panel-text>
       <v-card flat>
         <v-card-text class="px-0">
-          <!-- Nota informativa -->
-          <v-alert
-            type="info"
-            variant="tonal"
-            density="compact"
-            class="mb-4"
-          >
-            Toma en cuenta que pueden tener varios identificadores
-          </v-alert>
 
-          <!-- Estado de mantenimiento -->
+          <!-- En qué dirección funciona -->
+          <div class="mb-4">
+            <label class="text-subtitle-2 mb-2 d-block">
+              ¿Se puede acceder a la escalera?
+            </label>
+            <v-tooltip>
+              Indica si es posible llegar físicamente a la escalera
+              (sin obstrucciones, cerramientos, etc.)
+            </v-tooltip>
+
+            <v-item-group>
+
+                <v-row>
+                  <v-col
+                    v-for="option in is_accesible"
+                    :key="option.key"
+                    cols="6"
+                  >
+                    <v-item v-slot="{ isSelected, toggle }">
+                      <v-card
+                        :color="isSelected ? 'secondary' : ''"
+                        class="d-flex align-center px-3 py-1 align-center justify-center"
+                        dark
+                        @click="toggle"
+                      >
+                        <div class="text-h6">
+                          {{ option.label }}
+                        </div>
+                      </v-card>
+                    </v-item>
+                  </v-col>
+                </v-row>
+
+            </v-item-group>
+
+          </div>
+
+
           <div class="mb-4">
             <label class="text-subtitle-2 mb-2 d-block">
               Estado de mantenimiento
@@ -203,6 +236,15 @@ const markStairComplete = (stairIndex) => {
                 </v-tooltip>
               </v-icon>
             </label>
+          <v-alert
+            type="info"
+            variant="tonal"
+            density="compact"
+            class="mb-4"
+            icon-size="small"
+          >
+            Cada escalera puede tener varios identificadores
+          </v-alert>
 
             <div class="d-flex gap-2 mb-2">
               <v-text-field
@@ -328,7 +370,9 @@ const markStairComplete = (stairIndex) => {
             <label class="text-subtitle-2 mb-2 d-block">
               ¿En qué dirección opera la escalera?
             </label>
-            <v-item-group>
+            <v-item-group
+              v-model="stair.direction"
+            >
 
                 <v-row>
                   <v-col
@@ -336,7 +380,10 @@ const markStairComplete = (stairIndex) => {
                     :key="direction.key"
                     cols="6"
                   >
-                    <v-item v-slot="{ isSelected, toggle }">
+                    <v-item
+                      v-slot="{ isSelected, toggle }"
+                      :value="direction.value"
+                    >
                       <v-card
                         :color="isSelected ? 'secondary' : ''"
                         class="d-flex align-center px-3 py-1 align-center justify-center"

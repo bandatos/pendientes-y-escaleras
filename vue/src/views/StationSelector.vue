@@ -117,7 +117,12 @@ const handleLoginCancel = () => {
 
         <!-- Título principal -->
         <div class="text-center mb-6">
-          <h1 class="text-h5 text-sm-h4 mb-2">Relevamiento de Escaleras</h1>
+          <h1 class="text-h5 text-sm-h4 mb-2">
+            Pendientes y Escaleras
+          </h1>
+          <span class="text-body-1 text-medium-emphasis">
+            Relevamiento de escaleras eléctricas en el Metro de la Ciudad de México
+          </span>
           <p v-if="false" class="text-subtitle-1 text-medium-emphasis">
             Elige la estación en la que te encuentras
           </p>
