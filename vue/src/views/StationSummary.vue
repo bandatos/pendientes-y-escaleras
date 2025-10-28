@@ -40,10 +40,8 @@ onMounted(async () => {
   await syncStore.updateSyncStats();
 });
 
-// TODO(human): Fix reactivity bug - these destructured properties lose reactivity
-// This causes HMR to break when you make template changes
-// You need to use storeToRefs() from Pinia to maintain reactivity
-const { currentSurvey, currentStairs } = storeToRefs(surveyStore);
+
+const { currentStairs } = storeToRefs(surveyStore);
 const { selectedStation } = stationStore;
 
 // Estado local
