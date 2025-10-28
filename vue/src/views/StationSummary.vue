@@ -74,7 +74,7 @@ function showWarning(message) {
 const handleSave = async () => {
   try {
     // Validar que todas las escaleras estén completadas
-    const allCompleted = currentStairs.every((s) => s.status === "completed");
+    const allCompleted = currentStairs.value.every((s) => s.status === "completed");
 
     if (!allCompleted) {
       snackbarStore.showWarning(
@@ -92,7 +92,7 @@ const handleSave = async () => {
       stairIndex < surveyStore.total_stairs;
       stairIndex++
     ) {
-      const stair = currentStairs[stairIndex];
+      const stair = currentStairs.value[stairIndex];
       const photos = imageStore.getStairPhotos(stair.id); // ✅ Usar stair.id en lugar de índice
 
       // Solo guardar en IndexedDB si la escalera NO fue sincronizada al backend
