@@ -34,3 +34,4 @@ coverage
 #Files to ignores
 DEVELOPMENT_LOG.md
 .env
+.claude

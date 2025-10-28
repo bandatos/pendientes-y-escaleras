@@ -3,11 +3,15 @@
  */
 import { defineStore } from 'pinia'
 import { ref, computed, toRaw } from 'vue'
+
+//Services
 import { IndexedDBService } from '../services/indexDB.js'
+import { stairsService } from '../services'
+
+//Using others Stores
 import { useStationStore } from '../stores/stationStore'
 import { useImageStore } from '../stores/imageStore'
 import { useSnackbarStore } from '../stores/snackbarStore'
-import { stairsService } from '../services'
 
 export const useSurveyStore = defineStore('survey', () => {
 
@@ -23,6 +27,7 @@ export const useSurveyStore = defineStore('survey', () => {
   const currentStairIndex = ref(0) // Índice de escalera actual (0-based)
   const currentStairs = ref([]) // Escaleras de la estación seleccionada
   const isSaving = ref(false)
+
 
   // Computed properties
   const isActive = computed(() => currentSurvey.value !== null)
@@ -69,18 +74,14 @@ export const useSurveyStore = defineStore('survey', () => {
     return { working, notWorking }
   })
 
+  /* Actions */
   // Iniciar nuevo relevamiento de estación
   function startSurvey(station) {
-    // console.log("stationStore", stationStore);
-    // console.log("rawStairs", stationStore.rawStairs);
+ 
     currentStairs.value = stationStore.rawStairs.filter(
       s => s.station === station.id)
-    console.log("currentStairs", currentStairs.value);
 
-    // id: 1853
-    // number: 2
-    // station: 1203
-    // stop: 2144
+
     const stairTemplates = currentStairs.value.map(s => {
       return {
         id: s.id,
@@ -140,8 +141,6 @@ export const useSurveyStore = defineStore('survey', () => {
     }
 
     currentStairIndex.value = 0
-
-    // console.log(`📋 Relevamiento iniciado para: ${station.name} (${station.total_stairs} escaleras)`)
   }
 
   // Actualizar datos de escalera actual
