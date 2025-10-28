@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 
 import { useSurveyStore } from "../stores/surveyStore";
@@ -13,7 +13,6 @@ import UploadImage from "../components/UploadImage.vue";
 import Stats from "@/components/form/Stats.vue";
 import StairForm from "@/components/form/StairForm.vue";
 import AvatarStation from "@/components/select_station/AvatarStation.vue";
-import SyncStatusBar from "@/components/SyncStatusBar.vue";
 
 // Stores
 const surveyStore = useSurveyStore();
@@ -141,8 +140,6 @@ const handleBack = () => {
       <!-- Header con status -->
       <v-card class="rounded-0" variant="flat" color="grey-lighten-5">
         <v-card-text>
-          <!-- Status bar con botón de sincronización -->
-          <SyncStatusBar :show-sync-button="true" variant="flat" class="pa-0 mb-2" />
 
           <!-- Estación seleccionada -->
           <div class="d-flex align-center">

@@ -104,7 +104,7 @@ const handleLoginCancel = () => {
       />
 
       <!-- Status bar -->
-      <SyncStatusBar :show-sync-button="true"/>
+      <!-- <SyncStatusBar :show-sync-button="true"/> -->
 
       <!-- Título principal -->
       <div class="text-center mb-6">

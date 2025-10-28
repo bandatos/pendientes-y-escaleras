@@ -6,6 +6,8 @@ import MessageSnackBar from "./components/MessageSnackBar.vue";
 import { useSnackbarStore } from "./stores/snackbarStore";
 import { useAuthStore } from "./stores/authStore";
 
+import SyncStatusBar from "@/components/SyncStatusBar.vue"
+
 const snackbarStore = useSnackbarStore();
 const authStore = useAuthStore();
 
@@ -52,6 +54,9 @@ const handleBack = () => {
         fluid
         max-width="1440"
       >
+        <SyncStatusBar :show-sync-button="true" class="mt-2 w-100"/>
+
+
         <!-- Vista 1: Vista General -->
         <StationSelector
           v-if="currentView === 'selector'"
