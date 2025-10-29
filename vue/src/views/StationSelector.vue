@@ -91,7 +91,7 @@ const handleLoginCancel = () => {
 </script>
 
 <template>
-  <v-row justify="center" align="center" class="fill-height">
+  <v-row justify="center" class="fill-height mt-10">
     <v-col cols="12" sm="10" md="8" lg="6" class="pt-0">
 
       <!-- Login Dialog -->
@@ -113,8 +113,6 @@ const handleLoginCancel = () => {
         <p v-if="false" class="text-subtitle-1 text-medium-emphasis">
           Elige la estación en la que te encuentras
         </p>
-
-        
       </div>
 
       <!-- Selector de estación -->
