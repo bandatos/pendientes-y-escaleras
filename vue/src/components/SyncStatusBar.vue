@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useSyncStore } from '../stores/syncStore'
+import { useAuthStore } from '../stores/authStore'
 
 const props = defineProps({
   showSyncButton: {
@@ -14,6 +15,7 @@ const props = defineProps({
 })
 
 const syncStore = useSyncStore()
+const authStore = useAuthStore()
 
 const connectionStatus = computed(() =>
   syncStore.isOnline ? '🟢 Conectado' : '🔴 Sin conexión'
@@ -32,15 +34,15 @@ const handleSync = async () => {
 
 <template>
   <v-card class="mb-4 pa-2" :variant="variant">
-    <div class="d-flex justify-space-between align-center">
-      <div class="d-flex align-center gap-2">
+    <v-row align="center" >
+      <v-col cols="auto">
         <span class="text-body-2">{{ connectionStatus }}</span>
-
-        <!-- Botón de sincronización manual (solo si showSyncButton=true y hay pendientes) -->
+      </v-col>
+      <v-col cols="auto" class="ml-n4">
         <v-btn
           v-if="showSyncButton && pendingCount > 0 && syncStore.isOnline"
           size="x-small"
-          color="primary"
+          color="warning"
           variant="tonal"
           @click="handleSync"
           :loading="syncStore.isSyncing"
@@ -48,12 +50,21 @@ const handleSync = async () => {
         >
           Sincronizar ({{ pendingCount }})
         </v-btn>
-      </div>
-
-      <span v-if="pendingCount > 0" class="text-warning text-body-2">
-        📋 {{ pendingCount }} pendiente{{ pendingCount === 1 ? '' : 's' }}
-      </span>
-    </div>
+      </v-col>
+      <v-spacer></v-spacer>
+        <!-- Indicador de autenticación -->
+      <v-col cols="auto">
+        <v-chip
+          v-if="authStore.isAuthenticated"
+          color="success"
+          variant="tonal"
+          size="small"
+          prepend-icon="check_circle"
+        >
+          {{ authStore.user?.email || 'Autenticado' }}
+        </v-chip>
+      </v-col>
+    </v-row>
   </v-card>
 </template>
 

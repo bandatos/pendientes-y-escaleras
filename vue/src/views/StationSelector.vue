@@ -7,7 +7,6 @@ import { useSnackbarStore } from '../stores/snackbarStore'
 import { useAuthStore } from '../stores/authStore'
 import MapaMetro from '../components/vis/MapaMetro.vue'
 import AvatarStation from "@/components/select_station/AvatarStation.vue"
-import SyncStatusBar from "@/components/SyncStatusBar.vue"
 import LoginDialog from "@/components/LoginDialog.vue"
 
 const emit = defineEmits(['station-selected'])
@@ -103,9 +102,6 @@ const handleLoginCancel = () => {
         @login-cancel="handleLoginCancel"
       />
 
-      <!-- Status bar -->
-      <!-- <SyncStatusBar :show-sync-button="true"/> -->
-
       <!-- Título principal -->
       <div class="text-center mb-6">
         <h1 class="text-h5 text-sm-h4 mb-2">
@@ -118,17 +114,7 @@ const handleLoginCancel = () => {
           Elige la estación en la que te encuentras
         </p>
 
-        <!-- Indicador de autenticación -->
-        <v-chip
-          v-if="authStore.isAuthenticated"
-          color="success"
-          variant="tonal"
-          size="small"
-          prepend-icon="check_circle"
-          class="mt-2"
-        >
-          {{ authStore.user?.email || 'Autenticado' }}
-        </v-chip>
+        
       </div>
 
       <!-- Selector de estación -->
