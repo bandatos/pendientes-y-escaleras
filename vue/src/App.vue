@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onMounted } from "vue";
+
 import StationSelector from "./views/StationSelector.vue";
 import StationSummary from "./views/StationSummary.vue";
 import MessageSnackBar from "./components/MessageSnackBar.vue";
+
 import { useSnackbarStore } from "./stores/snackbarStore";
 import { useAuthStore } from "./stores/authStore";
 
@@ -18,25 +20,23 @@ onMounted(() => {
 });
 
 // Estado de navegación
-const currentView = ref("selector"); // 'selector' | 'summary'
+const currentView = ref("map"); // 'map' | 'registerStation'
 
 // Navegar entre vistas
-const goToSummary = () => {
-  currentView.value = "summary";
+const goToRegisterStation = () => {
+  currentView.value = "registerStation";
 };
 
-const goToSelector = () => {
-  currentView.value = "selector";
+const goToSelector = () => { //Map view
+  currentView.value = "map";
 };
 
 // Handlers de eventos
 const handleStationSelected = () => {
-  console.log("Navegando a resumen de estación");
-  goToSummary();
+  goToRegisterStation();
 };
 
 const handleSaveComplete = () => {
-  // Relevamiento completo guardado
   snackbarStore.showSuccess("Relevamiento guardado exitosamente");
   goToSelector();
 };
@@ -54,31 +54,30 @@ const handleBack = () => {
         fluid
         max-width="1440"
       >
+        <!-- Barra de status: sync and authenticacion -->
         <SyncStatusBar :show-sync-button="true" class="mt-2 w-100"/>
 
-
-        <!-- Vista 1: Vista General -->
+        <!-- Vista 1: Vista General: Selector de estación y Mapa -->
         <StationSelector
-          v-if="currentView === 'selector'"
+          v-if="currentView === 'map'"
           @station-selected="handleStationSelected"
         />
 
-        <!-- Vista 2: Form Station -->
+        <!-- Vista 2: Form Registro de estación -->
         <StationSummary
-          v-else-if="currentView === 'summary'"
+          v-else-if="currentView === 'registerStation'"
           @save-complete="handleSaveComplete"
           @back="handleBack"
         />
 
         <!-- Snackbar global -->
-        <MessageSnackBar />
+        <MessageSnackBar/>
       </v-container>
     </v-main>
   </v-app>
 </template>
-
 <style lang="scss">
-
+/* Global styles */
 .stripe-square {
   height: 40px;
   width: 40px;
