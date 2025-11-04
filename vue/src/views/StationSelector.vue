@@ -1,10 +1,14 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
+
+// Extra Stores
 import { useStationStore } from '../stores/stationStore'
 import { useSurveyStore } from '../stores/surveyStore'
 import { useSyncStore } from '../stores/syncStore'
 import { useSnackbarStore } from '../stores/snackbarStore'
 import { useAuthStore } from '../stores/authStore'
+
+// Extra Components
 import MapaMetro from '../components/vis/MapaMetro.vue'
 import AvatarStation from "@/components/select_station/AvatarStation.vue"
 import LoginDialog from "@/components/LoginDialog.vue"
@@ -52,7 +56,6 @@ const handleSelectStation = () => {
 
   // Verificar autenticación
   if (!authStore.isAuthenticated) {
-    console.log('🔒 Usuario no autenticado - mostrando diálogo de login')
     // Guardar estación pendiente y mostrar diálogo de login
     pendingStation.value = station
     showLoginDialog.value = true
@@ -60,7 +63,6 @@ const handleSelectStation = () => {
   }
 
   // Si está autenticado, continuar con el flujo normal
-  console.log('✅ Usuario autenticado - continuando con selección de estación')
   proceedWithStation(station)
 }
 
@@ -163,21 +165,6 @@ const handleLoginCancel = () => {
           </v-autocomplete>
 
         </v-card-text>
-
-<!--          Comento esto porque me parece que con elegirla es suficiente-->
-<!--          <v-card-actions>-->
-<!--            <v-spacer></v-spacer>-->
-<!--            <v-btn-->
-<!--              color="primary"-->
-<!--              size="large"-->
-<!--              :disabled="!selectedStationId"-->
-<!--              @click="handleSelectStation"-->
-<!--              block-->
-<!--            >-->
-<!--              Comenzar-->
-<!--              <v-icon end>keyboard_arrow_right</v-icon>-->
-<!--            </v-btn>-->
-<!--          </v-card-actions>-->
       </v-card>
       <v-card>
           <!-- Mapa del metro -->
