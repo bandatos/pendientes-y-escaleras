@@ -3,7 +3,7 @@ import estaciones from "@/assets/datos/estaciones-match-stops.csv";
 import lineas from "@/assets/datos/lineas-vis.csv";
 
 import * as d3 from "d3";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUpdated, watch } from "vue";
 import {useStationStore} from "@/stores/index.js";
 const svg = ref(null);
 const estaciones_g = ref(null);
@@ -14,11 +14,32 @@ const divTooltip = ref();
 let escala = 1;
 
 const stationStore = useStationStore()
+const mounted_map = ref(false);
 // const { fullStations } = stationStore
 
-onMounted(async () => {
-  await stationStore.init()
-  console.log("fullStations", stationStore.fullStations);
+onMounted(() => {
+  console.log("Montando mapa de metro...");
+  startMap();
+});
+
+onUpdated(() => {
+  console.log("Actualizando mapa de metro...");
+  startMap();
+});
+
+watch(
+  () => stationStore.fullStations,
+  (newVal) => {
+    if (newVal.length > 0) {
+      // console.log("mounted_map", mounted_map.value);
+      if (mounted_map.value)
+        loadMapaData();
+    }
+  },
+  { immediate: true }
+);
+
+function startMap(){
   ancho.value = document.querySelector("div.contenedor-svg").clientWidth;
   escala = ancho.value / 120;
   svg.value = d3
@@ -38,7 +59,13 @@ onMounted(async () => {
     .attr("x2", (d) => escala * d.x2)
     .attr("y2", (d) => escala * d.y2)
     .attr("class", (d) => d.class);
+  mounted_map.value = true;
+  if (stationStore.fullStations.length > 0){
+    loadMapaData();
+  }
+}
 
+function loadMapaData() {
   estaciones_g.value = svg.value
     .selectAll("g.estacion")
     .data(stationStore.fullStations)
@@ -123,7 +150,9 @@ onMounted(async () => {
           : 'none'
       );
     });
-});
+}
+
+
 </script>
 <template>
   <div class="contenedor-svg">

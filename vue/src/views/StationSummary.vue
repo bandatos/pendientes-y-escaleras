@@ -2,13 +2,14 @@
 import { ref, onMounted } from "vue";
 import { storeToRefs } from "pinia";
 
-import { useSurveyStore } from "../stores/surveyStore";
-import { useStationStore } from "../stores/stationStore";
-import { useSyncStore } from "../stores/syncStore";
-import { useImageStore } from "../stores/imageStore";
-import { useSnackbarStore } from "../stores/snackbarStore";
-import { useAuthStore } from "../stores/authStore";
-import { IndexedDBService } from "../services/indexDB.js";
+import { useSurveyStore } from "@/stores/surveyStore";
+import { useStationStore } from "@/stores/stationStore";
+import { useSyncStore } from "@/stores/syncStore";
+import { useImageStore } from "@/stores/imageStore";
+import { useSnackbarStore } from "@/stores/snackbarStore";
+import { useAuthStore } from "@/stores/authStore";
+import { IndexedDBService } from "@/services/indexDB.js";
+import { useRouter } from 'vue-router'
 import UploadImage from "../components/UploadImage.vue";
 import Stats from "@/components/form/Stats.vue";
 import StairForm from "@/components/form/StairForm.vue";
@@ -21,10 +22,12 @@ const syncStore = useSyncStore();
 const imageStore = useImageStore();
 const snackbarStore = useSnackbarStore();
 const authStore = useAuthStore();
+const router = useRouter()
 
 const loading_station = ref(false);
 
-const emit = defineEmits(["save-complete", "back"]);
+// const emit = defineEmits(["save-complete", "back"]);
+const emit = defineEmits(["save-complete"]);
 
 // Actualizar estadísticas de sincronización al montar
 onMounted(async () => {
@@ -32,7 +35,9 @@ onMounted(async () => {
   // Validar autenticación
   if (!authStore.isAuthenticated) {
     snackbarStore.showError('Debes autenticarte para realizar relevamientos');
-    emit('back');
+    // TODO: No sé cómo redirigir dentro de un async onMounted
+    // router.push({ name: 'login' });
+    // emit('back');
     return;
   }
 
@@ -129,7 +134,8 @@ const handleBack = () => {
     confirm("¿Seguro que quieres salir? Se perderá el progreso no guardado")
   ) {
     surveyStore.cancelSurvey();
-    emit("back");
+    router.push({ name: 'Home' });
+    // emit("back");
   }
 };
 </script>

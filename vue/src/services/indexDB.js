@@ -31,7 +31,7 @@ db.version(3).stores({
 
     // Imágenes vinculadas a estación + escalera específica
     images: '++id, stationRecordId, number, synced, timestamp, s3Key',
-
+    evidence_images: '++id, stair_id, synced, timestamp, s3Key, s3Url, finished',
     // Catálogo de estaciones (metadata estática del sistema)
     stations: '++id, station_id, name, first_route, total_stairs',
 
@@ -99,17 +99,6 @@ export class IndexedDBService {
         }
     }
 
-    // Obtener cola de sincronización
-    static async getSyncQueue() {
-        try {
-            const queue = await db.syncQueue.toArray();
-            return queue;
-        } catch (error) {
-            console.error('❌ Error getting sync queue:', error);
-            return [];
-        }
-    }
-
     // Remover de la cola de sincronización
     static async removeFromSyncQueue(id) {
         try {
@@ -174,44 +163,6 @@ export class IndexedDBService {
         }
     }
 
-    // NUEVO: Guardar imágenes como File objects
-    static async saveImages(formId, fileObjects) {
-        try {
-            const imageRecords = fileObjects.map((file, index) => ({
-                formId: formId,
-                file: file, // File object directo, NO base64
-                order: index,
-                timestamp: Date.now(),
-                synced: false,
-                s3Key: null
-            }));
-
-            // Guardar todas las imágenes
-            const ids = await db.images.bulkAdd(imageRecords, { allKeys: true });
-
-            console.log(`✅ ${fileObjects.length} imágenes guardadas para form ${formId}`);
-            return ids;
-
-        } catch (error) {
-            console.error('❌ Error saving images:', error);
-            throw error;
-        }
-    }
-
-    // NUEVO: Obtener imágenes de un formulario
-    static async getImagesByFormId(formId) {
-        try {
-            const images = await db.images
-                .where('formId')
-                .equals(formId)
-                .sortBy('order'); // Mantener orden original
-            return images;
-        } catch (error) {
-            console.error('❌ Error getting images:', error);
-            return [];
-        }
-    }
-
     // NUEVO: Marcar imagen como sincronizada
     static async markImageAsSynced(imageId, s3Key, s3Url) {
         try {
@@ -272,20 +223,6 @@ export class IndexedDBService {
         }
     }
 
-    // Obtener registros de estaciones no sincronizados
-    static async getUnsyncedStationRecords() {
-        try {
-            const unsynced = await db.stationRecords
-                .where('synced')
-                .equals(false)
-                .toArray();
-            return unsynced;
-        } catch (error) {
-            console.error('❌ Error getting unsynced stations:', error);
-            return [];
-        }
-    }
-
     // Actualizar un registro de estación
     static async updateStationRecord(stationRecordId, updates) {
         try {
@@ -297,24 +234,24 @@ export class IndexedDBService {
         }
     }
 
-    // Marcar estación como sincronizada
-    static async markStationAsSynced(stationRecordId) {
-        try {
-            await db.stationRecords.update(stationRecordId, {
-                synced: true,
-                syncedAt: Date.now()
-            });
-
-            // Remover de cola
-            await db.syncQueue
-                .where('entityId')
-                .equals(stationRecordId)
-                .delete();
-
-            console.log('✅ Estación sincronizada:', stationRecordId);
-        } catch (error) {
-            console.error('❌ Error marking station as synced:', error);
-        }
+    // Rick: Esto yo lo agregué manualmente para probar
+    static async saveStairImage(stair_id, file) {
+      try {
+        const newId = await db.evidence_images.add({
+          stair_id,
+          file,
+          timestamp: Date.now(),
+          synced: false,
+          s3Key: null,
+          s3Url: null,
+          finished: false
+        })   ;
+        console.log(`✅ Imagen guardada para escalera ${stair_id}`);
+        return newId;
+      } catch (error) {
+        console.error('❌ Error saving stair image:', error);
+        throw error;
+      }
     }
 
     // Guardar imágenes para una escalera específica de una estación
@@ -356,20 +293,6 @@ export class IndexedDBService {
         }
     }
 
-    // Obtener todas las imágenes de una estación
-    static async getAllStationImages(stationRecordId) {
-        try {
-            const images = await db.images
-                .where('stationRecordId')
-                .equals(stationRecordId)
-                .toArray();
-            return images;
-        } catch (error) {
-            console.error('❌ Error getting station images:', error);
-            return [];
-        }
-    }
-
     // Marcar imagen de escalera como sincronizada
     static async markStairImageAsSynced(imageId, s3Key, s3Url) {
         try {
@@ -382,6 +305,26 @@ export class IndexedDBService {
             console.log('✅ Imagen de escalera sincronizada:', imageId);
         } catch (error) {
             console.error('❌ Error marking stair image as synced:', error);
+        }
+    }
+
+    // Marcar estación como sincronizada
+    static async markStationAsSynced(stationRecordId) {
+        try {
+            await db.stationRecords.update(stationRecordId, {
+                synced: true,
+                syncedAt: Date.now()
+            });
+
+            // Remover de cola
+            await db.syncQueue
+                .where('entityId')
+                .equals(stationRecordId)
+                .delete();
+
+            console.log('✅ Estación sincronizada:', stationRecordId);
+        } catch (error) {
+            console.error('❌ Error marking station as synced:', error);
         }
     }
 

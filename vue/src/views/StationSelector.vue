@@ -1,15 +1,15 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { useStationStore } from '../stores/stationStore'
-import { useSurveyStore } from '../stores/surveyStore'
-import { useSyncStore } from '../stores/syncStore'
-import { useSnackbarStore } from '../stores/snackbarStore'
-import { useAuthStore } from '../stores/authStore'
+import { useStationStore } from '@/stores/stationStore'
+import { useSurveyStore } from '@/stores/surveyStore'
+import { useSyncStore } from '@/stores/syncStore'
+import { useSnackbarStore } from '@/stores/snackbarStore'
+import { useAuthStore } from '@/stores/authStore'
 import MapaMetro from '../components/vis/MapaMetro.vue'
 import AvatarStation from "@/components/select_station/AvatarStation.vue"
 import LoginDialog from "@/components/LoginDialog.vue"
-
-const emit = defineEmits(['station-selected'])
+import { useRouter } from 'vue-router'
+// const emit = defineEmits(['station-selected'])
 
 // Stores
 const stationStore = useStationStore()
@@ -17,6 +17,7 @@ const surveyStore = useSurveyStore()
 const syncStore = useSyncStore()
 const snackbarStore = useSnackbarStore()
 const authStore = useAuthStore()
+const router = useRouter()
 
 // Estado local
 const selectedStationId = ref(null)
@@ -25,6 +26,7 @@ const pendingStation = ref(null)
 
 onMounted(async () => {
   // Iniciando los stores.
+  console.log('Inicializando stores en StationSelector.vue')
   await stationStore.init()
   await syncStore.init()
 })
@@ -70,9 +72,11 @@ const proceedWithStation = (station) => {
 
   // Iniciar relevamiento
   surveyStore.startSurvey(station)
-
+  console.log('Iniciando relevamiento en estación:', station)
+  // router.push({ name: 'Station', params: { station_id: station.id } })
+  router.push({ path: `/station/${station.id}` })
   // Emitir evento para cambiar de vista
-  emit('station-selected', station)
+  // emit('station-selected', station)
 }
 
 const handleLoginSuccess = () => {
@@ -182,7 +186,7 @@ const handleLoginCancel = () => {
       <v-card>
           <!-- Mapa del metro -->
           <div class="map-container mt-4">
-            <MapaMetro />
+            <MapaMetro/>
           </div>
 
       </v-card>

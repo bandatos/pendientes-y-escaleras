@@ -21,19 +21,19 @@ onMounted(() => {
 const currentView = ref("selector"); // 'selector' | 'summary'
 
 // Navegar entre vistas
-const goToSummary = () => {
-  currentView.value = "summary";
-};
+// const goToSummary = () => {
+//   currentView.value = "summary";
+// };
 
 const goToSelector = () => {
   currentView.value = "selector";
 };
 
 // Handlers de eventos
-const handleStationSelected = () => {
-  console.log("Navegando a resumen de estación");
-  goToSummary();
-};
+// const handleStationSelected = () => {
+//   console.log("Navegando a resumen de estación");
+//   goToSummary();
+// };
 
 const handleSaveComplete = () => {
   // Relevamiento completo guardado
@@ -55,20 +55,22 @@ const handleBack = () => {
         max-width="1440"
       >
         <SyncStatusBar :show-sync-button="true" class="mt-2 w-100"/>
+        <RouterView />
+<!--        <template v-if="false">-->
 
+<!--          &lt;!&ndash; Vista 1: Vista General &ndash;&gt;-->
+<!--          <StationSelector-->
+<!--            v-if="currentView === 'selector'"-->
+<!--            x-station-selected="handleStationSelected"-->
+<!--          />-->
 
-        <!-- Vista 1: Vista General -->
-        <StationSelector
-          v-if="currentView === 'selector'"
-          @station-selected="handleStationSelected"
-        />
-
-        <!-- Vista 2: Form Station -->
-        <StationSummary
-          v-else-if="currentView === 'summary'"
-          @save-complete="handleSaveComplete"
-          @back="handleBack"
-        />
+<!--          &lt;!&ndash; Vista 2: Form Station &ndash;&gt;-->
+<!--          <StationSummary-->
+<!--            v-else-if="currentView === 'summary'"-->
+<!--            @save-complete="handleSaveComplete"-->
+<!--            @back="handleBack"-->
+<!--          />-->
+<!--        </template>-->
 
         <!-- Snackbar global -->
         <MessageSnackBar />

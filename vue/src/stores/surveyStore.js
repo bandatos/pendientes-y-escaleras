@@ -143,71 +143,6 @@ export const useSurveyStore = defineStore('survey', () => {
     currentStairIndex.value = 0
   }
 
-  // Actualizar datos de escalera actual
-  function updateCurrentStair(stairData) {
-    if (!currentSurvey.value || !currentStair.value) return
-
-    // Actualizar la escalera en el array
-    currentSurvey.value.stairs[currentStairIndex.value] = {
-      ...currentStair.value,
-      ...stairData,
-      status: 'completed'
-    }
-
-    console.log(`✅ Escalera ${currentStairIndex.value + 1} actualizada`)
-  }
-
-  // Navegar a siguiente escalera
-  function nextStair() {
-    if (currentStairIndex.value < total_stairs.value - 1) {
-      currentStairIndex.value++
-      console.log(`➡️ Avanzando a escalera ${currentStairIndex.value + 1}`)
-      return true
-    }
-    return false
-  }
-
-  // Navegar a escalera anterior
-  function previousStair() {
-    if (currentStairIndex.value > 0) {
-      currentStairIndex.value--
-      console.log(`⬅️ Retrocediendo a escalera ${currentStairIndex.value + 1}`)
-      return true
-    }
-    return false
-  }
-
-  // Ir a escalera específica
-  function goToStair(index) {
-    if (index >= 0 && index < total_stairs.value) {
-      currentStairIndex.value = index
-      console.log(`🎯 Navegando a escalera ${index + 1}`)
-      return true
-    }
-    return false
-  }
-
-  // Guardar imágenes de la escalera actual
-  async function saveCurrentStairImages(stationRecordId, fileObjects) {
-    if (!currentStair.value || fileObjects.length === 0) return []
-
-    try {
-      const imageIds = await IndexedDBService.saveStairImages(
-        stationRecordId,
-        currentStair.value.number,
-        fileObjects
-      )
-
-      // Guardar IDs en el survey
-      currentStair.value.photo_ids = imageIds
-
-      return imageIds
-    } catch (error) {
-      console.error('❌ Error guardando imágenes:', error)
-      throw error
-    }
-  }
-
   /**
    * ----------Sincronzar escalera por escalera.-------
    * @param {Object} stair - Objeto de escalera con todos sus datos
@@ -358,76 +293,6 @@ export const useSurveyStore = defineStore('survey', () => {
     currentSurvey.value = null
     currentStairIndex.value = 0
     console.log('❌ Relevamiento cancelado')
-  }
-
-  // Limpiar después de guardar
-  function clearSurvey() {
-    currentSurvey.value = null
-    currentStairIndex.value = 0
-    console.log('🧹 Relevamiento limpiado')
-  }
-
-  // Validar si escalera actual está completa
-  function validateCurrentStair() {
-    if (!currentStair.value) return { valid: false, errors: ['No hay escalera actual'] }
-
-    const errors = []
-    const stair = currentStair.value
-
-    // Validar estado de mantenimiento (siempre requerido)
-    if (!stair.status_maintenance) {
-      errors.push('Debe indicar el estado de mantenimiento')
-    }
-
-    // Validar que el campo other sea completado
-    if (stair.status_maintenance === 'other' && !stair.other_status_maintenance) {
-      errors.push('Debe especificar el estado de mantenimiento personalizado')
-    }
-
-    // ⚠️ CASO ESPECIAL: Si es estado CRÍTICO (full), solo validar el estado de mantenimiento
-    // Los demás campos son opcionales para permitir guardado rápido
-    if (stair.status_maintenance === 'full') {
-      return {
-        valid: errors.length === 0,
-        errors
-      }
-    }
-
-    // Para estados no críticos, validar todos los campos normalmente
-    // Validar códigos (solo si no marcó "sin códigos")
-    if (!stair.without_codes && stair.code_identifiers.length === 0) {
-      errors.push('Debe tener al menos un código de identificación')
-    }
-
-    // Validar puntos de conexión
-    if (!stair.route_start) {
-      errors.push('Debe especificar el origen del recorrido')
-    }
-
-    if (!stair.path_end) {
-      errors.push('Debe especificar dónde termina la escalera')
-    }
-
-    // Validar estado operativo
-    if (stair.is_working === null) {
-      errors.push('Debe indicar si la escalera funciona')
-    }
-
-    // COMENTADO TEMPORALMENTE - No se requiere por el momento
-    // Validar alineación
-    // if (stair.is_aligned === null) {
-    //   errors.push('Debe indicar si la escalera está alineada')
-    // }
-
-    // Si no funciona, requiere foto
-    if (stair.is_working === false && stair.photo_ids.length === 0) {
-      errors.push('Si no funciona, debe adjuntar al menos 1 foto')
-    }
-
-    return {
-      valid: errors.length === 0,
-      errors
-    }
   }
 
   /**
@@ -591,15 +456,8 @@ export const useSurveyStore = defineStore('survey', () => {
 
     // Acciones
     startSurvey,
-    updateCurrentStair,
-    nextStair,
-    previousStair,
-    goToStair,
-    saveCurrentStairImages,
     completeSurvey,
     cancelSurvey,
-    clearSurvey,
-    validateCurrentStair,
     syncPendingStairs,
     getSyncStats
   }
