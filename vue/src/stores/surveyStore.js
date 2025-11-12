@@ -5,13 +5,11 @@ import { defineStore } from 'pinia'
 import { ref, computed, toRaw } from 'vue'
 
 //Services
-import { IndexedDBService } from '../services/indexDB.js'
-import { stairsService } from '../services'
+import { IndexedDBService } from '@/services/indexDB.js'
+import { stairsService } from '@/services'
 
 //Using others Stores
-import { useStationStore } from '../stores/stationStore'
-import { useImageStore } from '../stores/imageStore'
-import { useSnackbarStore } from '../stores/snackbarStore'
+import { useStationStore, useImageStore, useSnackbarStore } from '@/stores'
 
 export const useSurveyStore = defineStore('survey', () => {
 

@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { authService } from '../services'
-import { useSnackbarStore } from './snackbarStore.js'
-import { LocalStorageService } from '../services/localStorage.js'
 
+import { useSnackbarStore } from '@/stores'
+
+import { LocalStorageService } from '@/services/localStorage.js'
+
+import { authService } from '@/services'
 const SERVICE = authService;
 
 export const useAuthStore = defineStore('auth', () => {

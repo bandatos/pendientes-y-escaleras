@@ -3,9 +3,9 @@
  */
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
-import { IndexedDBService } from '../services/indexDB.js'
-import { catalogsService } from '../services'
-import { useSnackbarStore } from './snackbarStore.js'
+import { IndexedDBService } from '@/services/indexDB.js'
+import { catalogsService } from '@/services'
+import { useSnackbarStore } from '@/stores/'
 
 const SERVICE = catalogsService
 

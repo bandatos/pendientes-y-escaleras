@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue"
-import { IndexedDBService } from "../services/indexDB.js"
+import { IndexedDBService } from "@/services/indexDB.js"
 
 export const useImageStore = defineStore('imageStore', () => {
 
