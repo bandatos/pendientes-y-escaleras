@@ -1,16 +1,17 @@
 <script setup>
-
-import {computed, ref} from "vue";
+import { computed, ref } from "vue";
 import UploadImage from "@/components/UploadImage.vue";
+import CTextTitle from "../CTextTitle.vue";
+
 import ConnectionPoints from "@/components/form/ConnectionPoints.vue";
-import {useSurveyStore} from "@/stores/surveyStore.js";
+import { useSurveyStore } from "@/stores/surveyStore.js";
 
 import rulesMixin from "@/composables/rulesMixin.js";
 const { rules } = rulesMixin;
 
-const surveyStore = useSurveyStore()
+const surveyStore = useSurveyStore();
 
-const { currentSurvey, currentStairs } = surveyStore
+const { currentSurvey, currentStairs } = surveyStore;
 
 const props = defineProps({
   stair: {
@@ -27,23 +28,18 @@ const props = defineProps({
   },
 });
 
-
 const is_accessible = ref(null);
 const errors = ref(null);
 const save_errors = ref([]);
 const stairForm = ref(null);
 
-const emits = defineEmits(
-  ["add-new-code", "show-warning", "mark-complete"]
-);
+const emits = defineEmits(["add-new-code", "show-warning", "mark-complete"]);
 
 const has_codes_rule = computed(() => {
-  if (props.stair.without_codes)
-    return true;
+  if (props.stair.without_codes) return true;
   return (
-    props.stair.code_identifiers &&
-    props.stair.code_identifiers.length > 0
-    || "⬆️ Agrega al menos un código de identificación o marca que no hay códigos visibles"
+    (props.stair.code_identifiers && props.stair.code_identifiers.length > 0) ||
+    "⬆️ Agrega al menos un código de identificación o marca que no hay códigos visibles"
   );
 });
 
@@ -107,30 +103,27 @@ async function markStairComplete() {
   if (new_codes.value?.trim()) {
     addCode();
   }
-  const { valid } = await stairForm.value.validate()
-  errors.value = null
-  if (!valid){
-    save_errors.value = [{
-      field: 'todo el formulario',
-      errors: 'Hay errores con algunos campos, scrolea y revísalos.'
-    }]
-    return
+  const { valid } = await stairForm.value.validate();
+  errors.value = null;
+  if (!valid) {
+    save_errors.value = [
+      {
+        field: "todo el formulario",
+        errors: "Hay errores con algunos campos, scrolea y revísalos.",
+      },
+    ];
+    return;
   }
 
-  save_errors.value = []
+  save_errors.value = [];
 
-  props.stair.status = 'completed'
+  props.stair.status = "completed";
   emits("mark-complete");
 }
-
-
 </script>
 
 <template>
-
-  <v-expansion-panel
-    :value="stair_index"
-  >
+  <v-expansion-panel :value="stair_index">
     <!-- Panel Title -->
     <v-expansion-panel-title color="grey-lighten-4">
       <div class="d-flex align-center w-100">
@@ -138,9 +131,7 @@ async function markStairComplete() {
           {{ full_status?.icon || "help_outline" }}
         </v-icon>
         <div>
-          <div class="font-weight-bold">
-            Escalera {{ stair.number }}
-          </div>
+          <div class="font-weight-bold">Escalera {{ stair.number }}</div>
           <div
             v-if="stair.status === 'completed'"
             class="text-caption text-medium-emphasis"
@@ -159,9 +150,7 @@ async function markStairComplete() {
     <v-expansion-panel-text>
       <v-card flat>
         <v-card-text class="px-0">
-          <v-form
-            ref="stairForm"
-          >
+          <v-form ref="stairForm">
             <!-- En qué dirección funciona -->
             <div class="mb-4">
               <v-alert
@@ -172,18 +161,15 @@ async function markStairComplete() {
                 class="mb-4"
                 icon-size="small"
               >
-                Indica si se puede llegar a la escalera libremente
-                (sin importar si funciona o no)
+                Indica si se puede llegar a la escalera libremente (sin importar
+                si funciona o no)
               </v-alert>
 
               <label class="text-subtitle-1">
                 ¿Se puede acceder a la escalera?
               </label>
               <v-spacer></v-spacer>
-              <v-input
-                :rules="[accessible_rule]"
-                hide-details="auto"
-              >
+              <v-input :rules="[accessible_rule]" hide-details="auto">
                 <v-btn-toggle
                   divided
                   v-model="is_accessible"
@@ -197,7 +183,9 @@ async function markStairComplete() {
                     :value="option.value"
                     :color="option.color"
                     hide-details
-                    :variant="is_accessible === option.value ? 'elevated' : 'outlined'"
+                    :variant="
+                      is_accessible === option.value ? 'elevated' : 'outlined'
+                    "
                     min-width="80"
                   >
                     {{ option.label }}
@@ -220,10 +208,20 @@ async function markStairComplete() {
                 <v-select
                   v-model="stair.status_maintenance"
                   :items="[
-                    { title: 'Menor (funcional, desgaste leve | sin tablas)', value: 'minor' },
-                    { title: 'Mayor (requiere atención pronto | con tablas)', value: 'medium' },
-                    { title: 'Crítico | Reconstrucción completa (requiere atención urgente)', value: 'full' },
-                    { title: 'Otro (especificar)', value: 'other' }
+                    {
+                      title: 'Menor (funcional, desgaste leve | sin tablas)',
+                      value: 'minor',
+                    },
+                    {
+                      title: 'Mayor (requiere atención pronto | con tablas)',
+                      value: 'medium',
+                    },
+                    {
+                      title:
+                        'Crítico | Reconstrucción completa (requiere atención urgente)',
+                      value: 'full',
+                    },
+                    { title: 'Otro (especificar)', value: 'other' },
                   ]"
                   :rules="[rules.required]"
                   variant="outlined"
@@ -250,7 +248,6 @@ async function markStairComplete() {
                 </div>
               </v-expand-transition>
 
-
               <!-- Si es crítico, mostrar alerta y permitir guardar directamente -->
               <v-alert
                 v-if="stair.status_maintenance === 'full'"
@@ -259,8 +256,9 @@ async function markStairComplete() {
                 density="compact"
                 class="mb-4"
               >
-                ⚠️ Estado crítico detectado. Puedes guardar sin completar los demás campos. Si es necesario agrega fotos del estado.
-            </v-alert>
+                ⚠️ Estado crítico detectado. Puedes guardar sin completar los
+                demás campos. Si es necesario agrega fotos del estado.
+              </v-alert>
             </template>
             <!-- Códigos de identificación -->
             <v-input
@@ -270,15 +268,10 @@ async function markStairComplete() {
               class="mb-4"
             >
               <div>
-                <label class="text-subtitle-2 mb-2 d-block">
-                  Códigos de identificación
-                  <v-icon size="small" class="ml-1">
-                    help_outline
-                    <v-tooltip activator="parent" location="left">
-                      Por ejemplo: KSG3-43, ALT-01, etc.
-                    </v-tooltip>
-                  </v-icon>
-                </label>
+                <c-text-title
+                  title="Códigos de Identificación"
+                  tooltip="Por ejmplo: KSG3-43, AlT-01, etc"
+                />
 
                 <v-expand-transition>
                   <div v-if="stair.without_codes === false">
@@ -288,7 +281,6 @@ async function markStairComplete() {
                       density="compact"
                       class="mb-4"
                       icon-size="small"
-
                     >
                       Cada escalera puede tener varios identificadores
                     </v-alert>
@@ -368,16 +360,12 @@ async function markStairComplete() {
             </div>
 
             <template v-if="is_accessible === true">
-
               <!-- ¿Funciona? -->
               <div class="mb-4" v-if="is_accessible === true">
                 <label class="text-subtitle-2 mb-2 d-block">
                   ¿Funciona la escalera?
                 </label>
-                <v-input
-                  :rules="[is_working_rule]"
-                  hide-details="auto"
-                >
+                <v-input :rules="[is_working_rule]" hide-details="auto">
                   <v-btn-toggle
                     divided
                     v-model="stair.is_working"
@@ -407,9 +395,7 @@ async function markStairComplete() {
                 <label class="text-subtitle-2 mb-2 d-block">
                   ¿En qué dirección opera la escalera?
                 </label>
-                <v-item-group
-                  v-model="stair.direction_observed"
-                >
+                <v-item-group v-model="stair.direction_observed">
                   <v-row>
                     <v-col
                       v-for="direction in directions"
@@ -444,13 +430,21 @@ async function markStairComplete() {
             <div class="mb-4">
               <label class="text-subtitle-2 mb-2 d-block">
                 Adjunta fotos de la escalera
-                <div v-if="is_accessible === true" class="text-caption text-info">
+                <div
+                  v-if="is_accessible === true"
+                  class="text-caption text-info"
+                >
                   (Se su entorno y de sus identificadores)
                 </div>
                 <span v-else-if="is_accessible === false">
                   o de su entorno (letreros, reparaciones, etc.)
                 </span>
               </label>
+              <!-- TODO: Add the dynamic var -->
+              <!-- <c-text-title
+                title="Adjunta fotos de la escalera"
+                tooltip="De su entorno y de sus identificaciones"
+              /> -->
               <UploadImage
                 :title="'Subir fotos'"
                 :typeFiles="'image/*'"
@@ -464,9 +458,7 @@ async function markStairComplete() {
                 cols="12"
                 class="d-flex justify-end px-6 py-1"
               >
-                <v-alert
-                  type="error"
-                >
+                <v-alert type="error">
                   Error al guardar {{ error.field }}: {{ error.errors }}
                 </v-alert>
               </v-col>
@@ -476,14 +468,10 @@ async function markStairComplete() {
               color="primary"
               block
               @click="markStairComplete"
-              :variant="
-                stair.status === 'completed' ? 'outlined' : 'elevated'
-              "
+              :variant="stair.status === 'completed' ? 'outlined' : 'elevated'"
             >
               <v-icon start>
-                {{
-                  stair.status === "completed" ? "check_circle" : "check"
-                }}
+                {{ stair.status === "completed" ? "check_circle" : "check" }}
               </v-icon>
               {{
                 stair.status === "completed"
@@ -499,5 +487,4 @@ async function markStairComplete() {
 </template>
 
 <style scoped>
-
 </style>

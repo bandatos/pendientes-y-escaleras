@@ -9,7 +9,7 @@ import { useImageStore } from "@/stores/imageStore";
 import { useSnackbarStore } from "@/stores/snackbarStore";
 import { useAuthStore } from "@/stores/authStore";
 import { IndexedDBService } from "@/services/indexDB.js";
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 import UploadImage from "../components/UploadImage.vue";
 import Stats from "@/components/form/Stats.vue";
 import StairForm from "@/components/form/StairForm.vue";
@@ -22,7 +22,7 @@ const syncStore = useSyncStore();
 const imageStore = useImageStore();
 const snackbarStore = useSnackbarStore();
 const authStore = useAuthStore();
-const router = useRouter()
+const router = useRouter();
 
 const loading_station = ref(false);
 
@@ -31,10 +31,9 @@ const emit = defineEmits(["save-complete"]);
 
 // Actualizar estadísticas de sincronización al montar
 onMounted(async () => {
-
   // Validar autenticación
   if (!authStore.isAuthenticated) {
-    snackbarStore.showError('Debes autenticarte para realizar relevamientos');
+    snackbarStore.showError("Debes autenticarte para realizar relevamientos");
     // TODO: No sé cómo redirigir dentro de un async onMounted
     // router.push({ name: 'login' });
     // emit('back');
@@ -43,7 +42,6 @@ onMounted(async () => {
 
   await syncStore.updateSyncStats();
 });
-
 
 const { currentStairs } = storeToRefs(surveyStore);
 const { selectedStation } = stationStore;
@@ -78,7 +76,9 @@ function showWarning(message) {
 const handleSave = async () => {
   try {
     // Validar que todas las escaleras estén completadas
-    const allCompleted = currentStairs.value.every((s) => s.status === "completed");
+    const allCompleted = currentStairs.value.every(
+      (s) => s.status === "completed"
+    );
 
     if (!allCompleted) {
       snackbarStore.showWarning(
@@ -106,9 +106,17 @@ const handleSave = async () => {
           stairIndex + 1, // number es 1-based
           photos
         );
-        console.log(`📸 ${photos.length} imágenes guardadas localmente para escalera ${stairIndex + 1} (pendiente de sync)`);
+        console.log(
+          `📸 ${photos.length} imágenes guardadas localmente para escalera ${
+            stairIndex + 1
+          } (pendiente de sync)`
+        );
       } else if (photos && photos.length > 0 && stair.synced) {
-        console.log(`✅ Escalera ${stairIndex + 1} ya sincronizada - imágenes no guardadas en IndexedDB`);
+        console.log(
+          `✅ Escalera ${
+            stairIndex + 1
+          } ya sincronizada - imágenes no guardadas en IndexedDB`
+        );
       }
     }
 
@@ -119,12 +127,12 @@ const handleSave = async () => {
     await syncStore.updateSyncStats();
 
     console.log("✅ Estación y todas las imágenes guardadas exitosamente");
-    loading_station.value = false
+    loading_station.value = false;
     emit("save-complete");
   } catch (error) {
     console.error("Error guardando:", error);
     snackbarStore.showError("Error al guardar los datos");
-    loading_station.value = false
+    loading_station.value = false;
   }
 };
 
@@ -134,7 +142,7 @@ const handleBack = () => {
     confirm("¿Seguro que quieres salir? Se perderá el progreso no guardado")
   ) {
     surveyStore.cancelSurvey();
-    router.push({ name: 'Home' });
+    router.push({ name: "Home" });
     // emit("back");
   }
 };
@@ -146,7 +154,6 @@ const handleBack = () => {
       <!-- Header con status -->
       <v-card class="rounded-0" variant="flat" color="grey-lighten-5">
         <v-card-text>
-
           <!-- Estación seleccionada -->
           <div class="d-flex align-center">
             <AvatarStation :station-data="selectedStation" class="mr-3" />
@@ -164,19 +171,15 @@ const handleBack = () => {
         </v-card-text>
       </v-card>
 
-      <Stats  :surveyStore="surveyStore" class="mb-2" />
+      <Stats :surveyStore="surveyStore" class="mb-2" />
 
       <v-divider></v-divider>
-      <v-alert
-        type="info"
-        density="compact"
-        class="mb-2"
-      >
+      <v-alert type="info" density="compact" class="mb-2">
         Completa la info en el orden en el que recorras la estación
       </v-alert>
 
       <!-- Expansion Panels de Escaleras -->
-      <v-expansion-panels  v-model="expandedPanels" multiple>
+      <v-expansion-panels v-model="expandedPanels" multiple>
         <StairForm
           v-for="(stair, stair_index) in currentStairs"
           :key="stair.id"
@@ -189,7 +192,7 @@ const handleBack = () => {
       </v-expansion-panels>
 
       <!-- Botón guardar todo -->
-      <v-card  v-if="true" class="rounded-0" _variant="flat" _color="primary">
+      <v-card v-if="true" class="rounded-0" _variant="flat" _color="primary">
         <v-card-actions class="pa-4">
           <v-btn
             color="primary"
