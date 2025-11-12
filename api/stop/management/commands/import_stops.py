@@ -64,6 +64,7 @@ class Command(BaseCommand):
                     'stop_name': row['stop_name'].strip(),
                     'stop_lat': row['stop_lat'],
                     'stop_lon': row['stop_lon'],
+                    'location_type': 1,
                     'zone_id': row['zone_id'],
                     'wheelchair_boarding': int(row['wheelchair_boarding']),
                 }

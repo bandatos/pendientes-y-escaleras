@@ -102,10 +102,11 @@ class StairReport(models.Model):
 class EvidenceImage(models.Model):
     stair_report = models.ForeignKey(
         StairReport, on_delete=models.CASCADE,
+        related_name='images',
         verbose_name="Reporte de escalera asociado"
     )
     image = models.ImageField(
-        upload_to='evidence_images/',
+        upload_to='evidence_images/', max_length=255,
         verbose_name="Imagen de evidencia"
     )
 
