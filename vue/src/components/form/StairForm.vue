@@ -444,9 +444,9 @@ async function markStairComplete() {
             <div class="mb-4">
               <label class="text-subtitle-2 mb-2 d-block">
                 Adjunta fotos de la escalera
-                <span v-if="is_accessible === true">
-                  y sus identificadores
-                </span>
+                <div v-if="is_accessible === true" class="text-caption text-info">
+                  (Se su entorno y de sus identificadores)
+                </div>
                 <span v-else-if="is_accessible === false">
                   o de su entorno (letreros, reparaciones, etc.)
                 </span>

@@ -14,9 +14,10 @@
   "dependencies": {
     "d3": "^7.9.0",
     "dexie": "^4.2.1",
+    "material-design-icons-iconfont": "^6.7.0",
     "pinia": "^3.0.3",
     "vue": "^3.5.18",
-    "material-design-icons-iconfont": "^6.7.0",
+    "vue-router": "^4.6.3",
     "vuetify": "^3.9.5"
   },
   "devDependencies": {
