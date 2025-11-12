@@ -1,6 +1,6 @@
 <script setup>
-
-import { ref } from 'vue';
+import CTextTitle from "../CTextTitle.vue";
+import { ref } from "vue";
 
 import rulesMixin from "@/composables/rulesMixin.js";
 const { rules } = rulesMixin;
@@ -15,29 +15,15 @@ const props = defineProps({
 
 const same_start_as_route = ref(false);
 const same_end_as_route = ref(false);
-
 </script>
 
 <template>
-  <v-card
-    class="mb-4 px-2 py-3"
-    variant="tonal"
-    color="light-blue"
-  >
-    <v-card-title
-      class="text-subtitle-2 mb-2 d-block px-0 py-1 text-primary"
-    >
-      ¿Qué puntos comunica la escalera?
-      <v-tooltip location="top">
-        <template v-slot:activator="{ props }">
-          <v-icon v-bind="props" size="small" class="ml-1">
-            help_outline
-          </v-icon>
-        </template>
-        Ejemplo: anden línea 7 dirección barranca
-      </v-tooltip>
-    </v-card-title>
-
+  <v-card class="mb-4 px-2 py-3" variant="tonal" color="light-blue">
+    <c-text-title
+      title="¿Qué puntos comunica la escalera?"
+      tooltip="Ejemplo: Anden línea 7, dirección Barranca del Muerto"
+      color="text-primary"
+    />
     <div class="pb-2">
       <label class="text-body-2 text-deep-purple">
         <b>Origen:</b> Dónde comenzó el recorrido
@@ -131,5 +117,4 @@ const same_end_as_route = ref(false);
 </template>
 
 <style scoped>
-
 </style>
