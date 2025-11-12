@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref } from "vue";
 import UploadImage from "@/components/UploadImage.vue";
-import CTextTitle from "../CTextTitle.vue";
+import CTextTitle from "@/components/CTextTitle.vue";
 
 import ConnectionPoints from "@/components/form/ConnectionPoints.vue";
 import { useSurveyStore } from "@/stores/surveyStore.js";

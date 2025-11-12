@@ -1,15 +1,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 
-import StationSelector from "./views/StationSelector.vue";
-import StationSummary from "./views/StationSummary.vue";
-import MessageSnackBar from "./components/MessageSnackBar.vue";
-
-import { useSnackbarStore } from "./stores/snackbarStore";
-import { useAuthStore } from "./stores/authStore";
-
+import MessageSnackBar from "@/components/MessageSnackBar.vue";
 import SyncStatusBar from "@/components/SyncStatusBar.vue";
 
+import { useSnackbarStore } from "@/stores/snackbarStore";
+import { useAuthStore } from "@/stores/authStore";
 const snackbarStore = useSnackbarStore();
 const authStore = useAuthStore();
 

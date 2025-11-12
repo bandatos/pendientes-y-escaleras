@@ -7,7 +7,6 @@ const routes = [
   //   redirect: { name: 'Home' },
   // },
   {
-    // path: '/home',
     path: '/',
     component: StationSelector,
     name: 'Home',
