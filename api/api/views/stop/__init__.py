@@ -19,7 +19,6 @@ class StationViewSet(viewsets.ModelViewSet):
 
     serializer_class = StationCatSerializer
 
-
     def get_serializer_class(self):
         action_serializer = {
             'retrieve': StationFullSerializer,
