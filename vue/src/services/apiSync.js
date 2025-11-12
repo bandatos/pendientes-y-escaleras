@@ -1,8 +1,8 @@
 /**
  * API Sync Service - Coordina la sincronización con el servidor
  */
-import { LocalStorageService } from './localStorage.js'
-import { getNetworkDetection } from './networkDetection.js'
+import { LocalStorageService } from '@/services/localStorage.js'
+import { getNetworkDetection } from '@/services/networkDetection.js'
 
 export class ApiSyncService {
   constructor(apiBaseUrl = 'https://jsonplaceholder.typicode.com') {
