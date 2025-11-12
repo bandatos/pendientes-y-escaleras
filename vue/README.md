@@ -24,3 +24,11 @@ yarn dev
 ```sh
 yarn build
 ```
+
+
+
+### Considerations
+The system only load the stair from the Sistema Metro (Incluir nombre del Sistema), because there stations cases where looks
+have more stairs, however in those cases their stairs don't belong to the station could be from part of a mall.
+Examples:
+- Rosario Station
