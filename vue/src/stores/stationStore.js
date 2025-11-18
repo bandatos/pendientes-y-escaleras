@@ -30,7 +30,7 @@ export const useStationStore = defineStore('station', () => {
    */
 
   function buildFullStations(apiData) {
-
+  console.debug(apiData);
     const routesById = apiData.routes.reduce((acc, route) => {
       acc[route.id] = route
       return acc
@@ -109,37 +109,37 @@ export const useStationStore = defineStore('station', () => {
             throw new Error('Datos del API inválidos')
           }
 
-          // Guardar datos raw en el store
-          rawRoutes.value = apiData.routes || []
-          rawStops.value = apiData.stops || []
-          rawStations.value = apiData.stations || []
-          rawStairs.value = apiData.stairs || []
-
-          // Transformar datos al formato de la UI
-
-          const full_stations = buildFullStations(apiData)
+          
+          // Fill data from api
+          const full_stations = updateStationStore(apiData)
           fullStations.value = full_stations
 
           // Guardar en IndexedDB para uso offline
           await IndexedDBService.updateStationsCatalog(full_stations)
+          // Guardar para valores obtenidos por raw, por si se va la conexión.
+          await IndexedDBService.addRawDataBackup(apiData);
           // await IndexedDBService.seedStations(full_stations)
 
-          console.log(`✅ Catálogo actualizado desde API: ${full_stations.length} estaciones`)
+          /* console.log(`✅ Catálogo actualizado desde API: ${full_stations.length} estaciones`)
           console.log(`   - ${rawRoutes.value.length} líneas`)
           console.log(`   - ${rawStops.value.length} stops`)
           console.log(`   - ${rawStations.value.length} estaciones físicas`)
-          console.log(`   - ${rawStairs.value.length} escaleras`)
+          console.log(`   - ${rawStairs.value.length} escaleras`) */
 
         } catch (error) {
           // Si falla el API pero hay cache, usar el cache
           console.warn('⚠️ Error del API, usando cache:', error.message)
 
           if (cachedCatalog.length > 0) {
-            fullStations.value = cachedCatalog
-            console.log(`✅ Usando catálogo en cache: ${cachedCatalog.length} estaciones`)
+          //Fill data from Storage
+            const rawData = await IndexedDBService.getRawData();
+            const full_stations = updateStationStore(storageData[0])
+            fullStations.value = full_stations
+
+            console.log(`✅ Usando catálogo en cache: ${full_stations.length} estaciones`)
             snackbarStore.showWarning('Usando catálogo local (sin actualizar)')
           } else {
-            // Sin cache y sin API = error fatal
+            // Sin Storage y sin API = error fatal
             throw new Error('No hay conexión al servidor y no hay datos en cache')
           }
         }
@@ -149,7 +149,10 @@ export const useStationStore = defineStore('station', () => {
         console.log('📴 Sin conexión, usando catálogo en cache...')
 
         if (cachedCatalog.length > 0) {
-          fullStations.value = cachedCatalog
+          //Fill data from Storage
+          const storageData = await IndexedDBService.getRawData()
+          const full_stations = updateStationStore(storageData[0])
+          fullStations.value = full_stations;
           console.log(`✅ Catálogo cargado desde cache: ${cachedCatalog.length} estaciones`)
           snackbarStore.showInfo('Modo offline: usando catálogo local')
         } else {
@@ -163,6 +166,17 @@ export const useStationStore = defineStore('station', () => {
     } finally {
       isLoading.value = false
     }
+  }
+
+  function updateStationStore(data) {
+      // Guardar datos raw en el store
+      rawRoutes.value = data.routes || []
+      rawStops.value = data.stops || []
+      rawStations.value = data.stations || []
+      rawStairs.value = data.stairs || []
+    
+    const full_stations = buildFullStations(data)
+    return full_stations;
   }
 
   // Seleccionar una estación
