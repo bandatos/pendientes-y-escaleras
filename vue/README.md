@@ -13,6 +13,9 @@ yarn || yarn install
 - Vite
 - Vuetify
 
+### Dev Dependencies
+- unplugin-auto-import (AutoImport)
+
 ### Compile and Hot-Reload for Development
 
 ```sh

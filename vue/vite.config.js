@@ -5,9 +5,23 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueDevTools from "vite-plugin-vue-devtools";
 
+import AutoImport from 'unplugin-auto-import/vite'
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), dsv()],
+  plugins: [
+    vue(),
+    vueDevTools(),
+    dsv(),
+    AutoImport({
+      imports: [
+        'vue',
+        {
+          'pinia': ['defineStore', 'storeToRefs', 'acceptHMRUpdate']
+        }
+      ]
+    })
+  ],
   server: {
     host: '0.0.0.0',
     allowedHosts: true,
