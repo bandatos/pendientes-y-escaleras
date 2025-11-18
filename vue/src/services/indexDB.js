@@ -28,6 +28,8 @@ db.version(2).stores({
 db.version(3).stores({
     // Registros completos de estaciones con todas sus escaleras
     stationRecords: 'id, station_id, timestamp, synced, status, line',
+    // Raw data for getCatalogs
+    rawData: '++id, routes, stops, stations, stairs',
 
     // Imágenes vinculadas a estación + escalera específica
     images: '++id, stationRecordId, number, synced, timestamp, s3Key',
@@ -236,22 +238,22 @@ export class IndexedDBService {
 
     // Rick: Esto yo lo agregué manualmente para probar
     static async saveStairImage(stair_id, file) {
-      try {
-        const newId = await db.evidence_images.add({
-          stair_id,
-          file,
-          timestamp: Date.now(),
-          synced: false,
-          s3Key: null,
-          s3Url: null,
-          finished: false
-        })   ;
-        console.log(`✅ Imagen guardada para escalera ${stair_id}`);
-        return newId;
-      } catch (error) {
-        console.error('❌ Error saving stair image:', error);
-        throw error;
-      }
+        try {
+            const newId = await db.evidence_images.add({
+                stair_id,
+                file,
+                timestamp: Date.now(),
+                synced: false,
+                s3Key: null,
+                s3Url: null,
+                finished: false
+            });
+            console.log(`✅ Imagen guardada para escalera ${stair_id}`);
+            return newId;
+        } catch (error) {
+            console.error('❌ Error saving stair image:', error);
+            throw error;
+        }
     }
 
     // Guardar imágenes para una escalera específica de una estación
@@ -411,6 +413,26 @@ export class IndexedDBService {
             window.location.reload();
         } catch (error) {
             console.error('❌ Error resetting database:', error);
+        }
+    }
+
+    static async addRawDataBackup(apiData) {
+        try {
+            //Add all the data as one register
+            await db.rawData.add(apiData);
+
+        } catch (error) {
+            console.debug('Error adding the rawData', error);
+        }
+    }
+
+    static async getRawData() {
+        try {
+            const rawData = await db.rawData.toArray();
+            return rawData;
+        } catch (error) {
+            console.error('❌ Error getting stations catalog:', error);
+            return [];
         }
     }
 }
