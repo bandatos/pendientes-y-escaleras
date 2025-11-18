@@ -1,70 +1,72 @@
 <script setup>
-import { ref, watch } from 'vue'
-import { useAuthStore } from '../stores/authStore'
+import { useAuthStore } from "../stores/authStore";
 
 const props = defineProps({
   modelValue: {
     type: Boolean,
-    required: true
+    required: true,
   },
   stationName: {
     type: String,
-    default: ''
-  }
-})
+    default: "",
+  },
+});
 
-const emit = defineEmits(['update:modelValue', 'login-success', 'login-cancel'])
+const emit = defineEmits([
+  "update:modelValue",
+  "login-success",
+  "login-cancel",
+]);
 
-const authStore = useAuthStore()
+const authStore = useAuthStore();
 
 // Estado local
-const email = ref('')
+const email = ref("");
 const emailRules = [
-  v => !!v || 'El correo es requerido',
-  v => /.+@.+\..+/.test(v) || 'Debe ser un correo válido'
-]
-const formValid = ref(false)
+  (v) => !!v || "El correo es requerido",
+  (v) => /.+@.+\..+/.test(v) || "Debe ser un correo válido",
+];
+const formValid = ref(false);
 
 // Computed para el diálogo
-const dialog = ref(props.modelValue)
+const dialog = ref(props.modelValue);
 
-watch(() => props.modelValue, (newVal) => {
-  dialog.value = newVal
-})
+watch(
+  () => props.modelValue,
+  (newVal) => {
+    dialog.value = newVal;
+  }
+);
 
 watch(dialog, (newVal) => {
-  emit('update:modelValue', newVal)
-})
+  emit("update:modelValue", newVal);
+});
 
 // Métodos
 const handleLogin = async () => {
-  if (!formValid.value) return
+  if (!formValid.value) return;
 
-  const result = await authStore.login(email.value)
+  const result = await authStore.login(email.value);
 
   if (result.success) {
-    emit('login-success', result.data)
-    closeDialog()
+    emit("login-success", result.data);
+    closeDialog();
   }
-}
+};
 
 const closeDialog = () => {
-  dialog.value = false
-  email.value = ''
-}
+  dialog.value = false;
+  email.value = "";
+};
 
 const handleCancel = () => {
-  emit('login-cancel')
-  closeDialog()
-}
+  emit("login-cancel");
+  closeDialog();
+};
 </script>
 
 <template>
-  <v-dialog
-    v-model="dialog"
-    max-width="500px"
-    persistent
-  >
+  <v-dialog v-model="dialog" max-width="500px" persistent>
     <v-card>
       <v-card-title class="text-h5 pa-4">
         <v-icon class="mr-2" color="primary">login</v-icon>
@@ -75,8 +77,8 @@ const handleCancel = () => {
 
       <v-card-text class="pa-4">
         <p class="text-body-1 mb-4">
-          Para realizar el relevamiento de <strong>{{ stationName }}</strong>,
-          por favor ingresa tu correo electrónico.
+          Para realizar el relevamiento de <strong>{{ stationName }}</strong
+          >, por favor ingresa tu correo electrónico.
         </p>
 
         <v-form v-model="formValid" @submit.prevent="handleLogin">

@@ -1,6 +1,3 @@
-import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-
 import { useSnackbarStore } from '@/stores'
 
 import { LocalStorageService } from '@/services/localStorage.js'
