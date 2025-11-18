@@ -1,8 +1,5 @@
 <script setup>
-import { computed } from "vue";
 import { useImageStore } from "@/stores/imageStore";
-import { IndexedDBService } from "@/services/indexDB.js";
-import { ref } from "vue";
 
 const store = useImageStore();
 
@@ -31,21 +28,23 @@ const localPhotos = computed({
   },
   set(files) {
     store.setStairPhotos(props.stairId, files);
-  }
+  },
 });
 
 function addFiles(e) {
   let files = e.target.files || e.dataTransfer.files;
   // console.log("files", files)
   for (let file of files) {
-    const short_name = file.name
+    const short_name = file.name;
     let final_elem = {
-      ...{stair: props.stairId}, ...{ file: file}, ...short_name}
-    ascertainable.value.push(final_elem)
+      ...{ stair: props.stairId },
+      ...{ file: file },
+      ...short_name,
+    };
+    ascertainable.value.push(final_elem);
   }
   // this.saveFiles()
 }
-
 </script>
 
 <template>
@@ -56,7 +55,7 @@ function addFiles(e) {
       class="d-none"
       multiple
       @change="addFiles($event)"
-    >
+    />
 
     <v-col cols="12">
       <v-btn
@@ -70,7 +69,6 @@ function addFiles(e) {
     </v-col>
 
     <v-col cols="12">
-
       <v-chip
         v-for="fileName in localPhotos"
         :key="fileName"

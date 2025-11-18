@@ -1,5 +1,4 @@
 <script setup>
-import { computed, ref } from "vue";
 import UploadImage from "@/components/UploadImage.vue";
 import CTextTitle from "@/components/CTextTitle.vue";
 

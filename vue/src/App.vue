@@ -1,6 +1,4 @@
 <script setup>
-import { ref, onMounted } from "vue";
-
 import MessageSnackBar from "@/components/MessageSnackBar.vue";
 import SyncStatusBar from "@/components/SyncStatusBar.vue";
 

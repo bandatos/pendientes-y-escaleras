@@ -1,40 +1,39 @@
 <script setup>
-import { computed } from 'vue'
-import { useSyncStore } from '../stores/syncStore'
-import { useAuthStore } from '../stores/authStore'
+import { useSyncStore } from "../stores/syncStore";
+import { useAuthStore } from "../stores/authStore";
 
 const props = defineProps({
   showSyncButton: {
     type: Boolean,
-    default: false
+    default: false,
   },
   variant: {
     type: String,
-    default: 'outlined' // 'outlined' | 'flat'
-  }
-})
+    default: "outlined", // 'outlined' | 'flat'
+  },
+});
 
-const syncStore = useSyncStore()
-const authStore = useAuthStore()
+const syncStore = useSyncStore();
+const authStore = useAuthStore();
 
 const connectionStatus = computed(() =>
-  syncStore.isOnline ? '🟢 Conectado' : '🔴 Sin conexión'
-)
+  syncStore.isOnline ? "🟢 Conectado" : "🔴 Sin conexión"
+);
 
-const pendingCount = computed(() => syncStore.syncStats.pending)
+const pendingCount = computed(() => syncStore.syncStats.pending);
 
 const handleSync = async () => {
   try {
-    await syncStore.forceSync()
+    await syncStore.forceSync();
   } catch (error) {
-    console.error('Error durante sincronización manual:', error)
+    console.error("Error durante sincronización manual:", error);
   }
-}
+};
 </script>
 
 <template>
   <v-card class="mb-4 pa-2" :variant="variant">
-    <v-row align="center" >
+    <v-row align="center">
       <v-col cols="auto">
         <span class="text-body-2">{{ connectionStatus }}</span>
       </v-col>
@@ -52,7 +51,7 @@ const handleSync = async () => {
         </v-btn>
       </v-col>
       <v-spacer></v-spacer>
-        <!-- Indicador de autenticación -->
+      <!-- Indicador de autenticación -->
       <v-col cols="auto">
         <v-chip
           v-if="authStore.isAuthenticated"
@@ -61,7 +60,7 @@ const handleSync = async () => {
           size="small"
           prepend-icon="check_circle"
         >
-          {{ authStore.user?.email || 'Autenticado' }}
+          {{ authStore.user?.email || "Autenticado" }}
         </v-chip>
       </v-col>
     </v-row>

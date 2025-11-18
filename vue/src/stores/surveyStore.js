@@ -1,8 +1,6 @@
 /**
  * Store para manejar el progreso del relevamiento de una estación
  */
-import { defineStore } from 'pinia'
-import { ref, computed, toRaw } from 'vue'
 
 //Services
 import { IndexedDBService } from '@/services/indexDB.js'

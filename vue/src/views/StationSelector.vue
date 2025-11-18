@@ -1,5 +1,4 @@
 <script setup>
-import { ref, onMounted, computed } from "vue";
 import { useStationStore } from "@/stores/stationStore";
 import { useSurveyStore } from "@/stores/surveyStore";
 import { useSyncStore } from "@/stores/syncStore";

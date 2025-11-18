@@ -1,8 +1,6 @@
 /**
  * Store para manejar el catálogo de estaciones y selección actual
  */
-import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
 import { IndexedDBService } from '@/services/indexDB.js'
 import { catalogsService } from '@/services'
 import { useSnackbarStore } from '@/stores/'
