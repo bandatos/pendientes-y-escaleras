@@ -183,13 +183,7 @@ const handleLoginCancel = () => {
 <!--            </v-btn>-->
 <!--          </v-card-actions>-->
       </v-card>
-      <v-card>
-          <!-- Mapa del metro -->
-          <div class="map-container mt-4">
-            <MapaMetro/>
-          </div>
-
-      </v-card>
+      <MapaMetro class="map-container mt-4"/>
 
       <!-- Info adicional -->
       <v-card class="mt-4" variant="outlined">
