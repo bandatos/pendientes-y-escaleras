@@ -132,8 +132,8 @@ export const useStationStore = defineStore('station', () => {
 
           if (cachedCatalog.length > 0) {
           //Fill data from Storage
-            const rawData = await IndexedDBService.getRawData();
-            const full_stations = updateStationStore(storageData[0])
+            const indexDBData = await IndexedDBService.getRawData();
+            const full_stations = updateStationStore(indexDBData[0])
             fullStations.value = full_stations
 
             console.log(`✅ Usando catálogo en cache: ${full_stations.length} estaciones`)
@@ -150,8 +150,8 @@ export const useStationStore = defineStore('station', () => {
 
         if (cachedCatalog.length > 0) {
           //Fill data from Storage
-          const storageData = await IndexedDBService.getRawData()
-          const full_stations = updateStationStore(storageData[0])
+          const indexDBData = await IndexedDBService.getRawData() //indexDBStorage
+          const full_stations = updateStationStore(indexDBData[0])
           fullStations.value = full_stations;
           console.log(`✅ Catálogo cargado desde cache: ${cachedCatalog.length} estaciones`)
           snackbarStore.showInfo('Modo offline: usando catálogo local')
@@ -168,7 +168,7 @@ export const useStationStore = defineStore('station', () => {
     }
   }
 
-  function updateStationStore(data) {
+  function updateStationStore(data) { //update
       // Guardar datos raw en el store
       rawRoutes.value = data.routes || []
       rawStops.value = data.stops || []
