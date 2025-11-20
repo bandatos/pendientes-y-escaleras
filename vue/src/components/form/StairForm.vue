@@ -153,7 +153,7 @@ async function markStairComplete() {
             <!-- En qué dirección funciona -->
             <div class="mb-4">
               <v-alert
-                v-if="false"
+                v-if="true"
                 type="info"
                 variant="tonal"
                 density="compact"

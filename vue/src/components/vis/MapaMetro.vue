@@ -1,6 +1,6 @@
 <script setup>
-import estaciones from "@/assets/datos/estaciones-match-stops.csv";
 import lineas from "@/assets/datos/lineas-vis.csv";
+import _debounce from "lodash/debounce.js";
 
 import * as d3 from "d3";
 import { ref, onMounted, onUpdated, watch } from "vue";
@@ -15,6 +15,10 @@ let escala = 1;
 
 const stationStore = useStationStore()
 const mounted_map = ref(false);
+const tt_data = ref({});
+const is_tooltip_active = ref(false);
+const posX = ref(-200);
+const posY = ref(-200);
 // const { fullStations } = stationStore
 
 onMounted(() => {
@@ -45,7 +49,19 @@ function startMap(){
   svg.value = d3
     .select("svg#mapa-metro")
     .attr("width", ancho.value)
-    .attr("height", ancho.value)
+    .attr("height", ancho.value);
+
+  const empty_drawn = svg.value.select("g.g-contenedor-vis").empty()
+  console.log("empty_drawn ", empty_drawn);
+  // if (!already_drawn.empty()){
+  //   already_drawn.remove();
+  // }
+  if (!empty_drawn){
+    console.log("Mapa ya dibujado, no se dibuja de nuevo.");
+    return;
+  }
+  console.log("Dibujando mapa de metroo...");
+  svg.value
     .append("g")
     .attr("class", "g-contenedor-vis");
   lineas_g.value = svg.value
@@ -66,6 +82,7 @@ function startMap(){
 }
 
 function loadMapaData() {
+
   estaciones_g.value = svg.value
     .selectAll("g.estacion")
     .data(stationStore.fullStations)
@@ -73,12 +90,11 @@ function loadMapaData() {
     .append("g")
     .style("cursor", "pointer")
     .attr("transform", (d) =>
-        `translate(${escala * d.x_position},${escala * d.y_position})`)
+        `translate(${escala * d.x_position},${escala * d.y_position})`);
     // .attr("class", (d) => "estacion " + d.class);
-    .attr("fill", (d) => d.total_stairs ? d.line_color : 'black');
+
   estaciones_g.value
     .append("circle")
-    // .attr("r", (d) => escala * (0.2 + Math.sqrt(1 * Math.random())))
     .attr("r", (d) =>
         d.total_stairs ? 2 + escala * Math.sqrt(d.total_stairs / 12) : 1.5)
     .style("stroke", (d) => d.total_stairs
@@ -87,6 +103,7 @@ function loadMapaData() {
           : d.line_color
         : 'none'
     )
+    .attr("fill", (d) => d.total_stairs ? d.line_color : 'black')
     .style("fill-opacity", (d) =>
         d.total_stairs ?
             d.stairs_with_report
@@ -94,7 +111,14 @@ function loadMapaData() {
                 : 0.1
             : 0.7
     );
-        // d.total_stairs ? 0.2 + Math.random() : 0.7
+
+  estaciones_g.value
+    .append("circle")
+    .attr("r",  2 + escala * 2)
+    .style("stroke", 'none')
+    .attr("fill", "#fff")
+    .style("fill-opacity", 0);
+
   estaciones_g.value
     .append("text")
     .attr(
@@ -111,36 +135,25 @@ function loadMapaData() {
     .text((d) => d.name)
     .style("fill", "#000")
     .style("fill-opacity", "0.5");
+
   estaciones_g.value
     .on("mouseover", function (e, d) {
-      tooltipActivo.value = true;
-      divTooltip.value.style.left = escala * +d.x_position - 100 + "px";
-      divTooltip.value.style.top = escala * +d.y_position + 10 + "px";
-
-      divTooltip.value.innerHTML = `
-      <span class="text-subtitle-1">${d.name}</span>
-      <br/>
-      <b>Total de escaleras:</b>
-      ${d.total_stairs}
-      <br/>
-      <b>Inoperativa:</b>
-      ${d.stairs_not_working || 0}
-      <br/>
-      <b>Sí funcionan:</b>
-      ${d.stairs_working || 0}
-      <br/>
-      <b>Último reporte:</b>
-      dd-mm-yyyy
-      <br/>
-      `;
-
+      tt_data.value = {
+        name: d.name,
+        total_stairs: d.total_stairs,
+        stairs_not_working: d.stairs_not_working || 0,
+        stairs_working: d.stairs_working || 0,
+      };
+      // console.log("is_tooltip_active", is_tooltip_active.value);
+      // is_tooltip_active.value = true;
       d3.select(this).select("text").style("fill-opacity", "1");
       d3.select(this).select("circle").style("stroke", "#fff");
     })
     .on("mouseout", function (e, d) {
-      tooltipActivo.value = false;
-
-      console.log(e, d);
+      // console.log("mouseout", d);
+      // console.log("event", e);
+      tt_data.value = {};
+      debounceCloseTooltip();
       d3.select(this).select("text").style("fill-opacity", "0.5");
       d3.select(this).select("circle").style("stroke", d =>
         d.total_stairs
@@ -152,40 +165,112 @@ function loadMapaData() {
     });
 }
 
+const debounceCloseTooltip = _debounce(() => {
+  console.log("Intentando cerrar tooltip...");
+  if (!tt_data.value.name && is_tooltip_active.value) {
+    console.log("No hay datos en tooltip, cerrando.");
+    tt_data.value = {};
+    is_tooltip_active.value = false;
+  }
+  else {
+    console.log("Hay datos en tooltip, no se cierra.");
+    // debounceCloseTooltip.call()
+  }
+
+}, 2000)
 
 </script>
+
 <template>
-  <div class="contenedor-svg">
+  <v-card
+    class="contenedor-svg"
+
+  >
     <div
+      v-if="false"
       class="tooltip"
       :class="{ activo: tooltipActivo }"
       ref="divTooltip"
-    ></div>
-    <svg id="mapa-metro"></svg>
-  </div>
+    >
+      <span class="text-subtitle-1">{{tt.name}}</span>
+      <br/>
+      <b>Total de escaleras:</b>
+        {{tt.total_stairs}}
+      <br/>
+      <b>Inoperativa:</b>
+      {{tt.stairs_not_working || 0}}
+      <br/>
+      <b>Sí funcionan:</b>
+      {{tt.stairs_working || 0}}
+      <br/>
+      <b>Último reporte:</b>
+      dd-mm-yyyy
+      <br/>
+
+    </div>
+
+    <v-tooltip
+      location="bottom"
+      v-model="is_tooltip_active"
+      target="cursor"
+      open-on-click
+      class="pa-0 mt-3"
+      :open-on-hover="false"
+    >
+      <template v-slot:activator="{ props: activatorProps }">
+        <svg
+          id="mapa-metro"
+          v-bind="activatorProps"
+          @mouseout="debounceCloseTooltip()"
+        ></svg>
+      </template>
+      <v-card
+        class="py-3 ma-0"
+        v-if="tt_data && tt_data.name"
+      >
+        <v-card-title xclass="text-h6">
+          {{tt_data.name}}
+        </v-card-title>
+        <br/>
+        <b>Total de escaleras:</b>
+          {{tt_data.total_stairs}}
+        <br/>
+        <b>Inoperativa:</b>
+        {{tt_data.stairs_not_working || 0}}
+        <br/>
+        <b>Sí funcionan:</b>
+        {{tt_data.stairs_working || 0}}
+        <br/>
+        <b>Último reporte:</b>
+        dd-mm-yyyy
+
+        <br/>
+      </v-card>
+    </v-tooltip>
+  </v-card>
 </template>
 
 <style lang="scss">
 div.contenedor-svg {
   position: relative;
-  div.tooltip {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-    position: absolute;
-    border-radius: 8px;
-    background: #c8c8c898;
-    color: black;
-    font-size: 14px;
-    backdrop-filter: blur(5px);
-    padding: 5px;
-    width: 200px;
-    height: auto;
-    &.activo {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
+  //div.tooltip {
+  //  opacity: 0;
+  //  visibility: hidden;
+  //  transition: opacity 0.2s ease, visibility 0.2s ease;
+  //  position: absolute;
+  //  border-radius: 8px;
+  //  background: #c8c8c898;
+  //  color: black;
+  //  font-size: 14px;
+  //  backdrop-filter: blur(5px);
+  //  padding: 5px;
+  //  width: 200px;
+  //  height: auto;
+  //  &.activo {
+  //    opacity: 1;
+  //    visibility: visible;
+  //  }
+  //}
   svg#mapa-metro {
     line {
       stroke-linecap: round;
