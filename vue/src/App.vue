@@ -1,24 +1,26 @@
 <script setup>
 import { ref, onMounted } from "vue";
+
 import StationSelector from "./views/StationSelector.vue";
 import StationSummary from "./views/StationSummary.vue";
 import MessageSnackBar from "./components/MessageSnackBar.vue";
+
 import { useSnackbarStore } from "./stores/snackbarStore";
 import { useAuthStore } from "./stores/authStore";
 
-import SyncStatusBar from "@/components/SyncStatusBar.vue"
+import SyncStatusBar from "@/components/SyncStatusBar.vue";
 
 const snackbarStore = useSnackbarStore();
 const authStore = useAuthStore();
 
 // Cargar sesión al iniciar la aplicación
 onMounted(() => {
-  console.log('🚀 App iniciada - verificando sesión guardada...');
+  console.log("🚀 App iniciada - verificando sesión guardada...");
   authStore.loadSession();
 });
 
 // Estado de navegación
-const currentView = ref("selector"); // 'selector' | 'summary'
+const currentView = ref("map"); // 'map' | 'registerStation'
 
 // Navegar entre vistas
 // const goToSummary = () => {
@@ -26,7 +28,8 @@ const currentView = ref("selector"); // 'selector' | 'summary'
 // };
 
 const goToSelector = () => {
-  currentView.value = "selector";
+  //Map view
+  currentView.value = "map";
 };
 
 // Handlers de eventos
@@ -36,7 +39,6 @@ const goToSelector = () => {
 // };
 
 const handleSaveComplete = () => {
-  // Relevamiento completo guardado
   snackbarStore.showSuccess("Relevamiento guardado exitosamente");
   goToSelector();
 };
@@ -49,28 +51,25 @@ const handleBack = () => {
 <template>
   <v-app>
     <v-main>
-      <v-container
-        class="px-2 pt-0 fill-height"
-        fluid
-        max-width="1440"
-      >
-        <SyncStatusBar :show-sync-button="true" class="mt-2 w-100"/>
+      <v-container class="px-2 pt-0 fill-height" fluid max-width="1440">
+        <!-- Barra de status: sync and authenticacion -->
+        <SyncStatusBar :show-sync-button="true" class="mt-2 w-100" />
         <RouterView />
-<!--        <template v-if="false">-->
+        <!--        <template v-if="false">-->
 
-<!--          &lt;!&ndash; Vista 1: Vista General &ndash;&gt;-->
-<!--          <StationSelector-->
-<!--            v-if="currentView === 'selector'"-->
-<!--            x-station-selected="handleStationSelected"-->
-<!--          />-->
+        <!--          &lt;!&ndash; Vista 1: Vista General &ndash;&gt;-->
+        <!--          <StationSelector-->
+        <!--            v-if="currentView === 'selector'"-->
+        <!--            x-station-selected="handleStationSelected"-->
+        <!--          />-->
 
-<!--          &lt;!&ndash; Vista 2: Form Station &ndash;&gt;-->
-<!--          <StationSummary-->
-<!--            v-else-if="currentView === 'summary'"-->
-<!--            @save-complete="handleSaveComplete"-->
-<!--            @back="handleBack"-->
-<!--          />-->
-<!--        </template>-->
+        <!--          &lt;!&ndash; Vista 2: Form Station &ndash;&gt;-->
+        <!--          <StationSummary-->
+        <!--            v-else-if="currentView === 'summary'"-->
+        <!--            @save-complete="handleSaveComplete"-->
+        <!--            @back="handleBack"-->
+        <!--          />-->
+        <!--        </template>-->
 
         <!-- Snackbar global -->
         <MessageSnackBar />
@@ -78,13 +77,12 @@ const handleBack = () => {
     </v-main>
   </v-app>
 </template>
-
 <style lang="scss">
-
+/* Global styles */
 .stripe-square {
   height: 40px;
   width: 40px;
   border-radius: 0 16px 0 0 !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
