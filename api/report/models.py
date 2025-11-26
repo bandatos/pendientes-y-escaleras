@@ -34,6 +34,9 @@ class StairReport(models.Model):
         ('down', 'Hacia abajo'),
     )
 
+    is_accessible = models.BooleanField(
+        blank=True, null=True, verbose_name="¿Es accesible?"
+    )
     stair = models.ForeignKey(
         Stair, on_delete=models.CASCADE,
         verbose_name="Escalera reportada",
@@ -71,6 +74,12 @@ class StairReport(models.Model):
     route_end = models.CharField(
         max_length=255, blank=True, null=True,
         verbose_name="Fin de la ruta"
+    )
+    same_start_as_route = models.BooleanField(
+        default=False, verbose_name="¿Es el mismo punto que el origen?"
+    )
+    same_end_as_route = models.BooleanField(
+        default=False, verbose_name="¿Es el mismo punto que el destino?"
     )
     is_aligned = models.BooleanField(
         default=False, verbose_name="¿Está alineada con el ID"
