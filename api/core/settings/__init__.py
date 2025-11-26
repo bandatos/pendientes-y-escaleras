@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.postgres',  # Commented out for SQLite - uncomment when using PostgreSQL
 
     'rest_framework',
     'corsheaders',
@@ -79,10 +78,15 @@ WSGI_APPLICATION = 'core.wsgi.application'
 AUTH_USER_MODEL = 'profile_auth.User'
 
 
-POSTRGRESQL_DB = os.getenv('POSTRGRESQL_DB', False)
+POSTRGRESQL_DB = getenv_bool('POSTRGRESQL_DB', False)
 DATABASE_NAME = os.getenv("DATABASE_NAME", "db.sqlite3")
 DATABASE_SCHEMA = os.getenv("DATABASE_SCHEMA")
+
 if POSTRGRESQL_DB:
+
+    INSTALLED_APPS += ("django.contrib.postgres",)
+    
+
     default_database = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': DATABASE_NAME,
