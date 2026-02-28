@@ -12,3 +12,4 @@ pytest-django==4.11.1
 django-storages==1.14.6
 boto3==1.40.56
 requests
+yeeko_xlsx_export @ git+https://github.com/yeeko-org/xlsx_export@main

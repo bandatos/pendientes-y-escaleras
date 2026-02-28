@@ -1,16 +1,16 @@
 from django.db import models
 
 
-class Route(models.Model):
-    route_id = models.CharField(max_length=255, unique=True)
-    route_short_name = models.CharField(max_length=50)
-    route_long_name = models.CharField(max_length=255)
-    route_type = models.IntegerField()
-    route_color = models.CharField(max_length=6, blank=True, null=True)
-    route_text_color = models.CharField(max_length=6, blank=True, null=True)
-
-    def __str__(self):
-        return f"{self.route_id} - {self.route_short_name}"
+# class Route(models.Model):
+#     route_id = models.CharField(max_length=255, unique=True)
+#     route_short_name = models.CharField(max_length=50)
+#     route_long_name = models.CharField(max_length=255)
+#     route_type = models.IntegerField()
+#     route_color = models.CharField(max_length=6, blank=True, null=True)
+#     route_text_color = models.CharField(max_length=6, blank=True, null=True)
+#
+#     def __str__(self):
+#         return f"{self.route_id} - {self.route_short_name}"
 
 
 # route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id,shape_id

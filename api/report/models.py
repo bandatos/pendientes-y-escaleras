@@ -34,6 +34,9 @@ class StairReport(models.Model):
         ('down', 'Hacia abajo'),
     )
 
+    is_accessible = models.BooleanField(
+        blank=True, null=True, verbose_name="¿Es accesible?"
+    )
     stair = models.ForeignKey(
         Stair, on_delete=models.CASCADE,
         verbose_name="Escalera reportada",
@@ -72,6 +75,12 @@ class StairReport(models.Model):
         max_length=255, blank=True, null=True,
         verbose_name="Fin de la ruta"
     )
+    same_start_as_route = models.BooleanField(
+        default=False, verbose_name="¿Es el mismo punto que el origen?"
+    )
+    same_end_as_route = models.BooleanField(
+        default=False, verbose_name="¿Es el mismo punto que el destino?"
+    )
     is_aligned = models.BooleanField(
         default=False, verbose_name="¿Está alineada con el ID"
     )
@@ -103,10 +112,11 @@ class StairReport(models.Model):
 class EvidenceImage(models.Model):
     stair_report = models.ForeignKey(
         StairReport, on_delete=models.CASCADE,
+        related_name='images',
         verbose_name="Reporte de escalera asociado"
     )
     image = models.ImageField(
-        upload_to='evidence_images/',
+        upload_to='evidence_images/', max_length=255,
         verbose_name="Imagen de evidencia"
     )
 

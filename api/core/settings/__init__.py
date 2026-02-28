@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.postgres',  # Commented out for SQLite - uncomment when using PostgreSQL
 
     'rest_framework',
     'corsheaders',
@@ -79,10 +78,15 @@ WSGI_APPLICATION = 'core.wsgi.application'
 AUTH_USER_MODEL = 'profile_auth.User'
 
 
-POSTRGRESQL_DB = os.getenv('POSTRGRESQL_DB', False)
+POSTRGRESQL_DB = getenv_bool('POSTRGRESQL_DB', False)
 DATABASE_NAME = os.getenv("DATABASE_NAME", "db.sqlite3")
 DATABASE_SCHEMA = os.getenv("DATABASE_SCHEMA")
+
 if POSTRGRESQL_DB:
+
+    INSTALLED_APPS += ("django.contrib.postgres",)
+    
+
     default_database = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': DATABASE_NAME,
@@ -137,17 +141,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -172,7 +165,6 @@ REST_FRAMEWORK = {
 COMPRESS_ENABLED = getenv_bool("COMPRESS_ENABLED", True)
 COMPRESS_OFFLINE = getenv_bool("COMPRESS_OFFLINE", True)
 
-
 AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
 AWS_PRELOAD_METADATA = getenv_bool('AWS_PRELOAD_METADATA', True)
@@ -180,22 +172,71 @@ AWS_PRELOAD_METADATA = getenv_bool('AWS_PRELOAD_METADATA', True)
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 
-AWS_LOCATION = os.getenv('AWS_LOCATION')
 AWS_DEFAULT_ACL = os.getenv('AWS_DEFAULT_ACL', 'public-read')
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
 
 AWS_STATIC_LOCATION = os.getenv('AWS_STATIC_LOCATION', 'static_compressed')
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+AWS_MEDIA_LOCATION = os.getenv('AWS_MEDIA_LOCATION', 'media')
 
 AWS_S3_FILE_OVERWRITE = getenv_bool('AWS_S3_FILE_OVERWRITE', False)
-
-URL_AMAZON_S3_FILES_UPLOADED = os.getenv('URL_AMAZON_S3_FILES_UPLOADED')
-
 AWS_IS_GZIPPED = getenv_bool('AWS_IS_GZIPPED', False)
 GZIP_CONTENT_TYPES = set(getenv_list('GZIP_CONTENT_TYPES', []))
 
+# Use S3 storage if bucket name is configured
 if AWS_STORAGE_BUCKET_NAME:
-    INSTALLED_APPS += ("storages", )
+    INSTALLED_APPS += ("storages",)
+
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+            "OPTIONS": {
+                "location": AWS_MEDIA_LOCATION,
+            }
+        },
+        "staticfiles": {
+            "BACKEND": "core.storage_backends.StaticStorage",
+            "OPTIONS": {
+                "location": AWS_STATIC_LOCATION,
+            }
+        },
+    }
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_STATIC_LOCATION}/'
+
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_MEDIA_LOCATION}/'
+else:
+    # Local file storage (development)
+    STATIC_URL = '/static/'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# URL_AMAZON_S3_FILES_UPLOADED = os.getenv('URL_AMAZON_S3_FILES_UPLOADED')
+
+# AWS_LOCATION = os.getenv('AWS_LOCATION')
+
+
 # -------------------------------END STORAGE---------------------------------
 
+# ------------------------------- MEDIA -------------------------------------
+
+# STATIC_URL = 'static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+# STATIC_PATH = os.path.join(BASE_DIR, os.getenv("STATIC_PATH", 'static'))
+# MEDIA_PATH = os.path.join(BASE_DIR, os.getenv("MEDIA_PATH", 'media'))
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# ------------------------------END MEDIA------------------------------------

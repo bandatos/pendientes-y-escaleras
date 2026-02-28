@@ -3,14 +3,15 @@ from rest_framework import viewsets, permissions, status
 # from rest_framework.filters import OrderingFilter
 from rest_framework.response import Response
 from rest_framework.request import Request
-
+from api.views.action_export_xls import ExportXlsMixin
 from report.models import StairReport, EvidenceImage
 from api.views.report.serializers import (
-    StairReportSerializer, EvidenceImageSerializer
+    StairReportSerializer, EvidenceImageSerializer,
+    StairReportExportSerializer
 )
 
 
-class StairReportViewSet(viewsets.ModelViewSet):
+class StairReportViewSet(viewsets.ModelViewSet, ExportXlsMixin):
 
     request: Request
     queryset = StairReport.objects.all()
@@ -23,8 +24,118 @@ class StairReportViewSet(viewsets.ModelViewSet):
 
     serializer_class = StairReportSerializer
 
-    def create(self, request, *args, **kwargs):
+    xls_attrs = [
+        {
+            "name": "ID de Reporte",
+            "width": 5,
+            "field": "id"
+        },
+        {
+            "name": "Fecha de reporte",
+            "width": 15,
+            "field": "date_reported"
+        },
+        {
+            "name": "ID de escalera",
+            "width": 5,
+            "field": "stair__id"
+        },
+        {
+            "name": "Estación",
+            "width": 25,
+            "field": "stair__stop_name",
+        },
+        {
+            "name": "Nombre reportante",
+            "width": 15,
+            "field": "first_name"
+        },
+        {
+            "name": "¿Está funcionando?",
+            "width": 6,
+            "field": "is_working"
+        },
+        {
+            "name": "Dirección observada",
+            "width": 8,
+            "field": "direction_observed"
+        },
+        {
+            "name": "Status de mantenimiento",
+            "width": 15,
+            "field": "status_maintenance"
+        },
+        {
+            "name": "Códigos de identificación",
+            "width": 20,
+            "field": "code_identifiers"
+        },
+        {
+            "name": "Inicio de la ruta",
+            "width": 26,
+            "field": "route_start"
+        },
+        {
+            "name": "Dónde inicia la escalera",
+            "width": 26,
+            "field": "path_start"
+        },
+        {
+            "name": "Dónde termina la escalera",
+            "width": 26,
+            "field": "path_end"
+        },
+        {
+            "name": "Fin de la ruta",
+            "width": 26,
+            "field": "route_end"
+        },
+        {
+            "name": "Dirección (Según STC-Metro)",
+            "width": 22,
+            "field": "stair__original_direction"
+        },
+        {
+            "name": "Ubicación (Según STC-Metro)",
+            "width": 22,
+            "field": "stair__original_location"
+        },
+        {
+            "name": "Línea (Según STC-Metro)",
+            "width": 6,
+            "field": "stair__route_name"
+        },
+        {
+            "name": "Otros detalles",
+            "width": 30,
+            "field": "details"
+        },
+        {
+            "name": "Imágenes de evidencia",
+            "width": 50,
+            "field": "images"
+        }
 
+    ]
+    xls_name = "Todos los reportes de escaleras"
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        if self.action == "export_xls":
+            queryset = StairReport.objects.all().select_related(
+                "stair__stop",
+                "stair__stop__route",
+                "user",
+            )
+        return queryset
+
+    def get_serializer_class(self):
+        action_serializer = {
+            'export_xls': StairReportExportSerializer,
+        }
+        return action_serializer.get(self.action, self.serializer_class)
+
+    def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         user = request.user
         serializer.is_valid(raise_exception=True)

@@ -127,6 +127,9 @@ class Stair(models.Model):
         max_length=255, blank=True, null=True,
         verbose_name="Ubicación según metro"
     )
+    route_blur = models.BooleanField(
+        default=False, verbose_name="Línea poco clara"
+    )
     validated = models.BooleanField(default=False)
 
     def __str__(self):

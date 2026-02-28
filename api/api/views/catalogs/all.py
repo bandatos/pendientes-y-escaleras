@@ -22,7 +22,7 @@ class CatalogsView(APIView):
 
     def get(self, request):
 
-        metro_stops = Stop.objects.filter(location_type=0)
+        metro_stops = Stop.objects.filter(location_type=1)
         # all_stairs = Stair.objects.all().select_related('stop')
         all_stations = Station.objects.all().prefetch_related('stops')
         latest_report = StairReport.objects.filter(

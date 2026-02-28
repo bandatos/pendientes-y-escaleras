@@ -23,7 +23,6 @@ class Route(models.Model):
     route_id = models.CharField(
         max_length=255,
         unique=True,
-
         db_index=True,
         help_text="Identifies a route"
     )
@@ -318,7 +317,7 @@ class Stop(models.Model):
         help_text="Identifies the fare zone for a stop"
     )
     location_type = models.IntegerField(
-        choices=LOCATION_TYPE_CHOICES, default=0,
+        choices=LOCATION_TYPE_CHOICES,
         blank=True, null=True, help_text="Location type"
     )
 
