@@ -22,7 +22,7 @@ class CatalogsView(APIView):
 
     def get(self, request):
 
-        metro_stops = Stop.objects.filter(location_type=1)
+        metro_stops = Stop.objects.filter(location_type_id=1)
         # all_stairs = Stair.objects.all().select_related('stop')
         all_stations = Station.objects.all().prefetch_related('stops')
         latest_report = StairReport.objects.filter(
@@ -40,12 +40,9 @@ class CatalogsView(APIView):
             #     User.objects.all(), many=True).data,
             "routes": RouteCatSerializer(
                 Route.objects.all(), many=True).data,
-            "stops": StopCatSerializer(
-                metro_stops, many=True).data,
-            "stations": StationCatSerializer(
-                all_stations, many=True).data,
-            "stairs": StairCatSerializer(
-                all_stairs, many=True).data,
+            "stops": StopCatSerializer(metro_stops, many=True).data,
+            "stations": StationCatSerializer(all_stations, many=True).data,
+            "stairs": StairCatSerializer(all_stairs, many=True).data,
         }
 
 

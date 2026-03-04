@@ -15,7 +15,7 @@ The web services to store the reports about the subway stations or
 - Instalar venv
 - Crear en ambiente virtual, en este caso llamado 'escaleras' en la carpeta env:
 ```bash
-python3 -m venv ocamis
+python3 -m venv escaleras
 ````
 
 - Iniciar el entorno virtual (venv) en la carpeta colocada
@@ -121,4 +121,5 @@ python manage.py runserver
 - Acceder a la aplicación en el navegador web en la dirección http://localhost:8013
 
 
-
+Para nginx:
+sudo ln -s /etc/nginx/sites-available/apiescaleras.bandatos.org /etc/nginx/sites-enabled/

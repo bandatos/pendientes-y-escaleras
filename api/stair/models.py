@@ -1,6 +1,39 @@
 from django.db import models
 from stop.models import Station, Stop
 
+PATHWAY_MODE_CHOICES = [
+    (1, 'Walkway'),
+    (2, 'Stairs'),
+    (3, 'Moving sidewalk/travelator'),
+    (4, 'Escalator'),
+    (5, 'Elevator'),
+    (6, 'Fare gate'),
+    (7, 'Exit gate'),
+]
+
+
+class PathwayMode(models.Model):
+
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(
+        max_length=255, verbose_name="Nombre")
+    gtfs_name = models.CharField(
+        max_length=255, verbose_name="Nombre en GTFS",)
+    icon = models.CharField(
+        max_length=255, blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Pathway Mode'
+        verbose_name_plural = 'Pathway Modes'
+
+    def __str__(self):
+        return f"{self.id} - {self.name}"
+
+
+IS_BIDIRECTIONAL_CHOICES = [
+    (0, 'Unidirectional'),
+    (1, 'Bidirectional'),
+]
 
 class Pathway(models.Model):
     """
@@ -9,89 +42,33 @@ class Pathway(models.Model):
     Usa representación de grafo: nodos (locations) y aristas (pathways).
     """
 
-    PATHWAY_MODE_CHOICES = [
-        (1, 'Walkway'),
-        (2, 'Stairs'),
-        (3, 'Moving sidewalk/travelator'),
-        (4, 'Escalator'),
-        (5, 'Elevator'),
-        (6, 'Fare gate'),
-        (7, 'Exit gate'),
-    ]
-
-    # Choices para is_bidirectional
-    IS_BIDIRECTIONAL_CHOICES = [
-        (0, 'Unidirectional'),
-        (1, 'Bidirectional'),
-    ]
-
-    # Primary key - pathway_id
     pathway_id = models.CharField(
-        max_length=255,
-        unique=True,
-        db_index=True,
-        help_text="Identifies a pathway"
-    )
-
+        max_length=255, unique=True, db_index=True)
     from_stop = models.ForeignKey(
-        Stop,
-        on_delete=models.CASCADE,
-        related_name='pathways_from',
-        db_column='from_stop_id',
-        help_text="Location at which the pathway begins"
-    )
-
+        Stop, on_delete=models.CASCADE, related_name='pathways_from')
     to_stop = models.ForeignKey(
-        Stop,
-        on_delete=models.CASCADE,
-        related_name='pathways_to',
-        db_column='to_stop_id',
-        help_text="Location at which the pathway ends"
-    )
-
-    pathway_mode = models.IntegerField(
-        choices=PATHWAY_MODE_CHOICES,
-    )
-
-    is_bidirectional = models.IntegerField(
-        choices=IS_BIDIRECTIONAL_CHOICES,
-        help_text="0=Unidirectional (from→to only), 1=Bidirectional"
-    )
-
+        Stop, on_delete=models.CASCADE, related_name='pathways_to')
+    pathway_mode = models.ForeignKey(
+        PathwayMode, on_delete=models.CASCADE, blank=True, null=True)
+    pathway_description = models.CharField(
+        max_length=255, blank=True, null=True)
+    is_bidirectional = models.IntegerField(choices=IS_BIDIRECTIONAL_CHOICES)
     length = models.FloatField(
-        blank=True, null=True,
-        help_text="Horizontal length in meters of the pathway"
-    )
-
+        blank=True, null=True, help_text="Horizontal length in meters")
     traversal_time = models.PositiveIntegerField(
         blank=True, null=True,
-        help_text="Average time in seconds needed to walk through the pathway"
-    )
-
+        help_text="Average time in seconds needed to walk through the pathway")
     stair_count = models.IntegerField(
         blank=True, null=True,
-        help_text="Number of stairs (positive=up, negative=down from from_stop to to_stop)"
-    )
-
+        help_text="Number of stairs (positive=up, negative=down from from_stop to to_stop)")
     max_slope = models.FloatField(
         blank=True, null=True,
-        help_text="Maximum slope ratio (positive=upwards, negative=downwards)"
-    )
-
-    min_width = models.FloatField(
-        blank=True, null=True,
-        help_text="Minimum width of the pathway in meters"
-    )
-
-    signposted_as = models.TextField(
-        blank=True, null=True,
-        help_text="Public facing text from physical signage visible to riders"
-    )
-
-    reversed_signposted_as = models.TextField(
-        blank=True, null=True,
-        help_text="Signage text when pathway is used from to_stop to from_stop"
-    )
+        help_text="Maximum slope ratio (positive=upwards, negative=downwards)")
+    code_identifiers = models.JSONField(
+        blank=True, null=True, default=list,
+        verbose_name="Todos los códigos identificadores")
+    validated = models.BooleanField(default=False)
+    miro_id = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Pathway'
@@ -113,23 +90,18 @@ class Stair(models.Model):
     #     Station, on_delete=models.CASCADE, related_name='stairs')
     stop = models.ForeignKey(
         Stop, on_delete=models.CASCADE, related_name='stairs',
-        verbose_name="Estación (stop)"
-    )
+        verbose_name="Estación (stop)")
     code_identifiers = models.JSONField(
         blank=True, null=True, default=list,
-        verbose_name="Todos los códigos identificadores"
-    )
+        verbose_name="Todos los códigos identificadores")
     original_direction = models.CharField(
         max_length=255, blank=True, null=True,
-        verbose_name="Dirección según metro"
-    )
+        verbose_name="Dirección según metro")
     original_location = models.CharField(
         max_length=255, blank=True, null=True,
-        verbose_name="Ubicación según metro"
-    )
+        verbose_name="Ubicación según metro")
     route_blur = models.BooleanField(
-        default=False, verbose_name="Línea poco clara"
-    )
+        default=False, verbose_name="Línea poco clara")
     validated = models.BooleanField(default=False)
 
     def __str__(self):

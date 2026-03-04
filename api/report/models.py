@@ -1,7 +1,7 @@
 from django.db import models
 from profile_auth.models import User
 from stop.models import Station
-from stair.models import Stair
+from stair.models import Stair, Pathway
 
 
 # class StationReport(models.Model):
@@ -37,69 +37,49 @@ class StairReport(models.Model):
     is_accessible = models.BooleanField(
         blank=True, null=True, verbose_name="¿Es accesible?"
     )
-    stair = models.ForeignKey(
-        Stair, on_delete=models.CASCADE,
-        verbose_name="Escalera reportada",
-        related_name="stair_reports"
-    )
+    stair = models.ForeignKey(Stair, on_delete=models.CASCADE,
+        related_name="stair_reports", blank=True, null=True,
+        verbose_name="Escalera reportada")
+    pathway = models.ForeignKey(Pathway, on_delete=models.CASCADE,
+        related_name="pathway_reports", blank=True, null=True,
+        verbose_name="Ruta reportada")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # station_report = models.ForeignKey(
-    #     StationReport, on_delete=models.CASCADE,
-    #     verbose_name="Reporte de estación asociado"
-    # )
     status_maintenance = models.CharField(
         max_length=10, choices=STATUS_MAINTENANCE_CHOICES,
-        blank=True, null=True, verbose_name="Estado de mantenimiento"
-    )
+        blank=True, null=True, verbose_name="Estado de mantenimiento")
     other_status_maintenance = models.CharField(
         max_length=255, blank=True, null=True,
-        verbose_name="Otro estado de mantenimiento"
-    )
+        verbose_name="Otro estado de mantenimiento")
     code_identifiers = models.JSONField(
         blank=True, null=True, default=list,
-        verbose_name="Todos los códigos identificadores"
-    )
+        verbose_name="Todos los códigos identificadores")
     route_start = models.CharField(
         max_length=255, blank=True, null=True,
-        verbose_name="Inicio de la ruta"
-    )
+        verbose_name="Inicio de la ruta")
     path_start = models.CharField(
         max_length=255, blank=True, null=True,
-        verbose_name="Dónde inicia de escalera"
-    )
+        verbose_name="Dónde inicia de escalera")
     path_end = models.CharField(
         max_length=255, blank=True, null=True,
-        verbose_name="Dónde termina la escalera"
-    )
+        verbose_name="Dónde termina la escalera")
     route_end = models.CharField(
         max_length=255, blank=True, null=True,
-        verbose_name="Fin de la ruta"
-    )
+        verbose_name="Fin de la ruta")
     same_start_as_route = models.BooleanField(
-        default=False, verbose_name="¿Es el mismo punto que el origen?"
-    )
+        default=False, verbose_name="¿Es el mismo punto que el origen?")
     same_end_as_route = models.BooleanField(
-        default=False, verbose_name="¿Es el mismo punto que el destino?"
-    )
-    is_aligned = models.BooleanField(
-        default=False, verbose_name="¿Está alineada con el ID"
-    )
+        default=False, verbose_name="¿Es el mismo punto que el destino?")
     is_working = models.BooleanField(
-        blank=True, null=True, verbose_name="¿Está funcionando?"
-    )
+        blank=True, null=True, verbose_name="¿Está funcionando?")
     details = models.TextField(
-        blank=True, null=True, verbose_name="Detalles adicionales"
-    )
+        blank=True, null=True, verbose_name="Detalles adicionales")
     direction_observed = models.CharField(
         max_length=10, choices=DIRECTION_CHOICES,
-        blank=True, null=True, verbose_name="Dirección observada"
-    )
+        blank=True, null=True, verbose_name="Dirección observada")
     date_reported = models.DateTimeField(
-        auto_now=True, verbose_name="Fecha/hora de reporte"
-    )
+        auto_now=True, verbose_name="Fecha/hora de reporte")
     date_received = models.DateTimeField(
-        auto_now=True, verbose_name="Fecha/hora de recepción"
-    )
+        auto_now=True, verbose_name="Fecha/hora de recepción")
 
     def __str__(self):
         return f"Reporte de escalera {self.stair} por {self.user}"

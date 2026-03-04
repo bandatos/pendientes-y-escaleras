@@ -17,10 +17,10 @@ class EvidenceImageSerializer(serializers.ModelSerializer):
 
 class EvidenceImageUrlsSerializer(serializers.RelatedField):
     def to_representation(self, value):
-        url = value.image.url
-        return url.replace(
-            "https://bandatos.s3.us-west-2.amazonaws.com/escaleras",
-            "https://apiescaleras.bandatos.org/media")
+        return value.image.url
+        # return value.image.url.replace(
+        #     "https://bandatos.s3.us-west-2.amazonaws.com/escaleras",
+        #     "https://apiescaleras.bandatos.org/media")
 
 
 class StairExportSerializer(serializers.ModelSerializer):

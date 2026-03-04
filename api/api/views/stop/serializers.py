@@ -44,10 +44,8 @@ class StationCatSerializer(serializers.ModelSerializer):
         ]
 
 
-class StationFullSerializer(serializers.ModelSerializer):
+class StationFullSerializer(StationCatSerializer):
 
-    routes = RoutesSerializer(
-        many=True, read_only=True, source='stops')
     stairs = serializers.SerializerMethodField()
 
     def get_stairs(self, obj):

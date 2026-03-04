@@ -1,0 +1,1812 @@
+{
+  "size": 37,
+  "limit": 50,
+  "total": 37,
+  "data": [
+    {
+      "id": "3458764661678719159",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L12 &#61;&gt; Tláhuac</strong></p>",
+        "shape": "round_rectangle"
+      },
+      "style": {
+        "fillColor": "#b1a425",
+        "fillOpacity": "0.8",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#ffffff"
+      },
+      "geometry": {
+        "width": 270.52641858749746,
+        "height": 51.334613763688495
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1401.2528158037078,
+        "y": 409.7407308669229,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719159"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719160",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L12 &#61; Mixcoac</strong></p>",
+        "shape": "round_rectangle"
+      },
+      "style": {
+        "fillColor": "#b1a425",
+        "fillOpacity": "0.8",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#ffffff"
+      },
+      "geometry": {
+        "width": 270.52641858749746,
+        "height": 51.334613763688495
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1040.5208609620797,
+        "y": 409.7407308669229,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719160"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:24:58Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719161",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L7 &#61;&gt; Rosario</strong></p>",
+        "shape": "round_rectangle"
+      },
+      "style": {
+        "fillColor": "#ee7623",
+        "fillOpacity": "1.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#ffffff"
+      },
+      "geometry": {
+        "width": 238.90612094136964,
+        "height": 51.334613763688495
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 516.8673995970496,
+        "y": 570.6869223958267,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719161"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719162",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L7 &lt;&#61; Barranca del Muerto</strong></p>",
+        "shape": "round_rectangle"
+      },
+      "style": {
+        "fillColor": "#ee7623",
+        "fillOpacity": "1.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#ffffff"
+      },
+      "geometry": {
+        "width": 242.23937289449458,
+        "height": 51.334613763688495
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 254.36871990212626,
+        "y": 570.6869223958267,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719162"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719163",
+      "type": "shape",
+      "data": {
+        "content": "<p>L7 Mezzanine -2 (Dir. Barranca)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.6",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 91.6582502635068,
+        "height": 91.6582502635068
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 192.17792269042206,
+        "y": 399.7407308669229,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719163"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719164",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L7 Vestíbulo andén </strong>(Dir. Rosario)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.4",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 81.95492029549514,
+        "height": 82.7098932306315
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 706.6787185553251,
+        "y": 563.2667434417219,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719164"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719165",
+      "type": "shape",
+      "data": {
+        "content": "<p>L7 Acceso oriente</p><p>Dirección Barranca (Entre Revolución y Periférico)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 142.70184446296918,
+        "height": 56.2361851764942
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 257.1550782047791,
+        "y": 66.22403968512691,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719165"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719166",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L7 Vestíbulo torniquetes</strong></p><p>(entrada L7 Dir. Barranca)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.8",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 99.12414981840162,
+        "height": 99.12414981840162
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 217.35742523276008,
+        "y": 231.74836633520073,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719166"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719167",
+      "type": "shape",
+      "data": {
+        "content": "<p>L7 Mezzanine -2<br />(Dir. Rosario)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.6",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 87.36244819068574,
+        "height": 87.36244819068574
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 596.6779030296668,
+        "y": 409.7407308669229,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719167"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719169",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L7 Nivel con torniquetes</strong></p><p>(entrada Dir. Rosario)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.8",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 99.12414981840105,
+        "height": 99.12414981840105
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 512.9195001419614,
+        "y": 224.4974318623793,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719169"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719170",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>Vestíbulo andén</strong> (Dir. Barranca)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.4",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 80.70584814863855,
+        "height": 80.70584814863855
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 49.515173711614125,
+        "y": 558.7821677571549,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719170"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719171",
+      "type": "shape",
+      "data": {
+        "content": "<p>L7 Acceso Dirección Rosario</p><p>(entre Revolución y Patriotismo)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 145.73993066081619,
+        "height": 60.55977993912981
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 478.3167478911066,
+        "y": 61.24296902445195,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719171"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719181",
+      "type": "shape",
+      "data": {
+        "content": "<p>L7 Pasillo superior - cambio de andén</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.4",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 78.86781913291523,
+        "height": 78.71351526677621
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 380.44678256069824,
+        "y": 443.8061985234238,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719181"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719190",
+      "type": "shape",
+      "data": {
+        "content": "<p>L7 Acceso a paraderos (Dirección Barranca)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 130.2638869596443,
+        "height": 51.33461376368845
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 93.20813133497563,
+        "y": 63.7732539787242,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719190"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719192",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Descanso de trasbordo hacia Línea 7</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.8",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 88.61222388957759,
+        "height": 87.36244819068487
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 749.7255933484423,
+        "y": 322.37828267623746,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719192"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719195",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Mezzanine principal</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.8",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 115.69290311579347,
+        "height": 114.06118491144451
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1143.880010693095,
+        "y": 245.39030912303707,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719195"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719202",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Acceso por calle Empresa (Hospital San Angel Inn)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 130.2638869596443,
+        "height": 51.33461376368845
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1417.4674749222042,
+        "y": 62.1053571631831,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719202"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719203",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Acceso a Línea 12 (entre Revolución y Patriotismo)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 130.2638869596443,
+        "height": 51.33461376368845
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1262.2035879625603,
+        "y": 62.1053571631831,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719203"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719211",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Acceso Av. Patriotismo<br />(más cerca del Oxxo)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 130.2638869596443,
+        "height": 51.33461376368845
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 726.2053802972143,
+        "y": 59.963714183802324,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719211"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719212",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Acceso Av. Patriotismo<br />(más lejano del Oxxo)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 130.2638869596443,
+        "height": 51.33461376368845
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 877.1919031017326,
+        "y": 59.963714183802324,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719212"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719213",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Mezannine antes de salir a Av. Patriotismo</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.6",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 91.65825026350672,
+        "height": 91.65825026350672
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 804.2895662202347,
+        "y": 177.67471123377192,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719213"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719214",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L12 Vestíbulo torniquetes </strong>(salida Museo del Metro)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.6",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 95.11061232405359,
+        "height": 84.63443129378015
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 963.5510727557787,
+        "y": 172.97232628504145,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719214"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719220",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>L12 Vestíbulo torniquetes </strong>(Salida Norte)</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.6",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 95.11061232405389,
+        "height": 95.11061232405389
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1354.3964405455083,
+        "y": 200.53095736716415,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719220"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678719224",
+      "type": "shape",
+      "data": {
+        "content": "<p>L12 Acceso elevador Eje 7 (Extremadura)</p>",
+        "shape": "rectangle"
+      },
+      "style": {
+        "fillColor": "#fff6b6",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 130.2638869596443,
+        "height": 51.33461376368845
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1083.7761251755376,
+        "y": 68.90723636899503,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661678719224"
+      },
+      "createdAt": "2026-02-28T17:00:06Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678993393",
+      "type": "text",
+      "data": {
+        "content": "<p>L7 Nivel superficie 0</p>"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "textAlign": "center",
+        "color": "#b0b0b0"
+      },
+      "geometry": {
+        "width": 132.0
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 385.00600043626423,
+        "y": 15.419417600406916,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/texts/3458764661678993393"
+      },
+      "createdAt": "2026-02-28T17:04:47Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678993394",
+      "type": "text",
+      "data": {
+        "content": "<p>L7 Nivel -2</p>"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "textAlign": "center",
+        "color": "#b0b0b0"
+      },
+      "geometry": {
+        "width": 69.0
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 387.82311423056694,
+        "y": 343.91160573516964,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/texts/3458764661678993394"
+      },
+      "createdAt": "2026-02-28T17:04:47Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678993396",
+      "type": "text",
+      "data": {
+        "content": "<p>L7 Nivel Andenes -3</p>"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "textAlign": "center",
+        "color": "#b0b0b0"
+      },
+      "geometry": {
+        "width": 130.0
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 380.44678256069824,
+        "y": 511.9117968264066,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/texts/3458764661678993396"
+      },
+      "createdAt": "2026-02-28T17:04:47Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661678993397",
+      "type": "text",
+      "data": {
+        "content": "<p>L7 Nivel -1</p>"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "textAlign": "center",
+        "color": "#b0b0b0"
+      },
+      "geometry": {
+        "width": 69.0
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 386.0053306750417,
+        "y": 128.33044016013656,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/texts/3458764661678993397"
+      },
+      "createdAt": "2026-02-28T17:04:47Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661681921688",
+      "type": "shape",
+      "data": {
+        "content": "<p>Museo del Metro</p>",
+        "shape": "triangle"
+      },
+      "style": {
+        "fillColor": "#adf0c7",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.6",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 97.62450886818587,
+        "height": 61.01681014544766
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1033.259915826303,
+        "y": 210.4782493323185,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764661681921688"
+      },
+      "createdAt": "2026-02-28T17:49:24Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661682255111",
+      "type": "text",
+      "data": {
+        "content": "<p>L12 Nivel Andenes -2</p>"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "textAlign": "center",
+        "color": "#b0b0b0"
+      },
+      "geometry": {
+        "width": 138.0
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1214.6670240089172,
+        "y": 475.42090157875947,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/texts/3458764661682255111"
+      },
+      "createdAt": "2026-02-28T17:54:27Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:28:44Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661682255113",
+      "type": "text",
+      "data": {
+        "content": "<p>L12 Nivel -1</p>"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "textAlign": "center",
+        "color": "#b0b0b0"
+      },
+      "geometry": {
+        "width": 77.0
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1222.0716444827378,
+        "y": 178.35971666731467,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/texts/3458764661682255113"
+      },
+      "createdAt": "2026-02-28T17:54:27Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764661682255863",
+      "type": "text",
+      "data": {
+        "content": "<p>L12 Nivel superficie 0</p>"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "textAlign": "center",
+        "color": "#b0b0b0"
+      },
+      "geometry": {
+        "width": 140.0
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1217.013547673125,
+        "y": 12.6065864817013,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/texts/3458764661682255863"
+      },
+      "createdAt": "2026-02-28T17:55:04Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:20:02Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764662282985626",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>T</strong>ESTING</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.8",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 99.12414981840105,
+        "height": 99.12414981840105
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1109.265761365866,
+        "y": 559.5490391290343,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764662282985626"
+      },
+      "createdAt": "2026-03-04T19:32:31Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:32:37Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764662285428208",
+      "type": "shape",
+      "data": {
+        "content": "",
+        "shape": "right_arrow"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "1.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 47.37232092841043,
+        "height": 14.285720825195312
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 25.590884585299364,
+        "y": 322.95919026886105,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764662285428208"
+      },
+      "createdAt": "2026-03-04T19:50:42Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:56:30Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764662285572452",
+      "type": "shape",
+      "data": {
+        "content": "<p><strong>T</strong>ESTING</p>",
+        "shape": "circle"
+      },
+      "style": {
+        "fillColor": "#c6dcff",
+        "fillOpacity": "0.7",
+        "fontFamily": "noto_sans",
+        "fontSize": "10",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "0.8",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 99.12414981840105,
+        "height": 99.12414981840105
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 1480.609159045068,
+        "y": 563.2667434417219,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764662285572452"
+      },
+      "createdAt": "2026-03-04T19:52:09Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:52:21Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764662286105610",
+      "type": "shape",
+      "data": {
+        "content": "",
+        "shape": "right_arrow"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "1.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 47.37232092841043,
+        "height": 14.285720825195312
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 25.590884585299364,
+        "y": 488.91153707061886,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764662286105610"
+      },
+      "createdAt": "2026-03-04T19:56:31Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:56:46Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    },
+    {
+      "id": "3458764662286274157",
+      "type": "shape",
+      "data": {
+        "content": "",
+        "shape": "right_arrow"
+      },
+      "style": {
+        "fillColor": "#ffffff",
+        "fillOpacity": "0.0",
+        "fontFamily": "noto_sans",
+        "fontSize": "14",
+        "borderColor": "#1a1a1a",
+        "borderWidth": "2.0",
+        "borderOpacity": "1.0",
+        "borderStyle": "normal",
+        "textAlign": "center",
+        "textAlignVertical": "middle",
+        "color": "#1a1a1a"
+      },
+      "geometry": {
+        "width": 47.37232092841043,
+        "height": 14.285720825195312
+      },
+      "parent": {
+        "links": {
+          "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items/3458764661678874975"
+        },
+        "id": "3458764661678874975"
+      },
+      "position": {
+        "x": 26.543277163424364,
+        "y": 112.2231731941468,
+        "origin": "center",
+        "relativeTo": "parent_top_left"
+      },
+      "links": {
+        "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/shapes/3458764662286274157"
+      },
+      "createdAt": "2026-03-04T19:56:47Z",
+      "createdBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      },
+      "modifiedAt": "2026-03-04T19:57:00Z",
+      "modifiedBy": {
+        "id": "3074457364512475707",
+        "type": "user"
+      }
+    }
+  ],
+  "links": {
+    "self": "https://api.miro.com/v2/boards/uXjVJucVbCE%3D/items?parent_item_id=3458764661678874975&limit=50&cursor="
+  },
+  "type": "cursor-list"
+}

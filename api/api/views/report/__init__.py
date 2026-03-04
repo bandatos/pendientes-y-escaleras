@@ -131,6 +131,7 @@ class StairReportViewSet(viewsets.ModelViewSet, ExportXlsMixin):
 
     def get_serializer_class(self):
         action_serializer = {
+            'update': StairReportSerializer,
             'export_xls': StairReportExportSerializer,
         }
         return action_serializer.get(self.action, self.serializer_class)

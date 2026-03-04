@@ -81,12 +81,11 @@ AUTH_USER_MODEL = 'profile_auth.User'
 POSTRGRESQL_DB = getenv_bool('POSTRGRESQL_DB', False)
 DATABASE_NAME = os.getenv("DATABASE_NAME", "db.sqlite3")
 DATABASE_SCHEMA = os.getenv("DATABASE_SCHEMA")
+print(f"Using PostgreSQL: {POSTRGRESQL_DB}")
 
 if POSTRGRESQL_DB:
 
     INSTALLED_APPS += ("django.contrib.postgres",)
-    
-
     default_database = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': DATABASE_NAME,
@@ -239,3 +238,8 @@ STATICFILES_DIRS = [
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ------------------------------END MEDIA------------------------------------
+
+# ---------------------------------OROS-----------------------------------
+MIRO_ACCESS_TOKEN = os.getenv("MIRO_ACCESS_TOKEN")
+MIRO_BOARD_ID = os.getenv("MIRO_BOARD_ID")
+
