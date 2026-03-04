@@ -88,7 +88,7 @@ if POSTRGRESQL_DB:
     
 
     default_database = {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': DATABASE_NAME,
         'USER': os.getenv("DATABASE_USER"),
         'PASSWORD': os.getenv("DATABASE_PASSWORD"),
@@ -96,7 +96,6 @@ if POSTRGRESQL_DB:
         'PORT': int(os.getenv("DATABASE_PORT", 5432)),
     }
 else:
-
     default_database = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, DATABASE_NAME)
