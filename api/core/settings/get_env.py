@@ -32,7 +32,7 @@ def getenv_int(env_name: str, default: int = 0) -> int:
 def getenv_db(env_pref="DATABASE", engine="postgres", base_dir="") -> dict:
     if engine == "postgres":
         return {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': os.getenv(f"{env_pref}_NAME"),
             'USER': os.getenv(f"{env_pref}_USER"),
             'PASSWORD': os.getenv(f"{env_pref}_PASSWORD"),
