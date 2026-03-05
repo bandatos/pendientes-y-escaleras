@@ -93,3 +93,11 @@ All routes under `/api/`. DRF DefaultRouter registers:
 ### Settings
 
 `core/settings/__init__.py` loads from `.env` via `python-dotenv`. Helper functions in `core/settings/get_env.py` handle typed env vars (`getenv_bool`, `getenv_int`, `getenv_list`). The `django.contrib.postgres` app and `storages` are added to `INSTALLED_APPS` conditionally at runtime.
+
+### Additional important notes
+- When the developer ask you about the best approach or advices, after answer, ask if you can proceed with the implementation of the code, and wait for the confirmation before start writing the code.
+- Build with typing hints and docstrings for all views, serializers, and complex functions.
+- The API error messages should be in Spanish, as the user-facing frontend is in Spanish.
+- Avoid boilerplate and repetition by leveraging DRF's generic views, mixins, and the `BaseViewSet` where possible. If the standard suggest that, answer before choose the best approach for the specific case.
+- Never execute `makemigrations` or `migrate` commands yourself. I will to execute manually after review post session the changes.
+- Limit code width to 80 columns. Wrap lines only if they exceed this limit, maintaining a single-line format whenever possible for readability.

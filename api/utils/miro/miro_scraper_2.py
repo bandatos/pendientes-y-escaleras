@@ -25,8 +25,6 @@ frame_id = '3458764661678874975'
 found_frame = None
 
 
-
-
 items_url = f"{base_url}/items"
 while True:
     params["cursor"] = cursor
@@ -46,6 +44,7 @@ while True:
     cursor = data.get("cursor")
     if not cursor:
         break
+
 
 print("Frame encontrado:\n", found_frame)
 if found_frame:

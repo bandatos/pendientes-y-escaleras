@@ -29,6 +29,13 @@ def _parse_content(html: str) -> dict:
     return {'name': name, 'desc': desc, 'is_closed': is_closed}
 
 
+def _resolve_line(item: dict) -> str | None:
+    content = _strip_html(item.get('data', {}).get('content', ''))
+    prefix = _get_line_prefix(content)
+    if prefix:
+        return prefix
+    return None
+
 def _item_center(item: dict) -> tuple[float, float]:
     """Returns (x, y) center. position.origin='center' → x,y already IS the center."""
     pos = item.get('position', {})
@@ -42,18 +49,21 @@ def _slugify(text: str) -> str:
 
 
 _LINE_RE = re.compile(r'^(L\d{1,2}[AB]?)\b')
+_OLD_LEVEL_TEXT_RE = re.compile(
+    r'(L\d{1,2}[AB]?)\s+NIVEL\s+(ANDENES\s+)?([-\d]+|SUPERFICIE\s+\d+)',
+    re.IGNORECASE,
+)
 _LEVEL_TEXT_RE = re.compile(
-    r'(L\d{1,2}[AB]?)\s+Nivel\s+(Andenes\s+)?([-\d]+|superficie\s+\d+)',
+    r'(?:(?P<line>L\d{1,2}[AB]?)\s+)?'
+    r'NIVEL\s+'
+    r'(?:(?P<andenes>Andenes)\s+|superficie\s+)?'
+    r'(?P<level>[+-]?\d(?:\.\d{1,2})?)',
     re.IGNORECASE,
 )
 
 def _get_line_prefix(text: str) -> str | None:
     m = _LINE_RE.match(text.strip())
     return m.group(1) if m else None
-
-
-def get_items_by_shape(items: list, shape: str) -> list:
-    return [i for i in items if i.get('data', {}).get('shape') == shape]
 
 
 # ---------------------------------------------------------------------------
@@ -74,13 +84,15 @@ class MiroSchemaBuilder:
         self.station_slug = _slugify(frame_title)
 
         # Set during run()
+        self.frame: dict | None = None
         self._items: list = []
         self._item_map: dict[str, dict] = {}
         self._item_y_map: dict[str, float] = {}
         self._connectors: list = []
         self._station_stops: list = []
+        self.routes: dict[str, Route] = {}
+        self.unique_route: Route | None = None
         self._level_texts: dict[str, list[dict]] = {}
-        self._line_centroids: dict[str, float] = {}
         self._level_obj_map: dict[str, Level] = {}
         self._stop_obj_map: dict[str, Stop] = {}
         self._dry_run = False
@@ -103,26 +115,34 @@ class MiroSchemaBuilder:
         """
         self._dry_run = dry_run
 
-        frame = search_frame_by_title(self.frame_title)
-        if not frame:
+        self.frame = search_frame_by_title(self.frame_title)
+        if not self.frame:
             print(f"Frame '{self.frame_title}' no encontrado.")
             return None
 
         self._station_stops = list(
             Stop.objects.filter(stop_name__iexact=self.frame_title))
         if not self._station_stops:
-            print(f"Stops para '{self.frame_title}' no encontrados en la base de datos.")
+            print(f"Stops para '{self.frame_title}' "
+                  f"no encontrados en la base de datos.")
             return None
+        for station_stop in self._station_stops:
+            if route := station_stop.route:
+                self.routes[f"L{route.route_short_name}"] = route
+            else:
+                raise ValueError(f"Stop '{station_stop.stop_id}' no tiene ruta asignada.")
+        if len(self.routes) == 1:
+            self.unique_route = next(iter(self.routes.values()))
 
-        self._items = get_frame_items(frame['id'])
-        self._connectors = get_frame_connectors(frame['id'], self._items)
+        frame_id = self.frame.get('id')
+        self._items = get_frame_items(frame_id)
+        self._connectors = get_frame_connectors(frame_id, self._items)
         self._item_map = {item['id']: item for item in self._items}
         self._item_y_map = {iid: _item_center(item)[1]
                             for iid, item in self._item_map.items()}
 
         text_items = [i for i in self._items if i.get('type') == 'text']
         self._level_texts = self._parse_level_texts(text_items)
-        self._line_centroids = self._build_line_centroids()
 
         levels = self._create_levels()
         stop_codes = self._get_double_stop_codes()
@@ -140,26 +160,47 @@ class MiroSchemaBuilder:
     # Level detection
     # ------------------------------------------------------------------
 
+    def _get_limit_levels(self) -> list[dict]:
+        """Returns [{'top': y1, 'bottom': y2}, ...] for each detected level limit."""
+        shape_divisors = self.get_items_by_shape("right_arrow")
+        top_frame = 0   # Claude: sacar a partir de self.frame
+        last_top = top_frame
+        level_limits = []
+        for shape in shape_divisors:
+            _, y = _item_center(shape)
+            level_limits.append({
+                'top': last_top,
+                'bottom': y,
+            })
+            if y > last_top:
+                last_top = y
+        return level_limits
+
     def _parse_level_texts(self, text_items: list) -> dict[str, list[dict]]:
         """Returns {line: [{y, index, has_andenes}, ...]} sorted by y."""
+        import html
+        level_limits = self._get_limit_levels()
+
         result: dict[str, list] = defaultdict(list)
         for item in text_items:
-            raw = _strip_html(item.get('data', {}).get('content', ''))
+            raw = html.unescape(
+                _strip_html(item.get('data', {}).get('content', '')))
             m = _LEVEL_TEXT_RE.search(raw)
             if not m:
+                print("No se pudo parsear nivel de texto: '{raw}'")
                 continue
-            line = m.group(1)
-            has_andenes = bool(m.group(2))
-            raw_index = m.group(3).strip()
-            if raw_index.lower().startswith('superficie'):
-                idx = float(re.search(r'[-\d]+', raw_index).group())
-            else:
-                idx = float(raw_index)
+            line = m.group('line')
+            has_andenes = bool(m.group('andenes'))
+            idx = m.group('level')
             _, y = _item_center(item)
-            result[line].append({'y': y, 'index': idx, 'has_andenes': has_andenes})
+            result[line].append({ 'y': y, 'index': idx, 'has_andenes': has_andenes })
         for line in result:
             result[line].sort(key=lambda e: e['y'])
         return dict(result)
+
+    def get_items_by_shape(self, shape: str) -> list:
+        return [
+            i for i in self._items if i.get('data', {}).get('shape') == shape]
 
     def _nearest_level(self, item_y: float, line: str) -> dict | None:
         entries = self._level_texts.get(line, [])
@@ -176,40 +217,13 @@ class MiroSchemaBuilder:
     # Route / line resolution
     # ------------------------------------------------------------------
 
-    def _build_line_centroids(self) -> dict[str, float]:
-        """Returns {line_prefix: mean_x} for shapes that have a line prefix."""
-        xs: dict[str, list] = defaultdict(list)
-        for item in self._items:
-            if item.get('type') != 'shape':
-                continue
-            content = _strip_html(item.get('data', {}).get('content', ''))
-            prefix = _get_line_prefix(content)
-            if prefix:
-                x, _ = _item_center(item)
-                xs[prefix].append(x)
-        return {line: sum(vals) / len(vals) for line, vals in xs.items()}
-
-    def _resolve_line(self, item: dict) -> str | None:
-        content = _strip_html(item.get('data', {}).get('content', ''))
-        prefix = _get_line_prefix(content)
-        if prefix:
-            return prefix
-        all_lines = list(self._line_centroids)
-        if len(all_lines) == 1:
-            return all_lines[0]
-        x, _ = _item_center(item)
-        if not self._line_centroids:
-            return None
-        return min(self._line_centroids, key=lambda ln: abs(self._line_centroids[ln] - x))
-
     def _get_route(self, line_prefix: str) -> Route | None:
-        if line_prefix not in self._route_cache:
-            try:
-                self._route_cache[line_prefix] = Route.objects.get(
-                    route_short_name__iexact=line_prefix)
-            except Route.DoesNotExist:
-                self._route_cache[line_prefix] = None
-        return self._route_cache[line_prefix]
+        if self.unique_route:
+            return self.unique_route
+        line_prefix = line_prefix.upper()
+        if line_prefix in self.routes:
+            return self.routes[line_prefix]
+        return None
 
     # ------------------------------------------------------------------
     # DB helpers
@@ -273,14 +287,17 @@ class MiroSchemaBuilder:
     # ------------------------------------------------------------------
 
     def _find_double_pairs(self) -> list[tuple[str, str]]:
-        """Returns [(id1, id2)] for entrances connected by dashed+diamond connectors."""
+        """
+        Returns [(id1, id2)] for entrances connected by dashed+diamond connectors.
+        """
         item_id_set = set(self._item_map)
         pairs = []
         for conn in self._connectors:
             style = conn.get('style', {})
             if style.get('strokeStyle') != 'dashed':
                 continue
-            if style.get('startStrokeCap') != 'diamond' or style.get('endStrokeCap') != 'diamond':
+            if (style.get('startStrokeCap') != 'diamond'
+                    or style.get('endStrokeCap') != 'diamond'):
                 continue
             start_id = conn.get('startItem', {}).get('id')
             end_id = conn.get('endItem', {}).get('id')
@@ -310,9 +327,9 @@ class MiroSchemaBuilder:
         preview = []
 
         shapes = [
-            (get_items_by_shape(self._items, 'round_rectangle'), 0, 'P'),
-            (get_items_by_shape(self._items, 'rectangle'),       2, 'E'),
-            (get_items_by_shape(self._items, 'circle'),          3, 'N'),
+            (self.get_items_by_shape('round_rectangle'), 0, 'P'),
+            (self.get_items_by_shape('rectangle'),       2, 'E'),
+            (self.get_items_by_shape('circle'),          3, 'N'),
         ]
 
         for item_list, loc_type_id, type_abbrev in shapes:
@@ -333,9 +350,10 @@ class MiroSchemaBuilder:
         seq_counters: dict,
     ) -> dict | None:
         parsed = _parse_content(item.get('data', {}).get('content', ''))
-        line = self._resolve_line(item)
+        line = _resolve_line(item)
         if not line:
-            self._skipped.append({'miro_id': item['id'], 'reason': 'no line prefix detected'})
+            self._skipped.append({'miro_id': item['id'],
+                                  'reason': 'no line prefix detected'})
             return None
 
         route = self._get_route(line)
