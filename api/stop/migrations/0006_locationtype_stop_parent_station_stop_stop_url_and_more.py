@@ -47,10 +47,10 @@ class Migration(migrations.Migration):
             name='stop_url',
             field=models.URLField(blank=True, null=True, verbose_name='URL'),
         ),
+        migrations.RunPython(create_location_types),
         migrations.AlterField(
             model_name='stop',
             name='location_type',
             field=models.ForeignKey(blank=True, default=None, help_text='Tipo de ubicación', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='stops', to='stop.locationtype'),
         ),
-        migrations.RunPython(create_location_types),
     ]

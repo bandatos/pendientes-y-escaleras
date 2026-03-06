@@ -290,7 +290,7 @@ class Stop(models.Model):
 
     main_route = models.ForeignKey(
         Route, on_delete=models.CASCADE,
-        blank=True, null=True, related_name='main_stations')
+        blank=True, null=True, related_name='main_stops')
     x_position = models.DecimalField(
         max_digits=9, decimal_places=6, blank=True, null=True)
     y_position = models.DecimalField(

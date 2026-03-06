@@ -94,9 +94,71 @@ All routes under `/api/`. DRF DefaultRouter registers:
 
 `core/settings/__init__.py` loads from `.env` via `python-dotenv`. Helper functions in `core/settings/get_env.py` handle typed env vars (`getenv_bool`, `getenv_int`, `getenv_list`). The `django.contrib.postgres` app and `storages` are added to `INSTALLED_APPS` conditionally at runtime.
 
+### Módulo Miro (`utils/miro/`)
+
+Convierte frames de Miro en registros de Stop, Level y Pathway en la BD.
+
+**Estructura:**
+
+| Archivo | Propósito |
+|---|---|
+| `builder.py` | Entry point: `MiroSchemaBuilder` y `build_schema()` |
+| `level_mixin.py` | Detecta y crea `Level` a partir de textos en el frame |
+| `stop_mixin.py` | Detecta y crea `Stop` a partir de formas (rect, circle) |
+| `pathway_mixin.py` | Detecta y crea `Pathway` a partir de conectores |
+| `frames.py` | Llamadas a la API REST v2 de Miro (items, conectores, frames) |
+| `parsers.py` | Helpers de parseo de texto (sin BD ni I/O) |
+| `preview_html.py` | Genera elementos Cytoscape.js y HTML de previsualización |
+
+**Uso:**
+
+```python
+from utils.miro.builder import MiroSchemaBuilder
+result = MiroSchemaBuilder("Mixcoac").run()
+# result = {'levels': [...], 'stops': [...], 'pathways': [...], 'skipped': [...]}
+```
+
+`run()` siempre escribe a la BD usando `get_or_create`. Los mixins no retornan datos;
+`run()` serializa los objetos guardados con `LevelSerializer`, `StopCatSerializer` y
+`PathwaySerializer`.
+
+**Serializers usados (para la preview y el builder):**
+
+- `api/views/stop/serializers.py`: `LevelSerializer`, `StopCatSerializer`
+  (campo `route_line` para etiqueta "L7"/"L12", `level_index` vía FK a Level)
+- `api/views/stair/serializers.py`: `PathwaySerializer`
+  (`from_stop`/`to_stop` como `stop_id` string, `pathway_mode` como integer id)
+
+**Colores Miro → PathwayMode:**
+
+| Color | Modo |
+|---|---|
+| `#888888` / oval caps | 1 — Pasillo |
+| `#b0b0b0` | 2 — Escaleras |
+| `#067429` | 3 — Movedizo |
+| `#6631d7` | 4 — Escalera mecánica |
+| `#305bab` | 5 — Ascensor |
+| dashed + diamond | ignorado (par de entradas dobles) |
+
+**Comando de management:**
+
+```bash
+# Desde Miro (escribe a BD)
+python manage.py preview_miro_schema Mixcoac
+
+# Desde BD ya guardada (no llama a Miro API)
+python manage.py preview_miro_schema Mixcoac --from-db
+
+# Con ruta de salida personalizada
+python manage.py preview_miro_schema Mixcoac --output /tmp/out.html
+```
+
+Los archivos `*_preview.html` están en `.gitignore` (son generados).
+
 ### Additional important notes
 - When the developer ask you about the best approach or advices, after answer, ask if you can proceed with the implementation of the code, and wait for the confirmation before start writing the code.
 - Build with typing hints and docstrings for all views, serializers, and complex functions.
+- The API error messages should be in Spanish, as the user-facing frontend is in Spanish.
 - The API error messages should be in Spanish, as the user-facing frontend is in Spanish.
 - Avoid boilerplate and repetition by leveraging DRF's generic views, mixins, and the `BaseViewSet` where possible. If the standard suggest that, answer before choose the best approach for the specific case.
 - Never execute `makemigrations` or `migrate` commands yourself. I will to execute manually after review post session the changes.

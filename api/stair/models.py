@@ -80,8 +80,8 @@ class Pathway(models.Model):
         ]
 
     def __str__(self):
-        mode_name = dict(self.PATHWAY_MODE_CHOICES).get(self.pathway_mode, 'Unknown')
-        return f"{self.pathway_id}: {self.from_stop.stop_id} → {self.to_stop.stop_id} ({mode_name})"
+        return (f"Pathway {self.pathway_id} from "
+                f"{self.from_stop} to {self.to_stop}")
 
 
 class Stair(models.Model):
