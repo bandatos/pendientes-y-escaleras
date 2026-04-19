@@ -261,6 +261,9 @@ class Stop(models.Model):
     route = models.ForeignKey(
         Route, on_delete=models.CASCADE, blank=True, null=True,
         related_name='stops', help_text="Ruta (solo METRO CDMX)")
+    level = models.ForeignKey(
+        'Level', on_delete=models.SET_NULL,
+        blank=True, null=True, related_name='stops')
     stop_code = models.CharField(
         max_length=50, blank=True, null=True, verbose_name="Código",
         help_text="Short text or number for riders")
@@ -287,22 +290,13 @@ class Stop(models.Model):
         choices=WHEELCHAIR_BOARDING_CHOICES,
         default=0, blank=True, null=True,
         help_text="Indicates whether wheelchair boardings are possible")
-
-    main_route = models.ForeignKey(
-        Route, on_delete=models.CASCADE,
-        blank=True, null=True, related_name='main_stops')
-    x_position = models.DecimalField(
-        max_digits=9, decimal_places=6, blank=True, null=True)
-    y_position = models.DecimalField(
-        max_digits=9, decimal_places=6, blank=True, null=True)
-    end_anchor = models.BooleanField(default=False)
-    rotation = models.SmallIntegerField(blank=True, null=True)
-    viz_params = models.JSONField(default=dict, blank=True, null=True)
-    miro_id = models.CharField(max_length=50, blank=True, null=True)
+    has_entry = models.BooleanField(
+        default=True, help_text="Indicates if the stop has an entry/exit point")
+    has_exit = models.BooleanField(
+        default=True, help_text="Indicates if the stop has an exit point")
     is_closed = models.BooleanField(default=False)
-    level = models.ForeignKey(
-        'Level', on_delete=models.SET_NULL,
-        blank=True, null=True, related_name='stops')
+
+    miro_id = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         verbose_name = 'Stop'

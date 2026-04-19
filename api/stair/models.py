@@ -1,16 +1,13 @@
 from django.db import models
 from stop.models import Station, Stop
 
-PATHWAY_MODE_CHOICES = [
-    (1, 'Walkway'),
-    (2, 'Stairs'),
-    (3, 'Moving sidewalk/travelator'),
-    (4, 'Escalator'),
-    (5, 'Elevator'),
-    (6, 'Fare gate'),
-    (7, 'Exit gate'),
-]
-
+# (1, 'Walkway'),
+# (2, 'Stairs'),
+# (3, 'Moving sidewalk/travelator'),
+# (4, 'Escalator'),
+# (5, 'Elevator'),
+# (6, 'Fare gate'),
+# (7, 'Exit gate'),
 
 class PathwayMode(models.Model):
 
