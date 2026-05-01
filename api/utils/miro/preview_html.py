@@ -11,6 +11,19 @@ NODE_SHAPE: dict[int | None, str] = {
     3: "ellipse",          # Generic node
 }
 
+# Background color per location_type
+NODE_COLOR: dict[int | None, str] = {
+    0: "#aec6e8",   # Platform  — blue
+    2: "#b8e0b8",   # Entrance  — green
+    3: "#d4c5e8",   # Generic   — purple
+}
+
+NODE_BORDER: dict[int | None, str] = {
+    0: "#4a86c8",
+    2: "#4a9a4a",
+    3: "#7a5ab8",
+}
+
 EDGE_COLOR: dict[int, str] = {
     1: "#888888",  # Walkway
     2: "#444444",  # Stairs
@@ -27,11 +40,16 @@ EDGE_LABEL: dict[int, str] = {
     5: "Ascensor",
 }
 
-_X_SPACING   = 220   # px between nodes on same level
-_Y_SPACING   = 280   # px between levels
-_X_OFFSET    = 100   # left margin
-_Y_OFFSET    = 80    # top margin
-_X_GROUP_GAP = 80    # extra px between route groups on the same level
+# Grid-layout fallback constants (used when miro_positions is unavailable)
+_X_SPACING   = 220
+_Y_SPACING   = 280
+_X_OFFSET    = 100
+_Y_OFFSET    = 80
+_X_GROUP_GAP = 80
+_DEFAULT_W   = 160
+_DEFAULT_H   = 55
+# Gap to the left of the leftmost stop for level labels (Miro mode)
+_LABEL_MARGIN = 180
 
 # ---------------------------------------------------------------------------
 # Public API
@@ -41,113 +59,183 @@ _X_GROUP_GAP = 80    # extra px between route groups on the same level
 def build_cytoscape_elements(result: dict) -> list[dict]:
     """Convert MiroSchemaBuilder.run() output to Cytoscape.js elements.
 
+    When ``miro_positions`` is present in *result* (direct Miro import),
+    nodes are placed at their actual Miro coordinates so the preview
+    mirrors the Miro diagram. Falls back to a computed grid layout when
+    the result comes from the DB (``--from-db`` mode).
+
     Args:
-        result: Dict with keys 'levels', 'stops', 'pathways', 'skipped'.
-            Stops are serialized by StopCatSerializer (uses ``route_line``
-            and ``location_type`` fields). Pathways by PathwaySerializer.
+        result: Dict with keys 'levels', 'stops', 'pathways', 'skipped',
+            and optionally 'miro_positions' and 'frame_size'.
 
     Returns:
         List of Cytoscape element dicts (nodes and edges).
     """
     elements: list[dict] = []
-
     levels: list[dict] = result.get("levels", [])
     stops: list[dict] = result.get("stops", [])
     pathways: list[dict] = result.get("pathways", [])
-
-    # Map level_index -> Y position.
-    # Invert: higher level_index = higher on screen (smaller Y).
-    level_indices = sorted(
-        {lv["level_index"] for lv in levels}, reverse=True
-    )
-    index_to_y: dict[float, float] = {
-        idx: _Y_OFFSET + i * _Y_SPACING
-        for i, idx in enumerate(level_indices)
-    }
-
-    # Group stops by (route_line, level_index) for independent X placement.
-    stops_by_route_level: dict[tuple, list[dict]] = {}
-    for stop in stops:
-        key = (stop.get("route_line") or "", stop.get("level_index"))
-        stops_by_route_level.setdefault(key, []).append(stop)
-
-    # For each level_index, compute the starting X of each route group.
-    # Route groups are sorted alphabetically within the same level.
-    level_route_start_x: dict[float | None, dict[str, float]] = {}
-    for level_idx in {k[1] for k in stops_by_route_level}:
-        routes_at_level = sorted(
-            route
-            for (route, idx) in stops_by_route_level
-            if idx == level_idx
-        )
-        cur_x = _X_OFFSET
-        route_start: dict[str, float] = {}
-        for route in routes_at_level:
-            route_start[route] = cur_x
-            n = len(stops_by_route_level[(route, level_idx)])
-            cur_x += n * _X_SPACING + _X_GROUP_GAP
-        level_route_start_x[level_idx] = route_start
-
-    # Build stop nodes.
+    miro_pos: dict = result.get("miro_positions") or {}
+    frame_size: dict = result.get("frame_size") or {}
+    use_miro = bool(miro_pos)
     stop_id_set = {s["stop_id"] for s in stops}
-    for (route_line, level_key), level_stops in stops_by_route_level.items():
-        y = index_to_y.get(
-            level_key, _Y_OFFSET + len(index_to_y) * _Y_SPACING
+
+    # --- Compute node positions and sizes -----------------------------------
+    # stop_xy: stop_id -> (x, y) in Cytoscape model units
+    # stop_wh: stop_id -> (width, height) in Cytoscape model units
+    # level_label_xy: level_id -> (x, y)
+    stop_xy: dict[str, tuple[float, float]] = {}
+    stop_wh: dict[str, tuple[float, float]] = {}
+    level_label_xy: dict[str, tuple[float, float]] = {}
+
+    if use_miro:
+        # Miro items use relativeTo="parent_top_left", origin="center":
+        # position.x/y is the center of the item relative to the frame
+        # top-left corner, which maps 1:1 to Cytoscape model coordinates.
+        for stop in stops:
+            sid = stop["stop_id"]
+            mid = stop.get("miro_id", "")
+            if mid and mid in miro_pos:
+                mp = miro_pos[mid]
+                stop_xy[sid] = (mp["x"], mp["y"])
+                stop_wh[sid] = (mp["width"], mp["height"])
+            else:
+                stop_xy[sid] = (0.0, 0.0)
+                stop_wh[sid] = (_DEFAULT_W, _DEFAULT_H)
+
+        for level in levels:
+            idx = level.get("level_index")
+            level_id = level.get("level_id", f"level-{idx}")
+            route_line = level.get("route_line") or ""
+            lvl_pts = [
+                stop_xy[s["stop_id"]] for s in stops
+                if s.get("level_index") == idx
+                and (s.get("route_line") or "") == route_line
+                and s["stop_id"] in stop_xy
+            ]
+            if lvl_pts:
+                avg_y = sum(p[1] for p in lvl_pts) / len(lvl_pts)
+                min_x = min(p[0] for p in lvl_pts)
+                level_label_xy[level_id] = (
+                    min_x - _LABEL_MARGIN, avg_y)
+            else:
+                level_label_xy[level_id] = (
+                    -_LABEL_MARGIN, (idx or 0) * _Y_SPACING)
+    else:
+        # Grid layout: one row per level (highest level_index at top),
+        # stops grouped by route within each row.
+        level_indices = sorted(
+            {lv["level_index"] for lv in levels}, reverse=True
         )
-        start_x = level_route_start_x.get(
-            level_key, {}
-        ).get(route_line, _X_OFFSET)
-        for i, stop in enumerate(level_stops):
-            x = start_x + i * _X_SPACING
-            loc_type = stop.get("location_type")
-            shape = NODE_SHAPE.get(loc_type, "ellipse")
-            is_closed = stop.get("is_closed", False)
-            label = stop.get("stop_name", "")
-            if stop.get("stop_desc"):
-                label += f"\n({stop['stop_desc']})"
-            if route_line:
-                label = f"[{route_line}] {label}"
+        index_to_y: dict = {
+            idx: _Y_OFFSET + i * _Y_SPACING
+            for i, idx in enumerate(level_indices)
+        }
+        stops_by_rl: dict = {}
+        for stop in stops:
+            key = (stop.get("route_line") or "", stop.get("level_index"))
+            stops_by_rl.setdefault(key, []).append(stop)
 
-            elements.append({
-                "data": {
-                    "id": stop["stop_id"],
-                    "label": label,
-                    "stop_id": stop["stop_id"],
-                    "stop_name": stop.get("stop_name", ""),
-                    "miro_id": stop.get("miro_id", ""),
-                    "location_type": loc_type,
-                    "route": route_line,
-                    "level_index": level_key,
-                    "stop_code": stop.get("stop_code", ""),
-                    "shape": shape,
-                    "closed": is_closed,
-                },
-                "position": {"x": x, "y": y},
-            })
+        rl_start_x: dict = {}
+        for level_idx in {k[1] for k in stops_by_rl}:
+            routes = sorted(
+                r for (r, i) in stops_by_rl if i == level_idx)
+            cur_x = _X_OFFSET
+            rx: dict = {}
+            for route in routes:
+                rx[route] = cur_x
+                n = len(stops_by_rl[(route, level_idx)])
+                cur_x += n * _X_SPACING + _X_GROUP_GAP
+            rl_start_x[level_idx] = rx
 
-    # Build level label nodes — one per (route, level_index) pair.
+        for (rl, lvl_key), lvl_stops in stops_by_rl.items():
+            y = index_to_y.get(
+                lvl_key, _Y_OFFSET + len(index_to_y) * _Y_SPACING)
+            sx = rl_start_x.get(lvl_key, {}).get(rl, _X_OFFSET)
+            for i, stop in enumerate(lvl_stops):
+                sid = stop["stop_id"]
+                stop_xy[sid] = (sx + i * _X_SPACING, y)
+                stop_wh[sid] = (_DEFAULT_W, _DEFAULT_H)
+
+        for level in levels:
+            idx = level.get("level_index")
+            level_id = level.get("level_id", f"level-{idx}")
+            route_line = level.get("route_line") or ""
+            y = index_to_y.get(idx, _Y_OFFSET)
+            sx = rl_start_x.get(idx, {}).get(route_line, _X_OFFSET)
+            level_label_xy[level_id] = (sx - 140, y)
+
+    # --- Frame background (Miro mode only) ----------------------------------
+    if use_miro and frame_size:
+        fw = frame_size.get("width", 1000)
+        fh = frame_size.get("height", 800)
+        elements.append({
+            "data": {
+                "id": "__frame__",
+                "is_frame_node": True,
+                "node_width": fw,
+                "node_height": fh,
+            },
+            "position": {"x": fw / 2, "y": fh / 2},
+        })
+
+    # --- Level label nodes --------------------------------------------------
     for level in levels:
-        idx = level["level_index"]
-        y = index_to_y.get(idx, _Y_OFFSET)
+        idx = level.get("level_index")
         level_id = level.get("level_id", f"level-{idx}")
         level_name = level.get("level_name") or ""
         route_line = level.get("route_line") or ""
         label = f"{route_line} Nivel {idx}"
         if level_name:
             label += f" — {level_name}"
-        start_x = level_route_start_x.get(
-            idx, {}).get(route_line, _X_OFFSET)
+        lx, ly = level_label_xy.get(level_id, (0.0, 0.0))
         elements.append({
             "data": {
                 "id": f"__level__{level_id}",
                 "label": label,
                 "is_level_node": True,
             },
-            "position": {"x": start_x - 140, "y": y},
+            "position": {"x": lx, "y": ly},
         })
 
-    # Build pathway edges — from_stop/to_stop are real stop_ids.
-    stop_id_set = {s["stop_id"] for s in stops}
+    # --- Stop nodes ---------------------------------------------------------
+    for stop in stops:
+        sid = stop["stop_id"]
+        loc_type = stop.get("location_type")
+        x, y = stop_xy.get(sid, (0.0, 0.0))
+        w, h = stop_wh.get(sid, (_DEFAULT_W, _DEFAULT_H))
+        shape = NODE_SHAPE.get(loc_type, "ellipse")
+        color = NODE_COLOR.get(loc_type, "#b0c4de")
+        border_c = NODE_BORDER.get(loc_type, "#5577aa")
+        is_closed = stop.get("is_closed", False)
+        route_line = stop.get("route_line") or ""
+        label = stop.get("stop_name", "")
+        if stop.get("stop_desc"):
+            label += f"\n({stop['stop_desc']})"
+        if route_line:
+            label = f"[{route_line}] {label}"
+        elements.append({
+            "data": {
+                "id": sid,
+                "label": label,
+                "stop_id": sid,
+                "stop_name": stop.get("stop_name", ""),
+                "miro_id": stop.get("miro_id", ""),
+                "location_type": loc_type,
+                "route": route_line,
+                "level_index": stop.get("level_index"),
+                "stop_code": stop.get("stop_code", ""),
+                "shape": shape,
+                "closed": is_closed,
+                "node_width": w,
+                "node_height": h,
+                "bg_color": color,
+                "border_color": border_c,
+            },
+            "position": {"x": x, "y": y},
+        })
+
+    # --- Pathway edges ------------------------------------------------------
     for pw in pathways:
         from_id = pw.get("from_stop", "")
         to_id = pw.get("to_stop", "")
@@ -207,6 +295,18 @@ def render_html(
             f'{label}</li>\n'
         )
 
+    node_legend = ""
+    loc_labels = {
+        0: ("Plataforma/andén (type 0)", NODE_COLOR[0]),
+        2: ("Entrada/Salida (type 2)", NODE_COLOR[2]),
+        3: ("Nodo genérico (type 3)", NODE_COLOR[3]),
+    }
+    for _, (lbl, col) in loc_labels.items():
+        node_legend += (
+            f'<li><span class="swatch" style="background:{col}"></span>'
+            f'{lbl}</li>\n'
+        )
+
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -221,7 +321,7 @@ def render_html(
     h1 {{ padding: 8px 16px; font-size: 1rem; background: #1e1e2e;
           color: #cdd6f4; flex-shrink: 0; }}
     #main {{ display: flex; flex: 1; overflow: hidden; }}
-    #cy {{ flex: 1; background: #f8f8f8; }}
+    #cy {{ flex: 1; background: #f0f0f0; }}
     #sidebar {{ width: 260px; overflow-y: auto; padding: 12px;
                 border-left: 1px solid #ccc; font-size: 0.8rem;
                 background: #fff; }}
@@ -232,7 +332,7 @@ def render_html(
     #tooltip p {{ margin: 2px 0; word-break: break-all; }}
     #tooltip strong {{ display: inline-block; min-width: 80px;
                        color: #333; }}
-    legend-section ul {{ list-style: none; }}
+    .legend-section ul {{ list-style: none; }}
     .swatch {{ display: inline-block; width: 14px; height: 14px;
                border-radius: 2px; margin-right: 6px;
                vertical-align: middle; }}
@@ -249,7 +349,8 @@ def render_html(
     <div id="cy"></div>
     <div id="sidebar">
       <h2>Selecciona un nodo o arista</h2>
-      <div id="tooltip"><p style="color:#999">Haz click en un elemento</p>
+      <div id="tooltip">
+        <p style="color:#999">Haz click en un elemento</p>
       </div>
       <div class="legend-section">
         <h2>Leyenda — Pathways</h2>
@@ -258,10 +359,8 @@ def render_html(
       <div class="legend-section" style="margin-top:12px">
         <h2>Leyenda — Nodos</h2>
         <ul>
-          <li>Rect = Entrada/Salida (type 2)</li>
-          <li>Rect redondeado = Plataforma (type 0)</li>
-          <li>Elipse = Nodo genérico (type 3)</li>
-          <li style="color:red">Borde rojo = CLAUSURADO</li>
+          {node_legend}
+          <li style="color:red">Borde rojo punteado = CLAUSURADO</li>
         </ul>
       </div>
       <div id="skipped-section">
@@ -280,22 +379,41 @@ def render_html(
       container: document.getElementById('cy'),
       elements: elements,
       style: [
+        // Frame background — rendered first (behind everything else)
         {{
-          selector: 'node[!is_level_node]',
+          selector: 'node[?is_frame_node]',
+          style: {{
+            'shape': 'rectangle',
+            'width': 'data(node_width)',
+            'height': 'data(node_height)',
+            'background-color': '#ffffff',
+            'background-opacity': 0.6,
+            'border-width': 1,
+            'border-color': '#bbbbbb',
+            'border-style': 'dashed',
+            'label': '',
+            'events': 'no',
+            'z-index': 0,
+          }}
+        }},
+        // Stop nodes
+        {{
+          selector: 'node[!is_level_node][!is_frame_node]',
           style: {{
             'shape': 'data(shape)',
             'label': 'data(label)',
             'text-wrap': 'wrap',
-            'text-max-width': '160px',
+            'text-max-width': '120px',
             'font-size': '10px',
-            'width': '160px',
-            'height': '55px',
-            'background-color': '#b0c4de',
+            'width': 'data(node_width)',
+            'height': 'data(node_height)',
+            'background-color': 'data(bg_color)',
             'border-width': 2,
-            'border-color': '#5577aa',
+            'border-color': 'data(border_color)',
             'text-valign': 'center',
             'text-halign': 'center',
             'padding': '6px',
+            'z-index': 2,
           }}
         }},
         {{
@@ -306,24 +424,27 @@ def render_html(
             'border-width': 3,
           }}
         }},
+        // Level label nodes
         {{
-          selector: 'node[is_level_node]',
+          selector: 'node[?is_level_node]',
           style: {{
             'shape': 'rectangle',
             'label': 'data(label)',
             'font-size': '11px',
             'font-weight': 'bold',
-            'color': '#666',
+            'color': '#444',
             'background-color': '#e8e8e8',
-            'background-opacity': 0.5,
+            'background-opacity': 0.85,
             'border-width': 1,
-            'border-color': '#bbb',
+            'border-color': '#aaa',
             'width': '180px',
             'height': '40px',
             'text-valign': 'center',
             'text-halign': 'center',
+            'z-index': 1,
           }}
         }},
+        // Edges
         {{
           selector: 'edge',
           style: {{
@@ -340,6 +461,7 @@ def render_html(
             'font-size': '9px',
             'text-rotation': 'autorotate',
             'color': '#555',
+            'z-index': 3,
           }}
         }},
         {{
@@ -351,20 +473,19 @@ def render_html(
           }}
         }},
       ],
-      layout: {{
-        name: 'preset',
-      }},
+      layout: {{ name: 'preset' }},
       userZoomingEnabled: true,
       userPanningEnabled: true,
       boxSelectionEnabled: false,
     }});
 
-    cy.fit(cy.nodes('[!is_level_node]'), 60);
+    // Fit viewport to stop/level nodes, excluding the frame background
+    cy.fit(cy.nodes('[!is_frame_node]'), 60);
 
     const tooltip = document.getElementById('tooltip');
     const sidebar = document.getElementById('sidebar').querySelector('h2');
 
-    cy.on('tap', 'node[!is_level_node]', function(evt) {{
+    cy.on('tap', 'node[!is_level_node][!is_frame_node]', function(evt) {{
       const d = evt.target.data();
       sidebar.textContent = 'Nodo seleccionado';
       tooltip.innerHTML = `
@@ -387,7 +508,8 @@ def render_html(
         <p><strong>from:</strong> ${{d.source}}</p>
         <p><strong>to:</strong> ${{d.target}}</p>
         <p><strong>modo:</strong> ${{d.mode_label}} (${{d.pathway_mode}})</p>
-        <p><strong>bidireccional:</strong> ${{d.is_bidirectional ? 'Sí' : 'No'}}</p>
+        <p><strong>bidireccional:</strong>
+           ${{d.is_bidirectional ? 'Sí' : 'No'}}</p>
         <p><strong>desc:</strong> ${{d.description || '—'}}</p>
         <p><strong>miro_id:</strong> ${{d.miro_id}}</p>
       `;
