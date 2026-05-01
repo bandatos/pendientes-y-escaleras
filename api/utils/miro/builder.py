@@ -62,16 +62,16 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
             Stop.objects.filter(stop_name__iexact=self.frame_title))
         if reset_bd:
             print("Resetting DB records for this station...")
-            Stop.objects.filter(
+            child_stops = Stop.objects.filter(
                 miro_id__isnull=False,
-                parent_station__in=self._station_stops
-            ).delete()
-            Level.objects.all().delete()
+                parent_station__in=self._station_stops,
+            )
             Pathway.objects.filter(
-                Q(from_stop__in=self._station_stops)
-                | Q(to_stop__in=self._station_stops)
+                Q(from_stop__in=child_stops)
+                | Q(to_stop__in=child_stops)
             ).delete()
-            # Levels and Pathways will cascade delete
+            Level.objects.filter(stops__in=child_stops).distinct().delete()
+            child_stops.delete()
         if not self._station_stops:
             print(f"Stops para '{self.frame_title}' "
                   f"no encontrados en la base de datos.")
@@ -102,8 +102,21 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
         self._create_stops(stop_codes)
         self._create_pathways()
 
+        miro_positions = {
+            iid: {
+                'x': item.get('position', {}).get('x', 0),
+                'y': item.get('position', {}).get('y', 0),
+                'width': item.get('geometry', {}).get('width', 120),
+                'height': item.get('geometry', {}).get('height', 60),
+            }
+            for iid, item in self._item_map.items()
+            if item.get('type') == 'shape'
+        }
+        frame_geo = self.frame.get('geometry', {})
+
         # Import here to avoid circular imports at module load time
-        from api.views.stop.serializers import LevelSerializer, StopCatSerializer
+        from api.views.stop.serializers import (
+            LevelSerializer, StopCatSerializer)
         from api.views.stair.serializers import PathwaySerializer
 
         return {
@@ -114,6 +127,11 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
             'pathways': PathwaySerializer(
                 self._pathway_objs, many=True).data,
             'skipped': self._skipped,
+            'miro_positions': miro_positions,
+            'frame_size': {
+                'width': frame_geo.get('width', 1000),
+                'height': frame_geo.get('height', 800),
+            },
         }
 
     # ------------------------------------------------------------------

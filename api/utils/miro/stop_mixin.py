@@ -102,7 +102,7 @@ class StopMixin:
         stop_id = (f'{line}-{self.station_slug}'
                    f'-{type_abbrev}-{seq_counters[seq_key]:02d}')
 
-        obj, _ = Stop.objects.get_or_create(
+        obj, _ = Stop.objects.update_or_create(
             stop_id=stop_id,
             defaults={
                 'miro_id': item['id'],

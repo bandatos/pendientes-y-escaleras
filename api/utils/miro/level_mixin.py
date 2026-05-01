@@ -123,7 +123,7 @@ class LevelMixin:
             for entry in entries:
                 level_id = self._make_level_id(line, entry)
                 level_name = 'Andenes' if entry['has_andenes'] else None
-                obj, _ = Level.objects.get_or_create(
+                obj, _ = Level.objects.update_or_create(
                     level_id=level_id,
                     defaults={
                         'level_index': entry['index'],

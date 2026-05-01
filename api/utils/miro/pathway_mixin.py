@@ -55,7 +55,7 @@ class PathwayMixin:
 
             description = self._extract_description(conn)
 
-            obj, _ = Pathway.objects.get_or_create(
+            obj, _ = Pathway.objects.update_or_create(
                 pathway_id=conn['id'],
                 defaults={
                     'miro_id': conn['id'],

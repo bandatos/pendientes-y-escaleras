@@ -52,11 +52,22 @@ class Command(BaseCommand):
                 "asociados a la estación."
             ),
         )
+        parser.add_argument(
+            "--reset",
+            action="store_true",
+            default=False,
+            help=(
+                "Elimina todos los Stops (con miro_id), Levels y Pathways "
+                "de la estación antes de importar desde Miro. "
+                "Útil cuando se agregan o eliminan shapes en el diagrama."
+            ),
+        )
 
     def handle(self, *args, **options) -> None:
         frame_title: str = options["frame_title"]
         output_path: str | None = options["output"]
         from_db: bool = options["from_db"]
+        reset: bool = options["reset"]
 
         if output_path is None:
             slug = frame_title.lower().replace(" ", "_")
@@ -68,7 +79,7 @@ class Command(BaseCommand):
             self.stdout.write(
                 f"Procesando frame '{frame_title}' desde Miro…"
             )
-            result = MiroSchemaBuilder(frame_title).run()
+            result = MiroSchemaBuilder(frame_title).run(reset_bd=reset)
             if result is None:
                 raise CommandError(
                     f"No se pudo procesar el frame '{frame_title}'. "
