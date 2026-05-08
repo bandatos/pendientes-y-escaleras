@@ -1,4 +1,5 @@
 """Pure text-parsing helpers for Miro item content (no DB, no I/O)."""
+import html
 import re
 import unicodedata
 
@@ -17,21 +18,21 @@ _LEVEL_TEXT_RE = re.compile(
 )
 
 
-def _strip_html(html: str) -> str:
-    text = re.sub(r'<br[^>]*/?>|<br>', ' ', html, flags=re.IGNORECASE)
-    text = re.sub(r'<[^>]+>', '', text)
+def _strip_html(content: str) -> str:
+    text = re.sub(r'<br[^>]*/?>|<br>', ' ', content, flags=re.IGNORECASE)
+    text = re.sub(r'</?[a-zA-Z][^>]*>', '', text)
+    text = html.unescape(text)
     return re.sub(r'\s+', ' ', text).strip()
 
 
-def _parse_content(html: str) -> dict:
+def _parse_content(content: str) -> dict:
     """Returns {name, desc, is_closed} from a Miro shape HTML content."""
-    text = _strip_html(html)
+    text = _strip_html(content)
     paren_parts = re.findall(r'\(([^)]+)\)', text)
     desc = '; '.join(paren_parts) if paren_parts else None
     is_closed = bool(re.search(r'\[CLAUSURADA\]', text, re.IGNORECASE))
     name = re.sub(r'\s*\([^)]*\)', '', text)
-    name = re.sub(r'\s*\[[^]]*\]', '', name)
-    name = re.sub(r'\s*(?:<=>|<=|=>|=)\s*', ' ', name).strip()
+    name = re.sub(r'\s*\[[^]]*\]', '', name).strip()
     return {'name': name, 'desc': desc, 'is_closed': is_closed}
 
 

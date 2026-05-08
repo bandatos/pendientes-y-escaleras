@@ -1,6 +1,5 @@
 """LevelMixin: level detection and creation logic for MiroSchemaBuilder."""
 from __future__ import annotations
-import html as html_module
 from collections import defaultdict
 from typing import TYPE_CHECKING
 
@@ -54,8 +53,7 @@ class LevelMixin:
         result: dict[str, list] = defaultdict(list)
 
         for item in text_items:
-            raw = html_module.unescape(
-                _strip_html(item.get('data', {}).get('content', '')))
+            raw = _strip_html(item.get('data', {}).get('content', ''))
             m = _LEVEL_TEXT_RE.search(raw)
             if not m:
                 print(f"No se pudo parsear nivel de texto: '{raw}'")
