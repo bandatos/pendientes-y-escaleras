@@ -4,11 +4,15 @@ from .helpers import get_all_paginated, base_url, headers
 all_connectors = []
 
 
-def search_frame_by_title(title: str) -> dict | None:
+def get_all_frames() -> list[dict]:
+    """Retorna todos los frames del board de Miro."""
     frames_url = f"{base_url}/items"
     params = {"limit": 50, "type": "frame"}
     frames = get_all_paginated(frames_url, params)
+    return frames
 
+def search_frame_by_title(title: str) -> dict | None:
+    frames = get_all_frames()
     for frame in frames:
         if frame.get('data', {}).get('title', '') == title:
             return frame
