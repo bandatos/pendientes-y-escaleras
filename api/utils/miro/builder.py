@@ -147,9 +147,11 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
     # Route / line resolution
     # ------------------------------------------------------------------
 
-    def _get_route(self, line_prefix: str) -> Route | None:
+    def _get_route(self, line_prefix: str | None) -> Route | None:
         if self.unique_route:
             return self.unique_route
+        if line_prefix is None:
+            return None
         line_prefix = line_prefix.upper()
         if line_prefix in self.routes:
             return self.routes[line_prefix]

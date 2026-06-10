@@ -4,13 +4,13 @@ import re
 import unicodedata
 
 
-_LINE_RE = re.compile(r'^(L\d{1,2}[AB]?)\b')
+_LINE_RE = re.compile(r'^(L(?:\d{1,2}|[AB]))\b')
 _OLD_LEVEL_TEXT_RE = re.compile(
-    r'(L\d{1,2}[AB]?)\s+NIVEL\s+(ANDENES\s+)?([-\d]+|SUPERFICIE\s+\d+)',
+    r'(L(?:\d{1,2}|[AB]))\s+NIVEL\s+(ANDENES\s+)?([-\d]+|SUPERFICIE\s+\d+)',
     re.IGNORECASE,
 )
 _LEVEL_TEXT_RE = re.compile(
-    r'(?:(?P<line>L\d{1,2}[AB]?)\s+)?'
+    r'(?:(?P<line>L(?:\d{1,2}|[AB]))\s+)?'
     r'NIVEL\s+'
     r'(?:(?P<andenes>Andenes)\s+|superficie\s+)?'
     r'(?P<level>[+-]?\d(?:\.\d{1,2})?)',
