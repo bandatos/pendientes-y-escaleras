@@ -1,5 +1,5 @@
 ---
-name: miro-api-reference
+name: miro-api
 description: Referencia de la API REST v2 de Miro usada en MiroSchemaBuilder.
   Usar cuando se trabaje con utils/miro/, se modifique builder.py, frames.py,
   o se necesite entender la estructura de ítems, frames, conectores y coordenadas de Miro.
