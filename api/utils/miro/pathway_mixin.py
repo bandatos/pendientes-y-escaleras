@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING
 from stair.models import Pathway
 from .parsers import _strip_html
 
+_CLOSED_X_RE = re.compile(r'^x\b', re.IGNORECASE)
+
 if TYPE_CHECKING:
     from utils.miro.builder import MiroSchemaBuilder
 
@@ -54,6 +56,7 @@ class PathwayMixin:
             )
 
             description = self._extract_description(conn)
+            is_closed = self._is_pathway_closed(conn)
 
             obj, _ = Pathway.objects.update_or_create(
                 pathway_id=conn['id'],
@@ -64,6 +67,7 @@ class PathwayMixin:
                     'pathway_mode': self._get_mode(mode_id),
                     'is_bidirectional': is_bidir,
                     'pathway_description': description,
+                    'is_closed': is_closed,
                 }
             )
             self._pathway_objs.append(obj)
@@ -86,6 +90,8 @@ class PathwayMixin:
             if start_cap == 'oval' and end_cap == 'oval':
                 return 1  # Walkway
             return 2  # Stairs
+        if color == '#e7e7e7':
+            return 2  # Stairs clausuradas (gris claro)
         return None
 
     def _build_escalator_pairs(self) -> dict[frozenset, list]:
@@ -180,6 +186,22 @@ class PathwayMixin:
         if from_y > to_y:
             return to_stop, from_stop
         return from_stop, to_stop
+
+    @staticmethod
+    def _is_pathway_closed(connector: dict) -> bool:
+        """Retorna True si el pathway está clausurado.
+
+        Dos señales: color gris claro (#e7e7e7) o caption que empieza con
+        'x' (p. ej. 'x', 'x OTE', 'x PTE').
+        """
+        color = connector.get('style', {}).get('strokeColor', '').lower()
+        if color == '#e7e7e7':
+            return True
+        for caption in connector.get('captions', []):
+            text = _strip_html(caption.get('content', '')).strip()
+            if _CLOSED_X_RE.match(text):
+                return True
+        return False
 
     @staticmethod
     def _extract_description(connector: dict) -> str | None:

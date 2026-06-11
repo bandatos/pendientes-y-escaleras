@@ -65,6 +65,9 @@ class Pathway(models.Model):
         blank=True, null=True, default=list,
         verbose_name="Todos los códigos identificadores")
     validated = models.BooleanField(default=False)
+    is_closed = models.BooleanField(
+        default=False,
+        help_text="Pathway clausurado (x en Miro o color gris claro #e7e7e7)")
     miro_id = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:

@@ -246,6 +246,7 @@ def build_cytoscape_elements(result: dict) -> list[dict]:
         color = EDGE_COLOR.get(mode, "#aaaaaa")
         desc = pw.get("pathway_description") or ""
         edge_label = EDGE_LABEL.get(mode, f"Modo {mode}")
+        is_pw_closed = pw.get("is_closed", False)
         elements.append({
             "data": {
                 "id": pw.get("pathway_id", f"{from_id}-{to_id}"),
@@ -256,6 +257,7 @@ def build_cytoscape_elements(result: dict) -> list[dict]:
                 "is_bidirectional": bidir,
                 "description": desc,
                 "color": color,
+                "closed": is_pw_closed,
                 "miro_id": pw.get("miro_id", ""),
             },
         })
@@ -294,6 +296,12 @@ def render_html(
             f'<li><span class="swatch" style="background:{color}"></span>'
             f'{label}</li>\n'
         )
+    legend_items += (
+        '<li><span class="swatch" style="background:#cc0000;'
+        'border:2px dashed #cc0000;background:transparent"></span>'
+        '<span style="color:#cc0000">Arista roja punteada = CLAUSURADO</span>'
+        '</li>\n'
+    )
 
     node_legend = ""
     loc_labels = {
@@ -360,7 +368,7 @@ def render_html(
         <h2>Leyenda — Nodos</h2>
         <ul>
           {node_legend}
-          <li style="color:red">Borde rojo punteado = CLAUSURADO</li>
+          <li style="color:red">Borde rojo punteado = stop CLAUSURADO</li>
         </ul>
       </div>
       <div id="skipped-section">
@@ -465,6 +473,16 @@ def render_html(
           }}
         }},
         {{
+          selector: 'edge[?closed]',
+          style: {{
+            'line-color': '#cc0000',
+            'target-arrow-color': '#cc0000',
+            'source-arrow-color': '#cc0000',
+            'line-style': 'dashed',
+            'opacity': 0.6,
+          }}
+        }},
+        {{
           selector: 'node:selected, edge:selected',
           style: {{
             'border-color': '#ff9900',
@@ -511,6 +529,7 @@ def render_html(
         <p><strong>bidireccional:</strong>
            ${{d.is_bidirectional ? 'Sí' : 'No'}}</p>
         <p><strong>desc:</strong> ${{d.description || '—'}}</p>
+        <p><strong>clausurado:</strong> ${{d.closed ? '⚠️ SÍ' : 'No'}}</p>
         <p><strong>miro_id:</strong> ${{d.miro_id}}</p>
       `;
     }});

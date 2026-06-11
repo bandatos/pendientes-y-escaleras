@@ -109,6 +109,7 @@ class StopMixin:
                 'stop_name': parsed['name'],
                 'stop_desc': parsed['desc'],
                 'is_closed': parsed['is_closed'],
+                'is_double': parsed['is_double'],
                 'location_type': self._get_loc_type(loc_type_id),
                 'parent_station': parent,
                 'route': route,
