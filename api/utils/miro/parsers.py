@@ -1,15 +1,17 @@
 """Pure text-parsing helpers for Miro item content (no DB, no I/O)."""
+import html
 import re
 import unicodedata
 
 
-_LINE_RE = re.compile(r'^(L\d{1,2}[AB]?)\b')
+_LINE_RE = re.compile(r'^(L(?:\d{1,2}|[AB]))\b')
+_DOUBLE_RE = re.compile(r'\(\s*IZQ\s*&\s*DER\s*\)', re.IGNORECASE)
 _OLD_LEVEL_TEXT_RE = re.compile(
-    r'(L\d{1,2}[AB]?)\s+NIVEL\s+(ANDENES\s+)?([-\d]+|SUPERFICIE\s+\d+)',
+    r'(L(?:\d{1,2}|[AB]))\s+NIVEL\s+(ANDENES\s+)?([-\d]+|SUPERFICIE\s+\d+)',
     re.IGNORECASE,
 )
 _LEVEL_TEXT_RE = re.compile(
-    r'(?:(?P<line>L\d{1,2}[AB]?)\s+)?'
+    r'(?:(?P<line>L(?:\d{1,2}|[AB]))\s+)?'
     r'NIVEL\s+'
     r'(?:(?P<andenes>Andenes)\s+|superficie\s+)?'
     r'(?P<level>[+-]?\d(?:\.\d{1,2})?)',
@@ -17,22 +19,26 @@ _LEVEL_TEXT_RE = re.compile(
 )
 
 
-def _strip_html(html: str) -> str:
-    text = re.sub(r'<br[^>]*/?>|<br>', ' ', html, flags=re.IGNORECASE)
-    text = re.sub(r'<[^>]+>', '', text)
+def _strip_html(content: str) -> str:
+    text = re.sub(r'<br[^>]*/?>|<br>', ' ', content, flags=re.IGNORECASE)
+    text = re.sub(r'</?[a-zA-Z][^>]*>', '', text)
+    text = html.unescape(text)
     return re.sub(r'\s+', ' ', text).strip()
 
 
-def _parse_content(html: str) -> dict:
-    """Returns {name, desc, is_closed} from a Miro shape HTML content."""
-    text = _strip_html(html)
+def _parse_content(content: str) -> dict:
+    """Returns {name, desc, is_closed, is_double} from a Miro shape HTML."""
+    text = _strip_html(content)
     paren_parts = re.findall(r'\(([^)]+)\)', text)
     desc = '; '.join(paren_parts) if paren_parts else None
     is_closed = bool(re.search(r'\[CLAUSURADA\]', text, re.IGNORECASE))
+    is_double = bool(_DOUBLE_RE.search(text))
     name = re.sub(r'\s*\([^)]*\)', '', text)
-    name = re.sub(r'\s*\[[^]]*\]', '', name)
-    name = re.sub(r'\s*(?:<=>|<=|=>|=)\s*', ' ', name).strip()
-    return {'name': name, 'desc': desc, 'is_closed': is_closed}
+    name = re.sub(r'\s*\[[^]]*\]', '', name).strip()
+    return {
+        'name': name, 'desc': desc,
+        'is_closed': is_closed, 'is_double': is_double,
+    }
 
 
 def _get_line_prefix(text: str) -> str | None:

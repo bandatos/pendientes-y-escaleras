@@ -20,6 +20,7 @@ class PathwaySerializer(serializers.ModelSerializer):
             'pathway_mode',
             'is_bidirectional',
             'pathway_description',
+            'is_closed',
             'miro_id',
         ]
 

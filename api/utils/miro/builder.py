@@ -45,33 +45,28 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
     # Public entry point
     # ------------------------------------------------------------------
 
-    def run(self, reset_bd=False) -> dict | None:
+    def run(
+        self, reset_bd=False, frame: dict | None = None
+    ) -> dict | None:
         """
         Builds Stop, Level, and Pathway records from the Miro frame.
 
         Returns a dict with keys 'levels', 'stops', 'pathways', 'skipped',
         or None if the frame / station is not found.
+
+        Args:
+            reset_bd: If True, deletes existing stops/levels/pathways first.
+            frame: Pre-fetched Miro frame dict. If None, fetches by title.
         """
+        from django.db import transaction
         from django.db.models import Q
-        self.frame = search_frame_by_title(self.frame_title)
+        self.frame = frame or search_frame_by_title(self.frame_title)
         if not self.frame:
             print(f"Frame '{self.frame_title}' no encontrado.")
             return None
 
         self._station_stops = list(
             Stop.objects.filter(stop_name__iexact=self.frame_title))
-        if reset_bd:
-            print("Resetting DB records for this station...")
-            child_stops = Stop.objects.filter(
-                miro_id__isnull=False,
-                parent_station__in=self._station_stops,
-            )
-            Pathway.objects.filter(
-                Q(from_stop__in=child_stops)
-                | Q(to_stop__in=child_stops)
-            ).delete()
-            Level.objects.filter(stops__in=child_stops).distinct().delete()
-            child_stops.delete()
         if not self._station_stops:
             print(f"Stops para '{self.frame_title}' "
                   f"no encontrados en la base de datos.")
@@ -97,10 +92,24 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
         text_items = [i for i in self._items if i.get('type') == 'text']
         self._level_texts = self._parse_level_texts(text_items)
 
-        self._create_levels()
-        stop_codes = self._get_double_stop_codes()
-        self._create_stops(stop_codes)
-        self._create_pathways()
+        with transaction.atomic():
+            if reset_bd:
+                print("Resetting DB records for this station...")
+                child_stops = Stop.objects.filter(
+                    miro_id__isnull=False,
+                    parent_station__in=self._station_stops,
+                )
+                Pathway.objects.filter(
+                    Q(from_stop__in=child_stops)
+                    | Q(to_stop__in=child_stops)
+                ).delete()
+                Level.objects.filter(
+                    stops__in=child_stops).distinct().delete()
+                child_stops.delete()
+            self._create_levels()
+            stop_codes = self._get_double_stop_codes()
+            self._create_stops(stop_codes)
+            self._create_pathways()
 
         miro_positions = {
             iid: {
@@ -138,9 +147,11 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
     # Route / line resolution
     # ------------------------------------------------------------------
 
-    def _get_route(self, line_prefix: str) -> Route | None:
+    def _get_route(self, line_prefix: str | None) -> Route | None:
         if self.unique_route:
             return self.unique_route
+        if line_prefix is None:
+            return None
         line_prefix = line_prefix.upper()
         if line_prefix in self.routes:
             return self.routes[line_prefix]

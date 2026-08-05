@@ -295,6 +295,9 @@ class Stop(models.Model):
     has_exit = models.BooleanField(
         default=True, help_text="Indicates if the stop has an exit point")
     is_closed = models.BooleanField(default=False)
+    is_double = models.BooleanField(
+        default=False,
+        help_text="Salida que representa IZQ & DER en un solo nodo Miro")
 
     miro_id = models.CharField(max_length=50, blank=True, null=True)
 

@@ -126,6 +126,7 @@ class StopCatSerializer(serializers.ModelSerializer):
             "stop_desc",
             "miro_id",
             "is_closed",
+            "is_double",
             "stop_code",
             "location_type",
             "level_index",
