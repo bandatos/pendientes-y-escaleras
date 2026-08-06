@@ -33,7 +33,7 @@ db.version(3).stores({
 
     // Imágenes vinculadas a estación + escalera específica
     images: '++id, stationRecordId, number, synced, timestamp, s3Key',
-    evidence_images: '++id, stair_id, synced, timestamp, s3Key, s3Url, finished',
+    evidence_images: '++id, stair_id, synced, timestamp, s3Key, s3Url, finished, stair_report_id',
     // Catálogo de estaciones (metadata estática del sistema)
     stations: '++id, station_id, name, first_route, total_stairs',
 
