@@ -1,0 +1,692 @@
+station: Mixcoac
+station_db_id: 20
+summary:
+  stops: 27
+  pathways_unique: 44
+  pathways_duplicates_omitted: 1
+  levels: 7
+pathway_modes:
+  1: pasillo
+  2: escaleras_normales
+  3: pasillo_movil
+  4: escalera_electrica
+  5: elevador
+  6: torniquete_entrada
+  7: torniquete_salida
+levels:
+- id: MIXCOAC-L7-ANDENES-3
+  level_index: -3.0
+  level_name: Andenes
+- id: MIXCOAC-L12-ANDENES-2
+  level_index: -2.0
+  level_name: Andenes
+- id: MIXCOAC-L7--2
+  level_index: -2.0
+  level_name: null
+- id: MIXCOAC-L12--1
+  level_index: -1.0
+  level_name: null
+- id: MIXCOAC-L7--1
+  level_index: -1.0
+  level_name: null
+- id: MIXCOAC-L12-0
+  level_index: 0.0
+  level_name: null
+- id: MIXCOAC-L7-0
+  level_index: 0.0
+  level_name: null
+stops:
+- id: L7-N-02
+  stop_id: L7-MIXCOAC-N-02
+  name: L7 Vestíbulo andén
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7-ANDENES-3
+- id: L7-N-06
+  stop_id: L7-MIXCOAC-N-06
+  name: L7 Vestíbulo andén
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7-ANDENES-3
+- id: L7-P-01
+  stop_id: L7-MIXCOAC-P-01
+  name: L7 => Rosario
+  type: platform
+  line: '7'
+  level: MIXCOAC-L7-ANDENES-3
+- id: L7-P-02
+  stop_id: L7-MIXCOAC-P-02
+  name: L7 <= Barranca del Muerto
+  type: platform
+  line: '7'
+  level: MIXCOAC-L7-ANDENES-3
+- id: L12-P-01
+  stop_id: L12-MIXCOAC-P-01
+  name: L12 => Tláhuac
+  type: platform
+  line: '12'
+  level: MIXCOAC-L12-ANDENES-2
+- id: L12-P-02
+  stop_id: L12-MIXCOAC-P-02
+  name: L12 = Mixcoac
+  type: platform
+  line: '12'
+  level: MIXCOAC-L12-ANDENES-2
+- id: L7-N-01
+  stop_id: L7-MIXCOAC-N-01
+  name: L7 Mezzanine -2
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7--2
+- id: L7-N-04
+  stop_id: L7-MIXCOAC-N-04
+  name: L7 Mezzanine -2
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7--2
+- id: L7-N-07
+  stop_id: L7-MIXCOAC-N-07
+  name: L7 Pasillo superior - cambio de andén
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7--2
+- id: L12-N-01
+  stop_id: L12-MIXCOAC-N-01
+  name: L12 Descanso de trasbordo hacia Línea 7
+  type: generic_node
+  line: '12'
+  level: MIXCOAC-L12--1
+- id: L12-N-02
+  stop_id: L12-MIXCOAC-N-02
+  name: L12 Mezzanine principal
+  type: generic_node
+  line: '12'
+  level: MIXCOAC-L12--1
+- id: L12-N-03
+  stop_id: L12-MIXCOAC-N-03
+  name: L12 Mezannine antes de salir a Av. Patriotismo
+  type: generic_node
+  line: '12'
+  level: MIXCOAC-L12--1
+- id: L12-N-04
+  stop_id: L12-MIXCOAC-N-04
+  name: L12 Vestíbulo torniquetes
+  type: generic_node
+  line: '12'
+  level: MIXCOAC-L12--1
+- id: L12-N-05
+  stop_id: L12-MIXCOAC-N-05
+  name: L12 Vestíbulo torniquetes
+  type: generic_node
+  line: '12'
+  level: MIXCOAC-L12--1
+- id: L7-N-03
+  stop_id: L7-MIXCOAC-N-03
+  name: L7 Vestíbulo torniquetes
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7--1
+- id: L7-N-05
+  stop_id: L7-MIXCOAC-N-05
+  name: L7 Nivel con torniquetes
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7--1
+- id: L7-N-08
+  stop_id: L7-MIXCOAC-N-08
+  name: L7 Pasillo hacia L12
+  type: generic_node
+  line: '7'
+  level: MIXCOAC-L7--1
+- id: L12-E-01
+  stop_id: L12-MIXCOAC-E-01
+  name: L12 Acceso por calle Empresa
+  type: entrance_exit
+  line: '12'
+  level: MIXCOAC-L12-0
+- id: L12-E-02
+  stop_id: L12-MIXCOAC-E-02
+  name: L12 Acceso a Línea 12
+  type: entrance_exit
+  line: '12'
+  level: MIXCOAC-L12-0
+- id: L12-E-03
+  stop_id: L12-MIXCOAC-E-03
+  name: L12 Acceso Av. Patriotismo
+  type: entrance_exit
+  line: '12'
+  level: MIXCOAC-L12-0
+- id: L12-E-04
+  stop_id: L12-MIXCOAC-E-04
+  name: L12 Acceso Av. Patriotismo
+  type: entrance_exit
+  line: '12'
+  level: MIXCOAC-L12-0
+- id: L12-E-05
+  stop_id: L12-MIXCOAC-E-05
+  name: L12 Acceso elevador Eje 7
+  type: entrance_exit
+  line: '12'
+  level: MIXCOAC-L12-0
+- id: L7-E-01
+  stop_id: L7-MIXCOAC-E-01
+  name: L7 Acceso orienteDirección Barranca
+  type: entrance_exit
+  line: '7'
+  level: MIXCOAC-L7-0
+- id: L7-E-02
+  stop_id: L7-MIXCOAC-E-02
+  name: L7 Acceso Dirección Rosario
+  type: entrance_exit
+  line: '7'
+  level: MIXCOAC-L7-0
+- id: L7-E-03
+  stop_id: L7-MIXCOAC-E-03
+  name: L7 Acceso a paraderos
+  type: entrance_exit
+  line: '7'
+  level: MIXCOAC-L7-0
+- id: 020L12-MIXCOAC
+  stop_id: 020L12-MIXCOAC
+  name: Mixcoac
+  type: station
+  line: '12'
+  level: null
+- id: 0200L7-MIXCOAC
+  stop_id: 0200L7-MIXCOAC
+  name: Mixcoac
+  type: station
+  line: '7'
+  level: null
+pathways:
+- pathway_id: '3458764661678719168'
+  from: L7-N-02
+  to: L7-N-04
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719168'
+- pathway_id: '3458764661678719172'
+  from: L7-P-01
+  to: L7-N-02
+  mode_id: 1
+  mode: pasillo
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719172'
+- pathway_id: '3458764661678719173'
+  from: L7-N-02
+  to: L7-N-04
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719173'
+- pathway_id: '3458764661678719174'
+  from: L7-N-04
+  to: L7-N-05
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719174'
+- pathway_id: '3458764661678719175'
+  from: L7-N-06
+  to: L7-N-01
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719175'
+- pathway_id: '3458764661678719176'
+  from: L7-N-01
+  to: L7-N-03
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719176'
+- pathway_id: '3458764661678719178'
+  from: L7-N-03
+  to: L7-E-01
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719178'
+- pathway_id: '3458764661678719179'
+  from: L7-N-01
+  to: L7-N-03
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719179'
+- pathway_id: '3458764661678719180'
+  from: L7-N-06
+  to: L7-N-01
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719180'
+- pathway_id: '3458764661678719182'
+  from: L7-N-07
+  to: L7-N-02
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719182'
+- pathway_id: '3458764661678719183'
+  from: L7-N-06
+  to: L7-N-07
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719183'
+- pathway_id: '3458764661678719184'
+  from: L7-P-02
+  to: L7-N-06
+  mode_id: 1
+  mode: pasillo
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719184'
+- pathway_id: '3458764661678719185'
+  from: L7-N-06
+  to: L7-N-01
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719185'
+- pathway_id: '3458764661678719186'
+  from: L7-N-01
+  to: L7-N-03
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719186'
+- pathway_id: '3458764661678719187'
+  from: L7-N-03
+  to: L7-E-01
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719187'
+- pathway_id: '3458764661678719188'
+  from: L7-N-04
+  to: L7-N-05
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719188'
+- pathway_id: '3458764661678719189'
+  from: L7-N-05
+  to: L7-E-02
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719189'
+- pathway_id: '3458764661678719191'
+  from: L7-N-03
+  to: L7-E-03
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719191'
+- pathway_id: '3458764661678719193'
+  from: L7-N-02
+  to: L7-N-04
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719193'
+- pathway_id: '3458764661678719194'
+  from: L12-N-01
+  to: L7-N-04
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719194'
+- pathway_id: '3458764661678719196'
+  from: L12-P-02
+  to: L12-N-02
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719196'
+- pathway_id: '3458764661678719197'
+  from: L12-N-01
+  to: L7-N-04
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: lado derecho
+  miro_id: '3458764661678719197'
+- pathway_id: '3458764661678719198'
+  from: L12-N-01
+  to: L7-N-04
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: lado izquierdo
+  miro_id: '3458764661678719198'
+- pathway_id: '3458764661678719199'
+  from: L7-N-04
+  to: L7-N-05
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719199'
+- pathway_id: '3458764661678719200'
+  from: L12-N-02
+  to: L12-N-01
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719200'
+- pathway_id: '3458764661678719201'
+  from: L7-N-08
+  to: L12-N-02
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719201'
+- pathway_id: '3458764661678719204'
+  from: L12-N-02
+  to: L12-P-01
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: las primeras para bajar al área mixta
+  miro_id: '3458764661678719204'
+- pathway_id: '3458764661678719205'
+  from: L12-N-02
+  to: L12-P-01
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: las segundas para bajar al área mixta
+  miro_id: '3458764661678719205'
+- pathway_id: '3458764661678719206'
+  from: L12-N-02
+  to: L12-P-01
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: para bajar a área de mujeres
+  miro_id: '3458764661678719206'
+- pathway_id: '3458764661678719207'
+  from: L12-P-02
+  to: L12-N-02
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: para subir desde el área de mujeres
+  miro_id: '3458764661678719207'
+- pathway_id: '3458764661678719208'
+  from: L12-P-02
+  to: L12-N-02
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719208'
+- pathway_id: '3458764661678719209'
+  from: L12-P-01
+  to: L12-N-02
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719209'
+- pathway_id: '3458764661678719210'
+  from: L12-P-02
+  to: L12-N-02
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: ??
+  miro_id: '3458764661678719210'
+- pathway_id: '3458764661678719215'
+  from: L12-N-04
+  to: L12-N-02
+  mode_id: 1
+  mode: pasillo
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719215'
+- pathway_id: '3458764661678719216'
+  from: L12-E-03
+  to: L12-N-03
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719216'
+- pathway_id: '3458764661678719217'
+  from: L12-E-04
+  to: L12-N-03
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719217'
+- pathway_id: '3458764661678719218'
+  from: L12-N-03
+  to: L12-N-04
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719218'
+- pathway_id: '3458764661678719219'
+  from: L12-N-04
+  to: L12-N-03
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764661678719219'
+- pathway_id: '3458764661678719221'
+  from: L12-N-05
+  to: L12-E-02
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719221'
+- pathway_id: '3458764661678719222'
+  from: L12-N-05
+  to: L12-E-01
+  mode_id: 2
+  mode: escaleras_normales
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719222'
+- pathway_id: '3458764661678719223'
+  from: L12-N-05
+  to: L12-N-02
+  mode_id: 1
+  mode: pasillo
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719223'
+- pathway_id: '3458764661678719225'
+  from: L12-N-02
+  to: L12-E-05
+  mode_id: 5
+  mode: elevador
+  bidirectional: true
+  description: null
+  miro_id: '3458764661678719225'
+- pathway_id: '3458764662457294131'
+  from: L7-N-05
+  to: L7-E-02
+  mode_id: 4
+  mode: escalera_electrica
+  bidirectional: false
+  description: null
+  miro_id: '3458764662457294131'
+- pathway_id: '3458764662501480674'
+  from: L7-N-08
+  to: L7-N-05
+  mode_id: 1
+  mode: pasillo
+  bidirectional: true
+  description: null
+  miro_id: '3458764662501480674'
+canonical_path:
+  origin: L7-P-01
+  destination: L12-P-01
+  hops: 6
+  stops_in_order:
+  - L7-P-01
+  - L7-N-02
+  - L7-N-04
+  - L7-N-05
+  - L7-N-08
+  - L12-N-02
+  - L12-P-01
+  segments:
+  - hop: 1
+    from: L7-P-01
+    to: L7-N-02
+    from_level: MIXCOAC-L7-ANDENES-3
+    to_level: MIXCOAC-L7-ANDENES-3
+    level_change: false
+    pathways_count: 1
+    pathways:
+    - pathway_id: '3458764661678719172'
+      mode: pasillo
+      bidirectional: true
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+  - hop: 2
+    from: L7-N-02
+    to: L7-N-04
+    from_level: MIXCOAC-L7-ANDENES-3
+    to_level: MIXCOAC-L7--2
+    level_change: true
+    pathways_count: 3
+    pathways:
+    - pathway_id: '3458764661678719168'
+      mode: escaleras_normales
+      bidirectional: true
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+    - pathway_id: '3458764661678719173'
+      mode: escalera_electrica
+      bidirectional: true
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+    - pathway_id: '3458764661678719193'
+      mode: escalera_electrica
+      bidirectional: false
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+  - hop: 3
+    from: L7-N-04
+    to: L7-N-05
+    from_level: MIXCOAC-L7--2
+    to_level: MIXCOAC-L7--1
+    level_change: true
+    pathways_count: 3
+    pathways:
+    - pathway_id: '3458764661678719174'
+      mode: escalera_electrica
+      bidirectional: true
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+    - pathway_id: '3458764661678719188'
+      mode: escaleras_normales
+      bidirectional: true
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+    - pathway_id: '3458764661678719199'
+      mode: escalera_electrica
+      bidirectional: false
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+  - hop: 4
+    from: L7-N-05
+    to: L7-N-08
+    from_level: MIXCOAC-L7--1
+    to_level: MIXCOAC-L7--1
+    level_change: false
+    pathways_count: 1
+    pathways:
+    - pathway_id: '3458764662501480674'
+      mode: pasillo
+      bidirectional: true
+      description: null
+      stored_as: b_to_a
+      direction: with_path
+  - hop: 5
+    from: L7-N-08
+    to: L12-N-02
+    from_level: MIXCOAC-L7--1
+    to_level: MIXCOAC-L12--1
+    level_change: true
+    pathways_count: 1
+    pathways:
+    - pathway_id: '3458764661678719201'
+      mode: escaleras_normales
+      bidirectional: false
+      direction: with_path
+      stored_as: a_to_b
+      description: null
+  - hop: 6
+    from: L12-N-02
+    to: L12-P-01
+    from_level: MIXCOAC-L12--1
+    to_level: MIXCOAC-L12-ANDENES-2
+    level_change: true
+    pathways_count: 4
+    pathways:
+    - pathway_id: '3458764661678719204'
+      mode: escalera_electrica
+      bidirectional: false
+      direction: with_path
+      stored_as: a_to_b
+      description: las primeras para bajar al área mixta
+    - pathway_id: '3458764661678719205'
+      mode: escalera_electrica
+      bidirectional: false
+      direction: with_path
+      stored_as: a_to_b
+      description: las segundas para bajar al área mixta
+    - pathway_id: '3458764661678719206'
+      mode: escalera_electrica
+      bidirectional: false
+      direction: with_path
+      stored_as: a_to_b
+      description: para bajar a área de mujeres
+    - pathway_id: '3458764661678719209'
+      mode: escaleras_normales
+      bidirectional: true
+      description: null
+      stored_as: b_to_a
+      direction: with_path

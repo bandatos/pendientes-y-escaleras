@@ -1,0 +1,26 @@
+from django.contrib import admin
+from .models import StairReport, EvidenceImage
+
+
+class EvidenceImageAdmin(admin.ModelAdmin):
+    list_display = ('stair_report', 'image')
+
+
+class EvidenceImageInline(admin.TabularInline):
+    model = EvidenceImage
+    extra = 0
+
+
+class StairReportAdmin(admin.ModelAdmin):
+    list_display = (
+        'stair', 'user', 'status_maintenance', 'is_working',
+        'date_reported', "details")
+    search_fields = ('user__email', 'stair__stop__stop_name')
+    list_filter = (
+        'status_maintenance', 'is_working', 'date_reported',
+        'stair__stop__route', "user")
+    inlines = [EvidenceImageInline]
+
+
+admin.site.register(StairReport, StairReportAdmin)
+admin.site.register(EvidenceImage, EvidenceImageAdmin)
