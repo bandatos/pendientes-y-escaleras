@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Validación estructural de la documentación. Generado por el skill documenter.
+# Para saltarlo en un caso legítimo:  git commit --no-verify
+
+VALIDADOR="$HOME/.claude/skills/documenter/scripts/validate.mjs"
+
+if [[ ! -f "$VALIDADOR" ]]; then
+    echo "documenter: no encuentro el validador en $VALIDADOR — commit sin validar." >&2
+    exit 0
+fi
+
+if ! node "$VALIDADOR"; then
+    echo
+    echo "El commit se detuvo por los errores de arriba."
+    echo "Si sabes lo que haces:  git commit --no-verify"
+    exit 1
+fi
