@@ -13,7 +13,7 @@ Claves de `.env`: `VITE_APP_API_URL`, `VITE_APP_PASSPHRASE`, `VITE_APP_TITLE`, `
 
 ## Gotchas
 
-- `src/services/apiSync.js` parece código muerto: nadie lo importa y su `apiBaseUrl` cae por defecto en `jsonplaceholder.typicode.com`. Verifica antes de reusarlo. (`syncStore.js` sí está en uso, desde `SyncStatusBar.vue` y `StationSummary.vue`.)
+- `src/services/apiSync.js` está a medio cablear: `syncStore.js` lo usa (`getApiSync()` sin argumento), por lo que su `apiBaseUrl` cae en el default `jsonplaceholder.typicode.com` — el flujo de sincronización apunta a una API de juguete, no a la real. Ver la task abierta en `docs/` antes de tocarlo.
 - Solo se cargan escaleras del STC-Metro. Algunas escaleras que se ven dentro de una estación pertenecen a centros comerciales contiguos y el backend las filtra aguas arriba (por ejemplo, Estación Rosario).
 - El backend tiene doble modelo de escalera, `Stair` legado y `Pathway` GTFS. Un `StairReport` puede referenciar cualquiera de los dos: no asumas uno.
 
