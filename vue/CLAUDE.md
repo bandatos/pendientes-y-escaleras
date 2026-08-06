@@ -1,60 +1,23 @@
-# Sistema de Relevamiento
+# vue — PWA de relevamiento
 
-Vue 3 frontend for citizen reports on the state of escalators/stairs in
-the Mexico City Metro (STC-Metro). **v1 (current)**: app used by in-field
-auditors. **v2 (planned)**: public-facing for citizens. Pairs with the
-Django API at `D:\dev\open\escaleras_survey_ws` — see its `CLAUDE.md`
-for backend details.
+Frontend Vue 3 + Vuetify para los reportes sobre el estado de escaleras y elevadores del Metro (STC-Metro). **v1 (actual)**: app para auditores en campo. **v2 (planeada)**: versión pública para la ciudadanía. Consume la API de `../api/` (ver su `CLAUDE.md`).
 
-Package manager: **pnpm**. Node ≥ 20.19.
+Claves de `.env`: `VITE_APP_API_URL`, `VITE_APP_PASSPHRASE`, `VITE_APP_TITLE`, `VITE_APP_VERSION`.
 
-## Commands
+## Arquitectura
 
-```sh
-pnpm install
-pnpm dev       # Vite on port 5174 (host 0.0.0.0)
-pnpm build
-pnpm preview
-```
-
-The Django backend must be running locally on `:8013`. `.env` keys:
-`VITE_APP_API_URL`, `VITE_APP_PASSPHRASE`, `VITE_APP_TITLE`,
-`VITE_APP_VERSION`.
-
-## Architecture
-
-- Routes live in `src/views/`: `StationSelector` (`/`) and
-  `StationSummary` (`/station/:station_id`).
-- Stores in `src/stores/`, services in `src/services/`. **For any new
-  store/service, or work touching those folders, follow the
-  `refactor-store-service` skill** — it is the source of truth for the
-  patterns used here.
-- Offline-first via Dexie (db `relevamientoMetro`, schema v3 — see
-  `src/services/indexDB.js`). Stores consume the static class
-  `IndexedDBService`; do not touch the `db` instance directly.
-- Bulk catalog endpoint: `GET /api/catalogs/` returns
-  `{ routes, stops, stations, stairs }` and seeds both the Pinia store
-  and the IndexedDB cache on app init via `useStationStore.init()`.
-- `unplugin-auto-import` is active for Vue (`ref`, `computed`, `watch`,
-  …) and Pinia (`defineStore`, `storeToRefs`, `acceptHMRUpdate`). Do
-  not write those imports manually. Alias `@/` = `src/`.
+- Solo hay dos rutas, en `src/views/`: `StationSelector` (`/`) y `StationSummary` (`/station/:station_id`).
+- Offline-first con Dexie (base `relevamientoMetro`, esquema v3 — ver `src/services/indexDB.js`). Los stores consumen la clase estática `IndexedDBService`; no toques la instancia `db` directamente.
+- `useStationStore.init()` llama a `GET /api/catalogs/`, que devuelve `{ routes, stops, stations, stairs }` de un golpe y siembra a la vez el store de Pinia y el caché de IndexedDB.
+- `unplugin-auto-import` está activo para Vue (`ref`, `computed`, `watch`, …) y Pinia (`defineStore`, `storeToRefs`, `acceptHMRUpdate`): no escribas esos imports a mano. Alias `@/` = `src/`.
 
 ## Gotchas
 
-- `src/stores/syncStore.js` and `src/services/apiSync.js` look like
-  dead code (the latter defaults `apiBaseUrl` to
-  `jsonplaceholder.typicode.com`). Verify before reusing; pending
-  cleanup once confirmed.
-- Only STC-Metro stairs are loaded. Some stairs visible inside a
-  station belong to adjacent malls and are filtered upstream by the
-  backend (e.g. Estación Rosario).
-- The backend has a dual stair model — legacy `Stair` and GTFS-compliant
-  `Pathway`. A `StairReport` may reference either; do not assume one.
+- `src/services/apiSync.js` parece código muerto: nadie lo importa y su `apiBaseUrl` cae por defecto en `jsonplaceholder.typicode.com`. Verifica antes de reusarlo. (`syncStore.js` sí está en uso, desde `SyncStatusBar.vue` y `StationSummary.vue`.)
+- Solo se cargan escaleras del STC-Metro. Algunas escaleras que se ven dentro de una estación pertenecen a centros comerciales contiguos y el backend las filtra aguas arriba (por ejemplo, Estación Rosario).
+- El backend tiene doble modelo de escalera, `Stair` legado y `Pathway` GTFS. Un `StairReport` puede referenciar cualquiera de los dos: no asumas uno.
 
-## Boundaries
+## Límites
 
-- ⚠️ Bumping the Dexie schema version: field auditors carry unsynced
-  data on their devices. Confirm a migration plan before raising the
-  version in `src/services/indexDB.js`.
-- 🚫 Never hard-code station, line, or stair IDs. They come from the
-  catalog endpoint and the IndexedDB cache.
+- ⚠️ Subir la versión del esquema de Dexie: los auditores de campo cargan datos sin sincronizar en sus dispositivos. Confirma un plan de migración antes de incrementarla en `src/services/indexDB.js`.
+- 🚫 Nunca hardcodees ids de estación, línea o escalera. Vienen del endpoint de catálogos y del caché de IndexedDB.
