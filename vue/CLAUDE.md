@@ -11,6 +11,10 @@ Claves de `.env`: `VITE_APP_API_URL`, `VITE_APP_PASSPHRASE`, `VITE_APP_TITLE`, `
 - `useStationStore.init()` llama a `GET /api/catalogs/`, que devuelve `{ routes, stops, stations, stairs }` de un golpe y siembra a la vez el store de Pinia y el caché de IndexedDB.
 - `unplugin-auto-import` está activo para Vue (`ref`, `computed`, `watch`, …) y Pinia (`defineStore`, `storeToRefs`, `acceptHMRUpdate`): no escribas esos imports a mano. Alias `@/` = `src/`.
 
+## Módulo de mapeo OSM (en construcción)
+
+La parte de mapas para OpenStreetMap (visor de estación, generación de `.osm`, disparo de JOSM) se desarrolla en modo *vibecoding*: Ricardo define **cómo se comporta** (flujo, qué ve el mapeador, qué confirma), no cómo se implementa. Los ejecutores deciden la implementación con libertad, dentro de las convenciones del repo, sin consultar cada decisión de código de este módulo ni esperar que Ricardo revise su interior. Fuera del módulo aplica el régimen normal.
+
 ## Gotchas
 
 - `src/services/apiSync.js` está a medio cablear: `syncStore.js` lo usa (`getApiSync()` sin argumento), por lo que su `apiBaseUrl` cae en el default `jsonplaceholder.typicode.com` — el flujo de sincronización apunta a una API de juguete, no a la real. Ver la task abierta en `docs/` antes de tocarlo.

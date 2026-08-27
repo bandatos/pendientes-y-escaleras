@@ -25,8 +25,10 @@ API de reportes ciudadanos sobre el estado de escaleras y elevadores en las esta
 
 Se conmuta con `POSTRGRESQL_DB` en `.env` (el typo del nombre es real, respétalo):
 
-- Vacío → SQLite. Además hay que comentar `'django.contrib.postgres'` en `INSTALLED_APPS`, porque solo se agrega dinámicamente cuando `POSTRGRESQL_DB=True`.
+- Vacío → SQLite en `DATABASE_NAME` (`django.contrib.postgres` se agrega solo cuando hay Postgres; no hay que tocar `INSTALLED_APPS`).
 - `True` → PostgreSQL con los datos de conexión del `.env`; `DATABASE_SCHEMA` alimenta la opción `search_path`.
+
+La base de desarrollo es PostgreSQL `escaleras-local`; se restaura con `psql escaleras-local < ~/databases/escaleras-local-<fecha>.sql` (respaldos fuera del repo). `dump.json` es histórico y trae acentos rotos: no lo uses como fuente.
 
 ## Arquitectura
 
@@ -43,11 +45,14 @@ Patrones no obvios:
 
 Convierte frames de Miro en registros `Stop`, `Level` y `Pathway` mediante `MiroSchemaBuilder`. Para las estructuras de la API, el mapeo color → `PathwayMode`, las convenciones de formas y las reglas de parseo, usa el skill `miro-api`.
 
-Vista previa sin escribir en la base:
-
 ```bash
-.venv/bin/python manage.py preview_miro_schema <frame_title> [--from-db] [--output PATH]
+.venv/bin/python manage.py preview_miro_schema <frame_title> [--from-db] [--output PATH] [--reset]
+.venv/bin/python manage.py preview_miro_schema --all-stations
 ```
+
+Pese al nombre, **persiste**: escribe `Level`, `Stop` y `Pathway` en la base (el HTML es un subproducto). `--from-db` es el único modo de solo lectura; `--all-stations` omite las estaciones que ya tienen `miro_id` salvo con `--reset`, que borra y reimporta. El frame se elige por título exacto contra `Stop.stop_name`.
+
+- **`Stop.is_double`**: un nodo de Miro con «(IZQ & DER)» representa dos salidas físicas gemelas que solo se bifurcan al final; el builder crea **un solo** `Stop` con la bandera, y en OSM serán dos nodos con el mismo `ref`. Distinto de `stop_code` A/B: ahí Miro dibuja dos nodos unidos por un conector punteado con diamantes.
 
 ## Convenciones
 

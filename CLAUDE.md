@@ -20,6 +20,10 @@ Prefija con `[api]` o `[vue]` los commits que tocan un solo subproyecto; sin pre
 
 `data/gtfs/` es la copia canónica del GTFS; las copias bajo `api/media/` y `vue/src/assets/` son de consumo interno de cada subproyecto. Si actualizas el GTFS, actualiza la canónica y propaga, no al revés. `data/raw/` y `data/sources/` son insumos históricos: se leen, no se editan.
 
+## Replicabilidad
+
+Repo público con varias manos: todo debe reproducirse solo con el repo. Nada se corrige a mano en la base de datos — siempre por command, migración de datos o el CSV/GTFS de origen.
+
 ## Gotchas
 
 - GitHub Pages sirve hoy `bandatos.org/pendientes-y-escaleras` desde la **raíz de `main`**, donde vivía el prototipo estático que ahora está en `prototype/`. Mergear la rama `monorepo` a `main` rompe el sitio hasta que se reconfigure: ver `docs/tasks/task-2-*` (abierta) antes de tocar el despliegue.

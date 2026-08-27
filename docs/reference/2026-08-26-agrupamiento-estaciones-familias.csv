@@ -1,0 +1,164 @@
+station,lines,family,confidence,has_topology,additions
+Acatitla,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Aculco,L8,E — Viaducto elevado de L8 (Churubusco),confirmada,sí,11 accesos
+Agrícola Oriental,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Allende,L2,A — Cajón clásico con edificio de acceso,confirmada,sí,4 esc. eléctricas
+Apatlaco,L8,E — Viaducto elevado de L8 (Churubusco),confirmada,sí,11 accesos
+Aquiles Serdán,L7,G — Profunda de L7 en cascada,confirmada,sí,12 esc. eléctricas
+Aragón,L5,N — Superficie y elevada de L5 oriente,provisional,no,—
+Atlalilco,L8+L12,Z — Gran nodo de transbordo (caso individual),provisional,no,transbordo L8+L12
+Auditorio,L7,G — Profunda de L7 en cascada,confirmada,sí,8 esc. eléctricas
+Autobuses del Norte,L5,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,—
+Balbuena,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Balderas,L1+L3,A — Cajón clásico con edificio de acceso,confirmada,sí,transbordo L1+L3; 12 esc. eléctricas
+Barranca del Muerto,L7,G — Profunda de L7 en cascada,confirmada,sí,terminal; 9 esc. eléctricas
+Bellas Artes,L2+L8,A — Cajón clásico con edificio de acceso,confirmada,sí,transbordo L2+L8; 8 accesos; 7 esc. eléctricas
+Bondojito,L4,F — Elevada de L4 (Circuito Interior),confirmada,sí,—
+Bosque de Aragón,LB,L — Elevada de LB norte,provisional,no,—
+Boulevard Puerto Aéreo,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,6 accesos
+Buenavista,LB,O — Terminal con andenes de maniobra,provisional,no,terminal
+Calle 11,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Camarones,L7,G — Profunda de L7 en cascada,confirmada,sí,16 esc. eléctricas
+Canal de San Juan,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Canal del Norte,L4,F — Elevada de L4 (Circuito Interior),confirmada,sí,—
+Candelaria,L1+L4,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L1+L4; 6 accesos
+Centro Médico,L3+L9,C — Cajón profundo de vestíbulo único,confirmada,sí,transbordo L3+L9; 9 accesos; 12 esc. eléctricas
+Cerro de la Estrella,L8,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Chabacano,L2+L8+L9,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L2+L8+L9; elevador; 12 accesos; 22 esc. eléctricas
+Chapultepec ,L1,C — Cajón profundo de vestíbulo único,confirmada,sí,6 accesos
+Chilpancingo,L9,C — Cajón profundo de vestíbulo único,confirmada,sí,4 esc. eléctricas
+Ciudad Azteca,LB,L — Elevada de LB norte,provisional,no,terminal
+Ciudad Deportiva,L9,H — Elevada de L9 oriente,confirmada,sí,2 esc. eléctricas
+Colegio Militar,L2,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Constitución de 1917,L8,O — Terminal con andenes de maniobra,confirmada,sí,terminal; 18 accesos; 2 esc. eléctricas
+Constituyentes,L7,G — Profunda de L7 en cascada,confirmada,sí,12 esc. eléctricas
+Consulado,L4+L5,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L4+L5; 9 esc. eléctricas
+Copilco,L3,C — Cajón profundo de vestíbulo único,confirmada,sí,4 esc. eléctricas
+Coyoacán,L3,C — Cajón profundo de vestíbulo único,confirmada,sí,—
+Coyuya,L8,E — Viaducto elevado de L8 (Churubusco),confirmada,sí,12 accesos
+Cuatro Caminos,L2,O — Terminal con andenes de maniobra,provisional,no,terminal
+Cuauhtémoc,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Cuitláhuac,L2,A — Cajón clásico con edificio de acceso,confirmada,sí,1 esc. eléctricas
+Culhuacán,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Deportivo 18 de Marzo,L3+L6,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L3+L6
+Deportivo Oceanía,LB,L — Elevada de LB norte,provisional,no,—
+División del Norte,L3,B — Cajón con acceso directo a la calle,confirmada,sí,6 accesos
+Doctores,L8,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Ecatepec,LB,L — Elevada de LB norte,provisional,no,—
+Eduardo Molina,L5,N — Superficie y elevada de L5 oriente,provisional,no,—
+Eje Central,L12,C — Cajón profundo de vestíbulo único,provisional,no,—
+El Rosario,L6+L7,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L6+L7; terminal
+Ermita,L2+L12,D — Superficie de Calzada de Tlalpan,confirmada,sí,transbordo L2+L12; elevador; 6 accesos; 12 esc. eléctricas
+Escuadrón 201,L8,B — Cajón con acceso directo a la calle,provisional,no,—
+Etiopía y Plaza de la Transparencia,L3,B — Cajón con acceso directo a la calle,provisional,no,—
+Eugenia,L3,A — Cajón clásico con edificio de acceso,confirmada,sí,—
+Ferrería y Arena Ciudad de México,L6,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,—
+Fray Servando,L4,F — Elevada de L4 (Circuito Interior),confirmada,sí,2 esc. eléctricas
+Garibaldi y Lagunilla,L8+LB,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L8+LB; terminal; 7 accesos; 6 esc. eléctricas
+General Anaya,L2,D — Superficie de Calzada de Tlalpan,confirmada,sí,2 esc. eléctricas
+Guelatao,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Guerrero,L3+LB,A — Cajón clásico con edificio de acceso,confirmada,sí,transbordo L3+LB; 6 accesos; 5 esc. eléctricas
+Gómez Farías,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Hangares,L5,N — Superficie y elevada de L5 oriente,provisional,no,—
+Hidalgo,L2+L3,A — Cajón clásico con edificio de acceso,confirmada,sí,transbordo L2+L3; 8 accesos; 10 esc. eléctricas
+Hospital 20 de Noviembre,L12,C — Cajón profundo de vestíbulo único,confirmada,sí,4 esc. eléctricas
+Hospital General,L3,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Impulsora,LB,L — Elevada de LB norte,provisional,no,—
+Indios Verdes,L3,O — Terminal con andenes de maniobra,provisional,no,terminal
+Instituto del Petróleo,L5+L6,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L5+L6; 6 accesos
+Insurgentes,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,—
+Insurgentes Sur,L12,C — Cajón profundo de vestíbulo único,confirmada,sí,6 esc. eléctricas
+Isabel la Católica,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Iztacalco,L8,E — Viaducto elevado de L8 (Churubusco),confirmada,sí,10 accesos
+Iztapalapa,L8,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Jamaica,L4+L9,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L4+L9; 6 accesos; 8 esc. eléctricas
+Juanacatlán,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,—
+Juárez,L3,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+La Paz,LA,I — Elevada de LA (Los Reyes),provisional,no,terminal
+La Raza,L3+L5,Z — Gran nodo de transbordo (caso individual),provisional,no,transbordo L3+L5
+La Viga,L8,B — Cajón con acceso directo a la calle,confirmada,sí,—
+La Villa y Basílica,L6,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,—
+Lagunilla,LB,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Lindavista,L6,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Lomas Estrella,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Los Reyes,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Lázaro Cárdenas,L9,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Martín Carrera,L4+L6,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L4+L6; terminal
+Merced,L1,B — Cajón con acceso directo a la calle,provisional,no,—
+Mexicaltzingo,L12,C — Cajón profundo de vestíbulo único,provisional,no,—
+Miguel Ángel de Quevedo,L3,B — Cajón con acceso directo a la calle,provisional,no,—
+Misterios,L5,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,—
+Mixcoac,L7+L12,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L7+L12; terminal; elevador; 8 accesos; 19 esc. eléctricas
+Mixiuhca,L9,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Moctezuma,L1,B — Cajón con acceso directo a la calle,confirmada,sí,6 accesos; 2 esc. eléctricas
+Morelos,L4+LB,B — Cajón con acceso directo a la calle,confirmada,sí,transbordo L4+LB; 4 esc. eléctricas
+Múzquiz,LB,L — Elevada de LB norte,provisional,no,—
+Nativitas,L2,D — Superficie de Calzada de Tlalpan,confirmada,sí,2 esc. eléctricas
+Nezahualcóyotl,LB,L — Elevada de LB norte,provisional,no,—
+Niños Héroes y  Poder Judicial CDMX,L3,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Nopalera,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Normal,L2,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Norte 45,L6,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Obrera,L8,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Observatorio,L1,O — Terminal con andenes de maniobra,provisional,no,terminal
+Oceanía,L5+LB,Z — Gran nodo de transbordo (caso individual),provisional,no,transbordo L5+LB
+Olivos,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Olímpica,LB,L — Elevada de LB norte,provisional,no,—
+Panteones,L2,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Pantitlán,L1+L5+L9+LA,Z — Gran nodo de transbordo (caso individual),provisional,no,transbordo L1+L5+L9+LA; terminal
+Parque de los Venados,L12,C — Cajón profundo de vestíbulo único,provisional,no,—
+Patriotismo,L9,C — Cajón profundo de vestíbulo único,confirmada,sí,4 esc. eléctricas
+Penón Viejo,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Periférico Oriente,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Pino Suárez,L1+L2,B — Cajón con acceso directo a la calle,confirmada,sí,transbordo L1+L2; 8 accesos; 8 esc. eléctricas
+Plaza Aragón,LB,L — Elevada de LB norte,provisional,no,—
+Polanco,L7,G — Profunda de L7 en cascada,confirmada,sí,8 esc. eléctricas
+Politécnico,L5,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,terminal
+Popotla,L2,A — Cajón clásico con edificio de acceso,confirmada,sí,1 esc. eléctricas
+Portales,L2,D — Superficie de Calzada de Tlalpan,confirmada,sí,2 esc. eléctricas
+Potrero,L3,B — Cajón con acceso directo a la calle,provisional,no,—
+Puebla,L9,H — Elevada de L9 oriente,confirmada,sí,2 esc. eléctricas
+Refinería,L7,G — Profunda de L7 en cascada,confirmada,sí,8 esc. eléctricas
+Revolución,L2,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Ricardo Flores Magón,LB,B — Cajón con acceso directo a la calle,provisional,no,—
+Romero Rubio,LB,B — Cajón con acceso directo a la calle,provisional,no,—
+Río de los Remedios,LB,L — Elevada de LB norte,provisional,no,—
+Salto del Agua,L1+L8,B — Cajón con acceso directo a la calle,confirmada,sí,transbordo L1+L8; 6 accesos; 7 esc. eléctricas
+San Andrés Tomatlán,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+San Antonio,L7,G — Profunda de L7 en cascada,confirmada,sí,8 esc. eléctricas
+San Antonio Abad,L2,D — Superficie de Calzada de Tlalpan,confirmada,sí,2 esc. eléctricas
+San Cosme,L2,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+San Joaquín,L7,G — Profunda de L7 en cascada,confirmada,sí,10 esc. eléctricas
+San Juan de Letrán,L8,A — Cajón clásico con edificio de acceso,confirmada,sí,—
+San Lázaro,L1+LB,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L1+LB; 7 accesos; 3 esc. eléctricas
+San Pedro de los Pinos,L7,G — Profunda de L7 en cascada,confirmada,sí,10 esc. eléctricas
+Santa Anita,L4+L8,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L4+L8; terminal; 10 accesos; 4 esc. eléctricas
+Santa Marta,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Sevilla,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,2 esc. eléctricas
+Tacuba,L2+L7,A — Cajón clásico con edificio de acceso,confirmada,sí,transbordo L2+L7; 6 accesos; 16 esc. eléctricas
+Tacubaya,L1+L7+L9,Z — Gran nodo de transbordo (caso individual),individual,sí,transbordo L1+L7+L9; 11 accesos; 24 esc. eléctricas
+Talismán,L4,F — Elevada de L4 (Circuito Interior),confirmada,sí,—
+Tasqueña,L2,O — Terminal con andenes de maniobra,provisional,no,terminal
+Tepalcates,LA,I — Elevada de LA (Los Reyes),provisional,no,—
+Tepito,LB,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Terminal Aérea,L5,N — Superficie y elevada de L5 oriente,provisional,no,—
+Tezonco,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Tezozómoc,L6,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,—
+Tlaltenco,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Tlatelolco,L3,B — Cajón con acceso directo a la calle,provisional,no,—
+Tláhuac,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,terminal
+UAM Azcapotzalco,L6,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,—
+UAM-I,L8,B — Cajón con acceso directo a la calle,confirmada,sí,—
+Universidad,L3,O — Terminal con andenes de maniobra,confirmada,sí,terminal; 10 accesos
+Valle Gómez,L5,M — Cajón subterráneo sin levantar (L5 norte y L6 poniente),provisional,no,—
+Vallejo,L6,C — Cajón profundo de vestíbulo único,confirmada,sí,—
+Velódromo,L9,H — Elevada de L9 oriente,confirmada,sí,elevador; 2 esc. eléctricas
+Viaducto,L2,D — Superficie de Calzada de Tlalpan,confirmada,sí,2 esc. eléctricas
+Villa de Aragón,LB,L — Elevada de LB norte,provisional,no,—
+Villa de Cortés,L2,D — Superficie de Calzada de Tlalpan,confirmada,sí,2 esc. eléctricas
+Viveros y  Derechos Humanos,L3,B — Cajón con acceso directo a la calle,provisional,no,—
+Xola,L2,D — Superficie de Calzada de Tlalpan,confirmada,sí,2 esc. eléctricas
+Zapata,L3+L12,C — Cajón profundo de vestíbulo único,provisional,no,transbordo L3+L12
+Zapotitlán,L12,J — Elevada de L12 oriente (Tláhuac),provisional,no,—
+Zaragoza,L1,A — Cajón clásico con edificio de acceso,confirmada,sí,9 accesos; 3 esc. eléctricas
+Zócalo,L2,C — Cajón profundo de vestíbulo único,confirmada,sí,8 accesos; 4 esc. eléctricas

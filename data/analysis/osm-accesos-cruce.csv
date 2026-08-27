@@ -1,0 +1,134 @@
+station,ours,osm,osm_named,auto_matched,notes
+Aculco,11,0,0,0,sin_datos; nos faltan 11 en OSM
+Allende,4,2,2,1,parcial; nos faltan 2 en OSM; nombres OSM = nombre de estación
+Apatlaco,11,0,0,0,sin_datos; nos faltan 11 en OSM
+Aquiles Serdán,4,4,4,2,parcial; nombres OSM = nombre de estación
+Auditorio,5,2,2,2,parcial; nos faltan 3 en OSM; nombres OSM = nombre de estación
+Balbuena,3,4,4,2,parcial; OSM tiene 1 más; nombres OSM = nombre de estación
+Balderas,5,4,4,2,parcial; nos faltan 1 en OSM; nombres OSM = nombre de estación
+Barranca del Muerto,2,2,2,2,total; nombres OSM = nombre de estación
+Bellas Artes,8,8,4,4,parcial; nombres OSM = nombre de estación
+Bondojito,2,2,2,1,parcial; nombres OSM = nombre de estación
+Boulevard Puerto Aéreo,6,4,4,4,parcial; nos faltan 2 en OSM
+Camarones,4,4,4,4,total; nombres OSM = nombre de estación
+Canal del Norte,2,0,0,0,sin_datos; nos faltan 2 en OSM
+Candelaria,6,5,0,5,parcial; nos faltan 1 en OSM
+Centro Médico,9,7,5,6,parcial; nos faltan 2 en OSM; nombres OSM = nombre de estación
+Cerro de la Estrella,4,4,4,3,parcial; nombres OSM = nombre de estación
+Chabacano,12,10,10,6,parcial; nos faltan 2 en OSM; nombres OSM = nombre de estación
+Chapultepec,6,6,0,4,parcial
+Chilpancingo,4,4,4,4,total; nombres OSM = nombre de estación
+Ciudad Deportiva,2,2,0,0,nulo
+Colegio Militar,2,1,0,0,nulo; nos faltan 1 en OSM
+Constitución de 1917,18,0,0,0,"sin_datos; 9 nodos ""Andén"" (no son accesos de calle); nos faltan 9 en OSM"
+Constituyentes,2,2,0,2,total
+Consulado,4,0,0,0,sin_datos; nos faltan 4 en OSM
+Copilco,2,3,2,1,parcial; OSM tiene 1 más; nombres OSM = nombre de estación
+Coyoacán,3,3,3,1,parcial; nombres OSM = nombre de estación
+Coyuya,12,4,4,4,parcial; nos faltan 8 en OSM; nombres OSM = nombre de estación
+Cuauhtémoc,2,3,1,2,parcial; OSM tiene 1 más; nombres OSM = nombre de estación
+Cuitláhuac,2,2,2,1,parcial; nombres OSM = nombre de estación
+Deportivo 18 de Marzo,2,6,1,1,parcial; OSM tiene 4 más; nombres OSM = nombre de estación
+División del Norte,6,6,6,3,parcial; nombres OSM = nombre de estación
+Doctores,4,4,4,4,total; nombres OSM = nombre de estación
+El Rosario,1,0,0,0,sin_datos; nos faltan 1 en OSM
+Ermita,6,7,3,3,parcial; OSM tiene 1 más; nombres OSM = nombre de estación
+Eugenia,2,0,0,0,sin_datos; nos faltan 2 en OSM
+Fray Servando,2,0,0,0,sin_datos; nos faltan 2 en OSM
+Garibaldi y Lagunilla,7,0,0,0,sin_datos; nos faltan 7 en OSM
+General Anaya,2,0,0,0,sin_datos; nos faltan 2 en OSM
+Guerrero,6,8,8,6,parcial; OSM tiene 2 más; nombres OSM = nombre de estación
+Gómez Farías,2,2,0,0,nulo
+Hidalgo,8,10,0,5,parcial; OSM tiene 2 más
+Hospital 20 de Noviembre,4,4,0,4,total
+Hospital General,2,2,1,1,parcial; nombres OSM = nombre de estación
+Instituto del Petróleo,6,4,4,4,parcial; nos faltan 2 en OSM; nombres OSM = nombre de estación
+Insurgentes,5,6,0,3,parcial; OSM tiene 1 más
+Insurgentes Sur,5,5,5,5,total
+Isabel la Católica,2,0,0,0,sin_datos; nos faltan 2 en OSM
+Iztacalco,10,0,0,0,sin_datos; nos faltan 10 en OSM
+Iztapalapa,3,3,0,1,parcial
+Jamaica,6,0,0,0,sin_datos; nos faltan 6 en OSM
+Juanacatlán,3,0,0,0,sin_datos; nos faltan 3 en OSM
+Juárez,2,2,2,2,total; nombres OSM = nombre de estación
+La Viga,4,4,4,4,total; nombres OSM = nombre de estación
+Lagunilla,4,0,0,0,sin_datos; nos faltan 4 en OSM
+Lindavista,2,2,2,0,nulo; nombres OSM = nombre de estación
+Lázaro Cárdenas,4,4,4,4,total; nombres OSM = nombre de estación
+Martín Carrera,2,7,4,1,parcial; OSM tiene 5 más; nombres OSM = nombre de estación
+Mixcoac,8,5,5,0,nulo; nos faltan 3 en OSM
+Mixiuhca,4,4,0,4,total
+Moctezuma,6,3,3,3,parcial; nos faltan 3 en OSM; nombres OSM = nombre de estación
+Morelos,4,0,0,0,sin_datos; nos faltan 4 en OSM
+Nativitas,2,1,0,0,nulo; nos faltan 1 en OSM
+Niños Héroes y  Poder Judicial CDMX,4,4,4,4,total
+Normal,3,0,0,0,sin_datos; nos faltan 3 en OSM
+Norte 45,2,2,0,0,nulo
+Obrera,4,4,4,4,total; nombres OSM = nombre de estación
+Panteones,3,3,3,3,total; nombres OSM = nombre de estación
+Patriotismo,2,2,2,2,total; nombres OSM = nombre de estación
+Pino Suárez,8,5,5,2,parcial; nos faltan 3 en OSM; nombres OSM = nombre de estación
+Polanco,4,3,3,3,parcial; nos faltan 1 en OSM; nombres OSM = nombre de estación
+Popotla,2,0,0,0,sin_datos; nos faltan 2 en OSM
+Portales,2,2,2,1,parcial; nombres OSM = nombre de estación
+Puebla,2,1,0,0,nulo; nos faltan 1 en OSM
+Refinería,4,0,0,0,sin_datos; nos faltan 4 en OSM
+Revolución,3,2,2,2,parcial; nos faltan 1 en OSM; nombres OSM = nombre de estación
+Salto del Agua,6,9,9,6,parcial; OSM tiene 3 más; nombres OSM = nombre de estación
+San Antonio,2,2,2,1,parcial
+San Antonio Abad,4,0,0,0,sin_datos; nos faltan 4 en OSM
+San Cosme,2,2,0,0,nulo
+San Joaquín,2,2,2,2,total
+San Juan de Letrán,4,3,3,3,parcial; nos faltan 1 en OSM; nombres OSM = nombre de estación
+San Lázaro,7,1,1,0,nulo; nos faltan 6 en OSM; nombres OSM = nombre de estación
+San Pedro de los Pinos,2,1,1,1,parcial; nos faltan 1 en OSM; nombres OSM = nombre de estación
+Santa Anita,10,11,11,1,"parcial; 7 nodos ""Andén"" (no son accesos de calle); OSM tiene 8 más; nombres OSM = nombre de estación"
+Sevilla,3,5,1,3,parcial; OSM tiene 2 más; nombres OSM = nombre de estación
+Tacuba,6,0,0,0,sin_datos; nos faltan 6 en OSM
+Tacubaya,11,9,9,5,parcial; nos faltan 2 en OSM
+Talismán,2,2,0,0,nulo
+Tepito,4,0,0,0,sin_datos; nos faltan 4 en OSM
+UAM-I,4,4,4,3,parcial; nombres OSM = nombre de estación
+Universidad,10,4,0,0,"sin_datos; 10 nodos ""Andén"" (no son accesos de calle); OSM tiene 4 más"
+Vallejo,4,3,0,3,parcial; nos faltan 1 en OSM
+Velódromo,3,2,2,2,parcial; nos faltan 1 en OSM; nombres OSM = nombre de estación
+Viaducto,2,0,0,0,sin_datos; nos faltan 2 en OSM
+Villa de Cortés,2,2,0,1,parcial
+Xola,2,2,2,2,total; nombres OSM = nombre de estación
+Zaragoza,9,0,0,0,"sin_datos; 7 nodos ""Andén"" (no son accesos de calle); nos faltan 2 en OSM"
+Zócalo,8,11,0,3,parcial; OSM tiene 3 más
+Aragón,0,2,2,0,sin_accesos_en_bd
+Atlalilco,0,3,0,0,sin_accesos_en_bd
+Autobuses del Norte,0,4,2,0,sin_accesos_en_bd
+Buenavista,0,6,6,0,sin_accesos_en_bd
+Ciudad Azteca,0,1,0,0,sin_accesos_en_bd
+Cuatro Caminos,0,1,1,0,sin_accesos_en_bd
+Culhuacán,0,2,2,0,sin_accesos_en_bd
+Eduardo Molina,0,2,2,0,sin_accesos_en_bd
+Eje Central,0,4,0,0,sin_accesos_en_bd
+Escuadrón 201,0,4,4,0,sin_accesos_en_bd
+Etiopía y Plaza de la Transparencia,0,6,6,0,sin_accesos_en_bd
+Ferrería y Arena Ciudad de México,0,3,2,0,sin_accesos_en_bd
+Hangares,0,2,0,0,sin_accesos_en_bd
+Indios Verdes,0,17,0,0,sin_accesos_en_bd
+La Raza,0,10,10,0,sin_accesos_en_bd
+La Villa y Basílica,0,2,2,0,sin_accesos_en_bd
+Merced,0,1,1,0,sin_accesos_en_bd
+Mexicaltzingo,0,5,1,0,sin_accesos_en_bd
+Miguel Ángel de Quevedo,0,3,3,0,sin_accesos_en_bd
+Misterios,0,2,2,0,sin_accesos_en_bd
+Observatorio,0,4,4,0,sin_accesos_en_bd
+Oceanía,0,7,4,0,sin_accesos_en_bd
+Pantitlán,0,1,0,0,sin_accesos_en_bd
+Parque de los Venados,0,4,0,0,sin_accesos_en_bd
+Periférico Oriente,0,4,0,0,sin_accesos_en_bd
+Politécnico,0,2,2,0,sin_accesos_en_bd
+Potrero,0,2,2,0,sin_accesos_en_bd
+San Andrés Tomatlán,0,2,2,0,sin_accesos_en_bd
+Tasqueña,0,3,0,0,sin_accesos_en_bd
+Terminal Aérea,0,2,0,0,sin_accesos_en_bd
+Tezozómoc,0,2,1,0,sin_accesos_en_bd
+Tlatelolco,0,2,2,0,sin_accesos_en_bd
+UAM Azcapotzalco,0,4,4,0,sin_accesos_en_bd
+Villa de Aragón,0,2,2,0,sin_accesos_en_bd
+Zapata,0,8,7,0,sin_accesos_en_bd

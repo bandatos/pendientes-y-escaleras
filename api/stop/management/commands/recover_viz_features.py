@@ -3,14 +3,13 @@ import re
 from decimal import Decimal
 from django.core.management.base import BaseCommand
 from django.db import transaction
-from stop.models import Station, Route
+from stop.models import Station, Route, Stop
 from utils.normalizer import text_normalizer
 
 
 class Command(BaseCommand):
     help = 'Import station visualization data from CSV'
     remain_rows = []
-    remain_stations = []
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -19,27 +18,59 @@ class Command(BaseCommand):
             help='Path to the CSV file'
         )
 
-    def process_row(self, row, station):
+    def _build_indexes(self) -> tuple[dict, dict]:
+        """Índices stop_id → Station y nombre normalizado → [Station]."""
+        by_stop_id = {
+            stop.stop_id: stop.station
+            for stop in Stop.objects.exclude(
+                station__isnull=True).select_related('station')
+        }
+        by_name: dict[str, list[Station]] = { }
+        for station in Station.objects.all():
+            by_name.setdefault(
+                text_normalizer(station.name), []).append(station)
+        return by_stop_id, by_name
+
+    def resolve_station(
+            self, row: dict, by_stop_id: dict, by_name: dict
+    ) -> Station | None:
+        """Resuelve a qué Station corresponde una fila del CSV.
+
+        La columna `stops` es la referencia autoritativa: el nombre del
+        placemark del SVG arrastra erratas ('Itzapalapa' por 'Iztapalapa',
+        'Periferico Oeste' por 'Periférico Oriente') y formas cortas
+        ('Garibaldi' por 'Garibaldi y Lagunilla'), así que solo sirve de
+        respaldo cuando la fila no trae stop_ids utilizables.
+        """
+        stop_ids = re.findall(r"'([^']+)'", row.get('stops') or '')
+        candidates = {
+            by_stop_id[stop_id] for stop_id in stop_ids
+            if stop_id in by_stop_id
+        }
+        if len(candidates) == 1:
+            return candidates.pop()
+        if len(candidates) > 1:
+            self.stdout.write(self.style.WARNING(
+                f"  ⚠ Row '{row['name']}': stops span several stations "
+                f"{sorted(s.name for s in candidates)}"
+            ))
+            return None
 
         std_row_name = text_normalizer(row['name'])
-        std_station_name = text_normalizer(station.name)
-        is_match = False
+        if not std_row_name:
+            return None
+        exact = by_name.get(std_row_name, [])
+        if len(exact) == 1:
+            return exact[0]
+        partial = [
+            station
+            for std_name, group in by_name.items() if
+            std_row_name in std_name or std_name in std_row_name
+            for station in group
+        ]
+        return partial[0] if len(partial) == 1 else None
 
-        if std_row_name == std_station_name:
-            is_match = True
-        elif std_row_name in std_station_name or std_station_name in std_row_name:
-            is_match = True
-
-        if not is_match:
-            self.remain_rows.append(row)
-            self.remain_stations.append(station)
-            self.stdout.write(
-                self.style.WARNING(
-                    f"  ⚠ Name mismatch: CSV "
-                    f"'{row['name']}' != Station '{station.name}'"
-                )
-            )
-            # return
+    def process_row(self, row, station):
 
         # Mapear campos directos
         station.x_position = Decimal(row['x']) if row['x'] else None
@@ -71,6 +102,9 @@ class Command(BaseCommand):
 
         # Extraer rotation del campo "transform"
         # (ej: "rotate(-45)" -> -45)
+        # Se limpia primero para que el comando sea idempotente: si la fila
+        # ya no trae transform, la rotación anterior no debe sobrevivir.
+        station.rotation = None
         if row.get('transform'):
             rotation_match = re.search(
                 r'rotate\((-?\d+)\)', row['transform'])
@@ -97,24 +131,41 @@ class Command(BaseCommand):
         #     self.style.SUCCESS(f"  ✓ Updated: {station.name}")
         # )
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **options) -> None:
         csv_file = options['csv_file']
         self.remain_rows = []
-        self.remain_stations = []
 
         with open(csv_file, 'r', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
+            rows = list(csv.DictReader(file))
 
-            sorted_csv_data = sorted(reader, key=lambda x: x['name'])
+        by_stop_id, by_name = self._build_indexes()
+        matched_ids: set[int] = set()
 
-            # Obtener todas las estaciones ordenadas por name
-            stations = Station.objects.all().order_by('name')
+        with transaction.atomic():
+            for row in rows:
+                station = self.resolve_station(row, by_stop_id, by_name)
+                if station is None:
+                    self.remain_rows.append(row)
+                    self.stdout.write(self.style.WARNING(
+                        f"  ⚠ Unresolved row: '{row['name']}'"))
+                    continue
+                if station.id in matched_ids:
+                    self.remain_rows.append(row)
+                    self.stdout.write(self.style.WARNING(
+                        f"  ⚠ Row '{row['name']}' matches "
+                        f"'{station.name}', already taken"))
+                    continue
+                matched_ids.add(station.id)
+                self.process_row(row, station)
 
-            with transaction.atomic():
-                for row, station in zip(sorted_csv_data, stations):
-                    self.process_row(row, station)
+        orphans = list(Station.objects.exclude(
+            id__in=matched_ids).values_list('name', flat=True))
+        for name in orphans:
+            self.stdout.write(self.style.WARNING(
+                f"  ⚠ Station without CSV row: '{name}'"))
 
-
-        self.stdout.write(
-            self.style.SUCCESS('Successfully imported station visualization data')
-        )
+        self.stdout.write(self.style.SUCCESS(
+            f'Updated {len(matched_ids)} stations | '
+            f'{len(self.remain_rows)} unresolved rows | '
+            f'{len(orphans)} stations without row'
+        ))

@@ -147,7 +147,7 @@ export const useSurveyStore = defineStore('survey', () => {
    */
   async function syncSingleStair(stair, images = []) {
     try {
-      // Preparar datos del reporte para api/stair_report/
+      // Preparar datos del reporte para POST /api/stair_report/
       const reportData = {
         stair: stair.stair, // ID de la escalera del catálogo
         status_maintenance: stair.status_maintenance || null,
