@@ -1,6 +1,6 @@
 ---
-type: learning
-id: learning-1
+type: feedback
+id: fb-1
 title: Ofrecí corregir un dato a mano en la base (doble espacio en un nombre de estación)
 state: promoted
 outcome_ref: "CLAUDE.md"
