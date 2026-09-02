@@ -36,3 +36,7 @@ Ricardo dejó la sesión en piloto automático para cerrar todo lo cerrable; lo 
 - [ ] (r) Propuesta de tests, para recortar o descartar: unitarios de `assign_platform_entrances` (terminal, tres andenes con central, dos no terminales, andén STE excluido, dirección abreviada como «Rosario»); de `_parse_content` con las marcas aceptadas y rechazadas (`[IZQ/DER]`, `[IZQ & DER]`, `(IZQ & DER)`, `[DER/IZQ]`, `[CLAUSURADO]`, `[INHABILITADA]`, `[salida]`, `[ENTRADA]`); de `_is_in_progress` y `_normalize_title`; y del orden de `resolve_station_stops` (`short_name` → `stop_name` → normalizado).
 - [ ] (s) `_OTHER_SYSTEMS_RE` quedó reducida a `STE`: los prefijos `MB|CBB|TL` que se habían puesto eran anticipatorios y no coincidían con ningún nodo del tablero. Confirmar que basta o ampliar cuando aparezca otro sistema.
 - [ ] (t) `import_stops` no corre sobre una base limpia (`zone_id` eliminado en `0007`, `location_type` como entero, `LocationType` sin sembrar): decidir entre las opciones (a) y (b) de [[task-25]].
+
+## Notas de trabajo
+
+- 2 de septiembre de 2026: `TESTING.md` sigue sin existir (inciso j); la sesión nocturna de [[2026-09-02-sesion-primeras-dos-estaciones-josm]] no tocó código con pruebas. La regla global de testing pide ofrecerle a Ricardo crear `TESTING.md`; todavía no se le ha ofrecido, se le pregunta en el mensaje de la mañana. El inciso (a), regla de pares de escaleras eléctricas, tiene ahora un dato más: [[fb-2]] y [[adr-0010]] toman la flecha de Miró como sentido de las unidireccionales.

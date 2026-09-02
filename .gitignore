@@ -1,2 +1,12 @@
 ignore/*
 .idea/
+
+# Estado local de Claude Code en la raíz: scratch, logs y settings.local.
+# Se salvan lo que sí se versiona y solo en la raíz — api/.claude/skills/
+# está versionado y no debe caer aquí.
+/.claude/*
+!/.claude/settings.json
+!/.claude/skills/
+
+# Las vistas previas se versionan en SVG; los PNG son conversiones locales.
+data/osm/preview/*.png

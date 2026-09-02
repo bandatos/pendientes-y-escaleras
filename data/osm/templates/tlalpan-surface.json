@@ -1,0 +1,60 @@
+{
+  "family": "tlalpan-surface",
+  "description": "Andén central en el camellón de la Calzada de Tlalpan, vestíbulo-puente en el nivel +1 que cruza la calzada por el centro del andén, y un edificio de acceso en cada acera. Estaciones hermanas: Portales, Xola, Nativitas, Viaducto, Villa de Cortés, General Anaya, Ermita.",
+  "axes": "u = metros sobre el eje del andén, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~8°, v>0 es el oriente.",
+  "nodes": {
+    "P-01": {
+      "u": 0, "v": 0,
+      "length": 150, "width": 10,
+      "spine_v": 0, "spine_margin": 4,
+      "comment": "Andén central; la línea de circulación va por su eje."
+    },
+    "N-01": {"u": 0, "v": 0, "comment": "Vestíbulo y torniquetes, sobre el puente, en el centro del andén."},
+    "N-02": {"u": 0, "v": 22, "comment": "Pasillo vestibular oriente, cabecera del puente."},
+    "N-03": {"u": 0, "v": -22, "comment": "Pasillo vestibular poniente, cabecera del puente."},
+    "N-04": {"u": -16, "v": 26, "comment": "Edificio de acceso oriente, sobre la acera."},
+    "N-05": {"u": -12, "v": -26, "comment": "Edificio de acceso poniente, sobre la acera."},
+    "E-01": {"u": -6.1, "v": -28.1, "comment": "Acceso poniente; posición medida del nodo OSM 5197203900."},
+    "E-02": {"u": -19.7, "v": 28.6, "comment": "Acceso oriente; posición medida del nodo OSM 5197203901."}
+  },
+  "extra_ways": [],
+  "edges": [
+    {"from": "P-01", "to": "N-01", "mode": 2, "index": 0,
+     "geometry": [[16, 0], [0, -4.5]],
+     "comment": "Escalera 1 al puente, lado norte (miro_id en Portales 3458764662275664946); arranca en la línea del andén y desemboca en la losa del puente."},
+    {"from": "P-01", "to": "N-01", "mode": 2, "index": 1,
+     "geometry": [[10, 0], [0, -1.5]],
+     "comment": "Escalera 2, lado norte (miro_id en Portales 3458764662275664947)."},
+    {"from": "P-01", "to": "N-01", "mode": 2, "index": 2,
+     "geometry": [[-10, 0], [0, 1.5]],
+     "comment": "Escalera 3, lado sur (miro_id en Portales 3458764662275664948)."},
+    {"from": "P-01", "to": "N-01", "mode": 2, "index": 3,
+     "geometry": [[-16, 0], [0, 4.5]],
+     "comment": "Escalera 4, lado sur (miro_id en Portales 3458764662275664949)."},
+
+    {"from": "N-03", "to": "N-01", "mode": 1, "index": 0,
+     "geometry": ["N-03", "N-01"],
+     "turnstile": {"from": "N-01", "distance": 6},
+     "tags": {"bridge": "yes", "layer": "1"},
+     "comment": "Tramo poniente del puente; cruza la calzada, de ahí bridge y layer. El torniquete marca el límite de la zona pagada."},
+    {"from": "N-02", "to": "N-01", "mode": 1, "index": 0,
+     "geometry": ["N-02", "N-01"],
+     "turnstile": {"from": "N-01", "distance": 6},
+     "tags": {"bridge": "yes", "layer": "1"},
+     "comment": "Tramo oriente del puente; cruza la calzada."},
+
+    {"from": "N-05", "to": "N-03", "mode": 2, "index": 0,
+     "geometry": ["N-05", "N-03"], "bow": 2.0},
+    {"from": "N-05", "to": "N-03", "mode": 4, "index": 0,
+     "geometry": ["N-05", "N-03"], "bow": -2.0},
+    {"from": "N-04", "to": "N-02", "mode": 2, "index": 0,
+     "geometry": ["N-04", "N-02"], "bow": -2.0},
+    {"from": "N-04", "to": "N-02", "mode": 4, "index": 0,
+     "geometry": ["N-04", "N-02"], "bow": 2.0},
+
+    {"from": "N-05", "to": "E-01", "mode": 1, "index": 0,
+     "geometry": ["N-05", "E-01"]},
+    {"from": "E-02", "to": "N-04", "mode": 1, "index": 0,
+     "geometry": ["E-02", "N-04"]}
+  ]
+}

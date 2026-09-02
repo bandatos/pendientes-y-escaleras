@@ -1,0 +1,111 @@
+{
+  "family": "l7-deep-cascade",
+  "description": "Dos andenes laterales profundos (nivel -3) bajo la avenida, con una cascada vertical independiente por lado: vestíbulo de andén (-3) → mezzanine (-2) → vestíbulo de torniquetes (-1) → edificio de acceso (0) → acceso. Un pasillo inferior (-4) bajo las vías comunica los dos andenes. Estación hermana: San Joaquín.",
+  "axes": "u = metros sobre el eje de las vías, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~6.5°, v>0 es el oriente.",
+  "nodes": {
+    "P-01": {
+      "u": 0, "v": 6.5,
+      "length": 150, "width": 5,
+      "spine_v": -1.5, "spine_margin": 4,
+      "comment": "Andén oriente, sentido El Rosario. La línea de circulación va del lado de la vía."
+    },
+    "P-02": {
+      "u": 0, "v": -6.5,
+      "length": 150, "width": 5,
+      "spine_v": 1.5, "spine_margin": 4,
+      "comment": "Andén poniente, sentido Barranca del Muerto."
+    },
+
+    "N-01": {"u": -2, "v": 13, "comment": "Vestíbulo de andén oriente (-3)."},
+    "N-02": {"u": 0, "v": 21, "comment": "Mezzanine oriente (-2)."},
+    "N-03": {"u": 2, "v": 29, "comment": "Vestíbulo de torniquetes oriente (-1)."},
+    "N-09": {"u": 4, "v": 35, "comment": "Edificio de acceso oriente (0)."},
+    "E-02": {"u": 5.6, "v": 38.1, "comment": "Acceso oriente; espejo del poniente, sin nodo OSM previo que lo confirme."},
+
+    "N-05": {"u": -2, "v": -13, "comment": "Vestíbulo de andén poniente (-3)."},
+    "N-06": {"u": 0, "v": -21, "comment": "Mezzanine poniente (-2)."},
+    "N-07": {"u": 2, "v": -29, "comment": "Vestíbulo de torniquetes poniente (-1)."},
+    "N-08": {"u": 4, "v": -35, "comment": "Edificio de acceso poniente (0)."},
+    "E-01": {"u": 5.6, "v": -38.1, "comment": "Acceso poniente; posición medida del nodo OSM 3761143341."},
+
+    "N-04": {"u": -2, "v": 0, "comment": "Pasillo inferior de cambio de andén (-4), bajo las vías."}
+  },
+  "extra_ways": [],
+  "edges": [
+    {"from": "P-01", "to": "N-01", "mode": 1, "index": 0,
+     "geometry": [[-14, 5.0], "N-01"],
+     "comment": "Tres accesos al vestíbulo repartidos a lo largo del andén oriente. Pasillo 1 (miro_id en San Pedro 3458764655659671984)."},
+    {"from": "P-01", "to": "N-01", "mode": 1, "index": 1,
+     "geometry": [[-2, 5.0], "N-01"],
+     "comment": "Pasillo 2 del andén oriente (miro_id en San Pedro 3458764655659672021)."},
+    {"from": "P-01", "to": "N-01", "mode": 1, "index": 2,
+     "geometry": [[10, 5.0], "N-01"],
+     "comment": "Pasillo 3 del andén oriente (miro_id en San Pedro 3458764655659672022)."},
+
+    {"from": "P-02", "to": "N-05", "mode": 1, "index": 0,
+     "geometry": [[-14, -5.0], "N-05"],
+     "comment": "Pasillo 1 del andén poniente (miro_id en San Pedro 3458764655659671995)."},
+    {"from": "P-02", "to": "N-05", "mode": 1, "index": 1,
+     "geometry": [[-2, -5.0], "N-05"],
+     "comment": "Pasillo 2 del andén poniente (miro_id en San Pedro 3458764655659672020)."},
+    {"from": "P-02", "to": "N-05", "mode": 1, "index": 2,
+     "geometry": [[10, -5.0], "N-05"],
+     "comment": "Pasillo 3 del andén poniente (miro_id en San Pedro 3458764655659672023)."},
+
+    {"from": "N-04", "to": "N-01", "mode": 2, "index": 0,
+     "geometry": ["N-04", "N-01"]},
+    {"from": "N-04", "to": "N-05", "mode": 2, "index": 0,
+     "geometry": ["N-04", "N-05"]},
+
+    {"from": "N-01", "to": "N-02", "mode": 2, "index": 0,
+     "geometry": ["N-01", "N-02"], "bow": 1.5},
+    {"from": "N-01", "to": "N-02", "mode": 4, "index": 0,
+     "geometry": ["N-01", "N-02"], "bow": 0.0,
+     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659671985)."},
+    {"from": "N-01", "to": "N-02", "mode": 4, "index": 1,
+     "geometry": ["N-01", "N-02"], "bow": -1.5,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659671992)."},
+
+    {"from": "N-02", "to": "N-03", "mode": 2, "index": 0,
+     "geometry": ["N-02", "N-03"], "bow": 1.5},
+    {"from": "N-02", "to": "N-03", "mode": 4, "index": 0,
+     "geometry": ["N-02", "N-03"], "bow": 0.0,
+     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659671986)."},
+    {"from": "N-02", "to": "N-03", "mode": 4, "index": 1,
+     "geometry": ["N-02", "N-03"], "bow": -1.5,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659671987)."},
+
+    {"from": "N-03", "to": "N-09", "mode": 2, "index": 0,
+     "geometry": ["N-03", "N-09"], "bow": 2.0},
+    {"from": "N-03", "to": "N-09", "mode": 4, "index": 0,
+     "geometry": ["N-03", "N-09"], "bow": -2.0},
+
+    {"from": "N-05", "to": "N-06", "mode": 2, "index": 0,
+     "geometry": ["N-05", "N-06"], "bow": -1.5},
+    {"from": "N-05", "to": "N-06", "mode": 4, "index": 0,
+     "geometry": ["N-05", "N-06"], "bow": 0.0,
+     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659671997)."},
+    {"from": "N-05", "to": "N-06", "mode": 4, "index": 1,
+     "geometry": ["N-05", "N-06"], "bow": 1.5,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659671998)."},
+
+    {"from": "N-06", "to": "N-07", "mode": 2, "index": 0,
+     "geometry": ["N-06", "N-07"], "bow": -1.5},
+    {"from": "N-06", "to": "N-07", "mode": 4, "index": 0,
+     "geometry": ["N-06", "N-07"], "bow": 0.0,
+     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659672002)."},
+    {"from": "N-06", "to": "N-07", "mode": 4, "index": 1,
+     "geometry": ["N-06", "N-07"], "bow": 1.5,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659672003)."},
+
+    {"from": "N-07", "to": "N-08", "mode": 2, "index": 0,
+     "geometry": ["N-07", "N-08"], "bow": -2.0},
+    {"from": "N-07", "to": "N-08", "mode": 4, "index": 0,
+     "geometry": ["N-07", "N-08"], "bow": 2.0},
+
+    {"from": "N-08", "to": "E-01", "mode": 1, "index": 0,
+     "geometry": ["N-08", "E-01"]},
+    {"from": "E-02", "to": "N-09", "mode": 1, "index": 0,
+     "geometry": ["E-02", "N-09"]}
+  ]
+}

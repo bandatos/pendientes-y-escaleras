@@ -40,3 +40,7 @@ Actualización del 1 de septiembre de 2026 ([[2026-09-01-sesion-miro-corchetes-e
 - [ ] `DATABASE_NAME` no mezcla su uso entre SQLite y Postgres sin control de `.gitignore`
 - [ ] `StairReportViewSet.ordering` no referencia campos inexistentes
 - [ ] `date_reported`/`date_received` conservan la fecha del levantamiento (no `auto_now`)
+
+## Notas de trabajo
+
+- 2 de septiembre de 2026: `pytest` sin `--ignore=utils/miro/scratch` sigue rompiendo la colección porque `test_build.py` toca la base al importar; con la exclusión, las mismas 16 fallas de siempre. Un `collect_ignore` o `norecursedirs` en la configuración de pytest lo resuelve.

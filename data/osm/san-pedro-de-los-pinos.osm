@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' generator='pendientes-y-escaleras' upload='never'>
+  <bounds minlat='19.3907571' minlon='-99.1861935' maxlat='19.3921219' maxlon='-99.1854728'/>
+  <node id='-1' visible='true' lat='19.3907622' lon='-99.1858822'/>
+  <node id='-2' visible='true' lat='19.3921086' lon='-99.1857205'/>
+  <node id='-3' visible='true' lat='19.3921035' lon='-99.1856732'/>
+  <node id='-4' visible='true' lat='19.3907571' lon='-99.1858349'/>
+  <node id='-6' visible='true' lat='19.3907971' lon='-99.1858684'/>
+  <node id='-7' visible='true' lat='19.3920717' lon='-99.1857154'/>
+  <node id='-9' visible='true' lat='19.3907755' lon='-99.1860052'/>
+  <node id='-10' visible='true' lat='19.3921219' lon='-99.1858435'/>
+  <node id='-11' visible='true' lat='19.3921168' lon='-99.1857962'/>
+  <node id='-12' visible='true' lat='19.3907704' lon='-99.1859579'/>
+  <node id='-14' visible='true' lat='19.3908073' lon='-99.1859630'/>
+  <node id='-15' visible='true' lat='19.3920819' lon='-99.1858100'/>
+  <node id='-17' visible='true' lat='19.3915287' lon='-99.1861935'>
+    <tag k='railway' v='subway_entrance'/>
+    <tag k='entrance' v='yes'/>
+    <tag k='name' v='Acceso poniente'/>
+    <tag k='level' v='0'/>
+    <tag k='note:stop_id' v='L7-SANPEDRODELOSPINOS-E-01'/>
+    <tag k='note:miro_id' v='3458764655659672650'/>
+  </node>
+  <node id='-18' visible='true' lat='19.3914508' lon='-99.1854728'>
+    <tag k='railway' v='subway_entrance'/>
+    <tag k='entrance' v='yes'/>
+    <tag k='name' v='Acceso oriente'/>
+    <tag k='level' v='0'/>
+    <tag k='note:stop_id' v='L7-SANPEDRODELOSPINOS-E-02'/>
+    <tag k='note:miro_id' v='3458764655659672651'/>
+  </node>
+  <node id='-19' visible='true' lat='19.3913087' lon='-99.1858070'/>
+  <node id='-20' visible='true' lat='19.3914083' lon='-99.1857184'/>
+  <node id='-22' visible='true' lat='19.3914180' lon='-99.1856406'/>
+  <node id='-24' visible='true' lat='19.3914278' lon='-99.1855627'/>
+  <node id='-26' visible='true' lat='19.3914363' lon='-99.1856035'/>
+  <node id='-28' visible='true' lat='19.3914215' lon='-99.1858414'/>
+  <node id='-30' visible='true' lat='19.3913997' lon='-99.1856776'/>
+  <node id='-32' visible='true' lat='19.3914095' lon='-99.1855998'/>
+  <node id='-34' visible='true' lat='19.3914266' lon='-99.1856814'/>
+  <node id='-36' visible='true' lat='19.3914348' lon='-99.1859643'/>
+  <node id='-38' visible='true' lat='19.3913190' lon='-99.1859016'/>
+  <node id='-40' visible='true' lat='19.3914610' lon='-99.1860378'/>
+  <node id='-42' visible='true' lat='19.3914606' lon='-99.1859961'/>
+  <node id='-44' visible='true' lat='19.3914352' lon='-99.1860061'/>
+  <node id='-46' visible='true' lat='19.3914871' lon='-99.1861113'/>
+  <node id='-48' visible='true' lat='19.3914867' lon='-99.1860696'/>
+  <node id='-50' visible='true' lat='19.3914614' lon='-99.1860796'/>
+  <node id='-52' visible='true' lat='19.3914267' lon='-99.1858886'/>
+  <node id='-54' visible='true' lat='19.3914164' lon='-99.1857941'/>
+  <node id='-56' visible='true' lat='19.3915241' lon='-99.1857811'/>
+  <node id='-58' visible='true' lat='19.3915344' lon='-99.1858757'/>
+  <node id='-60' visible='true' lat='19.3915112' lon='-99.1861659'/>
+  <node id='-62' visible='true' lat='19.3914396' lon='-99.1855038'/>
+  <node id='-64' visible='true' lat='19.3915155' lon='-99.1861306'/>
+  <node id='-66' visible='true' lat='19.3914514' lon='-99.1855372'/>
+  <node id='-68' visible='true' lat='19.3914828' lon='-99.1861467'/>
+  <node id='-70' visible='true' lat='19.3914160' lon='-99.1855294'/>
+  <way id='-5' visible='true'>
+    <nd ref='-1'/>
+    <nd ref='-2'/>
+    <nd ref='-3'/>
+    <nd ref='-4'/>
+    <nd ref='-1'/>
+    <tag k='railway' v='platform'/>
+    <tag k='public_transport' v='platform'/>
+    <tag k='area' v='yes'/>
+    <tag k='subway' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='name' v='San Pedro de los Pinos'/>
+    <tag k='level:ref' v='Andenes'/>
+    <tag k='destination' v='El Rosario'/>
+    <tag k='layer' v='-3'/>
+    <tag k='location' v='underground'/>
+    <tag k='note:stop_id' v='L7-SANPEDRODELOSPINOS-P-01'/>
+    <tag k='note:miro_id' v='3458764655659671978'/>
+  </way>
+  <way id='-8' visible='true'>
+    <nd ref='-6'/>
+    <nd ref='-19'/>
+    <nd ref='-54'/>
+    <nd ref='-56'/>
+    <nd ref='-7'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:stop_id' v='L7-SANPEDRODELOSPINOS-P-01'/>
+  </way>
+  <way id='-13' visible='true'>
+    <nd ref='-9'/>
+    <nd ref='-10'/>
+    <nd ref='-11'/>
+    <nd ref='-12'/>
+    <nd ref='-9'/>
+    <tag k='railway' v='platform'/>
+    <tag k='public_transport' v='platform'/>
+    <tag k='area' v='yes'/>
+    <tag k='subway' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='name' v='San Pedro de los Pinos'/>
+    <tag k='level:ref' v='Andenes'/>
+    <tag k='destination' v='Barranca del Muerto'/>
+    <tag k='layer' v='-3'/>
+    <tag k='location' v='underground'/>
+    <tag k='note:stop_id' v='L7-SANPEDRODELOSPINOS-P-02'/>
+    <tag k='note:miro_id' v='3458764655659671979'/>
+  </way>
+  <way id='-16' visible='true'>
+    <nd ref='-14'/>
+    <nd ref='-38'/>
+    <nd ref='-52'/>
+    <nd ref='-58'/>
+    <nd ref='-15'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:stop_id' v='L7-SANPEDRODELOSPINOS-P-02'/>
+  </way>
+  <way id='-21' visible='true'>
+    <nd ref='-19'/>
+    <nd ref='-20'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:pathway_id' v='3458764655659671984'/>
+    <tag k='note:miro_id' v='3458764655659671984'/>
+  </way>
+  <way id='-23' visible='true'>
+    <nd ref='-20'/>
+    <nd ref='-22'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3;-2'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='reversible'/>
+    <tag k='note:pathway_id' v='3458764655659671985'/>
+    <tag k='note:miro_id' v='3458764655659671985'/>
+  </way>
+  <way id='-25' visible='true'>
+    <nd ref='-22'/>
+    <nd ref='-24'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-2;-1'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='reversible'/>
+    <tag k='note:pathway_id' v='3458764655659671986'/>
+    <tag k='note:miro_id' v='3458764655659671986'/>
+  </way>
+  <way id='-27' visible='true'>
+    <nd ref='-22'/>
+    <nd ref='-26'/>
+    <nd ref='-24'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-2;-1'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='forward'/>
+    <tag k='oneway:foot' v='yes'/>
+    <tag k='note:pathway_id' v='3458764655659671987'/>
+    <tag k='note:miro_id' v='3458764655659671987'/>
+  </way>
+  <way id='-29' visible='true'>
+    <nd ref='-28'/>
+    <nd ref='-54'/>
+    <nd ref='-20'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-4;-3'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659671989'/>
+    <tag k='note:miro_id' v='3458764655659671989'/>
+  </way>
+  <way id='-31' visible='true'>
+    <nd ref='-20'/>
+    <nd ref='-30'/>
+    <nd ref='-22'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3;-2'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659671990'/>
+    <tag k='note:miro_id' v='3458764655659671990'/>
+  </way>
+  <way id='-33' visible='true'>
+    <nd ref='-22'/>
+    <nd ref='-32'/>
+    <nd ref='-24'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-2;-1'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659671991'/>
+    <tag k='note:miro_id' v='3458764655659671991'/>
+  </way>
+  <way id='-35' visible='true'>
+    <nd ref='-20'/>
+    <nd ref='-34'/>
+    <nd ref='-22'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3;-2'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='forward'/>
+    <tag k='oneway:foot' v='yes'/>
+    <tag k='note:pathway_id' v='3458764655659671992'/>
+    <tag k='note:miro_id' v='3458764655659671992'/>
+  </way>
+  <way id='-37' visible='true'>
+    <nd ref='-28'/>
+    <nd ref='-52'/>
+    <nd ref='-36'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-4;-3'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659671994'/>
+    <tag k='note:miro_id' v='3458764655659671994'/>
+  </way>
+  <way id='-39' visible='true'>
+    <nd ref='-38'/>
+    <nd ref='-36'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:pathway_id' v='3458764655659671995'/>
+    <tag k='note:miro_id' v='3458764655659671995'/>
+  </way>
+  <way id='-41' visible='true'>
+    <nd ref='-36'/>
+    <nd ref='-40'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3;-2'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='reversible'/>
+    <tag k='note:pathway_id' v='3458764655659671997'/>
+    <tag k='note:miro_id' v='3458764655659671997'/>
+  </way>
+  <way id='-43' visible='true'>
+    <nd ref='-36'/>
+    <nd ref='-42'/>
+    <nd ref='-40'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3;-2'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='forward'/>
+    <tag k='oneway:foot' v='yes'/>
+    <tag k='note:pathway_id' v='3458764655659671998'/>
+    <tag k='note:miro_id' v='3458764655659671998'/>
+  </way>
+  <way id='-45' visible='true'>
+    <nd ref='-36'/>
+    <nd ref='-44'/>
+    <nd ref='-40'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3;-2'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659671999'/>
+    <tag k='note:miro_id' v='3458764655659671999'/>
+  </way>
+  <way id='-47' visible='true'>
+    <nd ref='-40'/>
+    <nd ref='-46'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-2;-1'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='reversible'/>
+    <tag k='note:pathway_id' v='3458764655659672002'/>
+    <tag k='note:miro_id' v='3458764655659672002'/>
+  </way>
+  <way id='-49' visible='true'>
+    <nd ref='-40'/>
+    <nd ref='-48'/>
+    <nd ref='-46'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-2;-1'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='forward'/>
+    <tag k='oneway:foot' v='yes'/>
+    <tag k='note:pathway_id' v='3458764655659672003'/>
+    <tag k='note:miro_id' v='3458764655659672003'/>
+  </way>
+  <way id='-51' visible='true'>
+    <nd ref='-40'/>
+    <nd ref='-50'/>
+    <nd ref='-46'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-2;-1'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659672004'/>
+    <tag k='note:miro_id' v='3458764655659672004'/>
+  </way>
+  <way id='-53' visible='true'>
+    <nd ref='-52'/>
+    <nd ref='-36'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:pathway_id' v='3458764655659672020'/>
+    <tag k='note:miro_id' v='3458764655659672020'/>
+  </way>
+  <way id='-55' visible='true'>
+    <nd ref='-54'/>
+    <nd ref='-20'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:pathway_id' v='3458764655659672021'/>
+    <tag k='note:miro_id' v='3458764655659672021'/>
+  </way>
+  <way id='-57' visible='true'>
+    <nd ref='-56'/>
+    <nd ref='-20'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:pathway_id' v='3458764655659672022'/>
+    <tag k='note:miro_id' v='3458764655659672022'/>
+  </way>
+  <way id='-59' visible='true'>
+    <nd ref='-58'/>
+    <nd ref='-36'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-3'/>
+    <tag k='note:pathway_id' v='3458764655659672023'/>
+    <tag k='note:miro_id' v='3458764655659672023'/>
+  </way>
+  <way id='-61' visible='true'>
+    <nd ref='-60'/>
+    <nd ref='-17'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='0'/>
+    <tag k='note:pathway_id' v='3458764655659672654'/>
+    <tag k='note:miro_id' v='3458764655659672654'/>
+  </way>
+  <way id='-63' visible='true'>
+    <nd ref='-18'/>
+    <nd ref='-62'/>
+    <tag k='highway' v='footway'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='0'/>
+    <tag k='note:pathway_id' v='3458764655659672655'/>
+    <tag k='note:miro_id' v='3458764655659672655'/>
+  </way>
+  <way id='-65' visible='true'>
+    <nd ref='-46'/>
+    <nd ref='-64'/>
+    <nd ref='-60'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-1;0'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='forward'/>
+    <tag k='oneway:foot' v='yes'/>
+    <tag k='note:pathway_id' v='3458764655659672851'/>
+    <tag k='note:miro_id' v='3458764655659672851'/>
+  </way>
+  <way id='-67' visible='true'>
+    <nd ref='-24'/>
+    <nd ref='-66'/>
+    <nd ref='-62'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-1;0'/>
+    <tag k='incline' v='up'/>
+    <tag k='conveying' v='forward'/>
+    <tag k='oneway:foot' v='yes'/>
+    <tag k='note:pathway_id' v='3458764655659802027'/>
+    <tag k='note:miro_id' v='3458764655659802027'/>
+  </way>
+  <way id='-69' visible='true'>
+    <nd ref='-46'/>
+    <nd ref='-68'/>
+    <nd ref='-60'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-1;0'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659802072'/>
+    <tag k='note:miro_id' v='3458764655659802072'/>
+  </way>
+  <way id='-71' visible='true'>
+    <nd ref='-24'/>
+    <nd ref='-70'/>
+    <nd ref='-62'/>
+    <tag k='highway' v='steps'/>
+    <tag k='indoor' v='yes'/>
+    <tag k='level' v='-1;0'/>
+    <tag k='incline' v='up'/>
+    <tag k='note:pathway_id' v='3458764655659802113'/>
+    <tag k='note:miro_id' v='3458764655659802113'/>
+  </way>
+</osm>
