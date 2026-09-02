@@ -3,10 +3,34 @@ from stop.models import LocationType, Stop, Route, Level
 from stair.models import Pathway, PathwayMode
 
 from .frames import search_frame_by_title, get_frame_items, get_frame_connectors
-from .parsers import _slugify, _item_center
+from .parsers import (
+    _slugify, _item_center, _is_in_progress, _normalize_title)
 from .level_mixin import LevelMixin
 from .stop_mixin import StopMixin
 from .pathway_mixin import PathwayMixin
+
+STATION_LOCATION_TYPE = 1
+
+
+def resolve_station_stops(frame_title: str) -> list[Stop]:
+    """Resuelve el título de un frame de Miró a los Stops de su estación.
+
+    Un frame por estación, pero una estación de correspondencia tiene un
+    Stop por línea. El título rara vez coincide con el `stop_name` GTFS:
+    a veces es el `short_name` («Etiopía» por «Etiopía y Plaza de la
+    Transparencia») y a veces solo difiere en acentos o espacios.
+    """
+    stations = Stop.objects.filter(location_type_id=STATION_LOCATION_TYPE)
+    for lookup in ('short_name__iexact', 'stop_name__iexact'):
+        if found := list(stations.filter(**{lookup: frame_title})):
+            return found
+    target = _normalize_title(frame_title)
+    matched = [
+        s for s in stations
+        if target in {_normalize_title(s.stop_name),
+                      _normalize_title(s.short_name or '')}
+    ]
+    return matched
 
 
 class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
@@ -33,6 +57,7 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
         self._level_texts: dict[str, list[dict]] = {}
         self._level_obj_map: dict[str, object] = {}
         self._stop_obj_map: dict[str, Stop] = {}
+        self._platform_entrance_map: dict[str, str] = {}
         self._pathway_objs: list[Pathway] = []
         self._skipped: list[dict] = []
 
@@ -65,8 +90,12 @@ class MiroSchemaBuilder(LevelMixin, StopMixin, PathwayMixin):
             print(f"Frame '{self.frame_title}' no encontrado.")
             return None
 
-        self._station_stops = list(
-            Stop.objects.filter(stop_name__iexact=self.frame_title))
+        title = self.frame.get('data', {}).get('title', self.frame_title)
+        if _is_in_progress(title):
+            print(f"Frame '{title}' está en proceso: no se importa.")
+            return None
+
+        self._station_stops = resolve_station_stops(self.frame_title)
         if not self._station_stops:
             print(f"Stops para '{self.frame_title}' "
                   f"no encontrados en la base de datos.")

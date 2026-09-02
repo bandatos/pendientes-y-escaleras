@@ -8,7 +8,8 @@ from django.core.management.base import BaseCommand, CommandError
 
 from stop.models import Level, Stop
 from stair.models import Pathway
-from utils.miro.builder import MiroSchemaBuilder
+from utils.miro.builder import MiroSchemaBuilder, resolve_station_stops
+from utils.miro.parsers import _is_in_progress
 from utils.miro.preview_html import build_cytoscape_elements, render_html
 
 
@@ -105,6 +106,12 @@ class Command(BaseCommand):
                 "Debes proporcionar un frame_title o usar --all-stations."
             )
 
+        if frame_title and _is_in_progress(frame_title):
+            raise CommandError(
+                f"El frame '{frame_title}' está marcado «(en proceso)»: "
+                "no se importa."
+            )
+
         if all_stations:
             if options["from_db"] and options["reset"]:
                 raise CommandError(
@@ -159,23 +166,31 @@ class Command(BaseCommand):
         self.stdout.write("Obteniendo frames de Miro…")
         frames = get_all_frames()
 
-        station_names_lower = {
-            name.lower()
-            for name in Stop.objects.filter(
-                location_type_id=1
-            ).values_list("stop_name", flat=True)
-        }
+        matched: list[tuple[dict, list[Stop]]] = []
+        in_progress: list[str] = []
+        unmatched: list[str] = []
+        for frame in frames:
+            title = frame.get("data", {}).get("title", "")
+            if _is_in_progress(title):
+                in_progress.append(title)
+                continue
+            if stops := resolve_station_stops(title):
+                matched.append((frame, stops))
+            else:
+                unmatched.append(title)
 
-        matched = [
-            f for f in frames
-            if f.get("data", {}).get("title", "").lower()
-            in station_names_lower
-        ]
+        for title in in_progress:
+            self._csv_rows.append(self._station_row(title, "EN_PROCESO"))
+        for title in unmatched:
+            self._csv_rows.append(
+                self._station_row(title, "SIN_COINCIDENCIA"))
 
         mode = "RESET" if reset else "NUEVAS"
         self.stdout.write(
             f"Frames en Miro: {len(frames)} | "
+            f"En proceso: {len(in_progress)} | "
             f"Con Stop en BD: {len(matched)} | "
+            f"Sin coincidencia: {len(unmatched)} | "
             f"Modo: {mode}\n"
         )
 
@@ -183,11 +198,11 @@ class Command(BaseCommand):
         skipped_list: list[str] = []
         failures: list[tuple[str, str]] = []
 
-        for frame in matched:
+        for frame, station_stops in matched:
             title = frame["data"]["title"]
             has_miro_data = Stop.objects.filter(
                 miro_id__isnull=False,
-                parent_station__stop_name__iexact=title,
+                parent_station__in=station_stops,
             ).exists()
 
             if has_miro_data and not reset:
@@ -220,7 +235,9 @@ class Command(BaseCommand):
                 )
                 self.stderr.write(f"    ERROR: {exc}")
 
-        self._print_summary(successes, skipped_list, failures)
+        self._print_summary(
+            successes, skipped_list, failures,
+            in_progress=in_progress, unmatched=unmatched)
         self._write_csv_summary()
 
     def _handle_all_from_db(self) -> None:
@@ -305,6 +322,8 @@ class Command(BaseCommand):
         successes: list[str],
         skipped: list[str],
         failures: list[tuple[str, str]],
+        in_progress: list[str] | None = None,
+        unmatched: list[str] | None = None,
     ) -> None:
         self.stdout.write("\n--- Resumen ---")
         self.stdout.write(
@@ -312,6 +331,14 @@ class Command(BaseCommand):
         )
         if skipped:
             self.stdout.write(f"Omitidas: {len(skipped)}")
+        if in_progress:
+            self.stdout.write(f"En proceso: {len(in_progress)}")
+            for title in in_progress:
+                self.stdout.write(f"  {title}")
+        if unmatched:
+            self.stdout.write(f"Sin coincidencia: {len(unmatched)}")
+            for title in unmatched:
+                self.stdout.write(f"  {title}")
         if failures:
             self.stdout.write(
                 self.style.ERROR(f"Error:    {len(failures)}")
@@ -393,9 +420,8 @@ class Command(BaseCommand):
 
         self.stdout.write(f"Cargando '{frame_title}' desde la BD…")
 
-        station_stops = Stop.objects.filter(
-            stop_name__iexact=frame_title)
-        if not station_stops.exists():
+        station_stops = resolve_station_stops(frame_title)
+        if not station_stops:
             raise CommandError(
                 f"No se encontraron stops con nombre '{frame_title}' en la BD."
             )

@@ -127,7 +127,7 @@ Filtrado por shape: `LevelMixin.get_items_by_shape(shape)` (`level_mixin.py`).
 | 1 Pasillo      | Siempre bidireccional                                         |
 | 5 Ascensor     | Siempre bidireccional                                         |
 | 3 Movedizo     | Siempre unidireccional                                        |
-| 4 Escalera     | Bidireccional si hay **2 conectores** entre el mismo par de nodos (escalera mecánica de subida + bajada); el conector con `from_y < to_y` es el bidireccional |
+| 4 Escalera     | **Documentado, no implementado**: la idea era «bidireccional si hay 2 conectores entre el mismo par de nodos»; `_build_escalator_pairs` se calcula pero `_get_bidirectional` lo ignora y aplica la regla de caps de Escaleras. Ricardo decide si se implementa o se elimina (`docs/tasks/task-24`, inciso a) |
 | 2 Escaleras    | Bidireccional si ambos caps ≠ `none`; unidireccional si alguno es `none` |
 
 ### Descripción de connectores
@@ -196,17 +196,28 @@ f'{station_slug}-{line}-{suffix}'
 
 | Función               | Descripción                                              |
 |-----------------------|----------------------------------------------------------|
-| `_strip_html(html)`   | Elimina tags HTML y normaliza espacios                   |
-| `_parse_content(html)`| `{name, desc, is_closed}` del contenido de un shape     |
+| `_strip_html(html)`   | Sustituye cada tag por un espacio (dos `<p>` seguidos no se pegan) y colapsa espacios |
+| `_parse_content(html)`| `{name, desc, is_closed, is_double, direction}` de un shape |
+| `_is_in_progress(t)`  | `True` si el título de frame termina en «(en proceso)»   |
+| `_normalize_title(t)` | Sin acentos, casefold, un solo espacio: para emparejar frames con `Stop` |
+| `_direction_text(n)`  | Texto tras la flecha de un rótulo de andén (`L3 <= Universidad` → `Universidad`) |
 | `_get_line_prefix(t)` | Extrae prefijo de línea (`L7`, `L12A`, …) del texto     |
 | `_resolve_line(item)` | Aplica `_get_line_prefix` al `data.content` de un ítem  |
 | `_item_center(item)`  | `(x, y)` del centro del ítem                            |
-| `_slugify(text)`      | Normaliza texto a mayúsculas ASCII sin tildes/espacios   |
+| `_slugify(text)`      | Normaliza texto a mayúsculas ASCII sin tildes/espacios (ids, no títulos) |
 
 `_parse_content` extrae:
 - `name`: texto sin paréntesis ni corchetes
 - `desc`: contenido entre paréntesis (unido con `"; "`)
-- `is_closed`: `True` si aparece `[CLAUSURADA]`
+- `is_closed`: `True` si aparece `[CLAUSURADA]`, `[CLAUSURADO]`, `[INHABILITADA]` o `[INHABILITADO]`
+- `is_double`: `True` si aparece `[IZQ/DER]` o `[IZQ & DER]` (solo corchetes, solo en ese orden)
+- `direction`: `exit` si `[salida]`, `entrance` si `[entrada]`, si no `None`
+
+Convención del tablero: los corchetes clasifican y nunca llegan a `name` ni a `desc`; los paréntesis describen. Una marca entre paréntesis no se interpreta; un corchete no reconocido se descarta sin aviso.
+
+`Stop.entrance` de los andenes no sale del parser sino de `assign_platform_entrances` en `stop_mixin.py` (función pura a nivel de módulo, reglas de terminal y andén central en su docstring; ver `api/CLAUDE.md`). Los shapes cuyo texto empieza con prefijo de otro sistema (`STE`) se saltan con motivo `other transit system`.
+
+Comandos auxiliares: `dump_miro_raw` (volcado JSON de todos los frames, solo lectura) y `apply_miro_edits --edits PATH [--apply]` (PATCH de `data.content` de shapes y `data.title` de frames; simula por defecto y relee cada ítem antes de escribir). El token en `.env` tiene alcance `boards:write`.
 
 ---
 

@@ -23,6 +23,8 @@ Lista de deuda técnica detectada en la sesión del 26 de agosto de 2026 sobre l
 - `StairReportViewSet.ordering` referencia `main_route__route_short_name`, un campo inexistente.
 - `StairReport.date_reported` y `date_received` usan `auto_now=True`: se reescriben en cada `save()` y no conservan la fecha real del levantamiento, que [[adr-0003]] necesita para `survey:date`.
 
+Actualización del 1 de septiembre de 2026 ([[2026-09-01-sesion-miro-corchetes-entrance]]): el comparador de títulos ya normaliza acentos (`_normalize_title`); Moctezuma sigue: guion bajo en `data/gtfs/metro_stops.csv`, guion en la copia de la API ([[task-6]]). Los 16 tests rotos siguen igual y todo `utils/miro/scratch/test_*.py` (no solo `test_build.py`) rompe la recolección: hoy pytest se corre con `--ignore=utils/miro/scratch`. Además `_LEVEL_TEXT_RE` no acepta «Nivel Andenes superficie 0» (Andenes y superficie juntos): cuatro textos de nivel en El Rosario y Constitución de 1917 no se parsean.
+
 ## Criterios de aceptación
 
 - [ ] `test_build.py` ya no es recolectado por pytest
@@ -31,7 +33,9 @@ Lista de deuda técnica detectada en la sesión del 26 de agosto de 2026 sobre l
 - [ ] Los 10 `Level` huérfanos están resueltos o documentados como esperados
 - [ ] Las erratas de `estaciones-match-stops.csv` están corregidas
 - [ ] El `stop_id` de Moctezuma L1 está verificado contra el GTFS
-- [ ] El comparador de títulos Miro↔BD normaliza acentos
+- [x] El comparador de títulos Miro↔BD normaliza acentos (1 de septiembre de 2026)
+- [ ] `_LEVEL_TEXT_RE` acepta «Nivel Andenes superficie N»
+- [ ] `import_stops` corre sobre una base vacía (ver [[task-25]])
 - [ ] Los conectores punteados de accesos gemelos no se cuentan como saltados
 - [ ] `DATABASE_NAME` no mezcla su uso entre SQLite y Postgres sin control de `.gitignore`
 - [ ] `StairReportViewSet.ordering` no referencia campos inexistentes

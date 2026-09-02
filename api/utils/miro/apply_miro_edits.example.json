@@ -1,0 +1,29 @@
+{
+  "generated": "2026-09-01",
+  "board_id": "uXjVJucVbCE=",
+  "note": "Ejemplo del formato que lee `manage.py apply_miro_edits`. Solo se aplica la clave «edits»; cualquier otra clave es diagnóstico y se ignora. «current» y «proposed» son el valor crudo del campo (HTML en las formas); «current_text» y «proposed_text» son la versión legible que se imprime en la simulación. Antes de escribir, el comando relee el ítem y omite el cambio si «current» ya no coincide con el tablero.",
+  "edits": [
+    {
+      "frame": "Balderas",
+      "item_id": "3458764659058286156",
+      "item_type": "shape",
+      "field": "data.content",
+      "current": "<p>L1 Pasillo vestibular aceso nororiente</p>",
+      "proposed": "<p>L1 Pasillo vestibular acceso nororiente</p>",
+      "current_text": "L1 Pasillo vestibular aceso nororiente",
+      "proposed_text": "L1 Pasillo vestibular acceso nororiente",
+      "reason": "Typo ortográfico real en el tablero: «aceso» → «acceso»."
+    },
+    {
+      "frame": "Tezozomoc",
+      "item_id": "3458764678419078529",
+      "item_type": "frame",
+      "field": "data.title",
+      "current": "Tezozomoc",
+      "proposed": "Tezozómoc",
+      "current_text": "Tezozomoc",
+      "proposed_text": "Tezozómoc",
+      "reason": "Falta la tilde en el nombre oficial de la estación."
+    }
+  ]
+}

@@ -4,10 +4,57 @@ from collections import defaultdict
 from typing import TYPE_CHECKING
 from stop.models import Stop
 
-from utils.miro.parsers import _item_center, _parse_content, _resolve_line
+from utils.miro.parsers import (
+    _direction_text, _is_other_system, _item_center, _normalize_title,
+    _parse_content, _resolve_line)
 
 if TYPE_CHECKING:
     from utils.miro.builder import MiroSchemaBuilder
+
+
+def assign_platform_entrances(
+    platforms: list[tuple[str, str, str | None]],
+    station_names: set[str],
+) -> list[str]:
+    """Decide el `entrance` OSM de cada andén de una estación.
+
+    En el Metro de la CDMX el sentido de circulación de los andenes no es
+    libre: en una terminal el andén cuyo letrero anuncia la propia estación
+    solo recibe trenes (los pasajeros bajan, `exit`) y el otro solo los
+    despacha (`entrance`); donde la línea tiene tres andenes, el central
+    es el de descenso y los dos laterales los de ascenso. Con uno o dos
+    andenes sin esas marcas el andén sirve en ambos sentidos (`yes`).
+
+    Args:
+        platforms: `(línea, nombre del andén, destino tras la flecha)`.
+        station_names: `stop_name` y `short_name` de la estación padre.
+
+    Returns:
+        Un valor de `ENTRANCE_CHOICES` por andén, en el mismo orden.
+    """
+    names = {_normalize_title(n) for n in station_names if n}
+    by_line: dict[str, list[int]] = defaultdict(list)
+    for idx, (line, _, _) in enumerate(platforms):
+        by_line[line].append(idx)
+
+    result = ['yes'] * len(platforms)
+    for indexes in by_line.values():
+        terminals = [
+            i for i in indexes
+            if platforms[i][2] and _normalize_title(platforms[i][2]) in names
+        ]
+        if len(indexes) == 2 and len(terminals) == 1:
+            for i in indexes:
+                result[i] = 'exit' if i in terminals else 'entrance'
+            continue
+        centrals = [
+            i for i in indexes
+            if 'central' in _normalize_title(platforms[i][1])
+        ]
+        if len(indexes) == 3 and len(centrals) == 1:
+            for i in indexes:
+                result[i] = 'exit' if i in centrals else 'entrance'
+    return result
 
 
 class StopMixin:
@@ -44,11 +91,37 @@ class StopMixin:
                 codes[id1], codes[id2] = 'B', 'A'
         return codes
 
+    def _station_names(self: MiroSchemaBuilder) -> set[str]:
+        names = {self.frame_title}
+        for stop in self._station_stops:
+            names.update({stop.stop_name, stop.short_name})
+        return {n for n in names if n}
+
+    def _platform_entrances(self: MiroSchemaBuilder) -> dict[str, str]:
+        """Returns {item_id: entrance} for the frame's platform shapes."""
+        items = self.get_items_by_shape('round_rectangle')
+        rows: list[tuple[str, str, str | None]] = []
+        ids: list[str] = []
+        for item in items:
+            if _is_other_system(item):
+                continue
+            line = _resolve_line(item)
+            if not line and (route := self._get_route(None)):
+                line = f"L{route.route_short_name}"
+            if not line:
+                continue
+            name = _parse_content(item.get('data', {}).get('content', ''))
+            rows.append((line, name['name'], _direction_text(name['name'])))
+            ids.append(item['id'])
+        values = assign_platform_entrances(rows, self._station_names())
+        return dict(zip(ids, values))
+
     def _create_stops(
             self: MiroSchemaBuilder, stop_codes: dict[str, str]
     ) -> None:
         self._skipped: list[dict] = []
         seq_counters: dict[tuple, int] = defaultdict(int)
+        self._platform_entrance_map = self._platform_entrances()
 
         shapes = [
             (self.get_items_by_shape('round_rectangle'), 0, 'P'),
@@ -70,6 +143,13 @@ class StopMixin:
         stop_codes: dict,
         seq_counters: dict,
     ) -> None:
+        if _is_other_system(item):
+            self._skipped.append({
+                'miro_id': item['id'],
+                'reason': 'other transit system',
+            })
+            return
+
         parsed = _parse_content(item.get('data', {}).get('content', ''))
         line = _resolve_line(item)
         route = self._get_route(line)
@@ -102,11 +182,19 @@ class StopMixin:
         stop_id = (f'{line}-{self.station_slug}'
                    f'-{type_abbrev}-{seq_counters[seq_key]:02d}')
 
+        if loc_type_id == 2:
+            entrance = parsed['direction'] or 'yes'
+        elif loc_type_id == 0:
+            entrance = self._platform_entrance_map.get(item['id'])
+        else:
+            entrance = None
+
         obj, _ = Stop.objects.update_or_create(
             stop_id=stop_id,
             defaults={
                 'miro_id': item['id'],
                 'stop_name': parsed['name'],
+                'entrance': entrance,
                 'stop_desc': parsed['desc'],
                 'is_closed': parsed['is_closed'],
                 'is_double': parsed['is_double'],

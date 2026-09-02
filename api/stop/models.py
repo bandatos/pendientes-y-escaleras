@@ -221,6 +221,14 @@ WHEELCHAIR_BOARDING_CHOICES = [
     (2, 'Not wheelchair accessible'),
 ]
 
+# Vocabulario OSM entrance=*; se guarda el valor textual para poder
+# exportarlo a OSM sin traducción intermedia.
+ENTRANCE_CHOICES = [
+    ('yes', 'Entrar y salir'),
+    ('entrance', 'Solo entrar'),
+    ('exit', 'Solo salir'),
+]
+
 
 class Level(models.Model):
     """
@@ -290,10 +298,17 @@ class Stop(models.Model):
         choices=WHEELCHAIR_BOARDING_CHOICES,
         default=0, blank=True, null=True,
         help_text="Indicates whether wheelchair boardings are possible")
-    has_entry = models.BooleanField(
-        default=True, help_text="Indicates if the stop has an entry/exit point")
-    has_exit = models.BooleanField(
-        default=True, help_text="Indicates if the stop has an exit point")
+    entrance = models.CharField(
+        max_length=8, choices=ENTRANCE_CHOICES,
+        blank=True, null=True,
+        help_text="En accesos es la etiqueta OSM entrance=* tal cual. "
+                  "En andenes, 'entrance' = solo ascenso (los trenes "
+                  "parten) y 'exit' = solo descenso (los trenes llegan).")
+    short_name = models.CharField(
+        max_length=100, blank=True, null=True,
+        help_text="Nombre tal como se usa en el título del frame de Miró "
+                  "cuando el nombre GTFS trae añadidos "
+                  "(«Etiopía» vs «Etiopía y Plaza de la Transparencia»).")
     is_closed = models.BooleanField(default=False)
     is_double = models.BooleanField(
         default=False,

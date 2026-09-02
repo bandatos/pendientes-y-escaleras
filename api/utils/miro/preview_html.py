@@ -220,6 +220,8 @@ def build_cytoscape_elements(result: dict) -> list[dict]:
                 "label": label,
                 "stop_id": sid,
                 "stop_name": stop.get("stop_name", ""),
+                "short_name": stop.get("short_name") or "",
+                "entrance": stop.get("entrance") or "",
                 "miro_id": stop.get("miro_id", ""),
                 "location_type": loc_type,
                 "route": route_line,
@@ -509,6 +511,8 @@ def render_html(
       tooltip.innerHTML = `
         <p><strong>stop_id:</strong> ${{d.stop_id}}</p>
         <p><strong>stop_name:</strong> ${{d.stop_name}}</p>
+        <p><strong>short_name:</strong> ${{d.short_name || '—'}}</p>
+        <p><strong>entrance:</strong> ${{d.entrance || '—'}}</p>
         <p><strong>miro_id:</strong> ${{d.miro_id}}</p>
         <p><strong>loc_type:</strong> ${{d.location_type}}</p>
         <p><strong>route:</strong> ${{d.route}}</p>

@@ -2,10 +2,12 @@
 
 import csv
 import os
+import re
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from django.db import transaction
 from stop.models import Route, Stop, Station
+from utils.miro.short_names import apply_short_names
 
 
 class Command(BaseCommand):
@@ -61,11 +63,14 @@ class Command(BaseCommand):
                 stop_id=row['stop_id'],
                 route=route,
                 defaults={
-                    'stop_name': row['stop_name'].strip(),
+                    # El GTFS de origen trae espacios dobles en algunos
+                    # nombres; normalizar aquí evita reintroducirlos.
+                    'stop_name': re.sub(
+                        r'\s+', ' ', row['stop_name']).strip(),
+                    'zone_id': row['zone_id'],
                     'stop_lat': row['stop_lat'],
                     'stop_lon': row['stop_lon'],
                     'location_type': 1,
-                    'zone_id': row['zone_id'],
                     'wheelchair_boarding': int(row['wheelchair_boarding']),
                 }
             )
@@ -93,8 +98,11 @@ class Command(BaseCommand):
                 with open(file_path, mode='r', encoding='utf-8') as csv_file:
                     reader = csv.DictReader(csv_file)
                     self.process_csv(reader)
-
-
+                # El CSV no trae el nombre corto: se reaplica aquí porque
+                # este comando recrea las paradas desde cero y, sin él, los
+                # frames de Miró de esas estaciones dejarían de casar.
+                named = apply_short_names(Stop)
+                self.stdout.write(f"Nombres cortos aplicados: {named}")
 
         except Exception as e:
             raise CommandError(f'Ocurrió un error inesperado durante la importación: {e}')
