@@ -9,12 +9,22 @@ from .document import OsmDocument
 
 MIN_NODE_DISTANCE_M = 0.3
 
+# Superficies: no son aristas de la red peatonal, así que ni llevan
+# `level` ni tienen que compartir nodo con nadie para no ser islas.
+SURFACE_KINDS = ("platform", "plaza", "building", "station_area")
+# El andén sí lleva `level`; el resto de las superficies no son aristas
+# de circulación y no tienen a qué nivel pertenecer.
+LEVELLESS_KINDS = ("plaza", "building", "station_area")
+
 
 def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
     errors: list[str] = []
     warnings: list[str] = []
 
-    ids = [n.id for n in doc.nodes.values()] + [w.id for w in doc.ways]
+    # Los objetos ajenos entran con su id real y sus etiquetas tal como
+    # están en OSM: las reglas de abajo son sobre lo que dibujamos.
+    ids = [n.id for n in doc.nodes.values() if not n.foreign]
+    ids += [w.id for w in doc.ways if not w.foreign]
     if len(ids) != len(set(ids)):
         errors.append("hay ids repetidos entre nodos y ways")
     if any(i >= 0 for i in ids):
@@ -24,22 +34,31 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
         for nid in way.nodes:
             if nid not in doc.nodes:
                 errors.append(f"way {way.id} referencia el nodo {nid}")
+        if way.foreign:
+            continue
         if len(way.nodes) < 2:
             errors.append(f"way {way.id} tiene menos de dos nodos")
         if not way.tags:
             errors.append(f"way {way.id} no tiene etiquetas")
-        if "level" not in way.tags:
+        if "level" not in way.tags and way.kind not in LEVELLESS_KINDS:
             errors.append(f"way {way.id} no tiene level")
 
+    # El contexto entra en la comparación: el error que hay que cazar es
+    # emitir un nodo nuestro encima de uno que ya existe en OSM. Dos
+    # nodos ajenos juntos son cosa de OSM y no nuestra.
     nodes = list(doc.nodes.values())
     for i in range(len(nodes)):
         for j in range(i + 1, len(nodes)):
+            if nodes[i].frozen and nodes[j].frozen:
+                continue
             d = math.hypot(nodes[i].u - nodes[j].u, nodes[i].v - nodes[j].v)
             if d < MIN_NODE_DISTANCE_M:
                 errors.append(
                     f"nodos {nodes[i].id} y {nodes[j].id} a {d:.2f} m")
 
     for node in doc.nodes.values():
+        if node.foreign:
+            continue
         if node.tags.get("railway") == "subway_entrance" or (
                 node.tags.get("barrier") == "turnstile"):
             if "level" not in node.tags:
@@ -85,6 +104,8 @@ def _node_levels(doc: OsmDocument) -> dict:
     """
     owners = defaultdict(list)
     for way in doc.ways:
+        if way.foreign or not way.levels:
+            continue
         for nid in way.nodes:
             owners[nid].append(way)
     out = {}
@@ -131,6 +152,8 @@ def _check_cross_level_nodes(doc: OsmDocument) -> list[str]:
     """Nodo compartido por ways sin ningún nivel en común: sospechoso."""
     owners = defaultdict(list)
     for way in doc.ways:
+        if way.foreign or not way.levels:
+            continue
         for nid in way.nodes:
             owners[nid].append(way)
     out = []
@@ -177,7 +200,8 @@ def _check_connectivity(doc: OsmDocument) -> list[str]:
                 out.append(
                     f"desde el acceso {start} no se llega al andén "
                     f"{way.label}")
-    islands = [w.id for w in doc.ways if w.kind != "platform"
+    islands = [w.id for w in doc.ways
+               if w.kind not in SURFACE_KINDS and not w.foreign
                and not (set(w.nodes) & _all_other_nodes(doc, w))]
     if islands:
         out.append(f"ways sin nodo compartido con ningún otro: {islands}")
@@ -203,6 +227,12 @@ def _summary(doc: OsmDocument) -> dict:
                    ] += 1
         elif way.tags.get("highway") == "footway":
             counts["highway=footway"] += 1
+        elif way.tags.get("highway") == "pedestrian":
+            counts["highway=pedestrian (explanada)"] += 1
+        elif way.tags.get("building"):
+            counts["building"] += 1
+        elif way.tags.get("public_transport") == "station":
+            counts["public_transport=station (área)"] += 1
         else:
             counts["way sin clasificar"] += 1
     for node in doc.nodes.values():
@@ -212,6 +242,14 @@ def _summary(doc: OsmDocument) -> dict:
             counts["barrier=turnstile"] += 1
     counts["nodos (total)"] = len(doc.nodes)
     counts["ways (total)"] = len(doc.ways)
+    counts["nodos nuevos"] = sum(1 for n in doc.nodes.values()
+                                 if not n.foreign)
+    counts["nodos de OSM (contexto)"] = sum(
+        1 for n in doc.nodes.values() if n.foreign and n.frozen)
+    counts["nodos de OSM modificados"] = sum(
+        1 for n in doc.nodes.values() if n.foreign and not n.frozen)
+    counts["ways nuevos"] = sum(1 for w in doc.ways if not w.foreign)
+    counts["ways de OSM (contexto)"] = sum(1 for w in doc.ways if w.foreign)
     counts["objetos con etiqueta de traza"] = sum(
         1 for o in list(doc.ways) + list(doc.nodes.values())
         if any(k in o.tags for k in T.TRACE_KEYS))

@@ -135,4 +135,6 @@ class StopCatSerializer(serializers.ModelSerializer):
             "route_line",
             "station",
             "route",
+            "osm_type",
+            "osm_id",
         ]

@@ -20,6 +20,12 @@ class FamilyTemplate:
         self.nodes: dict[str, dict] = data.get("nodes", {})
         self.edges: list[dict] = data.get("edges", [])
         self.extra_ways: list[dict] = data.get("extra_ways", [])
+        self.station_area: str = data.get("station_area", "kml")
+        # El edificio de acceso mueve el acceso a la puerta y el nodo
+        # interior al centro del lado opuesto; el resto de la plantilla
+        # sigue nombrando esas claves, así que la corrección se aplica
+        # aquí y no en cada geometría.
+        self.overrides: dict[str, tuple[float, float]] = {}
         self._index = {}
         for edge in self.edges:
             key = (edge["from"], edge["to"], edge["mode"],
@@ -41,6 +47,8 @@ class FamilyTemplate:
                 f"la plantilla {self.family} no ubica el nodo {key}")
 
     def point(self, key: str) -> tuple[float, float]:
+        if key in self.overrides:
+            return self.overrides[key]
         spec = self.node(key)
         return float(spec["u"]), float(spec["v"])
 
@@ -63,6 +71,9 @@ class FamilyTemplate:
             if key in self._index:
                 return key, self._index[key]
         return None, None
+
+    def has_edge_between(self, a: str, b: str) -> bool:
+        return any({k[0], k[1]} == {a, b} for k in self._index)
 
     def unused_edges(self, used: set) -> list[dict]:
         return [e for k, e in self._index.items() if k not in used]

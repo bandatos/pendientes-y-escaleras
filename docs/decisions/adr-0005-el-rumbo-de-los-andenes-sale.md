@@ -9,6 +9,7 @@ deliberation: dialogued
 rationale: recorded
 source: ["[[2026-08-26-sesion-mapeo-osm]]"]
 affects: ["data/gtfs/shapes.txt", "data/StatioArea-and-lines.kml", "data/analysis/kml-estaciones-orientacion.csv"]
+related: ["[[adr-0011]]"]
 ---
 
 # El rumbo de los andenes sale de shapes.txt del GTFS; el KML queda como referencia visual
@@ -31,3 +32,7 @@ Rumbo desde `shapes.txt` (filtrando por `route_id`, no por nombre corto) y eje p
 [[2026-08-26-sesion-mapeo-osm]].
 
 La medición que sustenta esta decisión (187 polígonos con orientación y diferencia contra el rumbo del shape) está en `data/analysis/kml-estaciones-orientacion.csv`; el método, en [[2026-08-26-herramientas-mapeo-kml-plantillas]].
+
+## Notas de enmienda
+
+- 2 de septiembre de 2026 ([[2026-09-02-sesion-integracion-osm-y-niveles]]): la segunda mitad del título quedó revertida por [[adr-0011]]: el polígono del KML no es solo referencia visual, es información que se sube a OSM cuando no exista contorno de estación, y el generador lo lee con `api/utils/osm/kml.py`. La primera mitad sigue vigente y sin implementar: el rumbo desde `shapes.txt` y la rotación automática por elongación no están cableados al exportador, que hoy recibe `--bearing` a mano; el KML sigue sin corregirse y sus tres estaciones en construcción siguen sin subirse.

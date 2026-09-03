@@ -34,3 +34,8 @@ Ligada a [[task-10|compartir el proyecto en el foro]].
 - [ ] Existe la página del grupo Bandatos con cuentas y contacto
 - [ ] Se validó con Pablo el esquema de etiquetas
 - [ ] El colectivo conoce y acepta el uso de las `stop_area` existentes
+
+## Notas de trabajo
+
+- 2 de septiembre de 2026 (tarde, [[2026-09-02-sesion-integracion-osm-y-niveles]]): [[adr-0011]] enmienda la regla de [[adr-0010]] de no tocar objetos existentes: por decisión de Ricardo, los nodos de acceso que ya existen en OSM se adoptan en el archivo y se modifican (etiquetas y posición) con `action='modify'`. Esta task sigue siendo la condición para subir.
+- 2 de septiembre de 2026, cierre: dos pendientes heredados. La pregunta de las relaciones `stop_area` quedó explícita en [[adr-0013]]: [[adr-0004]] decidió sumar nuestros accesos a las existentes, la reunión del 19 de agosto sugirió no usar relaciones, el exportador no emite ninguna, y la decisión se lleva al colectivo aquí antes de subir. Y el tercer criterio de [[task-17]], capturar el `osm_id` de cada objeto después de subirlo a OSM, no tiene flujo: hoy `data/osm/osm-links.csv` se mantiene a mano; el flujo de subida que esta task defina debe incluir cómo vuelven los ids.

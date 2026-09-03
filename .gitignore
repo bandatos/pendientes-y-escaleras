@@ -10,3 +10,6 @@ ignore/*
 
 # Las vistas previas se versionan en SVG; los PNG son conversiones locales.
 data/osm/preview/*.png
+
+# Sesiones de JOSM (archivo personal del editor)
+*.jos

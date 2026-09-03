@@ -22,6 +22,8 @@ class PathwaySerializer(serializers.ModelSerializer):
             'pathway_description',
             'is_closed',
             'miro_id',
+            'osm_type',
+            'osm_id',
         ]
 
 

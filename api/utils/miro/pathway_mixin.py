@@ -1,7 +1,6 @@
 """PathwayMixin: pathway detection and creation logic for MiroSchemaBuilder."""
 from __future__ import annotations
 import re
-from collections import defaultdict
 from typing import TYPE_CHECKING
 from stair.models import Pathway
 from .parsers import _strip_html
@@ -16,8 +15,6 @@ class PathwayMixin:
     """Mixin that provides Pathway-related methods to MiroSchemaBuilder."""
 
     def _create_pathways(self: MiroSchemaBuilder) -> None:
-        escalator_pairs = self._build_escalator_pairs()
-
         for conn in self._connectors:
             mode_id = self._get_pathway_mode(conn)
             if mode_id is None:
@@ -48,7 +45,7 @@ class PathwayMixin:
                 })
                 continue
 
-            is_bidir = self._get_bidirectional(conn, mode_id, escalator_pairs)
+            is_bidir = self._get_bidirectional(conn, mode_id)
 
             from_stop, to_stop, is_bidir = self._resolve_direction(
                 conn, from_stop, to_stop, mode_id, is_bidir,
@@ -94,19 +91,8 @@ class PathwayMixin:
             return 2  # Stairs clausuradas (gris claro)
         return None
 
-    def _build_escalator_pairs(self) -> dict[frozenset, list]:
-        pairs: dict[frozenset, list] = defaultdict(list)
-        for conn in self._connectors:
-            if self._get_pathway_mode(conn) != 4:
-                continue
-            start_id = conn.get('startItem', {}).get('id')
-            end_id = conn.get('endItem', {}).get('id')
-            if start_id and end_id:
-                pairs[frozenset([start_id, end_id])].append(conn)
-        return dict(pairs)
-
     def _get_bidirectional(
-        self: MiroSchemaBuilder, connector: dict, mode: int, escalator_pairs: dict,
+        self: MiroSchemaBuilder, connector: dict, mode: int,
     ) -> int:
         if mode in (1, 5):  # Walkway, Elevator
             return 1

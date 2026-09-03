@@ -15,16 +15,20 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from stop.models import Stop
+from utils.osm import overpass as overpass_mod
 from utils.osm import preview as preview_mod
-from utils.osm.builder import StationBuilder
+from utils.osm.builder import STATION_AREA_MODES, StationBuilder
 from utils.osm.geometry import LocalFrame
 from utils.osm.graph import load_station_graph
-from utils.osm.tags import UnsupportedModeError
+from utils.osm.kml import KmlError, station_polygon
+from utils.osm.tags import NonIntegerLevelError, UnsupportedModeError
 from utils.osm.template import FamilyTemplate, TemplateError
 from utils.osm.validate import validate
 
 REPO_ROOT = Path(settings.BASE_DIR).resolve().parent
 OSM_DIR = REPO_ROOT / "data" / "osm"
+CONTEXT_DIR = OSM_DIR / "context"
+KML_PATH = REPO_ROOT / "data" / "StatioArea-and-lines.kml"
 
 
 def slugify(name: str) -> str:
@@ -54,6 +58,14 @@ class Command(BaseCommand):
                             help="Invierte v (familia simétrica).")
         parser.add_argument("--preview", action="store_true",
                             help="Escribe también los SVG por nivel.")
+        parser.add_argument("--no-context", action="store_true",
+                            help="No trae objetos de OSM del entorno.")
+        parser.add_argument("--refresh-context", action="store_true",
+                            help="Vuelve a consultar Overpass y reescribe "
+                                 "la caché de contexto.")
+        parser.add_argument("--station-area", choices=STATION_AREA_MODES,
+                            help="Área de estación a emitir; por omisión "
+                                 "la que declare la plantilla.")
 
     def handle(self, *args, **opts):
         try:
@@ -81,14 +93,26 @@ class Command(BaseCommand):
         template = FamilyTemplate.load(template_path)
         frame = LocalFrame(anchor[0], anchor[1], opts["bearing"],
                            mirror=opts["mirror"])
+        slug = slugify(graph.station_name)
+        context, context_source = self._context(opts, graph, frame, slug,
+                                                anchor)
+        mode = opts["station_area"] or template.station_area
+        kml_polygon = None
+        if mode in ("kml", "both"):
+            try:
+                kml_polygon = station_polygon(KML_PATH, graph.station_name)
+            except KmlError as exc:
+                self.stdout.write(self.style.WARNING(f"aviso: {exc}"))
         builder = StationBuilder(graph, template, frame,
-                                 trace=not opts["no_trace"])
+                                 trace=not opts["no_trace"],
+                                 context=context, station_area=mode,
+                                 kml_polygon=kml_polygon)
         try:
             doc = builder.build()
-        except (TemplateError, UnsupportedModeError) as exc:
+        except (TemplateError, UnsupportedModeError,
+                NonIntegerLevelError) as exc:
             raise CommandError(str(exc))
 
-        slug = slugify(graph.station_name)
         out_path = Path(opts["out"]) if opts["out"] else (
             OSM_DIR / f"{slug}.osm")
         out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -102,11 +126,37 @@ class Command(BaseCommand):
                           f"({graph.stop_id}) — familia {template.family}")
         self.stdout.write(f"ancla {anchor[0]},{anchor[1]}  rumbo "
                           f"{opts['bearing']}°  mirror={opts['mirror']}")
+        self.stdout.write(f"área de estación: {mode}  —  contexto: "
+                          f"{context_source}")
         self.stdout.write("")
         self.stdout.write("resumen por etiqueta")
         for key in sorted(summary):
             self.stdout.write(f"  {key:<40} {summary[key]}")
 
+        for item in builder.report["buildings"]:
+            plaza = (f"{item['plaza_half']:.1f} m"
+                     if item["plaza_half"] else "sin explanada")
+            self.stdout.write(
+                f"  edificio {item['key']}: puertas al lado "
+                f"{item['side']}, medio lado {item['half']:.1f} m, "
+                f"explanada media {plaza}, nodo interior "
+                f"{item['inner'] or '—'}, puertas cerradas "
+                f"{item['closed_doors'] or 'ninguna'}")
+        for item in builder.report["connectors"]:
+            self.stdout.write(
+                f"  connector {item['key']} → way {item['way']} "
+                f"({item['highway']}"
+                + (f"/{item['footway']}" if item["footway"] else "")
+                + f"): {item['length']:.1f} m"
+                + (f" — mismo vértice {item['vertex']}, sin tramo propio"
+                   if item["shared"] else ""))
+        for key, count in builder.report["context"]:
+            self.stdout.write(f"  contexto {key:<32} {count}")
+        if builder.report["streets"]:
+            self.stdout.write("  calles y vías del contexto: "
+                              + ", ".join(builder.report["streets"]))
+        for msg in builder.conflicts:
+            self.stdout.write(self.style.WARNING(f"conflicto: {msg}"))
         for msg in builder.warnings + warnings:
             self.stdout.write(self.style.WARNING(f"aviso: {msg}"))
         for msg in errors:
@@ -126,3 +176,18 @@ class Command(BaseCommand):
 
         if errors:
             raise CommandError(f"{len(errors)} errores de validación")
+
+    def _context(self, opts, graph, frame, slug, anchor):
+        """Objetos de OSM del entorno, de la caché versionada o de red."""
+        if opts["no_context"]:
+            return None, "omitido (--no-context)"
+        osm_ids = sorted({s.osm_id for s in graph.stops.values()
+                          if s.osm_id and (s.osm_type or "node") == "node"})
+        path = CONTEXT_DIR / f"{slug}.json"
+        try:
+            raw, source = overpass_mod.load_raw(
+                path, osm_ids, anchor[0], anchor[1],
+                refresh=opts["refresh_context"])
+        except overpass_mod.OverpassError as exc:
+            raise CommandError(str(exc))
+        return overpass_mod.StationContext(raw, frame, source), source

@@ -229,6 +229,12 @@ ENTRANCE_CHOICES = [
     ('exit', 'Solo salir'),
 ]
 
+OSM_TYPE_CHOICES = [
+    ('node', 'Node'),
+    ('way', 'Way'),
+    ('relation', 'Relation'),
+]
+
 
 class Level(models.Model):
     """
@@ -315,6 +321,14 @@ class Stop(models.Model):
         help_text="Salida que representa IZQ & DER en un solo nodo Miro")
 
     miro_id = models.CharField(max_length=50, blank=True, null=True)
+    osm_type = models.CharField(
+        max_length=8, choices=OSM_TYPE_CHOICES, blank=True, null=True,
+        help_text="Tipo del objeto de OSM enlazado")
+    osm_id = models.BigIntegerField(
+        blank=True, null=True, db_index=True,
+        help_text="Id del objeto en OSM. Enlace blando: OSM no garantiza "
+                  "ids permanentes; si se rompe se re-empareja por ref + "
+                  "estación + geometría (adr-0003)")
 
     class Meta:
         verbose_name = 'Stop'

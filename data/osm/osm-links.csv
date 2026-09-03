@@ -1,0 +1,4 @@
+object,key,osm_type,osm_id,note
+stop,L2-PORTALES-E-01,node,5197203900,Acceso poniente; coordenada coincide a menos de 10 cm
+stop,L2-PORTALES-E-02,node,5197203901,Acceso oriente; coordenada coincide a menos de 10 cm
+stop,L7-SANPEDRODELOSPINOS-E-01,node,3761143341,Acceso poniente; coordenada coincide a menos de 10 cm

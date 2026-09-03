@@ -87,6 +87,64 @@ def point_along(a, b, distance: float):
     return (ax + dx * f, ay + dy * f)
 
 
+def segment_intersection(p, q, r, s):
+    """Punto donde se cruzan los segmentos pq y rs, o None."""
+    px, py = p
+    qx, qy = q
+    rx, ry = r
+    sx, sy = s
+    d1x, d1y = qx - px, qy - py
+    d2x, d2y = sx - rx, sy - ry
+    den = d1x * d2y - d1y * d2x
+    if abs(den) < 1e-12:
+        return None
+    t = ((rx - px) * d2y - (ry - py) * d2x) / den
+    u = ((rx - px) * d1y - (ry - py) * d1x) / den
+    if not (0.0 <= t <= 1.0 and 0.0 <= u <= 1.0):
+        return None
+    return (px + t * d1x, py + t * d1y)
+
+
+# Lados de un cuadrado en el marco local, con su normal hacia afuera.
+SIDE_NORMALS = {"+u": (1.0, 0.0), "-u": (-1.0, 0.0),
+                "+v": (0.0, 1.0), "-v": (0.0, -1.0)}
+
+
+def square_corners(cu: float, cv: float, half: float):
+    """Vértices de un cuadrado centrado en (cu, cv), en sentido fijo."""
+    return [(cu - half, cv - half), (cu + half, cv - half),
+            (cu + half, cv + half), (cu - half, cv + half)]
+
+
+def side_segment(cu: float, cv: float, half: float, side: str):
+    """Extremos del lado `side` del cuadrado, de menor a mayor eje."""
+    if side == "+u":
+        return (cu + half, cv - half), (cu + half, cv + half)
+    if side == "-u":
+        return (cu - half, cv - half), (cu - half, cv + half)
+    if side == "+v":
+        return (cu - half, cv + half), (cu + half, cv + half)
+    if side == "-v":
+        return (cu - half, cv - half), (cu + half, cv - half)
+    raise ValueError(f"lado desconocido: {side!r}; usa +u, -u, +v o -v")
+
+
+def opposite_side(side: str) -> str:
+    return side[0].replace("+", "@").replace("-", "+").replace("@", "-") \
+        + side[1]
+
+
+def facing_side(cu: float, cv: float, target) -> str:
+    """Lado del cuadrado que mira hacia `target` (el de mayor proyección)."""
+    du, dv = target[0] - cu, target[1] - cv
+    best, best_dot = None, None
+    for side, (nu, nv) in SIDE_NORMALS.items():
+        dot = du * nu + dv * nv
+        if best_dot is None or dot > best_dot:
+            best, best_dot = side, dot
+    return best
+
+
 def point_along_polyline(points, distance: float):
     """Punto a `distance` metros del primer vértice, siguiendo la línea.
 

@@ -9,6 +9,7 @@ deliberation: dialogued
 rationale: recorded
 source: ["[[2026-08-26-sesion-mapeo-osm]]"]
 affects: ["vue/", "api/"]
+related: ["[[adr-0011]]"]
 ---
 
 # JOSM como editor de carga y MapRoulette para repartir estaciones
@@ -37,3 +38,7 @@ JOSM como editor, disparado desde la app Vue vía Remote Control (`/load_and_zoo
 ## Más información
 
 [[2026-08-26-sesion-mapeo-osm]], [[2026-08-19-reunion-bandatos-limpia]].
+
+## Notas de enmienda
+
+- 2 de septiembre de 2026 ([[2026-09-02-sesion-integracion-osm-y-niveles]]): la decisión central, JOSM como editor de subida, sigue vigente. Dos detalles del resultado ya no describen lo que corre: los endpoints de Overpass son `overpass-api.de` con `overpass.kumi.systems` de respaldo, no el espejo `maps.mail.ru`; y la conflación contra accesos existentes dejó de ser manual para los accesos enlazados por `osm_id` en `data/osm/osm-links.csv`, que el generador adopta según [[adr-0011]].

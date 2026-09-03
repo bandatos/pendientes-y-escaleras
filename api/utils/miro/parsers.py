@@ -29,11 +29,16 @@ _OLD_LEVEL_TEXT_RE = re.compile(
     r'(L(?:\d{1,2}|[AB]))\s+NIVEL\s+(ANDENES\s+)?([-\d]+|SUPERFICIE\s+\d+)',
     re.IGNORECASE,
 )
+# «Andenes» y «superficie» no son alternativas: el tablero combina
+# ambas («Nivel Andenes superficie 0») cuando los andenes están a nivel
+# de calle, y a veces pospone el sufijo («L12 Nivel -3 Andenes»).
 _LEVEL_TEXT_RE = re.compile(
     r'(?:(?P<line>L(?:\d{1,2}|[AB]))\s+)?'
     r'NIVEL\s+'
-    r'(?:(?P<andenes>Andenes)\s+|superficie\s+)?'
-    r'(?P<level>[+-]?\d(?:\.\d{1,2})?)',
+    r'(?P<andenes>Andenes\s+)?'
+    r'(?:superficie\s+)?'
+    r'(?P<level>[+-]?\d(?:\.\d{1,2})?)'
+    r'(?:\s+(?P<andenes_suffix>Andenes)\b)?',
     re.IGNORECASE,
 )
 

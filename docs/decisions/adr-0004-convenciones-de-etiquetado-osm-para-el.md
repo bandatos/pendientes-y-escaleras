@@ -2,13 +2,15 @@
 type: decision
 id: adr-0004
 title: "Convenciones de etiquetado OSM para el Metro: gtfs:*, Simple Indoor Tagging, level entero"
-state: accepted
+state: superseded
 date: 2026-08-26
 origin: ricardo
 deliberation: dialogued
 rationale: recorded
 source: ["[[2026-08-26-sesion-mapeo-osm]]"]
+superseded-by: "[[adr-0010]]"
 affects: ["api/"]
+related: ["[[adr-0013]]"]
 ---
 
 # Convenciones de etiquetado OSM para el Metro: gtfs:*, Simple Indoor Tagging, level entero

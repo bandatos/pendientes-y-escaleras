@@ -31,3 +31,7 @@ Registro de la sesión: [[2026-09-01-sesion-miro-corchetes-entrance]]. Relaciona
 - [ ] Decidido (a) o (b)
 - [ ] `migrate` + `import_routes` + `import_stops` corren sin error sobre una base vacía (SQLite o Postgres)
 - [ ] `LocationType` queda sembrado por migración de datos o fixture versionado
+
+## Notas de trabajo
+
+- 2 de septiembre de 2026 (tarde, [[2026-09-02-sesion-integracion-osm-y-niveles]]): `import_stops` ahora llama a `link_osm_ids` al final (enlaces a OSM desde `data/osm/osm-links.csv`, [[task-17]]); el bootstrap sobre base limpia también depende de eso. No se corrió hoy.

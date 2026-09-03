@@ -28,6 +28,8 @@ class GraphStop:
     level_name: str | None
     entrance: str | None
     miro_id: str | None
+    osm_type: str | None = None
+    osm_id: int | None = None
 
 
 @dataclass
@@ -39,6 +41,8 @@ class GraphPathway:
     is_bidirectional: bool
     index: int
     miro_id: str | None
+    osm_type: str | None = None
+    osm_id: int | None = None
 
 
 @dataclass
@@ -71,6 +75,8 @@ def load_station_graph(station_stop_id: str) -> StationGraph:
             level_name=s.level and s.level.level_name,
             entrance=s.entrance,
             miro_id=s.miro_id,
+            osm_type=s.osm_type,
+            osm_id=s.osm_id,
         )
         stops[gs.key] = gs
         by_db_id[s.id] = gs
@@ -97,6 +103,8 @@ def load_station_graph(station_stop_id: str) -> StationGraph:
             is_bidirectional=bool(p.is_bidirectional),
             index=idx,
             miro_id=p.miro_id,
+            osm_type=p.osm_type,
+            osm_id=p.osm_id,
         ))
     name = parent.station.name if parent.station else unescape(
         parent.stop_name or "")

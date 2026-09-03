@@ -3,6 +3,7 @@
 import csv
 import os
 import re
+from django.core.management import call_command
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from django.db import transaction
@@ -103,6 +104,11 @@ class Command(BaseCommand):
                 # frames de Miró de esas estaciones dejarían de casar.
                 named = apply_short_names(Stop)
                 self.stdout.write(f"Nombres cortos aplicados: {named}")
+                # Mismo motivo: los enlaces a OSM viven en el CSV del repo
+                # y este comando recrea las paradas desde cero. Los
+                # pathways todavía no existen aquí, así que sus filas se
+                # reportan sin ruido.
+                call_command('link_osm_ids', quiet_unknown=True)
 
         except Exception as e:
             raise CommandError(f'Ocurrió un error inesperado durante la importación: {e}')

@@ -1,0 +1,65 @@
+modo,estacion,pathway_id,from_stop_id,from_nombre,to_stop_id,to_nombre,nivel,bidireccional
+2 - Escaleras normales,Chabacano,3458764660611544894,L8-CHABACANO-N-06,L8 bajoandén ote.,L8-CHABACANO-N-07,L8 mezzanine inferior -2 sur,-2.0,1
+2 - Escaleras normales,Chabacano,3458764660611664444,L8-CHABACANO-N-05,L8 bajoandén pte.,L8-CHABACANO-N-07,L8 mezzanine inferior -2 sur,-2.0,1
+2 - Escaleras normales,Chabacano,3458764660611837277,L8-CHABACANO-N-04,L8 Pasillo inferior cambio de andén,L8-CHABACANO-N-07,L8 mezzanine inferior -2 sur,-2.0,1
+2 - Escaleras normales,Chabacano,3458764660611837411,L8-CHABACANO-N-04,L8 Pasillo inferior cambio de andén,L8-CHABACANO-N-07,L8 mezzanine inferior -2 sur,-2.0,1
+2 - Escaleras normales,Chabacano,3458764660614944685,L9-CHABACANO-N-04,L9 bajoandén pte.,L9-CHABACANO-N-06,L9 mezzanine inferior -2 nte,-2.0,1
+2 - Escaleras normales,Chabacano,3458764660615652032,L9-CHABACANO-N-05,L9 bajoandén ote.,L9-CHABACANO-N-06,L9 mezzanine inferior -2 nte,-2.0,1
+2 - Escaleras normales,Chabacano,3458764660615767273,L9-CHABACANO-N-07,L9 Pasillo inferior cambio de andén,L9-CHABACANO-N-06,L9 mezzanine inferior -2 nte,-2.0,1
+2 - Escaleras normales,Chabacano,3458764660617107726,L8-CHABACANO-N-01,L8 Pasillo de Correspondencia,L9-CHABACANO-N-01,L9/L8 > L2 Mezzanine -1 hacia L2,-1.0,0
+2 - Escaleras normales,Chabacano,3458764660617544684,L2-CHABACANO-N-11,L2-L9-L8 Vestíbulo principal de transbordo,L2-CHABACANO-N-13,L2 > L9 Mezzanine correspondencia hacia L9,0.0,0
+4 - Escalera eléctrica,Chabacano,3458764660617544851,L2-CHABACANO-N-11,L2-L9-L8 Vestíbulo principal de transbordo,L2-CHABACANO-N-13,L2 > L9 Mezzanine correspondencia hacia L9,0.0,0
+4 - Escalera eléctrica,Chabacano,3458764660617544915,L2-CHABACANO-N-11,L2-L9-L8 Vestíbulo principal de transbordo,L2-CHABACANO-N-12,L2 > L8 Mezzanine correspondencia hacia L8,0.0,0
+2 - Escaleras normales,Chabacano,3458764660617682984,L2-CHABACANO-N-11,L2-L9-L8 Vestíbulo principal de transbordo,L2-CHABACANO-N-12,L2 > L8 Mezzanine correspondencia hacia L8,0.0,0
+2 - Escaleras normales,Chabacano,3458764660805339172,L9-CHABACANO-N-06,L9 mezzanine inferior -2 nte,L9-CHABACANO-N-09,L9 > L8 Pasillo hacia L8,-2.0,0
+4 - Escalera eléctrica,Chabacano,3458764660805559096,L8-CHABACANO-N-01,L8 Pasillo de Correspondencia,L9-CHABACANO-N-01,L9/L8 > L2 Mezzanine -1 hacia L2,-1.0,0
+2 - Escaleras normales,Garibaldi y Lagunilla,3458764660782588190,LB-GARIBALDIYLAGUNILLA-N-01,LB Vestíbulo y Torniquetes,LB-GARIBALDIYLAGUNILLA-E-01,LB Acceso nororiente,-1.0,1
+2 - Escaleras normales,Garibaldi y Lagunilla,3458764660782588214,LB-GARIBALDIYLAGUNILLA-N-01,LB Vestíbulo y Torniquetes,LB-GARIBALDIYLAGUNILLA-E-02,LB Acceso surponiente,-1.0,1
+2 - Escaleras normales,Guerrero,3458764660784999426,LB-GUERRERO-N-04,LB < L3 Pasillo corresp. SUR,LB-GUERRERO-N-05,LB < L3 Pasillo correspondencia,-1.0,0
+2 - Escaleras normales,Guerrero,3458764660784999427,LB-GUERRERO-N-06,LB > L3 Pasillo corresp. Buenavista,LB-GUERRERO-N-02,LB > L3 Pasillo correspondencia,-1.0,0
+2 - Escaleras normales,Guerrero,3458764660784999470,LB-GUERRERO-N-07,LB > L3 Pasillo corresp. Cd. Azteca,LB-GUERRERO-N-02,LB > L3 Pasillo correspondencia,-1.0,0
+2 - Escaleras normales,Guerrero,3458764660784999667,LB-GUERRERO-N-03,LB < L3 Pasillo corresp. NTE,LB-GUERRERO-N-05,LB < L3 Pasillo correspondencia,-1.0,0
+2 - Escaleras normales,Guerrero,3458764660802624947,L3-GUERRERO-P-02,L3 <= Universidad,L3-GUERRERO-N-03,L3 Vestíbulo correspondencia,-1.0,1
+2 - Escaleras normales,Guerrero,3458764660802625092,L3-GUERRERO-P-01,L3 => Indios Verdes,L3-GUERRERO-N-04,L3 Vestíbulo correspondencia,-1.0,1
+2 - Escaleras normales,Fray Servando,3458764660820129972,L4-FRAYSERVANDO-N-09,Mezzanine +1 Dir. Santa Anita,L4-FRAYSERVANDO-N-02,Vestíbulo Torniquetes Dir. Santa Anita,1.0,1
+2 - Escaleras normales,Fray Servando,3458764660820130041,L4-FRAYSERVANDO-N-09,Mezzanine +1 Dir. Santa Anita,L4-FRAYSERVANDO-N-02,Vestíbulo Torniquetes Dir. Santa Anita,1.0,1
+2 - Escaleras normales,Fray Servando,3458764660820513927,L4-FRAYSERVANDO-N-11,Mezzanine +1 Dir. M. Carrera,L4-FRAYSERVANDO-N-01,Vestíbulo Torniquetes Dir. Martín Carrera,1.0,1
+2 - Escaleras normales,Fray Servando,3458764660820727100,L4-FRAYSERVANDO-N-11,Mezzanine +1 Dir. M. Carrera,L4-FRAYSERVANDO-N-01,Vestíbulo Torniquetes Dir. Martín Carrera,1.0,1
+2 - Escaleras normales,Mixcoac,3458764661678719200,L12-MIXCOAC-N-02,L12 Mezzanine principal,L12-MIXCOAC-N-01,L12 Descanso de trasbordo hacia Línea 7,-1.0,0
+2 - Escaleras normales,Mixcoac,3458764661678719201,L7-MIXCOAC-N-08,L7 Pasillo hacia L12,L12-MIXCOAC-N-02,L12 Mezzanine principal,-1.0,0
+2 - Escaleras normales,Jamaica,3458764660813281123,L4-JAMAICA-N-01,L4 - L9 Pasillo de correspondencia,L9-JAMAICA-N-05,L9 Vestíbulo torniquetes,-1.0,1
+2 - Escaleras normales,Jamaica,3458764660814654830,L9-JAMAICA-P-02,L9 <= Pantitlán,L9-JAMAICA-N-02,L9 Vestibulo andén,-2.0,1
+2 - Escaleras normales,Jamaica,3458764660814778014,L9-JAMAICA-P-01,L9 => Tacubaya,L9-JAMAICA-N-03,L9 Vestíbulo andén,-2.0,1
+2 - Escaleras normales,Tacubaya,3458764656255202172,L1-TACUBAYA-N-07,L1 Vestíbulo torniquetes Oriente,L1-TACUBAYA-N-09,L1 Acceso nororiente,-1.0,1
+2 - Escaleras normales,Tacubaya,3458764656255202311,L1-TACUBAYA-N-07,L1 Vestíbulo torniquetes Oriente,L1-TACUBAYA-N-10,L1 Acceso suroriente,-1.0,1
+2 - Escaleras normales,Bellas Artes,3458764659029221646,L2-BELLASARTES-N-04,L2-L8 Pasillo de correspondencia,L2-BELLASARTES-N-01,L2 Vestíbulo andén,-1.0,1
+2 - Escaleras normales,Allende,3458764659030325616,L2-ALLENDE-N-08,Edificio acceso norponiente,L2-ALLENDE-E-03,Acceso y pasillo comercial norponiente,0.0,1
+2 - Escaleras normales,Allende,3458764659030325686,L2-ALLENDE-N-08,Edificio acceso norponiente,L2-ALLENDE-E-03,Acceso y pasillo comercial norponiente,0.0,1
+2 - Escaleras normales,Allende,3458764659030325805,L2-ALLENDE-N-07,Edificio acceso nororiente,L2-ALLENDE-E-04,Acceso y pasillo comercial nororiente,0.0,1
+2 - Escaleras normales,Allende,3458764659030325844,L2-ALLENDE-N-07,Edificio acceso nororiente,L2-ALLENDE-E-04,Acceso y pasillo comercial nororiente,0.0,1
+2 - Escaleras normales,Isabel la Católica,3458764659034452272,L1-ISABELLACATOLICA-N-04,Edificio acceso,L1-ISABELLACATOLICA-E-01,Acceso sur,0.0,1
+2 - Escaleras normales,Isabel la Católica,3458764659034452285,L1-ISABELLACATOLICA-N-04,Edificio acceso,L1-ISABELLACATOLICA-E-01,Acceso sur,0.0,1
+2 - Escaleras normales,Isabel la Católica,3458764659034452341,L1-ISABELLACATOLICA-N-05,Edificio acceso,L1-ISABELLACATOLICA-E-02,Acceso norte,0.0,1
+2 - Escaleras normales,Isabel la Católica,3458764659034452359,L1-ISABELLACATOLICA-N-05,Edificio acceso,L1-ISABELLACATOLICA-E-02,Acceso norte,0.0,1
+2 - Escaleras normales,Balderas,3458764659061213145,L3-BALDERAS-N-03,L3 Pasillo de Trasbordo de L1-Dir. Observatorio a L3 Dir. Universidad,L3-BALDERAS-P-02,L3 <= Universidad,-2.0,0
+2 - Escaleras normales,Balderas,3458764662494751705,L1-BALDERAS-N-02,L1 Pasillo inferior - cambio de andén,L3-BALDERAS-N-04,L3 Pasillo inferior de Trasbordo de L1- Dir. Observatorio a L3,-2.0,0
+2 - Escaleras normales,Balderas,3458764662494895678,L3-BALDERAS-N-04,L3 Pasillo inferior de Trasbordo de L1- Dir. Observatorio a L3,L3-BALDERAS-N-03,L3 Pasillo de Trasbordo de L1-Dir. Observatorio a L3 Dir. Universidad,-2.0,0
+2 - Escaleras normales,Mixcoac,3458764661678719218,L12-MIXCOAC-N-03,L12 Mezannine antes de salir a Av. Patriotismo,L12-MIXCOAC-N-04,L12 Vestíbulo torniquetes,-1.0,1
+4 - Escalera eléctrica,Mixcoac,3458764661678719219,L12-MIXCOAC-N-04,L12 Vestíbulo torniquetes,L12-MIXCOAC-N-03,L12 Mezannine antes de salir a Av. Patriotismo,-1.0,0
+2 - Escaleras normales,Insurgentes Sur,3458764676890210935,L12-INSURGENTESSUR-N-01,Vestíbulo Torniquetes poniente,L12-INSURGENTESSUR-N-03,Mezzanine acceso surponiente,-1.0,1
+2 - Escaleras normales,Candelaria,3458764678217724137,L4-CANDELARIA-N-01,L4 Vestíbulo principal,L4-CANDELARIA-N-01,L4 Vestíbulo principal,-1.0,1
+2 - Escaleras normales,Centro Médico,3458764672798312428,L3-CENTROMEDICO-P-02,L3 <= Universidad,L3-CENTROMEDICO-N-07,L3-L9 pasillo correspondencia,-1.0,1
+2 - Escaleras normales,Santa Anita,3458764673190599183,L8-SANTAANITA-P-02,L8 <= Constitución de 1917,L8-SANTAANITA-N-01,L8 Vestibulo andén,-1.0,1
+2 - Escaleras normales,Santa Anita,3458764673190599240,L8-SANTAANITA-P-01,L8 => Garibaldi,L8-SANTAANITA-N-02,L8 Mezzanine andén,-1.0,1
+2 - Escaleras normales,Santa Anita,3458764673190599734,L8-SANTAANITA-P-02,L8 <= Constitución de 1917,L8-SANTAANITA-N-01,L8 Vestibulo andén,-1.0,1
+2 - Escaleras normales,Santa Anita,3458764673190599773,L8-SANTAANITA-P-01,L8 => Garibaldi,L8-SANTAANITA-N-02,L8 Mezzanine andén,-1.0,1
+2 - Escaleras normales,Santa Anita,3458764673190739034,L8-SANTAANITA-N-04,L8 Pasillo superior cambio de andén PTE,L8-SANTAANITA-N-05,L8 Vestíbulo de acceso PTE,0.0,1
+2 - Escaleras normales,Santa Anita,3458764673190812192,L8-SANTAANITA-N-03,L8 Pasillo superior cambio de andén OTE,L8-SANTAANITA-N-06,L8 Vestíbulo de acceso OTE,0.0,1
+2 - Escaleras normales,La Viga,3458764677715229304,L8-LAVIGA-N-01,Vestíbulo andén,L8-LAVIGA-N-02,Pasillo superior - cambio de andén,-1.0,1
+2 - Escaleras normales,La Viga,3458764677715229314,L8-LAVIGA-N-03,Vestibulo andén,L8-LAVIGA-N-02,Pasillo superior - cambio de andén,-1.0,1
+2 - Escaleras normales,La Viga,3458764677717350071,L8-LAVIGA-P-01,L8 => Garibaldi,L8-LAVIGA-N-01,Vestíbulo andén,-1.0,1
+2 - Escaleras normales,La Viga,3458764677717350097,L8-LAVIGA-P-02,L8 <= Constitución de 1917,L8-LAVIGA-N-03,Vestibulo andén,-1.0,1
+2 - Escaleras normales,Consulado,3458764678221212631,L4-CONSULADO-N-01,L4 Pasillo superior dir. Santa Anita NTE,L4-CONSULADO-P-01,L4 <= Santa Anita,2.0,1
+2 - Escaleras normales,Consulado,3458764678230968571,L4-CONSULADO-N-16,L4 Mezzanine inferior,L4-CONSULADO-N-14,L4 Pasillo subterráneo NTE,-1.0,1
+2 - Escaleras normales,Consulado,3458764678231059554,L4-CONSULADO-N-14,L4 Pasillo subterráneo NTE,L4-CONSULADO-N-17,L4 Mezzanine inferior,-1.0,1
+2 - Escaleras normales,Consulado,3458764678231850401,L4-CONSULADO-N-20,L4 Pasillo trasero,L4-CONSULADO-N-05,L4 Vestíbulo acceso,0.0,1

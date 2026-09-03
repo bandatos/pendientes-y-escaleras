@@ -25,3 +25,7 @@ Ricardo decide si se corrigen en el mismo changeset de la primera subida, en uno
 ## Criterios de aceptación
 
 - [ ] Cada hallazgo tiene destino: corregido, delegado al colectivo o descartado con motivo
+
+## Notas de trabajo
+
+- 2 de septiembre de 2026 (tarde, [[2026-09-02-sesion-integracion-osm-y-niveles]]): nuevo hallazgo en Portales: las dos ways `railway=subway` de L2 (312086250, 1322667667) llevan `layer=1` y el edificio de la estación `layer=2`; nuestro andén va en `level=0` sin `layer`. Ricardo propone `layer=0` para las vías porque el puente vestibular las cruza en `layer=1`. Sin modificar por ahora. También: las rutas de L2 y L7 usan el nodo de estación con rol `stop`; Portales tiene dos `stop_position` que ninguna ruta referencia; San Pedro tiene dos `stop_area` de nombre casi igual (7927097 del Metro, 21119669 del trolebús).

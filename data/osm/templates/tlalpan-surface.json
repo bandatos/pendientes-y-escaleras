@@ -1,12 +1,13 @@
 {
   "family": "tlalpan-surface",
   "description": "Andén central en el camellón de la Calzada de Tlalpan, vestíbulo-puente en el nivel +1 que cruza la calzada por el centro del andén, y un edificio de acceso en cada acera. Estaciones hermanas: Portales, Xola, Nativitas, Viaducto, Villa de Cortés, General Anaya, Ermita.",
+  "station_area": "kml",
   "axes": "u = metros sobre el eje del andén, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~8°, v>0 es el oriente.",
   "nodes": {
     "P-01": {
       "u": 0, "v": 0,
       "length": 150, "width": 10,
-      "spine_v": 0, "spine_margin": 4,
+      "spine_v": 0, "spine_margin": 0,
       "comment": "Andén central; la línea de circulación va por su eje."
     },
     "N-01": {"u": 0, "v": 0, "comment": "Vestíbulo y torniquetes, sobre el puente, en el centro del andén."},

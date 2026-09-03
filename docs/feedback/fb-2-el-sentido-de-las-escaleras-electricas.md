@@ -2,7 +2,8 @@
 type: feedback
 id: fb-2
 title: El sentido de las escaleras eléctricas unidireccionales está codificado a propósito en las flechas de Miró
-state: pending
+state: adr
+outcome_ref: "[[adr-0012]]"
 date: 2026-09-02
 created: "2026-09-02T01:13:52-06:00"
 scope: local

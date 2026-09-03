@@ -127,7 +127,7 @@ Filtrado por shape: `LevelMixin.get_items_by_shape(shape)` (`level_mixin.py`).
 | 1 Pasillo      | Siempre bidireccional                                         |
 | 5 Ascensor     | Siempre bidireccional                                         |
 | 3 Movedizo     | Siempre unidireccional                                        |
-| 4 Escalera     | **Documentado, no implementado**: la idea era «bidireccional si hay 2 conectores entre el mismo par de nodos»; `_build_escalator_pairs` se calcula pero `_get_bidirectional` lo ignora y aplica la regla de caps de Escaleras. Ricardo decide si se implementa o se elimina (`docs/tasks/task-24`, inciso a) |
+| 4 Escalera     | Misma regla de caps que Escaleras. La «regla de pares» (bidireccional si hay 2 conectores entre el mismo par de nodos) se retiró en `docs/decisions/adr-0012`: no aplica en general y su código se eliminó |
 | 2 Escaleras    | Bidireccional si ambos caps ≠ `none`; unidireccional si alguno es `none` |
 
 ### Descripción de connectores

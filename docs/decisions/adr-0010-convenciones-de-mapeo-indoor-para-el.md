@@ -2,14 +2,16 @@
 type: decision
 id: adr-0010
 title: "Convenciones de mapeo indoor para el generador de .osm: líneas footway con indoor=yes, niveles con punto y coma, eléctricas conveying=forward y plantillas estructurales"
-state: accepted
+state: superseded
 date: 2026-09-02
 origin: ricardo
 deliberation: confirmed
 rationale: recorded
 source: ["[[2026-09-02-sesion-primeras-dos-estaciones-josm]]"]
+supersedes: "[[adr-0004]]"
+superseded-by: "[[adr-0013]]"
 affects: ["api/utils/osm/tags.py", "api/stop/management/commands/export_station_osm.py", "data/osm/templates/"]
-related: ["[[adr-0004]]", "[[adr-0006]]", "[[2026-09-02-investigacion-osm-indoor-y-estado-l2-l7]]"]
+related: ["[[adr-0004]]", "[[adr-0006]]", "[[adr-0011]]", "[[adr-0012]]", "[[2026-09-02-investigacion-osm-indoor-y-estado-l2-l7]]"]
 ---
 
 # Convenciones de mapeo indoor para el generador de .osm: líneas footway con indoor=yes, niveles con punto y coma, eléctricas conveying=forward y plantillas estructurales

@@ -1,18 +1,19 @@
 {
   "family": "l7-deep-cascade",
   "description": "Dos andenes laterales profundos (nivel -3) bajo la avenida, con una cascada vertical independiente por lado: vestíbulo de andén (-3) → mezzanine (-2) → vestíbulo de torniquetes (-1) → edificio de acceso (0) → acceso. Un pasillo inferior (-4) bajo las vías comunica los dos andenes. Estación hermana: San Joaquín.",
+  "station_area": "kml",
   "axes": "u = metros sobre el eje de las vías, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~6.5°, v>0 es el oriente.",
   "nodes": {
     "P-01": {
       "u": 0, "v": 6.5,
       "length": 150, "width": 5,
-      "spine_v": -1.5, "spine_margin": 4,
+      "spine_v": -1.5, "spine_margin": 0,
       "comment": "Andén oriente, sentido El Rosario. La línea de circulación va del lado de la vía."
     },
     "P-02": {
       "u": 0, "v": -6.5,
       "length": 150, "width": 5,
-      "spine_v": 1.5, "spine_margin": 4,
+      "spine_v": 1.5, "spine_margin": 0,
       "comment": "Andén poniente, sentido Barranca del Muerto."
     },
 
@@ -20,13 +21,17 @@
     "N-02": {"u": 0, "v": 21, "comment": "Mezzanine oriente (-2)."},
     "N-03": {"u": 2, "v": 29, "comment": "Vestíbulo de torniquetes oriente (-1)."},
     "N-09": {"u": 4, "v": 35, "comment": "Edificio de acceso oriente (0)."},
-    "E-02": {"u": 5.6, "v": 38.1, "comment": "Acceso oriente; espejo del poniente, sin nodo OSM previo que lo confirme."},
+    "E-02": {"u": 5.6, "v": 38.1,
+     "building": {"side": 12, "inner_node": "N-09", "closed_doors": []},
+     "comment": "Acceso oriente; espejo del poniente, sin nodo OSM previo que lo confirme. El bloque building dibuja el edificio de acceso: cuadrado de 12 m centrado aquí, tres puertas en el lado que da a la banqueta y la cascada arrancando en el centro del lado opuesto, donde queda N-09."},
 
     "N-05": {"u": -2, "v": -13, "comment": "Vestíbulo de andén poniente (-3)."},
     "N-06": {"u": 0, "v": -21, "comment": "Mezzanine poniente (-2)."},
     "N-07": {"u": 2, "v": -29, "comment": "Vestíbulo de torniquetes poniente (-1)."},
     "N-08": {"u": 4, "v": -35, "comment": "Edificio de acceso poniente (0)."},
-    "E-01": {"u": 5.6, "v": -38.1, "comment": "Acceso poniente; posición medida del nodo OSM 3761143341."},
+    "E-01": {"u": 5.6, "v": -38.1,
+     "building": {"side": 12, "inner_node": "N-08", "closed_doors": []},
+     "comment": "Acceso poniente; posición medida del nodo OSM 3761143341, que pasa a ser la puerta central del edificio."},
 
     "N-04": {"u": -2, "v": 0, "comment": "Pasillo inferior de cambio de andén (-4), bajo las vías."}
   },

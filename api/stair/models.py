@@ -1,5 +1,5 @@
 from django.db import models
-from stop.models import Station, Stop
+from stop.models import OSM_TYPE_CHOICES, Station, Stop
 
 # (1, 'Walkway'),
 # (2, 'Stairs'),
@@ -69,6 +69,14 @@ class Pathway(models.Model):
         default=False,
         help_text="Pathway clausurado (x en Miro o color gris claro #e7e7e7)")
     miro_id = models.CharField(max_length=50, blank=True, null=True)
+    osm_type = models.CharField(
+        max_length=8, choices=OSM_TYPE_CHOICES, blank=True, null=True,
+        help_text="Tipo del objeto de OSM enlazado")
+    osm_id = models.BigIntegerField(
+        blank=True, null=True, db_index=True,
+        help_text="Id del objeto en OSM. Enlace blando: OSM no garantiza "
+                  "ids permanentes; si se rompe se re-empareja por ref + "
+                  "estación + geometría (adr-0003)")
 
     class Meta:
         verbose_name = 'Pathway'

@@ -65,7 +65,8 @@ class LevelMixin:
                         f"Texto de nivel sin línea y sin unique_route:"
                         f" '{raw}'")
                 line = f"L{self.unique_route.route_short_name}"
-            has_andenes = bool(m.group('andenes'))
+            has_andenes = bool(
+                m.group('andenes') or m.group('andenes_suffix'))
             idx = m.group('level')
             _, y = _item_center(item)
             band = next(

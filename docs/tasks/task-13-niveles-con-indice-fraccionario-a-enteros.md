@@ -17,3 +17,7 @@ Definir la política de renumeración (cómo insertar niveles fraccionarios en l
 
 - [ ] Está definida la política de renumeración de niveles fraccionarios a enteros consecutivos
 - [ ] Tacubaya está renumerada en Miro y en la base según esa política
+
+## Notas de trabajo
+
+- 2 de septiembre de 2026 (tarde, [[2026-09-02-sesion-integracion-osm-y-niveles]]): decidido: un `level_index` no entero detiene la exportación con error nombrando el stop, en vez de redondear (Tacubaya −2.5 y −1.5 caían ambos en −2). Tacubaya la renumera Ricardo. Los mezzanines intermedios de Mixcoac y Chabacano no reciben nivel propio, decidido ([[task-31]]). Corregido de paso el parser de niveles de Miró: «Nivel Andenes superficie 0» no se leía; el detalle está en el registro de la sesión.

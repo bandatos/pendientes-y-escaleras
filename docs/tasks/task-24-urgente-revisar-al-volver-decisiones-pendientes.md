@@ -40,3 +40,4 @@ Ricardo dejó la sesión en piloto automático para cerrar todo lo cerrable; lo 
 ## Notas de trabajo
 
 - 2 de septiembre de 2026: `TESTING.md` sigue sin existir (inciso j); la sesión nocturna de [[2026-09-02-sesion-primeras-dos-estaciones-josm]] no tocó código con pruebas. La regla global de testing pide ofrecerle a Ricardo crear `TESTING.md`; todavía no se le ha ofrecido, se le pregunta en el mensaje de la mañana. El inciso (a), regla de pares de escaleras eléctricas, tiene ahora un dato más: [[fb-2]] y [[adr-0010]] toman la flecha de Miró como sentido de las unidireccionales.
+- 2 de septiembre de 2026 (tarde, [[2026-09-02-sesion-integracion-osm-y-niveles]]): inciso (a) resuelto por [[adr-0012]]: la regla de pares se retira del skill `miro-api`; inciso (j): TESTING.md ofrecido a Ricardo y declinado por ahora («sin testing por ahora»).

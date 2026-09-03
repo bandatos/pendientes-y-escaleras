@@ -20,6 +20,8 @@ COLORS = {
 def levels_in(doc: OsmDocument) -> list[int]:
     out = set()
     for way in doc.ways:
+        if way.foreign:
+            continue
         for part in way.tags.get("level", "").split(";"):
             if part.strip():
                 out.add(int(part))
@@ -31,9 +33,25 @@ def _esc(text: str) -> str:
             .replace(">", "&gt;"))
 
 
+def _framed_nodes(doc: OsmDocument) -> list:
+    """Nodos que encuadran la vista: los de las piezas con nivel.
+
+    Fuera quedan el contexto de OSM y las superficies sin nivel (área de
+    estación, edificio, explanada), que abarcan mucho más que la
+    circulación y dejarían el dibujo minúsculo.
+    """
+    ids = set()
+    for way in doc.ways:
+        if not way.foreign and "level" in way.tags:
+            ids |= set(way.nodes)
+    out = [doc.nodes[i] for i in ids if i in doc.nodes]
+    return out or [n for n in doc.nodes.values() if not n.foreign]
+
+
 def render_level(doc: OsmDocument, level: int, title: str) -> str:
-    us = [n.u for n in doc.nodes.values()]
-    vs = [n.v for n in doc.nodes.values()]
+    framed = _framed_nodes(doc)
+    us = [n.u for n in framed]
+    vs = [n.v for n in framed]
     umin, umax = min(us) - 5, max(us) + 5
     vmin, vmax = min(vs) - 5, max(vs) + 5
     # Holgura a la derecha para las etiquetas de los accesos, que salen
@@ -61,6 +79,8 @@ def render_level(doc: OsmDocument, level: int, title: str) -> str:
         return level in parts
 
     for way in doc.ways:
+        if way.foreign:
+            continue
         if not in_level(way) or way.tags.get("railway") != "platform":
             continue
         pts = " ".join(f"{xy(*_uv(doc, n))[0]:.1f},"
@@ -78,6 +98,8 @@ def render_level(doc: OsmDocument, level: int, title: str) -> str:
 
     labelled = 0
     for way in doc.ways:
+        if way.foreign:
+            continue
         if not in_level(way) or way.tags.get("railway") == "platform":
             continue
         highway = way.tags.get("highway")
@@ -103,13 +125,17 @@ def render_level(doc: OsmDocument, level: int, title: str) -> str:
             labelled += 1
 
     for node in doc.nodes.values():
+        if node.frozen:
+            continue
         x, y = xy(node.u, node.v)
         if node.tags.get("railway") == "subway_entrance":
             if int(node.tags.get("level", "0")) != level:
                 continue
             out.append(f"<circle cx='{x:.1f}' cy='{y:.1f}' r='6' "
                        f"fill='{COLORS['entrance']}'/>")
-            out.append(_text(x + 9, y + 4, node.tags.get("name", ""),
+            label = (node.tags.get("description")
+                     or node.tags.get("name", ""))
+            out.append(_text(x + 9, y + 4, label,
                              COLORS["entrance"], anchor="start"))
         elif node.tags.get("barrier") == "turnstile":
             if int(node.tags.get("level", "0")) != level:

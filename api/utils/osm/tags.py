@@ -38,14 +38,28 @@ def platform_destination(stop_name: str) -> str | None:
     return TERMINAL_ALIASES.get(dest, dest)
 
 
+class NonIntegerLevelError(Exception):
+    """Un nivel fraccionario que `level=*` no puede expresar."""
+
+
 def level_value(*indexes: float) -> str:
-    """level=* con los niveles ordenados ascendentemente y sin repetir."""
-    vals = sorted({int(round(i)) for i in indexes})
-    return ";".join(str(v) for v in vals)
+    """level=* con los niveles ordenados ascendentemente y sin repetir.
+
+    Un nivel fraccionario (Tacubaya tiene −2.5 y −1.5) no se redondea:
+    redondearlo dibujaría el entrepiso encima del andén sin avisar.
+    """
+    vals = set()
+    for index in indexes:
+        if float(index) != int(index):
+            raise NonIntegerLevelError(f"{index:g}")
+        vals.add(int(index))
+    return ";".join(str(v) for v in sorted(vals))
 
 
 def platform_tags(station_name: str, stop_name: str, level_index: float,
                   level_name: str | None, underground: bool) -> dict:
+    # Sin `level:ref`: el rótulo de la señalética no es del andén sino de
+    # todo el nivel, y repetirlo en cada objeto no aporta.
     tags = {
         "railway": "platform",
         "public_transport": "platform",
@@ -54,8 +68,6 @@ def platform_tags(station_name: str, stop_name: str, level_index: float,
         "level": level_value(level_index),
         "name": station_name,
     }
-    if level_name:
-        tags["level:ref"] = level_name
     dest = platform_destination(stop_name)
     if dest:
         tags["destination"] = dest
@@ -89,12 +101,18 @@ def footway_tags(levels: list[float], incline: str | None = None) -> dict:
 
 def steps_tags(levels: list[float], incline: str,
                conveying: str | None = None) -> dict:
-    """`step_count` se omite a propósito: el relevamiento no lo tiene."""
+    """`step_count` se omite a propósito: el relevamiento no lo tiene.
+
+    `wheelchair=no` va en toda escalera, fija o eléctrica: una eléctrica
+    tampoco se puede usar en silla de ruedas, y es justo el dato que este
+    relevamiento existe para publicar.
+    """
     tags = {
         "highway": "steps",
         "indoor": "yes",
         "level": level_value(*levels),
         "incline": incline,
+        "wheelchair": "no",
     }
     if conveying:
         tags["conveying"] = conveying
@@ -103,12 +121,51 @@ def steps_tags(levels: list[float], incline: str,
 
 def entrance_tags(stop_name: str, entrance_value: str | None,
                   level_index: float) -> dict:
-    return {
+    # El nombre del relevamiento («Acceso poniente») describe cuál acceso
+    # es, no cómo se llama: en OSM `name` de un subway_entrance es el
+    # rótulo de la estación, así que nuestro texto va a `description`.
+    tags = {
         "railway": "subway_entrance",
         "entrance": entrance_value or "yes",
-        "name": stop_name,
         "level": level_value(level_index),
     }
+    if stop_name:
+        tags["description"] = stop_name
+    return tags
+
+
+def door_tags(closed: bool = False) -> dict:
+    """Puerta de un edificio de acceso; sin nombre, es una de varias."""
+    key = "disused:railway" if closed else "railway"
+    return {key: "subway_entrance", "entrance": "yes", "level": "0"}
+
+
+def connector_tags() -> dict:
+    """Tramo del acceso a la banqueta: exterior, así que sin `indoor`."""
+    return {"highway": "footway", "level": "0"}
+
+
+def access_building_tags() -> dict:
+    return {"building": "yes"}
+
+
+def plaza_tags() -> dict:
+    return {"highway": "pedestrian", "area": "yes"}
+
+
+def station_area_tags(station_name: str, underground: bool,
+                      note: str | None = None) -> dict:
+    tags = {
+        "public_transport": "station",
+        "station": "subway",
+        "subway": "yes",
+        "name": station_name,
+    }
+    if underground:
+        tags["location"] = "underground"
+    if note:
+        tags["note"] = note
+    return tags
 
 
 def turnstile_tags(level_index: float) -> dict:

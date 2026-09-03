@@ -19,3 +19,7 @@ Además: las etiquetas de traza `note:stop_id`, `note:pathway_id` y `note:miro_i
 
 - [ ] Sufijo de feed decidido y documentado en el ADR o en la referencia de alineación
 - [ ] El exportador emite `gtfs:*` en los objetos acordados y `--no-trace` los conserva
+
+## Notas de trabajo
+
+- 2 de septiembre de 2026 (tarde, [[2026-09-02-sesion-integracion-osm-y-niveles]]): en el exportador el nombre del acceso pasó a `description`, se retiró `level:ref` y toda `highway=steps` lleva `wheelchair=no` ([[adr-0011]]). Siguen pendientes el sufijo de feed y si las `note:*` pasan a opcionales.
