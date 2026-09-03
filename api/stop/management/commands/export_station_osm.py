@@ -65,7 +65,11 @@ class Command(BaseCommand):
                                  "la caché de contexto.")
         parser.add_argument("--station-area", choices=STATION_AREA_MODES,
                             help="Área de estación a emitir; por omisión "
-                                 "la que declare la plantilla.")
+                                 "la que declare la plantilla. «kml» "
+                                 "reforma con el polígono del KML el "
+                                 "contorno que OSM ya tenga, o dibuja uno "
+                                 "nuevo si no lo hay; «osm» embebe el "
+                                 "contorno sin tocarlo.")
 
     def handle(self, *args, **opts):
         try:
@@ -98,7 +102,7 @@ class Command(BaseCommand):
                                                 anchor)
         mode = opts["station_area"] or template.station_area
         kml_polygon = None
-        if mode in ("kml", "both"):
+        if mode == "kml":
             try:
                 kml_polygon = station_polygon(KML_PATH, graph.station_name)
             except KmlError as exc:
@@ -133,15 +137,28 @@ class Command(BaseCommand):
         for key in sorted(summary):
             self.stdout.write(f"  {key:<40} {summary[key]}")
 
+        for item in builder.report["area"]:
+            self.stdout.write(f"  área: {item}")
+        for item in builder.report["platforms"]:
+            self.stdout.write(f"  andén {item}")
+        for item in builder.report["banks"]:
+            self.stdout.write(
+                f"  banco {item['id']}: {item['from']} → {item['to']}, "
+                f"separación {item['spacing']:.1f} m, aproche "
+                f"{item['lead']:.1f} m, eje "
+                + ("explícito" if item["explicit_axis"] else "entre nodos"))
         for item in builder.report["buildings"]:
             plaza = (f"{item['plaza_half']:.1f} m"
                      if item["plaza_half"] else "sin explanada")
+            shape = (f"way OSM {item['adopted']}" if item["adopted"]
+                     else "cuadrado de la plantilla")
+            sides = ", ".join(f"{s:g}" for s in item["sides_m"])
             self.stdout.write(
-                f"  edificio {item['key']}: puertas al lado "
-                f"{item['side']}, medio lado {item['half']:.1f} m, "
-                f"explanada media {plaza}, nodo interior "
-                f"{item['inner'] or '—'}, puertas cerradas "
-                f"{item['closed_doors'] or 'ninguna'}")
+                f"  edificio {item['key']}: {shape}, lados {sides} m, "
+                f"escaleras por el lado {item['side']}, acceso en la "
+                f"puerta del lado {item['entrance_side']}, explanada media "
+                f"{plaza}, nodo interior {item['inner'] or '—'}, puertas "
+                f"cerradas {item['closed_doors'] or 'ninguna'}")
         for item in builder.report["connectors"]:
             self.stdout.write(
                 f"  connector {item['key']} → way {item['way']} "
@@ -166,7 +183,10 @@ class Command(BaseCommand):
                 "validación: sin errores"))
 
         if opts["preview"]:
-            out_dir = OSM_DIR / "preview"
+            # Con --out los SVG acompañan al .osm: una corrida de prueba
+            # fuera del repo no tiene por qué reescribir data/osm/preview.
+            out_dir = (out_path.parent / "preview" if opts["out"]
+                       else OSM_DIR / "preview")
             out_dir.mkdir(parents=True, exist_ok=True)
             for level, svg in preview_mod.render_all(
                     doc, graph.station_name).items():

@@ -153,8 +153,7 @@ def plaza_tags() -> dict:
     return {"highway": "pedestrian", "area": "yes"}
 
 
-def station_area_tags(station_name: str, underground: bool,
-                      note: str | None = None) -> dict:
+def station_area_tags(station_name: str, underground: bool) -> dict:
     tags = {
         "public_transport": "station",
         "station": "subway",
@@ -163,8 +162,6 @@ def station_area_tags(station_name: str, underground: bool,
     }
     if underground:
         tags["location"] = "underground"
-    if note:
-        tags["note"] = note
     return tags
 
 

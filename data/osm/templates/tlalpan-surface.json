@@ -1,60 +1,86 @@
 {
   "family": "tlalpan-surface",
-  "description": "Andén central en el camellón de la Calzada de Tlalpan, vestíbulo-puente en el nivel +1 que cruza la calzada por el centro del andén, y un edificio de acceso en cada acera. Estaciones hermanas: Portales, Xola, Nativitas, Viaducto, Villa de Cortés, General Anaya, Ermita.",
+  "description": "Andén central en el camellón de la Calzada de Tlalpan, vestíbulo-puente en el nivel +1 que cruza la calzada, y un edificio de acceso en cada acera. Los dos pasillos del puente no son colineales: el poniente cruza en u ≈ -1.6 y el oriente en u ≈ -12, tal como los dibuja el KML, y se juntan sobre el centro del andén. Estaciones hermanas: Xola, Nativitas, Viaducto, Villa de Cortés, General Anaya, Ermita.",
   "station_area": "kml",
-  "axes": "u = metros sobre el eje del andén, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~8°, v>0 es el oriente.",
+  "axes": "u = metros sobre el eje del andén, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~8°, v>0 es el oriente. La franja del KML mide unos 13 m de ancho y su eje está a v ≈ -0.8 del ancla, así que el andén cuelga del eje de la franja (band_side) y no de una v escrita a mano.",
   "nodes": {
     "P-01": {
-      "u": 0, "v": 0,
-      "length": 150, "width": 10,
+      "u": 0, "length": 150, "width": "band",
+      "band_side": "axis", "length_fit": "centred",
       "spine_v": 0, "spine_margin": 0,
-      "comment": "Andén central; la línea de circulación va por su eje."
+      "comment": "Andén central; la línea de circulación va por su eje. Supuesto D1: en esta familia las vías quedan fuera de la franja del KML, así que el andén la ocupa entera a lo ancho (width \"band\", unos 13 m) y sus dos bordes largos son los del área, con los que comparte los cuatro vértices. A lo largo manda la plantilla: 150 m centrados en el tramo de franja (length_fit \"centred\"), así que las puntas quedan dentro del área y no son vértices suyos. Las dos vías railway=subway que OSM traza aquí (v ≈ +3.4 y -3.1) caen dentro del polígono, pero son un trazo esquemático de línea que no se abre en las estaciones."
     },
-    "N-01": {"u": 0, "v": 0, "comment": "Vestíbulo y torniquetes, sobre el puente, en el centro del andén."},
-    "N-02": {"u": 0, "v": 22, "comment": "Pasillo vestibular oriente, cabecera del puente."},
-    "N-03": {"u": 0, "v": -22, "comment": "Pasillo vestibular poniente, cabecera del puente."},
-    "N-04": {"u": -16, "v": 26, "comment": "Edificio de acceso oriente, sobre la acera."},
-    "N-05": {"u": -12, "v": -26, "comment": "Edificio de acceso poniente, sobre la acera."},
-    "E-01": {"u": -6.1, "v": -28.1, "comment": "Acceso poniente; posición medida del nodo OSM 5197203900."},
-    "E-02": {"u": -19.7, "v": 28.6, "comment": "Acceso oriente; posición medida del nodo OSM 5197203901."}
+    "N-01": {"u": -6.8, "v": -0.8, "comment": "Vestíbulo y torniquetes, sobre la losa del puente, encima del centro del andén y a media distancia entre los ejes de los dos pasillos del puente. Su v real la da la senda del andén."},
+    "N-02": {"u": -12.0, "v": 26.0, "comment": "Cabecera oriente del puente, dentro del pasillo del KML (u de -14.6 a -9.4) y justo antes del lóbulo del edificio de acceso."},
+    "N-03": {"u": -1.6, "v": -26.0, "comment": "Cabecera poniente del puente, dentro del pasillo del KML (u de -4.3 a 1.1)."},
+    "N-04": {"u": -15.7, "v": 38.6, "comment": "Centro del edificio de acceso oriente; lo recoloca el bloque building de E-02."},
+    "N-05": {"u": 3.1, "v": -36.8, "comment": "Centro del edificio de acceso poniente; lo recoloca el bloque building de E-01."},
+    "E-01": {
+      "u": 3.1, "v": -36.8,
+      "building": {"side": 14, "inner_node": "N-05", "closed_doors": []},
+      "comment": "Acceso poniente. OSM no tiene aquí ningún edificio, así que el generador dibuja el cuadrado: 14 m de lado, la medida del lóbulo poniente del KML (u de -3.9 a 10.1). El nodo 5197203900 de OSM se adopta como la puerta del muro al que está más pegado y por eso se mueve."
+    },
+    "E-02": {
+      "u": -15.7, "v": 38.6,
+      "building": {"side": 13, "inner_node": "N-04", "closed_doors": []},
+      "comment": "Acceso oriente; cuadrado de 13 m, la medida del lóbulo oriente del KML (u de -22.3 a -9.2). El nodo 5197203901 de OSM se adopta como puerta."
+    }
   },
-  "extra_ways": [],
+  "banks": {
+    "acceso-oriente": {
+      "from": "N-04", "to": "N-02", "spacing": 4, "lead": 4,
+      "comment": "Escalera fija y eléctrica del edificio de acceso oriente a la cabecera del puente, en paralelo dentro del lóbulo y el pasillo del KML. Sin axis: los dos nodos de encuentro ya son el centro del edificio y la cabecera del puente."
+    },
+    "acceso-poniente": {
+      "from": "N-05", "to": "N-03", "spacing": 4, "lead": 4
+    }
+  },
+  "extra_ways": [
+    {"geometry": [{"spine": "P-01", "u": -6.8, "dv": -4.5},
+                  {"spine": "P-01", "u": -6.8, "dv": 4.5}],
+     "level": 1,
+     "tags": {"bridge": "yes", "layer": "1"},
+     "comment": "Losa del vestíbulo-puente sobre el andén: la línea transversal donde desembocan las cuatro escaleras del andén y donde se juntan los dos pasillos del puente. El grafo modela todo el vestíbulo como un solo nodo (N-01), así que el reparto se dibuja aquí; la forma real de la losa se afina en JOSM."}
+  ],
   "edges": [
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 0,
-     "geometry": [[16, 0], [0, -4.5]],
-     "comment": "Escalera 1 al puente, lado norte (miro_id en Portales 3458764662275664946); arranca en la línea del andén y desemboca en la losa del puente."},
+     "geometry": [{"spine": "P-01", "u": 16}, {"spine": "P-01", "u": -6.8, "dv": -4.5}],
+     "comment": "Escalera 1 al puente, lado norte (miro_id en Portales 3458764662275664946); arranca en la senda del andén y desemboca en la losa. Las cuatro van en abanico y quedan exentas de la regla de los bancos: nacen del andén, no de un vestíbulo."},
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 1,
-     "geometry": [[10, 0], [0, -1.5]],
-     "comment": "Escalera 2, lado norte (miro_id en Portales 3458764662275664947)."},
+     "geometry": [{"spine": "P-01", "u": 10}, {"spine": "P-01", "u": -6.8, "dv": -1.5}],
+     "comment": "Escalera 2, lado norte (miro_id 3458764662275664947)."},
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 2,
-     "geometry": [[-10, 0], [0, 1.5]],
-     "comment": "Escalera 3, lado sur (miro_id en Portales 3458764662275664948)."},
+     "geometry": [{"spine": "P-01", "u": -10}, {"spine": "P-01", "u": -6.8, "dv": 1.5}],
+     "comment": "Escalera 3, lado sur (miro_id 3458764662275664948)."},
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 3,
-     "geometry": [[-16, 0], [0, 4.5]],
-     "comment": "Escalera 4, lado sur (miro_id en Portales 3458764662275664949)."},
+     "geometry": [{"spine": "P-01", "u": -16}, {"spine": "P-01", "u": -6.8, "dv": 4.5}],
+     "comment": "Escalera 4, lado sur (miro_id 3458764662275664949)."},
 
     {"from": "N-03", "to": "N-01", "mode": 1, "index": 0,
-     "geometry": ["N-03", "N-01"],
+     "geometry": ["N-03", {"spine": "P-01", "u": -1.6, "dv": -5.0},
+                  {"spine": "P-01", "u": -6.8}],
      "turnstile": {"from": "N-01", "distance": 6},
      "tags": {"bridge": "yes", "layer": "1"},
-     "comment": "Tramo poniente del puente; cruza la calzada, de ahí bridge y layer. El torniquete marca el límite de la zona pagada."},
+     "comment": "Pasillo poniente del puente: baja recto por u ≈ -1.6, entra sobre el andén y se dobla hacia el vestíbulo. Cruza la calzada, de ahí bridge y layer. El torniquete marca el límite de la zona pagada."},
     {"from": "N-02", "to": "N-01", "mode": 1, "index": 0,
-     "geometry": ["N-02", "N-01"],
+     "geometry": ["N-02", {"spine": "P-01", "u": -12.0, "dv": 5.0},
+                  {"spine": "P-01", "u": -6.8}],
      "turnstile": {"from": "N-01", "distance": 6},
      "tags": {"bridge": "yes", "layer": "1"},
-     "comment": "Tramo oriente del puente; cruza la calzada."},
+     "comment": "Pasillo oriente del puente, por u ≈ -12; no es la continuación del poniente, están corridos 10.4 m en u."},
 
     {"from": "N-05", "to": "N-03", "mode": 2, "index": 0,
-     "geometry": ["N-05", "N-03"], "bow": 2.0},
+     "bank": "acceso-poniente", "slot": 0},
     {"from": "N-05", "to": "N-03", "mode": 4, "index": 0,
-     "geometry": ["N-05", "N-03"], "bow": -2.0},
+     "bank": "acceso-poniente", "slot": 1},
     {"from": "N-04", "to": "N-02", "mode": 2, "index": 0,
-     "geometry": ["N-04", "N-02"], "bow": -2.0},
+     "bank": "acceso-oriente", "slot": 0},
     {"from": "N-04", "to": "N-02", "mode": 4, "index": 0,
-     "geometry": ["N-04", "N-02"], "bow": 2.0},
+     "bank": "acceso-oriente", "slot": 1},
 
     {"from": "N-05", "to": "E-01", "mode": 1, "index": 0,
-     "geometry": ["N-05", "E-01"]},
+     "geometry": ["N-05", "E-01"],
+     "comment": "Del centro del edificio a la puerta que el grafo conoce como acceso; las otras dos puertas las une el generador."},
     {"from": "E-02", "to": "N-04", "mode": 1, "index": 0,
      "geometry": ["E-02", "N-04"]}
   ]

@@ -2,7 +2,7 @@
  "version": 0.6,
  "generator": "Overpass API 0.7.62.11 87bfad18",
  "osm3s": {
-  "timestamp_osm_base": "2026-09-03T00:17:13Z",
+  "timestamp_osm_base": "2026-09-03T01:22:14Z",
   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
  },
  "elements": [
@@ -136,6 +136,57 @@
   },
   {
    "type": "way",
+   "id": 25311022,
+   "timestamp": "2023-05-22T23:47:23Z",
+   "version": 11,
+   "changeset": 136433193,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    275719326,
+    275728370,
+    275724558,
+    275721167,
+    268627520,
+    275719621
+   ],
+   "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "name": "Calle Libertad",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25367531,
+   "timestamp": "2023-03-04T00:46:36Z",
+   "version": 12,
+   "changeset": 133274472,
+   "user": "LabelMaker",
+   "uid": 12491771,
+   "nodes": [
+    276503834,
+    276510364,
+    6135695728,
+    276510342,
+    276510289,
+    276509198,
+    276509359,
+    10708041950,
+    276503835
+   ],
+   "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "name": "Calle Benito Juárez",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
    "id": 25367573,
    "timestamp": "2025-03-14T16:12:38Z",
    "version": 7,
@@ -259,6 +310,81 @@
   },
   {
    "type": "way",
+   "id": 25367635,
+   "timestamp": "2025-10-11T18:16:40Z",
+   "version": 21,
+   "changeset": 173149884,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    276506103,
+    9377344885,
+    7965612243
+   ],
+   "tags": {
+    "access:lanes": "yes|no",
+    "alt_name": "Eje 7 Sur;Eje Vial 7 Sur",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "primary",
+    "lanes": "2",
+    "lanes:psv": "1",
+    "layer": "1",
+    "maxspeed": "50",
+    "maxspeed:type": "sign",
+    "name": "Avenida Municipio Libre",
+    "oneway": "yes",
+    "parking:both": "no",
+    "psv:lanes": "|designated",
+    "ref": "EJE 7 SUR",
+    "short_name": "Municipio Libre",
+    "surface": "asphalt",
+    "trolley_wire": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25367674,
+   "timestamp": "2018-11-08T16:39:25Z",
+   "version": 4,
+   "changeset": 64298538,
+   "user": "linazadoggo",
+   "uid": 8565881,
+   "nodes": [
+    2306119016,
+    276506067,
+    276506068,
+    276506069
+   ],
+   "tags": {
+    "highway": "pedestrian",
+    "name": "Municipio Libre",
+    "surface": "paving_stones"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25367679,
+   "timestamp": "2023-03-04T00:46:36Z",
+   "version": 12,
+   "changeset": 133274472,
+   "user": "LabelMaker",
+   "uid": 12491771,
+   "nodes": [
+    276506170,
+    10708041926,
+    10708041928,
+    276506369,
+    7965612241
+   ],
+   "tags": {
+    "highway": "living_street",
+    "name": "Avenida Municipio Libre",
+    "surface": "concrete"
+   }
+  },
+  {
+   "type": "way",
    "id": 25367696,
    "timestamp": "2020-11-02T16:28:57Z",
    "version": 11,
@@ -358,6 +484,34 @@
   },
   {
    "type": "way",
+   "id": 70828939,
+   "timestamp": "2026-07-02T18:16:02Z",
+   "version": 16,
+   "changeset": 184992420,
+   "user": "martin_pg",
+   "uid": 14310854,
+   "nodes": [
+    844588576,
+    844588564
+   ],
+   "tags": {
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "2",
+    "layer": "-1",
+    "maxspeed": "80",
+    "maxspeed:type": "sign",
+    "name": "Calzada de Tlalpan",
+    "oneway": "yes",
+    "parking:both": "no",
+    "ref": "RADIAL 3",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "tunnel": "yes"
+   }
+  },
+  {
+   "type": "way",
    "id": 70979972,
    "timestamp": "2025-06-14T05:59:13Z",
    "version": 12,
@@ -367,6 +521,55 @@
    "nodes": [
     845838790,
     845838791
+   ],
+   "tags": {
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "80",
+    "maxspeed:type": "sign",
+    "name": "Calzada de Tlalpan",
+    "oneway": "yes",
+    "ref": "RADIAL 3",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 70979976,
+   "timestamp": "2025-06-14T05:59:13Z",
+   "version": 11,
+   "changeset": 167599898,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    845838797,
+    845838790
+   ],
+   "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "80",
+    "maxspeed:type": "sign",
+    "name": "Calzada de Tlalpan",
+    "oneway": "yes",
+    "ref": "RADIAL 3",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 70979977,
+   "timestamp": "2025-06-14T05:59:13Z",
+   "version": 14,
+   "changeset": 167599898,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    845838789,
+    845838797
    ],
    "tags": {
     "foot": "no",
@@ -429,6 +632,25 @@
   },
   {
    "type": "way",
+   "id": 221578121,
+   "timestamp": "2020-10-26T17:53:40Z",
+   "version": 5,
+   "changeset": 93074198,
+   "user": "Whimsical Otter",
+   "uid": 7466823,
+   "nodes": [
+    276506067,
+    6135626758,
+    275724555
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Alhambra",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
    "id": 221578126,
    "timestamp": "2021-01-22T18:34:40Z",
    "version": 9,
@@ -446,6 +668,59 @@
     "name": "Calle Antillas",
     "oneway": "yes",
     "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 221578185,
+   "timestamp": "2020-10-27T21:30:41Z",
+   "version": 5,
+   "changeset": 93144443,
+   "user": "Whimsical Otter",
+   "uid": 7466823,
+   "nodes": [
+    2306119014,
+    275678382,
+    2306119010,
+    2306119006
+   ],
+   "tags": {
+    "highway": "pedestrian",
+    "name": "Municipio Libre"
+   }
+  },
+  {
+   "type": "way",
+   "id": 226720747,
+   "timestamp": "2020-10-02T06:22:46Z",
+   "version": 2,
+   "changeset": 91854729,
+   "user": "di5order",
+   "uid": 9902286,
+   "nodes": [
+    2354784565,
+    7965612242
+   ],
+   "tags": {
+    "bridge": "yes",
+    "highway": "footway",
+    "layer": "1"
+   }
+  },
+  {
+   "type": "way",
+   "id": 226720753,
+   "timestamp": "2016-02-01T07:26:29Z",
+   "version": 2,
+   "changeset": 36931136,
+   "user": "MexicanRoad714",
+   "uid": 3499770,
+   "nodes": [
+    2354784588,
+    2354784565
+   ],
+   "tags": {
+    "highway": "steps"
    }
   },
   {
@@ -519,6 +794,26 @@
     "railway": "subway",
     "rubber_tires": "yes",
     "voltage": "750"
+   }
+  },
+  {
+   "type": "way",
+   "id": 352626115,
+   "timestamp": "2023-05-23T05:49:51Z",
+   "version": 9,
+   "changeset": 136438826,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    275724557,
+    275724558,
+    275712147
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle 5 de Febrero",
+    "oneway": "yes",
+    "surface": "asphalt"
    }
   },
   {
@@ -630,6 +925,60 @@
   },
   {
    "type": "way",
+   "id": 619196687,
+   "timestamp": "2025-12-14T23:11:49Z",
+   "version": 12,
+   "changeset": 175938158,
+   "user": "ofr1tz",
+   "uid": 3790985,
+   "nodes": [
+    7965612243,
+    276505982
+   ],
+   "tags": {
+    "access:lanes": "yes|no",
+    "alt_name": "Eje 7 Sur;Eje Vial 7 Sur",
+    "bridge": "yes",
+    "foot": "no",
+    "highway": "primary",
+    "lanes": "2",
+    "lanes:psv": "1",
+    "layer": "1",
+    "maxspeed": "50",
+    "maxspeed:type": "sign",
+    "name": "Avenida Municipio Libre",
+    "name:etymology:wikidata": "Q6032753",
+    "oneway": "yes",
+    "parking:both": "no",
+    "psv:lanes": "|designated",
+    "ref": "EJE 7 SUR",
+    "short_name": "Municipio Libre",
+    "surface": "asphalt",
+    "trolley_wire": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 619196694,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 6,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611,
+   "nodes": [
+    276504283,
+    276504282,
+    276509359
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Berlín",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
    "id": 649612500,
    "timestamp": "2025-06-14T05:59:13Z",
    "version": 9,
@@ -663,6 +1012,130 @@
   },
   {
    "type": "way",
+   "id": 650546714,
+   "timestamp": "2020-10-26T14:52:46Z",
+   "version": 3,
+   "changeset": 93067146,
+   "user": "Whimsical Otter",
+   "uid": 7466823,
+   "nodes": [
+    2306119010,
+    275677080
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Antillas",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 650546716,
+   "timestamp": "2023-08-12T19:21:33Z",
+   "version": 7,
+   "changeset": 139799945,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    275677079,
+    11110456781,
+    275677080
+   ],
+   "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "maxspeed": "40",
+    "name": "Calle Ajusco",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 654780381,
+   "timestamp": "2019-03-20T20:52:07Z",
+   "version": 2,
+   "changeset": 68353022,
+   "user": "LSkalayo",
+   "uid": 7445887,
+   "nodes": [
+    6135626768,
+    6135626769
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Privada Reforma"
+   }
+  },
+  {
+   "type": "way",
+   "id": 654783299,
+   "timestamp": "2020-10-26T17:53:40Z",
+   "version": 2,
+   "changeset": 93074198,
+   "user": "Whimsical Otter",
+   "uid": 7466823,
+   "nodes": [
+    275724555,
+    275724556,
+    275724557
+   ],
+   "tags": {
+    "alt_name": "Calle Alhambra",
+    "highway": "residential",
+    "name": "Calle 5 de Febrero",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 654791705,
+   "timestamp": "2024-02-01T18:43:23Z",
+   "version": 5,
+   "changeset": 146957982,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    276509198,
+    276504912,
+    10708125564,
+    276509199,
+    5851698156
+   ],
+   "tags": {
+    "alt_name": "Calle Bremen",
+    "highway": "residential",
+    "name": "Calle Bremen",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 676445816,
+   "timestamp": "2021-07-26T20:40:59Z",
+   "version": 2,
+   "changeset": 108645347,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    3370213093,
+    6334667898,
+    6334667897,
+    6334667895,
+    6334667894,
+    6334667896,
+    3370213093
+   ],
+   "tags": {
+    "amenity": "marketplace",
+    "building": "yes",
+    "name": "Mercado de Portales",
+    "opening_hours": "Mo-Su 10:00-18:00"
+   }
+  },
+  {
+   "type": "way",
    "id": 679802211,
    "timestamp": "2020-10-26T17:53:40Z",
    "version": 2,
@@ -678,6 +1151,90 @@
     "name": "Calle Antillas",
     "oneway": "yes",
     "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 832651319,
+   "timestamp": "2023-01-01T03:31:02Z",
+   "version": 3,
+   "changeset": 130737247,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    276506369,
+    276506368
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Miraflores",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 832651320,
+   "timestamp": "2023-03-04T01:41:13Z",
+   "version": 7,
+   "changeset": 133275053,
+   "user": "LabelMaker",
+   "uid": 12491771,
+   "nodes": [
+    8226931582,
+    10708125556,
+    10708125571,
+    276508232,
+    10708125570,
+    276505101,
+    5851698156,
+    10708125562,
+    10708125561,
+    276506282
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Avenida Víctor Hugo",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 854130314,
+   "timestamp": "2020-10-02T06:22:46Z",
+   "version": 1,
+   "changeset": 91854729,
+   "user": "di5order",
+   "uid": 9902286,
+   "nodes": [
+    7965612242,
+    7965612241
+   ],
+   "tags": {
+    "highway": "steps"
+   }
+  },
+  {
+   "type": "way",
+   "id": 859462272,
+   "timestamp": "2020-10-15T21:52:40Z",
+   "version": 1,
+   "changeset": 92545007,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    8011272545,
+    8011272544,
+    8011272543,
+    8011272542,
+    8011272545
+   ],
+   "tags": {
+    "amenity": "bank",
+    "atm": "yes",
+    "building": "yes",
+    "name": "BanBajío"
    }
   },
   {
@@ -700,6 +1257,29 @@
   },
   {
    "type": "way",
+   "id": 866929306,
+   "timestamp": "2022-07-13T04:17:33Z",
+   "version": 3,
+   "changeset": 123542434,
+   "user": "Chi Na",
+   "uid": 16482734,
+   "nodes": [
+    8080822514,
+    5904623393,
+    8080822513,
+    8080822512,
+    8080822514
+   ],
+   "tags": {
+    "brand": "Coppel",
+    "brand:wikidata": "Q2497795",
+    "building": "yes",
+    "name": "Coppel",
+    "shop": "department_store"
+   }
+  },
+  {
+   "type": "way",
    "id": 884689744,
    "timestamp": "2025-12-14T23:11:11Z",
    "version": 4,
@@ -714,6 +1294,213 @@
     "highway": "residential",
     "name": "Avenida Víctor Hugo",
     "name:etymology:wikidata": "Q535",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 885025245,
+   "timestamp": "2020-12-15T07:34:05Z",
+   "version": 1,
+   "changeset": 95855320,
+   "user": "Absarokan",
+   "uid": 10334722,
+   "nodes": [
+    275728370,
+    6135626768,
+    275728371
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Reforma",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661335,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    4172090199,
+    8952274688,
+    8952274689,
+    8952274690,
+    4172090199
+   ],
+   "tags": {
+    "amenity": "bank",
+    "brand": "Santander",
+    "brand:wikidata": "Q5835668",
+    "brand:wikipedia": "en:Santander Bank",
+    "building": "yes",
+    "name": "Santander"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661336,
+   "timestamp": "2024-05-01T16:28:47Z",
+   "version": 2,
+   "changeset": 150758630,
+   "user": "CjMalone",
+   "uid": 6816132,
+   "nodes": [
+    8952274691,
+    8952274696,
+    8952274692,
+    8952274697,
+    8952274695,
+    8952274693,
+    8952274694,
+    8952274691
+   ],
+   "tags": {
+    "brand": "Oxxo",
+    "brand:wikidata": "Q1342538",
+    "brand:wikipedia": "es:Oxxo",
+    "building": "yes",
+    "name": "Oxxo",
+    "operator": "FEMSA Comercio",
+    "shop": "convenience",
+    "website": "https://www.oxxo.com/tiendas?cr=50QVZ"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661337,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    8952274698,
+    8952282722,
+    8952274710,
+    8952274716,
+    8952274699,
+    8952274700,
+    8952274701,
+    8952274702,
+    8952274703,
+    8952274704,
+    8952274705,
+    8952274698
+   ],
+   "tags": {
+    "alt_name": "citibanamex",
+    "atm": "5",
+    "building": "yes",
+    "building:levels": "2",
+    "layer": "1",
+    "local_name": "Banamex Portales",
+    "name": "Banamex"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661339,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    8952282717,
+    8952282718,
+    8952282719,
+    8952282720,
+    8952282721,
+    8952282725,
+    8952282722
+   ],
+   "tags": {
+    "covered": "no",
+    "highway": "service",
+    "oneway": "yes",
+    "service": "parking_aisle",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661340,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    8952274712,
+    8952274713,
+    8952274714,
+    8952274715
+   ],
+   "tags": {
+    "highway": "service",
+    "oneway": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661341,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    8952282722,
+    8952282723,
+    8952282724
+   ],
+   "tags": {
+    "highway": "service",
+    "oneway": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661342,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    8952274715,
+    8952274716,
+    8952282726,
+    8952282717
+   ],
+   "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 967661343,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "nodes": [
+    8952282725,
+    8952282726
+   ],
+   "tags": {
+    "covered": "no",
+    "highway": "service",
+    "oneway": "yes",
+    "service": "parking_aisle",
     "surface": "asphalt"
    }
   },
@@ -745,6 +1532,33 @@
   },
   {
    "type": "way",
+   "id": 1083627059,
+   "timestamp": "2026-07-02T18:16:02Z",
+   "version": 11,
+   "changeset": 184992420,
+   "user": "martin_pg",
+   "uid": 14310854,
+   "nodes": [
+    844588564,
+    7732213168
+   ],
+   "tags": {
+    "cutting": "yes",
+    "foot": "no",
+    "highway": "trunk",
+    "lanes": "2",
+    "maxspeed": "80",
+    "maxspeed:type": "sign",
+    "name": "Calzada de Tlalpan",
+    "oneway": "yes",
+    "parking:both": "no",
+    "ref": "RADIAL 3",
+    "sidewalk": "no",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
    "id": 1126131298,
    "timestamp": "2023-01-01T03:31:02Z",
    "version": 1,
@@ -754,6 +1568,22 @@
    "nodes": [
     8682792612,
     276505007
+   ],
+   "tags": {
+    "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1151093904,
+   "timestamp": "2023-03-04T00:46:36Z",
+   "version": 1,
+   "changeset": 133274472,
+   "user": "LabelMaker",
+   "uid": 12491771,
+   "nodes": [
+    10708041943,
+    7965612241
    ],
    "tags": {
     "highway": "footway"
@@ -774,6 +1604,41 @@
    ],
    "tags": {
     "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1167199271,
+   "timestamp": "2023-08-03T04:35:21Z",
+   "version": 3,
+   "changeset": 139372726,
+   "user": "AoS22",
+   "uid": 20036217,
+   "nodes": [
+    10853446571,
+    10853446568,
+    10853446566,
+    10853446565,
+    10853446562,
+    10853446561,
+    10853446560,
+    10853446563,
+    10853446564,
+    10853446567,
+    10853446569,
+    10853446570,
+    10853446559,
+    10853446557,
+    10853446556,
+    10853446558,
+    10853446571
+   ],
+   "tags": {
+    "building": "school",
+    "building:levels": "2",
+    "height": "5",
+    "roof:colour": "#9E5648",
+    "roof:shape": "flat"
    }
   },
   {
@@ -853,6 +1718,179 @@
   },
   {
    "type": "way",
+   "id": 1322749531,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12239981922,
+    12239981923,
+    12239981924,
+    12239981928,
+    12239981929,
+    12239981930,
+    12239981931,
+    12239981936,
+    12239981938,
+    12239981940,
+    12239981942,
+    12239981944
+   ],
+   "tags": {
+    "barrier": "fence"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1322749532,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12239981925,
+    12239981926,
+    12239981927,
+    12239981932,
+    12239981933,
+    12239981934,
+    12239981935,
+    12239981937,
+    12239981939,
+    12239981941,
+    12239981943,
+    12239981945
+   ],
+   "tags": {
+    "barrier": "fence"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1322749533,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12239981946,
+    12239981947
+   ],
+   "tags": {
+    "barrier": "fence"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1322749534,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12239981948,
+    12239981949
+   ],
+   "tags": {
+    "barrier": "fence"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1322749535,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12239981950,
+    12239981951,
+    12239981952,
+    12239981953,
+    12239981950
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1322749536,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12239981956,
+    12239981954,
+    12239981955,
+    12239981958,
+    12239981959,
+    12239981960,
+    12239981961,
+    12239981957,
+    12239981956
+   ],
+   "tags": {
+    "barrier": "fence"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1354812357,
+   "timestamp": "2025-01-28T04:26:41Z",
+   "version": 1,
+   "changeset": 161842856,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12537858626,
+    12537858627,
+    12537858628,
+    12537858629,
+    12537858626
+   ],
+   "tags": {
+    "addr:street": "Avenida Municipio Libre",
+    "amenity": "community_centre",
+    "brand": "Pilares",
+    "brand:wikidata": "Q111737852",
+    "building": "yes",
+    "email": "pilaresmunicipiolibre@cdmx.gob.mx",
+    "name": "Pilares Municipio Libre",
+    "nohousenumber": "yes",
+    "website": "https://pilares.cdmx.gob.mx/pilares/1554/municipio-libre"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1367360612,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 1,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611,
+   "nodes": [
+    12663037470,
+    12663037471,
+    12663037472,
+    12663037473,
+    12663037470
+   ],
+   "tags": {
+    "amenity": "community_centre",
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
    "id": 1387762582,
    "timestamp": "2026-05-28T06:02:59Z",
    "version": 5,
@@ -890,6 +1928,29 @@
     "name": "Portales",
     "network": "Línea 2",
     "operator": "Sistema de Transporte Colectivo Metro"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1447807576,
+   "timestamp": "2025-11-05T21:31:07Z",
+   "version": 1,
+   "changeset": 174260907,
+   "user": "mikeee26",
+   "uid": 23232870,
+   "nodes": [
+    13283955743,
+    13283955744,
+    13283955745,
+    13283955746,
+    13283955747,
+    13283955748,
+    13283955743
+   ],
+   "tags": {
+    "building": "yes",
+    "name": "La Alpina",
+    "shop": "confectionery"
    }
   },
   {
@@ -1048,6 +2109,17 @@
   },
   {
    "type": "node",
+   "id": 268627520,
+   "lat": 19.3726426,
+   "lon": -99.1445887,
+   "timestamp": "2018-08-15T12:12:15Z",
+   "version": 5,
+   "changeset": 61683614,
+   "user": "chachafish",
+   "uid": 2237750
+  },
+  {
+   "type": "node",
    "id": 270601381,
    "lat": 19.3767179,
    "lon": -99.1404648,
@@ -1158,11 +2230,44 @@
   },
   {
    "type": "node",
+   "id": 275677080,
+   "lat": 19.3669154,
+   "lon": -99.1431167,
+   "timestamp": "2021-03-26T17:04:34Z",
+   "version": 10,
+   "changeset": 101806438,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 275678382,
+   "lat": 19.3682394,
+   "lon": -99.1436932,
+   "timestamp": "2018-08-15T01:56:08Z",
+   "version": 4,
+   "changeset": 61673512,
+   "user": "chachafish",
+   "uid": 2237750
+  },
+  {
+   "type": "node",
    "id": 275711580,
    "lat": 19.3728932,
    "lon": -99.1412789,
    "timestamp": "2021-03-26T18:00:51Z",
    "version": 5,
+   "changeset": 101810049,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 275712147,
+   "lat": 19.3735458,
+   "lon": -99.14284,
+   "timestamp": "2021-03-26T18:00:51Z",
+   "version": 3,
    "changeset": 101810049,
    "user": "ElectricJellyfish",
    "uid": 11601501
@@ -1312,6 +2417,17 @@
   },
   {
    "type": "node",
+   "id": 275719621,
+   "lat": 19.372772,
+   "lon": -99.1453627,
+   "timestamp": "2018-08-15T12:12:15Z",
+   "version": 4,
+   "changeset": 61683614,
+   "user": "chachafish",
+   "uid": 2237750
+  },
+  {
+   "type": "node",
    "id": 275719624,
    "lat": 19.3717787,
    "lon": -99.1455406,
@@ -1403,6 +2519,17 @@
   },
   {
    "type": "node",
+   "id": 275721167,
+   "lat": 19.372501,
+   "lon": -99.1437419,
+   "timestamp": "2018-08-15T12:12:15Z",
+   "version": 4,
+   "changeset": 61683614,
+   "user": "chachafish",
+   "uid": 2237750
+  },
+  {
+   "type": "node",
    "id": 275721490,
    "lat": 19.3758489,
    "lon": -99.140851,
@@ -1450,6 +2577,17 @@
   },
   {
    "type": "node",
+   "id": 275724558,
+   "lat": 19.372376,
+   "lon": -99.1429963,
+   "timestamp": "2018-08-15T12:12:15Z",
+   "version": 4,
+   "changeset": 61683614,
+   "user": "chachafish",
+   "uid": 2237750
+  },
+  {
+   "type": "node",
    "id": 275728255,
    "lat": 19.3694633,
    "lon": -99.1426748,
@@ -1458,6 +2596,17 @@
    "changeset": 101806438,
    "user": "ElectricJellyfish",
    "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 275728370,
+   "lat": 19.3723123,
+   "lon": -99.1426138,
+   "timestamp": "2018-08-15T12:12:15Z",
+   "version": 3,
+   "changeset": 61683614,
+   "user": "chachafish",
+   "uid": 2237750
   },
   {
    "type": "node",
@@ -1522,6 +2671,17 @@
    "timestamp": "2021-03-26T18:00:51Z",
    "version": 5,
    "changeset": 101810049,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 276503834,
+   "lat": 19.3707941,
+   "lon": -99.1370136,
+   "timestamp": "2021-03-24T16:25:20Z",
+   "version": 7,
+   "changeset": 101661103,
    "user": "ElectricJellyfish",
    "uid": 11601501
   },
@@ -1659,6 +2819,28 @@
   },
   {
    "type": "node",
+   "id": 276505982,
+   "lat": 19.3683134,
+   "lon": -99.1437316,
+   "timestamp": "2013-05-16T08:48:04Z",
+   "version": 5,
+   "changeset": 16149799,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 276506067,
+   "lat": 19.3683711,
+   "lon": -99.1436707,
+   "timestamp": "2013-05-16T08:48:04Z",
+   "version": 2,
+   "changeset": 16149799,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
    "id": 276506068,
    "lat": 19.368254,
    "lon": -99.1428736,
@@ -1675,6 +2857,28 @@
    "lon": -99.142028,
    "timestamp": "2023-03-04T00:46:36Z",
    "version": 11,
+   "changeset": 133274472,
+   "user": "LabelMaker",
+   "uid": 12491771
+  },
+  {
+   "type": "node",
+   "id": 276506103,
+   "lat": 19.3676571,
+   "lon": -99.1399721,
+   "timestamp": "2020-08-03T19:58:49Z",
+   "version": 5,
+   "changeset": 88893146,
+   "user": "Ross Alinne Pelcastre Briones",
+   "uid": 9946192
+  },
+  {
+   "type": "node",
+   "id": 276506170,
+   "lat": 19.3676509,
+   "lon": -99.1393872,
+   "timestamp": "2023-03-04T00:46:36Z",
+   "version": 5,
    "changeset": 133274472,
    "user": "LabelMaker",
    "uid": 12491771
@@ -1700,6 +2904,17 @@
    "changeset": 101810049,
    "user": "ElectricJellyfish",
    "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 276506369,
+   "lat": 19.3678585,
+   "lon": -99.1405812,
+   "timestamp": "2023-01-01T03:31:02Z",
+   "version": 7,
+   "changeset": 130737247,
+   "user": "Quixlian",
+   "uid": 16289897
   },
   {
    "type": "node",
@@ -1758,6 +2973,28 @@
   },
   {
    "type": "node",
+   "id": 276508232,
+   "lat": 19.3689253,
+   "lon": -99.1391527,
+   "timestamp": "2021-03-26T18:00:51Z",
+   "version": 5,
+   "changeset": 101810049,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 276509198,
+   "lat": 19.3711139,
+   "lon": -99.1393455,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 8,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
    "id": 276509199,
    "lat": 19.3691925,
    "lon": -99.1398818,
@@ -1774,6 +3011,50 @@
    "lon": -99.1406156,
    "timestamp": "2025-03-14T16:12:38Z",
    "version": 4,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 276509359,
+   "lat": 19.3711917,
+   "lon": -99.1399125,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 7,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 276510289,
+   "lat": 19.3709939,
+   "lon": -99.1384706,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 7,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 276510342,
+   "lat": 19.3709602,
+   "lon": -99.1382246,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 6,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 276510364,
+   "lat": 19.3708285,
+   "lon": -99.1372643,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 6,
    "changeset": 163616623,
    "user": "Juan MAS",
    "uid": 18570611
@@ -1934,6 +3215,17 @@
   },
   {
    "type": "node",
+   "id": 844588564,
+   "lat": 19.3679289,
+   "lon": -99.1419746,
+   "timestamp": "2022-08-03T23:11:01Z",
+   "version": 8,
+   "changeset": 124455952,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
    "id": 844588569,
    "lat": 19.3695047,
    "lon": -99.1417315,
@@ -1967,6 +3259,17 @@
   },
   {
    "type": "node",
+   "id": 845838789,
+   "lat": 19.3643518,
+   "lon": -99.1423786,
+   "timestamp": "2020-10-28T17:10:56Z",
+   "version": 8,
+   "changeset": 93192043,
+   "user": "UncoolGuyJake",
+   "uid": 7674729
+  },
+  {
+   "type": "node",
    "id": 845838790,
    "lat": 19.3681943,
    "lon": -99.1417403,
@@ -1997,6 +3300,17 @@
    "changeset": 101810049,
    "user": "ElectricJellyfish",
    "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 845838797,
+   "lat": 19.3678627,
+   "lon": -99.14179,
+   "timestamp": "2019-04-30T20:31:47Z",
+   "version": 6,
+   "changeset": 69750687,
+   "user": "Unicorn Ostrich",
+   "uid": 9319448
   },
   {
    "type": "node",
@@ -2073,6 +3387,28 @@
   },
   {
    "type": "node",
+   "id": 2306119014,
+   "lat": 19.3683616,
+   "lon": -99.1444893,
+   "timestamp": "2013-05-16T08:47:50Z",
+   "version": 1,
+   "changeset": 16149799,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 2306119016,
+   "lat": 19.368478,
+   "lon": -99.1444668,
+   "timestamp": "2020-10-27T19:21:27Z",
+   "version": 6,
+   "changeset": 93140059,
+   "user": "sbburg",
+   "uid": 10456881
+  },
+  {
+   "type": "node",
    "id": 2354784543,
    "lat": 19.3622724,
    "lon": -99.1426663,
@@ -2101,6 +3437,17 @@
    "timestamp": "2021-03-26T18:00:51Z",
    "version": 5,
    "changeset": 101810049,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 2354784565,
+   "lat": 19.3680813,
+   "lon": -99.1420124,
+   "timestamp": "2021-03-26T17:04:34Z",
+   "version": 4,
+   "changeset": 101806438,
    "user": "ElectricJellyfish",
    "uid": 11601501
   },
@@ -2161,6 +3508,17 @@
   },
   {
    "type": "node",
+   "id": 3370213093,
+   "lat": 19.3723525,
+   "lon": -99.1431259,
+   "timestamp": "2021-07-26T20:40:59Z",
+   "version": 3,
+   "changeset": 108645347,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
    "id": 3981306883,
    "lat": 19.367913,
    "lon": -99.1418635,
@@ -2213,6 +3571,17 @@
    "changeset": 157684449,
    "user": "Quixlian",
    "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 4172090199,
+   "lat": 19.37159,
+   "lon": -99.1410449,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 4,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
   },
   {
    "type": "node",
@@ -2341,6 +3710,17 @@
   },
   {
    "type": "node",
+   "id": 5851698156,
+   "lat": 19.3690434,
+   "lon": -99.1399661,
+   "timestamp": "2021-03-26T18:00:51Z",
+   "version": 3,
+   "changeset": 101810049,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
    "id": 5851698164,
    "lat": 19.3702241,
    "lon": -99.140212,
@@ -2401,6 +3781,17 @@
   },
   {
    "type": "node",
+   "id": 5904623393,
+   "lat": 19.3711089,
+   "lon": -99.1431409,
+   "timestamp": "2020-11-04T10:14:36Z",
+   "version": 3,
+   "changeset": 93533783,
+   "user": "ShawIsland",
+   "uid": 11387832
+  },
+  {
+   "type": "node",
    "id": 6096082157,
    "lat": 19.376892,
    "lon": -99.1404433,
@@ -2420,6 +3811,17 @@
    "changeset": 68594865,
    "user": "koyel",
    "uid": 8725953
+  },
+  {
+   "type": "node",
+   "id": 6135626758,
+   "lat": 19.3683952,
+   "lon": -99.1436665,
+   "timestamp": "2018-12-13T18:45:35Z",
+   "version": 1,
+   "changeset": 65451368,
+   "user": "daFisch_import",
+   "uid": 9162830
   },
   {
    "type": "node",
@@ -2450,6 +3852,94 @@
   },
   {
    "type": "node",
+   "id": 6135626768,
+   "lat": 19.3719265,
+   "lon": -99.1426949,
+   "timestamp": "2018-12-13T18:45:35Z",
+   "version": 1,
+   "changeset": 65451368,
+   "user": "daFisch_import",
+   "uid": 9162830
+  },
+  {
+   "type": "node",
+   "id": 6135626769,
+   "lat": 19.3718686,
+   "lon": -99.1423767,
+   "timestamp": "2018-12-13T18:45:35Z",
+   "version": 1,
+   "changeset": 65451368,
+   "user": "daFisch_import",
+   "uid": 9162830
+  },
+  {
+   "type": "node",
+   "id": 6135695728,
+   "lat": 19.3708989,
+   "lon": -99.1377777,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 3,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 6334667894,
+   "lat": 19.3721652,
+   "lon": -99.1436593,
+   "timestamp": "2019-03-13T03:38:38Z",
+   "version": 1,
+   "changeset": 68085544,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 6334667895,
+   "lat": 19.3721771,
+   "lon": -99.1437479,
+   "timestamp": "2019-03-13T03:38:38Z",
+   "version": 1,
+   "changeset": 68085544,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 6334667896,
+   "lat": 19.3724193,
+   "lon": -99.1436208,
+   "timestamp": "2019-03-13T03:38:38Z",
+   "version": 1,
+   "changeset": 68085544,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 6334667897,
+   "lat": 19.3713492,
+   "lon": -99.1438734,
+   "timestamp": "2019-03-13T03:38:38Z",
+   "version": 1,
+   "changeset": 68085544,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 6334667898,
+   "lat": 19.3712705,
+   "lon": -99.1432899,
+   "timestamp": "2019-03-13T03:38:38Z",
+   "version": 1,
+   "changeset": 68085544,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
    "id": 6439743742,
    "lat": 19.3708844,
    "lon": -99.1426857,
@@ -2458,6 +3948,94 @@
    "changeset": 93184679,
    "user": "UncoolGuyJake",
    "uid": 7674729
+  },
+  {
+   "type": "node",
+   "id": 7732213168,
+   "lat": 19.3668002,
+   "lon": -99.1421662,
+   "timestamp": "2022-08-03T23:11:01Z",
+   "version": 2,
+   "changeset": 124455952,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 7965612241,
+   "lat": 19.3680279,
+   "lon": -99.141528,
+   "timestamp": "2020-10-02T06:22:46Z",
+   "version": 1,
+   "changeset": 91854729,
+   "user": "di5order",
+   "uid": 9902286
+  },
+  {
+   "type": "node",
+   "id": 7965612242,
+   "lat": 19.368016,
+   "lon": -99.1415877,
+   "timestamp": "2020-10-02T06:22:46Z",
+   "version": 1,
+   "changeset": 91854729,
+   "user": "di5order",
+   "uid": 9902286
+  },
+  {
+   "type": "node",
+   "id": 7965612243,
+   "lat": 19.3679742,
+   "lon": -99.1416363,
+   "timestamp": "2020-10-27T19:21:27Z",
+   "version": 2,
+   "changeset": 93140059,
+   "user": "sbburg",
+   "uid": 10456881
+  },
+  {
+   "type": "node",
+   "id": 8011272542,
+   "lat": 19.3695823,
+   "lon": -99.1421206,
+   "timestamp": "2020-10-15T21:52:40Z",
+   "version": 1,
+   "changeset": 92545007,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8011272543,
+   "lat": 19.3695548,
+   "lon": -99.1419401,
+   "timestamp": "2020-10-15T21:52:40Z",
+   "version": 1,
+   "changeset": 92545007,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8011272544,
+   "lat": 19.3694321,
+   "lon": -99.1419612,
+   "timestamp": "2020-10-15T21:52:40Z",
+   "version": 1,
+   "changeset": 92545007,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8011272545,
+   "lat": 19.3694597,
+   "lon": -99.1421416,
+   "timestamp": "2020-10-15T21:52:40Z",
+   "version": 1,
+   "changeset": 92545007,
+   "user": "CENTSOARER",
+   "uid": 232801
   },
   {
    "type": "node",
@@ -2505,6 +4083,39 @@
   },
   {
    "type": "node",
+   "id": 8080822512,
+   "lat": 19.3712342,
+   "lon": -99.1430001,
+   "timestamp": "2020-11-04T10:14:36Z",
+   "version": 1,
+   "changeset": 93533783,
+   "user": "ShawIsland",
+   "uid": 11387832
+  },
+  {
+   "type": "node",
+   "id": 8080822513,
+   "lat": 19.3712582,
+   "lon": -99.1431181,
+   "timestamp": "2020-11-04T10:14:36Z",
+   "version": 1,
+   "changeset": 93533783,
+   "user": "ShawIsland",
+   "uid": 11387832
+  },
+  {
+   "type": "node",
+   "id": 8080822514,
+   "lat": 19.3710824,
+   "lon": -99.1430363,
+   "timestamp": "2020-11-04T10:14:36Z",
+   "version": 1,
+   "changeset": 93533783,
+   "user": "ShawIsland",
+   "uid": 11387832
+  },
+  {
+   "type": "node",
    "id": 8226931581,
    "lat": 19.3680247,
    "lon": -99.1376848,
@@ -2513,6 +4124,17 @@
    "changeset": 95793276,
    "user": "Absarokan",
    "uid": 10334722
+  },
+  {
+   "type": "node",
+   "id": 8226931582,
+   "lat": 19.3686676,
+   "lon": -99.1375423,
+   "timestamp": "2023-03-04T01:41:13Z",
+   "version": 2,
+   "changeset": 133275053,
+   "user": "LabelMaker",
+   "uid": 12491771
   },
   {
    "type": "node",
@@ -2578,6 +4200,215 @@
   },
   {
    "type": "node",
+   "id": 8952274688,
+   "lat": 19.3715683,
+   "lon": -99.1408972,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274689,
+   "lat": 19.3713516,
+   "lon": -99.140933,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274690,
+   "lat": 19.3713734,
+   "lon": -99.1410807,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274691,
+   "lat": 19.3717211,
+   "lon": -99.1410243,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274692,
+   "lat": 19.3716895,
+   "lon": -99.140966,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274693,
+   "lat": 19.371579,
+   "lon": -99.1409337,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274694,
+   "lat": 19.3715959,
+   "lon": -99.1410432,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274695,
+   "lat": 19.3715958,
+   "lon": -99.1409106,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274696,
+   "lat": 19.3717154,
+   "lon": -99.1409641,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274697,
+   "lat": 19.3716818,
+   "lon": -99.1409198,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274698,
+   "lat": 19.3719236,
+   "lon": -99.1405809,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274699,
+   "lat": 19.37168,
+   "lon": -99.1406121,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274700,
+   "lat": 19.3717208,
+   "lon": -99.1409686,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274701,
+   "lat": 19.3718238,
+   "lon": -99.1409554,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274702,
+   "lat": 19.371825,
+   "lon": -99.1409657,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274703,
+   "lat": 19.3718617,
+   "lon": -99.140961,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274704,
+   "lat": 19.3718602,
+   "lon": -99.1409485,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274705,
+   "lat": 19.3719641,
+   "lon": -99.1409352,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274710,
+   "lat": 19.371846,
+   "lon": -99.1405904,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
    "id": 8952274712,
    "lat": 19.3716986,
    "lon": -99.1411621,
@@ -2589,6 +4420,143 @@
   },
   {
    "type": "node",
+   "id": 8952274713,
+   "lat": 19.371746,
+   "lon": -99.1410432,
+   "timestamp": "2026-05-28T03:53:20Z",
+   "version": 2,
+   "changeset": 183283371,
+   "user": "tanzwiese",
+   "uid": 10107184,
+   "tags": {
+    "crossing": "unmarked",
+    "crossing:markings": "no",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8952274714,
+   "lat": 19.3717516,
+   "lon": -99.140992,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952274715,
+   "lat": 19.371721,
+   "lon": -99.1407272,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "tags": {
+    "amenity": "parking_entrance"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8952274716,
+   "lat": 19.3717439,
+   "lon": -99.1406039,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282717,
+   "lat": 19.3717629,
+   "lon": -99.140549,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282718,
+   "lat": 19.3717508,
+   "lon": -99.1404279,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282719,
+   "lat": 19.371768,
+   "lon": -99.140411,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282720,
+   "lat": 19.3718708,
+   "lon": -99.1404081,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282721,
+   "lat": 19.3718889,
+   "lon": -99.140427,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282722,
+   "lat": 19.3719054,
+   "lon": -99.1405842,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801,
+   "tags": {
+    "amenity": "parking_entrance"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8952282723,
+   "lat": 19.3719457,
+   "lon": -99.1410219,
+   "timestamp": "2026-05-28T03:53:20Z",
+   "version": 2,
+   "changeset": 183283371,
+   "user": "tanzwiese",
+   "uid": 10107184,
+   "tags": {
+    "crossing": "unmarked",
+    "crossing:markings": "no",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
    "id": 8952282724,
    "lat": 19.3720022,
    "lon": -99.1411155,
@@ -2597,6 +4565,61 @@
    "changeset": 108644861,
    "user": "CENTSOARER",
    "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282725,
+   "lat": 19.3718999,
+   "lon": -99.1405463,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 8952282726,
+   "lat": 19.3717597,
+   "lon": -99.1405581,
+   "timestamp": "2021-07-26T20:24:58Z",
+   "version": 1,
+   "changeset": 108644861,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 9377344885,
+   "lat": 19.3677594,
+   "lon": -99.1405506,
+   "timestamp": "2023-03-04T00:46:36Z",
+   "version": 2,
+   "changeset": 133274472,
+   "user": "LabelMaker",
+   "uid": 12491771
+  },
+  {
+   "type": "node",
+   "id": 10708041926,
+   "lat": 19.3676462,
+   "lon": -99.1394097,
+   "timestamp": "2023-03-04T00:46:36Z",
+   "version": 1,
+   "changeset": 133274472,
+   "user": "LabelMaker",
+   "uid": 12491771
+  },
+  {
+   "type": "node",
+   "id": 10708041928,
+   "lat": 19.3676473,
+   "lon": -99.1394396,
+   "timestamp": "2023-03-04T00:46:36Z",
+   "version": 1,
+   "changeset": 133274472,
+   "user": "LabelMaker",
+   "uid": 12491771
   },
   {
    "type": "node",
@@ -2682,6 +4705,22 @@
   },
   {
    "type": "node",
+   "id": 10708041950,
+   "lat": 19.3713561,
+   "lon": -99.1411114,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 2,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611,
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
    "id": 10708041951,
    "lat": 19.3707009,
    "lon": -99.1412093,
@@ -2730,6 +4769,22 @@
   },
   {
    "type": "node",
+   "id": 10708125556,
+   "lat": 19.3686796,
+   "lon": -99.1376167,
+   "timestamp": "2026-05-28T03:53:20Z",
+   "version": 2,
+   "changeset": 183283371,
+   "user": "tanzwiese",
+   "uid": 10107184,
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
    "id": 10708125557,
    "lat": 19.3682897,
    "lon": -99.1393646,
@@ -2762,9 +4817,57 @@
   },
   {
    "type": "node",
+   "id": 10708125561,
+   "lat": 19.369093,
+   "lon": -99.1402803,
+   "timestamp": "2026-05-28T03:53:20Z",
+   "version": 2,
+   "changeset": 183283371,
+   "user": "tanzwiese",
+   "uid": 10107184,
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10708125562,
+   "lat": 19.3690499,
+   "lon": -99.1400074,
+   "timestamp": "2026-05-28T03:53:20Z",
+   "version": 2,
+   "changeset": 183283371,
+   "user": "tanzwiese",
+   "uid": 10107184,
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
    "id": 10708125563,
    "lat": 19.3691657,
    "lon": -99.139836,
+   "timestamp": "2026-05-28T03:53:20Z",
+   "version": 2,
+   "changeset": 183283371,
+   "user": "tanzwiese",
+   "uid": 10107184,
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10708125564,
+   "lat": 19.3692387,
+   "lon": -99.1398556,
    "timestamp": "2026-05-28T03:53:20Z",
    "version": 2,
    "changeset": 183283371,
@@ -2832,9 +4935,227 @@
   },
   {
    "type": "node",
+   "id": 10708125570,
+   "lat": 19.3689337,
+   "lon": -99.1392062,
+   "timestamp": "2026-05-28T03:53:20Z",
+   "version": 2,
+   "changeset": 183283371,
+   "user": "tanzwiese",
+   "uid": 10107184,
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "yes",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10708125571,
+   "lat": 19.3689177,
+   "lon": -99.1391013,
+   "timestamp": "2023-03-04T01:41:13Z",
+   "version": 1,
+   "changeset": 133275053,
+   "user": "LabelMaker",
+   "uid": 12491771,
+   "tags": {
+    "crossing": "marked",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 10853446556,
+   "lat": 19.3718103,
+   "lon": -99.1401359,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446557,
+   "lat": 19.3718866,
+   "lon": -99.1401278,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446558,
+   "lat": 19.3717907,
+   "lon": -99.1399291,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446559,
+   "lat": 19.3718674,
+   "lon": -99.1399252,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446560,
+   "lat": 19.3718803,
+   "lon": -99.1402188,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446561,
+   "lat": 19.3718394,
+   "lon": -99.1402232,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446562,
+   "lat": 19.3718339,
+   "lon": -99.1401648,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446563,
+   "lat": 19.3718747,
+   "lon": -99.1401604,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446564,
+   "lat": 19.3718912,
+   "lon": -99.1401586,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446565,
+   "lat": 19.3718205,
+   "lon": -99.1401662,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446566,
+   "lat": 19.3718339,
+   "lon": -99.1403083,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446567,
+   "lat": 19.3719047,
+   "lon": -99.1403006,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446568,
+   "lat": 19.3717397,
+   "lon": -99.1403183,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446569,
+   "lat": 19.3719855,
+   "lon": -99.1402576,
+   "timestamp": "2023-08-03T04:30:18Z",
+   "version": 2,
+   "changeset": 139372612,
+   "user": "AoS22",
+   "uid": 20036217
+  },
+  {
+   "type": "node",
+   "id": 10853446570,
+   "lat": 19.371953,
+   "lon": -99.1399161,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
+   "id": 10853446571,
+   "lat": 19.3717037,
+   "lon": -99.1399384,
+   "timestamp": "2023-04-28T20:33:25Z",
+   "version": 1,
+   "changeset": 135483767,
+   "user": "CENTSOARER",
+   "uid": 232801
+  },
+  {
+   "type": "node",
    "id": 11110456780,
    "lat": 19.3675814,
    "lon": -99.1421196,
+   "timestamp": "2023-08-12T19:21:33Z",
+   "version": 1,
+   "changeset": 139799945,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 11110456781,
+   "lat": 19.367619,
+   "lon": -99.1423775,
    "timestamp": "2023-08-12T19:21:33Z",
    "version": 1,
    "changeset": 139799945,
@@ -3756,6 +6077,446 @@
   },
   {
    "type": "node",
+   "id": 12239981922,
+   "lat": 19.3788026,
+   "lon": -99.1403389,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981923,
+   "lat": 19.3784037,
+   "lon": -99.1403943,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981924,
+   "lat": 19.3775795,
+   "lon": -99.1405177,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981925,
+   "lat": 19.3787896,
+   "lon": -99.1402487,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981926,
+   "lat": 19.378384,
+   "lon": -99.1403181,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981927,
+   "lat": 19.3775704,
+   "lon": -99.140447,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981928,
+   "lat": 19.3771936,
+   "lon": -99.1405718,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981929,
+   "lat": 19.3768352,
+   "lon": -99.1406204,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981930,
+   "lat": 19.3765226,
+   "lon": -99.1406578,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981931,
+   "lat": 19.3762034,
+   "lon": -99.1406952,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981932,
+   "lat": 19.3771714,
+   "lon": -99.1404997,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981933,
+   "lat": 19.376813,
+   "lon": -99.1405441,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981934,
+   "lat": 19.3765056,
+   "lon": -99.1405843,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981935,
+   "lat": 19.3761955,
+   "lon": -99.1406204,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981936,
+   "lat": 19.374805,
+   "lon": -99.1408727,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981937,
+   "lat": 19.3747906,
+   "lon": -99.1407992,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981938,
+   "lat": 19.3743327,
+   "lon": -99.1409421,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981939,
+   "lat": 19.3743196,
+   "lon": -99.1408686,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981940,
+   "lat": 19.372848,
+   "lon": -99.1411612,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981941,
+   "lat": 19.3728074,
+   "lon": -99.1410946,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981942,
+   "lat": 19.3713292,
+   "lon": -99.1413927,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981943,
+   "lat": 19.3713161,
+   "lon": -99.1413192,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981944,
+   "lat": 19.3707483,
+   "lon": -99.1414857,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981945,
+   "lat": 19.3707339,
+   "lon": -99.1413969,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981946,
+   "lat": 19.3691916,
+   "lon": -99.14172,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981947,
+   "lat": 19.3689417,
+   "lon": -99.1417519,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981948,
+   "lat": 19.3691759,
+   "lon": -99.1416313,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981949,
+   "lat": 19.3689299,
+   "lon": -99.1416784,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981950,
+   "lat": 19.3689908,
+   "lon": -99.1417161,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981951,
+   "lat": 19.3689883,
+   "lon": -99.1416989,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981952,
+   "lat": 19.3690515,
+   "lon": -99.1416886,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981953,
+   "lat": 19.369054,
+   "lon": -99.1417058,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981954,
+   "lat": 19.3679288,
+   "lon": -99.141921,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981955,
+   "lat": 19.3670157,
+   "lon": -99.1420541,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981956,
+   "lat": 19.367917,
+   "lon": -99.1418453,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981957,
+   "lat": 19.3670065,
+   "lon": -99.1419973,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981958,
+   "lat": 19.3653655,
+   "lon": -99.1423367,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981959,
+   "lat": 19.3643971,
+   "lon": -99.1425073,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981960,
+   "lat": 19.364386,
+   "lon": -99.1424435,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12239981961,
+   "lat": 19.3653547,
+   "lon": -99.1422799,
+   "timestamp": "2024-10-10T00:23:28Z",
+   "version": 1,
+   "changeset": 157693647,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
    "id": 12536076455,
    "lat": 19.3714025,
    "lon": -99.1443265,
@@ -3764,6 +6525,50 @@
    "changeset": 161814403,
    "user": "OurtheCanal",
    "uid": 21827516
+  },
+  {
+   "type": "node",
+   "id": 12537858626,
+   "lat": 19.3680064,
+   "lon": -99.1414729,
+   "timestamp": "2025-01-28T04:26:41Z",
+   "version": 1,
+   "changeset": 161842856,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12537858627,
+   "lat": 19.3679156,
+   "lon": -99.1414919,
+   "timestamp": "2025-01-28T04:26:41Z",
+   "version": 1,
+   "changeset": 161842856,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12537858628,
+   "lat": 19.3678882,
+   "lon": -99.1413453,
+   "timestamp": "2025-01-28T04:26:41Z",
+   "version": 1,
+   "changeset": 161842856,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12537858629,
+   "lat": 19.367979,
+   "lon": -99.1413262,
+   "timestamp": "2025-01-28T04:26:41Z",
+   "version": 1,
+   "changeset": 161842856,
+   "user": "Quixlian",
+   "uid": 16289897
   },
   {
    "type": "node",
@@ -3781,6 +6586,50 @@
    "id": 12663037468,
    "lat": 19.3701602,
    "lon": -99.1403718,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 1,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 12663037470,
+   "lat": 19.3704132,
+   "lon": -99.1403102,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 1,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 12663037471,
+   "lat": 19.3703648,
+   "lon": -99.1402849,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 1,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 12663037472,
+   "lat": 19.3703831,
+   "lon": -99.1402456,
+   "timestamp": "2025-03-14T16:12:38Z",
+   "version": 1,
+   "changeset": 163616623,
+   "user": "Juan MAS",
+   "uid": 18570611
+  },
+  {
+   "type": "node",
+   "id": 12663037473,
+   "lat": 19.3704314,
+   "lon": -99.1402709,
    "timestamp": "2025-03-14T16:12:38Z",
    "version": 1,
    "changeset": 163616623,
@@ -4058,6 +6907,72 @@
     "railway": "stop",
     "subway": "yes"
    }
+  },
+  {
+   "type": "node",
+   "id": 13283955743,
+   "lat": 19.3697506,
+   "lon": -99.1423385,
+   "timestamp": "2025-11-05T21:31:07Z",
+   "version": 1,
+   "changeset": 174260907,
+   "user": "mikeee26",
+   "uid": 23232870
+  },
+  {
+   "type": "node",
+   "id": 13283955744,
+   "lat": 19.3697372,
+   "lon": -99.1422283,
+   "timestamp": "2025-11-05T21:31:07Z",
+   "version": 1,
+   "changeset": 174260907,
+   "user": "mikeee26",
+   "uid": 23232870
+  },
+  {
+   "type": "node",
+   "id": 13283955745,
+   "lat": 19.3696548,
+   "lon": -99.1422425,
+   "timestamp": "2025-11-05T21:31:07Z",
+   "version": 1,
+   "changeset": 174260907,
+   "user": "mikeee26",
+   "uid": 23232870
+  },
+  {
+   "type": "node",
+   "id": 13283955746,
+   "lat": 19.3696387,
+   "lon": -99.1421191,
+   "timestamp": "2025-11-05T21:31:07Z",
+   "version": 1,
+   "changeset": 174260907,
+   "user": "mikeee26",
+   "uid": 23232870
+  },
+  {
+   "type": "node",
+   "id": 13283955747,
+   "lat": 19.3694586,
+   "lon": -99.1421476,
+   "timestamp": "2025-11-05T21:31:07Z",
+   "version": 1,
+   "changeset": 174260907,
+   "user": "mikeee26",
+   "uid": 23232870
+  },
+  {
+   "type": "node",
+   "id": 13283955748,
+   "lat": 19.3694935,
+   "lon": -99.1423878,
+   "timestamp": "2025-11-05T21:31:07Z",
+   "version": 1,
+   "changeset": 174260907,
+   "user": "mikeee26",
+   "uid": 23232870
   }
  ]
 }

@@ -10,6 +10,13 @@ from .geometry import LocalFrame, point_segment_distance
 # invisibles cuando plantilla y soldadura llegan al mismo sitio.
 SNAP_TOLERANCE_M = 0.25
 
+# Un vértice nuestro a menos de esto de un nodo que ya existe en OSM es
+# ese nodo: el KML se digitalizó sobre la misma esquina de edificio, y
+# emitir uno propio al lado dejaría dos nodos gemelos sobre el mismo
+# punto. Es más ancha que SNAP_TOLERANCE_M porque compara dibujos de dos
+# manos distintas, no dos piezas del mismo generador.
+FOREIGN_REUSE_M = 0.5
+
 
 @dataclass
 class OsmNode:
@@ -54,6 +61,10 @@ class OsmDocument:
         self.nodes: dict[int, OsmNode] = {}
         self.ways: list[OsmWay] = []
         self._next_id = -1
+        # Nodos que el validador exime de estar dentro del área de la
+        # estación: puertas, centro y explanada de un edificio de acceso
+        # están a la intemperie por definición.
+        self.outdoor: set[int] = set()
 
     def _new_id(self) -> int:
         i = self._next_id
@@ -118,6 +129,36 @@ class OsmDocument:
         self.ways.append(way)
         return way
 
+    def reuse_foreign_node(self, u: float, v: float, context=None,
+                           radius: float = FOREIGN_REUSE_M) -> int | None:
+        """Nodo de OSM que ocupa ya ese punto, o None.
+
+        Busca primero en el documento y después en el contexto, que
+        todavía puede no haberlo embebido; si lo encuentra en el contexto
+        lo embebe congelado. El nodo no se mueve ni se marca: lo único
+        que cambia es que un way nuestro lo referencia.
+        """
+        best = None
+        for node in self.nodes.values():
+            if not node.foreign or node.action == "delete":
+                continue
+            d = math.hypot(node.u - u, node.v - v)
+            if d <= radius and (best is None or d < best[0]):
+                best = (d, node.id)
+        if best is not None:
+            return best[1]
+        if context is None:
+            return None
+        found = None
+        for osm_id, node in context.nodes.items():
+            nu, nv = context.frame.to_local(node.lat, node.lon)
+            d = math.hypot(nu - u, nv - v)
+            if d <= radius and (found is None or d < found[0]):
+                found = (d, node)
+        if found is None:
+            return None
+        return self.add_foreign_node(found[1])
+
     def adopt_node(self, foreign, u: float, v: float, tags: dict) -> int:
         """Reutiliza un nodo de OSM como nodo nuestro, marcándolo modify.
 
@@ -143,6 +184,62 @@ class OsmDocument:
         node.latlon = None
         node.action = "modify"
         return foreign.osm_id, conflicts
+
+    def adopt_way(self, way: OsmWay, tags: dict | None = None,
+                  node_ids=None, kind: str | None = None,
+                  label: str | None = None):
+        """Convierte un way ajeno congelado en uno que modificamos.
+
+        Conserva id, `version` y metadatos —JOSM necesita la versión para
+        subir una modificación en vez de un alta— y las etiquetas de OSM,
+        que ganan en cada conflicto igual que en `adopt_node`. Con
+        `node_ids` se le sustituye la geometría: los vértices que quedan
+        sin ningún otro way que los use salen con `action='delete'`, y
+        los que además llevan etiquetas se dejan intactos y se devuelven
+        aparte, porque un nodo etiquetado es un objeto por derecho propio
+        y no un vértice de este muro.
+
+        Devuelve (conflictos, borrados, etiquetados que se conservaron).
+        """
+        conflicts = []
+        merged = dict(way.tags)
+        for key, value in (tags or {}).items():
+            if key not in merged:
+                merged[key] = value
+            elif str(merged[key]) != str(value):
+                conflicts.append((key, merged[key], value))
+        deleted: list[int] = []
+        kept: list[int] = []
+        if node_ids is not None:
+            previous = list(way.nodes)
+            new_ids = list(node_ids)
+            if previous and previous[0] == previous[-1]:
+                if new_ids and new_ids[0] != new_ids[-1]:
+                    new_ids.append(new_ids[0])
+            way.nodes = new_ids
+            still_used = set()
+            for other in self.ways:
+                if other is way:
+                    continue
+                still_used |= set(other.nodes)
+            still_used |= set(new_ids)
+            for nid in dict.fromkeys(previous):
+                if nid in still_used or nid not in self.nodes:
+                    continue
+                node = self.nodes[nid]
+                if node.tags:
+                    kept.append(nid)
+                    continue
+                node.action = "delete"
+                deleted.append(nid)
+        way.tags = merged
+        way.frozen = False
+        way.action = "modify"
+        if kind:
+            way.kind = kind
+        if label:
+            way.label = label
+        return conflicts, deleted, kept
 
     # ---------------- soldadura ----------------
 

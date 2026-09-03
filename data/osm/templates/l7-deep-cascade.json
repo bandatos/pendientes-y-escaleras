@@ -1,115 +1,185 @@
 {
   "family": "l7-deep-cascade",
-  "description": "Dos andenes laterales profundos (nivel -3) bajo la avenida, con una cascada vertical independiente por lado: vestíbulo de andén (-3) → mezzanine (-2) → vestíbulo de torniquetes (-1) → edificio de acceso (0) → acceso. Un pasillo inferior (-4) bajo las vías comunica los dos andenes. Estación hermana: San Joaquín.",
+  "description": "Dos andenes laterales profundos (nivel -3) bajo la avenida, tres pasillos por andén hasta un vestíbulo transversal, un pasillo inferior (-4) que cruza bajo las vías, y por cada lado una espiral dentro del rectángulo de salida: escaleras -3→-2, pasillo -2, escaleras -2→-1, vestíbulo de torniquetes -1 y escaleras -1→0 hasta el centro del pabellón de acceso que OSM ya tiene mapeado. La geometría sigue las ramas del polígono KML del relevamiento. Estación hermana: San Joaquín.",
   "station_area": "kml",
-  "axes": "u = metros sobre el eje de las vías, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~6.5°, v>0 es el oriente.",
+  "axes": "u = metros sobre el eje de las vías, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~6.5°, v>0 es el oriente. La franja de andenes del KML mide unos 15 m de ancho y su eje no coincide con el ancla, así que los andenes cuelgan de los bordes de la franja (band_side) y no de una v escrita a mano.",
   "nodes": {
     "P-01": {
-      "u": 0, "v": 6.5,
-      "length": 150, "width": 5,
+      "u": 0, "length": 153, "track_gap": 6.5,
+      "band_side": "+v",
       "spine_v": -1.5, "spine_margin": 0,
-      "comment": "Andén oriente, sentido El Rosario. La línea de circulación va del lado de la vía."
+      "comment": "Andén oriente, sentido El Rosario. Supuesto D1: manda el KML. La franja se reparte en dos andenes más el hueco de las dos vías juntas, que Ricardo mide en 6.5 m (3 m cada vía); el ancho del andén es lo que sobra dividido entre dos, y su borde largo exterior cae sobre el borde de la franja. La senda va del lado de la vía."
     },
     "P-02": {
-      "u": 0, "v": -6.5,
-      "length": 150, "width": 5,
+      "u": 0, "length": 153, "track_gap": 6.5,
+      "band_side": "-v",
       "spine_v": 1.5, "spine_margin": 0,
-      "comment": "Andén poniente, sentido Barranca del Muerto."
+      "comment": "Andén poniente, sentido Barranca del Muerto. Espejo de P-01 respecto del eje de la franja."
     },
 
-    "N-01": {"u": -2, "v": 13, "comment": "Vestíbulo de andén oriente (-3)."},
-    "N-02": {"u": 0, "v": 21, "comment": "Mezzanine oriente (-2)."},
-    "N-03": {"u": 2, "v": 29, "comment": "Vestíbulo de torniquetes oriente (-1)."},
-    "N-09": {"u": 4, "v": 35, "comment": "Edificio de acceso oriente (0)."},
-    "E-02": {"u": 5.6, "v": 38.1,
-     "building": {"side": 12, "inner_node": "N-09", "closed_doors": []},
-     "comment": "Acceso oriente; espejo del poniente, sin nodo OSM previo que lo confirme. El bloque building dibuja el edificio de acceso: cuadrado de 12 m centrado aquí, tres puertas en el lado que da a la banqueta y la cascada arrancando en el centro del lado opuesto, donde queda N-09."},
+    "N-01": {"u": 22.5, "v": 43.0, "comment": "Vestíbulo de andén oriente (-3). La posición real la fija el banco cascada-oriente-1, que lo lleva al pie de sus escaleras dentro del rectángulo de salida; el vestíbulo transversal del KML se dibuja como extra_way hasta aquí."},
+    "N-02": {"u": 14.0, "v": 42.0, "comment": "Mezzanine oriente (-2). Lo coloca el banco cascada-oriente-2."},
+    "N-03": {"u": -2.129, "v": 30.976, "comment": "Vestíbulo de torniquetes oriente (-1), al final del pasillo de torniquetes y al pie de las escaleras al pabellón."},
+    "N-09": {"u": 8.871, "v": 30.976, "comment": "Centro del pabellón de acceso oriente; lo recoloca el bloque building de E-02 en el centroide del way 476125318 de OSM."},
+    "E-02": {
+      "u": 8.871, "v": 30.976,
+      "building": {"side": 12, "inner_node": "N-09", "stair_side": "-u",
+                   "closed_doors": []},
+      "comment": "Acceso oriente. No tiene nodo propio en OSM; el pabellón sí (way 476125318), y el generador lo adopta. Se le aplica por simetría la misma disposición que al poniente —escaleras por el lado corto sur, puertas en los otros tres— pero `closed_doors` queda vacío: no está relevado cuál de las tres está clausurada."
+    },
 
-    "N-05": {"u": -2, "v": -13, "comment": "Vestíbulo de andén poniente (-3)."},
-    "N-06": {"u": 0, "v": -21, "comment": "Mezzanine poniente (-2)."},
-    "N-07": {"u": 2, "v": -29, "comment": "Vestíbulo de torniquetes poniente (-1)."},
-    "N-08": {"u": 4, "v": -35, "comment": "Edificio de acceso poniente (0)."},
-    "E-01": {"u": 5.6, "v": -38.1,
-     "building": {"side": 12, "inner_node": "N-08", "closed_doors": []},
-     "comment": "Acceso poniente; posición medida del nodo OSM 3761143341, que pasa a ser la puerta central del edificio."},
+    "N-05": {"u": 8.5, "v": -46.5, "comment": "Vestíbulo de andén poniente (-3); lo coloca el banco cascada-poniente-1."},
+    "N-06": {"u": 0.0, "v": -45.5, "comment": "Mezzanine poniente (-2); lo coloca el banco cascada-poniente-2."},
+    "N-07": {"u": -12.0, "v": -38.206, "comment": "Vestíbulo de torniquetes poniente (-1)."},
+    "N-08": {"u": -1.016, "v": -38.206, "comment": "Centro del pabellón de acceso poniente; lo recoloca el bloque building de E-01 en el centroide del way 476125317 de OSM."},
+    "E-01": {
+      "u": -1.016, "v": -38.206,
+      "building": {"side": 12, "inner_node": "N-08", "stair_side": "-u",
+                   "closed_doors": ["+u"]},
+      "comment": "Acceso poniente. Las escaleras entran por el lado corto sur, así que hay puerta en los otros tres muros; Ricardo relevó que la del norte (+u) está clausurada y que las dos abiertas son las laterales. El nodo 3761143341 de OSM se adopta como la puerta del muro al que está más pegado; el pabellón es el way 476125317."
+    },
 
-    "N-04": {"u": -2, "v": 0, "comment": "Pasillo inferior de cambio de andén (-4), bajo las vías."}
+    "N-04": {"u": 12, "v": 1.85, "comment": "Pasillo inferior de cambio de andén (-4), bajo las vías. Su posición no se usa: las dos escaleras que llegan a él traen su geometría escrita sobre las sendas de los andenes."}
   },
-  "extra_ways": [],
+  "banks": {
+    "cascada-oriente-1": {
+      "from": "N-01", "to": "N-02",
+      "axis": [[18.5, 43.0], [1.5, 43.0]], "place": ["from"],
+      "spacing": 4, "lead": 4,
+      "comment": "Tres escaleras -3→-2 a lo largo de u, junto al borde lejano del rectángulo de salida, alejándose del pasillo por el que se entra. Solo coloca N-01: N-02 lo pone el banco siguiente y entre los dos va el pasillo -2."
+    },
+    "cascada-oriente-2": {
+      "from": "N-02", "to": "N-03",
+      "axis": [[14.0, 38.0], [14.0, 33.0]], "place": ["from"],
+      "spacing": 4, "lead": 4,
+      "comment": "Tres escaleras -2→-1 de vuelta a lo largo de u; el vestíbulo de torniquetes sale de su cabecera como extra_way."
+    },
+    "cascada-oriente-3": {
+      "from": "N-03", "to": "N-09",
+      "spacing": 4, "lead": 4,
+      "comment": "Dos escaleras -1→0 del vestíbulo de torniquetes al centro del pabellón. Sin axis: sus dos nodos de encuentro ya son N-03 y el centro del pabellón, así que no recoloca ninguno."
+    },
+    "cascada-poniente-1": {
+      "from": "N-05", "to": "N-06",
+      "axis": [[4.5, -46.5], [-10.5, -46.5]], "place": ["from"],
+      "spacing": 4, "lead": 4
+    },
+    "cascada-poniente-2": {
+      "from": "N-06", "to": "N-07",
+      "axis": [[0.0, -41.5], [0.0, -36.5]], "place": ["from"],
+      "spacing": 4, "lead": 4
+    },
+    "cascada-poniente-3": {
+      "from": "N-07", "to": "N-08",
+      "spacing": 4, "lead": 4
+    }
+  },
+  "extra_ways": [
+    {"geometry": [[15.5, 18.4], [16.3, 21.3], [16.3, 26.0], [20.0, 33.0], [22.5, 43.0]],
+     "level": -3,
+     "comment": "Vestíbulo transversal oriente y pasillo de salida al rectángulo. El grafo modela todo el nivel -3 fuera del andén como un solo nodo (N-01), así que el reparto entre los tres pasillos de andén y el pie de la cascada se dibuja aquí."},
+    {"geometry": [[15.5, -14.7], [16.0, -17.7], [16.0, -22.0], [12.0, -28.0], [9.0, -34.0], [8.5, -46.5]],
+     "level": -3,
+     "comment": "Lo mismo del lado poniente; el rectángulo poniente está corrido unos 12 m en u respecto del oriente, así que no es el espejo exacto."},
+
+    {"geometry": [{"spine": "P-01", "u": 12, "dv": 1.5}, {"spine": "P-02", "u": 12, "dv": -1.5}],
+     "level": -4,
+     "comment": "Paso bajo las vías, alineado con los pasillos centrales. Une los pies de las dos escaleras -4;-3; mide lo que separa los ejes de los dos andenes, unos 11 m."},
+
+    {"geometry": [[-2.5, 43.0], [14.0, 42.0]],
+     "level": -2,
+     "comment": "Pasillo del mezzanine oriente: la vuelta de 90° entre la cabecera de la primera cascada y el pie de la segunda."},
+    {"geometry": [[-14.5, -46.5], [0.0, -45.5]],
+     "level": -2,
+     "comment": "Pasillo del mezzanine poniente."},
+
+    {"geometry": [[14.0, 29.0], [-2.129, 28.0], [-2.129, 30.976]],
+     "level": -1,
+     "turnstile": {"from": [14.0, 29.0], "distance": 6},
+     "comment": "Vestíbulo de torniquetes oriente. Resuelve el pendiente de task-26: los vestíbulos -1 de San Pedro solo reciben escaleras y un torniquete no puede ir sobre highway=steps, así que el tramo que lo sostiene se declara aquí."},
+    {"geometry": [[0.0, -32.5], [-12.0, -34.0], [-12.0, -38.206]],
+     "level": -1,
+     "turnstile": {"from": [0.0, -32.5], "distance": 6},
+     "comment": "Vestíbulo de torniquetes poniente."}
+  ],
   "edges": [
     {"from": "P-01", "to": "N-01", "mode": 1, "index": 0,
-     "geometry": [[-14, 5.0], "N-01"],
-     "comment": "Tres accesos al vestíbulo repartidos a lo largo del andén oriente. Pasillo 1 (miro_id en San Pedro 3458764655659671984)."},
+     "geometry": [{"spine": "P-01", "u": -7.7}, [-7.7, 13.0], [-6.0, 16.8], [-2.5, 18.6], [15.5, 18.4]],
+     "comment": "Pasillo lateral sur del andén oriente, en codo, siguiendo la rama del KML en u ≈ -7.5 (miro_id en San Pedro 3458764655659671984). El índice no dice qué pasillo es: se asigna ordenando por miro_id, así que hay que verificarlo con note:miro_id contra el tablero."},
     {"from": "P-01", "to": "N-01", "mode": 1, "index": 1,
-     "geometry": [[-2, 5.0], "N-01"],
-     "comment": "Pasillo 2 del andén oriente (miro_id en San Pedro 3458764655659672021)."},
+     "geometry": [{"spine": "P-01", "u": 15.0}, [15.5, 18.4]],
+     "comment": "Pasillo central del andén oriente, el ancho (7,2–7,7 m en el KML), recto (miro_id 3458764655659672021)."},
     {"from": "P-01", "to": "N-01", "mode": 1, "index": 2,
-     "geometry": [[10, 5.0], "N-01"],
-     "comment": "Pasillo 3 del andén oriente (miro_id en San Pedro 3458764655659672022)."},
+     "geometry": [{"spine": "P-01", "u": 38.0}, [38.0, 13.0], [36.5, 16.9], [33.0, 18.6], [15.5, 18.4]],
+     "comment": "Pasillo lateral norte del andén oriente, en codo, rama del KML en u ≈ 38 (miro_id 3458764655659672022)."},
 
     {"from": "P-02", "to": "N-05", "mode": 1, "index": 0,
-     "geometry": [[-14, -5.0], "N-05"],
-     "comment": "Pasillo 1 del andén poniente (miro_id en San Pedro 3458764655659671995)."},
+     "geometry": [{"spine": "P-02", "u": -7.7}, [-7.7, -9.3], [-6.0, -13.1], [-2.5, -14.9], [15.5, -14.7]],
+     "comment": "Pasillo lateral sur del andén poniente (miro_id 3458764655659671995)."},
     {"from": "P-02", "to": "N-05", "mode": 1, "index": 1,
-     "geometry": [[-2, -5.0], "N-05"],
-     "comment": "Pasillo 2 del andén poniente (miro_id en San Pedro 3458764655659672020)."},
+     "geometry": [{"spine": "P-02", "u": 15.0}, [15.5, -14.7]],
+     "comment": "Pasillo central del andén poniente (miro_id 3458764655659672020)."},
     {"from": "P-02", "to": "N-05", "mode": 1, "index": 2,
-     "geometry": [[10, -5.0], "N-05"],
-     "comment": "Pasillo 3 del andén poniente (miro_id en San Pedro 3458764655659672023)."},
+     "geometry": [{"spine": "P-02", "u": 38.0}, [38.0, -9.3], [36.5, -13.2], [33.0, -14.9], [15.5, -14.7]],
+     "comment": "Pasillo lateral norte del andén poniente (miro_id 3458764655659672023)."},
 
     {"from": "N-04", "to": "N-01", "mode": 2, "index": 0,
-     "geometry": ["N-04", "N-01"]},
+     "geometry": [{"spine": "P-01", "u": 12, "dv": 1.5}, {"spine": "P-01", "u": 18}],
+     "comment": "Escalera del paso inferior al andén oriente: baja del eje de la senda hacia el rellano de -4, que queda bajo el propio andén. El grafo la declara hasta N-01 (todo el nivel -3 es un nodo), pero el KML pone el cruce bajo las vías, así que se dibuja hasta la senda y desde ahí se llega al vestíbulo por el pasillo central."},
     {"from": "N-04", "to": "N-05", "mode": 2, "index": 0,
-     "geometry": ["N-04", "N-05"]},
+     "geometry": [{"spine": "P-02", "u": 12, "dv": -1.5}, {"spine": "P-02", "u": 18}],
+     "comment": "La misma escalera del lado poniente."},
 
     {"from": "N-01", "to": "N-02", "mode": 2, "index": 0,
-     "geometry": ["N-01", "N-02"], "bow": 1.5},
+     "bank": "cascada-oriente-1", "slot": 1,
+     "comment": "Escalera fija, al centro del banco."},
     {"from": "N-01", "to": "N-02", "mode": 4, "index": 0,
-     "geometry": ["N-01", "N-02"], "bow": 0.0,
-     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659671985)."},
+     "bank": "cascada-oriente-1", "slot": 0,
+     "comment": "Escalera eléctrica reversible (miro_id 3458764655659671985)."},
     {"from": "N-01", "to": "N-02", "mode": 4, "index": 1,
-     "geometry": ["N-01", "N-02"], "bow": -1.5,
-     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659671992)."},
+     "bank": "cascada-oriente-1", "slot": 2,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id 3458764655659671992)."},
 
     {"from": "N-02", "to": "N-03", "mode": 2, "index": 0,
-     "geometry": ["N-02", "N-03"], "bow": 1.5},
+     "bank": "cascada-oriente-2", "slot": 1},
     {"from": "N-02", "to": "N-03", "mode": 4, "index": 0,
-     "geometry": ["N-02", "N-03"], "bow": 0.0,
-     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659671986)."},
+     "bank": "cascada-oriente-2", "slot": 0,
+     "comment": "Escalera eléctrica reversible (miro_id 3458764655659671986)."},
     {"from": "N-02", "to": "N-03", "mode": 4, "index": 1,
-     "geometry": ["N-02", "N-03"], "bow": -1.5,
-     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659671987)."},
+     "bank": "cascada-oriente-2", "slot": 2,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id 3458764655659671987)."},
 
     {"from": "N-03", "to": "N-09", "mode": 2, "index": 0,
-     "geometry": ["N-03", "N-09"], "bow": 2.0},
+     "bank": "cascada-oriente-3", "slot": 0},
     {"from": "N-03", "to": "N-09", "mode": 4, "index": 0,
-     "geometry": ["N-03", "N-09"], "bow": -2.0},
+     "bank": "cascada-oriente-3", "slot": 1},
 
     {"from": "N-05", "to": "N-06", "mode": 2, "index": 0,
-     "geometry": ["N-05", "N-06"], "bow": -1.5},
+     "bank": "cascada-poniente-1", "slot": 1},
     {"from": "N-05", "to": "N-06", "mode": 4, "index": 0,
-     "geometry": ["N-05", "N-06"], "bow": 0.0,
-     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659671997)."},
+     "bank": "cascada-poniente-1", "slot": 0,
+     "comment": "Escalera eléctrica reversible (miro_id 3458764655659671997)."},
     {"from": "N-05", "to": "N-06", "mode": 4, "index": 1,
-     "geometry": ["N-05", "N-06"], "bow": 1.5,
-     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659671998)."},
+     "bank": "cascada-poniente-1", "slot": 2,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id 3458764655659671998)."},
 
     {"from": "N-06", "to": "N-07", "mode": 2, "index": 0,
-     "geometry": ["N-06", "N-07"], "bow": -1.5},
+     "bank": "cascada-poniente-2", "slot": 1},
     {"from": "N-06", "to": "N-07", "mode": 4, "index": 0,
-     "geometry": ["N-06", "N-07"], "bow": 0.0,
-     "comment": "Escalera eléctrica reversible (miro_id en San Pedro 3458764655659672002)."},
+     "bank": "cascada-poniente-2", "slot": 0,
+     "comment": "Escalera eléctrica reversible (miro_id 3458764655659672002)."},
     {"from": "N-06", "to": "N-07", "mode": 4, "index": 1,
-     "geometry": ["N-06", "N-07"], "bow": 1.5,
-     "comment": "Escalera eléctrica de un solo sentido (miro_id en San Pedro 3458764655659672003)."},
+     "bank": "cascada-poniente-2", "slot": 2,
+     "comment": "Escalera eléctrica de un solo sentido (miro_id 3458764655659672003)."},
 
     {"from": "N-07", "to": "N-08", "mode": 2, "index": 0,
-     "geometry": ["N-07", "N-08"], "bow": -2.0},
+     "bank": "cascada-poniente-3", "slot": 0},
     {"from": "N-07", "to": "N-08", "mode": 4, "index": 0,
-     "geometry": ["N-07", "N-08"], "bow": 2.0},
+     "bank": "cascada-poniente-3", "slot": 1},
 
     {"from": "N-08", "to": "E-01", "mode": 1, "index": 0,
-     "geometry": ["N-08", "E-01"]},
+     "geometry": ["N-08", "E-01"],
+     "comment": "Del centro del pabellón a la puerta que el grafo conoce como acceso; las otras dos puertas las une el generador."},
     {"from": "E-02", "to": "N-09", "mode": 1, "index": 0,
      "geometry": ["E-02", "N-09"]}
   ]

@@ -1,10 +1,12 @@
 """Contexto de OSM alrededor de una estación: consulta, caché y lectura.
 
 El archivo generado tiene que engancharse con lo que ya existe en OSM en
-vez de ser una isla, así que entra al documento solo aquello a lo que
-nuestros objetos se atan: los nodos de acceso ya enlazados en la base,
-las banquetas cercanas y el contorno de la estación cuando OSM lo tiene.
-Todo lo demás lo descarga JOSM por su cuenta.
+vez de ser una isla, y además tiene que leerse: entran los nodos de
+acceso ya enlazados en la base, el contorno de la estación cuando OSM lo
+tiene, y congelado —id real, sin tocar— todo lo que rodea a la estación
+a menos de `CONTEXT_EMBED_M`: banquetas, calles, vías urbanas,
+transporte público, edificios y barreras. Solo las peatonales reciben
+tramos de conexión desde los accesos.
 
 La caché en `data/osm/context/<slug>.json` está versionada a propósito:
 es lo que hace reproducible la exportación sin red y sin depender de que
@@ -32,7 +34,11 @@ USER_AGENT = ("pendientes-y-escaleras/1.0 (Bandatos; relevamiento de "
 RETRY_STATUS = (429, 502, 503, 504)
 RETRY_PAUSES = (5, 20, 60)
 
-DEFAULT_RADIUS_M = 150
+# La consulta tiene que cubrir el radio de embebido medido desde el
+# nodo más lejano de la estación, no desde el ancla: nuestros nodos
+# llegan a ~80 m del ancla, así que 80 + 120 = 200 es el mínimo real y
+# 250 deja margen para plantillas más extendidas.
+DEFAULT_RADIUS_M = 250
 
 # Ways a las que un acceso se puede conectar directamente.
 FOOTWAY_HIGHWAYS = ("footway", "path", "pedestrian", "steps")
@@ -48,7 +54,7 @@ TRACK_RAILWAYS = ("subway", "light_rail", "tram")
 OUTLINE_BUILDINGS = ("train_station", "transportation")
 # Distancia a la que un objeto del entorno se considera parte de la
 # escena de la estación y entra al archivo.
-CONTEXT_EMBED_M = 50.0
+CONTEXT_EMBED_M = 120.0
 
 
 class OverpassError(Exception):
@@ -57,7 +63,12 @@ class OverpassError(Exception):
 
 def build_query(osm_ids: list[int], lat: float, lon: float,
                 radius: int = DEFAULT_RADIUS_M) -> str:
-    """Consulta acotada: enlaces de la base, peatonales y contornos."""
+    """Consulta acotada: enlaces de la base y el entorno de la manzana.
+
+    Peatonales, calles, vías urbanas, transporte público, edificios y
+    barreras. Lo que entra al archivo se decide después, por distancia
+    a nuestros nodos (`CONTEXT_EMBED_M`); aquí se descarga de más.
+    """
     around = f"around:{radius},{lat:.7f},{lon:.7f}"
     foot = "|".join(FOOTWAY_HIGHWAYS)
     buildings = "|".join(OUTLINE_BUILDINGS)
@@ -67,6 +78,15 @@ def build_query(osm_ids: list[int], lat: float, lon: float,
              f'way({around})["highway"~"^({roads})$"];',
              f'way({around})["railway"~"^({tracks})$"];',
              f'way({around})["building"~"^({buildings})$"];',
+             # Todos los edificios, no solo los contornos de estación:
+             # delimitan la manzana, la explanada y el camino a la
+             # banqueta, y algunos accesos ya están mapeados como
+             # edificio. Solo ways: `document.py` no escribe relaciones,
+             # así que los multipolígonos quedan fuera.
+             f'way({around})["building"];',
+             # Bardas, muros y rejas: son lo que impide que un camino
+             # dibujado sobre el papel exista en la calle.
+             f'way({around})["barrier"];',
              f'node({around})["public_transport"];',
              f'way({around})["public_transport"];',
              f'node({around})["highway"="bus_stop"];',
@@ -182,6 +202,14 @@ class StationContext:
                 or way.tags.get("public_transport") == "station")
 
     @staticmethod
+    def is_building(way: ForeignWay) -> bool:
+        return bool(way.tags.get("building"))
+
+    @staticmethod
+    def is_barrier(way: ForeignWay) -> bool:
+        return bool(way.tags.get("barrier"))
+
+    @staticmethod
     def is_public_transport(element) -> bool:
         tags = element.tags
         return bool(tags.get("public_transport")
@@ -202,21 +230,30 @@ class StationContext:
             return "calle"
         if tags.get("railway") in TRACK_RAILWAYS:
             return "vía férrea"
+        if isinstance(element, ForeignWay) and self.is_building(element):
+            return "edificio"
+        if isinstance(element, ForeignWay) and self.is_barrier(element):
+            return "barrera"
         return "otro"
 
     def scene_elements(self):
-        """Calles, vías y transporte público que rodean a la estación.
+        """Todo lo del entorno que puede entrar como objeto congelado.
 
-        Las peatonales quedan fuera: entran por la regla de connectors,
-        que es más estricta. Esto es lo que hace que el archivo abierto
-        en JOSM se vea dentro de su manzana y no flotando.
+        Peatonales, calles, vías urbanas, transporte público, edificios
+        y barreras. Es lo que hace que el archivo abierto en JOSM se vea
+        dentro de su manzana y no flotando. Los contornos de estación
+        quedan fuera: los coloca `_build_station_area`, que decide si el
+        área sale del KML, de OSM o de las dos.
         """
         ways, nodes = [], []
         for way in sorted(self.ways.values(), key=lambda w: w.osm_id):
-            if self.is_footway(way) or self.is_outline(way):
+            if self.is_outline(way):
                 continue
-            if (way.tags.get("highway") in ROAD_HIGHWAYS
+            if (self.is_footway(way)
+                    or way.tags.get("highway") in ROAD_HIGHWAYS
                     or way.tags.get("railway") in TRACK_RAILWAYS
+                    or self.is_building(way)
+                    or self.is_barrier(way)
                     or self.is_public_transport(way)):
                 ways.append(way)
         for node in sorted(self.nodes.values(), key=lambda n: n.osm_id):

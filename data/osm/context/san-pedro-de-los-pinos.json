@@ -2,7 +2,7 @@
  "version": 0.6,
  "generator": "Overpass API 0.7.62.11 87bfad18",
  "osm3s": {
-  "timestamp_osm_base": "2026-09-03T00:17:13Z",
+  "timestamp_osm_base": "2026-09-03T01:22:14Z",
   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
  },
  "elements": [
@@ -82,6 +82,37 @@
    }
   },
   {
+   "type": "node",
+   "id": 14027750152,
+   "lat": 19.3893166,
+   "lon": -99.1860803,
+   "timestamp": "2026-07-20T00:15:27Z",
+   "version": 1,
+   "changeset": 186032447,
+   "user": "Campanita",
+   "uid": 4431244,
+   "tags": {
+    "public_transport": "stop_position",
+    "trolleybus": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 14027750153,
+   "lat": 19.3893248,
+   "lon": -99.1861721,
+   "timestamp": "2026-08-05T14:12:28Z",
+   "version": 3,
+   "changeset": 186981481,
+   "user": "ratrun",
+   "uid": 474183,
+   "tags": {
+    "bench": "no",
+    "public_transport": "platform",
+    "shelter": "no"
+   }
+  },
+  {
    "type": "way",
    "id": 24723326,
    "timestamp": "2020-09-23T17:41:03Z",
@@ -140,6 +171,35 @@
   },
   {
    "type": "way",
+   "id": 25213365,
+   "timestamp": "2020-12-14T06:08:27Z",
+   "version": 13,
+   "changeset": 95785344,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "nodes": [
+    274920343,
+    274920633,
+    274921167,
+    274921467,
+    274923307,
+    274923111,
+    274923322,
+    8226555240,
+    274920344,
+    274923774,
+    274924943,
+    274920345
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Avenida 2",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
    "id": 25213367,
    "timestamp": "2024-04-23T16:51:44Z",
    "version": 13,
@@ -162,6 +222,69 @@
    "tags": {
     "highway": "residential",
     "name": "Avenida 1",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25213410,
+   "timestamp": "2026-06-28T09:56:51Z",
+   "version": 10,
+   "changeset": 184735014,
+   "user": "PPZ6",
+   "uid": 20011809,
+   "nodes": [
+    1395878633,
+    13971955044,
+    30381352,
+    274921466,
+    274921467,
+    274921468,
+    274921469
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle 5",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25213416,
+   "timestamp": "2023-05-24T18:37:44Z",
+   "version": 11,
+   "changeset": 136513237,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    274921469,
+    8596974050,
+    274921478
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Cerrada Revolución",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25213500,
+   "timestamp": "2020-12-14T06:08:27Z",
+   "version": 6,
+   "changeset": 95785344,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "nodes": [
+    274923322,
+    8226555238,
+    274923343
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle 7",
     "oneway": "yes",
     "surface": "asphalt"
    }
@@ -227,6 +350,32 @@
    "tags": {
     "highway": "residential",
     "name": "Calle 6",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25213587,
+   "timestamp": "2026-06-28T09:56:51Z",
+   "version": 7,
+   "changeset": 184735014,
+   "user": "PPZ6",
+   "uid": 20011809,
+   "nodes": [
+    274924941,
+    13971955049,
+    30381347,
+    274924942,
+    274924943,
+    274924944,
+    11841847651,
+    274924321
+   ],
+   "tags": {
+    "highway": "residential",
+    "lane_markings": "no",
+    "name": "Calle 15",
     "oneway": "yes",
     "surface": "asphalt"
    }
@@ -413,6 +562,103 @@
   },
   {
    "type": "way",
+   "id": 362821865,
+   "timestamp": "2025-11-01T00:45:20Z",
+   "version": 5,
+   "changeset": 174043237,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    3670714610,
+    3670714611,
+    3670714612,
+    3670714613,
+    3670714614,
+    3670714615,
+    3670714616,
+    3670714617,
+    3670714610
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 364043538,
+   "timestamp": "2025-11-01T00:45:20Z",
+   "version": 3,
+   "changeset": 174043237,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    3681551984,
+    3681551979,
+    3681551977,
+    3681551998,
+    3681551995,
+    3681551992,
+    3681551989,
+    3681551987,
+    3681551986,
+    3681551983,
+    3681551981,
+    3681551978,
+    3681551984
+   ],
+   "tags": {
+    "building": "church",
+    "name": "San Vicente Ferrer"
+   }
+  },
+  {
+   "type": "way",
+   "id": 364043539,
+   "timestamp": "2017-02-21T17:39:00Z",
+   "version": 2,
+   "changeset": 46281374,
+   "user": "Ravrol",
+   "uid": 4512222,
+   "nodes": [
+    3681551988,
+    3681551985,
+    3681551982,
+    3681551980,
+    3681551988
+   ],
+   "tags": {
+    "amenity": "marketplace",
+    "building": "yes",
+    "name": "Mercado San Pedro de los Pinos"
+   }
+  },
+  {
+   "type": "way",
+   "id": 372548765,
+   "timestamp": "2020-09-23T14:51:14Z",
+   "version": 2,
+   "changeset": 91375379,
+   "user": "Whimsical Otter",
+   "uid": 7466823,
+   "nodes": [
+    3761133308,
+    3761133309,
+    3761133310,
+    3761133311,
+    3761133308
+   ],
+   "tags": {
+    "addr:street": "Avenida Revolución",
+    "amenity": "fuel",
+    "brand": "Total",
+    "brand:wikidata": "Q154037",
+    "brand:wikipedia": "fr:Total (entreprise)",
+    "building": "roof",
+    "name": "Total"
+   }
+  },
+  {
+   "type": "way",
    "id": 466395124,
    "timestamp": "2024-08-26T09:19:31Z",
    "version": 4,
@@ -451,6 +697,62 @@
   },
   {
    "type": "way",
+   "id": 476125317,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222,
+   "nodes": [
+    4697711291,
+    4697711292,
+    4697711293,
+    4697711294,
+    4697711291
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 476125318,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222,
+   "nodes": [
+    4697711295,
+    4697711296,
+    4697711297,
+    4697711298,
+    4697711295
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 656853933,
+   "timestamp": "2020-12-11T18:51:46Z",
+   "version": 5,
+   "changeset": 95698273,
+   "user": "GhostEye",
+   "uid": 9633773,
+   "nodes": [
+    6152632506,
+    7935389625
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Privada Gudiño",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
    "id": 684473002,
    "timestamp": "2024-04-23T16:51:44Z",
    "version": 9,
@@ -482,6 +784,312 @@
   },
   {
    "type": "way",
+   "id": 684473003,
+   "timestamp": "2022-12-06T19:36:24Z",
+   "version": 6,
+   "changeset": 129795687,
+   "user": "Human1each",
+   "uid": 15653003,
+   "nodes": [
+    274921478,
+    8596974049,
+    274921479
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Cerrada Revolución",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 684473013,
+   "timestamp": "2025-02-12T05:51:44Z",
+   "version": 5,
+   "changeset": 162415493,
+   "user": "mdelatorre",
+   "uid": 84642,
+   "nodes": [
+    274922628,
+    8596974063,
+    8596974062,
+    274922630,
+    8596974060,
+    8596974061,
+    274922633
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle La Bayoneta"
+   }
+  },
+  {
+   "type": "way",
+   "id": 787821920,
+   "timestamp": "2020-04-07T04:26:26Z",
+   "version": 2,
+   "changeset": 83173175,
+   "user": "gscholz",
+   "uid": 109705,
+   "nodes": [
+    7365506816,
+    7365506817,
+    7365506818,
+    7365506819,
+    7365506816
+   ],
+   "tags": {
+    "brand": "Mapfre",
+    "brand:wikidata": "Q544532",
+    "brand:wikipedia": "en:Mapfre",
+    "building": "yes",
+    "name": "Mapfre",
+    "office": "insurance"
+   }
+  },
+  {
+   "type": "way",
+   "id": 790780093,
+   "timestamp": "2020-04-11T15:41:22Z",
+   "version": 1,
+   "changeset": 83402950,
+   "user": "eripop",
+   "uid": 11015117,
+   "nodes": [
+    7392689434,
+    7392689435,
+    7392689436,
+    7392689437,
+    7392689434
+   ],
+   "tags": {
+    "addr:city": "Ciudad de Mexico",
+    "addr:postcode": "03800",
+    "addr:street": "Avenida 2 48",
+    "building": "yes",
+    "name": "Asociación Montessori de México AC"
+   }
+  },
+  {
+   "type": "way",
+   "id": 790795788,
+   "timestamp": "2020-04-11T16:33:48Z",
+   "version": 1,
+   "changeset": 83404714,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474,
+   "nodes": [
+    7392813058,
+    7392813059,
+    7392813060,
+    7392813061,
+    7392813058
+   ],
+   "tags": {
+    "addr:city": "San pedro de Los pinos",
+    "addr:postcode": "03800",
+    "addr:street": "Avenida 1º de Mayo",
+    "building": "apartments",
+    "building:levels": "2",
+    "height": "8",
+    "name": "conjunto de casas habitacion"
+   }
+  },
+  {
+   "type": "way",
+   "id": 790796009,
+   "timestamp": "2020-04-11T16:35:36Z",
+   "version": 1,
+   "changeset": 83404770,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474,
+   "nodes": [
+    7392813062,
+    7392813063,
+    7392813064,
+    7392813065,
+    7392813062
+   ],
+   "tags": {
+    "addr:city": "San pedro de Los pinos",
+    "addr:postcode": "03800",
+    "addr:street": "Calle 4",
+    "building": "industrial",
+    "building:levels": "1",
+    "height": "6",
+    "name": "Bodegas"
+   }
+  },
+  {
+   "type": "way",
+   "id": 790800480,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474,
+   "nodes": [
+    7392878426,
+    7392878427,
+    7392878428,
+    7392878429,
+    7392878430,
+    7392878431,
+    7392878432,
+    7392878433,
+    7392878426
+   ],
+   "tags": {
+    "addr:city": "Ciudad de México",
+    "addr:postcode": "03800",
+    "addr:street": "Calle 10",
+    "building": "apartments",
+    "building:levels": "7",
+    "name": "Departamentos haboitacionales"
+   }
+  },
+  {
+   "type": "way",
+   "id": 790801020,
+   "timestamp": "2020-04-11T16:48:53Z",
+   "version": 1,
+   "changeset": 83405251,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474,
+   "nodes": [
+    7392873731,
+    7392873732,
+    7392873733,
+    7392873734,
+    7392873731
+   ],
+   "tags": {
+    "addr:city": "Ciudad de México",
+    "addr:postcode": "03800",
+    "addr:street": "Privada Gudiño",
+    "building": "apartments",
+    "building:levels": "8",
+    "name": "Departamentos"
+   }
+  },
+  {
+   "type": "way",
+   "id": 790807302,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388,
+   "nodes": [
+    7392936297,
+    7392936298,
+    7392936299,
+    7392936300,
+    7392936301,
+    7392936302,
+    7392936303,
+    7392936304,
+    7392936305,
+    7392936306,
+    7392936297
+   ],
+   "tags": {
+    "addr:city": "Ciudad de Mexico",
+    "addr:housenumber": "469",
+    "addr:postcode": "03800",
+    "addr:street": "Avenida Revolución",
+    "building": "school",
+    "building:levels": "2",
+    "name": "Jardin de Niños Ramón Lopez Velarde"
+   }
+  },
+  {
+   "type": "way",
+   "id": 790807303,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388,
+   "nodes": [
+    7392936307,
+    7392936308,
+    7392936309,
+    7392936310,
+    7392936311,
+    7392936312,
+    7392936313,
+    7392936314,
+    7392936307
+   ],
+   "tags": {
+    "addr:city": "Benito Juarez",
+    "addr:housenumber": "475",
+    "addr:postcode": "03800",
+    "addr:street": "Avenida Revolución",
+    "building": "school",
+    "building:levels": "2",
+    "name": "Colegio Militarizado Moderno Alarid"
+   }
+  },
+  {
+   "type": "way",
+   "id": 830008670,
+   "timestamp": "2020-07-25T14:08:44Z",
+   "version": 1,
+   "changeset": 88496791,
+   "user": "Corban8",
+   "uid": 4240913,
+   "nodes": [
+    274926978,
+    274924263
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle 8",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 883901896,
+   "timestamp": "2020-12-11T18:51:46Z",
+   "version": 1,
+   "changeset": 95698273,
+   "user": "GhostEye",
+   "uid": 9633773,
+   "nodes": [
+    7935389625,
+    6152632486
+   ],
+   "tags": {
+    "access": "private",
+    "highway": "residential",
+    "name": "Privada Gudiño",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 884609231,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 2,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894,
+   "nodes": [
+    8226555240,
+    8596923969,
+    8226555239,
+    8596923968,
+    8226555238
+   ],
+   "tags": {
+    "highway": "service"
+   }
+  },
+  {
+   "type": "way",
    "id": 891780680,
    "timestamp": "2024-04-23T16:51:44Z",
    "version": 4,
@@ -500,6 +1108,116 @@
    ],
    "tags": {
     "highway": "service"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1275346667,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725,
+   "nodes": [
+    11841847639,
+    11841847640,
+    11841847642
+   ],
+   "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1275346668,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725,
+   "nodes": [
+    11841847643,
+    11841847641,
+    11841847636
+   ],
+   "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1275346669,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725,
+   "nodes": [
+    11841847642,
+    11841847644,
+    11841847643
+   ],
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "zebra",
+    "footway": "crossing",
+    "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1275346670,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725,
+   "nodes": [
+    11841847640,
+    11841847645
+   ],
+   "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1275346671,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725,
+   "nodes": [
+    11841847637,
+    11841847646
+   ],
+   "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1275346672,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725,
+   "nodes": [
+    11841847646,
+    11841847651,
+    11841847647
+   ],
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "zebra",
+    "footway": "crossing",
+    "highway": "footway"
    }
   },
   {
@@ -743,6 +1461,40 @@
   },
   {
    "type": "way",
+   "id": 1309592152,
+   "timestamp": "2024-08-22T08:58:51Z",
+   "version": 1,
+   "changeset": 155593956,
+   "user": "Gorger",
+   "uid": 20415418,
+   "nodes": [
+    12126285438,
+    12126285437,
+    12126285436
+   ],
+   "tags": {
+    "highway": "service"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1309776214,
+   "timestamp": "2024-08-22T11:12:19Z",
+   "version": 1,
+   "changeset": 155600028,
+   "user": "Archi_Ma",
+   "uid": 19688405,
+   "nodes": [
+    12127251778,
+    12127251776,
+    12127251777
+   ],
+   "tags": {
+    "highway": "service"
+   }
+  },
+  {
+   "type": "way",
    "id": 1309799600,
    "timestamp": "2024-08-22T11:34:03Z",
    "version": 1,
@@ -756,6 +1508,40 @@
    ],
    "tags": {
     "highway": "service"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1446414819,
+   "timestamp": "2026-07-19T06:19:49Z",
+   "version": 2,
+   "changeset": 185990865,
+   "user": "Campanita",
+   "uid": 4431244,
+   "nodes": [
+    1405329387,
+    274920982,
+    274921469,
+    13271418495
+   ],
+   "tags": {
+    "bus:lanes": "|||||designated",
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "cycleway:right:segregated": "yes",
+    "highway": "primary",
+    "lanes": "6",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:type": "sign",
+    "name": "Avenida Revolución",
+    "official_name": "Circuito Interior Revolución",
+    "oneway": "yes",
+    "parking:both": "no",
+    "ref": "CTO INT",
+    "sidewalk": "both",
+    "surface": "concrete",
+    "trolley_wire": "yes"
    }
   },
   {
@@ -899,6 +1685,41 @@
   },
   {
    "type": "way",
+   "id": 1446414824,
+   "timestamp": "2026-07-20T00:15:27Z",
+   "version": 3,
+   "changeset": 186032447,
+   "user": "Campanita",
+   "uid": 4431244,
+   "nodes": [
+    12127251777,
+    14027750152,
+    274925213
+   ],
+   "tags": {
+    "bus:lanes": "|||||designated",
+    "change:lanes": "no|no|no|no|no|no",
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "cycleway:right:segregated": "yes",
+    "highway": "primary",
+    "lanes": "6",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxspeed:type": "sign",
+    "name": "Avenida Revolución",
+    "official_name": "Circuito Interior Revolución",
+    "oneway": "yes",
+    "parking:both": "no",
+    "ref": "CTO INT",
+    "sidewalk": "both",
+    "surface": "concrete",
+    "trolley_wire": "yes",
+    "turn:lanes": "through|through|through|through|through|through"
+   }
+  },
+  {
+   "type": "way",
    "id": 1540882855,
    "timestamp": "2026-08-05T14:12:28Z",
    "version": 3,
@@ -932,6 +1753,28 @@
     "public_transport": "platform",
     "shelter": "yes"
    }
+  },
+  {
+   "type": "node",
+   "id": 30381347,
+   "lat": 19.3893566,
+   "lon": -99.182336,
+   "timestamp": "2023-07-22T05:41:29Z",
+   "version": 10,
+   "changeset": 138838333,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 30381352,
+   "lat": 19.3937938,
+   "lon": -99.1818301,
+   "timestamp": "2025-11-01T00:43:24Z",
+   "version": 9,
+   "changeset": 174043220,
+   "user": "Quixlian",
+   "uid": 16289897
   },
   {
    "type": "node",
@@ -1067,6 +1910,17 @@
   },
   {
    "type": "node",
+   "id": 274920343,
+   "lat": 19.3963984,
+   "lon": -99.1834564,
+   "timestamp": "2020-11-10T07:28:47Z",
+   "version": 3,
+   "changeset": 93841084,
+   "user": "Neshaminy",
+   "uid": 10074558
+  },
+  {
+   "type": "node",
    "id": 274920344,
    "lat": 19.3911971,
    "lon": -99.1839427,
@@ -1075,6 +1929,17 @@
    "changeset": 91529928,
    "user": "ProfessorLupin",
    "uid": 10456431
+  },
+  {
+   "type": "node",
+   "id": 274920345,
+   "lat": 19.3888841,
+   "lon": -99.1841609,
+   "timestamp": "2019-05-20T19:50:35Z",
+   "version": 4,
+   "changeset": 70454333,
+   "user": "JAAS",
+   "uid": 3321532
   },
   {
    "type": "node",
@@ -1111,6 +1976,17 @@
   },
   {
    "type": "node",
+   "id": 274920633,
+   "lat": 19.3954575,
+   "lon": -99.1835388,
+   "timestamp": "2019-05-01T18:23:40Z",
+   "version": 4,
+   "changeset": 69777602,
+   "user": "JAAS",
+   "uid": 3321532
+  },
+  {
+   "type": "node",
    "id": 274920634,
    "lat": 19.3955311,
    "lon": -99.1843763,
@@ -1119,6 +1995,17 @@
    "changeset": 93837300,
    "user": "Neshaminy",
    "uid": 10074558
+  },
+  {
+   "type": "node",
+   "id": 274920982,
+   "lat": 19.3948084,
+   "lon": -99.1854523,
+   "timestamp": "2025-10-21T06:13:31Z",
+   "version": 7,
+   "changeset": 173565568,
+   "user": "Quixlian",
+   "uid": 16289897
   },
   {
    "type": "node",
@@ -1133,12 +2020,100 @@
   },
   {
    "type": "node",
+   "id": 274921167,
+   "lat": 19.3946195,
+   "lon": -99.1836181,
+   "timestamp": "2019-05-01T18:23:40Z",
+   "version": 3,
+   "changeset": 69777602,
+   "user": "JAAS",
+   "uid": 3321532
+  },
+  {
+   "type": "node",
+   "id": 274921466,
+   "lat": 19.3937562,
+   "lon": -99.1827652,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 6,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274921467,
+   "lat": 19.3937044,
+   "lon": -99.1836731,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 5,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
    "id": 274921468,
    "lat": 19.3936587,
    "lon": -99.1845805,
    "timestamp": "2021-04-05T22:54:45Z",
    "version": 4,
    "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274921469,
+   "lat": 19.3936071,
+   "lon": -99.1855909,
+   "timestamp": "2025-06-13T18:35:09Z",
+   "version": 7,
+   "changeset": 167587589,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 274921478,
+   "lat": 19.3936196,
+   "lon": -99.1861323,
+   "timestamp": "2021-01-04T05:47:34Z",
+   "version": 3,
+   "changeset": 96879628,
+   "user": "tangomapper",
+   "uid": 8710070
+  },
+  {
+   "type": "node",
+   "id": 274921479,
+   "lat": 19.3957724,
+   "lon": -99.1859653,
+   "timestamp": "2020-09-23T14:45:31Z",
+   "version": 2,
+   "changeset": 91375065,
+   "user": "Whimsical Otter",
+   "uid": 7466823
+  },
+  {
+   "type": "node",
+   "id": 274922628,
+   "lat": 19.3935399,
+   "lon": -99.1873999,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 4,
+   "changeset": 102359847,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274922630,
+   "lat": 19.3932175,
+   "lon": -99.187527,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 3,
+   "changeset": 102359847,
    "user": "sasQuach",
    "uid": 9917894
   },
@@ -1186,6 +2161,39 @@
    "lon": -99.1837938,
    "timestamp": "2021-04-05T22:54:45Z",
    "version": 4,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274923307,
+   "lat": 19.3927685,
+   "lon": -99.1837648,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 5,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274923322,
+   "lat": 19.392143,
+   "lon": -99.1838216,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 4,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274923343,
+   "lat": 19.3921205,
+   "lon": -99.1829469,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 3,
    "changeset": 102359691,
    "user": "sasQuach",
    "uid": 9917894
@@ -1302,6 +2310,39 @@
   },
   {
    "type": "node",
+   "id": 274924941,
+   "lat": 19.3892677,
+   "lon": -99.1814755,
+   "timestamp": "2011-08-12T10:08:08Z",
+   "version": 2,
+   "changeset": 8994141,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 274924942,
+   "lat": 19.3894518,
+   "lon": -99.1832314,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 5,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274924943,
+   "lat": 19.3895363,
+   "lon": -99.1840992,
+   "timestamp": "2019-05-20T19:50:35Z",
+   "version": 4,
+   "changeset": 70454333,
+   "user": "JAAS",
+   "uid": 3321532
+  },
+  {
+   "type": "node",
    "id": 274924944,
    "lat": 19.3896343,
    "lon": -99.1850545,
@@ -1313,11 +2354,37 @@
   },
   {
    "type": "node",
+   "id": 274925213,
+   "lat": 19.3890634,
+   "lon": -99.1861099,
+   "timestamp": "2023-07-22T07:23:24Z",
+   "version": 6,
+   "changeset": 138840523,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+   }
+  },
+  {
+   "type": "node",
    "id": 274925216,
    "lat": 19.3891908,
    "lon": -99.1872281,
    "timestamp": "2021-04-05T22:54:45Z",
    "version": 5,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 274926978,
+   "lat": 19.3899879,
+   "lon": -99.1884478,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 3,
    "changeset": 102359691,
    "user": "sasQuach",
    "uid": 9917894
@@ -2099,6 +3166,17 @@
   },
   {
    "type": "node",
+   "id": 1395878633,
+   "lat": 19.393826,
+   "lon": -99.1812016,
+   "timestamp": "2011-08-12T10:06:42Z",
+   "version": 1,
+   "changeset": 8994141,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
    "id": 1395878686,
    "lat": 19.3988751,
    "lon": -99.1851591,
@@ -2107,6 +3185,21 @@
    "changeset": 8994141,
    "user": "ferval",
    "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 1405329387,
+   "lat": 19.3959253,
+   "lon": -99.1853235,
+   "timestamp": "2025-10-21T06:13:31Z",
+   "version": 5,
+   "changeset": 173565568,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+   }
   },
   {
    "type": "node",
@@ -2209,6 +3302,314 @@
   },
   {
    "type": "node",
+   "id": 3670714610,
+   "lat": 19.3926239,
+   "lon": -99.185478,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3670714611,
+   "lat": 19.3924704,
+   "lon": -99.1854762,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3670714612,
+   "lat": 19.3924763,
+   "lon": -99.1848971,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3670714613,
+   "lat": 19.3926374,
+   "lon": -99.184899,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3670714614,
+   "lat": 19.3926356,
+   "lon": -99.1850769,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3670714615,
+   "lat": 19.3928068,
+   "lon": -99.1850789,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3670714616,
+   "lat": 19.3928053,
+   "lon": -99.1852272,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3670714617,
+   "lat": 19.3926264,
+   "lon": -99.1852251,
+   "timestamp": "2021-01-08T06:52:01Z",
+   "version": 2,
+   "changeset": 97149097,
+   "user": "Djurgarden4",
+   "uid": 10892558
+  },
+  {
+   "type": "node",
+   "id": 3681551977,
+   "lat": 19.391866,
+   "lon": -99.1841188,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551978,
+   "lat": 19.3918256,
+   "lon": -99.1842558,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551979,
+   "lat": 19.3918762,
+   "lon": -99.1841833,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551980,
+   "lat": 19.3920622,
+   "lon": -99.1832023,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551981,
+   "lat": 19.391752,
+   "lon": -99.1842691,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551982,
+   "lat": 19.3916297,
+   "lon": -99.1832194,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551983,
+   "lat": 19.3917404,
+   "lon": -99.1842035,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551984,
+   "lat": 19.3918189,
+   "lon": -99.1841955,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551985,
+   "lat": 19.3916342,
+   "lon": -99.1837398,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551986,
+   "lat": 19.3916874,
+   "lon": -99.1842102,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551987,
+   "lat": 19.3916793,
+   "lon": -99.1841474,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551988,
+   "lat": 19.3920499,
+   "lon": -99.1837333,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551989,
+   "lat": 19.3917287,
+   "lon": -99.1841398,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551992,
+   "lat": 19.3917063,
+   "lon": -99.1839799,
+   "timestamp": "2015-08-05T01:25:47Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551995,
+   "lat": 19.3917951,
+   "lon": -99.1839695,
+   "timestamp": "2015-08-05T01:25:48Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3681551998,
+   "lat": 19.3918121,
+   "lon": -99.1841283,
+   "timestamp": "2015-08-05T01:25:48Z",
+   "version": 1,
+   "changeset": 33116533,
+   "user": "Federico Mena Quintero",
+   "uid": 99311
+  },
+  {
+   "type": "node",
+   "id": 3761133308,
+   "lat": 19.3934852,
+   "lon": -99.1854279,
+   "timestamp": "2020-09-23T14:51:14Z",
+   "version": 3,
+   "changeset": 91375379,
+   "user": "Whimsical Otter",
+   "uid": 7466823
+  },
+  {
+   "type": "node",
+   "id": 3761133309,
+   "lat": 19.393486,
+   "lon": -99.1852379,
+   "timestamp": "2020-09-23T14:51:14Z",
+   "version": 3,
+   "changeset": 91375379,
+   "user": "Whimsical Otter",
+   "uid": 7466823
+  },
+  {
+   "type": "node",
+   "id": 3761133310,
+   "lat": 19.3935804,
+   "lon": -99.1852383,
+   "timestamp": "2020-09-23T14:51:14Z",
+   "version": 3,
+   "changeset": 91375379,
+   "user": "Whimsical Otter",
+   "uid": 7466823
+  },
+  {
+   "type": "node",
+   "id": 3761133311,
+   "lat": 19.3935795,
+   "lon": -99.1854284,
+   "timestamp": "2020-09-23T14:51:14Z",
+   "version": 3,
+   "changeset": 91375379,
+   "user": "Whimsical Otter",
+   "uid": 7466823
+  },
+  {
+   "type": "node",
    "id": 4611971081,
    "lat": 19.392353,
    "lon": -99.1884659,
@@ -2228,6 +3629,94 @@
    "changeset": 102359847,
    "user": "sasQuach",
    "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 4697711291,
+   "lat": 19.3915867,
+   "lon": -99.1862366,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
+  },
+  {
+   "type": "node",
+   "id": 4697711292,
+   "lat": 19.3915763,
+   "lon": -99.1861396,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
+  },
+  {
+   "type": "node",
+   "id": 4697711293,
+   "lat": 19.3913522,
+   "lon": -99.1861667,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
+  },
+  {
+   "type": "node",
+   "id": 4697711294,
+   "lat": 19.3913627,
+   "lon": -99.1862638,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
+  },
+  {
+   "type": "node",
+   "id": 4697711295,
+   "lat": 19.3916099,
+   "lon": -99.1855759,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
+  },
+  {
+   "type": "node",
+   "id": 4697711296,
+   "lat": 19.3916016,
+   "lon": -99.1854754,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
+  },
+  {
+   "type": "node",
+   "id": 4697711297,
+   "lat": 19.391365,
+   "lon": -99.1854974,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
+  },
+  {
+   "type": "node",
+   "id": 4697711298,
+   "lat": 19.3913733,
+   "lon": -99.1855979,
+   "timestamp": "2017-02-21T17:53:12Z",
+   "version": 1,
+   "changeset": 46281708,
+   "user": "Ravrol",
+   "uid": 4512222
   },
   {
    "type": "node",
@@ -2957,6 +4446,17 @@
   },
   {
    "type": "node",
+   "id": 6152632486,
+   "lat": 19.3896819,
+   "lon": -99.1866809,
+   "timestamp": "2019-04-17T22:03:22Z",
+   "version": 2,
+   "changeset": 69325081,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
    "id": 6152632506,
    "lat": 19.3897181,
    "lon": -99.1871717,
@@ -2979,6 +4479,516 @@
   },
   {
    "type": "node",
+   "id": 7365506816,
+   "lat": 19.3906727,
+   "lon": -99.1865829,
+   "timestamp": "2020-04-04T00:29:02Z",
+   "version": 1,
+   "changeset": 83057112,
+   "user": "Lucho Zavala",
+   "uid": 10975836
+  },
+  {
+   "type": "node",
+   "id": 7365506817,
+   "lat": 19.390235,
+   "lon": -99.1866205,
+   "timestamp": "2020-04-04T00:29:02Z",
+   "version": 1,
+   "changeset": 83057112,
+   "user": "Lucho Zavala",
+   "uid": 10975836
+  },
+  {
+   "type": "node",
+   "id": 7365506818,
+   "lat": 19.3901718,
+   "lon": -99.1861377,
+   "timestamp": "2020-04-04T00:29:02Z",
+   "version": 1,
+   "changeset": 83057112,
+   "user": "Lucho Zavala",
+   "uid": 10975836
+  },
+  {
+   "type": "node",
+   "id": 7365506819,
+   "lat": 19.3906449,
+   "lon": -99.1861404,
+   "timestamp": "2020-04-04T00:29:02Z",
+   "version": 1,
+   "changeset": 83057112,
+   "user": "Lucho Zavala",
+   "uid": 10975836
+  },
+  {
+   "type": "node",
+   "id": 7392689434,
+   "lat": 19.3931565,
+   "lon": -99.184226,
+   "timestamp": "2020-04-11T15:41:22Z",
+   "version": 1,
+   "changeset": 83402950,
+   "user": "eripop",
+   "uid": 11015117
+  },
+  {
+   "type": "node",
+   "id": 7392689435,
+   "lat": 19.3928959,
+   "lon": -99.1842447,
+   "timestamp": "2020-04-11T15:41:22Z",
+   "version": 1,
+   "changeset": 83402950,
+   "user": "eripop",
+   "uid": 11015117
+  },
+  {
+   "type": "node",
+   "id": 7392689436,
+   "lat": 19.3928908,
+   "lon": -99.1838022,
+   "timestamp": "2020-04-11T15:41:22Z",
+   "version": 1,
+   "changeset": 83402950,
+   "user": "eripop",
+   "uid": 11015117
+  },
+  {
+   "type": "node",
+   "id": 7392689437,
+   "lat": 19.3931641,
+   "lon": -99.183778,
+   "timestamp": "2020-04-11T15:41:22Z",
+   "version": 1,
+   "changeset": 83402950,
+   "user": "eripop",
+   "uid": 11015117,
+   "tags": {
+    "artwork_type": "sculpture",
+    "tourism": "artwork"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7392813058,
+   "lat": 19.3917364,
+   "lon": -99.1874208,
+   "timestamp": "2020-04-11T16:33:48Z",
+   "version": 1,
+   "changeset": 83404714,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392813059,
+   "lat": 19.3917319,
+   "lon": -99.1870195,
+   "timestamp": "2020-04-11T16:33:48Z",
+   "version": 1,
+   "changeset": 83404714,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392813060,
+   "lat": 19.3915516,
+   "lon": -99.1870362,
+   "timestamp": "2020-04-11T16:33:48Z",
+   "version": 1,
+   "changeset": 83404714,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392813061,
+   "lat": 19.3915561,
+   "lon": -99.1874518,
+   "timestamp": "2020-04-11T16:33:48Z",
+   "version": 1,
+   "changeset": 83404714,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392813062,
+   "lat": 19.3911978,
+   "lon": -99.1877887,
+   "timestamp": "2020-04-11T16:35:36Z",
+   "version": 1,
+   "changeset": 83404770,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392813063,
+   "lat": 19.3915764,
+   "lon": -99.1877457,
+   "timestamp": "2020-04-11T16:35:36Z",
+   "version": 1,
+   "changeset": 83404770,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392813064,
+   "lat": 19.3915629,
+   "lon": -99.187631,
+   "timestamp": "2020-04-11T16:35:36Z",
+   "version": 1,
+   "changeset": 83404770,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392813065,
+   "lat": 19.3911933,
+   "lon": -99.1876764,
+   "timestamp": "2020-04-11T16:35:36Z",
+   "version": 1,
+   "changeset": 83404770,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392873731,
+   "lat": 19.3895639,
+   "lon": -99.1865955,
+   "timestamp": "2020-04-11T16:48:53Z",
+   "version": 1,
+   "changeset": 83405251,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392873732,
+   "lat": 19.389536,
+   "lon": -99.1862522,
+   "timestamp": "2020-04-11T16:48:53Z",
+   "version": 1,
+   "changeset": 83405251,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392873733,
+   "lat": 19.3894273,
+   "lon": -99.1862683,
+   "timestamp": "2020-04-11T16:48:53Z",
+   "version": 1,
+   "changeset": 83405251,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392873734,
+   "lat": 19.3894728,
+   "lon": -99.1866036,
+   "timestamp": "2020-04-11T16:48:53Z",
+   "version": 1,
+   "changeset": 83405251,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878426,
+   "lat": 19.3891692,
+   "lon": -99.1864265,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878427,
+   "lat": 19.3891489,
+   "lon": -99.1862656,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878428,
+   "lat": 19.3893007,
+   "lon": -99.1862602,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878429,
+   "lat": 19.3893286,
+   "lon": -99.1863192,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878430,
+   "lat": 19.3893539,
+   "lon": -99.1863192,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878431,
+   "lat": 19.3893564,
+   "lon": -99.1863756,
+   "timestamp": "2020-04-11T16:47:01Z",
+   "version": 2,
+   "changeset": 83405184,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878432,
+   "lat": 19.3892982,
+   "lon": -99.1863756,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392878433,
+   "lat": 19.3893007,
+   "lon": -99.1864131,
+   "timestamp": "2020-04-11T16:46:20Z",
+   "version": 1,
+   "changeset": 83405161,
+   "user": "Luis Sanchez Medina",
+   "uid": 10975474
+  },
+  {
+   "type": "node",
+   "id": 7392936297,
+   "lat": 19.3920084,
+   "lon": -99.1865127,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936298,
+   "lat": 19.392022,
+   "lon": -99.1859628,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936299,
+   "lat": 19.3918808,
+   "lon": -99.1859484,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936300,
+   "lat": 19.3918563,
+   "lon": -99.1861211,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936301,
+   "lat": 19.3919107,
+   "lon": -99.1861614,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936302,
+   "lat": 19.3918998,
+   "lon": -99.1862622,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936303,
+   "lat": 19.3918346,
+   "lon": -99.1862622,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936304,
+   "lat": 19.3918455,
+   "lon": -99.1863918,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936305,
+   "lat": 19.3918645,
+   "lon": -99.1864551,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936306,
+   "lat": 19.391946,
+   "lon": -99.1865127,
+   "timestamp": "2020-04-11T17:12:19Z",
+   "version": 1,
+   "changeset": 83406098,
+   "user": "Gabriela Alva",
+   "uid": 10979388
+  },
+  {
+   "type": "node",
+   "id": 7392936307,
+   "lat": 19.3918036,
+   "lon": -99.1862215,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
+   "id": 7392936308,
+   "lat": 19.3918091,
+   "lon": -99.1860801,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
+   "id": 7392936309,
+   "lat": 19.3916796,
+   "lon": -99.1860744,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
+   "id": 7392936310,
+   "lat": 19.3916736,
+   "lon": -99.1862284,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
+   "id": 7392936311,
+   "lat": 19.3917189,
+   "lon": -99.1862303,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
+   "id": 7392936312,
+   "lat": 19.3917256,
+   "lon": -99.1862509,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
+   "id": 7392936313,
+   "lat": 19.3917689,
+   "lon": -99.1862352,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
+   "id": 7392936314,
+   "lat": 19.3917781,
+   "lon": -99.1862204,
+   "timestamp": "2024-04-28T21:13:57Z",
+   "version": 2,
+   "changeset": 150636915,
+   "user": "Erika Colín",
+   "uid": 21375105
+  },
+  {
+   "type": "node",
    "id": 7887774995,
    "lat": 19.40022,
    "lon": -99.185626,
@@ -2998,6 +5008,21 @@
    "changeset": 102359847,
    "user": "sasQuach",
    "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 7935389625,
+   "lat": 19.3897117,
+   "lon": -99.1870922,
+   "timestamp": "2020-09-23T19:20:17Z",
+   "version": 1,
+   "changeset": 91388023,
+   "user": "Whimsical Otter",
+   "uid": 7466823,
+   "tags": {
+    "access": "permissive",
+    "barrier": "gate"
+   }
   },
   {
    "type": "node",
@@ -3031,6 +5056,39 @@
    "changeset": 95785344,
    "user": "LacDeYate",
    "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8226555238,
+   "lat": 19.3921418,
+   "lon": -99.1837724,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 2,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8226555239,
+   "lat": 19.3916908,
+   "lon": -99.1838087,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 2,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8226555240,
+   "lat": 19.3916398,
+   "lon": -99.183886,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 2,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
   },
   {
    "type": "node",
@@ -3089,6 +5147,28 @@
   },
   {
    "type": "node",
+   "id": 8596923968,
+   "lat": 19.3917266,
+   "lon": -99.1837999,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 1,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8596923969,
+   "lat": 19.3916634,
+   "lon": -99.1838297,
+   "timestamp": "2021-04-05T22:54:45Z",
+   "version": 1,
+   "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
    "id": 8596923970,
    "lat": 19.3909483,
    "lon": -99.1854845,
@@ -3117,6 +5197,72 @@
    "timestamp": "2021-04-05T22:54:45Z",
    "version": 1,
    "changeset": 102359691,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8596974049,
+   "lat": 19.3936591,
+   "lon": -99.1861464,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 1,
+   "changeset": 102359847,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8596974050,
+   "lat": 19.3936011,
+   "lon": -99.1860951,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 1,
+   "changeset": 102359847,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8596974060,
+   "lat": 19.3931933,
+   "lon": -99.1875113,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 1,
+   "changeset": 102359847,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8596974061,
+   "lat": 19.3931828,
+   "lon": -99.1874833,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 1,
+   "changeset": 102359847,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8596974062,
+   "lat": 19.3932458,
+   "lon": -99.1875242,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 1,
+   "changeset": 102359847,
+   "user": "sasQuach",
+   "uid": 9917894
+  },
+  {
+   "type": "node",
+   "id": 8596974063,
+   "lat": 19.3934958,
+   "lon": -99.1874072,
+   "timestamp": "2021-04-05T23:01:28Z",
+   "version": 1,
+   "changeset": 102359847,
    "user": "sasQuach",
    "uid": 9917894
   },
@@ -3155,6 +5301,28 @@
   },
   {
    "type": "node",
+   "id": 11841847636,
+   "lat": 19.3890453,
+   "lon": -99.1851509,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
+   "id": 11841847637,
+   "lat": 19.3891235,
+   "lon": -99.185965,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
    "id": 11841847638,
    "lat": 19.3890413,
    "lon": -99.1851243,
@@ -3171,6 +5339,61 @@
   },
   {
    "type": "node",
+   "id": 11841847639,
+   "lat": 19.3890312,
+   "lon": -99.1850555,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
+   "id": 11841847640,
+   "lat": 19.3895871,
+   "lon": -99.1849902,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
+   "id": 11841847641,
+   "lat": 19.3895956,
+   "lon": -99.1850954,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
+   "id": 11841847642,
+   "lat": 19.3895894,
+   "lon": -99.1850131,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
+   "id": 11841847643,
+   "lat": 19.3895946,
+   "lon": -99.1850853,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
    "id": 11841847644,
    "lat": 19.3895927,
    "lon": -99.1850594,
@@ -3184,6 +5407,28 @@
     "crossing:markings": "zebra",
     "highway": "crossing"
    }
+  },
+  {
+   "type": "node",
+   "id": 11841847645,
+   "lat": 19.389546,
+   "lon": -99.1845792,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
+  },
+  {
+   "type": "node",
+   "id": 11841847646,
+   "lat": 19.3896901,
+   "lon": -99.1858958,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725
   },
   {
    "type": "node",
@@ -3228,6 +5473,22 @@
    "changeset": 150405945,
    "user": "VLD062",
    "uid": 7676725
+  },
+  {
+   "type": "node",
+   "id": 11841847651,
+   "lat": 19.3897198,
+   "lon": -99.1858919,
+   "timestamp": "2024-04-23T16:51:44Z",
+   "version": 1,
+   "changeset": 150405945,
+   "user": "VLD062",
+   "uid": 7676725,
+   "tags": {
+    "crossing": "marked",
+    "crossing:markings": "zebra",
+    "highway": "crossing"
+   }
   },
   {
    "type": "node",
@@ -3455,6 +5716,34 @@
   },
   {
    "type": "node",
+   "id": 12126285438,
+   "lat": 19.3914873,
+   "lon": -99.1879915,
+   "timestamp": "2025-02-17T23:25:01Z",
+   "version": 2,
+   "changeset": 162639455,
+   "user": "mdelatorre",
+   "uid": 84642,
+   "tags": {
+    "noexit": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12127251776,
+   "lat": 19.3895859,
+   "lon": -99.1862038,
+   "timestamp": "2024-08-22T11:12:19Z",
+   "version": 1,
+   "changeset": 155600028,
+   "user": "Archi_Ma",
+   "uid": 19688405,
+   "tags": {
+    "barrier": "gate"
+   }
+  },
+  {
+   "type": "node",
    "id": 12127251777,
    "lat": 19.3895731,
    "lon": -99.1860503,
@@ -3463,6 +5752,20 @@
    "changeset": 155600028,
    "user": "Archi_Ma",
    "uid": 19688405
+  },
+  {
+   "type": "node",
+   "id": 12127251778,
+   "lat": 19.3896201,
+   "lon": -99.1865163,
+   "timestamp": "2025-02-17T23:25:01Z",
+   "version": 2,
+   "changeset": 162639455,
+   "user": "mdelatorre",
+   "uid": 84642,
+   "tags": {
+    "noexit": "yes"
+   }
   },
   {
    "type": "node",
@@ -3627,6 +5930,34 @@
   },
   {
    "type": "node",
+   "id": 13971955044,
+   "lat": 19.3937993,
+   "lon": -99.181722,
+   "timestamp": "2026-06-28T09:56:51Z",
+   "version": 1,
+   "changeset": 184735014,
+   "user": "PPZ6",
+   "uid": 20011809,
+   "tags": {
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13971955049,
+   "lat": 19.3893468,
+   "lon": -99.1822407,
+   "timestamp": "2026-06-28T09:56:51Z",
+   "version": 1,
+   "changeset": 184735014,
+   "user": "PPZ6",
+   "uid": 20011809,
+   "tags": {
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
    "id": 13971955050,
    "lat": 19.3900707,
    "lon": -99.1821569,
@@ -3651,6 +5982,21 @@
    "uid": 4431244,
    "tags": {
     "bus": "yes",
+    "public_transport": "stop_position",
+    "trolleybus": "yes"
+   }
+  },
+  {
+   "type": "node",
+   "id": 14027750152,
+   "lat": 19.3893166,
+   "lon": -99.1860803,
+   "timestamp": "2026-07-20T00:15:27Z",
+   "version": 1,
+   "changeset": 186032447,
+   "user": "Campanita",
+   "uid": 4431244,
+   "tags": {
     "public_transport": "stop_position",
     "trolleybus": "yes"
    }
