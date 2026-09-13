@@ -6,8 +6,6 @@ date: 2026-09-02
 source: ["[[2026-09-02-sesion-primeras-dos-estaciones-josm]]"]
 ---
 
-# Sesión del 2 de septiembre (tarde): integración del .osm con OSM, senda del andén, áreas de estación, task-17 y corrección del parser de niveles
-
 # Sesión del 2 de septiembre de 2026 (tarde): integración del .osm con OSM, senda del andén, áreas de estación, task-17 y corrección del parser de niveles
 
 Segunda sesión del día, en modo duo (coordinador Fable 5.1, ejecutores Opus 5), sobre la rama `first-stations-josm`. Bitácora `session_01Hpdsm3RR7obQnGYi72cSa2`. Continúa el trabajo de [[2026-09-02-sesion-primeras-dos-estaciones-josm]]: Ricardo revisaba en JOSM los .osm de Portales y San Pedro de los Pinos y pidió que se integraran con lo ya mapeado en OSM, que el área de la estación entrara al archivo, que la línea de circulación del andén fuera de punta a punta y tocara el polígono, y una auditoría de etiquetas.

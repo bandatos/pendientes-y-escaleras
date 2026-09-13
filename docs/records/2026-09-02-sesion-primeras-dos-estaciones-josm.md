@@ -8,8 +8,6 @@ related: ["[[adr-0002]]", "[[adr-0004]]", "[[adr-0006]]"]
 
 # Sesión nocturna: generador de .osm y primeros trazos de Portales y San Pedro de los Pinos
 
-# Sesión nocturna: generador de .osm y primeros trazos de Portales y San Pedro de los Pinos
-
 Sesión del 1 al 2 de septiembre de 2026, de las 23:30 a las 02:00 aproximadamente, bitácora `session_0144VaYsehb6bUafLXeX4aET`, rama `first-stations-josm`. Ricardo pidió una sesión distinta: una sola intervención suya y después piloto automático hasta tener dos estaciones mapeadas en JOSM, o su aproximación, listas para revisar por la mañana. Encargo textual: «una estación de la línea 2 sin correspondencia (ni terminales) que tenga un modelo que se repita y una de la línea 7, también sin correspondencias».
 
 ## Cómo se corrió

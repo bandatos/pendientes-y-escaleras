@@ -5,8 +5,6 @@ title: Reunión Bandatos 19 de agosto de 2026 (transcripción limpia)
 date: 2026-08-19
 ---
 
-# Reunión Bandatos 19 de agosto de 2026 (transcripción limpia)
-
 # Reunión Bandatos — 19 de agosto de 2026
 
 Versión limpia de la transcripción automática (`2026-08-19-reunion-bandatos-raw.md`). Hablantes conservados tal como los etiquetó el pipeline: Participante A, B, C, D (no se detectaron nombres; hacia el final del audio A menciona correos/nombres propios de asistentes — Brenda, Pablo Lemus — que se conservan donde aparecen).
