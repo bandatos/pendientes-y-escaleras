@@ -17,6 +17,8 @@ Presentar el proyecto Pendientes y Escaleras como respuesta a ese hilo. Difundir
 
 Ligada a [[task-11|cumplir la política de importación de OSM]]: el aviso en el foro que exige esa política puede coincidir con esta publicación, pero conviene resolver primero la política antes de proponer subir datos.
 
+Habrá además una presentación en el State of the Map Latinoamérica, en México; Ricardo dijo el 30 de septiembre de 2026 que para entonces los datos ya se habrán subido a OSM ([[2026-09-30-imagenes-sotm-evolucion-portales]]).
+
 ## Criterios de aceptación
 
 - [ ] Se publicó una respuesta en el hilo de la comunidad presentando el proyecto
