@@ -482,7 +482,7 @@
   <node id='30385142' visible='true' lat='19.3913479' lon='-99.1383683' version='15' timestamp='2024-10-09T18:17:09Z' changeset='157684449' user='Quixlian' uid='16289897'/>
   <node id='30385140' visible='true' lat='19.3887912' lon='-99.1387485' version='15' timestamp='2024-10-09T18:17:09Z' changeset='157684449' user='Quixlian' uid='16289897'/>
   <node id='30385138' visible='true' lat='19.3868356' lon='-99.1390330' version='15' timestamp='2024-10-09T18:17:09Z' changeset='157684449' user='Quixlian' uid='16289897'/>
-  <node id='30385126' visible='true' lat='19.3697710' lon='-99.1415858' version='13' timestamp='2026-05-28T03:53:20Z' changeset='183283371' user='tanzwiese' uid='10107184'>
+  <node id='30385126' visible='true' lat='19.3699015' lon='-99.1415795' action='modify' version='13' timestamp='2026-05-28T03:53:20Z' changeset='183283371' user='tanzwiese' uid='10107184'>
     <tag k='name' v='Portales'/>
     <tag k='network' v='STC Metro'/>
     <tag k='opening_hours' v='Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00'/>

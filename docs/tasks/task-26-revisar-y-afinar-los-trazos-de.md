@@ -6,31 +6,57 @@ state: open
 date: 2026-09-02
 owner: ricardo
 source: ["[[2026-09-02-sesion-primeras-dos-estaciones-josm]]"]
-related: ["[[adr-0010]]", "[[adr-0006]]", "[[task-8]]"]
+related: ["[[task-37]]", "[[task-36]]", "[[adr-0010]]", "[[adr-0006]]", "[[task-8]]", "[[adr-0014]]", "[[task-35]]", "[[task-28]]", "[[task-29]]"]
 ---
 
 # Revisar y afinar los trazos de Portales y San Pedro de los Pinos en JOSM
 
 Los archivos `data/osm/portales.osm` y `data/osm/san-pedro-de-los-pinos.osm` se generan con `export_station_osm` a partir de las plantillas `data/osm/templates/tlalpan-surface.json` y `data/osm/templates/l7-deep-cascade.json`; los comandos exactos y el esquema de plantilla están en `data/osm/README.md`. Los previews por nivel están en `data/osm/preview/`. La idea es afinar la plantilla, no el XML, para que el ajuste se herede en las estaciones hermanas; lo que solo se pueda corregir en JOSM se anota aquí para llevarlo después a la plantilla.
 
-Supuestos a revisar, todos listados también en el README:
+Supuestos a revisar, todos listados también en el README. Los de esta lista son los de la primera versión (2 de septiembre); el 21 de octubre se corrigieron en el lugar los que la v3 ([[adr-0014]]) dejó desfasados, y la lista vigente completa está en la sección «Supuestos del README sin cerrar al 21 de octubre de 2026», más abajo.
 
-- Andén de Portales de 150 × 10 m: encierra las dos vías `railway=subway` de OSM (a −3,1 y +3,4 m del eje) y roza la calzada central por unos 0,6 m en su esquina norte. Opciones: angostar a 7 m en la plantilla o dejarlo y corregir las vías de OSM.
+- Andén de Portales de 150 × 12,98 m (corregido el 21 de octubre: decía 10 m, la medida de la primera versión; desde la v3 ocupa la franja entera del KML, `width: "band"`, y el generador reporta 12,98 m): encierra las dos vías `railway=subway` de OSM (a −3,1 y +3,4 m del eje). El roce de 0,6 m con la calzada central se midió con el andén de 10 m y no se ha vuelto a medir. Opciones: angostar el andén en la plantilla o dejarlo y corregir las vías de OSM. Hasta el 21 de octubre el README se contradecía: «Ancho de la Calzada de Tlalpan» daba 12,98 m y «El andén de Portales encima de las vías» seguía diciendo 10 m; se corrigió el segundo.
 - Accesos de San Pedro en u ≈ +5,6 m, copiados del nodo existente de OSM; Wikipedia pone las dos salidas en Avenida Revolución con Calle 4 y Calle 9, que cruzan el eje en u ≈ −31 m. Toda la cascada poniente cuelga de ese acceso: verificar con imagen satelital antes de replicar a San Joaquín.
-- San Pedro sin torniquetes: sus vestíbulos de torniquetes a −1 solo reciben escaleras y un torniquete no puede ir sobre `highway=steps`. Hace falta un tramo corto de pasillo a −1 en la plantilla, o una regla del generador.
+- ~~San Pedro sin torniquetes~~ (resuelto en la v3): cada vestíbulo de torniquetes (`N-03`, `N-07`, nivel −1) recibe un `extra_way` a −1 y el torniquete se inserta sobre él a seis metros. Lo que sigue sin relevar es dónde está la línea de torniquetes dentro del vestíbulo.
 - Lado de los andenes en San Pedro: oriente sirve a «L7 => Rosario» por circulación por la derecha, coincidente con el grafo de Miró; no hay fuente citable de que el Metro circule por la derecha.
 - Puente de Portales dibujado como dos líneas rectas (`bridge=yes` + `layer=1`); la forma real de la losa se dibuja a mano.
 - Las cuatro escaleras andén–vestíbulo de Portales en abanico a u = ±10 y ±16 m; las posiciones reales son suyas.
-- Sentido de las eléctricas unidireccionales = flecha de Miró; en estas dos estaciones todas suben.
-- Dimensiones inventadas: andenes de San Pedro 150 × 5 m con 8 m de vías entre ellos y unos 8 m de desarrollo horizontal por tramo de cascada.
+- Sentido de las eléctricas unidireccionales = flecha de Miró; en estas dos estaciones todas suben. Confirmado por Ricardo en [[adr-0012]]; falta solo la verificación en campo.
+- Dimensiones de San Pedro (corregido el 21 de octubre: decía 150 × 5 m con 8 m de vías, la primera versión): desde la v3 los andenes miden 4,29 m de ancho con 6,5 m de vías (lo que Ricardo midió) y 152,8 y 152,5 m de largo, del KML. Siguen sin relevar las alturas de entrepiso, la longitud en planta de cada tramo de escalera y el orden de la espiral.
 
 Si al abrir en JOSM la capa de OSM real, el validador marca «Way end node near other way» en cantidad, es el falso positivo esperado en estaciones apiladas; los cruces sin nodo compartido entre líneas de niveles distintos ya no se reportan (ticket 18293).
+
+## Supuestos del README sin cerrar al 21 de octubre de 2026
+
+Revisión de la sección «Supuestos — para revisión» de `data/osm/README.md` contra los ADR y las tasks. Cada uno sigue sin confirmar, corregir ni convertir en task salvo donde se dice.
+
+- **D1, la franja del KML es andén más vías**: en L7 la franja (15,07 m) es exactamente dos andenes más 6,5 m de vías; en Portales la franja (12,98 m) no incluye vía. Es una lectura de la envolvente, no una medición.
+- **D2, senda desplazada**: 1,5 m hacia la vía en los andenes laterales de San Pedro; convención de dibujo.
+- ~~**D3, bancos a 4 m entre ejes con 4 m de aproche, y −2→−1 perpendiculares a las vías**~~: reemplazada el 21 de octubre por la cascada paralela de Ricardo; ver las notas de enmienda de [[adr-0014]].
+- **Rumbo de San Pedro**: 6,5°, de la Avenida Revolución en OSM, porque el CSV no tiene rumbo de vía para L7; el rumbo desde `shapes.txt` de [[adr-0005]] sigue sin cablear.
+- **Índice de los paralelos ≠ posición**: en cada hermana hay que verificar índice ↔ posición con `note:miro_id` contra Miró antes de darla por buena; aplica a San Joaquín ([[task-29]]).
+- **Accesos de OSM movidos a las puertas**: los nodos 5197203900 (8,9 m), 5197203901 (10,3 m) y 3761143341 (8,3 m) se corren al punto medio del muro; el README lo llama «el cambio más discutible del archivo». En Portales Ricardo borró esos dos nodos en su edición del 2 de septiembre.
+- **Lados de los andenes en San Pedro**: P-01 oriente sirve a El Rosario por circulación por la derecha; coincide con el grafo, sin observación de campo ni fuente citable.
+- **Vías de OSM dentro del andén de Portales**: ver el primer supuesto de la lista de arriba.
+- **Largo de 150 m del andén de Portales**: lo eligió Ricardo, centrado en la franja de 171 m; no está medido.
+- **Vestíbulo-puente de Portales**: losa de 9 m a +1 y pasillos no colineales (u ≈ −1,6 y u ≈ −12) que bajan rectos y se doblan hacia el vestíbulo; la forma real es de JOSM.
+- **Posición de los torniquetes** dentro de los vestíbulos de San Pedro: no relevada.
+- **Nombres que se pierden**: «Pasillo inferior - cambio de andén» (N-04 de San Pedro) no queda en ningún way, porque la regla solo pasa nombres a pasillos.
+- **Accesos de San Pedro contra Wikipedia**: OSM los pone en u ≈ +5,6 y Wikipedia en Calle 4 / Calle 9, u ≈ −31; 37 m sin resolver. Ricardo explicó la distancia a las banquetas (los accesos están en un parque), no esta discrepancia.
+- **`bridge=yes` + `layer=1`** cubre el way entero del puente de Portales, incluida la parte sobre el andén.
+- **Edificios de Portales**: cuadrados de 14 y 13 m inscritos en los lóbulos del KML; puertas no relevadas. En su edición del 2 de septiembre Ricardo los borró.
+- **Pabellón oriente de San Pedro**: cuál de sus tres puertas está clausurada.
+- **Explanadas** donde OSM no tiene explanada: cuadradas, con medio lado igual a la distancia a la banqueta; forma de arranque.
+- **Área de Portales**: el archivo da de baja 20 vértices del contorno de OSM 1387762582; revisar en JOSM que ninguno haga falta para otra cosa.
+- **Supuestos que ya tienen task**: el nodo de estación de San Pedro en OSM y el `level=-4` de la vía de L7 están en [[task-28]]; `ref` de los accesos, en [[task-18]]; el nivel del connector que llega al puente de Portales, en [[task-35]].
+- ~~**Contradicción en el README**~~ (resuelta el 21 de octubre): «Geometría de San Pedro» decía «2 × 4 m de andén más 7 m de vías»; ahora dice 2 × 4,29 m más 6,5 m, como D1 y la salida del generador.
 
 ## Criterios de aceptación
 
 - [ ] Las dos plantillas incorporan las correcciones de geometría que Ricardo decida, y los .osm regenerados las reflejan
 - [ ] Cada supuesto del README queda confirmado, corregido o convertido en task
-- [ ] Se decide qué pasa con los torniquetes de San Pedro
+- [x] Se decide qué pasa con los torniquetes de San Pedro (v3: `extra_way` a −1, [[adr-0014]])
+- [x] San Pedro regenerado coincide con la edición a mano de Ricardo del 21 de octubre (San Joaquín sigue en [[task-29]])
 
 ## Notas de trabajo
 
@@ -38,3 +64,9 @@ Si al abrir en JOSM la capa de OSM real, el validador marca «Way end node near 
 - 2 de septiembre de 2026, cierre con crítico ([[2026-09-02-sesion-integracion-osm-y-niveles]]): tres cosas más para la próxima sesión. (1) San Pedro emite seis puertas abiertas, tres por edificio, contra la realidad relevada por Ricardo de tres salidas con una clausurada; falta decir cuál y marcarla con `closed_doors`. (2) En Portales, la «banqueta sin nombre» a la que se conectan los accesos es el puente peatonal que OSM ya tiene (way 43763067, `highway=footway` + `bridge=yes` + `layer=2`, 75 m sobre Calzada de Tlalpan): nuestros dos tramos vestibulares lo duplican, y los tramos del acceso poniente se cuelgan de sus extremos con `level=0`. Ricardo decidió conservar solo lo nuestro en el archivo y resolver la duplicación él en la próxima sesión; también decidió que puentes y túneles siguen siendo candidatos para conectar accesos, porque muchos accesos del Metro no están a nivel de calle. (3) El respaldo de tramos a calles con `sidewalk=*` se eliminó: sin footway a 40 m no sale tramo y el exportador avisa.
 - 2 de septiembre de 2026 (noche): el contexto embebido ya no es solo lo que lo nuestro toca. Enmienda de [[adr-0011]]: además de accesos enlazados, vías peatonales y contorno de estación, el archivo lleva congeladas —id y versión reales, sin tocar, sin conectar, nunca destino de tramos— las calles (`highway` de `motorway` a `service` con sus `_link`), las vías urbanas (`railway=subway|light_rail|tram`) y el transporte público (`public_transport=*`, `highway=bus_stop`, `railway=tram_stop`, `amenity=bus_station`) a 50 m de cualquier nodo nuestro; Overpass sigue consultando a 150 m y solo las vías peatonales reciben tramos desde los accesos. Al revisar en JOSM, esas calles y vías son contexto de lectura: la estación se ve dentro de su manzana. Portales embebe 12 calles (Calzada de Tlalpan, Calzada Santa Cruz, Avenida Víctor Hugo, Calle Albert, Calle Hamburgo) y las vías de la Línea 2; San Pedro de los Pinos, 12 calles (Avenida Revolución, Avenida 1, Avenida 1º de Mayo, Calles 2, 4, 7, 9 y 13), la vía de la Línea 7 y la plataforma del Trolebús Elevado.
 - 30 de septiembre de 2026 ([[2026-09-30-imagenes-sotm-evolucion-portales]]): estado real de las ediciones a mano, que no están versionadas y viven en `~/Descargas` desde el 2 de septiembre a las 22:55. Portales (`portales(1).osm`) quedó podado: la pasarela OSM 43763067, los dos accesos OSM adoptados (5197203900 y 5197203901) y los pabellones y plazas de v3 están borrados, quedan dos accesos generados y las escaleras se movieron. San Pedro (`san-pedro-de-los-pinos-medias.osm`) tiene terminada solo la salida poniente; «medias» significa eso. Propuesta pendiente: versionar esas ediciones o volver a generar desde el generador con las plantillas corregidas, para que no sigan siendo dos archivos sueltos en Descargas.
+- 21 de octubre de 2026: cierre documental de la v3 en [[adr-0014]]; las correcciones de la lista de supuestos y la sección nueva de supuestos sin cerrar son de este día. El insumo de la siguiente ronda es la edición a mano de San Pedro de Ricardo, `data/osm/reference/san-pedro-de-los-pinos-ricardo-2026-10-21.osm` (21 de octubre de 2026). Ricardo decidió el camino: codificar sus convenciones en la plantilla y en el generador, regenerar San Pedro hasta que coincida con su archivo, y entonces generar San Joaquín ([[task-29]]).
+  - Regla general de posición lateral, dictada por Ricardo al inicio de la sesión del 21 de octubre: «Siempre las escaleras de la L7 (y todas las paralelas que van en sentidos opuestos) deben ir en el sentido de las calles, avanzas por la derecha, los que vienen en el otro sentido, los ves a tu izquierda, no importa si subes o bajas».
+  - Regla de los bancos de L7, dictada por Ricardo el mismo día: «La fija siempre enmedio (L7), si hay 3 eléctricas (dos que suben y una que baja) las que suben van juntas a la derecha, luego las fijas enmedio y la que baja a la izquierda (visto desde abajo)».
+  - El ADR que formaliza estas dos reglas, junto con la cascada nueva que reemplaza D3, lo escribe el bloque de código de esta sesión como enmienda a [[adr-0014]]: Ricardo decidió enmendar, no superseder.
+- 21 de octubre de 2026 (noche): San Pedro regenerado con las correcciones de Ricardo y la regla de slots; San Joaquín generado con la misma plantilla ([[task-29]]). A raíz de la revisión de San Joaquín por Ricardo, el generador ganó: el área del KML como error de validación, el encaje de la plantilla en las hermanas (corredores deformados, cascadas movidas en bloque a la orientación que cabe), pabellones `building=transportation` adoptados, explanadas multipolígono con sus entradas, connectors hasta 45 m y el nodo de estación recolocado; todo en las notas de enmienda de [[adr-0014]]. San Pedro solo cambió en el nodo de estación (29,7 m al eje, a 0,8 m de donde lo dejó Ricardo) y en dos connectors de 41,2 y 42,1 m desde el acceso oriente, los dos que Ricardo había trazado; Portales solo en el nodo de estación. La revisión de San Joaquín en JOSM sigue en [[task-29]].
+- 21 de octubre de 2026 (cierre): San Pedro regenerado contra el archivo de Ricardo: 231 de 252 nodos propios a menos de 0,5 m del generado y etiquetas idénticas; los 21 restantes son 10 vértices de las explanadas (que él reformó a mano y la plantilla no modela), 8 puntas de los bancos −2→−1 (manda la regla de slots: decisión de Ricardo del 21 de octubre, en [[2026-10-21-sesion-san-pedro-a-plantilla-y-san-joaquin]]) y 3 sueltos (la punta de la fija oriente donde su corredor conserva el enganche viejo, una reversible poniente que dejó inclinada, una fija −1→0). Sus dos connectors largos ya entran y el nodo de estación lo recoloca el generador a 0,8 m de donde él lo dejó. El CLAUDE.md del proyecto recibió la sección «Trazos en JOSM y turnos de afinación» con sus dos reglas, redactadas por el coordinador a partir de sus frases («Las reglas no deberían ser tan estrictas»; ir a fondo antes de presentar). Lo que queda de su lado, en [[task-37]]; la imagen satelital, en [[task-36]].

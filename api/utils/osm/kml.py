@@ -17,7 +17,7 @@ class KmlError(Exception):
     pass
 
 
-def _fold(text: str) -> str:
+def fold_name(text: str) -> str:
     text = unicodedata.normalize("NFKD", text or "")
     text = "".join(c for c in text if not unicodedata.combining(c))
     return " ".join(text.lower().split())
@@ -29,13 +29,13 @@ def station_polygon(path: Path, station_name: str
     if not path.exists():
         raise KmlError(f"no existe el KML de áreas de estación: {path}")
     root = ElementTree.parse(path).getroot()
-    wanted = _fold(station_name)
+    wanted = fold_name(station_name)
     names = []
     for placemark in root.iter(f"{KML_NS}Placemark"):
         name_el = placemark.find(f"{KML_NS}name")
         name = name_el.text if name_el is not None else ""
         names.append(name)
-        if _fold(name) != wanted:
+        if fold_name(name) != wanted:
             continue
         ring = placemark.find(
             f"{KML_NS}Polygon/{KML_NS}outerBoundaryIs/"

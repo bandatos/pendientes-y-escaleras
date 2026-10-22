@@ -8,6 +8,7 @@ ancla, rumbo y, si la estación es la imagen espejo, --mirror.
 """
 from __future__ import annotations
 
+import math
 import unicodedata
 from pathlib import Path
 
@@ -63,6 +64,14 @@ class Command(BaseCommand):
         parser.add_argument("--refresh-context", action="store_true",
                             help="Vuelve a consultar Overpass y reescribe "
                                  "la caché de contexto.")
+        parser.add_argument("--context-radius", type=float,
+                            default=overpass_mod.CONTEXT_EMBED_M,
+                            help="Metros alrededor de lo dibujado dentro "
+                                 "de los que el contexto de OSM entra al "
+                                 "archivo (por omisión "
+                                 f"{overpass_mod.CONTEXT_EMBED_M:g}). Con "
+                                 "--refresh-context la consulta cubre "
+                                 "además ese radio.")
         parser.add_argument("--station-area", choices=STATION_AREA_MODES,
                             help="Área de estación a emitir; por omisión "
                                  "la que declare la plantilla. «kml» "
@@ -110,7 +119,8 @@ class Command(BaseCommand):
         builder = StationBuilder(graph, template, frame,
                                  trace=not opts["no_trace"],
                                  context=context, station_area=mode,
-                                 kml_polygon=kml_polygon)
+                                 kml_polygon=kml_polygon,
+                                 context_radius=opts["context_radius"])
         try:
             doc = builder.build()
         except (TemplateError, UnsupportedModeError,
@@ -125,6 +135,7 @@ class Command(BaseCommand):
         out_path.write_text(doc.to_xml(), encoding="utf-8")
 
         errors, warnings, summary = validate(doc)
+        errors = builder.errors + errors
         self.stdout.write(self.style.SUCCESS(f"escrito {out_path}"))
         self.stdout.write(f"estación: {graph.station_name} "
                           f"({graph.stop_id}) — familia {template.family}")
@@ -139,24 +150,40 @@ class Command(BaseCommand):
 
         for item in builder.report["area"]:
             self.stdout.write(f"  área: {item}")
+        for item in builder.report["fit"]:
+            self.stdout.write(f"  encaje: {item}")
         for item in builder.report["platforms"]:
             self.stdout.write(f"  andén {item}")
         for item in builder.report["banks"]:
+            lead_from, lead_to = item["lead"]
+            stack = ""
+            if item["stacked_on"]:
+                clearance = (f", holgura {item['clearance']:.2f} m"
+                             if item["clearance"] is not None else "")
+                stack = (f", apilado sobre {item['stacked_on']} a "
+                         f"{item['stack_offset']:+.2f} m{clearance}")
             self.stdout.write(
                 f"  banco {item['id']}: {item['from']} → {item['to']}, "
-                f"separación {item['spacing']:.1f} m, aproche "
-                f"{item['lead']:.1f} m, eje "
-                + ("explícito" if item["explicit_axis"] else "entre nodos"))
+                f"largo {item['length']:.1f} m, separación "
+                f"{item['spacing']:.2f} m, aproche {lead_from:.2f}/"
+                f"{lead_to:.2f} m, eje "
+                + ("explícito" if item["explicit_axis"] else "entre nodos")
+                + stack)
         for item in builder.report["buildings"]:
-            plaza = (f"{item['plaza_half']:.1f} m"
-                     if item["plaza_half"] else "sin explanada")
+            if item.get("osm_plazas"):
+                plaza = "la de OSM (" + ", ".join(
+                    str(i) for i in item["osm_plazas"]) + ")"
+            elif item["plaza_half"]:
+                plaza = f"media {item['plaza_half']:.1f} m"
+            else:
+                plaza = "sin explanada"
             shape = (f"way OSM {item['adopted']}" if item["adopted"]
                      else "cuadrado de la plantilla")
             sides = ", ".join(f"{s:g}" for s in item["sides_m"])
             self.stdout.write(
                 f"  edificio {item['key']}: {shape}, lados {sides} m, "
                 f"escaleras por el lado {item['side']}, acceso en la "
-                f"puerta del lado {item['entrance_side']}, explanada media "
+                f"puerta del lado {item['entrance_side']}, explanada "
                 f"{plaza}, nodo interior {item['inner'] or '—'}, puertas "
                 f"cerradas {item['closed_doors'] or 'ninguna'}")
         for item in builder.report["connectors"]:
@@ -167,6 +194,10 @@ class Command(BaseCommand):
                 + f"): {item['length']:.1f} m"
                 + (f" — mismo vértice {item['vertex']}, sin tramo propio"
                    if item["shared"] else ""))
+        for item in builder.report["osm"]:
+            self.stdout.write(f"  OSM: {item}")
+        for item in builder.report["station"]:
+            self.stdout.write(f"  {item}")
         for key, count in builder.report["context"]:
             self.stdout.write(f"  contexto {key:<32} {count}")
         if builder.report["streets"]:
@@ -205,8 +236,12 @@ class Command(BaseCommand):
                           if s.osm_id and (s.osm_type or "node") == "node"})
         path = CONTEXT_DIR / f"{slug}.json"
         try:
+            # La distancia de embebido se mide desde lo dibujado, cuyas
+            # puntas de andén llegan a ~90 m del ancla; 130 deja margen.
+            radius = max(overpass_mod.DEFAULT_RADIUS_M,
+                         int(math.ceil(opts["context_radius"] + 130)))
             raw, source = overpass_mod.load_raw(
-                path, osm_ids, anchor[0], anchor[1],
+                path, osm_ids, anchor[0], anchor[1], radius=radius,
                 refresh=opts["refresh_context"])
         except overpass_mod.OverpassError as exc:
             raise CommandError(str(exc))

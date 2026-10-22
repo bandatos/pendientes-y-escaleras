@@ -244,8 +244,7 @@ def way_tags_for_pathway(mode_id: int, is_bidirectional: bool,
             incline = "up" if hi > lo else "down"
         tags = footway_tags(levels, incline=incline)
     if not is_bidirectional:
-        # También en las eléctricas de un solo sentido: `conveying=forward`
-        # describe la máquina y ningún ruteador peatonal lo consume, así
-        # que sin esto la restricción de paso no queda en el archivo.
+        # También en las eléctricas de un solo sentido: GraphHopper y
+        # Valhalla no leen `conveying`, solo `oneway:foot` (adr-0013).
         tags["oneway:foot"] = "yes"
     return tags

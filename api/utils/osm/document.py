@@ -48,6 +48,17 @@ class OsmWay:
     meta: dict = field(default_factory=dict)
 
 
+@dataclass
+class OsmRelation:
+    """Relación ajena, embebida tal cual: el generador no crea ninguna."""
+    id: int
+    members: list[tuple[str, int, str]]
+    tags: dict = field(default_factory=dict)
+    meta: dict = field(default_factory=dict)
+    foreign: bool = True
+    action: str | None = None
+
+
 def _esc(text: str) -> str:
     return (str(text).replace("&", "&amp;").replace("<", "&lt;")
             .replace(">", "&gt;").replace("'", "&apos;")
@@ -60,11 +71,16 @@ class OsmDocument:
         self.frame = frame
         self.nodes: dict[int, OsmNode] = {}
         self.ways: list[OsmWay] = []
+        self.relations: dict[int, OsmRelation] = {}
         self._next_id = -1
         # Nodos que el validador exime de estar dentro del área de la
         # estación: puertas, centro y explanada de un edificio de acceso
         # están a la intemperie por definición.
         self.outdoor: set[int] = set()
+        # Puntas de escaleras de banco: se unen solo por su tramo corto
+        # al nodo de encuentro, y soldarlas a un pasillo vecino duplica
+        # ese tramo y engancha el pasillo a la escalera.
+        self.bank_tips: set[int] = set()
 
     def _new_id(self) -> int:
         i = self._next_id
@@ -128,6 +144,19 @@ class OsmDocument:
                      frozen=True, meta=dict(foreign.meta))
         self.ways.append(way)
         return way
+
+    def add_foreign_relation(self, foreign) -> OsmRelation:
+        """Registra una relación de OSM; sus miembros los embebe quien llama.
+
+        Se escriben todos los miembros aunque alguno no venga en el
+        archivo: JOSM los marca incompletos y los respeta, mientras que
+        quitarlos de la lista sería proponer que la relación los pierda.
+        """
+        if foreign.osm_id not in self.relations:
+            self.relations[foreign.osm_id] = OsmRelation(
+                foreign.osm_id, list(foreign.members), dict(foreign.tags),
+                dict(foreign.meta))
+        return self.relations[foreign.osm_id]
 
     def reuse_foreign_node(self, u: float, v: float, context=None,
                            radius: float = FOREIGN_REUSE_M) -> int | None:
@@ -260,7 +289,7 @@ class OsmDocument:
                 endpoints.append((nid, way))
         for nid, source in endpoints:
             node = self.nodes[nid]
-            if node.frozen:
+            if node.frozen or nid in self.bank_tips:
                 continue
             p = (node.u, node.v)
             for way in self.ways:
@@ -367,6 +396,14 @@ class OsmDocument:
             out += [f"    <nd ref='{nid}'/>" for nid in way.nodes]
             out += _tag_lines(way.tags, "    ")
             out.append("  </way>")
+        for rel in sorted(self.relations.values(), key=lambda r: r.id):
+            out.append(f"  <relation id='{rel.id}' visible='true'"
+                       f"{_meta(rel)}>")
+            for kind, ref, role in rel.members:
+                out.append(f"    <member type='{kind}' ref='{ref}' "
+                           f"role='{_esc(role)}'/>")
+            out += _tag_lines(rel.tags, "    ")
+            out.append("  </relation>")
         out.append("</osm>")
         return "\n".join(out) + "\n"
 

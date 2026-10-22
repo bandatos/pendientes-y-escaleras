@@ -7,7 +7,7 @@ date: 2026-09-02
 origin: ricardo
 deliberation: confirmed
 rationale: recorded
-source: ["[[2026-09-02-sesion-integracion-osm-y-niveles]]", "[[fb-2]]"]
+source: ["[[2026-09-02-sesion-integracion-osm-y-niveles]]", "[[2026-09-02-sesion-primeras-dos-estaciones-josm]]"]
 affects: ["api/utils/osm/tags.py", "api/utils/osm/builder.py", "api/utils/miro/pathway_mixin.py", "api/.claude/skills/miro-api/SKILL.md"]
 related: ["[[adr-0010]]", "[[task-24]]"]
 ---
@@ -16,7 +16,7 @@ related: ["[[adr-0010]]", "[[task-24]]"]
 
 ## Contexto y planteamiento del problema
 
-[[adr-0010]] tomó la flecha de Miró como sentido de las eléctricas unidireccionales sin confirmación de Ricardo; [[fb-2]] registró la medición y esperaba su palabra. Aparte, el skill `miro-api` documentaba una «regla de pares» (una eléctrica es bidireccional si hay dos conectores entre el mismo par de nodos) que el importador calcula pero nunca usa ([[task-24]], inciso a), y la convención con que el equipo dibujó las bidireccionales no estaba escrita en ningún lado.
+[[adr-0010]] tomó la flecha de Miró como sentido de las eléctricas unidireccionales sin confirmación de Ricardo; el feedback fb-2 del proyecto (retirado el 21 de octubre de 2026; su medición está en el Resultado de este ADR y la frase de Ricardo que lo disparó, en [[2026-09-02-sesion-primeras-dos-estaciones-josm]]) registró la medición y esperaba su palabra. Aparte, el skill `miro-api` documentaba una «regla de pares» (una eléctrica es bidireccional si hay dos conectores entre el mismo par de nodos) que el importador calcula pero nunca usa ([[task-24]], inciso a), y la convención con que el equipo dibujó las bidireccionales no estaba escrita en ningún lado.
 
 ## Criterios de decisión
 
@@ -45,4 +45,4 @@ related: ["[[adr-0010]]", "[[task-24]]"]
 
 ## Más información
 
-[[fb-2]], [[2026-09-02-sesion-integracion-osm-y-niveles]].
+[[2026-09-02-sesion-primeras-dos-estaciones-josm]], [[2026-09-02-sesion-integracion-osm-y-niveles]].

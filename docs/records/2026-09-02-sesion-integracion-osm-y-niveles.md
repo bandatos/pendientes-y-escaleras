@@ -22,7 +22,7 @@ Tres ejecutores en paralelo (contexto del repo, auditoría de etiquetas contra l
 - Senda del andén: de punta a punta, extremos insertados como vértices de los lados cortos del andén (polígono de 4 a 6 nodos); San Pedro conserva su corrimiento de 1,5 m hacia la vía. El nombre «Senda peatonal» es solo el rótulo de JOSM para `highway=footway`; las etiquetas se quedan.
 - Accesos de San Pedro: edificio de 12 m con tres puertas juntas en un lado y las dos escaleras arrancando del lado opuesto; explanada `highway=pedestrian` + `area=yes` cuyo borde llega a la banqueta; tramos rectos del acceso a cada banqueta de la esquina.
 - Etiquetas: el nombre del acceso pasa a `description`; se retira `level:ref`; `wheelchair=no` en toda `highway=steps`; `destination` en andenes laterales se conserva; `wheelchair` desde `wheelchair_boarding` no se emite hasta que sea dato medido; `tunnel=yes` no aplica a pasillos interiores (mapeo indoor con `level`); un `level_index` no entero detiene la exportación nombrando el stop.
-- Sentido de las eléctricas: [[adr-0012]]; resuelve [[fb-2]] y el inciso (a) de [[task-24]].
+- Sentido de las eléctricas: [[adr-0012]]; resuelve el feedback fb-2 (retirado el 21 de octubre de 2026) y el inciso (a) de [[task-24]].
 - task-17 confirmada y ejecutada: `osm_type`/`osm_id` en `Stop` y `Pathway`, CSV `data/osm/osm-links.csv` y command `link_osm_ids`; `import_stops` lo llama al final.
 - Mixcoac y Chabacano: sus mezzanines intermedios no reciben nivel propio.
 - Xola y San Joaquín siguen fuera; TESTING.md ofrecido y declinado por ahora; sin tests.

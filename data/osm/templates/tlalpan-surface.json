@@ -3,6 +3,10 @@
   "description": "Andén central en el camellón de la Calzada de Tlalpan, vestíbulo-puente en el nivel +1 que cruza la calzada, y un edificio de acceso en cada acera. Los dos pasillos del puente no son colineales: el poniente cruza en u ≈ -1.6 y el oriente en u ≈ -12, tal como los dibuja el KML, y se juntan sobre el centro del andén. Estaciones hermanas: Xola, Nativitas, Viaducto, Villa de Cortés, General Anaya, Ermita.",
   "station_area": "kml",
   "axes": "u = metros sobre el eje del andén, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~8°, v>0 es el oriente. La franja del KML mide unos 13 m de ancho y su eje está a v ≈ -0.8 del ancla, así que el andén cuelga del eje de la franja (band_side) y no de una v escrita a mano.",
+  "station_node": {
+    "u": -6.8,
+    "comment": "Dónde va el nodo railway=station de OSM: sobre el eje de la franja (su v la pone el generador), en la u del cruce de la estación, que aquí es el vestíbulo-puente sobre el andén. Es la misma regla que en L7, donde el cruce es el paso bajo las vías; como el vestíbulo N-01 ocupa ese punto, el generador corre el nodo sobre el eje hasta despejarlo."
+  },
   "nodes": {
     "P-01": {
       "u": 0, "length": 150, "width": "band",

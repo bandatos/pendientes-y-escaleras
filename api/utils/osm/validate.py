@@ -78,7 +78,8 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
     errors += _check_incline(doc)
     errors += _check_incline_order(doc)
     warnings += _check_cross_level_nodes(doc)
-    warnings += _check_inside_area(doc)
+    warnings += _check_bank_tips(doc)
+    errors += _check_inside_area(doc)
     errors += _check_connectivity(doc)
 
     return errors, warnings, _summary(doc)
@@ -102,8 +103,9 @@ def _check_inside_area(doc: OsmDocument) -> list[str]:
 
     El área del KML delimita dónde está la estación, así que un andén,
     un pasillo, una escalera o un torniquete que se sale de ella es un
-    error de trazo. Va como aviso y no como error porque el desajuste
-    suele ser de la plantilla y conviene poder abrir el archivo y verlo.
+    error de trazo. Ricardo: «todos los trazos deberían caber dentro del
+    área de la estación». Es error, no aviso; el archivo se escribe antes
+    de validar, así que se puede abrir y ver qué se salió.
     """
     ring = _station_area_ring(doc)
     if ring is None:
@@ -140,11 +142,10 @@ def _check_inside_area(doc: OsmDocument) -> list[str]:
     if offenders:
         offenders.sort(reverse=True)
         detail = "; ".join(f"{nid} en {label} ({d:.1f} m)"
-                           for d, nid, label in offenders[:10])
-        more = "" if len(offenders) <= 10 else f" y {len(offenders) - 10} más"
+                           for d, nid, label in offenders)
         out.append(
             f"{len(offenders)} nodos del interior de la estación caen "
-            f"fuera del área: {detail}{more}")
+            f"fuera del área: {detail}")
     return out
 
 
@@ -243,6 +244,25 @@ def _check_cross_level_nodes(doc: OsmDocument) -> list[str]:
             out.append(
                 f"nodo {nid} une ways sin nivel común: "
                 + ", ".join(f"{w.id}({w.label})" for w in ways))
+    return out
+
+
+def _check_bank_tips(doc: OsmDocument) -> list[str]:
+    """Footway que pasa por la punta de una escalera de banco.
+
+    La punta solo debe tocar su tramo corto hacia el nodo de encuentro;
+    si un pasillo la lleva como vértice intermedio, se engancha a la
+    escalera y duplica ese tramo.
+    """
+    out = []
+    for way in doc.ways:
+        if way.foreign or way.tags.get("highway") != "footway":
+            continue
+        for nid in way.nodes[1:-1]:
+            if nid in doc.bank_tips:
+                out.append(
+                    f"el footway {way.id} ({way.label}) pasa por la punta "
+                    f"{nid} de una escalera de banco")
     return out
 
 

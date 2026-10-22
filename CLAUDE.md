@@ -6,6 +6,7 @@ Monorepo del relevamiento ciudadano de escaleras y elevadores del Metro de la CD
 
 - **`api/`**: usa siempre el intérprete del entorno virtual del subproyecto, `api/.venv/bin/python` (Python 3.14, Django 5.2.7). Nunca instales con el `pip` del sistema.
 - **`vue/`**: el gestor es **yarn** y `vue/yarn.lock` es el único lockfile. Nunca corras `npm` ni `pnpm` aquí.
+- Niveles de prueba y comandos: `TESTING.md`.
 - Puertos de desarrollo: API en **8013** (default fijado en `api/manage.py`), Vite en **5174**. El frontend espera la API local en `:8013`.
 
 ## Commits
@@ -28,3 +29,8 @@ Repo público con varias manos: todo debe reproducirse solo con el repo. Nada se
 
 - GitHub Pages sirve hoy `bandatos.org/pendientes-y-escaleras` desde la **raíz de `main`**, donde vivía el prototipo estático que ahora está en `prototype/`. Mergear la rama `monorepo` a `main` rompe el sitio hasta que se reconfigure: ver `docs/tasks/task-2-*` (abierta) antes de tocar el despliegue.
 - El backend tiene dos modelos de escalera conviviendo (`Stair` legado y `Pathway` GTFS); un `StairReport` puede apuntar a cualquiera de los dos. No asumas uno solo desde ningún lado del stack.
+
+## Trazos en JOSM y turnos de afinación
+
+- Las reglas de dibujo (plantillas, convenciones de los ADR) no son estrictas: el criterio manda sobre la mecánica. Si lo que hay en OpenStreetMap o en la imagen satelital contradice una regla, se respeta lo que hay y se propone a Ricardo adaptar la regla, no al revés. Lo único innegociable es que todo trazo interior propio cabe dentro del área de la estación; accesos, pabellones, explanadas y conectores están a la intemperie por definición.
+- Un turno de afinación de una estación va a fondo antes de presentarse: se itera con los ejecutores hasta que el resultado quede y haga sentido, y Ricardo revisa el resultado, no los intentos.

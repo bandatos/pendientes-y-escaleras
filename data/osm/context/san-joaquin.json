@@ -1,0 +1,7926 @@
+{
+ "version": 0.6,
+ "generator": "Overpass API 0.7.62.11 87bfad18",
+ "osm3s": {
+  "timestamp_osm_base": "2026-10-22T04:18:36Z",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+ },
+ "elements": [
+  {
+   "type": "node",
+   "id": 681448501,
+   "lat": 19.4449744,
+   "lon": -99.1917953,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 11,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "San Joaquín",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q6824700",
+    "wikimedia_commons": "Category:Estación San Joaquín (Metro de México)",
+    "wikipedia": "es:San Joaquín (estación del Metro de Ciudad de México)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5582692121,
+   "lat": 19.4451223,
+   "lon": -99.1921079,
+   "timestamp": "2018-04-27T15:43:03Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "tags": {
+    "name": "Entrada Metro San Juaquin",
+    "railway": "subway_entrance"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5582692122,
+   "lat": 19.4450393,
+   "lon": -99.1914653,
+   "timestamp": "2018-04-27T15:43:03Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "tags": {
+    "name": "Entrada Metro San Juaquin",
+    "railway": "subway_entrance"
+   }
+  },
+  {
+   "type": "node",
+   "id": 5582692137,
+   "lat": 19.4450253,
+   "lon": -99.1916353,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "public_transport": "platform"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12250823388,
+   "lat": 19.4466416,
+   "lon": -99.1911581,
+   "timestamp": "2024-10-14T16:31:13Z",
+   "version": 1,
+   "changeset": 157886487,
+   "user": "Ismael Olea",
+   "uid": 18616,
+   "tags": {
+    "bus": "yes",
+    "highway": "bus_stop",
+    "name": "Lago",
+    "public_transport": "platform"
+   }
+  },
+  {
+   "type": "way",
+   "id": 24984623,
+   "timestamp": "2025-10-16T01:02:59Z",
+   "version": 35,
+   "changeset": 173342936,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    271561782,
+    271561780,
+    271561779,
+    4858123994,
+    272399005,
+    8111403242,
+    272399530,
+    1480964004,
+    272399677,
+    7897261627,
+    7876874990,
+    271561339,
+    1588718411,
+    1454740684,
+    1588718418,
+    271561215,
+    271558079,
+    1526603230,
+    271558078,
+    7897293630,
+    6364625545,
+    7897293628,
+    1526603239,
+    1526603310,
+    271559728,
+    271559667,
+    1526603242,
+    1526603219,
+    1526603302,
+    1480987499,
+    1480987501,
+    8004321631,
+    8004321629,
+    271558460,
+    272399256,
+    2377658284,
+    1480964032,
+    272399262,
+    6133605746
+   ],
+   "tags": {
+    "highway": "secondary",
+    "lanes": "2",
+    "maxheight:signed": "no",
+    "maxspeed": "40",
+    "maxspeed:type": "sign",
+    "name": "Avenida Río San Joaquín",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25039033,
+   "timestamp": "2020-07-27T17:27:46Z",
+   "version": 3,
+   "changeset": 88578346,
+   "user": "Corban8",
+   "uid": 4240913,
+   "nodes": [
+    272399005,
+    272399006
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Lago Malar",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 25039092,
+   "timestamp": "2020-11-12T11:26:29Z",
+   "version": 6,
+   "changeset": 93991262,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "nodes": [
+    272399530,
+    8111403247,
+    7910034894,
+    7910034893,
+    272399532
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Lago Wetter",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 33064061,
+   "timestamp": "2023-05-20T16:47:49Z",
+   "version": 21,
+   "changeset": 136345398,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    1480963970,
+    1480963981,
+    7897261630,
+    1480964018,
+    6133467586
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Hielmar",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 33416934,
+   "timestamp": "2024-03-31T02:35:51Z",
+   "version": 34,
+   "changeset": 149374596,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    1480964018,
+    380224314,
+    3035570514,
+    8111280164,
+    380224296,
+    380224329,
+    8111280157,
+    380224297,
+    380224301,
+    3430686115,
+    6133711025,
+    11774677142,
+    3430646017,
+    11774694388,
+    8111063218,
+    11774694387,
+    380224290,
+    8111565469,
+    6137895733,
+    7908885773
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Laguna de Términos",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 33416940,
+   "timestamp": "2023-05-20T17:04:15Z",
+   "version": 7,
+   "changeset": 136346066,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    372948925,
+    380224317
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Lago Vallen",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 33418172,
+   "timestamp": "2024-03-31T02:35:51Z",
+   "version": 29,
+   "changeset": 149374596,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    380224319,
+    6183047518,
+    6183047520,
+    11774677140,
+    380224318,
+    380224309,
+    2897849088,
+    380224306,
+    6183047521,
+    6183047522,
+    380224304,
+    2898035844,
+    380224295,
+    3430643833,
+    380224315,
+    380224317,
+    7887751384,
+    1480964066
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Bolsena",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 134736797,
+   "timestamp": "2023-05-20T17:04:15Z",
+   "version": 14,
+   "changeset": 136346066,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    1480964066,
+    7897529162,
+    6133467597,
+    6133467598,
+    6133467595,
+    6133467593,
+    392066398,
+    7894921742,
+    8142587976
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Chiem",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 134736799,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 12,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    372949707,
+    8142587975,
+    1480964190,
+    8140824184,
+    372949606,
+    1480964137,
+    1480964115,
+    373110743,
+    7897529163,
+    373110918,
+    373110731,
+    380224332
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Chiem",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 134736800,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 13,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    6133461084,
+    272399259,
+    7897261631,
+    1480963979,
+    271561782,
+    6138070837,
+    6138070838
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Hielmar",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 134736808,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 10,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    1480963979,
+    8113732599,
+    8113732597,
+    8113732598,
+    271561779
+   ],
+   "tags": {
+    "alt_name": "Calle Río San Joaquín",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Laguna de Mayrán",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 134736826,
+   "timestamp": "2024-10-14T16:31:13Z",
+   "version": 6,
+   "changeset": 157886487,
+   "user": "Ismael Olea",
+   "uid": 18616,
+   "nodes": [
+    1480964065,
+    1480964050,
+    8111280171,
+    1480964052,
+    1480964057,
+    8111280172,
+    1480964065
+   ],
+   "tags": {
+    "addr:city": "Ciudad de México",
+    "addr:housenumber": "205",
+    "addr:neighbourhood": "Modelo Pensil, Miguel Hidalgo",
+    "addr:postcode": "11450",
+    "addr:street": "Lago Naur",
+    "amenity": "fuel",
+    "brand": "G500",
+    "brand:wikidata": "Q115215326",
+    "building": "roof",
+    "covered": "yes",
+    "layer": "1",
+    "name": "G500",
+    "phone": "+528007363900"
+   }
+  },
+  {
+   "type": "way",
+   "id": 139261861,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 13,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    380224332,
+    8111280173,
+    373110732,
+    1526562149,
+    1588718427,
+    1588718429,
+    5582692341,
+    5582692336,
+    1588718452,
+    1526771329,
+    1588718400,
+    1588718415,
+    1526796319,
+    1588718413,
+    6133355420,
+    1588718402,
+    1587529722,
+    6133355422,
+    1587529631
+   ],
+   "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Naur",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 145464093,
+   "timestamp": "2020-11-13T11:12:02Z",
+   "version": 15,
+   "changeset": 94056994,
+   "user": "Casentenisi",
+   "uid": 10074602,
+   "nodes": [
+    1526603249,
+    7897094160,
+    1526771227,
+    1588718401,
+    1588718397,
+    1526771261
+   ],
+   "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "name": "Calle Lago Ginebra",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 205131167,
+   "timestamp": "2023-05-20T17:04:15Z",
+   "version": 11,
+   "changeset": 136346066,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    380224294,
+    3035570514,
+    380224293,
+    380224295,
+    372948938,
+    372949541
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Lago Onega",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 286166693,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 9,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    1480963981,
+    272396888
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Laguna de Mayrán",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 286168305,
+   "timestamp": "2023-05-20T17:04:15Z",
+   "version": 10,
+   "changeset": 136346066,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    380224316,
+    380224315,
+    380224314,
+    6133711030,
+    6133711027,
+    272396888
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Lago Ladoga",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 320892187,
+   "timestamp": "2026-07-20T00:15:27Z",
+   "version": 32,
+   "changeset": 186032447,
+   "user": "Campanita",
+   "uid": 4431244,
+   "nodes": [
+    13738776796,
+    13738776795,
+    13738776794,
+    13738776793,
+    308554084,
+    11023055665,
+    11023055664,
+    13863621695,
+    1434456386,
+    1434456404,
+    1434456410,
+    434303473,
+    344722039,
+    308556306,
+    14027750147,
+    308556308,
+    681454741,
+    308556313,
+    308556865,
+    308556866,
+    6298545886,
+    4802953130,
+    4802953131,
+    7887774995,
+    4802953128,
+    3035586246,
+    308557058,
+    4802953126,
+    308556868,
+    4802953125,
+    4802953124,
+    308557541,
+    4802953122,
+    4802953123,
+    12671151152,
+    4802953121,
+    4802953120,
+    308561115,
+    4802953117,
+    4802953118,
+    4802953119,
+    4802953116,
+    4802953115,
+    308561116,
+    3035570524,
+    308561119,
+    4802953114,
+    308561120,
+    271581607,
+    4802953113,
+    308561808,
+    308561809,
+    308561810,
+    4802953112,
+    308561813,
+    4802953111,
+    308561814,
+    681448501,
+    380224303,
+    392066395,
+    392066396,
+    4802953110,
+    392066397,
+    1480964132,
+    4802953098,
+    4802953099,
+    13683022552,
+    4802953097,
+    4802953109,
+    4802953108,
+    4802953107,
+    4802953106,
+    4802953105,
+    308562279,
+    4802953100,
+    4802953101,
+    4802953102,
+    4802953063,
+    3649280622,
+    4802953043,
+    4802953056,
+    4802953057,
+    4802953058,
+    4802953059,
+    4802953103,
+    4802953104,
+    4802953060,
+    4802953061,
+    4802953055,
+    4802953054,
+    4802953062,
+    4802953053,
+    4802953052,
+    4802953051,
+    4802953050,
+    4802953049,
+    4802953046,
+    4802953048,
+    4802953047,
+    4802953045,
+    4802953044,
+    2913765505,
+    308562800,
+    4802953041,
+    308564178,
+    308564179,
+    308564180,
+    308564183,
+    308564184,
+    4802953040,
+    4802953039,
+    308564185,
+    4802953038,
+    4802953037,
+    4802953036,
+    308564186,
+    308564187,
+    4802953035,
+    4802953034,
+    308564188,
+    4802953031,
+    4802953030,
+    4802953029,
+    308564189,
+    351114285,
+    351114286,
+    4802953028,
+    351114287,
+    351114288,
+    553409514
+   ],
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "layer": "-4",
+    "level": "-4",
+    "name": "Línea 7",
+    "operator": "Sistema de Transporte Colectivo",
+    "operator:wikidata": "Q735042",
+    "railway": "subway",
+    "rubber_tires": "yes",
+    "tracks": "2",
+    "tunnel": "yes",
+    "usage": "main",
+    "voltage": "750"
+   }
+  },
+  {
+   "type": "way",
+   "id": 332186258,
+   "timestamp": "2016-08-15T20:27:24Z",
+   "version": 2,
+   "changeset": 41475963,
+   "user": "Nordpfeil",
+   "uid": 1337142,
+   "nodes": [
+    3393003826,
+    3393003827,
+    3393003828,
+    3393003829,
+    3393003826
+   ],
+   "tags": {
+    "addr:city": "Ciudad de México",
+    "addr:country": "MX",
+    "addr:housenumber": "60",
+    "addr:street": "Lago Ginebra",
+    "building": "apartments",
+    "building:levels": "6",
+    "name": "Portal Ginebra"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976344,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582691813,
+    5582691814,
+    12250823356,
+    5582691815,
+    12250823352,
+    5582691816,
+    5582691813
+   ],
+   "tags": {
+    "building": "transportation",
+    "building:levels": "1"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976345,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582691817,
+    12251049315,
+    5582691818,
+    5582691819,
+    5582691820,
+    5582692136,
+    5582691817
+   ],
+   "tags": {
+    "building": "transportation",
+    "building:levels": "1"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976346,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692123,
+    5582692124,
+    5582692125,
+    5582692126,
+    12250823358,
+    12250823357,
+    5582692123
+   ],
+   "tags": {
+    "access": "yes",
+    "amenity": "toilets",
+    "building": "toilets",
+    "fee": "yes",
+    "female": "yes",
+    "male": "yes",
+    "wheelchair": "no"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976349,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 4,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692145,
+    7897261635,
+    5582692150,
+    5582692146,
+    8110604684,
+    8110604683,
+    8110604685,
+    8110604672,
+    5582692147,
+    8110604681,
+    8110604680,
+    8110604682,
+    5582692152,
+    5582692148
+   ],
+   "tags": {
+    "access": "private",
+    "highway": "service",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976350,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 4,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692149,
+    5582692148,
+    8110604673,
+    5582692150
+   ],
+   "tags": {
+    "access": "private",
+    "highway": "service",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976351,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 4,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692149,
+    8110604679,
+    8110604677,
+    8110604678,
+    5582692151,
+    5582692152
+   ],
+   "tags": {
+    "access": "private",
+    "highway": "service",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976354,
+   "timestamp": "2018-04-27T15:43:09Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692163,
+    5582692164,
+    5582692165,
+    5582692166,
+    5582692163
+   ],
+   "tags": {
+    "building": "school"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976355,
+   "timestamp": "2018-04-27T15:43:09Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692167,
+    5582692168,
+    5582692169,
+    5582692170,
+    5582692167
+   ],
+   "tags": {
+    "building": "school"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976356,
+   "timestamp": "2018-04-27T15:43:09Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692171,
+    5582692172,
+    5582692173,
+    5582692174,
+    5582692171
+   ],
+   "tags": {
+    "building": "school"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976357,
+   "timestamp": "2018-04-27T15:43:09Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692175,
+    5582692176,
+    5582692177,
+    5582692178,
+    5582692175
+   ],
+   "tags": {
+    "building": "school"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976358,
+   "timestamp": "2018-04-27T15:43:09Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692179,
+    5582692180,
+    5582692181,
+    5582692182,
+    5582692179
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976359,
+   "timestamp": "2018-04-27T15:43:09Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692183,
+    5582692184,
+    5582692185,
+    5582692186,
+    5582692183
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976360,
+   "timestamp": "2023-09-05T23:28:52Z",
+   "version": 2,
+   "changeset": 140871519,
+   "user": "Ricardo Salvador Gomez Lopez",
+   "uid": 6687362,
+   "nodes": [
+    5582692189,
+    5582692190,
+    5582692191,
+    5582692192,
+    5582692189
+   ],
+   "tags": {
+    "addr:city": "Ciudad de México",
+    "addr:housenumber": "44",
+    "addr:postcode": "11450",
+    "addr:street": "Calle Lago Hielmar",
+    "building": "apartments",
+    "building:flats": "168",
+    "building:levels": "8",
+    "name": "Frontera Polanco"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976361,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692193,
+    5582692194,
+    5582692195,
+    5582692196,
+    5582692193
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976362,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692197,
+    5582692198,
+    5582692199,
+    5582692200,
+    5582692197
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976363,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692201,
+    5582692202,
+    5582692203,
+    5582692204,
+    5582692201
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976364,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692205,
+    5582692206,
+    5582692207,
+    5582692208,
+    5582692205
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976365,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692209,
+    5582692210,
+    5582692211,
+    5582692213,
+    5582692212,
+    5582692209
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976366,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692213,
+    5582692214,
+    5582692215,
+    5582692212,
+    5582692213
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976367,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692216,
+    5582692217,
+    5582692218,
+    5582692219,
+    5582692220,
+    5582692321,
+    5582692216
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976368,
+   "timestamp": "2018-04-27T15:43:10Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230,
+   "nodes": [
+    5582692322,
+    5582692323,
+    5582692324,
+    5582692325,
+    5582692326,
+    5582692327,
+    5582692322
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976386,
+   "timestamp": "2024-10-14T16:31:13Z",
+   "version": 2,
+   "changeset": 157886487,
+   "user": "Ismael Olea",
+   "uid": 18616,
+   "nodes": [
+    5582692394,
+    5582692395,
+    5582692396,
+    5582692397,
+    5582692398,
+    5582692399,
+    5582692394
+   ],
+   "tags": {
+    "addr:city": "Ciudad de México",
+    "addr:housenumber": "13",
+    "addr:neighbourhood": "Modelo Pensil, Miguel Hidalgo",
+    "addr:street": "Calle Lago Bolsena",
+    "building": "apartments",
+    "building:levels": "6"
+   }
+  },
+  {
+   "type": "way",
+   "id": 654574498,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 6,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    380224332,
+    8111280167,
+    6133461084
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Hielmar",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 654574505,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 5,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    6133467586,
+    1480964066
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "track",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Hielmar",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 654591553,
+   "timestamp": "2021-05-06T05:56:20Z",
+   "version": 9,
+   "changeset": 104223435,
+   "user": "Roanoke_Island",
+   "uid": 9625529,
+   "nodes": [
+    8115044892,
+    7876585748,
+    6133605750,
+    8703930029,
+    272399678,
+    272399532,
+    8110298629,
+    272399006
+   ],
+   "tags": {
+    "highway": "tertiary",
+    "lanes": "1",
+    "name": "Calle Lago Ginebra",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 654603031,
+   "timestamp": "2020-09-08T16:01:59Z",
+   "version": 4,
+   "changeset": 90596454,
+   "user": "GhostEye",
+   "uid": 9633773,
+   "nodes": [
+    7876279638,
+    6133711026,
+    6133711028
+   ],
+   "tags": {
+    "access": "private",
+    "highway": "residential",
+    "motor_vehicle": "no",
+    "motorcycle": "yes",
+    "name": "Privada Primera Lago Ladoga",
+    "surface": "concrete"
+   }
+  },
+  {
+   "type": "way",
+   "id": 660404097,
+   "timestamp": "2023-05-20T07:48:11Z",
+   "version": 4,
+   "changeset": 136324549,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    272399006,
+    5582692145,
+    7897261634
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "1",
+    "name": "Calle Lago Ginebra",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 660404608,
+   "timestamp": "2023-05-20T17:00:07Z",
+   "version": 5,
+   "changeset": 136345061,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    1480964066,
+    380224332
+   ],
+   "tags": {
+    "cycleway:both": "no",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Bolsena",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 689994439,
+   "timestamp": "2020-11-13T10:59:37Z",
+   "version": 5,
+   "changeset": 94056216,
+   "user": "Casentenisi",
+   "uid": 10074602,
+   "nodes": [
+    1526771261,
+    7897261636,
+    272399532
+   ],
+   "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Wetter",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 830809150,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 4,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "nodes": [
+    1526562149,
+    7910034892,
+    8110604686,
+    1526771261
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Lago Wetter",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 845436441,
+   "timestamp": "2020-09-08T16:01:59Z",
+   "version": 1,
+   "changeset": 90596454,
+   "user": "GhostEye",
+   "uid": 9633773,
+   "nodes": [
+    6133711030,
+    7876279638
+   ],
+   "tags": {
+    "highway": "residential",
+    "motor_vehicle": "no",
+    "motorcycle": "yes",
+    "name": "Privada Primera Lago Ladoga",
+    "surface": "concrete"
+   }
+  },
+  {
+   "type": "way",
+   "id": 846245004,
+   "timestamp": "2020-09-10T22:28:00Z",
+   "version": 1,
+   "changeset": 90724660,
+   "user": "nutchayahongvilai",
+   "uid": 10028134,
+   "nodes": [
+    373110734,
+    373110733,
+    373110732
+   ],
+   "tags": {
+    "highway": "residential",
+    "name": "Calle Casa Amarilla",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 846469823,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 2,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    7897261631,
+    7897261630
+   ],
+   "tags": {
+    "footway": "crossing",
+    "highway": "footway"
+   }
+  },
+  {
+   "type": "way",
+   "id": 846469824,
+   "timestamp": "2023-05-20T07:48:16Z",
+   "version": 3,
+   "changeset": 136324549,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    7897261634,
+    272399259
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Lago Ginebra",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 848940744,
+   "timestamp": "2021-03-19T15:51:21Z",
+   "version": 2,
+   "changeset": 101339505,
+   "user": "madsforwhat",
+   "uid": 11225848,
+   "nodes": [
+    271562018,
+    271561779
+   ],
+   "tags": {
+    "highway": "secondary_link",
+    "lanes": "2",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 870635759,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "nodes": [
+    8110298629,
+    8110298628,
+    8110298622,
+    8110298627,
+    8110298626,
+    8110298623,
+    8110298621,
+    8110298625,
+    8110298624
+   ],
+   "tags": {
+    "highway": "service"
+   }
+  },
+  {
+   "type": "way",
+   "id": 870664765,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    8110604673,
+    8110604672
+   ],
+   "tags": {
+    "access": "private",
+    "highway": "service",
+    "service": "parking_aisle",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 870738741,
+   "timestamp": "2023-05-20T16:47:49Z",
+   "version": 4,
+   "changeset": 136345398,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    8111280164,
+    10914378631,
+    8111280162,
+    8111280154,
+    8111280161,
+    8111280153,
+    8111280143,
+    8111280160,
+    8111280159,
+    8111280156,
+    8111280157
+   ],
+   "tags": {
+    "highway": "service",
+    "oneway": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 870738742,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "nodes": [
+    8111280172,
+    8111280171
+   ],
+   "tags": {
+    "covered": "yes",
+    "highway": "service"
+   }
+  },
+  {
+   "type": "way",
+   "id": 870738743,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "nodes": [
+    8111280173,
+    8111280172
+   ],
+   "tags": {
+    "highway": "service"
+   }
+  },
+  {
+   "type": "way",
+   "id": 870738744,
+   "timestamp": "2023-05-20T07:46:08Z",
+   "version": 2,
+   "changeset": 136326209,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    8111280171,
+    8111280170,
+    8111280166,
+    8111280169,
+    8111280165,
+    8111280167
+   ],
+   "tags": {
+    "highway": "service"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1174502670,
+   "timestamp": "2023-05-20T07:49:03Z",
+   "version": 2,
+   "changeset": 136324549,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    272399259,
+    1480964018
+   ],
+   "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "lane",
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Calle Laguna de Términos",
+    "oneway": "yes",
+    "surface": "asphalt"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1309929654,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12128369039,
+    12128369040,
+    12128369041,
+    12128369042,
+    12128369039
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1309929655,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12128369043,
+    12128369044,
+    12128369045,
+    12128369046,
+    12128369043
+   ],
+   "tags": {
+    "building": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1309929656,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12128369036,
+    5582692127,
+    5582692128,
+    5582692129,
+    12250823376,
+    5582692153
+   ],
+   "tags": {
+    "barrier": "fence"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1309929657,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692157,
+    7897261635,
+    12128369036
+   ],
+   "tags": {
+    "barrier": "wall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1309929658,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692157,
+    5582692156
+   ],
+   "tags": {
+    "barrier": "wall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323898168,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12250823350,
+    12250823351,
+    12250823348,
+    12250823349
+   ],
+   "tags": {
+    "barrier": "wall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323898170,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12250823354,
+    12250823355,
+    12250823356
+   ],
+   "tags": {
+    "barrier": "wall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323898174,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692127,
+    12128369037,
+    12128369038
+   ],
+   "tags": {
+    "barrier": "wall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323922537,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12251049315,
+    12251049316
+   ],
+   "tags": {
+    "barrier": "wall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323922538,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12251049319,
+    12251049324,
+    12251049323
+   ],
+   "tags": {
+    "barrier": "wall"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323922539,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12251049316,
+    12251049319
+   ],
+   "tags": {
+    "barrier": "gate"
+   }
+  },
+  {
+   "type": "relation",
+   "id": 18162786,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "members": [
+    {
+     "type": "way",
+     "ref": 583976347,
+     "role": "outer"
+    },
+    {
+     "type": "way",
+     "ref": 1323898176,
+     "role": "inner"
+    },
+    {
+     "type": "way",
+     "ref": 1323898175,
+     "role": "inner"
+    },
+    {
+     "type": "way",
+     "ref": 1323898178,
+     "role": "inner"
+    },
+    {
+     "type": "way",
+     "ref": 1323898177,
+     "role": "inner"
+    }
+   ],
+   "tags": {
+    "area": "yes",
+    "highway": "pedestrian",
+    "lit": "yes",
+    "surface": "paving_stones",
+    "type": "multipolygon"
+   }
+  },
+  {
+   "type": "relation",
+   "id": 18163155,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "members": [
+    {
+     "type": "way",
+     "ref": 583976348,
+     "role": "outer"
+    },
+    {
+     "type": "way",
+     "ref": 1323922534,
+     "role": "inner"
+    }
+   ],
+   "tags": {
+    "area": "yes",
+    "highway": "pedestrian",
+    "lit": "yes",
+    "surface": "paving_stones",
+    "type": "multipolygon"
+   }
+  },
+  {
+   "type": "node",
+   "id": 271558078,
+   "lat": 19.444012,
+   "lon": -99.1980946,
+   "timestamp": "2011-10-26T07:31:07Z",
+   "version": 2,
+   "changeset": 9657888,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 271558079,
+   "lat": 19.4437941,
+   "lon": -99.1974305,
+   "timestamp": "2011-10-04T10:39:18Z",
+   "version": 2,
+   "changeset": 9468144,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 271558460,
+   "lat": 19.4454802,
+   "lon": -99.2016219,
+   "timestamp": "2011-10-04T10:39:18Z",
+   "version": 2,
+   "changeset": 9468144,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 271559667,
+   "lat": 19.4445215,
+   "lon": -99.1992371,
+   "timestamp": "2020-09-08T15:14:40Z",
+   "version": 3,
+   "changeset": 90594873,
+   "user": "theArchDruid",
+   "uid": 8270424
+  },
+  {
+   "type": "node",
+   "id": 271559728,
+   "lat": 19.4444747,
+   "lon": -99.1991218,
+   "timestamp": "2020-09-08T15:14:40Z",
+   "version": 5,
+   "changeset": 90594873,
+   "user": "theArchDruid",
+   "uid": 8270424
+  },
+  {
+   "type": "node",
+   "id": 271561215,
+   "lat": 19.4434828,
+   "lon": -99.1964584,
+   "timestamp": "2011-10-04T10:39:18Z",
+   "version": 2,
+   "changeset": 9468144,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 271561339,
+   "lat": 19.4433303,
+   "lon": -99.1957232,
+   "timestamp": "2011-10-04T10:39:18Z",
+   "version": 2,
+   "changeset": 9468144,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 271561779,
+   "lat": 19.4429119,
+   "lon": -99.1927064,
+   "timestamp": "2020-11-13T04:52:09Z",
+   "version": 3,
+   "changeset": 94032061,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 271561780,
+   "lat": 19.4428262,
+   "lon": -99.1924902,
+   "timestamp": "2017-05-16T17:28:53Z",
+   "version": 2,
+   "changeset": 48736919,
+   "user": "Totte",
+   "uid": 216398
+  },
+  {
+   "type": "node",
+   "id": 271561782,
+   "lat": 19.4426246,
+   "lon": -99.1921999,
+   "timestamp": "2018-12-14T18:38:24Z",
+   "version": 4,
+   "changeset": 65482253,
+   "user": "RobinNoodles_import",
+   "uid": 9050632,
+   "tags": {
+    "bicycle": "yes",
+    "crossing": "traffic_signals",
+    "highway": "traffic_signals"
+   }
+  },
+  {
+   "type": "node",
+   "id": 271562018,
+   "lat": 19.4426545,
+   "lon": -99.1927982,
+   "timestamp": "2011-10-26T07:08:55Z",
+   "version": 2,
+   "changeset": 9657801,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 271581607,
+   "lat": 19.435654,
+   "lon": -99.1907106,
+   "timestamp": "2018-12-29T04:38:47Z",
+   "version": 5,
+   "changeset": 65857945,
+   "user": "5m4u9",
+   "uid": 72264
+  },
+  {
+   "type": "node",
+   "id": 272396888,
+   "lat": 19.4427063,
+   "lon": -99.1908871,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 6,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 272399005,
+   "lat": 19.4429993,
+   "lon": -99.1931025,
+   "timestamp": "2011-10-04T10:39:19Z",
+   "version": 2,
+   "changeset": 9468144,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 272399006,
+   "lat": 19.4449217,
+   "lon": -99.1928121,
+   "timestamp": "2018-04-27T15:50:58Z",
+   "version": 3,
+   "changeset": 58480089,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 272399256,
+   "lat": 19.4455844,
+   "lon": -99.2018592,
+   "timestamp": "2018-04-27T15:50:59Z",
+   "version": 3,
+   "changeset": 58480089,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 272399259,
+   "lat": 19.4447937,
+   "lon": -99.1918739,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 5,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501,
+   "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+   }
+  },
+  {
+   "type": "node",
+   "id": 272399262,
+   "lat": 19.4457518,
+   "lon": -99.2022134,
+   "timestamp": "2020-09-08T18:45:47Z",
+   "version": 3,
+   "changeset": 90602170,
+   "user": "Corban8",
+   "uid": 4240913
+  },
+  {
+   "type": "node",
+   "id": 272399530,
+   "lat": 19.4431396,
+   "lon": -99.1941487,
+   "timestamp": "2011-10-04T10:39:19Z",
+   "version": 2,
+   "changeset": 9468144,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 272399532,
+   "lat": 19.4450634,
+   "lon": -99.1938617,
+   "timestamp": "2020-09-15T18:37:58Z",
+   "version": 5,
+   "changeset": 90942105,
+   "user": "UncoolGuyJake",
+   "uid": 7674729
+  },
+  {
+   "type": "node",
+   "id": 272399677,
+   "lat": 19.4432757,
+   "lon": -99.1952594,
+   "timestamp": "2021-03-10T14:59:47Z",
+   "version": 4,
+   "changeset": 100786781,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 272399678,
+   "lat": 19.4452029,
+   "lon": -99.1949655,
+   "timestamp": "2021-03-10T14:59:47Z",
+   "version": 9,
+   "changeset": 100786781,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 308554084,
+   "lat": 19.3615527,
+   "lon": -99.1892568,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 21,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "description": "Last public station on line",
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Barranca del Muerto",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q2885482",
+    "wikimedia_commons": "Category:Estación Barranca del Muerto (Metro de México)",
+    "wikipedia": "es:Barranca del Muerto (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308556306,
+   "lat": 19.3762376,
+   "lon": -99.1876125,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 14,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Mixcoac",
+    "network": "STC Metro",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "subway": "yes",
+    "wikidata": "Q6824627",
+    "wikimedia_commons": "Category:Estación Mixcoac (Metro de México)",
+    "wikipedia": "es:Mixcoac (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308556308,
+   "lat": 19.3845079,
+   "lon": -99.1866332,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 15,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "San Antonio",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q6824698",
+    "wikimedia_commons": "Category:Estación San Antonio (Metro de México)",
+    "wikipedia": "es:San Antonio (estación del Metro de Ciudad de México)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308556313,
+   "lat": 19.3959093,
+   "lon": -99.1853089,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 27,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308556865,
+   "lat": 19.3986004,
+   "lon": -99.1850046,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 26,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308556866,
+   "lat": 19.3990079,
+   "lon": -99.184967,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 26,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308556868,
+   "lat": 19.4044006,
+   "lon": -99.1879873,
+   "timestamp": "2009-03-23T18:42:27Z",
+   "version": 25,
+   "changeset": 850817,
+   "user": "macgirl",
+   "uid": 101199
+  },
+  {
+   "type": "node",
+   "id": 308557058,
+   "lat": 19.4021662,
+   "lon": -99.1867465,
+   "timestamp": "2023-08-31T09:53:28Z",
+   "version": 14,
+   "changeset": 140626610,
+   "user": "Руслан Т",
+   "uid": 12947635,
+   "tags": {
+    "description": "Línea 7",
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Tacubaya (Línea 7)",
+    "network": "STC Metro",
+    "operator": "Sistema Transporte Colectivo",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "service": "yard",
+    "subway": "yes",
+    "voltage": "1500"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308557541,
+   "lat": 19.4117501,
+   "lon": -99.1913845,
+   "timestamp": "2026-07-21T18:25:22Z",
+   "version": 13,
+   "changeset": 186133031,
+   "user": "rimugu",
+   "uid": 1910727,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Constituyentes",
+    "name:es": "Constituyentes",
+    "name:ja": "コンスティトゥジェンテス",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q5944586",
+    "wikimedia_commons": "Category:Estación Constituyentes (Metro de México)",
+    "wikipedia": "es:Constituyentes (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308561115,
+   "lat": 19.4169446,
+   "lon": -99.1926116,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 24,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308561116,
+   "lat": 19.4221554,
+   "lon": -99.1926649,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 23,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308561119,
+   "lat": 19.4249847,
+   "lon": -99.1922567,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 12,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Auditorio",
+    "network": "STC Metro",
+    "network:wikidata": "Q735042",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q6824492",
+    "wikimedia_commons": "Category:Estación Auditorio (Metro de México)",
+    "wikipedia": "es:Auditorio (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308561120,
+   "lat": 19.43353,
+   "lon": -99.190915,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 12,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Polanco",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "train": "yes",
+    "voltage": "1500",
+    "wikidata": "Q6824672",
+    "wikimedia_commons": "Category:Estación Polanco (Metro de México)",
+    "wikipedia": "es:Polanco (estación, Metro de la Ciudad de México)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308561808,
+   "lat": 19.4399142,
+   "lon": -99.1903559,
+   "timestamp": "2017-04-19T05:25:10Z",
+   "version": 23,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308561809,
+   "lat": 19.4403812,
+   "lon": -99.1904078,
+   "timestamp": "2009-03-23T18:42:28Z",
+   "version": 21,
+   "changeset": 850817,
+   "user": "macgirl",
+   "uid": 101199
+  },
+  {
+   "type": "node",
+   "id": 308561810,
+   "lat": 19.4408593,
+   "lon": -99.190706,
+   "timestamp": "2017-04-19T05:25:10Z",
+   "version": 22,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308561813,
+   "lat": 19.442584,
+   "lon": -99.1920007,
+   "timestamp": "2017-04-19T05:25:10Z",
+   "version": 23,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308561814,
+   "lat": 19.4430637,
+   "lon": -99.1920503,
+   "timestamp": "2011-10-26T07:09:00Z",
+   "version": 22,
+   "changeset": 9657801,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 308562279,
+   "lat": 19.4565643,
+   "lon": -99.1881631,
+   "timestamp": "2017-04-19T05:25:10Z",
+   "version": 22,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308562800,
+   "lat": 19.4696029,
+   "lon": -99.1904631,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 14,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Refinería",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q9067431",
+    "wikimedia_commons": "Category:Estación Refinería (Metro de México)",
+    "wikipedia": "es:Refinería (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308564178,
+   "lat": 19.4791036,
+   "lon": -99.1900262,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 31,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Camarones",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "train": "yes",
+    "voltage": "1500",
+    "wikidata": "Q6824514",
+    "wikimedia_commons": "Category:Estación Camarones (Metro de México)",
+    "wikipedia": "es:Camarones (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308564179,
+   "lat": 19.481894,
+   "lon": -99.1899055,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 19,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308564180,
+   "lat": 19.4835441,
+   "lon": -99.1897771,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 19,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308564183,
+   "lat": 19.4851424,
+   "lon": -99.1896753,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 19,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308564184,
+   "lat": 19.4853297,
+   "lon": -99.1897034,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 19,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308564185,
+   "lat": 19.4858746,
+   "lon": -99.1899939,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 19,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308564186,
+   "lat": 19.4906797,
+   "lon": -99.1953153,
+   "timestamp": "2026-06-03T18:12:08Z",
+   "version": 31,
+   "changeset": 183607957,
+   "user": "BRTSZN",
+   "uid": 11667108,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Aquiles Serdán",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "train": "yes",
+    "voltage": "1500",
+    "wikidata": "Q6824477",
+    "wikimedia_commons": "Category:Estación Aquiles Serdán (Metro de México)",
+    "wikipedia": "es:Aquiles Serdán (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 308564187,
+   "lat": 19.4924218,
+   "lon": -99.1966784,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 19,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 308564188,
+   "lat": 19.4959999,
+   "lon": -99.1990767,
+   "timestamp": "2009-03-23T18:42:30Z",
+   "version": 18,
+   "changeset": 850817,
+   "user": "macgirl",
+   "uid": 101199
+  },
+  {
+   "type": "node",
+   "id": 308564189,
+   "lat": 19.4981844,
+   "lon": -99.2011366,
+   "timestamp": "2009-03-23T18:42:30Z",
+   "version": 19,
+   "changeset": 850817,
+   "user": "macgirl",
+   "uid": 101199
+  },
+  {
+   "type": "node",
+   "id": 344722039,
+   "lat": 19.37565,
+   "lon": -99.1876933,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 19,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 351114285,
+   "lat": 19.4986355,
+   "lon": -99.201612,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 5,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 351114286,
+   "lat": 19.4988686,
+   "lon": -99.2017862,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 5,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 351114287,
+   "lat": 19.4994598,
+   "lon": -99.201876,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 5,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 351114288,
+   "lat": 19.4997171,
+   "lon": -99.2018191,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 5,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 372948925,
+   "lat": 19.4483123,
+   "lon": -99.1906723,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 2,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 372948938,
+   "lat": 19.4482565,
+   "lon": -99.1889909,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 2,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 372949541,
+   "lat": 19.4489979,
+   "lon": -99.1888996,
+   "timestamp": "2020-09-11T20:41:49Z",
+   "version": 4,
+   "changeset": 90777397,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 372949606,
+   "lat": 19.4520095,
+   "lon": -99.1904186,
+   "timestamp": "2020-09-10T21:39:40Z",
+   "version": 5,
+   "changeset": 90723588,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 372949707,
+   "lat": 19.4530105,
+   "lon": -99.1900957,
+   "timestamp": "2020-11-19T13:54:26Z",
+   "version": 9,
+   "changeset": 94441098,
+   "user": "tangomapper",
+   "uid": 8710070
+  },
+  {
+   "type": "node",
+   "id": 373110731,
+   "lat": 19.4474648,
+   "lon": -99.1914334,
+   "timestamp": "2020-09-10T23:08:08Z",
+   "version": 5,
+   "changeset": 90725324,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 373110732,
+   "lat": 19.4467472,
+   "lon": -99.1923475,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 5,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 373110733,
+   "lat": 19.447576,
+   "lon": -99.1921562,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 5,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 373110734,
+   "lat": 19.4484228,
+   "lon": -99.1919669,
+   "timestamp": "2020-09-10T22:28:00Z",
+   "version": 4,
+   "changeset": 90724660,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 373110743,
+   "lat": 19.4491458,
+   "lon": -99.191101,
+   "timestamp": "2020-09-11T17:34:06Z",
+   "version": 5,
+   "changeset": 90771087,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 373110918,
+   "lat": 19.4482779,
+   "lon": -99.1912793,
+   "timestamp": "2020-09-10T23:08:08Z",
+   "version": 5,
+   "changeset": 90725324,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 380224290,
+   "lat": 19.4438621,
+   "lon": -99.1851312,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 6,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 380224293,
+   "lat": 19.4445447,
+   "lon": -99.1895404,
+   "timestamp": "2018-12-14T18:38:25Z",
+   "version": 3,
+   "changeset": 65482253,
+   "user": "RobinNoodles_import",
+   "uid": 9050632
+  },
+  {
+   "type": "node",
+   "id": 380224294,
+   "lat": 19.4427026,
+   "lon": -99.1898405,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 7,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224295,
+   "lat": 19.446352,
+   "lon": -99.1892871,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 3,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224296,
+   "lat": 19.4443694,
+   "lon": -99.1884542,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 5,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 380224297,
+   "lat": 19.444212,
+   "lon": -99.1873866,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 8,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 380224301,
+   "lat": 19.4441468,
+   "lon": -99.1868609,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 8,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 380224303,
+   "lat": 19.4465496,
+   "lon": -99.1915549,
+   "timestamp": "2011-10-26T07:09:01Z",
+   "version": 2,
+   "changeset": 9657801,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 380224304,
+   "lat": 19.4462039,
+   "lon": -99.1882029,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 3,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224306,
+   "lat": 19.4459994,
+   "lon": -99.1865995,
+   "timestamp": "2020-11-12T09:37:50Z",
+   "version": 2,
+   "changeset": 93982981,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 380224309,
+   "lat": 19.4457908,
+   "lon": -99.1849646,
+   "timestamp": "2020-11-12T09:37:50Z",
+   "version": 3,
+   "changeset": 93982981,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 380224314,
+   "lat": 19.4446489,
+   "lon": -99.1906415,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 6,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224315,
+   "lat": 19.4464904,
+   "lon": -99.1903657,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 4,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224316,
+   "lat": 19.4482061,
+   "lon": -99.1901156,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 4,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224317,
+   "lat": 19.4465679,
+   "lon": -99.1909387,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 5,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224318,
+   "lat": 19.4456506,
+   "lon": -99.1838609,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 3,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224319,
+   "lat": 19.4455285,
+   "lon": -99.1828291,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 6,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 380224329,
+   "lat": 19.4442936,
+   "lon": -99.1879633,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 6,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 380224332,
+   "lat": 19.4466437,
+   "lon": -99.1915834,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 6,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 392066395,
+   "lat": 19.4476287,
+   "lon": -99.1913619,
+   "timestamp": "2011-10-26T07:09:01Z",
+   "version": 2,
+   "changeset": 9657801,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 392066396,
+   "lat": 19.4485114,
+   "lon": -99.1911972,
+   "timestamp": "2011-10-26T07:09:01Z",
+   "version": 4,
+   "changeset": 9657801,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 392066397,
+   "lat": 19.4503853,
+   "lon": -99.1907823,
+   "timestamp": "2017-04-19T05:25:10Z",
+   "version": 6,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 392066398,
+   "lat": 19.4510495,
+   "lon": -99.1905723,
+   "timestamp": "2021-03-10T22:16:18Z",
+   "version": 6,
+   "changeset": 100803853,
+   "user": "ElectricJellyfish",
+   "uid": 11601501,
+   "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+   }
+  },
+  {
+   "type": "node",
+   "id": 434303473,
+   "lat": 19.3722769,
+   "lon": -99.1880014,
+   "timestamp": "2019-02-24T05:53:48Z",
+   "version": 4,
+   "changeset": 67508488,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 553409514,
+   "lat": 19.5023053,
+   "lon": -99.2009407,
+   "timestamp": "2025-08-26T14:55:11Z",
+   "version": 4,
+   "changeset": 171035022,
+   "user": "Claudius Henrichs",
+   "uid": 18069
+  },
+  {
+   "type": "node",
+   "id": 681448501,
+   "lat": 19.4449744,
+   "lon": -99.1917953,
+   "timestamp": "2025-09-21T08:59:24Z",
+   "version": 11,
+   "changeset": 172235217,
+   "user": "tg4567",
+   "uid": 12500589,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "San Joaquín",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q6824700",
+    "wikimedia_commons": "Category:Estación San Joaquín (Metro de México)",
+    "wikipedia": "es:San Joaquín (estación del Metro de Ciudad de México)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 681454741,
+   "lat": 19.3915073,
+   "lon": -99.1855297,
+   "timestamp": "2026-01-29T06:54:48Z",
+   "version": 12,
+   "changeset": 177833021,
+   "user": "diegouuuuuu",
+   "uid": 23764834,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "San Pedro de los Pinos",
+    "network": "STC Metro",
+    "opening_hours": "Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00",
+    "operator": "Sistema de Transporte Colectivo",
+    "public_transport": "station",
+    "railway": "station",
+    "service": "yard",
+    "station": "subway",
+    "subway": "yes",
+    "voltage": "1500",
+    "wikidata": "Q5841189",
+    "wikimedia_commons": "Category:Estación San Pedro de los Pinos (Metro de México)",
+    "wikipedia": "es:San Pedro de los Pinos (estación)"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1434456386,
+   "lat": 19.366853,
+   "lon": -99.18869,
+   "timestamp": "2011-09-16T15:18:10Z",
+   "version": 1,
+   "changeset": 9316932,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 1434456404,
+   "lat": 19.3694157,
+   "lon": -99.1883546,
+   "timestamp": "2019-02-24T05:53:49Z",
+   "version": 2,
+   "changeset": 67508488,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 1434456410,
+   "lat": 19.3707846,
+   "lon": -99.188201,
+   "timestamp": "2019-02-24T05:53:49Z",
+   "version": 2,
+   "changeset": 67508488,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 1454740684,
+   "lat": 19.4433877,
+   "lon": -99.1961167,
+   "timestamp": "2011-10-04T10:38:29Z",
+   "version": 1,
+   "changeset": 9468144,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 1480963970,
+   "lat": 19.4425289,
+   "lon": -99.1920824,
+   "timestamp": "2018-12-14T18:38:25Z",
+   "version": 3,
+   "changeset": 65482253,
+   "user": "RobinNoodles_import",
+   "uid": 9050632
+  },
+  {
+   "type": "node",
+   "id": 1480963979,
+   "lat": 19.4428854,
+   "lon": -99.1921372,
+   "timestamp": "2020-09-08T15:14:40Z",
+   "version": 4,
+   "changeset": 90594873,
+   "user": "theArchDruid",
+   "uid": 8270424
+  },
+  {
+   "type": "node",
+   "id": 1480963981,
+   "lat": 19.4428594,
+   "lon": -99.1920255,
+   "timestamp": "2019-01-04T01:00:59Z",
+   "version": 5,
+   "changeset": 66006383,
+   "user": "Atexo",
+   "uid": 9308945
+  },
+  {
+   "type": "node",
+   "id": 1480964004,
+   "lat": 19.4432592,
+   "lon": -99.1951297,
+   "timestamp": "2020-09-08T15:14:40Z",
+   "version": 2,
+   "changeset": 90594873,
+   "user": "theArchDruid",
+   "uid": 8270424
+  },
+  {
+   "type": "node",
+   "id": 1480964018,
+   "lat": 19.4447786,
+   "lon": -99.1917592,
+   "timestamp": "2020-09-03T17:39:41Z",
+   "version": 6,
+   "changeset": 90374961,
+   "user": "theArchDruid",
+   "uid": 8270424,
+   "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1480964032,
+   "lat": 19.4456897,
+   "lon": -99.2020731,
+   "timestamp": "2011-10-26T07:08:23Z",
+   "version": 1,
+   "changeset": 9657801,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 1480964050,
+   "lat": 19.4465054,
+   "lon": -99.1919576,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 5,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 1480964052,
+   "lat": 19.4464738,
+   "lon": -99.19172,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 7,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 1480964057,
+   "lat": 19.446584,
+   "lon": -99.1917035,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 5,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 1480964065,
+   "lat": 19.4466156,
+   "lon": -99.1919412,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 5,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 1480964066,
+   "lat": 19.4466319,
+   "lon": -99.1914833,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 6,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1480964115,
+   "lat": 19.4498295,
+   "lon": -99.1909481,
+   "timestamp": "2018-12-12T20:47:24Z",
+   "version": 2,
+   "changeset": 65422190,
+   "user": "RobinNoodles_import",
+   "uid": 9050632
+  },
+  {
+   "type": "node",
+   "id": 1480964132,
+   "lat": 19.4508918,
+   "lon": -99.1906558,
+   "timestamp": "2011-10-26T07:08:25Z",
+   "version": 1,
+   "changeset": 9657801,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 1480964137,
+   "lat": 19.4510785,
+   "lon": -99.1906422,
+   "timestamp": "2019-01-04T01:00:59Z",
+   "version": 4,
+   "changeset": 66006383,
+   "user": "Atexo",
+   "uid": 9308945,
+   "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+   }
+  },
+  {
+   "type": "node",
+   "id": 1480964190,
+   "lat": 19.4529458,
+   "lon": -99.190152,
+   "timestamp": "2020-11-19T13:54:26Z",
+   "version": 7,
+   "changeset": 94441098,
+   "user": "tangomapper",
+   "uid": 8710070
+  },
+  {
+   "type": "node",
+   "id": 1480987499,
+   "lat": 19.4450033,
+   "lon": -99.2004862,
+   "timestamp": "2011-10-26T07:30:55Z",
+   "version": 1,
+   "changeset": 9657888,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 1480987501,
+   "lat": 19.4451061,
+   "lon": -99.2007788,
+   "timestamp": "2011-10-26T07:30:56Z",
+   "version": 1,
+   "changeset": 9657888,
+   "user": "ferval",
+   "uid": 298530
+  },
+  {
+   "type": "node",
+   "id": 1526562149,
+   "lat": 19.4468909,
+   "lon": -99.1934341,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 5,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1526603219,
+   "lat": 19.4447539,
+   "lon": -99.1998316,
+   "timestamp": "2011-12-01T16:16:40Z",
+   "version": 1,
+   "changeset": 10009237,
+   "user": "ViktorKastillo",
+   "uid": 555138
+  },
+  {
+   "type": "node",
+   "id": 1526603230,
+   "lat": 19.4439069,
+   "lon": -99.1977743,
+   "timestamp": "2011-12-01T16:16:40Z",
+   "version": 1,
+   "changeset": 10009237,
+   "user": "ViktorKastillo",
+   "uid": 555138
+  },
+  {
+   "type": "node",
+   "id": 1526603239,
+   "lat": 19.4441681,
+   "lon": -99.198453,
+   "timestamp": "2020-09-11T15:56:41Z",
+   "version": 2,
+   "changeset": 90767362,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 1526603242,
+   "lat": 19.4446117,
+   "lon": -99.1994585,
+   "timestamp": "2011-12-01T16:16:40Z",
+   "version": 1,
+   "changeset": 10009237,
+   "user": "ViktorKastillo",
+   "uid": 555138
+  },
+  {
+   "type": "node",
+   "id": 1526603249,
+   "lat": 19.4454228,
+   "lon": -99.1959197,
+   "timestamp": "2020-11-13T11:53:47Z",
+   "version": 10,
+   "changeset": 94059710,
+   "user": "Casentenisi",
+   "uid": 10074602
+  },
+  {
+   "type": "node",
+   "id": 1526603302,
+   "lat": 19.4449233,
+   "lon": -99.2002557,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 3,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1526603310,
+   "lat": 19.4443203,
+   "lon": -99.1987753,
+   "timestamp": "2011-12-01T16:16:42Z",
+   "version": 1,
+   "changeset": 10009237,
+   "user": "ViktorKastillo",
+   "uid": 555138
+  },
+  {
+   "type": "node",
+   "id": 1526771227,
+   "lat": 19.4453881,
+   "lon": -99.1954408,
+   "timestamp": "2021-03-10T14:59:47Z",
+   "version": 4,
+   "changeset": 100786781,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1526771261,
+   "lat": 19.4452262,
+   "lon": -99.1937535,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 6,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 1526771329,
+   "lat": 19.4471516,
+   "lon": -99.1954174,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 4,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1526796319,
+   "lat": 19.4473417,
+   "lon": -99.1968464,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 5,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1587529631,
+   "lat": 19.4475794,
+   "lon": -99.198626,
+   "timestamp": "2021-03-09T22:28:56Z",
+   "version": 5,
+   "changeset": 100736197,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1587529722,
+   "lat": 19.4474944,
+   "lon": -99.1980401,
+   "timestamp": "2021-03-09T22:28:56Z",
+   "version": 4,
+   "changeset": 100736197,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718397,
+   "lat": 19.4452831,
+   "lon": -99.1942834,
+   "timestamp": "2020-09-11T15:43:52Z",
+   "version": 4,
+   "changeset": 90766947,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 1588718400,
+   "lat": 19.4472023,
+   "lon": -99.1958389,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 5,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718401,
+   "lat": 19.4453451,
+   "lon": -99.1948798,
+   "timestamp": "2021-03-10T14:59:47Z",
+   "version": 6,
+   "changeset": 100786781,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718402,
+   "lat": 19.4474718,
+   "lon": -99.1978762,
+   "timestamp": "2021-03-09T22:28:56Z",
+   "version": 6,
+   "changeset": 100736197,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718411,
+   "lat": 19.4433396,
+   "lon": -99.1957869,
+   "timestamp": "2012-01-13T19:42:07Z",
+   "version": 1,
+   "changeset": 10381897,
+   "user": "Esperanza36",
+   "uid": 83557
+  },
+  {
+   "type": "node",
+   "id": 1588718413,
+   "lat": 19.4473764,
+   "lon": -99.1970902,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 7,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718415,
+   "lat": 19.4473012,
+   "lon": -99.1965692,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 6,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718418,
+   "lat": 19.443454,
+   "lon": -99.1963661,
+   "timestamp": "2018-04-27T15:50:59Z",
+   "version": 2,
+   "changeset": 58480089,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 1588718427,
+   "lat": 19.4469601,
+   "lon": -99.1939961,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 4,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718429,
+   "lat": 19.4470279,
+   "lon": -99.194556,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 4,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 1588718452,
+   "lat": 19.4471145,
+   "lon": -99.1951375,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 4,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 2377658284,
+   "lat": 19.4456,
+   "lon": -99.2018912,
+   "timestamp": "2013-07-08T06:43:59Z",
+   "version": 1,
+   "changeset": 16868800,
+   "user": "Moovit Team",
+   "uid": 1190212
+  },
+  {
+   "type": "node",
+   "id": 2897849088,
+   "lat": 19.4459299,
+   "lon": -99.1860185,
+   "timestamp": "2020-11-12T09:37:50Z",
+   "version": 3,
+   "changeset": 93982981,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 2898035844,
+   "lat": 19.4462747,
+   "lon": -99.1886839,
+   "timestamp": "2019-01-04T05:50:09Z",
+   "version": 2,
+   "changeset": 66010815,
+   "user": "Atexo",
+   "uid": 9308945
+  },
+  {
+   "type": "node",
+   "id": 2913765505,
+   "lat": 19.4677659,
+   "lon": -99.1905692,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 2,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 3035570514,
+   "lat": 19.4445047,
+   "lon": -99.1895472,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 7,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 3035570524,
+   "lat": 19.4234841,
+   "lon": -99.192511,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 2,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 3035586246,
+   "lat": 19.4013333,
+   "lon": -99.1862728,
+   "timestamp": "2017-04-19T05:25:11Z",
+   "version": 2,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 3393003826,
+   "lat": 19.4449484,
+   "lon": -99.1937234,
+   "timestamp": "2018-04-27T15:50:58Z",
+   "version": 2,
+   "changeset": 58480089,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 3393003827,
+   "lat": 19.4449116,
+   "lon": -99.1934565,
+   "timestamp": "2018-04-27T15:50:58Z",
+   "version": 2,
+   "changeset": 58480089,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 3393003828,
+   "lat": 19.4445649,
+   "lon": -99.1935102,
+   "timestamp": "2018-04-27T15:50:58Z",
+   "version": 2,
+   "changeset": 58480089,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 3393003829,
+   "lat": 19.4446017,
+   "lon": -99.1937771,
+   "timestamp": "2018-04-27T15:50:58Z",
+   "version": 2,
+   "changeset": 58480089,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 3430643833,
+   "lat": 19.4464179,
+   "lon": -99.1897945,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 3,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 3430646017,
+   "lat": 19.4439218,
+   "lon": -99.1852733,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 11,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "crossing:barrier": "no",
+    "railway": "level_crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 3430686115,
+   "lat": 19.4440741,
+   "lon": -99.1863037,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 8,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 3649280622,
+   "lat": 19.4581164,
+   "lon": -99.187208,
+   "timestamp": "2023-08-31T09:53:28Z",
+   "version": 9,
+   "changeset": 140626610,
+   "user": "Руслан Т",
+   "uid": 12947635,
+   "tags": {
+    "electrified": "rail",
+    "frequency": "0",
+    "gauge": "1435",
+    "name": "Tacuba",
+    "public_transport": "stop_position",
+    "railway": "stop",
+    "service": "yard",
+    "subway": "yes",
+    "voltage": "1500"
+   }
+  },
+  {
+   "type": "node",
+   "id": 4802953028,
+   "lat": 19.4991637,
+   "lon": -99.2018787,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953029,
+   "lat": 19.4971565,
+   "lon": -99.2000611,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953030,
+   "lat": 19.4968214,
+   "lon": -99.1997358,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953031,
+   "lat": 19.4964231,
+   "lon": -99.1994025,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953034,
+   "lat": 19.4954945,
+   "lon": -99.1987689,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953035,
+   "lat": 19.4939403,
+   "lon": -99.1977862,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953036,
+   "lat": 19.4899147,
+   "lon": -99.1946829,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953037,
+   "lat": 19.4895696,
+   "lon": -99.1943253,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953038,
+   "lat": 19.4876122,
+   "lon": -99.1920167,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953039,
+   "lat": 19.485714,
+   "lon": -99.1898634,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953040,
+   "lat": 19.4855252,
+   "lon": -99.1897584,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953041,
+   "lat": 19.4730349,
+   "lon": -99.190313,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953043,
+   "lat": 19.4592071,
+   "lon": -99.1869427,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953044,
+   "lat": 19.4648057,
+   "lon": -99.1907012,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953045,
+   "lat": 19.4645547,
+   "lon": -99.1907086,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953046,
+   "lat": 19.4630257,
+   "lon": -99.1904935,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953047,
+   "lat": 19.464106,
+   "lon": -99.1906766,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953048,
+   "lat": 19.4635223,
+   "lon": -99.1905817,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953049,
+   "lat": 19.4626929,
+   "lon": -99.1904288,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953050,
+   "lat": 19.4623302,
+   "lon": -99.1903265,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953051,
+   "lat": 19.4619584,
+   "lon": -99.1902083,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953052,
+   "lat": 19.4616864,
+   "lon": -99.1900745,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953053,
+   "lat": 19.4615147,
+   "lon": -99.1899374,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953054,
+   "lat": 19.4611693,
+   "lon": -99.1895655,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953055,
+   "lat": 19.4610685,
+   "lon": -99.1893416,
+   "timestamp": "2017-04-19T05:25:07Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953056,
+   "lat": 19.4594844,
+   "lon": -99.1869047,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953057,
+   "lat": 19.4598039,
+   "lon": -99.186906,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953058,
+   "lat": 19.4600284,
+   "lon": -99.1869496,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953059,
+   "lat": 19.4602439,
+   "lon": -99.1870762,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953060,
+   "lat": 19.4607376,
+   "lon": -99.1881595,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953061,
+   "lat": 19.4609469,
+   "lon": -99.1889581,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953062,
+   "lat": 19.4613209,
+   "lon": -99.1897706,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953063,
+   "lat": 19.4572097,
+   "lon": -99.1874215,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953097,
+   "lat": 19.4549344,
+   "lon": -99.1895629,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953098,
+   "lat": 19.4531719,
+   "lon": -99.1900669,
+   "timestamp": "2018-04-27T15:43:14Z",
+   "version": 2,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 4802953099,
+   "lat": 19.4540261,
+   "lon": -99.1897945,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953100,
+   "lat": 19.4566848,
+   "lon": -99.1878932,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953101,
+   "lat": 19.4568116,
+   "lon": -99.1877,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953102,
+   "lat": 19.4569936,
+   "lon": -99.1875168,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953103,
+   "lat": 19.4604153,
+   "lon": -99.187257,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953104,
+   "lat": 19.4605754,
+   "lon": -99.187556,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953105,
+   "lat": 19.4563412,
+   "lon": -99.1886377,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953106,
+   "lat": 19.4561689,
+   "lon": -99.1888857,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953107,
+   "lat": 19.4559336,
+   "lon": -99.1891492,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953108,
+   "lat": 19.4557363,
+   "lon": -99.1892699,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953109,
+   "lat": 19.4553955,
+   "lon": -99.1894339,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953110,
+   "lat": 19.4496015,
+   "lon": -99.190974,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953111,
+   "lat": 19.4428276,
+   "lon": -99.1920499,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953112,
+   "lat": 19.4423717,
+   "lon": -99.191867,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953113,
+   "lat": 19.4380825,
+   "lon": -99.1904829,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953114,
+   "lat": 19.4277748,
+   "lon": -99.1917299,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953115,
+   "lat": 19.4213722,
+   "lon": -99.1927433,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953116,
+   "lat": 19.4201075,
+   "lon": -99.1929136,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953117,
+   "lat": 19.4184497,
+   "lon": -99.1928932,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953118,
+   "lat": 19.4191296,
+   "lon": -99.1929518,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953119,
+   "lat": 19.4195436,
+   "lon": -99.1929614,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953120,
+   "lat": 19.4154822,
+   "lon": -99.1923266,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953121,
+   "lat": 19.4135748,
+   "lon": -99.1919162,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953122,
+   "lat": 19.4127391,
+   "lon": -99.1917205,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953123,
+   "lat": 19.4131949,
+   "lon": -99.1918318,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953124,
+   "lat": 19.4100674,
+   "lon": -99.1906976,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953125,
+   "lat": 19.4079297,
+   "lon": -99.1896938,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953126,
+   "lat": 19.4034372,
+   "lon": -99.1875115,
+   "timestamp": "2017-04-19T05:25:08Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953128,
+   "lat": 19.4005008,
+   "lon": -99.1858286,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953130,
+   "lat": 19.3996196,
+   "lon": -99.1851718,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4802953131,
+   "lat": 19.3998759,
+   "lon": -99.1853408,
+   "timestamp": "2017-04-19T05:25:09Z",
+   "version": 1,
+   "changeset": 47925448,
+   "user": "Abbendymion",
+   "uid": 2191238
+  },
+  {
+   "type": "node",
+   "id": 4858123994,
+   "lat": 19.4429565,
+   "lon": -99.1928849,
+   "timestamp": "2017-05-16T17:28:53Z",
+   "version": 1,
+   "changeset": 48736919,
+   "user": "Totte",
+   "uid": 216398
+  },
+  {
+   "type": "node",
+   "id": 5582691813,
+   "lat": 19.4451678,
+   "lon": -99.192088,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582691814,
+   "lat": 19.4450622,
+   "lon": -99.1921039,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582691815,
+   "lat": 19.4450872,
+   "lon": -99.1922905,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582691816,
+   "lat": 19.4451928,
+   "lon": -99.1922746,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582691817,
+   "lat": 19.4449615,
+   "lon": -99.1913014,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582691818,
+   "lat": 19.4450809,
+   "lon": -99.1912856,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582691819,
+   "lat": 19.4451025,
+   "lon": -99.1914691,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582691820,
+   "lat": 19.444983,
+   "lon": -99.1914849,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692123,
+   "lat": 19.445039,
+   "lon": -99.1920158,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692124,
+   "lat": 19.4449759,
+   "lon": -99.1920256,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692125,
+   "lat": 19.4449699,
+   "lon": -99.1919799,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692126,
+   "lat": 19.4450501,
+   "lon": -99.191968,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692127,
+   "lat": 19.4451608,
+   "lon": -99.1924725,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 4,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692128,
+   "lat": 19.445299,
+   "lon": -99.1924538,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 3,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692129,
+   "lat": 19.4452386,
+   "lon": -99.1919071,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 3,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692130,
+   "lat": 19.4448863,
+   "lon": -99.1919604,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692133,
+   "lat": 19.4451159,
+   "lon": -99.1915799,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692135,
+   "lat": 19.4448097,
+   "lon": -99.1911962,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692136,
+   "lat": 19.4449645,
+   "lon": -99.1913267,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 2,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692139,
+   "lat": 19.4448363,
+   "lon": -99.1916205,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 3,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692145,
+   "lat": 19.4448868,
+   "lon": -99.1925353,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 4,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692146,
+   "lat": 19.445692,
+   "lon": -99.1924429,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 3,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692147,
+   "lat": 19.4456954,
+   "lon": -99.1921952,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 2,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 5582692148,
+   "lat": 19.4453394,
+   "lon": -99.1922053,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 3,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692149,
+   "lat": 19.4453192,
+   "lon": -99.1920243,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 3,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692150,
+   "lat": 19.4453688,
+   "lon": -99.1924677,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 3,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692151,
+   "lat": 19.4455038,
+   "lon": -99.1920336,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 2,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 5582692152,
+   "lat": 19.4455168,
+   "lon": -99.1921833,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 3,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692153,
+   "lat": 19.4455444,
+   "lon": -99.1918447,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692156,
+   "lat": 19.4458135,
+   "lon": -99.1925248,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692157,
+   "lat": 19.4450464,
+   "lon": -99.1926304,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 5582692163,
+   "lat": 19.4450751,
+   "lon": -99.1927747,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692164,
+   "lat": 19.4451794,
+   "lon": -99.1927606,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692165,
+   "lat": 19.4452253,
+   "lon": -99.1931415,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692166,
+   "lat": 19.445121,
+   "lon": -99.1931556,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692167,
+   "lat": 19.4451005,
+   "lon": -99.1927315,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692168,
+   "lat": 19.4450881,
+   "lon": -99.1926208,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692169,
+   "lat": 19.4454476,
+   "lon": -99.1925753,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692170,
+   "lat": 19.4454601,
+   "lon": -99.1926861,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692171,
+   "lat": 19.4454863,
+   "lon": -99.1925596,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692172,
+   "lat": 19.4455907,
+   "lon": -99.1925455,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692173,
+   "lat": 19.4456365,
+   "lon": -99.1929264,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692174,
+   "lat": 19.4455322,
+   "lon": -99.1929406,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692175,
+   "lat": 19.4456827,
+   "lon": -99.1925514,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692176,
+   "lat": 19.445787,
+   "lon": -99.1925373,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692177,
+   "lat": 19.4458328,
+   "lon": -99.1929182,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692178,
+   "lat": 19.4457285,
+   "lon": -99.1929323,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692179,
+   "lat": 19.4454529,
+   "lon": -99.1931435,
+   "timestamp": "2018-04-27T15:43:04Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692180,
+   "lat": 19.445302,
+   "lon": -99.1931808,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692181,
+   "lat": 19.4453221,
+   "lon": -99.1932721,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692182,
+   "lat": 19.4454729,
+   "lon": -99.1932349,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692183,
+   "lat": 19.4456177,
+   "lon": -99.193102,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692184,
+   "lat": 19.4454669,
+   "lon": -99.1931393,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692185,
+   "lat": 19.4454869,
+   "lon": -99.1932306,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692186,
+   "lat": 19.4456378,
+   "lon": -99.1931934,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692189,
+   "lat": 19.4450767,
+   "lon": -99.1911558,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692190,
+   "lat": 19.4451372,
+   "lon": -99.1916266,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692191,
+   "lat": 19.4457035,
+   "lon": -99.1915447,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692192,
+   "lat": 19.4456429,
+   "lon": -99.1910739,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692193,
+   "lat": 19.4457327,
+   "lon": -99.1914095,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692194,
+   "lat": 19.4457468,
+   "lon": -99.1915196,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692195,
+   "lat": 19.4458854,
+   "lon": -99.1914997,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692196,
+   "lat": 19.4458713,
+   "lon": -99.1913896,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692197,
+   "lat": 19.4457562,
+   "lon": -99.1913961,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692198,
+   "lat": 19.4457146,
+   "lon": -99.1910669,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692199,
+   "lat": 19.4458261,
+   "lon": -99.1910511,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692200,
+   "lat": 19.4458677,
+   "lon": -99.1913802,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692201,
+   "lat": 19.4458416,
+   "lon": -99.1910512,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692202,
+   "lat": 19.4458935,
+   "lon": -99.1914982,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692203,
+   "lat": 19.4459731,
+   "lon": -99.1914878,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692204,
+   "lat": 19.4459211,
+   "lon": -99.1910408,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692205,
+   "lat": 19.4459312,
+   "lon": -99.191042,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692206,
+   "lat": 19.4459788,
+   "lon": -99.1914867,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692207,
+   "lat": 19.4460568,
+   "lon": -99.1914773,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692208,
+   "lat": 19.4460091,
+   "lon": -99.1910326,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692209,
+   "lat": 19.4460546,
+   "lon": -99.1924682,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692210,
+   "lat": 19.4458324,
+   "lon": -99.1925086,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692211,
+   "lat": 19.445788,
+   "lon": -99.1922334,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692212,
+   "lat": 19.4460145,
+   "lon": -99.1922009,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692213,
+   "lat": 19.4459365,
+   "lon": -99.1922155,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692214,
+   "lat": 19.445866,
+   "lon": -99.1917908,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692215,
+   "lat": 19.4459439,
+   "lon": -99.1917762,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692216,
+   "lat": 19.4460975,
+   "lon": -99.1924239,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692217,
+   "lat": 19.4460191,
+   "lon": -99.1919157,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692218,
+   "lat": 19.4461215,
+   "lon": -99.1918979,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692219,
+   "lat": 19.446163,
+   "lon": -99.1921665,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692220,
+   "lat": 19.4461985,
+   "lon": -99.1921604,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692321,
+   "lat": 19.4462355,
+   "lon": -99.1923999,
+   "timestamp": "2018-04-27T15:43:05Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692322,
+   "lat": 19.4463292,
+   "lon": -99.1924064,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692323,
+   "lat": 19.4461593,
+   "lon": -99.1917593,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692324,
+   "lat": 19.4462264,
+   "lon": -99.1917395,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692325,
+   "lat": 19.4462565,
+   "lon": -99.1918544,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692326,
+   "lat": 19.4463488,
+   "lon": -99.1918271,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692327,
+   "lat": 19.4464885,
+   "lon": -99.1923594,
+   "timestamp": "2019-04-04T19:21:26Z",
+   "version": 2,
+   "changeset": 68896406,
+   "user": "RedRangerr",
+   "uid": 9328803
+  },
+  {
+   "type": "node",
+   "id": 5582692336,
+   "lat": 19.4470825,
+   "lon": -99.1949211,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 4,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 5582692341,
+   "lat": 19.4470748,
+   "lon": -99.194873,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 3,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 5582692394,
+   "lat": 19.4464155,
+   "lon": -99.1913484,
+   "timestamp": "2018-04-27T15:43:07Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692395,
+   "lat": 19.4464647,
+   "lon": -99.1913412,
+   "timestamp": "2018-04-27T15:43:07Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692396,
+   "lat": 19.4464394,
+   "lon": -99.1911462,
+   "timestamp": "2018-04-27T15:43:07Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692397,
+   "lat": 19.4465273,
+   "lon": -99.1911333,
+   "timestamp": "2018-04-27T15:43:07Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692398,
+   "lat": 19.4465625,
+   "lon": -99.1914043,
+   "timestamp": "2018-04-27T15:43:07Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 5582692399,
+   "lat": 19.4464253,
+   "lon": -99.1914244,
+   "timestamp": "2018-04-27T15:43:07Z",
+   "version": 1,
+   "changeset": 58479802,
+   "user": "algarinr",
+   "uid": 1674230
+  },
+  {
+   "type": "node",
+   "id": 6133355420,
+   "lat": 19.4474075,
+   "lon": -99.1973361,
+   "timestamp": "2021-03-09T22:56:11Z",
+   "version": 4,
+   "changeset": 100736851,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 6133355422,
+   "lat": 19.4475515,
+   "lon": -99.1984239,
+   "timestamp": "2021-03-09T22:28:56Z",
+   "version": 4,
+   "changeset": 100736197,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 6133461084,
+   "lat": 19.4458931,
+   "lon": -99.1916884,
+   "timestamp": "2018-12-12T20:47:21Z",
+   "version": 1,
+   "changeset": 65422190,
+   "user": "RobinNoodles_import",
+   "uid": 9050632
+  },
+  {
+   "type": "node",
+   "id": 6133467586,
+   "lat": 19.4458914,
+   "lon": -99.191597,
+   "timestamp": "2018-12-12T20:47:21Z",
+   "version": 1,
+   "changeset": 65422190,
+   "user": "RobinNoodles_import",
+   "uid": 9050632
+  },
+  {
+   "type": "node",
+   "id": 6133467593,
+   "lat": 19.4498568,
+   "lon": -99.1908665,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 3,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 6133467595,
+   "lat": 19.4497186,
+   "lon": -99.1908956,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 3,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 6133467597,
+   "lat": 19.4484072,
+   "lon": -99.1911521,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 5,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 6133467598,
+   "lat": 19.4491075,
+   "lon": -99.1910225,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 3,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 6133605746,
+   "lat": 19.4458956,
+   "lon": -99.2025472,
+   "timestamp": "2020-09-08T18:45:47Z",
+   "version": 2,
+   "changeset": 90602170,
+   "user": "Corban8",
+   "uid": 4240913
+  },
+  {
+   "type": "node",
+   "id": 6133605750,
+   "lat": 19.4452845,
+   "lon": -99.1956073,
+   "timestamp": "2018-12-12T22:15:39Z",
+   "version": 1,
+   "changeset": 65424515,
+   "user": "RobinNoodles_import",
+   "uid": 9050632
+  },
+  {
+   "type": "node",
+   "id": 6133711025,
+   "lat": 19.4439488,
+   "lon": -99.185327,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 6,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 6133711026,
+   "lat": 19.4441848,
+   "lon": -99.1904913,
+   "timestamp": "2020-11-12T09:37:50Z",
+   "version": 2,
+   "changeset": 93982981,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 6133711027,
+   "lat": 19.4433516,
+   "lon": -99.1908101,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 2,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 6133711028,
+   "lat": 19.4441765,
+   "lon": -99.1903591,
+   "timestamp": "2020-11-12T09:37:50Z",
+   "version": 2,
+   "changeset": 93982981,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 6133711030,
+   "lat": 19.4442086,
+   "lon": -99.1907031,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 2,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 6137895733,
+   "lat": 19.4437352,
+   "lon": -99.1841251,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 4,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 6138070837,
+   "lat": 19.4424993,
+   "lon": -99.1922675,
+   "timestamp": "2019-01-04T01:00:59Z",
+   "version": 2,
+   "changeset": 66006383,
+   "user": "Atexo",
+   "uid": 9308945
+  },
+  {
+   "type": "node",
+   "id": 6138070838,
+   "lat": 19.4424034,
+   "lon": -99.1923353,
+   "timestamp": "2019-01-04T01:00:59Z",
+   "version": 2,
+   "changeset": 66006383,
+   "user": "Atexo",
+   "uid": 9308945,
+   "tags": {
+    "bicycle": "yes",
+    "crossing": "traffic_signals",
+    "highway": "traffic_signals"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6183047518,
+   "lat": 19.4455702,
+   "lon": -99.1831526,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 2,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6183047520,
+   "lat": 19.4455771,
+   "lon": -99.1832158,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 4,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "crossing:barrier": "no",
+    "railway": "level_crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 6183047521,
+   "lat": 19.4460611,
+   "lon": -99.1871261,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 2,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 6183047522,
+   "lat": 19.4461322,
+   "lon": -99.187676,
+   "timestamp": "2019-01-04T05:50:08Z",
+   "version": 1,
+   "changeset": 66010815,
+   "user": "Atexo",
+   "uid": 9308945
+  },
+  {
+   "type": "node",
+   "id": 6298545886,
+   "lat": 19.3993297,
+   "lon": -99.185032,
+   "timestamp": "2019-02-24T05:53:43Z",
+   "version": 1,
+   "changeset": 67508488,
+   "user": "mdelatorre",
+   "uid": 84642
+  },
+  {
+   "type": "node",
+   "id": 6364625545,
+   "lat": 19.4441157,
+   "lon": -99.1983398,
+   "timestamp": "2019-03-27T11:37:54Z",
+   "version": 1,
+   "changeset": 68583064,
+   "user": "P Anusha",
+   "uid": 8782081
+  },
+  {
+   "type": "node",
+   "id": 7876279638,
+   "lat": 19.4442006,
+   "lon": -99.1906321,
+   "timestamp": "2020-11-12T09:37:50Z",
+   "version": 2,
+   "changeset": 93982981,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "tags": {
+    "access": "no",
+    "barrier": "gate"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7876585748,
+   "lat": 19.4453124,
+   "lon": -99.1958353,
+   "timestamp": "2020-09-11T14:24:16Z",
+   "version": 3,
+   "changeset": 90764070,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 7876874990,
+   "lat": 19.4433217,
+   "lon": -99.1956586,
+   "timestamp": "2020-09-04T23:11:18Z",
+   "version": 1,
+   "changeset": 90435364,
+   "user": "AnonJason",
+   "uid": 9151615
+  },
+  {
+   "type": "node",
+   "id": 7887751384,
+   "lat": 19.4466002,
+   "lon": -99.1912029,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 2,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 7887774995,
+   "lat": 19.40022,
+   "lon": -99.185626,
+   "timestamp": "2020-09-08T16:32:28Z",
+   "version": 1,
+   "changeset": 90597542,
+   "user": "DRM150",
+   "uid": 10627270
+  },
+  {
+   "type": "node",
+   "id": 7894921742,
+   "lat": 19.4529198,
+   "lon": -99.1900567,
+   "timestamp": "2020-11-19T13:54:26Z",
+   "version": 2,
+   "changeset": 94441098,
+   "user": "tangomapper",
+   "uid": 8710070
+  },
+  {
+   "type": "node",
+   "id": 7897094160,
+   "lat": 19.4454141,
+   "lon": -99.1958273,
+   "timestamp": "2020-09-16T14:11:59Z",
+   "version": 2,
+   "changeset": 90992285,
+   "user": "UncoolGuyJake",
+   "uid": 7674729
+  },
+  {
+   "type": "node",
+   "id": 7897261627,
+   "lat": 19.4433065,
+   "lon": -99.1955379,
+   "timestamp": "2020-09-11T16:22:24Z",
+   "version": 2,
+   "changeset": 90768316,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 7897261630,
+   "lat": 19.4429591,
+   "lon": -99.1920116,
+   "timestamp": "2020-09-11T15:43:52Z",
+   "version": 1,
+   "changeset": 90766947,
+   "user": "nutchayahongvilai",
+   "uid": 10028134,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7897261631,
+   "lat": 19.4429718,
+   "lon": -99.1921243,
+   "timestamp": "2020-09-11T15:43:52Z",
+   "version": 1,
+   "changeset": 90766947,
+   "user": "nutchayahongvilai",
+   "uid": 10028134,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7897261634,
+   "lat": 19.4448597,
+   "lon": -99.1923337,
+   "timestamp": "2020-09-11T15:43:52Z",
+   "version": 1,
+   "changeset": 90766947,
+   "user": "nutchayahongvilai",
+   "uid": 10028134
+  },
+  {
+   "type": "node",
+   "id": 7897261635,
+   "lat": 19.4450326,
+   "lon": -99.1925135,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 3,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "access": "permissive",
+    "barrier": "gate"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7897261636,
+   "lat": 19.4451421,
+   "lon": -99.1938098,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 3,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 7897293628,
+   "lat": 19.444153,
+   "lon": -99.1984239,
+   "timestamp": "2020-09-11T15:56:41Z",
+   "version": 1,
+   "changeset": 90767362,
+   "user": "nutchayahongvilai",
+   "uid": 10028134,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7897293630,
+   "lat": 19.4440859,
+   "lon": -99.1982692,
+   "timestamp": "2020-09-11T15:56:41Z",
+   "version": 1,
+   "changeset": 90767362,
+   "user": "nutchayahongvilai",
+   "uid": 10028134,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7897529162,
+   "lat": 19.4483868,
+   "lon": -99.1911567,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 2,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7897529163,
+   "lat": 19.4484066,
+   "lon": -99.1912529,
+   "timestamp": "2020-09-11T17:34:06Z",
+   "version": 1,
+   "changeset": 90771087,
+   "user": "nutchayahongvilai",
+   "uid": 10028134,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 7908885773,
+   "lat": 19.443656,
+   "lon": -99.1834257,
+   "timestamp": "2020-09-15T14:00:29Z",
+   "version": 1,
+   "changeset": 90930958,
+   "user": "tomincolorado",
+   "uid": 10304315
+  },
+  {
+   "type": "node",
+   "id": 7910034892,
+   "lat": 19.4453659,
+   "lon": -99.1936918,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 2,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 7910034893,
+   "lat": 19.4450005,
+   "lon": -99.193891,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 2,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 7910034894,
+   "lat": 19.4449322,
+   "lon": -99.1939091,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 2,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8004321629,
+   "lat": 19.4454044,
+   "lon": -99.2014512,
+   "timestamp": "2020-10-13T18:10:20Z",
+   "version": 1,
+   "changeset": 92432940,
+   "user": "hairyhaggis",
+   "uid": 10541438
+  },
+  {
+   "type": "node",
+   "id": 8004321631,
+   "lat": 19.445319,
+   "lon": -99.2012587,
+   "timestamp": "2020-10-13T18:10:20Z",
+   "version": 1,
+   "changeset": 92432940,
+   "user": "hairyhaggis",
+   "uid": 10541438
+  },
+  {
+   "type": "node",
+   "id": 8110298621,
+   "lat": 19.4452135,
+   "lon": -99.1933877,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110298622,
+   "lat": 19.4451483,
+   "lon": -99.1932712,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110298623,
+   "lat": 19.445206,
+   "lon": -99.1933849,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110298624,
+   "lat": 19.4458338,
+   "lon": -99.1932486,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110298625,
+   "lat": 19.4452303,
+   "lon": -99.1933867,
+   "timestamp": "2023-11-24T00:40:43Z",
+   "version": 3,
+   "changeset": 144387176,
+   "user": "LakeHulun",
+   "uid": 18953717,
+   "tags": {
+    "access": "permissive",
+    "barrier": "gate"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8110298626,
+   "lat": 19.4451982,
+   "lon": -99.193377,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110298627,
+   "lat": 19.445168,
+   "lon": -99.1932888,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110298628,
+   "lat": 19.445125,
+   "lon": -99.193264,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110298629,
+   "lat": 19.4449823,
+   "lon": -99.1932612,
+   "timestamp": "2020-11-12T05:15:41Z",
+   "version": 1,
+   "changeset": 93966593,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604672,
+   "lat": 19.44571,
+   "lon": -99.1923066,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 8110604673,
+   "lat": 19.4453548,
+   "lon": -99.1923426,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 8110604677,
+   "lat": 19.4454848,
+   "lon": -99.1920094,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604678,
+   "lat": 19.4454987,
+   "lon": -99.1920188,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604679,
+   "lat": 19.4454712,
+   "lon": -99.1920077,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604680,
+   "lat": 19.4456739,
+   "lon": -99.1921687,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604681,
+   "lat": 19.4456871,
+   "lon": -99.1921787,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604682,
+   "lat": 19.4456536,
+   "lon": -99.1921663,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604683,
+   "lat": 19.4457212,
+   "lon": -99.1924092,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 8110604684,
+   "lat": 19.4457087,
+   "lon": -99.1924315,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 2,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 8110604685,
+   "lat": 19.4457194,
+   "lon": -99.1923829,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8110604686,
+   "lat": 19.4452945,
+   "lon": -99.1937173,
+   "timestamp": "2020-11-12T07:39:21Z",
+   "version": 1,
+   "changeset": 93975602,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111063218,
+   "lat": 19.4438987,
+   "lon": -99.1852275,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 2,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 8111280143,
+   "lat": 19.4442741,
+   "lon": -99.1886862,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280153,
+   "lat": 19.4443474,
+   "lon": -99.1891492,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280154,
+   "lat": 19.444427,
+   "lon": -99.1894811,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280156,
+   "lat": 19.4441551,
+   "lon": -99.1875063,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280157,
+   "lat": 19.444218,
+   "lon": -99.1874225,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 2,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280159,
+   "lat": 19.4441406,
+   "lon": -99.1876036,
+   "timestamp": "2020-11-13T06:41:13Z",
+   "version": 3,
+   "changeset": 94038854,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "tags": {
+    "barrier": "gate"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8111280160,
+   "lat": 19.4441557,
+   "lon": -99.1879217,
+   "timestamp": "2020-11-12T11:46:08Z",
+   "version": 2,
+   "changeset": 93992757,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280161,
+   "lat": 19.4443827,
+   "lon": -99.1893762,
+   "timestamp": "2020-11-13T06:41:13Z",
+   "version": 3,
+   "changeset": 94038854,
+   "user": "LacDeYate",
+   "uid": 10409685,
+   "tags": {
+    "barrier": "gate"
+   }
+  },
+  {
+   "type": "node",
+   "id": 8111280162,
+   "lat": 19.4444407,
+   "lon": -99.189496,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280164,
+   "lat": 19.4444987,
+   "lon": -99.1895106,
+   "timestamp": "2020-11-12T12:16:50Z",
+   "version": 2,
+   "changeset": 93994910,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280165,
+   "lat": 19.44644,
+   "lon": -99.1918539,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280166,
+   "lat": 19.4464474,
+   "lon": -99.1918624,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280167,
+   "lat": 19.4464156,
+   "lon": -99.1916171,
+   "timestamp": "2021-03-10T22:52:07Z",
+   "version": 2,
+   "changeset": 100804714,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 8111280169,
+   "lat": 19.4464426,
+   "lon": -99.191859,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280170,
+   "lat": 19.4464541,
+   "lon": -99.1918632,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280171,
+   "lat": 19.4464924,
+   "lon": -99.19186,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280172,
+   "lat": 19.4466027,
+   "lon": -99.1918442,
+   "timestamp": "2020-11-12T10:37:24Z",
+   "version": 1,
+   "changeset": 93987650,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111280173,
+   "lat": 19.4466813,
+   "lon": -99.1918336,
+   "timestamp": "2021-03-11T14:50:37Z",
+   "version": 2,
+   "changeset": 100849282,
+   "user": "ElectricJellyfish",
+   "uid": 11601501
+  },
+  {
+   "type": "node",
+   "id": 8111403242,
+   "lat": 19.4430815,
+   "lon": -99.1937157,
+   "timestamp": "2020-11-12T11:26:29Z",
+   "version": 1,
+   "changeset": 93991262,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111403247,
+   "lat": 19.4432579,
+   "lon": -99.1941335,
+   "timestamp": "2020-11-12T11:26:29Z",
+   "version": 1,
+   "changeset": 93991262,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8111565469,
+   "lat": 19.443754,
+   "lon": -99.1843105,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 2,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 8113732597,
+   "lat": 19.4429312,
+   "lon": -99.192629,
+   "timestamp": "2020-11-13T04:52:09Z",
+   "version": 1,
+   "changeset": 94032061,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8113732598,
+   "lat": 19.4429246,
+   "lon": -99.1926702,
+   "timestamp": "2020-11-13T04:52:09Z",
+   "version": 1,
+   "changeset": 94032061,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8113732599,
+   "lat": 19.4429341,
+   "lon": -99.1925898,
+   "timestamp": "2020-11-13T04:52:09Z",
+   "version": 1,
+   "changeset": 94032061,
+   "user": "LacDeYate",
+   "uid": 10409685
+  },
+  {
+   "type": "node",
+   "id": 8115044892,
+   "lat": 19.4453275,
+   "lon": -99.1959435,
+   "timestamp": "2020-11-13T11:53:47Z",
+   "version": 1,
+   "changeset": 94059710,
+   "user": "Casentenisi",
+   "uid": 10074602
+  },
+  {
+   "type": "node",
+   "id": 8140824184,
+   "lat": 19.4527839,
+   "lon": -99.1902056,
+   "timestamp": "2020-11-19T05:36:26Z",
+   "version": 1,
+   "changeset": 94411140,
+   "user": "tangomapper",
+   "uid": 8710070
+  },
+  {
+   "type": "node",
+   "id": 8142587975,
+   "lat": 19.4529806,
+   "lon": -99.1901292,
+   "timestamp": "2020-11-19T13:54:26Z",
+   "version": 1,
+   "changeset": 94441098,
+   "user": "tangomapper",
+   "uid": 8710070
+  },
+  {
+   "type": "node",
+   "id": 8142587976,
+   "lat": 19.4529954,
+   "lon": -99.1900329,
+   "timestamp": "2020-11-19T13:54:26Z",
+   "version": 1,
+   "changeset": 94441098,
+   "user": "tangomapper",
+   "uid": 8710070
+  },
+  {
+   "type": "node",
+   "id": 8703930029,
+   "lat": 19.4452688,
+   "lon": -99.195484,
+   "timestamp": "2021-05-06T05:56:20Z",
+   "version": 1,
+   "changeset": 104223435,
+   "user": "Roanoke_Island",
+   "uid": 9625529
+  },
+  {
+   "type": "node",
+   "id": 10914378631,
+   "lat": 19.4444567,
+   "lon": -99.189504,
+   "timestamp": "2023-05-20T16:47:49Z",
+   "version": 1,
+   "changeset": 136345398,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 11023055664,
+   "lat": 19.3619158,
+   "lon": -99.1892278,
+   "timestamp": "2023-07-03T16:55:33Z",
+   "version": 1,
+   "changeset": 138072955,
+   "user": "ZV1",
+   "uid": 19691459
+  },
+  {
+   "type": "node",
+   "id": 11023055665,
+   "lat": 19.3617393,
+   "lon": -99.189247,
+   "timestamp": "2023-07-03T16:55:33Z",
+   "version": 1,
+   "changeset": 138072955,
+   "user": "ZV1",
+   "uid": 19691459
+  },
+  {
+   "type": "node",
+   "id": 11774677140,
+   "lat": 19.4455838,
+   "lon": -99.1832746,
+   "timestamp": "2024-03-31T02:35:51Z",
+   "version": 1,
+   "changeset": 149374596,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11774677142,
+   "lat": 19.4439449,
+   "lon": -99.1853192,
+   "timestamp": "2024-03-31T03:25:07Z",
+   "version": 2,
+   "changeset": 149375112,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 11774694387,
+   "lat": 19.4438744,
+   "lon": -99.1851791,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 1,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 11774694388,
+   "lat": 19.4439099,
+   "lon": -99.1852497,
+   "timestamp": "2024-03-31T01:40:32Z",
+   "version": 1,
+   "changeset": 149373874,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "tags": {
+    "crossing": "uncontrolled",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 12128369036,
+   "lat": 19.4450299,
+   "lon": -99.1924904,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369037,
+   "lat": 19.4451539,
+   "lon": -99.192416,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369038,
+   "lat": 19.444975,
+   "lon": -99.1924403,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 2,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369039,
+   "lat": 19.4450486,
+   "lon": -99.1925411,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369040,
+   "lat": 19.4450458,
+   "lon": -99.19252,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369041,
+   "lat": 19.445085,
+   "lon": -99.1925142,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369042,
+   "lat": 19.4450878,
+   "lon": -99.1925353,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369043,
+   "lat": 19.4451848,
+   "lon": -99.1925472,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369044,
+   "lat": 19.4451898,
+   "lon": -99.1925922,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369045,
+   "lat": 19.4450887,
+   "lon": -99.1926048,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12128369046,
+   "lat": 19.4450838,
+   "lon": -99.1925598,
+   "timestamp": "2024-08-22T19:06:06Z",
+   "version": 1,
+   "changeset": 155622477,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823348,
+   "lat": 19.4449771,
+   "lon": -99.1922977,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823349,
+   "lat": 19.4449347,
+   "lon": -99.1923043,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823350,
+   "lat": 19.4449186,
+   "lon": -99.1921887,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823351,
+   "lat": 19.444961,
+   "lon": -99.192182,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823352,
+   "lat": 19.4451822,
+   "lon": -99.1922762,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823353,
+   "lat": 19.4451868,
+   "lon": -99.1923119,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823354,
+   "lat": 19.4450528,
+   "lon": -99.1923313,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823355,
+   "lat": 19.4450446,
+   "lon": -99.1922679,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823356,
+   "lat": 19.4450834,
+   "lon": -99.1922623,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823357,
+   "lat": 19.4450364,
+   "lon": -99.1919969,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823358,
+   "lat": 19.4450538,
+   "lon": -99.1919942,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823359,
+   "lat": 19.4449783,
+   "lon": -99.1920433,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823360,
+   "lat": 19.4451194,
+   "lon": -99.1920213,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823361,
+   "lat": 19.4451112,
+   "lon": -99.191959,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823362,
+   "lat": 19.4449408,
+   "lon": -99.1920295,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823363,
+   "lat": 19.4448974,
+   "lon": -99.1920357,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823364,
+   "lat": 19.4449057,
+   "lon": -99.1921011,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823365,
+   "lat": 19.4449491,
+   "lon": -99.1920949,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823366,
+   "lat": 19.4449819,
+   "lon": -99.1924969,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823367,
+   "lat": 19.4449568,
+   "lon": -99.1925012,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823368,
+   "lat": 19.4452422,
+   "lon": -99.192237,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823369,
+   "lat": 19.4452163,
+   "lon": -99.1922413,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823370,
+   "lat": 19.445212,
+   "lon": -99.1922127,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823371,
+   "lat": 19.4452379,
+   "lon": -99.1922084,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823372,
+   "lat": 19.4452363,
+   "lon": -99.1921741,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823373,
+   "lat": 19.4452069,
+   "lon": -99.1921786,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823374,
+   "lat": 19.4452029,
+   "lon": -99.1921493,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823375,
+   "lat": 19.4452324,
+   "lon": -99.1921448,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823376,
+   "lat": 19.4452369,
+   "lon": -99.1918921,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823377,
+   "lat": 19.4451249,
+   "lon": -99.1920628,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12250823378,
+   "lat": 19.4449836,
+   "lon": -99.1920836,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049305,
+   "lat": 19.4450595,
+   "lon": -99.1915498,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049307,
+   "lat": 19.4448999,
+   "lon": -99.1916113,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049308,
+   "lat": 19.4450644,
+   "lon": -99.1915874,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049309,
+   "lat": 19.44489,
+   "lon": -99.1915355,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049310,
+   "lat": 19.4449169,
+   "lon": -99.1915315,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049311,
+   "lat": 19.4448776,
+   "lon": -99.191441,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049312,
+   "lat": 19.444841,
+   "lon": -99.1914461,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049313,
+   "lat": 19.4448259,
+   "lon": -99.1913241,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049314,
+   "lat": 19.4448624,
+   "lon": -99.191319,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049315,
+   "lat": 19.4449671,
+   "lon": -99.1913006,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049316,
+   "lat": 19.4449646,
+   "lon": -99.1912806,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049317,
+   "lat": 19.4449285,
+   "lon": -99.1912858,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049318,
+   "lat": 19.4449342,
+   "lon": -99.191331,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049319,
+   "lat": 19.4449591,
+   "lon": -99.1912348,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049320,
+   "lat": 19.4449228,
+   "lon": -99.19124,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049323,
+   "lat": 19.4449567,
+   "lon": -99.1911546,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049324,
+   "lat": 19.4449489,
+   "lon": -99.1911557,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049325,
+   "lat": 19.4449119,
+   "lon": -99.1911549,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049326,
+   "lat": 19.4448064,
+   "lon": -99.19117,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049327,
+   "lat": 19.4447819,
+   "lon": -99.1912002,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12251049328,
+   "lat": 19.4450545,
+   "lon": -99.1915113,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897
+  },
+  {
+   "type": "node",
+   "id": 12671151152,
+   "lat": 19.4133806,
+   "lon": -99.191873,
+   "timestamp": "2025-03-17T01:55:28Z",
+   "version": 1,
+   "changeset": 163712096,
+   "user": "Estudiantepromedio",
+   "uid": 22638256
+  },
+  {
+   "type": "node",
+   "id": 13683022552,
+   "lat": 19.4547409,
+   "lon": -99.1896122,
+   "timestamp": "2026-03-26T20:09:13Z",
+   "version": 1,
+   "changeset": 180473618,
+   "user": "1218150525De",
+   "uid": 23981802,
+   "tags": {
+    "crossing": "traffic_signals",
+    "highway": "crossing"
+   }
+  },
+  {
+   "type": "node",
+   "id": 13738776793,
+   "lat": 19.3604091,
+   "lon": -99.1893665,
+   "timestamp": "2026-04-17T23:28:56Z",
+   "version": 1,
+   "changeset": 181479891,
+   "user": "Rob333",
+   "uid": 23334022
+  },
+  {
+   "type": "node",
+   "id": 13738776794,
+   "lat": 19.3588654,
+   "lon": -99.1895918,
+   "timestamp": "2026-04-17T23:28:56Z",
+   "version": 1,
+   "changeset": 181479891,
+   "user": "Rob333",
+   "uid": 23334022
+  },
+  {
+   "type": "node",
+   "id": 13738776795,
+   "lat": 19.3573192,
+   "lon": -99.1897367,
+   "timestamp": "2026-04-17T23:28:56Z",
+   "version": 1,
+   "changeset": 181479891,
+   "user": "Rob333",
+   "uid": 23334022
+  },
+  {
+   "type": "node",
+   "id": 13738776796,
+   "lat": 19.355897,
+   "lon": -99.1899191,
+   "timestamp": "2026-04-17T23:28:56Z",
+   "version": 1,
+   "changeset": 181479891,
+   "user": "Rob333",
+   "uid": 23334022
+  },
+  {
+   "type": "node",
+   "id": 13863621695,
+   "lat": 19.3629748,
+   "lon": -99.1891124,
+   "timestamp": "2026-05-22T23:43:18Z",
+   "version": 1,
+   "changeset": 183045322,
+   "user": "Rob333",
+   "uid": 23334022
+  },
+  {
+   "type": "node",
+   "id": 14027750147,
+   "lat": 19.384257,
+   "lon": -99.1866602,
+   "timestamp": "2026-10-20T03:28:15Z",
+   "version": 2,
+   "changeset": 190769301,
+   "user": "ferog_v",
+   "uid": 21471335,
+   "tags": {
+    "bus": "yes",
+    "name": "Metro San Antonio",
+    "network": "Trolebús;RTP",
+    "operator": "Servicio de Transportes Eléctricos de la Ciudad de México;Red de Transporte de Pasajeros",
+    "public_transport": "stop_position",
+    "trolleybus": "yes"
+   }
+  },
+  {
+   "type": "way",
+   "id": 583976347,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 3,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692127,
+    5582692128,
+    5582692129,
+    5582692130,
+    12250823363,
+    12250823362,
+    12250823365,
+    12250823364,
+    12250823350,
+    12250823351,
+    12250823348,
+    12250823349,
+    12250823367,
+    12250823366,
+    12128369038,
+    12128369037,
+    5582692127
+   ]
+  },
+  {
+   "type": "way",
+   "id": 583976348,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 4,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582692133,
+    12251049308,
+    12251049305,
+    12251049328,
+    12251049310,
+    12251049309,
+    12251049307,
+    5582692139,
+    12251049327,
+    5582692135,
+    12251049326,
+    12251049325,
+    12251049320,
+    12251049319,
+    12251049316,
+    12251049317,
+    12251049318,
+    5582692136,
+    5582691820,
+    5582691819,
+    5582692133
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1323898175,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12250823368,
+    12250823369,
+    12250823370,
+    12250823371,
+    12250823368
+   ],
+   "tags": {
+    "leisure": "garden"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323898176,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12250823372,
+    12250823373,
+    12250823374,
+    12250823375,
+    12250823372
+   ],
+   "tags": {
+    "leisure": "garden"
+   }
+  },
+  {
+   "type": "way",
+   "id": 1323898177,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12250823360,
+    12250823377,
+    12250823378,
+    12250823359,
+    5582692124,
+    5582692125,
+    5582692126,
+    12250823361,
+    12250823360
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1323898178,
+   "timestamp": "2024-10-14T16:29:48Z",
+   "version": 1,
+   "changeset": 157886414,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    5582691813,
+    5582691816,
+    12250823352,
+    12250823353,
+    12250823354,
+    12250823355,
+    12250823356,
+    5582691814,
+    5582691813
+   ]
+  },
+  {
+   "type": "way",
+   "id": 1323922534,
+   "timestamp": "2024-10-14T18:24:35Z",
+   "version": 1,
+   "changeset": 157891087,
+   "user": "Quixlian",
+   "uid": 16289897,
+   "nodes": [
+    12251049311,
+    12251049312,
+    12251049313,
+    12251049314,
+    12251049311
+   ],
+   "tags": {
+    "leisure": "garden"
+   }
+  }
+ ]
+}

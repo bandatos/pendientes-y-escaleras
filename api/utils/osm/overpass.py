@@ -4,9 +4,9 @@ El archivo generado tiene que engancharse con lo que ya existe en OSM en
 vez de ser una isla, y además tiene que leerse: entran los nodos de
 acceso ya enlazados en la base, el contorno de la estación cuando OSM lo
 tiene, y congelado —id real, sin tocar— todo lo que rodea a la estación
-a menos de `CONTEXT_EMBED_M`: banquetas, calles, vías urbanas,
-transporte público, edificios y barreras. Solo las peatonales reciben
-tramos de conexión desde los accesos.
+a menos de `CONTEXT_EMBED_M`: banquetas, explanadas, calles, vías
+urbanas, transporte público, edificios y barreras. Solo las peatonales
+y las explanadas reciben tramos de conexión desde los accesos.
 
 La caché en `data/osm/context/<slug>.json` está versionada a propósito:
 es lo que hace reproducible la exportación sin red y sin depender de que
@@ -65,9 +65,11 @@ def build_query(osm_ids: list[int], lat: float, lon: float,
                 radius: int = DEFAULT_RADIUS_M) -> str:
     """Consulta acotada: enlaces de la base y el entorno de la manzana.
 
-    Peatonales, calles, vías urbanas, transporte público, edificios y
-    barreras. Lo que entra al archivo se decide después, por distancia
-    a nuestros nodos (`CONTEXT_EMBED_M`); aquí se descarga de más.
+    Peatonales, explanadas (también las multipolígono), calles, vías
+    urbanas, transporte público, edificios, barreras, entradas del Metro
+    y nodos de estación. Lo que entra al archivo se decide después, por
+    distancia a nuestros nodos (`CONTEXT_EMBED_M`); aquí se descarga de
+    más.
     """
     around = f"around:{radius},{lat:.7f},{lon:.7f}"
     foot = "|".join(FOOTWAY_HIGHWAYS)
@@ -87,6 +89,15 @@ def build_query(osm_ids: list[int], lat: float, lon: float,
              # Bardas, muros y rejas: son lo que impide que un camino
              # dibujado sobre el papel exista en la calle.
              f'way({around})["barrier"];',
+             # Explanadas: casi siempre son multipolígonos, porque rodean
+             # el pabellón y los jardines; sin la relación sus anillos
+             # llegan sin etiquetas y no se sabe que son explanada.
+             f'relation({around})["highway"="pedestrian"];',
+             f'way({around})["highway"="pedestrian"]["area"="yes"];',
+             # Las entradas del Metro que OSM ya tiene, enlazadas o no en
+             # la base: un pabellón adoptado adopta también la suya.
+             f'node({around})["railway"="subway_entrance"];',
+             f'node({around})["railway"="station"];',
              f'node({around})["public_transport"];',
              f'way({around})["public_transport"];',
              f'node({around})["highway"="bus_stop"];',
@@ -158,6 +169,14 @@ class ForeignNode:
 
 
 @dataclass
+class ForeignRelation:
+    osm_id: int
+    members: list[tuple[str, int, str]]
+    tags: dict = field(default_factory=dict)
+    meta: dict = field(default_factory=dict)
+
+
+@dataclass
 class ForeignWay:
     osm_id: int
     node_ids: list[int]
@@ -177,6 +196,10 @@ class StationContext:
         self.source = source
         self.nodes: dict[int, ForeignNode] = {}
         self.ways: dict[int, ForeignWay] = {}
+        self.relations: dict[int, ForeignRelation] = {}
+        # Contornos con etiqueta de estación que se traslapan poco con el
+        # área del KML: son pabellones de acceso, no la estación.
+        self.demoted: set[int] = set()
         for el in raw.get("elements", []):
             meta = {k: el[k] for k in META_KEYS if k in el}
             if el["type"] == "node":
@@ -187,6 +210,20 @@ class StationContext:
                 self.ways[el["id"]] = ForeignWay(
                     el["id"], list(el.get("nodes", [])),
                     dict(el.get("tags", {})), meta)
+            elif el["type"] == "relation":
+                members = [(m["type"], m["ref"], m.get("role", ""))
+                           for m in el.get("members", [])]
+                self.relations[el["id"]] = ForeignRelation(
+                    el["id"], members, dict(el.get("tags", {})), meta)
+        # Anillos de una explanada multipolígono: la way no lleva
+        # etiquetas, la relación sí.
+        self._plaza_members: dict[int, int] = {}
+        for rel in self.relations.values():
+            if not self.is_pedestrian_area(rel):
+                continue
+            for kind, ref, _ in rel.members:
+                if kind == "way" and ref in self.ways:
+                    self._plaza_members[ref] = rel.osm_id
 
     # ---------------- consultas ----------------
 
@@ -198,8 +235,54 @@ class StationContext:
         return way.tags.get("highway") in FOOTWAY_HIGHWAYS
 
     def is_outline(self, way: ForeignWay) -> bool:
+        if way.osm_id in self.demoted:
+            return False
+        return self.has_outline_tags(way)
+
+    @staticmethod
+    def has_outline_tags(way: ForeignWay) -> bool:
         return (way.tags.get("building") in OUTLINE_BUILDINGS
                 or way.tags.get("public_transport") == "station")
+
+    @staticmethod
+    def is_pedestrian_area(element) -> bool:
+        tags = element.tags
+        if tags.get("highway") != "pedestrian":
+            return False
+        return (tags.get("type") == "multipolygon"
+                or tags.get("area") == "yes")
+
+    def plaza_relation(self, way: ForeignWay) -> int | None:
+        """Relación de explanada de la que este anillo es miembro."""
+        return self._plaza_members.get(way.osm_id)
+
+    def is_walkable(self, way: ForeignWay) -> bool:
+        """Peatonal, o anillo de una explanada multipolígono."""
+        return self.is_footway(way) or way.osm_id in self._plaza_members
+
+    def plaza_rings(self):
+        """(relación o None, way) de cada anillo de explanada traído."""
+        out = []
+        for way in sorted(self.ways.values(), key=lambda w: w.osm_id):
+            rel = self._plaza_members.get(way.osm_id)
+            if rel is not None:
+                out.append((self.relations[rel], way))
+            elif (self.is_pedestrian_area(way) and way.node_ids
+                  and way.node_ids[0] == way.node_ids[-1]):
+                out.append((None, way))
+        return out
+
+    def subway_entrances(self) -> list[ForeignNode]:
+        return [n for n in sorted(self.nodes.values(),
+                                  key=lambda n: n.osm_id)
+                if n.tags.get("railway") == "subway_entrance"]
+
+    def station_nodes(self) -> list[ForeignNode]:
+        return [n for n in sorted(self.nodes.values(),
+                                  key=lambda n: n.osm_id)
+                if n.tags.get("railway") == "station"
+                or (n.tags.get("public_transport") == "station"
+                    and n.tags.get("station") == "subway")]
 
     @staticmethod
     def is_building(way: ForeignWay) -> bool:
@@ -222,6 +305,9 @@ class StationContext:
         tags = element.tags
         if isinstance(element, ForeignWay) and self.is_outline(element):
             return "contorno"
+        if isinstance(element, ForeignWay) and (
+                element.osm_id in self._plaza_members):
+            return "explanada"
         if self.is_public_transport(element):
             return "transporte público"
         if tags.get("highway") in FOOTWAY_HIGHWAYS:
@@ -262,11 +348,7 @@ class StationContext:
         return ways, nodes
 
     def outline_ways(self) -> list[ForeignWay]:
-        out = []
-        for way in self.ways.values():
-            if (way.tags.get("building") in OUTLINE_BUILDINGS
-                    or way.tags.get("public_transport") == "station"):
-                out.append(way)
+        out = [way for way in self.ways.values() if self.is_outline(way)]
         return sorted(out, key=lambda w: w.osm_id)
 
     def local_line(self, way: ForeignWay):
@@ -286,7 +368,7 @@ class StationContext:
         """
         best = None
         for way in sorted(self.ways.values(), key=lambda w: w.osm_id):
-            if not self.is_footway(way):
+            if not self.is_walkable(way):
                 continue
             line = self.local_line(way)
             for a, b in zip(line, line[1:]):
@@ -304,13 +386,13 @@ class StationContext:
         """Vértice más cercano de cada way peatonal dentro de `max_dist`.
 
         Una por way, y siempre un vértice existente: así el connector se
-        engancha sin modificar la geometría ajena. Solo peatonales: el
-        eje de una calzada no es una banqueta, y conectarse a él es peor
-        que no conectarse.
+        engancha sin modificar la geometría ajena. Solo peatonales y
+        anillos de explanada: el eje de una calzada no es una banqueta, y
+        conectarse a él es peor que no conectarse.
         """
         found = []
         for way in sorted(self.ways.values(), key=lambda w: w.osm_id):
-            if not self.is_footway(way):
+            if not self.is_walkable(way):
                 continue
             best = None
             for nid in way.node_ids:

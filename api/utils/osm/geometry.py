@@ -105,6 +105,60 @@ def segment_intersection(p, q, r, s):
     return (px + t * d1x, py + t * d1y)
 
 
+# Un pellizco es un vértice del anillo del KML que toca un borde no
+# contiguo: el equipo dibujó las figuras ramificadas como un solo anillo,
+# con cortes de ancho cero donde un vestíbulo se pega a un corredor. A
+# menos de esta distancia del borde el vértice se toma por pellizco.
+PINCH_TOLERANCE_M = 0.3
+# Separación que se deja entre el vértice recolocado y el borde: la que
+# traen los pellizcos de San Pedro, que JOSM no objeta.
+PINCH_GAP_M = 0.05
+
+
+def unpinch_ring(ring, tol: float = PINCH_TOLERANCE_M,
+                 gap: float = PINCH_GAP_M):
+    """Copia del anillo sin los pellizcos que cruzan un borde.
+
+    Un corte de ancho cero dibujado con pulso cae a veces del otro lado
+    del borde y el anillo se cruza a sí mismo, que JOSM marca como error.
+    Solo se mueve el vértice cuyo tramo cruza de verdad: se proyecta
+    sobre el borde y se separa `gap` hacia el lado donde está su vecino
+    lejano, que es el lado de la figura que el corte pega. Devuelve
+    (anillo, [(índice, metros movidos)]).
+    """
+    n = len(ring)
+    out = list(ring)
+    moved = []
+    for i, p in enumerate(ring):
+        prev_p, next_p = ring[(i - 1) % n], ring[(i + 1) % n]
+        for j in range(n):
+            if j in (i, (i - 1) % n):
+                continue
+            a, b = ring[j], ring[(j + 1) % n]
+            d, t = point_segment_distance(p, a, b)
+            if d >= tol or not 0.0 < t < 1.0:
+                continue
+            crosses = (segment_intersection(prev_p, p, a, b) is not None
+                       or segment_intersection(p, next_p, a, b) is not None)
+            if not crosses:
+                continue
+            du, dv = b[0] - a[0], b[1] - a[1]
+            length = math.hypot(du, dv)
+            if length == 0:
+                continue
+            nu, nv = -dv / length, du / length
+            far = max((prev_p, next_p), key=lambda q: abs(
+                (q[0] - a[0]) * nu + (q[1] - a[1]) * nv))
+            side = 1.0 if (far[0] - a[0]) * nu + (far[1] - a[1]) * nv > 0 \
+                else -1.0
+            foot = (a[0] + du * t, a[1] + dv * t)
+            new = (foot[0] + side * gap * nu, foot[1] + side * gap * nv)
+            out[i] = new
+            moved.append((i, math.hypot(new[0] - p[0], new[1] - p[1])))
+            break
+    return out, moved
+
+
 # Lados de un cuadrado en el marco local, con su normal hacia afuera.
 SIDE_NORMALS = {"+u": (1.0, 0.0), "-u": (-1.0, 0.0),
                 "+v": (0.0, 1.0), "-v": (0.0, -1.0)}
