@@ -2,7 +2,7 @@
 type: task
 id: task-36
 title: Imagen satelital por estación para los turnos de afinación
-state: open
+state: closed
 date: 2026-10-21
 owner: ai
 source: ["[[2026-10-21-sesion-san-pedro-a-plantilla-y-san-joaquin]]"]
@@ -36,6 +36,10 @@ Fuera del repo, de la revisión de San Joaquín del 21 de octubre: scripts respa
 
 ## Criterios de aceptación
 
-- [ ] El compositor vive en el repo y produce, para un `stop_id`, un PNG por lado y uno general con imagen Esri z19, KML, OSM y trazos por nivel, sin versionar ningún raster
-- [ ] Ricardo decidió si los ajustes del agente se aplican sobre la plantilla o sobre el .osm (que se aplican y él revisa el resultado ya está en el CLAUDE.md del proyecto), y la decisión quedó escrita en el CLAUDE.md del proyecto o en una tarea
+- [x] El compositor vive en el repo y produce, para un `stop_id`, un PNG por lado y uno general con imagen Esri z19, KML, OSM y trazos por nivel, sin versionar ningún raster
+- [x] Ricardo decidió si los ajustes del agente se aplican sobre la plantilla o sobre el .osm (que se aplican y él revisa el resultado ya está en el CLAUDE.md del proyecto), y la decisión quedó escrita en el CLAUDE.md del proyecto o en una tarea
 - [x] Los scripts del prototipo quedaron rescatados de `/tmp` a `~/respaldos/san-joaquin-2026-10-21/scripts/`
+
+## Notas de trabajo
+
+- 22 de octubre de 2026 ([[2026-10-22-sesion-ciclo-de-afinacion-y-san-joaquin]]): Ricardo aprobó Esri como fuente tras compararla con Bing en JOSM. El compositor es el command `compose_station_imagery <stop_id>`, que escribe en `sat/` de la carpeta de la estación, ignorada por git (no fuera del repo, como recomendaba la decisión 1). Los ajustes del agente se aplican sobre el `.osm` y la plantilla aprende al cierre ([[adr-0015]]); la regla vive en el skill `station-tuning`, ya no en el `CLAUDE.md`. Wayback (Clarity) queda fuera.

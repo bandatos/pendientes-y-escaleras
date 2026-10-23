@@ -7,8 +7,7 @@ from collections import Counter
 from . import fit as F
 from . import tags as T
 from .document import SNAP_TOLERANCE_M, OsmDocument
-from .geometry import (PINCH_GAP_M, LocalFrame, band_edges,
-                       closest_point_on_ring,
+from .geometry import (LocalFrame, band_edges, closest_point_on_rings,
                        distance_to_ring,
                        insert_points_into_ring, overlap_ratio,
                        point_along_polyline, point_in_polygon,
@@ -16,8 +15,8 @@ from .geometry import (PINCH_GAP_M, LocalFrame, band_edges,
                        polygon_centroid,
                        polygon_signed_area, right_of, ring_crossings,
                        ring_sides, segment_intersection, side_index_facing,
-                       side_index_for_name, simplify_ring, square_corners,
-                       unit, unpinch_ring)
+                       side_index_for_name, simplify_ring,
+                       split_pinched_ring, square_corners, unit)
 from .graph import StationGraph
 from .kml import fold_name
 from .overpass import CONTEXT_EMBED_M
@@ -130,11 +129,12 @@ class StationBuilder:
         self._banks: dict[str, dict] = {}
         self._slots: dict[int, tuple[int, int]] = {}
         self._embedded_ways: dict[int, object] = {}
-        # Anillo del KML en metros locales y los vértices de andén que hay
-        # que meterle: el área se dibuja al final, pero su forma se
+        # Anillos del KML en metros locales —exterior primero, después las
+        # islas— y los vértices de andén que hay que meterles, con el
+        # anillo al que van: el área se dibuja al final, pero su forma se
         # decide junto con los andenes.
-        self._area_ring: list[tuple[float, float]] | None = None
-        self._area_inserts: list[tuple[int, float, tuple]] = []
+        self._area_rings: list[list[tuple[float, float]]] | None = None
+        self._area_inserts: list[tuple[int, int, float, tuple]] = []
         self._band: tuple[float, float] | None = None
 
     # ---------------- API ----------------
@@ -214,15 +214,18 @@ class StationBuilder:
             return
         ring = [self.doc.frame.to_local(lat, lon)
                 for lat, lon in self.kml_polygon]
-        self._area_ring, pinched = unpinch_ring(ring)
-        if pinched:
+        try:
+            self._area_rings, pinches = split_pinched_ring(ring)
+        except ValueError as exc:
+            raise TemplateError(f"polígono KML de la estación: {exc}")
+        if pinches:
             self.report["area"].append(
-                f"{len(pinched)} vértices del KML cruzaban un borde no "
-                f"contiguo del anillo (pellizcos): recolocados a "
-                f"{PINCH_GAP_M:g} m del borde, el que más se movió "
-                f"{max(d for _, d in pinched):.2f} m")
+                f"{len(pinches)} pellizcos del KML (cortes de ancho cero, "
+                f"el más abierto a {max(pinches):.2f} m) separados en un "
+                f"contorno y {len(self._area_rings) - 1} islas: el área "
+                f"sale como multipolígono con anillos inner")
         self._demote_pavilion_outlines()
-        self._band = band_edges(self._area_ring)
+        self._band = band_edges(self._area_rings)
         if self._band is None:
             self.warnings.append(
                 "no se pudo medir la franja de andenes del polígono KML; "
@@ -255,7 +258,7 @@ class StationBuilder:
                 ring = ring[:-1]
             if len(ring) < 3:
                 continue
-            iou = overlap_ratio(self._area_ring, ring)
+            iou = overlap_ratio(self._area_rings, ring)
             if iou >= OUTLINE_MIN_IOU:
                 continue
             self.context.demoted.add(way.osm_id)
@@ -284,8 +287,8 @@ class StationBuilder:
         coincide y la plantilla queda intacta.
         """
         spec = self.template.fit
-        if not spec or not self._area_ring or self._band is None:
-            self.template.area_ring = self._area_ring
+        if not spec or not self._area_rings or self._band is None:
+            self.template.area_rings = self._area_rings
             return
         data = self.template.data
         groups = [self._cascade_group(name, raw) for name, raw
@@ -297,7 +300,7 @@ class StationBuilder:
         for group in groups:
             data = self._fit_cascade(data, group, warp)
         self.template = FamilyTemplate(data, self.template.path)
-        self.template.area_ring = self._area_ring
+        self.template.area_rings = self._area_rings
 
     def _cascade_group(self, name: str, raw: dict) -> dict:
         nodes = set()
@@ -334,7 +337,7 @@ class StationBuilder:
         reference = spec["reference"]
         probe = float(spec.get("branch_probe", F.DEFAULT_BRANCH_PROBE_M))
         tolerance = float(spec.get("tolerance", F.DEFAULT_WARP_TOLERANCE_M))
-        target = F.measure(self._area_ring, self._band, probe)
+        target = F.measure(self._area_rings, self._band, probe)
         worst, why = F.compare_measures(reference, target)
         if math.isinf(worst):
             self.warnings.append(
@@ -400,7 +403,7 @@ class StationBuilder:
                 continue
             if group["side"] == "-v" and centre[1] >= self._band[0]:
                 continue
-            share = F.inside_fraction(quad, self._area_ring)
+            share = F.inside_fraction(quad, self._area_rings)
             if share < PAVILION_MIN_INSIDE:
                 continue
             area = abs(polygon_signed_area(quad)) * share
@@ -472,7 +475,7 @@ class StationBuilder:
         """Planea la cascada movida en una copia y mide si cabe."""
         moved = F.move_cascade(data, group, move)
         template = FamilyTemplate(moved, self.template.path)
-        template.area_ring = self._area_ring
+        template.area_rings = self._area_rings
         trial = StationBuilder(self.graph, template, self.doc.frame,
                                trace=False, station_area="none")
         trial._plan_banks()
@@ -506,7 +509,7 @@ class StationBuilder:
                 points += line
         hub = template.overrides.get(group["inner"]) if group["inner"] else (
             None)
-        outside = F.outside_points(self._area_ring, points, FIT_TOLERANCE_M)
+        outside = F.outside_points(self._area_rings, points, FIT_TOLERANCE_M)
         hub_ok = True
         door_clash = False
         if pavilion is not None and hub is not None:
@@ -616,9 +619,9 @@ class StationBuilder:
         es el caso en que el área abarca más estación que andén.
         """
         nominal = (u - length / 2, u + length / 2)
-        if not self._area_ring:
+        if not self._area_rings:
             return nominal
-        crossings = ring_crossings(self._area_ring, v)
+        crossings = ring_crossings(self._area_rings, v)
         if fit == "centred":
             if len(crossings) < 2:
                 self.warnings.append(
@@ -661,17 +664,17 @@ class StationBuilder:
         área, sin excepción: donde el desacuerdo es grande se avisa, pero
         el nodo se comparte igual.
         """
-        if not self._area_ring:
+        if not self._area_rings:
             return point
-        dist, index, t, snapped = closest_point_on_ring(
-            self._area_ring, point)
+        dist, ring_index, index, t, snapped = closest_point_on_rings(
+            self._area_rings, point)
         if dist > PLATFORM_SNAP_WARN_M:
             self.warnings.append(
                 f"un vértice del andén {key} estaba a {dist:.1f} m del "
                 f"anillo del área y se movió hasta él")
         if not any(math.hypot(p[0] - snapped[0], p[1] - snapped[1]) < 1e-3
-                   for _, _, p in self._area_inserts):
-            self._area_inserts.append((index, t, snapped))
+                   for _, _, _, p in self._area_inserts):
+            self._area_inserts.append((ring_index, index, t, snapped))
         return snapped
 
     def _platform_width(self, key: str, spec: dict) -> float:
@@ -1375,29 +1378,74 @@ class StationBuilder:
         return ids
 
     def _build_kml_area(self, outlines) -> None:
-        if not self._area_ring:
+        """Área de estación: un way cerrado, o multipolígono si hay islas.
+
+        Sin islas el área es un solo way con sus etiquetas, como lo pide
+        OSM para un polígono simple —Ricardo, 22 de octubre de 2026—. Con
+        islas va un anillo outer y uno inner por isla, las etiquetas en
+        la relación y los anillos sin etiquetas.
+        """
+        if not self._area_rings:
             return
-        ring = insert_points_into_ring(self._area_ring, self._area_inserts)
-        ids = self._area_node_ids(ring)
+        rings = []
+        for r, ring in enumerate(self._area_rings):
+            inserts = [(i, t, p) for k, i, t, p in self._area_inserts
+                       if k == r]
+            rings.append(insert_points_into_ring(ring, inserts))
+        flat = self._area_node_ids([p for ring in rings for p in ring])
+        ids = []
+        for ring in rings:
+            ids.append(flat[:len(ring)])
+            flat = flat[len(ring):]
         tags = T.station_area_tags(self.graph.station_name,
                                    self._underground())
+        islands = len(rings) > 1
         if not outlines:
-            self.doc.add_way_from_ids(
-                ids, tags, [], kind="station_area",
-                label="área de estación (KML)", closed=True)
+            outer = self.doc.add_way_from_ids(
+                ids[0], {} if islands else tags, [], kind="station_area",
+                label="área de estación (KML)"
+                + (": outer" if islands else ""), closed=True)
+        else:
+            outer, tags = self._reshape_outline(outlines, rings[0], ids[0],
+                                                tags, islands)
+        if not islands:
             return
-        # El trazo del KML es mejor que el contorno de OSM, así que el
-        # contorno se queda con su id y su historia y cambia de forma.
+        members = [("way", outer.id, "outer")]
+        for k, ring_ids in enumerate(ids[1:], start=1):
+            inner = self.doc.add_way_from_ids(
+                ring_ids, {}, [], kind="station_area",
+                label=f"área de estación (KML): isla {k}", closed=True)
+            members.append(("way", inner.id, "inner"))
+        rel = self.doc.add_relation(
+            members, {"type": "multipolygon", **tags}, kind="station_area",
+            label="área de estación")
+        self.report["area"].append(
+            f"multipolígono {rel.id}: outer {outer.id} con "
+            f"{len(outer.nodes) - 1} vértices y {len(members) - 1} inner")
+
+    def _reshape_outline(self, outlines, ring, ids, tags, islands):
+        """El contorno de OSM se queda con su id y toma la forma del KML.
+
+        El trazo del KML es mejor que el contorno de OSM, así que el way
+        conserva id e historia y cambia de forma; en sus etiquetas OSM
+        gana cada conflicto. Con islas el way pasa a ser el outer: sus
+        etiquetas se mudan a la relación y queda como anillo sin ellas.
+        """
         best = max(outlines, key=lambda w: overlap_ratio(
             ring, self.context.local_line(w)))
         way = self._embed(best)
+        label = "área de estación (KML sobre el contorno de OSM)"
         conflicts, deleted, kept = self.doc.adopt_way(
             way, tags, ids, kind="station_area",
-            label="área de estación (KML sobre el contorno de OSM)")
+            label=label + (": outer" if islands else ""))
+        merged = way.tags
+        if islands:
+            way.tags = {}
+        moved = "; sus etiquetas pasan a la relación" if islands else ""
         self.report["area"].append(
             f"contorno de OSM {way.id} reformado con el polígono del KML: "
             f"{len(ids)} vértices, {len(deleted)} nodos suyos dados de "
-            f"baja, {len(kept)} conservados por tener etiquetas")
+            f"baja, {len(kept)} conservados por tener etiquetas{moved}")
         for tag_key, osm_value, ours in conflicts:
             self.conflicts.append(
                 f"área de estación (way OSM {way.id}): {tag_key} vale "
@@ -1411,6 +1459,7 @@ class StationBuilder:
                 f"OSM tiene más de un contorno de estación aquí; el "
                 f"{other.osm_id} se embebe congelado y solo el {way.id} "
                 f"recibió la forma del KML")
+        return way, merged
 
     def _build_context_extras(self) -> None:
         """Banquetas, explanadas, calles, vías, transporte público,

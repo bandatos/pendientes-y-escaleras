@@ -29,12 +29,15 @@ class DiffError(Exception):
 
 @dataclass
 class Element:
-    kind: str            # 'node' | 'way'
+    kind: str            # 'node' | 'way' | 'relation'
     osm_id: int
     tags: dict
     u: float = 0.0
     v: float = 0.0
     nds: list = field(default_factory=list)
+    # Rol del way en el multipolígono del área: sus anillos no llevan
+    # etiquetas y sin esto saldrían como «way (sin traza)».
+    role: str = ""
 
     @property
     def foreign(self) -> bool:
@@ -71,6 +74,21 @@ def read_document(path, frame: LocalFrame) -> dict:
         cu = sum(p[0] for p in pts) / len(pts) if pts else 0.0
         cv = sum(p[1] for p in pts) / len(pts) if pts else 0.0
         out[("way", wid)] = Element("way", wid, _tags(way), cu, cv, nds)
+    for rel in root.iter("relation"):
+        rid = int(rel.get("id"))
+        tags = _tags(rel)
+        members = [(m.get("type"), int(m.get("ref")), m.get("role") or "")
+                   for m in rel.findall("member")]
+        ways = [out[("way", ref)] for kind, ref, _ in members
+                if kind == "way" and ("way", ref) in out]
+        cu = sum(w.u for w in ways) / len(ways) if ways else 0.0
+        cv = sum(w.v for w in ways) / len(ways) if ways else 0.0
+        out[("relation", rid)] = Element("relation", rid, tags, cu, cv,
+                                         members)
+        if tags.get("public_transport") == "station":
+            for kind, ref, role in members:
+                if kind == "way" and ("way", ref) in out:
+                    out[("way", ref)].role = role or "outer"
     return out
 
 
@@ -128,8 +146,9 @@ def compare(generated: dict, edited: dict) -> dict:
     for el in rest_gen:
         best = None
         for i, other in enumerate(rest_edit):
-            if i in used or other.kind != el.kind:
+            if i in used or (other.kind, other.role) != (el.kind, el.role):
                 continue
+
             d = math.hypot(other.u - el.u, other.v - el.v)
             if d <= MATCH_RADIUS_M and (best is None or d < best[0]):
                 best = (d, i, other)
@@ -149,7 +168,7 @@ def _compare_pair(a: Element, b: Element, moved, retagged, reshaped) -> None:
     dist = math.hypot(du, dv)
     if dist > MOVE_TOLERANCE_M:
         moved.append((a, du, dv, dist))
-    if a.kind == "way" and len(a.nds) != len(b.nds):
+    if a.kind != "node" and len(a.nds) != len(b.nds):
         reshaped.append((a, len(a.nds), len(b.nds)))
     changes = _tag_changes(a.tags, b.tags)
     if changes:
@@ -168,7 +187,7 @@ def _tag_changes(before: dict, after: dict) -> list:
 def label(el: Element) -> str:
     trace = (el.tags.get("note:pathway_id") or el.tags.get("note:stop_id"))
     if el.foreign:
-        what = "nodo" if el.kind == "node" else "way"
+        what = {"node": "nodo", "way": "way"}.get(el.kind, "relación")
         return f"{what} OSM {el.osm_id}"
     what = _what(el)
     return f"{what} {trace}" if trace else f"{what} (sin traza)"
@@ -184,6 +203,8 @@ def _what(el: Element) -> str:
         if tags.get("barrier") == "turnstile":
             return "torniquete"
         return "nodo"
+    if el.role:
+        return f"anillo {el.role} del área de estación"
     if tags.get("railway") == "platform":
         return "andén"
     if tags.get("public_transport") == "station":

@@ -8,7 +8,7 @@ source: ["[[task-26]]", "[[2026-09-30-imagenes-sotm-evolucion-portales]]"]
 
 # Sesión del 21 de octubre de 2026: convenciones de San Pedro a la plantilla, San Joaquín generada, cierre documental de la v3
 
-Sesión del 21 de octubre de 2026 (session log `session_017Cbrxn4s2qsEMQmwknNUox`), rama `first-stations-josm`. Ricardo trajo su corrección manual completa de San Pedro de los Pinos en JOSM (`data/osm/reference/san-pedro-de-los-pinos-ricardo-2026-10-21.osm`, los dos lados alineados) y preguntó qué quedaba del proceso de pasar los esquemas a JOSM. La sesión pasó sus convenciones a la plantilla `l7-deep-cascade` y al generador, generó por primera vez San Joaquín, hizo el cierre documental que la v3 nunca tuvo ([[adr-0014]]) y dejó en una tarea lo que queda de su lado. Ricardo se fue a dormir a media sesión y pidió que se avanzara todo lo posible con delegados y se cerrara completo.
+Sesión del 21 de octubre de 2026 (session log `session_017Cbrxn4s2qsEMQmwknNUox`), rama `first-stations-josm`. Ricardo trajo su corrección manual completa de San Pedro de los Pinos en JOSM (`data/osm/l7-san-pedro-de-los-pinos/san-pedro-de-los-pinos-03-rick.osm` (antes en la carpeta `reference`), los dos lados alineados) y preguntó qué quedaba del proceso de pasar los esquemas a JOSM. La sesión pasó sus convenciones a la plantilla `l7-deep-cascade` y al generador, generó por primera vez San Joaquín, hizo el cierre documental que la v3 nunca tuvo ([[adr-0014]]) y dejó en una tarea lo que queda de su lado. Ricardo se fue a dormir a media sesión y pidió que se avanzara todo lo posible con delegados y se cerrara completo.
 
 ## Decisiones de Ricardo, en su orden
 

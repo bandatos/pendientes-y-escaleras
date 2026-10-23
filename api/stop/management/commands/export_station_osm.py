@@ -22,13 +22,13 @@ from utils.osm.builder import STATION_AREA_MODES, StationBuilder
 from utils.osm.geometry import LocalFrame
 from utils.osm.graph import load_station_graph
 from utils.osm.kml import KmlError, station_polygon
+from utils.osm.layout import LayoutError, next_version_path, station_dir
 from utils.osm.tags import NonIntegerLevelError, UnsupportedModeError
 from utils.osm.template import FamilyTemplate, TemplateError
 from utils.osm.validate import validate
 
 REPO_ROOT = Path(settings.BASE_DIR).resolve().parent
 OSM_DIR = REPO_ROOT / "data" / "osm"
-CONTEXT_DIR = OSM_DIR / "context"
 KML_PATH = REPO_ROOT / "data" / "StatioArea-and-lines.kml"
 
 
@@ -52,7 +52,10 @@ class Command(BaseCommand):
                             help="Rumbo del eje del andén en grados.")
         parser.add_argument("--anchor", required=True,
                             help="LAT,LON del origen del marco local.")
-        parser.add_argument("--out")
+        parser.add_argument("--out",
+                            help="Ruta del .osm; por omisión la siguiente "
+                                 "versión NN-claude en la carpeta de la "
+                                 "estación.")
         parser.add_argument("--no-trace", action="store_true",
                             help="Omite las note:* de trazabilidad.")
         parser.add_argument("--mirror", action="store_true",
@@ -107,7 +110,11 @@ class Command(BaseCommand):
         frame = LocalFrame(anchor[0], anchor[1], opts["bearing"],
                            mirror=opts["mirror"])
         slug = slugify(graph.station_name)
-        context, context_source = self._context(opts, graph, frame, slug,
+        try:
+            folder = station_dir(OSM_DIR, graph.stop_id, slug)
+        except LayoutError as exc:
+            raise CommandError(str(exc))
+        context, context_source = self._context(opts, graph, frame, folder,
                                                 anchor)
         mode = opts["station_area"] or template.station_area
         kml_polygon = None
@@ -127,8 +134,8 @@ class Command(BaseCommand):
                 NonIntegerLevelError) as exc:
             raise CommandError(str(exc))
 
-        out_path = Path(opts["out"]) if opts["out"] else (
-            OSM_DIR / f"{slug}.osm")
+        out_path = (Path(opts["out"]) if opts["out"]
+                    else next_version_path(folder, slug))
         out_path.parent.mkdir(parents=True, exist_ok=True)
         # Se escribe antes de validar a propósito: si la validación
         # encuentra errores conviene poder abrir el archivo y verlos.
@@ -215,26 +222,26 @@ class Command(BaseCommand):
 
         if opts["preview"]:
             # Con --out los SVG acompañan al .osm: una corrida de prueba
-            # fuera del repo no tiene por qué reescribir data/osm/preview.
+            # fuera del repo no tiene por qué reescribir los del repo.
             out_dir = (out_path.parent / "preview" if opts["out"]
-                       else OSM_DIR / "preview")
+                       else folder / "preview")
             out_dir.mkdir(parents=True, exist_ok=True)
             for level, svg in preview_mod.render_all(
                     doc, graph.station_name).items():
-                path = out_dir / f"{slug}-level{level}.svg"
+                path = out_dir / f"level{level}.svg"
                 path.write_text(svg, encoding="utf-8")
                 self.stdout.write(f"vista previa: {path}")
 
         if errors:
             raise CommandError(f"{len(errors)} errores de validación")
 
-    def _context(self, opts, graph, frame, slug, anchor):
+    def _context(self, opts, graph, frame, folder, anchor):
         """Objetos de OSM del entorno, de la caché versionada o de red."""
         if opts["no_context"]:
             return None, "omitido (--no-context)"
         osm_ids = sorted({s.osm_id for s in graph.stops.values()
                           if s.osm_id and (s.osm_type or "node") == "node"})
-        path = CONTEXT_DIR / f"{slug}.json"
+        path = folder / "context.json"
         try:
             # La distancia de embebido se mide desde lo dibujado, cuyas
             # puntas de andén llegan a ~90 m del ancla; 130 deja margen.

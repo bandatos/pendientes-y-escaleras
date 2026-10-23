@@ -54,7 +54,9 @@ class Command(BaseCommand):
             for el, du, dv, dist in sorted(
                 result["moved"], key=lambda t: -t[3])])
         self._section("reformados (cambió el número de vértices)", [
-            f"{label(el)}: {before} → {after} nodos"
+            f"{label(el)}: {before} → {after} "
+            + ("miembros" if el.kind == "relation" else "nodos")
+
             for el, before, after in result["reshaped"]])
         self._section("borrados", [label(el)
                                    for el in result["deleted"]])

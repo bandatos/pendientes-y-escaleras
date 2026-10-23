@@ -32,5 +32,4 @@ Repo público con varias manos: todo debe reproducirse solo con el repo. Nada se
 
 ## Trazos en JOSM y turnos de afinación
 
-- Las reglas de dibujo (plantillas, convenciones de los ADR) no son estrictas: el criterio manda sobre la mecánica. Si lo que hay en OpenStreetMap o en la imagen satelital contradice una regla, se respeta lo que hay y se propone a Ricardo adaptar la regla, no al revés. Lo único innegociable es que todo trazo interior propio cabe dentro del área de la estación; accesos, pabellones, explanadas y conectores están a la intemperie por definición.
-- Un turno de afinación de una estación va a fondo antes de presentarse: se itera con los ejecutores hasta que el resultado quede y haga sentido, y Ricardo revisa el resultado, no los intentos.
+El ciclo de afinación de una estación, sus reglas de dibujo y dónde vive lo que cada estación enseña están en el skill del proyecto `station-tuning` (`.claude/skills/station-tuning/`); el agente `station-tracer` ejecuta cada turno. El criterio manda sobre la mecánica.

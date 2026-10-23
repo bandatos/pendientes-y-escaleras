@@ -15,8 +15,8 @@ Ricardo pidió, antes de irse a dormir el 21 de octubre, que la sesión avanzara
 
 ## Revisar en JOSM y en imagen
 
-1. **San Joaquín** (`data/osm/san-joaquin.osm`, previews `data/osm/preview/san-joaquin-level*.svg`, compuestos satelitales `sj-overview-sat.png`, `sj-oriente-sat.png`, `sj-poniente-sat.png` y `spp-ricardo-*-sat.png` en `~/respaldos/san-joaquin-2026-10-21/`): qué mirar y dónde dejar el veredicto, en [[task-29]].
-2. **San Pedro regenerado** (`data/osm/san-pedro-de-los-pinos.osm`) contra tu archivo: qué coincide y qué no, en [[task-26]].
+1. **San Joaquín** (hoy `data/osm/l7-san-joaquin/`, versión 01 y sus previews en `preview/`; compuestos satelitales `sj-overview-sat.png`, `sj-oriente-sat.png`, `sj-poniente-sat.png` y `spp-ricardo-*-sat.png` en `~/respaldos/san-joaquin-2026-10-21/`): qué mirar y dónde dejar el veredicto, en [[task-29]].
+2. **San Pedro regenerado** (hoy `data/osm/l7-san-pedro-de-los-pinos/san-pedro-de-los-pinos-04-claude.osm`) contra tu archivo: qué coincide y qué no, en [[task-26]].
 
 ## Decisiones abiertas
 
@@ -56,6 +56,25 @@ Ricardo pidió, antes de irse a dormir el 21 de octubre, que la sesión avanzara
 
 ## Criterios de aceptación
 
-- [ ] Ricardo revisó San Joaquín en JOSM y dejó su veredicto en [[task-29]]
+- [x] Ricardo revisó San Joaquín en JOSM y dejó su veredicto en [[task-29]]
 - [ ] Las decisiones 3 a 8 tienen respuesta anotada en [[task-29]], la 9 en [[task-36]] y la 12, la 13 y de la 21 a la 26 aquí
 - [ ] Lo que decida sobre tests y sobre dividir `builder.py` queda como tarea del asistente o descartado
+
+## Respuestas del 22 de octubre de 2026
+
+De [[2026-10-22-sesion-ciclo-de-afinacion-y-san-joaquin]]:
+
+- **1.** Revisado: San Joaquín corrió el ciclo hasta su versión 06 ([[task-29]]).
+- **4.** `closed_doors` y la puerta norte del pabellón oriente pasaron al bloque por estación de [[task-38]].
+- **7.** Puertas metidas como vértice en anillos de explanadas ajenas: se quedan. Ricardo: «yo creo que está bien que quede acoplado, sobre todo si es del mismo nivel y claramente son colindantes».
+- **8.** Pellizcos del KML: multipolígono con islas ([[adr-0014]], nota del 22 de octubre).
+- **9.** Imagen satelital: decidido y hecho, [[task-36]] cerrada.
+- **11.** El test de `unpinch_ring` ya no aplica (la función desapareció); se escribió el de `split_pinched_ring` (`test_geometry.py`). Los demás siguen propuestos.
+- **21.** Los accesos de OSM al punto medio del muro: «me parece bien que siga siendo así como lógica general».
+- **22.** Nodo de estación: en L7, a la mitad del pasillo central y en el eje entre andenes, sin aviso aunque doble la vía. Portales sigue abierto.
+- **23.** La sección del `CLAUDE.md` pasó al skill `station-tuning`; Ricardo lo aprobó en lo general y conservó «el criterio manda sobre la mecánica».
+- **24.** `PINCH_GAP_M` desapareció con el multipolígono; los demás umbrales siguen para su visto bueno.
+- **25.** Esri quedó decidido como fuente. La cláusula de la licencia («is not intended to be used to export tiles for offline», [[task-36]]) no se le había mostrado al elegir dónde viven los compuestos; al verla, Ricardo eligió que la caché de teselas viva en `/tmp` y que se borren las teselas ya guardadas. La desviación se cierra.
+- **26.** Superado: tramos cortos de 1 m al nodo de encuentro, que va en el eje del conjunto ([[adr-0014]], nota del 22 de octubre).
+
+Siguen abiertos 2, 3, 5, 6, 10, 12 a 20 y la parte de 24 que no tocó el multipolígono.

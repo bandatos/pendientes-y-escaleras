@@ -14,6 +14,8 @@ COLORS = {
     "escalator": "#c0392b",
     "entrance": "#1e8e3e",
     "turnstile": "#111111",
+    "area": "#fff3c4",
+    "area_stroke": "#b8a24a",
 }
 
 
@@ -72,6 +74,10 @@ def render_level(doc: OsmDocument, level: int, title: str) -> str:
            f"<text x='{MARGIN}' y='24' font-family='sans-serif' "
            f"font-size='16' fill='#222'>{_esc(title)} — nivel {level}"
            f"</text>"]
+
+    area = _area_path(doc, xy)
+    if area:
+        out.append(area)
 
     def in_level(way):
         parts = [int(p) for p in way.tags.get("level", "").split(";")
@@ -151,6 +157,37 @@ def render_level(doc: OsmDocument, level: int, title: str) -> str:
     return "\n".join(out) + "\n"
 
 
+def _area_path(doc: OsmDocument, xy) -> str:
+    """Área de estación con sus islas como huecos (regla par-impar).
+
+    Va debajo de todo y en cada nivel: es la huella común de la
+    estación, la que tiene que contener todo lo demás. Sin islas el
+    área es un solo way cerrado y no hay relación.
+    """
+    ways = {w.id: w for w in doc.ways}
+    rings = []
+    for rel in doc.relations.values():
+        if rel.kind != "station_area":
+            continue
+        rings += [ways.get(ref) for kind, ref, _ in rel.members
+                  if kind == "way"]
+    if not rings:
+        rings = [next((w for w in doc.ways if w.kind == "station_area"),
+                      None)]
+    parts = []
+    for way in rings:
+        if way is None or len(way.nodes) < 3:
+            continue
+        pts = [xy(*_uv(doc, n)) for n in way.nodes if n in doc.nodes]
+        parts.append("M " + " L ".join(f"{x:.1f},{y:.1f}"
+                                       for x, y in pts) + " Z")
+    if not parts:
+        return ""
+    return (f"<path d='{' '.join(parts)}' fill='{COLORS['area']}' "
+            f"fill-rule='evenodd' stroke='{COLORS['area_stroke']}' "
+            f"stroke-width='1'/>")
+
+
 def _uv(doc, nid):
     node = doc.nodes[nid]
     return node.u, node.v
@@ -169,7 +206,8 @@ def _defs():
 
 
 def _legend(width, height):
-    items = [("andén", COLORS["platform_stroke"]),
+    items = [("área de estación", COLORS["area_stroke"]),
+             ("andén", COLORS["platform_stroke"]),
              ("pasillo", COLORS["footway"]),
              ("escaleras", COLORS["steps"]),
              ("escalera eléctrica", COLORS["escalator"]),

@@ -7,9 +7,15 @@ ignore/*
 /.claude/*
 !/.claude/settings.json
 !/.claude/skills/
+!/.claude/agents/
 
 # Las vistas previas se versionan en SVG; los PNG son conversiones locales.
-data/osm/preview/*.png
+data/osm/*/preview/*.png
+
+# Compuestos satelitales por estación: se regeneran, no se versionan.
+data/osm/*/sat/
+# Estaciones sin carpeta propia caen en data/osm/sat/<slug>/.
+data/osm/sat/
 
 # Sesiones de JOSM (archivo personal del editor)
 *.jos

@@ -21,9 +21,10 @@ class FamilyTemplate:
         self.data = data
         self.fit: dict | None = data.get("fit")
         self.station_node: dict | None = data.get("station_node")
-        # Anillo del área en metros locales, para trazar los codos de un
-        # `via` cuando la cascada se movió y sus puntos ya no valen.
-        self.area_ring: list[tuple[float, float]] | None = None
+        # Anillos del área en metros locales —exterior e islas—, para
+        # trazar los codos de un `via` cuando la cascada se movió y sus
+        # puntos ya no valen.
+        self.area_rings: list[list[tuple[float, float]]] | None = None
         self.route_warnings: list[str] = []
         self.family = data.get("family") or path.stem
         self.description = data.get("description", "")
@@ -207,10 +208,11 @@ class FamilyTemplate:
                 f"la plantilla {self.family} pone un via en una punta de "
                 f"la geometría; tiene que ir entre dos puntos")
         prev, nxt = points[index - 1], points[index + 1]
-        if self.area_ring is None:
+        if self.area_rings is None:
             return []
         before = points[index - 2] if index >= 2 else None
-        corner, outside = orthogonal_route(prev, nxt, self.area_ring, before)
+        corner, outside = orthogonal_route(prev, nxt, self.area_rings,
+                                           before)
         if outside > 0:
             self.route_warnings.append(
                 f"el tramo de ({prev[0]:.1f}, {prev[1]:.1f}) a "

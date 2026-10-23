@@ -8,7 +8,7 @@ origin: ricardo
 deliberation: dialogued
 rationale: recorded
 source: ["[[2026-09-02-sesion-integracion-osm-y-niveles]]"]
-affects: ["api/utils/osm/", "api/stop/management/commands/export_station_osm.py", "api/stop/management/commands/link_osm_ids.py", "data/osm/context/", "data/osm/templates/", "data/osm/osm-links.csv"]
+affects: ["api/utils/osm/", "api/stop/management/commands/export_station_osm.py", "api/stop/management/commands/link_osm_ids.py", "data/osm/templates/", "data/osm/osm-links.csv", "data/osm/l2-portales/context.json", "data/osm/l7-san-pedro-de-los-pinos/context.json"]
 related: ["[[adr-0010]]", "[[adr-0005]]", "[[adr-0004]]", "[[task-11]]", "[[task-26]]", "[[task-17]]", "[[adr-0014]]"]
 ---
 
@@ -37,7 +37,7 @@ Se eligió **C**, con estas convenciones:
 
 - **Objetos ajenos** (enmendado el 21 de octubre de 2026, ver las notas de enmienda al final): se escriben con su id positivo real, `version`, `timestamp`, `changeset`, `user` y `uid`, y todas sus etiquetas; nunca se les hace snap, soldadura ni se mueven salvo decisión explícita, en cuyo caso llevan `action='modify'`. El validador los exime de las reglas de id negativo, nivel obligatorio e islas.
 - **Qué contexto entra** (enmendado el 2 de septiembre de 2026, ver las notas de enmienda al final): además de los nodos de acceso enlazados, las vías peatonales cercanas y el contorno de estación, entran congelados —id y versión reales, sin tocar, sin conectar, nunca destino de tramos— las calles (`highway` de `motorway` a `service`, con sus `_link`), las vías urbanas (`railway=subway|light_rail|tram`) y el transporte público (`public_transport=*`, `highway=bus_stop`, `railway=tram_stop`, `amenity=bus_station`) que caen a 50 m de cualquier nodo nuestro. La consulta a Overpass sigue siendo a 150 m. Solo las vías peatonales reciben tramos de conexión desde los accesos.
-- **Fuente y caché**: consulta a Overpass por estación (`api/utils/osm/overpass.py`), guardada como JSON versionado en `data/osm/context/<estación>.json`; sin red y sin caché el exportador falla con mensaje; `--no-context` exporta sin contexto.
+- **Fuente y caché**: consulta a Overpass por estación (`api/utils/osm/overpass.py`), guardada como JSON versionado en `data/osm/<línea>-<slug>/context.json` (hasta el 22 de octubre de 2026, en la carpeta común de contexto); sin red y sin caché el exportador falla con mensaje; `--no-context` exporta sin contexto.
 - **Accesos**: un stop con `osm_id` (enlace de [[task-17]], cargado desde `data/osm/osm-links.csv` por `link_osm_ids`) reutiliza el nodo de OSM y le agrega nuestras etiquetas; las existentes se conservan y un conflicto de valores se reporta. Esto enmienda la viñeta «sin objetos existentes» y la regla de no tocar objetos existentes de [[adr-0010]], por decisión de Ricardo y antes de resolver [[task-11]]. Un acceso sin enlace sigue siendo nodo nuevo.
 - **Tramos a banquetas**: de cada acceso sale un `highway=footway` con `level=0` recto al vértice existente más cercano de cada way peatonal distinta a menos de 40 m, terminando en ese vértice para no modificar la way ajena; un solo tramo por vértice destino. En esquinas salen dos o más y Ricardo poda en JOSM.
 - **Senda del andén**: de punta a punta (`spine_margin` 0) y con sus dos extremos insertados como vértices de los lados cortos del polígono, que pasa de 4 a 6 nodos. Etiquetas `highway=footway` + `indoor=yes` + `level`; `highway=corridor` sigue descartado porque OSRM y GraphHopper lo ignoran.
@@ -53,7 +53,7 @@ Se eligió **C**, con estas convenciones:
 
 ### Cómo se comprueba
 
-`export_station_osm` con contexto valida sin errores en las dos estaciones; los .osm traen ways con id positivo y `version`, nodos de acceso con `action='modify'`, andenes de 6 vértices y, en San Pedro, dos edificios con tres puertas y dos explanadas. `git ls-files data/osm/context/` muestra el caché versionado.
+`export_station_osm` con contexto valida sin errores en las dos estaciones; los .osm traen ways con id positivo y `version`, nodos de acceso con `action='modify'`, andenes de 6 vértices y, en San Pedro, dos edificios con tres puertas y dos explanadas. `git ls-files 'data/osm/*/context.json'` muestra el caché versionado.
 
 ## Más información
 

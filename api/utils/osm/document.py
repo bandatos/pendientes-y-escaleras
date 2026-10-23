@@ -50,13 +50,19 @@ class OsmWay:
 
 @dataclass
 class OsmRelation:
-    """Relación ajena, embebida tal cual: el generador no crea ninguna."""
+    """Relación de OSM embebida tal cual, o el multipolígono del área.
+
+    La única relación que dibuja el generador es la del área de la
+    estación (`add_relation`); las demás son ajenas y viajan intactas.
+    """
     id: int
     members: list[tuple[str, int, str]]
     tags: dict = field(default_factory=dict)
     meta: dict = field(default_factory=dict)
     foreign: bool = True
     action: str | None = None
+    kind: str = "context"
+    label: str = ""
 
 
 def _esc(text: str) -> str:
@@ -118,6 +124,13 @@ class OsmDocument:
                      tuple(sorted(set(levels))), kind, label)
         self.ways.append(way)
         return way
+
+    def add_relation(self, members, tags: dict, kind: str,
+                     label: str = "") -> OsmRelation:
+        rel = OsmRelation(self._new_id(), list(members), dict(tags),
+                          foreign=False, kind=kind, label=label)
+        self.relations[rel.id] = rel
+        return rel
 
     # ---------------- objetos ajenos ----------------
 
@@ -350,8 +363,11 @@ class OsmDocument:
     # ---------------- salida ----------------
 
     def strip_trace(self, keys) -> None:
-        for holder in list(self.nodes.values()) + self.ways:
+        holders = (list(self.nodes.values()) + self.ways
+                   + list(self.relations.values()))
+        for holder in holders:
             for key in keys:
+
                 holder.tags.pop(key, None)
 
     def bounds(self) -> tuple[float, float, float, float]:
@@ -396,7 +412,9 @@ class OsmDocument:
             out += [f"    <nd ref='{nid}'/>" for nid in way.nodes]
             out += _tag_lines(way.tags, "    ")
             out.append("  </way>")
-        for rel in sorted(self.relations.values(), key=lambda r: r.id):
+        # Las ajenas en orden de id, como antes; la nuestra al final.
+        for rel in sorted(self.relations.values(),
+                          key=lambda r: (r.id < 0, abs(r.id))):
             out.append(f"  <relation id='{rel.id}' visible='true'"
                        f"{_meta(rel)}>")
             for kind, ref, role in rel.members:

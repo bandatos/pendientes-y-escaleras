@@ -110,53 +110,109 @@ def segment_intersection(p, q, r, s):
 # con cortes de ancho cero donde un vestíbulo se pega a un corredor. A
 # menos de esta distancia del borde el vértice se toma por pellizco.
 PINCH_TOLERANCE_M = 0.3
-# Separación que se deja entre el vértice recolocado y el borde: la que
-# traen los pellizcos de San Pedro, que JOSM no objeta.
-PINCH_GAP_M = 0.05
+# Un lazo que sale de cortar los pellizcos con menos superficie que esto
+# es la ida y vuelta del propio corte, no una figura.
+MIN_LOOP_AREA_M2 = 1.0
 
 
-def unpinch_ring(ring, tol: float = PINCH_TOLERANCE_M,
-                 gap: float = PINCH_GAP_M):
-    """Copia del anillo sin los pellizcos que cruzan un borde.
-
-    Un corte de ancho cero dibujado con pulso cae a veces del otro lado
-    del borde y el anillo se cruza a sí mismo, que JOSM marca como error.
-    Solo se mueve el vértice cuyo tramo cruza de verdad: se proyecta
-    sobre el borde y se separa `gap` hacia el lado donde está su vecino
-    lejano, que es el lado de la figura que el corte pega. Devuelve
-    (anillo, [(índice, metros movidos)]).
-    """
-    n = len(ring)
-    out = list(ring)
-    moved = []
-    for i, p in enumerate(ring):
-        prev_p, next_p = ring[(i - 1) % n], ring[(i + 1) % n]
+def _closest_pinch(loop, tol: float):
+    """(distancia, vértice, borde) del pellizco más apretado, o None."""
+    n = len(loop)
+    best = None
+    for i, p in enumerate(loop):
         for j in range(n):
             if j in (i, (i - 1) % n):
                 continue
-            a, b = ring[j], ring[(j + 1) % n]
-            d, t = point_segment_distance(p, a, b)
-            if d >= tol or not 0.0 < t < 1.0:
+            d, t = point_segment_distance(p, loop[j], loop[(j + 1) % n])
+            if d < tol and 0.0 < t < 1.0 and (best is None or d < best[0]):
+                best = (d, i, j)
+    return best
+
+
+def _arc(loop, first: int, last: int):
+    """Vértices de `first` a `last`, ambos incluidos, dando la vuelta."""
+    n = len(loop)
+    out = [loop[first % n]]
+    k = first % n
+    while k != last % n:
+        k = (k + 1) % n
+        out.append(loop[k])
+    return out
+
+
+def split_pinched_ring(ring, tol: float = PINCH_TOLERANCE_M):
+    """Anillo exterior e interiores de un anillo con pellizcos.
+
+    Un corte de ancho cero no es un muro: es el pulso de quien dibujó un
+    área con islas —las salidas laterales de las cascadas de la L7 que
+    vuelven al corredor— como un solo anillo. Cortar el anillo en cada
+    vértice que toca un borde no contiguo lo separa en dos lazos, uno a
+    cada lado del pellizco; repetido hasta que no queda ninguno, la ida y
+    vuelta del corte se queda sin superficie y se descarta, y lo que
+    resta es el contorno (el lazo con el sentido del anillo original) y
+    las islas (los de sentido contrario). Devuelve
+    ([exterior, *interiores], [distancia de cada pellizco cortado]).
+    """
+    sign = 1.0 if polygon_signed_area(ring) >= 0 else -1.0
+    pending = [list(ring)]
+    loops = []
+    pinches = []
+    while pending:
+        loop = pending.pop()
+        hit = _closest_pinch(loop, tol)
+        if hit is None:
+            if (len(loop) >= 3 and abs(polygon_signed_area(loop))
+                    >= MIN_LOOP_AREA_M2):
+                loops.append(loop)
+            continue
+        d, i, j = hit
+        pinches.append(d)
+        pending += [_arc(loop, j + 1, i), _arc(loop, i, j)]
+    outers = [lp for lp in loops if polygon_signed_area(lp) * sign > 0]
+    inners = [lp for lp in loops if polygon_signed_area(lp) * sign < 0]
+    if len(outers) != 1:
+        raise ValueError(
+            f"el anillo se separa en {len(outers)} contornos exteriores y "
+            f"{len(inners)} islas; solo se sabe leer un contorno con islas")
+    inners.sort(key=lambda lp: min(lp))
+    return [outers[0], *inners], pinches
+
+
+def ring_self_intersections(ring) -> list[tuple[int, int]]:
+    """Pares de lados no contiguos del anillo que se cruzan o tocan."""
+    n = len(ring)
+    out = []
+    for i in range(n):
+        for j in range(i + 2, n):
+            if i == 0 and j == n - 1:
                 continue
-            crosses = (segment_intersection(prev_p, p, a, b) is not None
-                       or segment_intersection(p, next_p, a, b) is not None)
-            if not crosses:
-                continue
-            du, dv = b[0] - a[0], b[1] - a[1]
-            length = math.hypot(du, dv)
-            if length == 0:
-                continue
-            nu, nv = -dv / length, du / length
-            far = max((prev_p, next_p), key=lambda q: abs(
-                (q[0] - a[0]) * nu + (q[1] - a[1]) * nv))
-            side = 1.0 if (far[0] - a[0]) * nu + (far[1] - a[1]) * nv > 0 \
-                else -1.0
-            foot = (a[0] + du * t, a[1] + dv * t)
-            new = (foot[0] + side * gap * nu, foot[1] + side * gap * nv)
-            out[i] = new
-            moved.append((i, math.hypot(new[0] - p[0], new[1] - p[1])))
-            break
-    return out, moved
+            if segment_intersection(ring[i], ring[(i + 1) % n], ring[j],
+                                    ring[(j + 1) % n]) is not None:
+                out.append((i, j))
+    return out
+
+
+def rings_of(shape):
+    """Anillos de una figura: un anillo suelto o [exterior, *islas].
+
+    Toda la geometría de abajo acepta las dos formas y cuenta los cruces
+    de todos los anillos juntos (par-impar), así que un punto dentro de
+    una isla queda fuera del área sin que quien llama distinga nada.
+    """
+    if shape and isinstance(shape[0][0], (list, tuple)):
+        return list(shape)
+    return [shape]
+
+
+def _edges(shape):
+    for ring in rings_of(shape):
+        n = len(ring)
+        for i in range(n):
+            yield ring[i], ring[(i + 1) % n]
+
+
+def _points(shape):
+    return [p for ring in rings_of(shape) for p in ring]
 
 
 # Lados de un cuadrado en el marco local, con su normal hacia afuera.
@@ -245,10 +301,7 @@ def point_in_polygon(ring, p) -> bool:
     """
     pu, pv = p
     inside = False
-    n = len(ring)
-    for i in range(n):
-        au, av = ring[i]
-        bu, bv = ring[(i + 1) % n]
+    for (au, av), (bu, bv) in _edges(ring):
         if (av > pv) != (bv > pv):
             cut = au + (pv - av) / (bv - av) * (bu - au)
             if cut > pu:
@@ -258,9 +311,8 @@ def point_in_polygon(ring, p) -> bool:
 
 def distance_to_ring(ring, p) -> float:
     best = None
-    n = len(ring)
-    for i in range(n):
-        d, _ = point_segment_distance(p, ring[i], ring[(i + 1) % n])
+    for a, b in _edges(ring):
+        d, _ = point_segment_distance(p, a, b)
         if best is None or d < best:
             best = d
     return best if best is not None else 0.0
@@ -282,10 +334,7 @@ def ring_crossings(ring, v_line: float) -> list[float]:
     llama decide con cuáles se queda.
     """
     out = []
-    n = len(ring)
-    for i in range(n):
-        au, av = ring[i]
-        bu, bv = ring[(i + 1) % n]
+    for (au, av), (bu, bv) in _edges(ring):
         if (av > v_line) == (bv > v_line):
             continue
         t = (v_line - av) / (bv - av)
@@ -296,10 +345,7 @@ def ring_crossings(ring, v_line: float) -> list[float]:
 def ring_spans_at_u(ring, u_line: float):
     """Intervalos de v que caen dentro del anillo en la recta u = u_line."""
     vs = []
-    n = len(ring)
-    for i in range(n):
-        au, av = ring[i]
-        bu, bv = ring[(i + 1) % n]
+    for (au, av), (bu, bv) in _edges(ring):
         if (au > u_line) == (bu > u_line):
             continue
         t = (u_line - au) / (bu - au)
@@ -318,7 +364,7 @@ def band_edges(ring, core=(0.1, 0.9), samples: int = 121):
     el corte donde arrancan, no la angosten. Se muestrea el 10–90 % del
     largo para no entrar en el afilado de las puntas.
     """
-    us = [p[0] for p in ring]
+    us = [p[0] for p in _points(ring)]
     span = max(us) - min(us)
     if span <= 0:
         return None
@@ -378,6 +424,16 @@ def closest_point_on_ring(ring, p):
     return best
 
 
+def closest_point_on_rings(shape, p):
+    """(distancia, anillo, índice de segmento, t, punto) más cercano."""
+    best = None
+    for r, ring in enumerate(rings_of(shape)):
+        d, i, t, point = closest_point_on_ring(ring, p)
+        if best is None or d < best[0]:
+            best = (d, r, i, t, point)
+    return best
+
+
 def insert_points_into_ring(ring, items):
     """Anillo con los puntos dados metidos como vértices, en orden.
 
@@ -406,8 +462,8 @@ def overlap_ratio(a, b, step: float = 2.0) -> float:
     elegir cuál de dos contornos se parece más al polígono del KML basta
     con contar puntos de una rejilla métrica.
     """
-    us = [p[0] for p in a] + [p[0] for p in b]
-    vs = [p[1] for p in a] + [p[1] for p in b]
+    us = [p[0] for p in _points(a)] + [p[0] for p in _points(b)]
+    vs = [p[1] for p in _points(a)] + [p[1] for p in _points(b)]
     inter = union = 0
     u = min(us)
     while u <= max(us):

@@ -19,7 +19,7 @@ Dos cuidados: el índice entre pathways paralelos se asigna por orden de `miro_i
 
 ## Criterios de aceptación
 
-- [ ] `data/osm/xola.osm` y `data/osm/san-joaquin.osm` generados y validados
+- [ ] Xola (`data/osm/l7-xola/`) y San Joaquín (`data/osm/l7-san-joaquin/`) generados y validados (San Joaquín hecho el 21 de octubre)
 - [ ] Las diferencias contra Portales y San Pedro caben en la plantilla o quedan anotadas como adiciones
 
 ## Notas de trabajo
@@ -37,3 +37,4 @@ Dos cuidados: el índice entre pathways paralelos se asigna por orden de `miro_i
   - **Puertas en los anillos de explanadas ajenas.** Se insertan como vértices (a 0,3 m o menos del anillo) y los anillos salen con `action=modify`: una excepción más al congelamiento de [[adr-0011]], ya anotada en su nota de enmienda.
   - **Pellizcos del KML.** Dejar el anillo con la separación de 5 cm (recomendado; JOSM lo acepta), un multipolígono con cuatro huecos, o pedir que se redibuje el KML sin cortes.
   - **Cosmético.** En `san-joaquin-level-3.svg` las etiquetas de los dos andenes se enciman; arreglo de dos líneas en `preview.py` que cambiaría también las previews de San Pedro y Portales.
+- 22 de octubre de 2026 ([[2026-10-22-sesion-ciclo-de-afinacion-y-san-joaquin]]): San Joaquín corrió el ciclo de [[adr-0015]] hasta `san-joaquin-06-claude.osm` (turnos de Ricardo 02, 03 y 05). Respuestas a los llamados de arriba: pellizcos del KML, multipolígono con islas; `closed_doors` y la puerta norte del oriente, al bloque por estación de [[task-38]]. Puertas en los anillos de explanadas ajenas: se quedan acopladas, porque son del mismo nivel y colindantes («yo creo que está bien que quede acoplado, sobre todo si es del mismo nivel y claramente son colindantes»). Queda Xola.

@@ -8,7 +8,7 @@ a menos de `CONTEXT_EMBED_M`: banquetas, explanadas, calles, vías
 urbanas, transporte público, edificios y barreras. Solo las peatonales
 y las explanadas reciben tramos de conexión desde los accesos.
 
-La caché en `data/osm/context/<slug>.json` está versionada a propósito:
+La caché en `data/osm/<línea>-<slug>/context.json` está versionada a propósito:
 es lo que hace reproducible la exportación sin red y sin depender de que
 Overpass conteste igual mañana.
 """

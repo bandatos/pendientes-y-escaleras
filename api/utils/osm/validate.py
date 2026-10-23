@@ -5,8 +5,9 @@ import math
 from collections import Counter, defaultdict, deque
 
 from . import tags as T
-from .document import OsmDocument
-from .geometry import point_in_polygon_tol
+from .document import OsmDocument, OsmRelation
+from .geometry import (point_in_polygon, point_in_polygon_tol,
+                       ring_self_intersections, segment_intersection)
 
 MIN_NODE_DISTANCE_M = 0.3
 # Margen con el que se juzga si un objeto cae dentro del área: el anillo
@@ -34,11 +35,15 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
     # están en OSM: las reglas de abajo son sobre lo que dibujamos.
     ids = [n.id for n in doc.nodes.values() if not n.foreign]
     ids += [w.id for w in doc.ways if not w.foreign]
+    ids += [r.id for r in doc.relations.values() if not r.foreign]
     if len(ids) != len(set(ids)):
-        errors.append("hay ids repetidos entre nodos y ways")
+        errors.append("hay ids repetidos entre nodos, ways y relaciones")
     if any(i >= 0 for i in ids):
         errors.append("hay ids no negativos")
 
+    # Los anillos de un multipolígono van sin etiquetas: las lleva la
+    # relación.
+    members = _own_relation_members(doc)
     for way in doc.ways:
         for nid in way.nodes:
             if nid not in doc.nodes:
@@ -47,7 +52,7 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
             continue
         if len(way.nodes) < 2:
             errors.append(f"way {way.id} tiene menos de dos nodos")
-        if not way.tags:
+        if not way.tags and way.id not in members:
             errors.append(f"way {way.id} no tiene etiquetas")
         if "level" not in way.tags and way.kind not in LEVELLESS_KINDS:
             errors.append(f"way {way.id} no tiene level")
@@ -79,23 +84,129 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
     errors += _check_incline_order(doc)
     warnings += _check_cross_level_nodes(doc)
     warnings += _check_bank_tips(doc)
+    errors += _check_area_rings(doc)
     errors += _check_inside_area(doc)
     errors += _check_connectivity(doc)
 
     return errors, warnings, _summary(doc)
 
 
-def _station_area_ring(doc: OsmDocument):
-    for way in doc.ways:
-        if way.kind != "station_area":
+def _own_relation_members(doc: OsmDocument) -> set[int]:
+    out = set()
+    for rel in doc.relations.values():
+        if rel.foreign:
             continue
-        ring = [(doc.nodes[n].u, doc.nodes[n].v) for n in way.nodes
-                if n in doc.nodes]
-        if len(ring) > 2 and ring[0] == ring[-1]:
-            ring = ring[:-1]
-        if len(ring) >= 3:
-            return ring
-    return None
+        for kind, ref, _ in rel.members:
+            if kind != "way":
+                continue
+            out.add(ref)
+    return out
+
+
+def _station_area(doc: OsmDocument):
+    """(relación o way, [(rol, way, anillo)]) del área de estación.
+
+    El área es un multipolígono solo cuando tiene islas; sin ellas es un
+    way cerrado con las etiquetas, que aquí cuenta como su único outer.
+    None si el archivo va sin área.
+    """
+    rel = next((r for r in doc.relations.values()
+                if r.kind == "station_area"), None)
+    if rel is None:
+        way = next((w for w in doc.ways if w.kind == "station_area"), None)
+        if way is None:
+            return None
+        return way, [("outer", way, _way_ring(doc, way))]
+    ways = {w.id: w for w in doc.ways}
+    rings = []
+    for kind, ref, role in rel.members:
+        way = ways.get(ref) if kind == "way" else None
+        if way is None:
+            continue
+        rings.append((role, way, _way_ring(doc, way)))
+    return rel, rings
+
+
+def _way_ring(doc: OsmDocument, way):
+    ring = [(doc.nodes[n].u, doc.nodes[n].v) for n in way.nodes
+            if n in doc.nodes]
+    if len(ring) > 2 and ring[0] == ring[-1]:
+        ring = ring[:-1]
+    return ring
+
+
+def _station_area_rings(doc: OsmDocument):
+    """[exterior, *islas] del área, para medir dentro y fuera."""
+    found = _station_area(doc)
+    if found is None:
+        return None
+    _, rings = found
+    outer = [r for role, _, r in rings if role == "outer" and len(r) >= 3]
+    inner = [r for role, _, r in rings if role == "inner" and len(r) >= 3]
+    if len(outer) != 1:
+        return None
+    return [outer[0], *inner]
+
+
+def _check_area_rings(doc: OsmDocument) -> list[str]:
+    """El área tiene que ser una que JOSM acepte.
+
+    Un outer, anillos cerrados que no se cruzan a sí mismos ni entre
+    ellos, y cada isla dentro del outer: es lo que antes se escondía en
+    los cortes de ancho cero del anillo único. Un área sin islas es un
+    solo way y le aplica lo mismo que a un outer.
+    """
+    found = _station_area(doc)
+    if found is None:
+        return []
+    rel, rings = found
+    out = []
+    members = rel.members if isinstance(rel, OsmRelation) else []
+    refs = {ref for kind, ref, _ in members if kind == "way"}
+    missing = refs - {w.id for w in doc.ways}
+    if missing:
+        out.append(f"el multipolígono del área {rel.id} referencia ways "
+                   f"que no están: {sorted(missing)}")
+    outers = [r for role, _, r in rings if role == "outer"]
+    if len(outers) != 1:
+        out.append(f"el multipolígono del área {rel.id} tiene "
+                   f"{len(outers)} anillos outer; debe tener uno")
+    for role, way, ring in rings:
+        if role not in ("outer", "inner"):
+            out.append(f"way {way.id} del área con rol «{role}»")
+        if way.nodes[0] != way.nodes[-1] or len(ring) < 3:
+            out.append(f"el anillo {role} {way.id} del área no es un way "
+                       f"cerrado de al menos tres vértices")
+            continue
+        crossings = ring_self_intersections(ring)
+        if crossings:
+            out.append(f"el anillo {role} {way.id} del área se cruza a sí "
+                       f"mismo en {len(crossings)} pares de lados")
+    if len(outers) == 1:
+        for role, way, ring in rings:
+            if role != "inner" or len(ring) < 3:
+                continue
+            if not all(point_in_polygon(outers[0], p) for p in ring):
+                out.append(f"la isla {way.id} del área no cae entera "
+                           f"dentro del outer")
+            elif _rings_cross(outers[0], ring):
+                out.append(f"la isla {way.id} del área cruza el outer")
+    inners = [(way, r) for role, way, r in rings if role == "inner"]
+    for i, (wa, a) in enumerate(inners):
+        for wb, b in inners[i + 1:]:
+            if _rings_cross(a, b):
+                out.append(f"las islas {wa.id} y {wb.id} del área se "
+                           f"cruzan")
+    return out
+
+
+def _rings_cross(a, b) -> bool:
+    for i in range(len(a)):
+        for j in range(len(b)):
+            if segment_intersection(a[i], a[(i + 1) % len(a)], b[j],
+                                    b[(j + 1) % len(b)]) is not None:
+                return True
+    return False
 
 
 def _check_inside_area(doc: OsmDocument) -> list[str]:
@@ -104,10 +215,11 @@ def _check_inside_area(doc: OsmDocument) -> list[str]:
     El área del KML delimita dónde está la estación, así que un andén,
     un pasillo, una escalera o un torniquete que se sale de ella es un
     error de trazo. Ricardo: «todos los trazos deberían caber dentro del
-    área de la estación». Es error, no aviso; el archivo se escribe antes
+    área de la estación». El área es el outer menos sus islas: lo que
+    cae en una isla está fuera. Es error, no aviso; el archivo se escribe antes
     de validar, así que se puede abrir y ver qué se salió.
     """
-    ring = _station_area_ring(doc)
+    ring = _station_area_rings(doc)
     if ring is None:
         return []
     candidates: dict[int, str] = {}
@@ -314,8 +426,18 @@ def _all_other_nodes(doc: OsmDocument, way) -> set:
 
 def _summary(doc: OsmDocument) -> dict:
     counts = Counter()
+    # Los anillos solo se cuentan aparte cuando son de un multipolígono:
+    # un área sin islas es un way etiquetado y se cuenta por su etiqueta.
+    area = _station_area(doc)
+    roles = ({way.id: role for role, way, _ in area[1]}
+             if area and isinstance(area[0], OsmRelation) else {})
+    for rel in doc.relations.values():
+        if rel.kind == "station_area":
+            counts["public_transport=station (área, multipolígono)"] += 1
     for way in doc.ways:
-        if way.tags.get("railway") == "platform":
+        if way.id in roles:
+            counts[f"área de estación: anillo {roles[way.id]}"] += 1
+        elif way.tags.get("railway") == "platform":
             counts["railway=platform"] += 1
         elif way.tags.get("highway") == "steps":
             conv = way.tags.get("conveying")
@@ -351,6 +473,8 @@ def _summary(doc: OsmDocument) -> dict:
         1 for w in doc.ways if w.foreign and w.frozen)
     counts["ways de OSM modificados"] = sum(
         1 for w in doc.ways if w.foreign and not w.frozen)
+    counts["relaciones nuevas"] = sum(
+        1 for r in doc.relations.values() if not r.foreign)
     counts["objetos con etiqueta de traza"] = sum(
         1 for o in list(doc.ways) + list(doc.nodes.values())
         if any(k in o.tags for k in T.TRACE_KEYS))
