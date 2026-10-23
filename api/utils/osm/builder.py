@@ -54,6 +54,11 @@ PAVILION_MIN_INSIDE = 0.5
 # esta distancia de sus muros, es la entrada de ese pabellón aunque la
 # base no la tenga enlazada.
 ENTRANCE_ADOPT_M = 2.0
+# Lo más que un edificio de OSM que usa la estación puede sobresalir del
+# área para que el generador lo meta moviendo sus vértices. Es la
+# tolerancia de dos dibujos de manos distintas sobre la misma esquina
+# (`FOREIGN_REUSE_M`); más allá ya es una discrepancia que se revisa.
+BUILDING_FIT_MAX_M = 0.5
 # Una puerta a esta distancia del anillo de una explanada de OSM está
 # sobre su borde: se mete como vértice suyo y queda conectada.
 PLAZA_DOOR_M = 0.3
@@ -84,7 +89,10 @@ DEFAULT_BANK_LEAD_M = 4.0
 # Un banco apilado encima de otro se corre de lado para que en JOSM se
 # vean las dos capas; tiene que quedar holgado sobre SNAP_TOLERANCE_M.
 DEFAULT_STACK_OFFSET_M = 1.0
-MIN_STACK_CLEARANCE_M = 2 * SNAP_TOLERANCE_M
+# Criterio general del trazo: ninguna línea a menos de unos 0.3 m de una
+# línea de otro nivel. Sigue por encima de SNAP_TOLERANCE_M, así que no
+# hay pegado.
+MIN_STACK_CLEARANCE_M = 0.3
 # Los dos aproches no se pueden comer el tramo: sin este mínimo, un
 # banco entre dos nodos cercanos deja las escaleras en un solo punto y
 # el way sale con un vértice.
@@ -116,7 +124,9 @@ class StationBuilder:
                                         "context": [], "streets": [],
                                         "banks": [], "area": [],
                                         "platforms": [], "fit": [],
-                                        "station": [], "osm": []}
+                                        "station": [], "osm": [],
+                                        "untemplated": []}
+        self._missing_nodes: dict[str, str] = {}
         self._fit_pavilions: dict[str, tuple] = {}
         self._auto_links: dict[str, object] = {}
         self._spines: dict[str, object] = {}
@@ -142,11 +152,14 @@ class StationBuilder:
     def build(self) -> OsmDocument:
         self._prepare_area()
         self._fit_template()
+        self._link_declared_entrances()
         self._plan_buildings()
         self._plan_banks()
+        self._place_missing_nodes()
         self._build_platforms()
         self._build_entrances()
         self._build_buildings()
+        self._fit_buildings_in_area()
         self._build_extra_ways()
         used = self._build_pathways()
         self.doc.weld()
@@ -206,18 +219,23 @@ class StationBuilder:
                 f"de {', '.join(STATION_AREA_MODES)}")
         if self.station_area != "kml":
             return
-        if not self.kml_polygon:
+        override = self.template.area_override
+        if override:
+            self._area_rings = self._override_rings(override)
+            pinches = None
+        elif not self.kml_polygon:
             self.warnings.append(
                 "no se pudo leer el polígono KML de la estación; el "
                 "archivo va sin área de estación y los andenes conservan "
                 "el largo de la plantilla")
             return
-        ring = [self.doc.frame.to_local(lat, lon)
-                for lat, lon in self.kml_polygon]
-        try:
-            self._area_rings, pinches = split_pinched_ring(ring)
-        except ValueError as exc:
-            raise TemplateError(f"polígono KML de la estación: {exc}")
+        else:
+            ring = [self.doc.frame.to_local(lat, lon)
+                    for lat, lon in self.kml_polygon]
+            try:
+                self._area_rings, pinches = split_pinched_ring(ring)
+            except ValueError as exc:
+                raise TemplateError(f"polígono KML de la estación: {exc}")
         if pinches:
             self.report["area"].append(
                 f"{len(pinches)} pellizcos del KML (cortes de ancho cero, "
@@ -235,6 +253,28 @@ class StationBuilder:
             f"franja de andenes del KML: v de {self._band[0]:.2f} a "
             f"{self._band[1]:.2f} ({self._band[1] - self._band[0]:.2f} m "
             f"de ancho, eje en v={sum(self._band) / 2:.2f})")
+
+    def _override_rings(self, override: dict):
+        """Anillos del área que el bloque de la estación trae en lat/lon.
+
+        Es la corrección a mano del KML que la estación ya aprobó: va en
+        coordenadas y no en metros para no depender del rumbo con que se
+        genere. Sin los vértices de andén, que el generador vuelve a meter.
+        """
+        def ring(points):
+            return [self.doc.frame.to_local(float(lat), float(lon))
+                    for lat, lon in points]
+        rings = [ring(override["outer"])]
+        rings += [ring(r) for r in override.get("inner", [])]
+        if any(len(r) < 3 for r in rings):
+            raise TemplateError(
+                f"el área del bloque de {self.template.station} trae un "
+                f"anillo de menos de tres vértices")
+        self.report["area"].append(
+            f"área del bloque de {self.template.station}, no del KML: "
+            f"outer de {len(rings[0])} vértices y {len(rings) - 1} islas"
+            + (f" ({override['source']})" if override.get("source") else ""))
+        return rings
 
     def _demote_pavilion_outlines(self) -> None:
         """Un «contorno de estación» chico es el pabellón de un acceso.
@@ -287,19 +327,31 @@ class StationBuilder:
         coincide y la plantilla queda intacta.
         """
         spec = self.template.fit
-        if not spec or not self._area_rings or self._band is None:
+        data = self.template.data
+        if spec and self._area_rings and self._band is not None:
+            groups = [self._cascade_group(name, raw) for name, raw
+                      in sorted(spec.get("cascades", {}).items())]
+            warp = self._corridor_warp(spec)
+            if warp is not None:
+                in_cascade = self._cascade_membership(groups)
+                data = F.warp_template_data(data, warp, in_cascade)
+            for group in groups:
+                data = self._fit_cascade(data, group, warp)
+        elif not self.template.local_patch:
             self.template.area_rings = self._area_rings
             return
-        data = self.template.data
-        groups = [self._cascade_group(name, raw) for name, raw
-                  in sorted(spec.get("cascades", {}).items())]
-        warp = self._corridor_warp(spec)
-        if warp is not None:
-            in_cascade = self._cascade_membership(groups)
-            data = F.warp_template_data(data, warp, in_cascade)
-        for group in groups:
-            data = self._fit_cascade(data, group, warp)
-        self.template = FamilyTemplate(data, self.template.path)
+        # Los hechos de la estación escritos en su propio marco van
+        # encima de lo que el encaje decidió: son lo que su versión
+        # aprobada corrigió a mano.
+        old = self.template
+        data = old.apply_local_patch(data)
+        if old.local_patch:
+            self.report["fit"].append(
+                f"bloque de {old.station}: piezas «local» aplicadas sobre el "
+                f"encaje ({', '.join(sorted(old.local_patch))})")
+        self.template = FamilyTemplate(data, old.path)
+        self.template.station = old.station
+        self.template.area_override = old.area_override
         self.template.area_rings = self._area_rings
 
     def _cascade_group(self, name: str, raw: dict) -> dict:
@@ -424,8 +476,13 @@ class StationBuilder:
         if found is not None and group["building"]:
             self._fit_pavilions[group["building"]] = found
         ref_anchor = group["anchor"]
+        entrance = self._declared_entrance_point(group["building"])
         if found is not None:
             target_anchor = polygon_centroid(found[1])
+        elif entrance is not None:
+            # Sin pabellón, el punto fijo de la salida es la entrada que
+            # OSM ya tiene: la cascada se lleva a ella.
+            target_anchor = entrance
         elif warp is not None:
             target_anchor = tuple(warp.point(ref_anchor))
         else:
@@ -435,6 +492,9 @@ class StationBuilder:
         axis = (abs(du), abs(dv))
         moves = [(F.RigidMove(F.DIHEDRAL[0][0], ref_anchor, ref_anchor,
                               axis), "tal como la dibuja la plantilla")]
+        if found is None and entrance is not None:
+            # Tal como está, la escalera a la calle no llega a la entrada.
+            moves = []
         for scale in (1.0,) + FIT_SCALES:
             for matrix, label in F.DIHEDRAL:
                 moves.append((F.RigidMove(matrix, ref_anchor, target_anchor,
@@ -448,12 +508,24 @@ class StationBuilder:
             result = self._try_cascade(data, group, move, found)
             result.update({"move": move, "label": label, "index": index})
             tried.append(result)
-            if index == 0 and result["fits"]:
+            if result["move"].identity and result["fits"]:
                 chosen = [result]
                 break
-            if result["fits"] and index > 0:
+            if result["fits"] and not result["move"].identity:
                 chosen = (chosen or []) + [result]
         name = group["name"]
+        if chosen is None and self._placed_locally(group):
+            # La estación coloca la cascada en su propio marco: lo que el
+            # encaje no logró no llega al archivo, y la regla del área la
+            # vuelve a juzgar la validación sobre lo que sí se dibuja.
+            best = min(tried, key=lambda r: (len(r["outside"]),
+                                             r["worst"]))
+            self.report["fit"].append(
+                f"cascada {name}: el encaje no la acomoda (la mejor, "
+                f"{best['label']}, deja {len(best['outside'])} puntos "
+                f"fuera), pero el bloque «local» de {self.template.station} "
+                f"coloca todos sus bancos")
+            return data
         if chosen is None:
             best = min(tried, key=lambda r: (len(r["outside"]),
                                              r["worst"]))
@@ -465,11 +537,29 @@ class StationBuilder:
             pick = best
         else:
             pick = min(chosen, key=lambda r: (
-                r["index"] != 0, r["door_clash"], not r["parallel"],
+                not r["move"].identity, r["door_clash"], not r["parallel"],
                 r["approach"], F.matrix_det(r["move"].matrix) < 0,
                 r["index"]))
         self._report_cascade(group, pick, tried, found)
         return pick["data"]
+
+    def _placed_locally(self, group: dict) -> bool:
+        """¿El bloque `local` de la estación da posición a todos los
+        bancos de la cascada?"""
+        banks = (self.template.local_patch or {}).get("banks") or {}
+        return all((banks.get(b) or {}).get("junction")
+                   or (banks.get(b) or {}).get("axis")
+                   for b in group["banks"])
+
+    def _declared_entrance_point(self, key):
+        """Posición de la entrada de OSM que la plantilla enlaza al acceso
+        `key` con `osm_node`, o None."""
+        if not key or self.context is None:
+            return None
+        osm_id = (self.template.nodes.get(key) or {}).get("osm_node")
+        if osm_id is None or int(osm_id) not in self.context.nodes:
+            return None
+        return self.context.local(int(osm_id))
 
     def _try_cascade(self, data: dict, group: dict, move, pavilion) -> dict:
         """Planea la cascada movida en una copia y mide si cabe."""
@@ -487,8 +577,12 @@ class StationBuilder:
             ru, rv = bank["slot_right"]
             for k in range(n):
                 off = bank["spacing"] * (k - (n - 1) / 2)
-                for end in (bank["start"], bank["end"]):
-                    points.append((end[0] + ru * off, end[1] + rv * off))
+                # La escalera entera, no solo sus puntas: en San Antonio
+                # las dos puntas caían dentro y el tramo cruzaba un hueco
+                # del área.
+                points += F.sample_segment(
+                    (bank["start"][0] + ru * off, bank["start"][1] + rv * off),
+                    (bank["end"][0] + ru * off, bank["end"][1] + rv * off))
             points += [bank["junction_from"], bank["junction_to"]]
         approach = 0.0
         for extra in template.extra_ways:
@@ -509,6 +603,12 @@ class StationBuilder:
                 points += line
         hub = template.overrides.get(group["inner"]) if group["inner"] else (
             None)
+        entrance = self._declared_entrance_point(group["building"])
+        if entrance is not None:
+            # La escalera que desemboca en la entrada de OSM llega a la
+            # calle: esa punta está afuera por definición.
+            points = [p for p in points if math.hypot(
+                p[0] - entrance[0], p[1] - entrance[1]) > SNAP_TOLERANCE_M]
         outside = F.outside_points(self._area_rings, points, FIT_TOLERANCE_M)
         hub_ok = True
         door_clash = False
@@ -545,13 +645,21 @@ class StationBuilder:
 
     def _report_cascade(self, group, pick, tried, pavilion) -> None:
         move = pick["move"]
-        if pick["index"] == 0:
+        entrance = self._declared_entrance_point(group["building"])
+        if pick["move"].identity:
             where = (f"sin moverla (pabellón {pavilion[0].osm_id})"
                      if pavilion else "sin moverla")
+        elif pavilion:
+            where = f"anclada al pabellón {pavilion[0].osm_id}"
+        elif entrance is not None:
+            where = "sin pabellón de OSM: anclada a la entrada de OSM"
         else:
-            where = (f"anclada al pabellón {pavilion[0].osm_id}" if pavilion
-                     else "sin pabellón de OSM: anclada donde la plantilla")
-        if pick["index"] == 0:
+            where = "sin pabellón de OSM: anclada donde la plantilla"
+        if not pick["fits"]:
+            why = (f"no cabe: es la que menos se sale, "
+                   f"{len(pick['outside'])} puntos fuera, hasta "
+                   f"{pick['worst']:.1f} m")
+        elif pick["move"].identity:
             why = "cabe íntegra en el área"
         else:
             reasons = ["cabe íntegra en el área"]
@@ -867,7 +975,7 @@ class StationBuilder:
         for key, stop in sorted(self.graph.stops.items()):
             if stop.location_type_id != LOCATION_ENTRANCE:
                 continue
-            spec = self.template.node(key).get("building")
+            spec = self.template.nodes.get(key, {}).get("building")
             if not spec:
                 continue
             anchor = self.template.point(key)
@@ -928,6 +1036,84 @@ class StationBuilder:
                 "plaza_half": plaza_half, "inner": inner,
                 "closed_doors": self._buildings[key]["closed_doors"],
             })
+
+    def _link_declared_entrances(self) -> None:
+        """Accesos que la plantilla enlaza a una entrada de OSM.
+
+        `osm_node` en un nodo de acceso hace lo que haría el enlace de la
+        base: el acceso es ese nodo de OSM y no un gemelo. Sin edificio de
+        acceso, el acceso se queda donde OSM lo tiene y lo que llega del
+        grafo termina ahí: es el caso de un acceso a cielo abierto.
+        """
+        if self.context is None:
+            return
+        for key, stop in sorted(self.graph.stops.items()):
+            spec = self.template.nodes.get(key) or {}
+            osm_id = spec.get("osm_node")
+            if osm_id is None or stop.location_type_id != LOCATION_ENTRANCE:
+                continue
+            node = self.context.nodes.get(int(osm_id))
+            if node is None:
+                self.warnings.append(
+                    f"la plantilla enlaza el acceso {key} al nodo OSM "
+                    f"{osm_id}, que el contexto no trae; se dibuja donde "
+                    f"la plantilla lo pone")
+                continue
+            self._auto_links[stop.key] = node
+            where = ""
+            if not spec.get("building"):
+                point = self.context.local(node.osm_id)
+                self.template.overrides[key] = point
+                where = (f", y queda donde OSM lo tiene ({point[0]:.1f}, "
+                         f"{point[1]:.1f})")
+            self.report["osm"].append(
+                f"el acceso {key} es la entrada {node.osm_id} de OSM "
+                f"(«{node.tags.get('name', '')}»), por la plantilla{where}")
+
+    def _place_missing_nodes(self) -> None:
+        """Nodos del grafo que la plantilla no ubica: se ponen y se avisan.
+
+        El archivo se escribe igual, para que la estación se pueda abrir y
+        afinar: el nodo va al centro de sus vecinos ya ubicados (a 3 m del
+        único, si solo tiene uno), y lleva `fixme`.
+        """
+        placed = set(self.template.nodes) | set(self.template.overrides)
+        missing = [k for k in sorted(self.graph.stops) if k not in placed]
+        for key in missing:
+            stop = self.graph.stops[key]
+            if stop.location_type_id == LOCATION_PLATFORM:
+                raise TemplateError(
+                    f"la plantilla {self.template.family} no ubica el andén "
+                    f"{key}; un andén no se puede improvisar")
+            near = []
+            for pw in self.graph.pathways:
+                ends = {pw.from_key, pw.to_key}
+                if key not in ends:
+                    continue
+                other = (ends - {key}).pop() if len(ends) > 1 else key
+                if other in placed and other not in missing:
+                    try:
+                        near.append(self.template.point(other))
+                    except TemplateError:
+                        continue
+            if len(near) > 1:
+                point = (sum(p[0] for p in near) / len(near),
+                         sum(p[1] for p in near) / len(near))
+            elif near:
+                du, dv = near[0]
+                length = math.hypot(du, dv) or 1.0
+                point = (du + 3.0 * du / length, dv + 3.0 * dv / length)
+            else:
+                point = (0.0, 0.0)
+            self.template.overrides[key] = point
+            self._missing_nodes[key] = (
+                f"Ubicación provisional: la plantilla "
+                f"{self.template.family} no ubica el nodo {key} "
+                f"(«{stop.name}»); el generador lo puso al centro de sus "
+                f"vecinos. Revisar su posición.")
+            self.warnings.append(
+                f"la plantilla no ubica el nodo {key} («{stop.name}»); se "
+                f"puso en ({point[0]:.1f}, {point[1]:.1f}) con fixme")
 
     def _door_point(self, sides, stair: int, index: int, spec: dict):
         """Puerta del muro `index`: al medio, o corrida hacia el fondo.
@@ -1078,6 +1264,8 @@ class StationBuilder:
             u, v = self._entrance_points.get(key) or self.template.point(key)
             level = self._level_of(stop)
             tags = T.entrance_tags(stop.name, stop.entrance, level)
+            if key in self._missing_nodes:
+                tags["fixme"] = self._missing_nodes[key]
             tags.update(self._trace(stop_id=stop.stop_id,
                                     miro_id=stop.miro_id))
             foreign = self._foreign_link(stop)
@@ -1137,6 +1325,89 @@ class StationBuilder:
                     label=f"explanada {key}", closed=True)
                 self.doc.outdoor.update(plaza.nodes)
                 plan["plaza_way"] = plaza
+
+    def _station_buildings(self):
+        """Edificios de OSM que la estación usa: los pabellones adoptados
+        y cualquiera que contenga o roce (2 m) uno de sus accesos."""
+        found = {plan["adopted"].osm_id: plan["adopted"]
+                 for plan in self._buildings.values() if plan["adopted"]}
+        if self.context is None:
+            return list(found.values())
+        entrances = [(self.doc.nodes[nid].u, self.doc.nodes[nid].v)
+                     for nid in self._entrance_nodes.values()]
+        for way in sorted(self.context.ways.values(),
+                          key=lambda w: w.osm_id):
+            if way.osm_id in found or not self.context.is_building(way):
+                continue
+            if self.context.is_outline(way):
+                continue
+            ring = self.context.local_line(way)
+            if len(ring) < 3:
+                continue
+            if any(point_in_polygon(ring, p) or distance_to_ring(ring, p)
+                   <= ENTRANCE_ADOPT_M for p in entrances):
+                found[way.osm_id] = way
+        return [found[k] for k in sorted(found)]
+
+    def _fit_buildings_in_area(self) -> None:
+        """El edificio de OSM que usa la estación cabe entero en el área.
+
+        Ricardo, 22 de octubre de 2026: el pabellón entero va dentro del
+        área. Si sobresale poco (`BUILDING_FIT_MAX_M`), sus vértices de
+        fuera se llevan al punto más cercano del borde, que es lo mínimo
+        que lo mete; si sobresale más, el edificio no se toca y se avisa,
+        porque ya no es un ajuste de dibujo sino una discrepancia entre
+        OSM y el KML que alguien tiene que mirar. Cada nodo movido se
+        reporta: es un elemento de OSM que Ricardo revisa uno por uno.
+        """
+        if not self._area_rings or self.station_area != "kml":
+            return
+        outer = self._area_rings[0]
+        for way in self._station_buildings():
+            ids = list(dict.fromkeys(way.node_ids))
+            moves = []
+            for nid in ids:
+                node = self.context.nodes.get(nid) if self.context else None
+                if node is None:
+                    continue
+                p = (self.doc.nodes[nid].u, self.doc.nodes[nid].v) if (
+                    nid in self.doc.nodes) else self.context.local(nid)
+                if point_in_polygon(outer, p):
+                    continue
+                dist, _, _, _, target = closest_point_on_rings([outer], p)
+                moves.append((nid, node, p, target, dist))
+            # Los muros también: el área puede meterse en el edificio por
+            # una muesca sin que ningún vértice quede fuera (San Antonio).
+            ring = [(self.doc.nodes[n].u, self.doc.nodes[n].v)
+                    if n in self.doc.nodes else self.context.local(n)
+                    for n in way.node_ids if n in self.context.nodes]
+            wall = max((d for d, _ in F.outside_points(
+                outer, [q for a, b in zip(ring, ring[1:])
+                        for q in F.sample_segment(a, b, 0.25)], 0.0)),
+                default=0.0)
+            if not moves and wall <= 0.01:
+                continue
+            worst = max([m[4] for m in moves] + [wall])
+            if worst > BUILDING_FIT_MAX_M or not moves:
+                self.warnings.append(
+                    f"el edificio de OSM {way.osm_id} que usa la estación "
+                    f"sobresale del área hasta {worst:.2f} m ({len(moves)} "
+                    f"vértices fuera"
+                    + ("; el área se mete en él por sus muros"
+                       if wall > 0.01 else "")
+                    + f"); pasa de {BUILDING_FIT_MAX_M:g} m o no se arregla "
+                    f"moviendo vértices, así que no se movió: hay que "
+                    f"decidir si se corrige el área o el edificio")
+                continue
+            if way.osm_id not in self._embedded_ways:
+                self._embed(way)
+            for nid, node, p, target, dist in moves:
+                self.doc.adopt_node(node, target[0], target[1], {})
+                self.report["osm"].append(
+                    f"nodo {nid} del edificio {way.osm_id} movido {dist:.2f} "
+                    f"m, de ({p[0]:.2f}, {p[1]:.2f}) a ({target[0]:.2f}, "
+                    f"{target[1]:.2f}), para que el edificio quepa en el "
+                    f"área")
 
     def _adopt_building(self, key: str, plan: dict, door_ids) -> None:
         """Reusa el edificio que OSM ya tiene, metiéndole las puertas.
@@ -1356,6 +1627,10 @@ class StationBuilder:
         """
         ids = []
         reused = []
+        # Solo esquinas de edificio: el área subterránea no se cose a
+        # explanadas, jardines ni barreras, que siguen otra lógica.
+        allowed = (self.context.building_node_ids() if self.context
+                   else None)
         for u, v in ring:
             nid = None
             for node in self.doc.nodes.values():
@@ -1365,7 +1640,8 @@ class StationBuilder:
                     nid = node.id
                     break
             if nid is None:
-                nid = self.doc.reuse_foreign_node(u, v, self.context)
+                nid = self.doc.reuse_foreign_node(u, v, self.context,
+                                                  allowed=allowed)
                 if nid is not None:
                     reused.append(nid)
             if nid is None:
@@ -1897,6 +2173,11 @@ class StationBuilder:
             junctions = (bank["junction_to"], bank["junction_from"])
         for junction, tip, level, end in zip(junctions, tips, (lf, lt),
                                              ("from", "to")):
+            # Con aproche 0 la escalera llega al nodo mismo: en San
+            # Antonio desemboca en la entrada de OSM, sin tramo corto.
+            if math.hypot(junction[0] - tip[0],
+                          junction[1] - tip[1]) <= SNAP_TOLERANCE_M:
+                continue
             join = self.doc.add_way(
                 [junction, tip], T.footway_tags([level]), [level],
                 kind="footway",
@@ -1912,10 +2193,8 @@ class StationBuilder:
                 pw.from_key, pw.to_key, pw.mode_id, pw.index,
                 bidirectional=pw.is_bidirectional)
             if spec is None:
-                raise TemplateError(
-                    f"la plantilla {self.template.family} no dibuja el "
-                    f"pathway {pw.pathway_id} ({pw.from_key}->{pw.to_key}"
-                    f", modo {pw.mode_id}, índice {pw.index})")
+                resolved.append((pw, self._untemplated_edge(pw)))
+                continue
             used.add(key)
             resolved.append((pw, spec))
         in_banks = [(pw, spec, self.template.bank_layout(spec))
@@ -1927,7 +2206,44 @@ class StationBuilder:
         self._check_stack_clearance()
         for pw, spec in resolved:
             self._build_pathway(pw, spec)
+        for key, text in sorted(self._missing_nodes.items()):
+            nid = self.doc.node_at(*self.template.point(key))
+            self.doc.nodes[nid].tags["fixme"] = text
         return used
+
+    def _untemplated_edge(self, pw) -> dict:
+        """Arista recta para un pathway que la plantilla no dibuja.
+
+        El comando no aborta: la estación se escribe con ese tramo en línea
+        recta entre sus extremos, marcado con `fixme` y en la lista de
+        avisos, para afinarlo en JOSM o enseñárselo a la plantilla.
+        """
+        label = (f"{pw.from_key}->{pw.to_key}, modo {pw.mode_id}, índice "
+                 f"{pw.index}")
+        fixme = (f"Trazo provisional: la plantilla {self.template.family} "
+                 f"no dibuja este pathway ({label}); el generador lo unió "
+                 f"en línea recta entre sus extremos. Revisar la geometría.")
+        self.warnings.append(
+            f"la plantilla no dibuja el pathway {pw.pathway_id} ({label}); "
+            f"va recto entre sus extremos con fixme")
+        self.report["untemplated"].append(
+            {"pathway_id": pw.pathway_id, "label": label})
+        ends = [pw.from_key, pw.to_key]
+        geometry = []
+        for key, other in zip(ends, reversed(ends)):
+            if self.graph.stops[key].location_type_id != LOCATION_PLATFORM:
+                geometry.append(key)
+                continue
+            # Un andén no es un punto: el tramo arranca de su senda, a la
+            # altura del otro extremo.
+            try:
+                u = self.template.point(other)[0]
+            except (TemplateError, KeyError):
+                u = 0.0
+            geometry.append({"spine": key, "u": u})
+        return {"from": pw.from_key, "to": pw.to_key, "mode": pw.mode_id,
+                "index": pw.index, "geometry": geometry,
+                "tags": {"fixme": fixme}}
 
     def _build_pathway(self, pw, spec) -> None:
         # La geometría está escrita en el sentido from->to de la

@@ -106,7 +106,10 @@ class Command(BaseCommand):
         except Exception as exc:
             raise CommandError(f"no se pudo leer el grafo: {exc}")
 
-        template = FamilyTemplate.load(template_path)
+        try:
+            template = FamilyTemplate.load(template_path, graph.stop_id)
+        except TemplateError as exc:
+            raise CommandError(str(exc))
         frame = LocalFrame(anchor[0], anchor[1], opts["bearing"],
                            mirror=opts["mirror"])
         slug = slugify(graph.station_name)
@@ -145,7 +148,9 @@ class Command(BaseCommand):
         errors = builder.errors + errors
         self.stdout.write(self.style.SUCCESS(f"escrito {out_path}"))
         self.stdout.write(f"estación: {graph.station_name} "
-                          f"({graph.stop_id}) — familia {template.family}")
+                          f"({graph.stop_id}) — familia {template.family}"
+                          + (", con su bloque por estación"
+                             if template.station else ""))
         self.stdout.write(f"ancla {anchor[0]},{anchor[1]}  rumbo "
                           f"{opts['bearing']}°  mirror={opts['mirror']}")
         self.stdout.write(f"área de estación: {mode}  —  contexto: "
@@ -201,6 +206,10 @@ class Command(BaseCommand):
                 + f"): {item['length']:.1f} m"
                 + (f" — mismo vértice {item['vertex']}, sin tramo propio"
                    if item["shared"] else ""))
+        for item in builder.report["untemplated"]:
+            self.stdout.write(
+                f"  fixme: el pathway {item['pathway_id']} ({item['label']}) "
+                f"no está en la plantilla y va recto entre sus extremos")
         for item in builder.report["osm"]:
             self.stdout.write(f"  OSM: {item}")
         for item in builder.report["station"]:

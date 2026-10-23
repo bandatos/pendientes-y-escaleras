@@ -172,17 +172,21 @@ class OsmDocument:
         return self.relations[foreign.osm_id]
 
     def reuse_foreign_node(self, u: float, v: float, context=None,
-                           radius: float = FOREIGN_REUSE_M) -> int | None:
+                           radius: float = FOREIGN_REUSE_M,
+                           allowed: set | None = None) -> int | None:
         """Nodo de OSM que ocupa ya ese punto, o None.
 
         Busca primero en el documento y después en el contexto, que
         todavía puede no haberlo embebido; si lo encuentra en el contexto
         lo embebe congelado. El nodo no se mueve ni se marca: lo único
-        que cambia es que un way nuestro lo referencia.
+        que cambia es que un way nuestro lo referencia. `allowed` limita
+        la búsqueda a esos ids de OSM.
         """
         best = None
         for node in self.nodes.values():
             if not node.foreign or node.action == "delete":
+                continue
+            if allowed is not None and node.id not in allowed:
                 continue
             d = math.hypot(node.u - u, node.v - v)
             if d <= radius and (best is None or d < best[0]):
@@ -193,6 +197,8 @@ class OsmDocument:
             return None
         found = None
         for osm_id, node in context.nodes.items():
+            if allowed is not None and osm_id not in allowed:
+                continue
             nu, nv = context.frame.to_local(node.lat, node.lon)
             d = math.hypot(nu - u, nv - v)
             if d <= radius and (found is None or d < found[0]):

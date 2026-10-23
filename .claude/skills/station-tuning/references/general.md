@@ -49,5 +49,4 @@ Un número que el generador consume vive en JSON (`data/osm/templates/`); un cri
 ## Fuentes
 
 - Esri World Imagery para leer la estación, nunca para medir (el skill dice cómo).
-- El GTFS de la CDMX trae un solo punto por estación, corrido como 1,2 m al oriente en San Joaquín y San Pedro, y no marca el centro de la estación a lo largo de la vía: no sirve para fijar posiciones.
 - Los croquis del STC («Proyecto de espacios publicitarios», 2002) son la fuente más precisa conocida de la planta subterránea: escala gráfica, muros fiables a ±0,5 m, cotas de anuncios no fiables. Ricardo los dejó para después; ver la tarea del croquis en `docs/tasks/`.

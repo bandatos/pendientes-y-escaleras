@@ -63,9 +63,12 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
     # Un nodo que sale con `action='delete'` ya no estará ahí después de
     # subir: chocar con él no es un error del archivo.
     nodes = [n for n in doc.nodes.values() if n.action != "delete"]
+    loose = _area_vertex_pairs_exempt(doc)
     for i in range(len(nodes)):
         for j in range(i + 1, len(nodes)):
             if nodes[i].frozen and nodes[j].frozen:
+                continue
+            if loose(nodes[i], nodes[j]):
                 continue
             d = math.hypot(nodes[i].u - nodes[j].u, nodes[i].v - nodes[j].v)
             if d < MIN_NODE_DISTANCE_M:
@@ -89,6 +92,35 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
     errors += _check_connectivity(doc)
 
     return errors, warnings, _summary(doc)
+
+
+def _area_vertex_pairs_exempt(doc: OsmDocument):
+    """¿Es el par un vértice del área con un nodo de OSM que no es de
+    edificio?
+
+    El área solo comparte nodos con edificios (el resto de OSM sigue otra
+    lógica: banquetas, jardines), así que un vértice suyo a centímetros
+    de una banqueta no es un gemelo mal emitido sino dos objetos que no
+    se tocan. En San Antonio un vértice del KML cae a 0.23 m de un nodo
+    de banqueta.
+    """
+    area, used_elsewhere, building = set(), set(), set()
+    for way in doc.ways:
+        if way.kind == "station_area":
+            area.update(way.nodes)
+        else:
+            used_elsewhere.update(way.nodes)
+        if "building" in way.tags:
+            building.update(way.nodes)
+    pure_area = area - used_elsewhere
+
+    def exempt(a, b) -> bool:
+        for mine, other in ((a, b), (b, a)):
+            if (mine.id in pure_area and other.foreign
+                    and other.id not in building):
+                return True
+        return False
+    return exempt
 
 
 def _own_relation_members(doc: OsmDocument) -> set[int]:

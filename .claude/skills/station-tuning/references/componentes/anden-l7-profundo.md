@@ -1,6 +1,6 @@
 # Componente: andén profundo de la Línea 7
 
-Dos andenes laterales bajo tierra en el nivel −3, con las vías en medio, un pasillo central de salida y salidas laterales desde cada andén, más el paso bajo las vías para cambiar de andén. Lo comparten San Pedro de los Pinos y San Joaquín; Xola está por generar. Su JSON es hoy el bloque de andenes (`P-01`, `P-02`), los `nodes` y las `edges` de `data/osm/templates/l7-deep-cascade.json`; cuando la plantilla se parta en componentes, este archivo nombrará su pieza.
+Dos andenes laterales bajo tierra en el nivel −3, con las vías en medio, un pasillo central de salida y salidas laterales desde cada andén, más el paso bajo las vías para cambiar de andén. Lo comparten San Pedro de los Pinos y San Joaquín. Su JSON es hoy el bloque de andenes (`P-01`, `P-02`), los `nodes` y las `edges` de `data/osm/templates/l7-deep-cascade.json`; cuando la plantilla se parta en componentes, este archivo nombrará su pieza.
 
 ## Lo que rige
 

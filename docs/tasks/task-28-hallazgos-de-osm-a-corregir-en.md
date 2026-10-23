@@ -13,7 +13,7 @@ related: ["[[task-10]]", "[[task-11]]", "[[task-20]]"]
 
 Errores encontrados en OSM el 2 de septiembre que nuestros archivos no corrigen (corregir lo ajeno espera a [[task-11]]) pero que chocarán con ellos al subir:
 
-- Nodo de estación de San Pedro de los Pinos (681454741): su posición ya la corrige el generador (nota del 21 de octubre de 2026, abajo); queda aquí solo su `service=yard`, que no corresponde a una estación y que lleva también el de San Joaquín (681448501).
+- Nodo de estación de San Pedro de los Pinos (681454741): su posición ya la corrige el generador (nota del 21 de octubre de 2026, abajo); queda aquí solo su `service=yard`, que no corresponde a una estación y que lleva también el de San Joaquín (681448501) y el de San Antonio (308556308, visto el 22 de octubre de 2026).
 - Vía de L7 (320892187): `level=-4` y `layer=-4` en sus 17,4 km; nuestros andenes van a −3 y solo el pasillo de cambio de andén a −4.
 - Zócalo: la vía 1251764016 etiquetada como andén es el cajón completo de 180 × 55 m; los andenes reales son dos laterales. La relación `stop_area` 7902754 usa el rol `subway_entrance`, no documentado.
 - Aquiles Serdán: cuatro accesos con `name=Aquiles Serdán`, el nombre de la estación, contra el wiki; la letra va en `ref`.

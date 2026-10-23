@@ -284,6 +284,12 @@ class StationContext:
                 or (n.tags.get("public_transport") == "station"
                     and n.tags.get("station") == "subway")]
 
+    def building_node_ids(self) -> set[int]:
+        """Nodos de edificios y contornos de estación del contexto."""
+        return {nid for way in self.ways.values()
+                if self.is_building(way) or self.has_outline_tags(way)
+                for nid in way.node_ids}
+
     @staticmethod
     def is_building(way: ForeignWay) -> bool:
         return bool(way.tags.get("building"))

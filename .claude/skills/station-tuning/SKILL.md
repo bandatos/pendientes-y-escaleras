@@ -28,7 +28,7 @@ El primer turno es de análisis y trazo: un agente lee la estación completa (su
 
 El cierre es aprender: lo que la estación enseñó se escribe en las referencias de este skill, en la plantilla o en el generador, para que la siguiente estación salga mejor desde el primer saque. Si la sesión cambió reglas que alcanzan a otras estaciones, el coordinador pregunta a Ricardo si quiere aplicarlas a la última versión de las que correspondan (las del mismo componente o todas) y genera para cada una un turno nuevo que él revisa.
 
-Cuando la ventana de contexto se acerca a 250 mil tokens, el coordinador se lo dice a Ricardo y él decide si la revisión sigue en una sesión nueva; el estado queda escrito para el relevo en la tarea que lleva la estación (hoy San Pedro y Portales en task-26, con el defecto de San Pedro en task-40; San Joaquín y Xola en task-29).
+Cuando la ventana de contexto se acerca a 250 mil tokens, el coordinador se lo dice a Ricardo y él decide si la revisión sigue en una sesión nueva; el estado queda escrito para el relevo en la tarea que lleva la estación (hoy San Pedro y Portales en task-26, con el defecto de San Pedro en task-40; San Joaquín en task-29).
 
 ## Lo que siempre le llega a Ricardo
 

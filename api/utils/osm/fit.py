@@ -225,6 +225,10 @@ def warp_template_data(data: dict, warp: CorridorWarp,
                 moved = dict(item)
                 moved["u"] = warp.u(float(item["u"]))
                 new.append(moved)
+            elif isinstance(item, dict) and "elbow" in item:
+                moved = dict(item)
+                moved["elbow"] = warp.point(item["elbow"])
+                new.append(moved)
             elif isinstance(item, dict) and "via" in item:
                 # Los vértices de paso son del trazo de referencia: con
                 # los corredores deformados ya no caen donde deben.

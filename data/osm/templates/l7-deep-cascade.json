@@ -1,17 +1,17 @@
 {
   "family": "l7-deep-cascade",
-  "description": "Dos andenes laterales profundos (nivel -3) bajo la avenida, tres pasillos por andén hasta un vestíbulo transversal, un pasillo inferior (-4) que cruza bajo las vías, y por cada lado una cascada paralela a las vías dentro del rectángulo de salida: escaleras -3→-2 hacia el sur, pasillo -2, escaleras -2→-1 de vuelta al norte, vestíbulo de torniquetes -1 y escaleras -1→0 apiladas sobre las -2→-1 hasta el centro del pabellón de acceso. La geometría es la que Ricardo corrigió a mano en JOSM sobre San Pedro (21 de octubre de 2026), redondeada a medio metro. Estación hermana: San Joaquín.",
+  "description": "Dos andenes laterales profundos (nivel -3) bajo la avenida, tres pasillos por andén hasta un vestíbulo transversal, un pasillo inferior (-4) que cruza bajo las vías, y por cada lado una cascada paralela a las vías dentro del rectángulo de salida: escaleras -3→-2 hacia el sur, pasillo -2, escaleras -2→-1 de vuelta al norte, vestíbulo de torniquetes -1 y escaleras -1→0 apiladas sobre las -2→-1 hasta el centro del pabellón de acceso. La geometría es la que Ricardo corrigió a mano en JOSM sobre San Pedro (21 de octubre de 2026), redondeada a medio metro, con lo que San Pedro 05 y San Joaquín 06 enseñaron el 22 de octubre: escaleras paralelas a 1.8 m entre ejes, salidas laterales con codo de radio fijo, pasillos -2 y -1 ortogonales a medio claro y nodo de estación a la mitad del pasillo central. Los largos de escalera y de cambio de andén son los de San Pedro: son hechos de cada estación, no de la familia. Estación hermana: San Joaquín.",
   "station_area": "kml",
   "axes": "u = metros sobre el eje de las vías, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~6.5°, v>0 es el oriente. La franja de andenes del KML mide unos 15 m de ancho y su eje no coincide con el ancla, así que los andenes cuelgan de los bordes de la franja (band_side) y no de una v escrita a mano.",
   "station_node": {
-    "u": 13.5,
-    "comment": "Dónde va el nodo railway=station de OSM: sobre el eje de la franja de andenes (su v la pone el generador), en la u del paso bajo las vías. Ricardo lo movió a mano en San Pedro a (13.2, 1.1), a 0.8 m de este punto: «es más preciso el mío y consistente con todo lo demás que se subirá»."
+    "u": 15.0,
+    "comment": "Dónde va el nodo railway=station de OSM: a la mitad del pasillo central (su eje, u = 15 en San Pedro) y sobre el eje entre los dos andenes (su v la pone el generador). Ricardo, 22 de octubre de 2026, respuesta 22 de task-37. La mitad del pasillo central no es la mitad del andén."
   },
   "fit": {
     "comment": "Encaje en las hermanas. reference son las medidas del KML de San Pedro, la estación de este trazo: bordes de la franja, u de los tres ramales que salen de ella por cada lado (pasillo lateral sur, central y lateral norte) y v del vestíbulo transversal. En otra estación los corredores se deforman de esas medidas a las suyas, y cada cascada se mueve en bloque, anclada al pabellón de OSM (anchor es el centro del pabellón de San Pedro), a la orientación que cabe en el área.",
     "reference": {
       "station": "San Pedro de los Pinos",
-      "band": [-5.69, 9.39],
+      "band": [-5.73, 9.50],
       "branches": {"+v": [-7.86, 14.92, 37.92], "-v": [-7.26, 15.03, 37.85]},
       "transversal": {"+v": 18.29, "-v": -14.70}
     },
@@ -49,8 +49,8 @@
 
     "N-05": {"u": 8.0, "v": -47.25, "comment": "Vestíbulo de andén poniente (-3); lo coloca el banco cascada-poniente-1."},
     "N-06": {"u": -11.0, "v": -36.5, "comment": "Mezzanine poniente (-2); lo coloca el banco cascada-poniente-2."},
-    "N-07": {"u": -12.0, "v": -38.0, "comment": "Vestíbulo de torniquetes poniente (-1); lo coloca el banco cascada-poniente-3."},
-    "N-08": {"u": -0.5, "v": -38.0, "comment": "Centro del pabellón de acceso poniente; lo coloca el banco cascada-poniente-3."},
+    "N-07": {"u": -12.0, "v": -38.75, "comment": "Vestíbulo de torniquetes poniente (-1); lo coloca el banco cascada-poniente-3."},
+    "N-08": {"u": -0.5, "v": -38.75, "comment": "Centro del pabellón de acceso poniente; lo coloca el banco cascada-poniente-3."},
     "E-01": {
       "u": -1.016, "v": -38.206,
       "building": {"side": 12, "inner_node": "N-08", "stair_side": "-u",
@@ -64,93 +64,101 @@
     "cascada-oriente-1": {
       "from": "N-01", "to": "N-02", "place": ["from"],
       "junction": [18.0, 43.0], "direction": "-u", "length": 17,
-      "lead": [1.0, 2.5], "spacing": 2.5,
-      "comment": "Tres escaleras -3→-2 paralelas a las vías, hacia el sur, junto al borde lejano del rectángulo de salida. Solo coloca N-01: N-02 lo pone el banco siguiente y entre los dos va el pasillo -2."
+      "lead": [1.0, 1.0], "spacing": 1.8,
+      "comment": "Tres escaleras -3→-2 paralelas a las vías, hacia el sur, junto al borde lejano del rectángulo de salida, a 1.8 m entre ejes como todos los bancos (criterio general, mediana del trazo de Ricardo en San Joaquín). Solo coloca N-01: N-02 lo pone el banco siguiente y entre los dos va el pasillo -2. Los aproches son la regla de la cascada (1 m, y 1.5 m en el extremo lejano del segundo conjunto: Ricardo, 22 de octubre de 2026); el largo es el de San Pedro."
     },
     "cascada-oriente-2": {
       "from": "N-02", "to": "N-03", "place": ["from"],
-      "junction": [-3.0, 31.5], "direction": "+u", "length": 20.5,
-      "lead": [1.0, 1.0], "spacing": 1.0,
+      "junction": [-3.5, 31.5], "direction": "+u", "length": 20.5,
+      "lead": [1.5, 1.0], "spacing": 1.8,
       "comment": "Tres escaleras -2→-1 de vuelta hacia el norte. Su cabecera es el arranque del vestíbulo de torniquetes, que es un extra_way."
     },
     "cascada-oriente-3": {
       "from": "N-03", "to": "N-09", "place": ["from", "to"],
       "stacked_on": "cascada-oriente-2", "stack_offset": -0.5,
-      "junction": [-0.5, 31.0], "length": 12.5,
-      "lead": [0.5, 1.0], "spacing": 2.0,
-      "comment": "Dos escaleras -1→0 hacia el norte, encima de las -2→-1 y corridas de lado para que en JOSM se vean las dos capas. Coloca N-03 y el centro del pabellón (N-09), que queda donde desembocan."
+      "junction": [-1.0, 31.0], "length": 12.5,
+      "lead": [1.0, 1.0], "spacing": 1.8,
+      "comment": "Dos escaleras -1→0 hacia el norte, encima de las -2→-1. El conjunto entero, nodos de encuentro incluidos, se corre de lado respecto del eje de abajo lo justo para que ninguna línea quede a menos de 0.3 m de otra de otro nivel: 0.5 m aquí, 0.45 m (un cuarto de la separación) en San Joaquín. Coloca N-03 y el centro del pabellón (N-09), que queda donde desembocan."
     },
     "cascada-poniente-1": {
       "from": "N-05", "to": "N-06", "place": ["from"],
       "junction": [8.0, -47.25], "direction": "-u", "length": 17,
-      "lead": [1.0, 1.5], "spacing": 1.5
+      "lead": [1.0, 1.0], "spacing": 1.8
     },
     "cascada-poniente-2": {
       "from": "N-06", "to": "N-07", "place": ["from"],
       "junction": [-11.0, -36.5], "direction": "+u", "length": 16,
-      "lead": [1.5, 1.0], "spacing": 1.0
+      "lead": [1.5, 1.0], "spacing": 1.8
     },
     "cascada-poniente-3": {
       "from": "N-07", "to": "N-08", "place": ["from", "to"],
-      "stacked_on": "cascada-poniente-2", "stack_offset": -1.5,
-      "junction": [-12.0, -38.0], "length": 8.5,
-      "lead": [1.5, 1.5], "spacing": 2.0
+      "stacked_on": "cascada-poniente-2", "stack_offset": -2.25,
+      "junction": [-11.5, -38.75], "length": 8.5,
+      "lead": [1.0, 1.0], "spacing": 1.8,
+      "comment": "Corrido -2.25 m (una separación más un cuarto), confirmado por Ricardo el 22 de octubre de 2026: con los -2 m de San Pedro 05 su nodo de encuentro alto (N-08) quedaba a 0.2 m en planta de la reversible -2→-1 de abajo; así queda a 0.45 m, como en San Joaquín."
     }
   },
   "extra_ways": [
-    {"geometry": [[15.0, 18.5], [15.0, 21.0], {"via": [[18.0, 25.5], [20.0, 33.0], [20.0, 43.0]], "cascade": "oriente"}, "N-01"],
+    {"id": "vestibulo-oriente",
+     "geometry": [[15.0, 18.28], [15.0, 21.53], {"via": [[18.0, 25.5], [20.0, 29.0], [20.0, 43.0]], "cascade": "oriente"}, "N-01"],
      "level": -3,
      "comment": "Vestíbulo transversal oriente y pasillo de salida al rectángulo. El grafo modela todo el nivel -3 fuera del andén como un solo nodo (N-01), así que el reparto entre los tres pasillos de andén y el pie de la cascada se dibuja aquí. El via es el rodeo que Ricardo trazó en San Pedro hasta el pie de la cascada; en una hermana donde la cascada se mueve se cambia por un codo dentro del área."},
-    {"geometry": [[15.0, -14.5], [15.0, -18.0], {"via": [[15.0, -40.5], [15.0, -43.0], [14.0, -45.0], [13.0, -46.0], [11.5, -47.0]], "cascade": "poniente"}, "N-05"],
+    {"id": "vestibulo-poniente",
+     "geometry": [[15.0, -14.72], [15.0, -18.0], {"via": [[15.0, -40.5], [15.0, -43.0], [14.0, -45.0], [13.0, -46.0], [11.5, -47.25]], "cascade": "poniente"}, "N-05"],
      "level": -3,
      "comment": "Lo mismo del lado poniente; el rectángulo poniente está corrido unos 12 m en u respecto del oriente, así que no es el espejo exacto."},
 
-    {"geometry": [{"spine": "P-01", "u": 13.5, "dv": 1.0}, {"spine": "P-02", "u": 13.5, "dv": -1.0}],
+    {"id": "paso-bajo-vias",
+     "geometry": [{"spine": "P-01", "u": 13.5, "dv": 1.0}, {"spine": "P-02", "u": 13.5, "dv": -1.0}],
      "level": -4,
      "comment": "Paso bajo las vías. Une los pies de las dos escaleras -4;-3, que quedan bajo los andenes, un metro afuera de cada senda."},
 
-    {"geometry": [{"bank": "cascada-oriente-1", "end": "to"}, [-4.0, 43.5], [-4.0, 31.0], "N-02"],
+    {"id": "mezzanine-oriente",
+     "geometry": [{"bank": "cascada-oriente-1", "end": "to"}, [-4.5, 43.0], [-4.5, 31.5], "N-02"],
      "level": -2, "cascade": "oriente",
-     "comment": "Pasillo del mezzanine oriente: de la cabecera de la primera cascada al pie de la segunda, en transversal."},
-    {"geometry": [{"bank": "cascada-poniente-1", "end": "to"}, [-13.0, -47.5], [-13.0, -36.5], "N-06"],
+     "comment": "Pasillo del mezzanine oriente: de la cabecera de la primera cascada al pie de la segunda, ortogonal y saliendo de los nodos de encuentro sobre el eje de cada banco."},
+    {"id": "mezzanine-poniente",
+     "geometry": [{"bank": "cascada-poniente-1", "end": "to"}, [-13.0, -47.25], [-13.0, -36.5], "N-06"],
      "level": -2, "cascade": "poniente",
      "comment": "Pasillo del mezzanine poniente."},
 
-    {"geometry": [{"bank": "cascada-oriente-2", "end": "to"}, [21.0, 31.5], [21.0, 42.5], [-3.0, 42.5], [-3.5, 30.5], "N-03"],
+    {"id": "torniquetes-oriente",
+     "geometry": [{"bank": "cascada-oriente-2", "end": "to"}, [21.0, 31.5], [21.0, 42.1], [-4.0, 42.1], [-4.0, 31.0], "N-03"],
      "level": -1, "cascade": "oriente",
-     "turnstile": {"from": [19.5, 31.5], "distance": 25},
-     "comment": "Vestíbulo de torniquetes oriente: de la cabecera de las -2→-1 da la vuelta por encima de la primera cascada hasta el pie de las -1→0. Los vestíbulos -1 de San Pedro solo reciben escaleras y un torniquete no puede ir sobre highway=steps, así que el tramo que lo sostiene se declara aquí."},
-    {"geometry": [{"bank": "cascada-poniente-2", "end": "to"}, [9.0, -37.0], [8.5, -46.5], [-13.5, -47.5], [-14.0, -38.0], "N-07"],
+     "turnstile": {"from": [19.5, 31.5], "distance": 24.6},
+     "comment": "Vestíbulo de torniquetes oriente: de la cabecera de las -2→-1 da la vuelta por encima de la primera cascada hasta el pie de las -1→0, ortogonal, y donde pasa sobre la primera cascada va a medio claro (0.9 m del eje: v = 42.1). Baja en u = -4, a medio metro del pasillo -2 y del nodo de encuentro -2 de las -2→-1, que con su aproche de 1.5 m quedó en u = -3.5. Los vestíbulos -1 de San Pedro solo reciben escaleras y un torniquete no puede ir sobre highway=steps, así que el tramo que lo sostiene se declara aquí; el torniquete queda donde lo dejó San Pedro 05."},
+    {"id": "torniquetes-poniente",
+     "geometry": [{"bank": "cascada-poniente-2", "end": "to"}, [9.0, -36.5], [9.0, -46.35], [-14.0, -46.35], [-14.0, -38.5], "N-07"],
      "level": -1, "cascade": "poniente",
-     "turnstile": {"from": [7.5, -36.5], "distance": 22.5},
-     "comment": "Vestíbulo de torniquetes poniente."}
+     "turnstile": {"from": [7.5, -36.5], "distance": 23.24},
+     "comment": "Vestíbulo de torniquetes poniente. El tramo alto va en u = 9, como en San Pedro 03 y 05 (8.5 a 9 en el trazo de Ricardo). En San Pedro sale 2.81 m del área por la muesca del KML (fondo en u = 7.88, task-40): Ricardo, 22 de octubre de 2026, la trata como un error del KML que se rellena en la siguiente versión de San Pedro, no como un motivo para correr el pasillo. El torniquete queda donde lo dejó San Pedro 05."}
   ],
   "edges": [
     {"from": "P-01", "to": "N-01", "mode": 1, "index": 0,
-     "geometry": [{"spine": "P-01", "u": -7.7}, [-8.0, 13.0], [-7.5, 15.5], [-6.0, 17.5], [-4.0, 18.5], [-1.5, 19.0], [15.0, 18.5]],
-     "comment": "Pasillo lateral sur del andén oriente, en codo, siguiendo la rama del KML en u ≈ -7.5 (miro_id en San Pedro 3458764655659671984). El índice no dice qué pasillo es: se asigna ordenando por miro_id, así que hay que verificarlo con note:miro_id contra el tablero."},
+     "geometry": [{"spine": "P-01", "u": -7.555}, {"elbow": [-7.555, 18.28], "radius": 8.58, "segments": 4}, [15.0, 18.28]],
+     "comment": "Salida lateral sur del andén oriente (miro_id en San Pedro 3458764655659671984): pierna recta por el eje de la rama del KML y codo de cuarto de círculo con la senda a 8.58 m de radio, el de San Joaquín, hasta el eje del vestíbulo transversal. Las salidas laterales miden 6.5 m en toda la familia (muros a ±3.25 m de la senda). El índice no dice qué pasillo es: se asigna ordenando por miro_id, así que hay que verificarlo con note:miro_id contra el tablero."},
     {"from": "P-01", "to": "N-01", "mode": 1, "index": 1,
-     "geometry": [{"spine": "P-01", "u": 15.0}, [15.0, 10.5], [15.0, 18.5]],
-     "comment": "Pasillo central del andén oriente, el ancho (7,2–7,7 m en el KML), recto; su vértice intermedio es donde desemboca la escalera de cambio de andén (miro_id 3458764655659672021)."},
+     "geometry": [{"spine": "P-01", "u": 15.0}, {"spine": "P-01", "u": 15.0, "dv": 8.07}, [15.0, 18.28]],
+     "comment": "Pasillo central del andén oriente, recto y ortogonal (su ancho es de cada estación: 7.4 m en San Pedro, 10.4 m en San Joaquín); su vértice intermedio es donde desemboca la escalera de cambio de andén (miro_id 3458764655659672021)."},
     {"from": "P-01", "to": "N-01", "mode": 1, "index": 2,
-     "geometry": [{"spine": "P-01", "u": 38.0}, [38.0, 13.0], [37.5, 15.5], [36.5, 17.0], [34.0, 18.0], [31.5, 18.5], [15.0, 18.5]],
-     "comment": "Pasillo lateral norte del andén oriente, en codo, rama del KML en u ≈ 38 (miro_id 3458764655659672022)."},
+     "geometry": [{"spine": "P-01", "u": 37.885}, {"elbow": [37.885, 18.28], "radius": 8.58, "segments": 4}, [15.0, 18.28]],
+     "comment": "Salida lateral norte del andén oriente, mismo codo (miro_id 3458764655659672022)."},
 
     {"from": "P-02", "to": "N-05", "mode": 1, "index": 0,
-     "geometry": [{"spine": "P-02", "u": -7.7}, [-7.5, -9.5], [-7.0, -11.5], [-5.5, -13.0], [-3.5, -14.5], [-1.0, -15.0], [15.0, -14.5]],
+     "geometry": [{"spine": "P-02", "u": -7.555}, {"elbow": [-7.555, -14.72], "radius": 8.58, "segments": 4}, [15.0, -14.72]],
      "comment": "Pasillo lateral sur del andén poniente (miro_id 3458764655659671995)."},
     {"from": "P-02", "to": "N-05", "mode": 1, "index": 1,
-     "geometry": [{"spine": "P-02", "u": 15.0}, [15.0, -7.5], [15.0, -14.5]],
+     "geometry": [{"spine": "P-02", "u": 15.0}, {"spine": "P-02", "u": 15.0, "dv": -8.07}, [15.0, -14.72]],
      "comment": "Pasillo central del andén poniente (miro_id 3458764655659672020)."},
     {"from": "P-02", "to": "N-05", "mode": 1, "index": 2,
-     "geometry": [{"spine": "P-02", "u": 38.0}, [38.0, -9.5], [37.5, -11.0], [36.5, -13.0], [34.5, -14.0], [32.5, -14.5], [15.0, -14.5]],
+     "geometry": [{"spine": "P-02", "u": 37.885}, {"elbow": [37.885, -14.72], "radius": 8.58, "segments": 4}, [15.0, -14.72]],
      "comment": "Pasillo lateral norte del andén poniente (miro_id 3458764655659672023)."},
 
     {"from": "N-04", "to": "N-01", "mode": 2, "index": 0,
-     "geometry": [{"spine": "P-01", "u": 13.5, "dv": 1.0}, [15.0, 10.5]],
-     "comment": "Escalera de cambio de andén, del paso inferior al pasillo central del andén oriente: corta (unos 4 m), arranca bajo el andén y desemboca como vértice intermedio del pasillo central, no en la senda. El grafo la declara hasta N-01 (todo el nivel -3 es un nodo)."},
+     "geometry": [{"spine": "P-01", "u": 13.5, "dv": 1.0}, {"spine": "P-01", "u": 15.0, "dv": 8.07}],
+     "comment": "Escalera de cambio de andén, del paso inferior al pasillo central del andén oriente: arranca bajo el andén y desemboca dentro del pasillo central como vértice intermedio suyo, no en la senda. Se mide desde la senda (dv) para que las dos queden simétricas respecto del eje entre andenes también en una hermana; el largo, 7.2 m, es de San Pedro (San Joaquín: 8.9 m). El grafo la declara hasta N-01 (todo el nivel -3 es un nodo)."},
     {"from": "N-04", "to": "N-05", "mode": 2, "index": 0,
-     "geometry": [{"spine": "P-02", "u": 13.5, "dv": -1.0}, [15.0, -7.5]],
+     "geometry": [{"spine": "P-02", "u": 13.5, "dv": -1.0}, {"spine": "P-02", "u": 15.0, "dv": -8.07}],
      "comment": "La misma escalera del lado poniente."},
 
     {"from": "N-01", "to": "N-02", "mode": 2, "index": 0,
@@ -205,5 +213,141 @@
      "comment": "Del centro del pabellón a la puerta que el grafo conoce como acceso; las otras dos puertas las une el generador."},
     {"from": "E-02", "to": "N-09", "mode": 1, "index": 0,
      "geometry": ["E-02", "N-09"]}
-  ]
+  ],
+  "stations": {
+    "0200L7-SANANTONIO": {
+      "comment": "Hechos de San Antonio (versión 02, 22 de octubre de 2026, sin revisar por Ricardo), con el croquis del STC (plano L7-12, 2002) como fuente de la planta subterránea. Los accesos son a cielo abierto: no hay pabellón (sin N-08 ni N-09) y cada vestíbulo de torniquetes sube a la calle por una sola escalera fija, que en el croquis es de dos tramos con un descanso (en L al poniente, en U al oriente) y desemboca, sin tramo corto, en la entrada que OSM ya tiene. Esa escalera no es un banco: va como geometría de su arista, y la cascada de cada lado queda en dos conjuntos. El encaje no acomoda la cascada de San Pedro en esta área, así que todo se coloca en «local».",
+      "nodes": {
+        "N-08": null,
+        "N-09": null,
+        "E-01": {"building": null, "osm_node": 3761174023,
+                 "comment": "Acceso poniente a cielo abierto: la entrada «San Antonio Exit» de OSM, que se queda donde OSM la tiene."},
+        "E-02": {"building": null, "osm_node": 5638100637,
+                 "comment": "Acceso oriente a cielo abierto: la entrada «Tintoreto Exit» de OSM, vértice del muro norte del edificio chico 671951329, que cubre la escalera a la calle."}
+      },
+      "banks": {
+        "cascada-oriente-3": null,
+        "cascada-poniente-3": null
+      },
+      "fit": {
+        "cascades": {
+          "oriente": {"anchor": [8.87, 31.0], "banks": ["cascada-oriente-1", "cascada-oriente-2"]},
+          "poniente": {"anchor": [-2.0, -38.75], "banks": ["cascada-poniente-1", "cascada-poniente-2"]}
+        }
+      },
+      "edges": {
+        "N-03>N-09:2:0": null,
+        "N-03>N-09:4:0": null,
+        "N-07>N-08:2:0": null,
+        "N-07>N-08:4:0": null,
+        "N-08>E-01:1:0": null,
+        "E-02>N-09:1:0": null,
+        "N-03>E-02:2:0": {"geometry": ["N-03", "E-02"]},
+        "N-07>E-01:2:0": {"geometry": ["N-07", "E-01"]}
+      },
+      "area": {
+        "source": "KML de la estación, con dos cambios (22 de octubre de 2026): sin la muesca oriente que dejaba fuera el edificio 671951329 (el borde poniente del rectángulo oriente sigue recto) y con el lóbulo de la salida poniente alargado 4.4 m hacia el oriente, hasta la entrada 3761174023, sobre la cubierta clara que la imagen Esri muestra ahí.",
+        "outer": [[19.38399005, -99.18676382],[19.3839851, -99.1867317],[19.3839845, -99.1867278],[19.3839745, -99.1866667],[19.3839738, -99.1866628],[19.38396862, -99.18663102],[19.38437089, -99.18658272],[19.3843647, -99.1865142],[19.3843645, -99.1864918],[19.3843724, -99.1864715],[19.3843838, -99.1864588],[19.3844007, -99.1864438],[19.384422, -99.1864363],[19.3844439, -99.1864341],[19.384598, -99.1864195],[19.3845878, -99.1862954],[19.3845824, -99.1862832],[19.3845783, -99.1862768],[19.3845688, -99.1862668],[19.3845594, -99.1862625],[19.3845357, -99.1862639],[19.3845451, -99.1863802],[19.3842636, -99.1864095],[19.3842518, -99.1863196],[19.3842732, -99.1863184],[19.3842647, -99.1862337],[19.3843189, -99.186232],[19.3845417, -99.1862071],[19.3845807, -99.1862046],[19.3846071, -99.1862129],[19.3846242, -99.1862286],[19.3846339, -99.1862443],[19.3846377, -99.1862626],[19.3846424, -99.1862969],[19.3846562, -99.1864144],[19.3848184, -99.1863996],[19.3848407, -99.1864005],[19.3848592, -99.1864064],[19.3848755, -99.1864191],[19.3848889, -99.1864386],[19.3848951, -99.1864633],[19.38489932, -99.18651927],[19.38534483, -99.18646579],[19.3853478, -99.1864978],[19.3853482, -99.1865018],[19.3853539, -99.1865634],[19.3853543, -99.1865673],[19.38535734, -99.18659966],[19.38491328, -99.18665298],[19.3849201, -99.1867235],[19.3849171, -99.1867491],[19.3849095, -99.1867706],[19.3848941, -99.186786],[19.3848767, -99.1867952],[19.384706, -99.1868137],[19.3847079, -99.1868248],[19.3847185, -99.1868309],[19.3847246, -99.1868464],[19.3847277, -99.186861],[19.3847261, -99.1868755],[19.3847231, -99.18689],[19.3847179, -99.1868989],[19.384713, -99.1869041],[19.3847165, -99.186943],[19.3848053, -99.1869357],[19.3848268, -99.1871639],[19.3849053, -99.1871578],[19.384897, -99.18707225],[19.38495012, -99.18706587],[19.3849607, -99.1872033],[19.3848297, -99.1872119],[19.3848335, -99.1872452],[19.3846774, -99.1872583],[19.3846424, -99.1869463],[19.3846555, -99.1869458],[19.384651, -99.1869057],[19.3846461, -99.1868995],[19.3846381, -99.1868867],[19.3846327, -99.1868681],[19.384635, -99.1868478],[19.3846381, -99.1868356],[19.3846378, -99.1868212],[19.384471, -99.1868421],[19.3844442, -99.1868403],[19.3844263, -99.1868309],[19.3844125, -99.1868151],[19.3844022, -99.1867992],[19.3843953, -99.186784],[19.38438762, -99.18671609]],
+        "inner": [[[19.38460705, -99.18655437],[19.3845994, -99.1864768],[19.3844721, -99.1864873],[19.3844452, -99.186491],[19.3844317, -99.1864948],[19.3844234, -99.1865075],[19.3844215, -99.1865224],[19.38442721, -99.18657596]],
+                  [[19.38444242, -99.18670951],[19.3844478, -99.1867624],[19.38445, -99.186779],[19.3844589, -99.1867869],[19.3844659, -99.1867914],[19.3846302, -99.1867728],[19.38462075, -99.1866881]],
+                  [[19.38469405, -99.1866793],[19.3847028, -99.1867636],[19.3848473, -99.1867477],[19.3848599, -99.1867401],[19.3848669, -99.1867343],[19.3848669, -99.1867234],[19.38486045, -99.18665932]],
+                  [[19.38484579, -99.1865257],[19.3848441, -99.1864969],[19.3848416, -99.1864738],[19.3848332, -99.1864618],[19.3848212, -99.186458],[19.3846729, -99.1864723],[19.38468012, -99.18654559]]]
+      },
+      "local": {
+        "comment": "Marco de San Antonio: rumbo 6.5°, ancla en el centroide del KML. Disposición del croquis L7-12: al poniente el primer conjunto sube hacia el poniente en el eje del pasillo y el segundo vuelve hacia el oriente por el cubo paralelo al norte; al oriente el primero baja hacia el sur por el lado oriente del rectángulo y el segundo vuelve al norte por el lado poniente. Largos del croquis: 24.5 m en los −3→−2 de los dos lados y en el −2→−1 poniente, 17.6 m en el −2→−1 oriente; escaleras de cambio de andén de 8.2 m. Entre ejes, 1.8 m (regla general; el croquis dibuja unos 3.6 m).",
+        "nodes": {
+          "N-03": {"u": -24.7, "v": 39.5,
+                   "comment": "Pie de la escalera a la calle oriente, en la orilla sur del vestíbulo de torniquetes."},
+          "N-07": {"u": 16.0, "v": -59.0,
+                   "comment": "Pie de la escalera a la calle poniente, al norte del extremo poniente del vestíbulo."}
+        },
+        "banks": {
+          "cascada-oriente-1": {"junction": [-4.7, 43.8], "direction": "-u", "length": 24.5, "lead": [1.0, 1.0],
+                                "comment": "Del codo del pasillo de salida hacia el sur, por el lado oriente del rectángulo (eje del croquis en v = 43.8)."},
+          "cascada-oriente-2": {"junction": [-32.7, 35.3], "direction": "+u", "length": 17.6, "lead": [1.5, 1.0],
+                                "comment": "Del descanso sur de vuelta al norte, por el lado poniente del rectángulo (eje del croquis en v = 35.3), bajo la escalera a la calle."},
+          "cascada-poniente-1": {"junction": [1.34, -33.5], "direction": "-v", "length": 24.5, "lead": [1.0, 1.0],
+                                 "comment": "Del vestíbulo transversal hacia el poniente, en el eje del pasillo, hasta el descanso del extremo poniente."},
+          "cascada-poniente-2": {"junction": [10.3, -60.0], "direction": "+v", "length": 24.5, "lead": [1.5, 1.0],
+                                 "comment": "Del descanso poniente de vuelta al oriente, por el cubo al norte del primer conjunto (eje del croquis en u = 10.3)."}
+        },
+        "edges": {
+          "P-01>N-01:1:1": {"geometry": [{"spine": "P-01", "u": 1.34}, {"spine": "P-01", "u": 1.34, "dv": 9.0}, [1.34, 21.24]]},
+          "P-02>N-05:1:1": {"geometry": [{"spine": "P-02", "u": 1.34}, {"spine": "P-02", "u": 1.34, "dv": -9.0}, [1.34, -15.54]]},
+          "N-04>N-01:2:0": {"geometry": [{"spine": "P-01", "u": -0.462, "dv": 1.0}, {"spine": "P-01", "u": 1.34, "dv": 9.0}],
+                            "comment": "Escalera de cambio de andén de 8.2 m, el largo del croquis."},
+          "N-04>N-05:2:0": {"geometry": [{"spine": "P-02", "u": -0.462, "dv": -1.0}, {"spine": "P-02", "u": 1.34, "dv": -9.0}]},
+          "N-03>E-02:2:0": {"geometry": ["N-03", [-34.0, 39.5], [-34.0, 32.794], "E-02"],
+                            "comment": "Escalera a la calle oriente en U, como en el croquis: sube al sur, da vuelta en el descanso bajo el edificio 671951329 y sube al norte hasta su entrada."},
+          "N-07>E-01:2:0": {"geometry": ["N-07", [27.221, -59.0], "E-01"],
+                            "comment": "Escalera a la calle poniente en L, como en el croquis: sube al norte y da vuelta al oriente hasta la entrada de OSM."}
+        },
+        "extra_ways": {
+          "vestibulo-oriente": {"geometry": [[1.34, 21.24], [1.34, 43.8], "N-01"]},
+          "vestibulo-poniente": {"geometry": [[1.34, -15.54], "N-05"]},
+          "mezzanine-oriente": {"geometry": [{"bank": "cascada-oriente-1", "end": "to"}, [-32.7, 43.8], "N-02"]},
+          "mezzanine-poniente": {"geometry": [{"bank": "cascada-poniente-1", "end": "to"}, "N-06"]},
+          "torniquetes-oriente": {"geometry": [{"bank": "cascada-oriente-2", "end": "to"}, [-12.6, 39.5], "N-03"],
+                                  "turnstile": {"from": [-12.6, 35.3], "distance": 7.6},
+                                  "comment": "De la cabecera del segundo conjunto hacia el sur, entre los dos conjuntos, hasta el pie de la escalera a la calle; el croquis pone la zona de taquilla al sur de los torniquetes."},
+          "torniquetes-poniente": {"geometry": [{"bank": "cascada-poniente-2", "end": "to"}, [4.04, -33.0], [4.04, -61.5], [13.0, -61.5], [13.0, -59.0], "N-07"],
+                                   "turnstile": {"from": [10.3, -33.0], "distance": 13.66},
+                                   "comment": "Vestíbulo del croquis sobre el pasillo: de la cabecera del segundo conjunto al poniente a medio claro del primero, por los torniquetes (v = -40.4), hasta el extremo poniente y de ahí al norte, sobre el descanso de −2, al pie de la escalera a la calle."}
+        }
+      }
+    },
+    "0200L7-SANJOAQUIN": {
+      "comment": "Hechos de San Joaquín, aprobados por Ricardo con la versión 06 (22 de octubre de 2026). Todo va en «local», el marco de la propia estación (rumbo 7.7°, ancla en el centroide del KML), porque son correcciones a mano sobre lo que el encaje decide: el área que Ricardo corrigió, el pasillo central en u = 4 con todo lo que cuelga de él, las cascadas perpendiculares a las vías con largos 21 / 21 / 14.4 m y el tercer conjunto corrido 0.45 m, las escaleras de cambio de andén de 8.9 m y las puertas laterales de los pabellones corridas hacia el muro de la entrada de OSM.",
+      "area": {
+        "source": "san-joaquin-06-claude.osm",
+        "comment": "Área corregida a mano por Ricardo (rectángulo central de salida más al sur y más angosto, ramales norte angostados, pasillo central de 10.4 m continuo hasta las primeras escaleras), tomada de la versión 06 con todos sus vértices (los de andén los reutiliza el generador). Va en lat/lon para no depender del rumbo.",
+        "outer": [[19.44519883, -99.19231502],[19.44498559, -99.19234541],[19.44496951, -99.19222009],[19.44499968, -99.19221579],[19.44497123, -99.19199392],[19.4448059, -99.19201748],[19.44477264, -99.19201669],[19.44474123, -99.19200509],[19.44471477, -99.19198384],[19.44469582, -99.191955],[19.44468626, -99.1919214],[19.44468384, -99.19190249],[19.4442022, -99.1919708],[19.4441961, -99.1919369],[19.4441949, -99.1919301],[19.4441839, -99.1918691],[19.4441827, -99.1918624],[19.4441764, -99.1918276],[19.44466541, -99.19175883],[19.444663, -99.19174007],[19.44466376, -99.19170482],[19.44467482, -99.19167155],[19.44469508, -99.19164351],[19.44472258, -99.19162344],[19.44475461, -99.19161331],[19.4449194, -99.19158982],[19.44489348, -99.19138772],[19.44484093, -99.19139521],[19.44482328, -99.19125762],[19.44507054, -99.19122238],[19.44510955, -99.19152654],[19.44500794, -99.19154102],[19.4450125, -99.19157655],[19.4451707, -99.191554],[19.44520442, -99.19155481],[19.44523625, -99.19156656],[19.44526308, -99.19158811],[19.44528228, -99.19161734],[19.44529197, -99.1916514],[19.44529441, -99.19167038],[19.4455403, -99.1916358],[19.4455442, -99.1916684],[19.445545, -99.1916752],[19.4455519, -99.1917367],[19.4455526, -99.1917435],[19.4455566, -99.1917787],[19.44531274, -99.19181329],[19.44531515, -99.19183212],[19.4453144, -99.19186708],[19.44530344, -99.19190008],[19.44528334, -99.1919279],[19.44525607, -99.1919478],[19.4452243, -99.19195785],[19.44506433, -99.19198065],[19.44506887, -99.19201604],[19.44515884, -99.19200322]],
+        "inner": [
+          [[19.44474203, -99.19189423],[19.44474445, -99.19191311],[19.44474873, -99.19192816],[19.44475722, -99.19194107],[19.44476907, -99.19195059],[19.44478314, -99.19195578],[19.44479804, -99.19195614],[19.44496336, -99.19193258],[19.44495457, -99.19186409]],
+          [[19.44493619, -99.19172075],[19.44492726, -99.19165116],[19.44476247, -99.19167465],[19.44474804, -99.19167922],[19.44473565, -99.19168826],[19.44472652, -99.1917009],[19.44472154, -99.19171589],[19.44472119, -99.19173177],[19.44472361, -99.19175065]],
+          [[19.4452362, -99.19167856],[19.44523378, -99.19165969],[19.44522937, -99.19164418],[19.44522063, -99.19163087],[19.44520841, -99.19162106],[19.44519392, -99.19161571],[19.44517856, -99.19161534],[19.44502037, -99.19163789],[19.44502932, -99.19170766]],
+          [[19.44504768, -99.19185088],[19.44505646, -99.19191931],[19.44521643, -99.19189651],[19.4452306, -99.19189202],[19.44524277, -99.19188314],[19.44525174, -99.19187074],[19.44525663, -99.19185601],[19.44525696, -99.19184042],[19.44525454, -99.19182154]]
+        ]
+      },
+      "local": {
+        "station_node": {"u": 4.0, "comment": "Mitad del pasillo central de San Joaquín, que va en u = 4 (muros en -1.2 y 9.2)."},
+        "nodes": {
+          "E-01": {"building": {"stair_side": "-v", "closed_doors": [], "side_door_inset": 1.2},
+                   "comment": "Pabellón poniente (way 583976344). Ninguna puerta clausurada: la de San Pedro caía en el muro de la entrada que OSM tiene en uso, y en San Joaquín no está relevada. Las puertas laterales van a 1.2 m del muro de la entrada de OSM."},
+          "E-02": {"building": {"stair_side": "+v", "side_door_inset": 1.3},
+                   "comment": "Pabellón oriente (way 583976345); puertas laterales a 1.3 m del muro de la entrada de OSM."}
+        },
+        "banks": {
+          "cascada-oriente-1": {"junction": [4.0, 28.3], "direction": "+v", "length": 21, "lead": [1.0, 1.0]},
+          "cascada-oriente-2": {"junction": [14.5, 51.8], "direction": "-v", "length": 21, "lead": [1.5, 1.0]},
+          "cascada-oriente-3": {"junction": [14.95, 53.14], "stack_offset": 0.45, "length": 14.4, "lead": [1.0, 1.0]},
+          "cascada-poniente-1": {"junction": [4.0, -31.2], "direction": "-v", "length": 21, "lead": [1.0, 1.0]},
+          "cascada-poniente-2": {"junction": [13.9, -54.7], "direction": "+v", "length": 21, "lead": [1.5, 1.0]},
+          "cascada-poniente-3": {"junction": [14.35, -55.91], "stack_offset": -0.45, "length": 14.4, "lead": [1.0, 1.0]}
+        },
+        "edges": {
+          "P-01>N-01:1:0": {"geometry": [{"spine": "P-01", "u": -28.19}, {"elbow": [-28.19, 17.79], "radius": 8.58, "segments": 4}, [4.0, 17.79]]},
+          "P-01>N-01:1:1": {"geometry": [{"spine": "P-01", "u": 4.0}, {"spine": "P-01", "u": 4.0, "dv": 9.73}, [4.0, 17.79]]},
+          "P-01>N-01:1:2": {"geometry": [{"spine": "P-01", "u": 35.56}, {"elbow": [35.56, 17.79], "radius": 8.68, "segments": 4}, [4.0, 17.79]]},
+          "P-02>N-05:1:0": {"geometry": [{"spine": "P-02", "u": -28.19}, {"elbow": [-28.19, -18.53], "radius": 8.53, "segments": 4}, [4.0, -18.53]]},
+          "P-02>N-05:1:1": {"geometry": [{"spine": "P-02", "u": 4.0}, {"spine": "P-02", "u": 4.0, "dv": -9.73}, [4.0, -18.53]]},
+          "P-02>N-05:1:2": {"geometry": [{"spine": "P-02", "u": 35.56}, {"elbow": [35.56, -18.53], "radius": 8.48, "segments": 4}, [4.0, -18.53]]},
+          "N-04>N-01:2:0": {"geometry": [{"spine": "P-01", "u": 2.1, "dv": 1.04}, {"spine": "P-01", "u": 4.0, "dv": 9.73}],
+                            "comment": "Escalera de cambio de andén de 8.9 m."},
+          "N-04>N-05:2:0": {"geometry": [{"spine": "P-02", "u": 2.1, "dv": -1.02}, {"spine": "P-02", "u": 4.0, "dv": -9.73}]}
+        },
+        "extra_ways": {
+          "vestibulo-oriente": {"geometry": [[4.0, 17.79], "N-01"]},
+          "vestibulo-poniente": {"geometry": [[4.0, -18.53], "N-05"]},
+          "paso-bajo-vias": {"geometry": [{"spine": "P-01", "u": 2.1, "dv": 1.04}, {"spine": "P-02", "u": 2.1, "dv": -1.02}]},
+          "mezzanine-oriente": {"geometry": [{"bank": "cascada-oriente-1", "end": "to"}, [4.0, 53.3], [14.5, 53.3], "N-02"]},
+          "mezzanine-poniente": {"geometry": [{"bank": "cascada-poniente-1", "end": "to"}, [4.0, -56.2], [13.9, -56.2], "N-06"]},
+          "torniquetes-oriente": {"geometry": [{"bank": "cascada-oriente-2", "end": "to"}, [14.5, 26.6], [3.1, 26.6], [3.1, 54.3], [14.95, 54.3], "N-03"],
+                                  "turnstile": {"from": [14.5, 28.3], "distance": 27.52}},
+          "torniquetes-poniente": {"geometry": [{"bank": "cascada-poniente-2", "end": "to"}, [13.9, -29.5], [3.1, -29.5], [3.1, -57.2], [14.35, -57.2], "N-07"],
+                                   "turnstile": {"from": [13.9, -31.2], "distance": 29.18}}
+        }
+      }
+    }
+  }
 }
