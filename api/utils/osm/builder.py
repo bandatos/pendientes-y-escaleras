@@ -150,6 +150,7 @@ class StationBuilder:
     # ---------------- API ----------------
 
     def build(self) -> OsmDocument:
+        self._apply_declared_levels()
         self._prepare_area()
         self._fit_template()
         self._link_declared_entrances()
@@ -167,6 +168,7 @@ class StationBuilder:
         self._build_connectors()
         self._build_station_area()
         self._build_context_extras()
+        self._apply_osm_tags()
         self._place_station_node()
         self._describe_context()
         kept = self.doc.settle_deletes()
@@ -191,6 +193,33 @@ class StationBuilder:
 
     def _trace(self, **kwargs) -> dict:
         return T.trace_tags(**kwargs) if self.trace else {}
+
+    def _apply_declared_levels(self) -> None:
+        """Niveles que el bloque de la estación corrige sobre la base.
+
+        `level` en un nodo de la plantilla pone ese stop en otro nivel
+        que el que trae la base. Es un parche provisional: la corrección
+        real va en el tablero de Miró y se reimporta, y mientras tanto se
+        avisa en cada corrida (Constituyentes: los accesos están en una
+        plaza hundida, en el -1, y Miró los tiene en el 0). Cuando la base
+        ya dice lo mismo no hay aviso y la clave sobra.
+        """
+        for key, spec in sorted(self.template.nodes.items()):
+            if not isinstance(spec, dict) or "level" not in spec:
+                continue
+            stop = self.graph.stops.get(key)
+            if stop is None:
+                continue
+            level = float(spec["level"])
+            if stop.level_index is not None and float(
+                    stop.level_index) == level:
+                continue
+            self.warnings.append(
+                f"la plantilla pone {stop.stop_id} en el nivel {level:g} y "
+                f"la base dice "
+                f"{'—' if stop.level_index is None else format(float(stop.level_index), 'g')}"
+                f": provisional hasta corregir Miró y reimportar")
+            stop.level_index = level
 
     def _level_of(self, stop, pw=None) -> float:
         """Nivel del stop; avisa una vez si la base no lo tiene."""
@@ -358,6 +387,7 @@ class StationBuilder:
         self.template = FamilyTemplate(data, old.path)
         self.template.station = old.station
         self.template.area_override = old.area_override
+        self.template.osm_tags = old.osm_tags
         self.template.area_rings = self._area_rings
 
     def _cascade_group(self, name: str, raw: dict) -> dict:
@@ -1069,9 +1099,21 @@ class StationBuilder:
             where = ""
             if not spec.get("building"):
                 point = self.context.local(node.osm_id)
-                self.template.overrides[key] = point
                 where = (f", y queda donde OSM lo tiene ({point[0]:.1f}, "
                          f"{point[1]:.1f})")
+                # `osm_node_at` mueve la entrada de OSM a otro punto del
+                # marco local: un cambio a un objeto ajeno que va al
+                # reporte con su medida (Constituyentes, bajo el techo).
+                moved = spec.get("osm_node_at")
+                if moved is not None:
+                    target = (float(moved[0]), float(moved[1]))
+                    where = (f", movida de ({point[0]:.2f}, {point[1]:.2f}) "
+                             f"a ({target[0]:.2f}, {target[1]:.2f}): "
+                             f"{math.hypot(target[0] - point[0], target[1] - point[1]):.2f} m "
+                             f"(du {target[0] - point[0]:+.2f}, dv "
+                             f"{target[1] - point[1]:+.2f})")
+                    point = target
+                self.template.overrides[key] = point
             self.report["osm"].append(
                 f"el acceso {key} es la entrada {node.osm_id} de OSM "
                 f"(«{node.tags.get('name', '')}»), por la plantilla{where}")
@@ -1530,11 +1572,33 @@ class StationBuilder:
             plaza = plan.get("plaza_way")
             done = set()
             joined = set(plan.get("osm_plazas", []))
+            spec = self.template.nodes.get(key) or {}
+            detached = self._detach_entrance(key, start_id, spec)
             targets = [
                 t for t in self.context.nearest_vertices(
                     start.u, start.v, CONNECTOR_MAX_M)
                 if self.context.plaza_relation(t[0]) not in joined
                 and t[0].osm_id not in joined]
+            # La punta que la entrada dejó al soltarse es ahora el vértice
+            # de esa peatonal, con su distancia real a la entrada movida.
+            for i, (way, nid, dist) in enumerate(targets):
+                if nid == start_id and way.osm_id in detached:
+                    new = self.doc.nodes[detached[way.osm_id]]
+                    targets[i] = (way, new.id, math.hypot(
+                        new.u - start.u, new.v - start.v))
+            # `connect_to` limita los destinos a esas peatonales: en
+            # Constituyentes la plaza hundida tiene diez a menos de 45 m
+            # y solo una está frente a la puerta.
+            allowed = spec.get("connect_to")
+            if allowed is not None:
+                allowed = {int(w) for w in allowed}
+                targets = [t for t in targets if t[0].osm_id in allowed]
+            if any(nid == start_id for _, nid, _ in targets):
+                # La entrada de OSM ya es vértice de una peatonal: ya
+                # está conectada, y tirar tramos a las demás (en
+                # Constituyentes, a 25-38 m y cruzando la avenida) sería
+                # inventar pasos. Solo se reporta esa.
+                targets = [t for t in targets if t[1] == start_id][:1]
             if not targets and not joined:
                 self.warnings.append(
                     f"el acceso {key} no tiene ninguna vía peatonal de OSM "
@@ -1554,6 +1618,16 @@ class StationBuilder:
                         "through_plaza": plaza is not None})
                     continue
                 done.add(nid)
+                if nid == start_id:
+                    # La entrada de OSM ya es vértice de esa peatonal
+                    # (Constituyentes, 4808628383): ya está conectada.
+                    self.report["connectors"].append({
+                        "key": key, "way": way.osm_id,
+                        "highway": way.tags.get("highway"),
+                        "footway": way.tags.get("footway"),
+                        "length": 0.0, "vertex": nid, "shared": True,
+                        "through_plaza": plaza is not None})
+                    continue
                 ids = [start_id, nid]
                 end = self.doc.nodes[nid]
                 if plaza is not None:
@@ -1561,16 +1635,91 @@ class StationBuilder:
                         plaza, start_id, nid)
                     if crossing is not None and crossing not in ids:
                         ids.insert(1, crossing)
-                self.doc.add_way_from_ids(
-                    ids, T.connector_tags(), [0.0], kind="connector",
-                    label=f"{key}->{way.osm_id}")
+                level = self._level_of(self.graph.stops[key])
+                # `connector_level` es el nivel del otro extremo: cuando
+                # difiere del acceso, el tramo es una escalera exterior
+                # (Constituyentes: de la plaza hundida, en el -1, a la
+                # banqueta, en el 0). `connector_tags` añade etiquetas,
+                # como el fixme de lo que no se conoce de esa escalera.
+                far = spec.get("connector_level")
+                far = level if far is None else float(far)
+                if far != level:
+                    tags = T.connector_steps_tags(
+                        level, far, "up" if far > level else "down")
+                else:
+                    tags = T.connector_tags(level)
+                tags.update(spec.get("connector_tags") or {})
+                # `connector_foot` es el pie de esa escalera exterior, en
+                # el marco local: el connector se parte en un andador al
+                # nivel del acceso hasta el pie y la escalera de ahí al
+                # vértice (Constituyentes poniente: la escalera sigue la
+                # peatonal 488572090 y baja a la plaza hundida lejos de la
+                # puerta, Ricardo, 26 de octubre de 2026).
+                foot = spec.get("connector_foot")
+                split = None
+                if foot is not None and far != level and len(ids) == 2:
+                    walk, steps = split_connector_at_foot(
+                        self.doc, start_id, nid,
+                        (float(foot[0]), float(foot[1])), level, far, tags,
+                        label=f"{key}->{way.osm_id}")
+                    split = {"foot": (float(foot[0]), float(foot[1])),
+                             "walk": self._way_length(walk),
+                             "steps": self._way_length(steps)}
+                else:
+                    if foot is not None:
+                        self.warnings.append(
+                            f"el acceso {key} declara connector_foot, pero "
+                            f"su connector no cambia de nivel o pasa por "
+                            f"una explanada: va entero, sin pie")
+                    self.doc.add_way_from_ids(
+                        ids, tags, [level, far], kind="connector",
+                        label=f"{key}->{way.osm_id}")
                 self.report["connectors"].append({
                     "key": key, "way": way.osm_id,
                     "highway": way.tags.get("highway"),
                     "footway": way.tags.get("footway"),
                     "length": dist, "vertex": nid, "shared": False,
                     "through_plaza": plaza is not None,
+                    "foot": split,
                 })
+
+    def _way_length(self, way) -> float:
+        pts = [self.doc.nodes[n] for n in way.nodes]
+        return sum(math.hypot(b.u - a.u, b.v - a.v)
+                   for a, b in zip(pts, pts[1:]))
+
+    def _detach_entrance(self, key: str, start_id: int,
+                         spec: dict) -> dict[int, int]:
+        """Suelta la entrada de OSM de las peatonales de `detach_from`.
+
+        Cuando `osm_node_at` mueve una entrada que es punta de una
+        peatonal, la peatonal se estiraría con ella; soltarla deja la
+        peatonal como estaba, con un nodo nuevo donde estaba la entrada,
+        y el connector la vuelve a unir. Devuelve {way: nodo nuevo}.
+        """
+        out: dict[int, int] = {}
+        for way_id in spec.get("detach_from") or []:
+            foreign = self.context.ways.get(int(way_id))
+            osm_node = self.context.nodes.get(start_id)
+            if foreign is None or osm_node is None \
+                    or start_id not in foreign.node_ids:
+                self.warnings.append(
+                    f"la plantilla suelta el acceso {key} de la peatonal "
+                    f"{way_id}, pero esa peatonal no lo tiene de vértice")
+                continue
+            way = self._embed(foreign)
+            u, v = self.context.local(start_id)
+            new_id = self.doc.node_at(u, v)
+            self.doc.outdoor.add(new_id)
+            self.doc.adopt_way(way, node_ids=[
+                new_id if n == start_id else n for n in way.nodes])
+            out[int(way_id)] = new_id
+            self.report["osm"].append(
+                f"la peatonal {way_id} suelta la entrada {start_id} del "
+                f"acceso {key}: conserva su trazo, con un nodo nuevo en "
+                f"({u:.2f}, {v:.2f}) donde estaba la entrada "
+                f"(action=modify)")
+        return out
 
     def _plaza_crossing(self, plaza, start_id: int, end_id: int):
         """Nodo compartido donde el connector cruza el borde de la plaza.
@@ -1779,6 +1928,55 @@ class StationBuilder:
             if _near_any([self.context.local(node.osm_id)], own,
                          self.context_radius):
                 self.doc.add_foreign_node(node)
+
+    def _apply_osm_tags(self) -> None:
+        """Etiquetas que el bloque de la estación corrige en objetos de OSM.
+
+        `osm_tags` en el bloque, por «way/ID» o «node/ID»: un valor cambia
+        o añade esa clave y `null` la quita. Solo la geometría sigue
+        intacta; el objeto sale con `action='modify'` y cada cambio va al
+        reporte, porque Ricardo revisa uno por uno lo que se toca de OSM
+        (Constituyentes: el techo poniente 1368217717 decía
+        `building=metro_constituyentes`, y es un techo como el oriente).
+        """
+        ways = {w.id: w for w in self.doc.ways if w.foreign}
+        for ref, changes in sorted((self.template.osm_tags or {}).items()):
+            kind, _, raw = str(ref).partition("/")
+            try:
+                osm_id = int(raw)
+            except ValueError:
+                osm_id = None
+            holder = None
+            if kind == "way" and osm_id is not None:
+                holder = ways.get(osm_id)
+            elif kind == "node" and osm_id is not None:
+                node = self.doc.nodes.get(osm_id)
+                holder = node if node is not None and node.foreign else None
+            if holder is None:
+                self.warnings.append(
+                    f"el bloque cambia etiquetas de {ref}, que no es un "
+                    f"objeto de OSM de este archivo: no se aplica")
+                continue
+            done = []
+            for key, value in (changes or {}).items():
+                if key == "comment":
+                    continue
+                before = holder.tags.get(key)
+                if value is None:
+                    if key in holder.tags:
+                        del holder.tags[key]
+                        done.append(f"{key}={before} quitada")
+                elif before != str(value):
+                    holder.tags[key] = str(value)
+                    shown = "—" if before is None else before
+                    done.append(f"{key}={shown} → {value}")
+            if not done:
+                continue
+            holder.frozen = False
+            holder.action = "modify"
+            self.report["osm"].append(
+                f"{ref} cambia de etiquetas por el bloque de la estación: "
+                + "; ".join(done) + " (action=modify)")
 
     def _place_station_node(self) -> None:
         """Lleva el nodo de estación de OSM al cruce de la estación.
@@ -2326,6 +2524,30 @@ class StationBuilder:
                                         float(turn.get("distance", 5.0)))
             level = float(turn.get("level", lf if lf == lt else lf))
             self.doc.insert_on_way(way, u, v, T.turnstile_tags(level))
+
+
+def split_connector_at_foot(doc: OsmDocument, start_id: int, end_id: int,
+                            foot: tuple[float, float], level: float,
+                            far: float, steps_tags: dict,
+                            label: str = "") -> tuple:
+    """Parte un connector que cambia de nivel en andador y escalera.
+
+    `foot` es el pie de la escalera exterior en el marco local: del
+    acceso (`start_id`, nivel `level`) al pie va un andador exterior en
+    ese nivel, y del pie al vértice de la peatonal (`end_id`, nivel
+    `far`) la escalera con `steps_tags`. El pie es un nodo propio y
+    exterior aunque caiga cerca de otro: unirlo a un trazo interior
+    soldaría niveles distintos. Devuelve (andador, escalera).
+    """
+    foot_id = doc.new_node(float(foot[0]), float(foot[1]))
+    doc.outdoor.add(foot_id)
+    walk = doc.add_way_from_ids(
+        [start_id, foot_id], T.connector_tags(level), [level],
+        kind="connector", label=f"{label} (andador al pie)")
+    steps = doc.add_way_from_ids(
+        [foot_id, end_id], steps_tags, [level, far], kind="connector",
+        label=f"{label} (escalera exterior)")
+    return walk, steps
 
 
 def _near_any(points, targets, max_dist: float) -> bool:

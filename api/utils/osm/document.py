@@ -106,6 +106,12 @@ class OsmDocument:
         self.nodes[nid] = OsmNode(nid, u, v, dict(tags or {}))
         return nid
 
+    def new_node(self, u: float, v: float, tags: dict | None = None) -> int:
+        """Nodo nuevo en (u, v), sin reutilizar el cercano como `node_at`."""
+        nid = self._new_id()
+        self.nodes[nid] = OsmNode(nid, u, v, dict(tags or {}))
+        return nid
+
     def add_way(self, points, tags: dict, levels, kind: str = "way",
                 label: str = "", closed: bool = False) -> OsmWay:
         ids = [self.node_at(u, v) for u, v in points]

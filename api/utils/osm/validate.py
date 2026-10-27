@@ -296,6 +296,11 @@ def _check_inside_area(doc: OsmDocument) -> list[str]:
 def _check_incline(doc: OsmDocument) -> list[str]:
     out = []
     for way in doc.ways:
+        # Las escaleras de OSM que entran como escenografía (en
+        # Constituyentes, las de la plaza hundida, sin `level`) no son
+        # nuestras: quedan exentas como de la regla de `level`.
+        if way.foreign:
+            continue
         levels = way.tags.get("level", "")
         parts = [int(p) for p in levels.split(";") if p.strip()]
         incline = way.tags.get("incline")
@@ -351,7 +356,7 @@ def _check_incline_order(doc: OsmDocument) -> list[str]:
     levels = _node_levels(doc)
     out = []
     for way in doc.ways:
-        if way.tags.get("highway") != "steps":
+        if way.foreign or way.tags.get("highway") != "steps":
             continue
         incline = way.tags.get("incline")
         if incline not in ("up", "down"):
