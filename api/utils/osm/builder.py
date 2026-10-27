@@ -169,6 +169,12 @@ class StationBuilder:
         self._build_context_extras()
         self._place_station_node()
         self._describe_context()
+        kept = self.doc.settle_deletes()
+        if kept:
+            self.report["osm"].append(
+                f"{len(kept)} nodos de OSM que se iban a dar de baja siguen "
+                f"en uso por otro way del archivo y se conservan: "
+                + ", ".join(str(nid) for nid in sorted(kept)))
         self.warnings += self.template.bank_warnings
         self.warnings += self.template.route_warnings
         missing = self.template.unused_edges(used)

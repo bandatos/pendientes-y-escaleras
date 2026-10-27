@@ -296,6 +296,98 @@
         }
       }
     },
+    "0200L7-POLANCO": {
+      "comment": "Hechos de Polanco, versión 01 generada el 26 de octubre de 2026, sin revisar por Ricardo. Fuentes: el grafo de la base, el KML del área, el contexto de OSM y la imagen Esri; sin croquis. Los accesos son a cielo abierto, sin pabellón, como en San Antonio: cada lado tiene dos conjuntos de escaleras y la escalera fija a la calle va como geometría de su arista; al poniente el vestíbulo de torniquetes tiene dos accesos (E-01 norponiente y E-02 surponiente) y al oriente uno (E-03). Dos pasillos por andén (central y salida lateral norte), no tres. Los sufijos del tablero nombran otros papeles que en las hermanas, así que «keys» renombra la plantilla antes que nada y el resto del bloque habla en las claves de Polanco. La cascada de San Pedro no cabe en ninguna simetría: todo va en «local».",
+      "keys": {"N-01": "N-02", "N-02": "N-04", "N-03": "N-05", "N-04": "N-07",
+               "N-05": "N-06", "N-06": "N-01", "N-07": "N-03", "E-02": "E-03"},
+      "nodes": {
+        "N-08": null,
+        "N-09": null,
+        "E-01": {"building": null, "osm_node": 3761178405,
+                 "comment": "Acceso norponiente a cielo abierto: la entrada «Metro Polanco» de OSM en la banqueta norte de Horacio, que se queda donde OSM la tiene."},
+        "E-02": {"u": -24.6, "v": -60.4, "osm_node": 3761149771,
+                 "comment": "Acceso surponiente a cielo abierto: la entrada «Metro Polanco» de OSM en la banqueta sur de Horacio. Sale del mismo vestíbulo de torniquetes que E-01. La u/v solo se usa si se genera sin contexto."},
+        "E-03": {"building": null, "osm_node": 2410438843,
+                 "comment": "Acceso oriente a cielo abierto (is_double en la base: dos salidas gemelas que se separan al final; el generador todavía no lo dibuja): la entrada «Metro Polanco» de OSM en la banqueta norte de Horacio."}
+      },
+      "banks": {
+        "cascada-oriente-3": null,
+        "cascada-poniente-3": null
+      },
+      "fit": {
+        "cascades": {
+          "oriente": {"banks": ["cascada-oriente-1", "cascada-oriente-2"]},
+          "poniente": {"banks": ["cascada-poniente-1", "cascada-poniente-2"]}
+        }
+      },
+      "edges": {
+        "P-01>N-02:1:2": null,
+        "P-02>N-06:1:2": null,
+        "N-05>N-09:2:0": null,
+        "N-05>N-09:4:0": null,
+        "N-03>N-08:2:0": null,
+        "N-03>N-08:4:0": null,
+        "N-08>E-01:1:0": null,
+        "E-03>N-09:1:0": null,
+        "N-05>E-03:2:0": {"geometry": ["N-05", "E-03"]},
+        "N-03>E-01:2:0": {"geometry": ["N-03", "E-01"]},
+        "N-03>E-02:2:0": {"geometry": ["N-03", "E-02"]}
+      },
+      "local": {
+        "comment": "Marco de Polanco: rumbo 6.5° (de los tres candidatos, el que deja la franja de andenes más angosta: 16.31 m) y ancla en el centroide del KML. Cada rectángulo lateral del área es la caja de la cascada de su lado y se parte en dos mitades a lo largo (en v), en «caracol» (regla dictada por Ricardo el 26 de octubre de 2026): desde la calle, la escalera fija baja al vestíbulo de torniquetes −1, que corre por la mitad del primer conjunto; media vuelta y el conjunto −1→−2 en la otra mitad; vuelta y el conjunto −2→−3 de regreso, que desemboca recto en el pasillo central. Los dos conjuntos son perpendiculares a las vías, como en San Joaquín, con sus largos (21 m) y su separación de 10.5 a 11.8 m entre ejes de conjunto; las escaleras de cambio de andén miden 9 m, como los 8.9 m de San Joaquín. Pasillos centrales en el eje de su corredor del KML (u = -0.7 al oriente, -1.6 al poniente); las salidas laterales norte del KML miden unos 9 m, no los 6.5 m del componente.",
+        "station_node": {"u": -1.15, "comment": "Entre los ejes de los dos pasillos centrales (-0.7 y -1.6)."},
+        "nodes": {
+          "N-05": {"u": 15.4, "v": 81.0,
+                   "comment": "Pie de la escalera a la calle oriente, en la franja del KML bajo la banqueta norte de Horacio."},
+          "N-03": {"u": -0.7, "v": -69.0,
+                   "comment": "Vestíbulo de torniquetes poniente: donde el pasillo −1 que viene por encima del primer conjunto se reparte hacia los dos accesos."}
+        },
+        "banks": {
+          "cascada-oriente-1": {"junction": [6.0, 50.5], "direction": "+v", "length": 21, "lead": [1.0, 1.0],
+                                "comment": "Conjunto −3→−2 en la mitad norte del rectángulo oriente, en línea con la boca por la que entra el pasillo central."},
+          "cascada-oriente-2": {"junction": [-4.5, 74.0], "direction": "-v", "length": 21, "lead": [1.5, 1.0],
+                                "comment": "Conjunto −2→−1 de vuelta, en la mitad sur."},
+          "cascada-poniente-1": {"junction": [-1.6, -41.2], "direction": "-v", "length": 21, "lead": [1.0, 1.0],
+                                 "comment": "Conjunto −3→−2 en la mitad norte del rectángulo poniente, en el eje del pasillo central."},
+          "cascada-poniente-2": {"junction": [-13.4, -64.7], "direction": "+v", "length": 21, "lead": [1.5, 1.0],
+                                 "comment": "Conjunto −2→−1 de vuelta, en la mitad sur."}
+        },
+        "edges": {
+          "P-01>N-02:1:0": {"geometry": [{"spine": "P-01", "u": -0.7}, {"spine": "P-01", "u": -0.7, "dv": 9.73}, [-0.7, 21.0], [6.0, 41.0]],
+                            "comment": "Pasillo central oriente (supuesto: el índice 0 es el central). Recto hasta v = 21 y después en diagonal, como el corredor del KML, hasta el vestíbulo transversal."},
+          "P-01>N-02:1:1": {"geometry": [{"spine": "P-01", "u": 22.8}, {"elbow": [22.8, 41.0], "radius": 6.0, "segments": 4}, [6.0, 41.0]],
+                            "comment": "Salida lateral norte del andén oriente (supuesto: índice 1)."},
+          "P-02>N-06:1:0": {"geometry": [{"spine": "P-02", "u": -1.6}, {"spine": "P-02", "u": -1.6, "dv": -9.73}, [-1.6, -31.6]],
+                            "comment": "Pasillo central poniente (supuesto: índice 0); cruza recto el ensanche redondo del KML entre v = -14 y -26."},
+          "P-02>N-06:1:1": {"geometry": [{"spine": "P-02", "u": 21.3}, {"elbow": [21.3, -31.6], "radius": 6.0, "segments": 4}, [-1.6, -31.6]],
+                            "comment": "Salida lateral norte del andén poniente (supuesto: índice 1)."},
+          "N-07>N-02:2:0": {"geometry": [{"spine": "P-01", "u": -3.05, "dv": 1.04}, {"spine": "P-01", "u": -0.7, "dv": 9.73}]},
+          "N-07>N-06:2:0": {"geometry": [{"spine": "P-02", "u": -3.05, "dv": -1.02}, {"spine": "P-02", "u": -1.6, "dv": -9.73}]},
+          "N-05>E-03:2:0": {"geometry": ["N-05", [15.4, 70.4], "E-03"],
+                            "comment": "Escalera a la calle oriente: sube hacia el poniente por la franja del KML y desemboca, sin tramo corto, en la entrada de OSM."},
+          "N-03>E-01:2:0": {"geometry": [[14.35, -66.0], [14.35, -51.4], "E-01"],
+                            "tags": {"fixme": "Provisional: la escalera sube por la extensión norte del rectángulo poniente hasta la punta de la pestaña del KML (v = -51); la entrada 3761178405 de OSM está 12 m más al oriente, así que el último tramo cruza fuera del área. Decidir si se alarga el área por la banqueta o si la entrada de OSM está corrida."},
+                            "comment": "Escalera a la calle norponiente, provisional (ver fixme)."},
+          "N-03>E-02:2:0": {"geometry": [[-22.0, -72.5], [-22.0, -63.3], "E-02"],
+                            "comment": "Escalera a la calle surponiente: sube hacia el oriente por la franja sur del KML; la entrada de OSM queda 2.6 m afuera de la punta de la franja."}
+        },
+        "extra_ways": {
+          "vestibulo-oriente": {"geometry": [[6.0, 41.0], "N-02"]},
+          "vestibulo-poniente": {"geometry": [[-1.6, -31.6], "N-06"]},
+          "paso-bajo-vias": {"geometry": [{"spine": "P-01", "u": -3.05, "dv": 1.04}, {"spine": "P-02", "u": -3.05, "dv": -1.02}]},
+          "mezzanine-oriente": {"geometry": [{"bank": "cascada-oriente-1", "end": "to"}, [6.0, 75.5], [-4.5, 75.5], "N-04"]},
+          "mezzanine-poniente": {"geometry": [{"bank": "cascada-poniente-1", "end": "to"}, [-1.6, -66.2], [-13.4, -66.2], "N-01"]},
+          "torniquetes-oriente": {"geometry": [{"bank": "cascada-oriente-2", "end": "to"}, [-4.5, 49.3], [6.9, 49.3], [6.9, 81.0], "N-05"],
+                                  "turnstile": {"from": [-4.5, 50.5], "distance": 28.6},
+                                  "comment": "Vestíbulo de torniquetes oriente: de la cabecera del −2→−1 pasa detrás del pie del primer conjunto y corre por la mitad norte a medio claro (0.9 m del eje) hasta el pie de la escalera a la calle. El torniquete va a la mitad del tramo largo: provisional."},
+          "torniquetes-poniente": {"geometry": [{"bank": "cascada-poniente-2", "end": "to"}, [-13.4, -40.0], [-0.7, -40.0], "N-03", [14.35, -69.0], [14.35, -66.0]],
+                                   "turnstile": {"from": [-13.4, -41.2], "distance": 27.9},
+                                   "comment": "Vestíbulo de torniquetes poniente: de la cabecera del −2→−1 pasa detrás del pie del primer conjunto, corre por la mitad norte a medio claro hasta N-03 y sigue al pie de la escalera norponiente. El torniquete va a la mitad del tramo largo: provisional."},
+          "torniquetes-poniente-sur": {"geometry": ["N-03", [-0.7, -72.5], [-22.0, -72.5]], "level": -1,
+                                       "comment": "Ramal del vestíbulo de torniquetes poniente al pie de la escalera surponiente."}
+        }
+      }
+    },
     "0200L7-SANJOAQUIN": {
       "comment": "Hechos de San Joaquín, aprobados por Ricardo con la versión 06 (22 de octubre de 2026). Todo va en «local», el marco de la propia estación (rumbo 7.7°, ancla en el centroide del KML), porque son correcciones a mano sobre lo que el encaje decide: el área que Ricardo corrigió, el pasillo central en u = 4 con todo lo que cuelga de él, las cascadas perpendiculares a las vías con largos 21 / 21 / 14.4 m y el tercer conjunto corrido 0.45 m, las escaleras de cambio de andén de 8.9 m y las puertas laterales de los pabellones corridas hacia el muro de la entrada de OSM.",
       "area": {

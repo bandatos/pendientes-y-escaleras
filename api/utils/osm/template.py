@@ -55,6 +55,58 @@ def _parse_edge_key(key: str, where: str) -> dict:
             f"«N-01>N-02:modo:índice»")
 
 
+def rename_template_keys(data: dict, mapping: dict, where: str) -> dict:
+    """Copia de la plantilla con las claves de nodo renombradas a la vez.
+
+    El sufijo del stop_id solo es estable entre hermanas cuando el tablero
+    de Miró numeró los nodos igual; en Polanco N-01 es el mezzanine
+    poniente y no el vestíbulo de andén oriente. El renombre es una
+    permutación simultánea, así que N-01→N-02 y N-02→N-04 no se pisan.
+    """
+    out = copy.deepcopy(data)
+    targets = set(mapping.values())
+    if len(targets) != len(mapping):
+        raise TemplateError(
+            f"el bloque de {where} lleva a dos claves de la plantilla a la "
+            f"misma clave de la estación")
+    kept = set(out.get("nodes", {})) - set(mapping)
+    clash = kept & targets
+    if clash:
+        raise TemplateError(
+            f"el bloque de {where} renombra a {', '.join(sorted(clash))}, "
+            f"que la plantilla ya usa sin renombrar")
+
+    def key(value):
+        return mapping.get(value, value) if isinstance(value, str) else value
+
+    def geometry(points):
+        return [key(p) for p in points]
+
+    out["nodes"] = {key(k): v for k, v in out.get("nodes", {}).items()}
+    for spec in out["nodes"].values():
+        building = spec.get("building")
+        if isinstance(building, dict) and "inner_node" in building:
+            building["inner_node"] = key(building["inner_node"])
+    for bank in out.get("banks", {}).values():
+        for end in ("from", "to"):
+            if end in bank:
+                bank[end] = key(bank[end])
+    for edge in out.get("edges", []):
+        edge["from"], edge["to"] = key(edge["from"]), key(edge["to"])
+        if "geometry" in edge:
+            edge["geometry"] = geometry(edge["geometry"])
+        if isinstance(edge.get("turnstile"), dict):
+            edge["turnstile"]["from"] = key(edge["turnstile"]["from"])
+    for extra in out.get("extra_ways", []):
+        extra["geometry"] = geometry(extra["geometry"])
+        if isinstance(extra.get("turnstile"), dict):
+            extra["turnstile"]["from"] = key(extra["turnstile"]["from"])
+    for cascade in ((out.get("fit") or {}).get("cascades") or {}).values():
+        if "building" in cascade:
+            cascade["building"] = key(cascade["building"])
+    return out
+
+
 def patch_template_data(data: dict, block: dict, where: str) -> dict:
     """Copia de la plantilla con las piezas del bloque por estación.
 
@@ -214,7 +266,10 @@ class FamilyTemplate:
         Las piezas de la raíz del bloque se aplican aquí, en el marco de
         la estación de referencia y antes del encaje; las de `local`, en
         el marco de la propia estación y después del encaje
-        (`apply_local_patch`); `area` sustituye el polígono del KML.
+        (`apply_local_patch`); `area` sustituye el polígono del KML, y
+        `keys` renombra las claves de la plantilla a las de la estación
+        antes que todo lo demás, así que el resto del bloque ya habla en
+        las claves de la estación.
         """
         with open(path, encoding="utf-8") as fh:
             data = json.load(fh)
@@ -225,6 +280,9 @@ class FamilyTemplate:
             block = dict(block)
             local = block.pop("local", None)
             area = block.pop("area", None)
+            keys = block.pop("keys", None)
+            if keys:
+                data = rename_template_keys(data, keys, station)
             data = patch_template_data(data, block, station)
         template = cls(data, path)
         template.station = station if block else None

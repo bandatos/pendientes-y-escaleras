@@ -1,0 +1,52 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='497' height='560' viewBox='0 0 497 560'>
+<rect width='100%' height='100%' fill='#ffffff'/>
+<defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='3.5' markerHeight='3.5' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#444'/></marker></defs>
+<text x='40.0' y='24' font-family='sans-serif' font-size='16' fill='#222'>General Anaya — nivel 0</text>
+<path d='M 174.6,535.1 L 208.2,538.3 L 208.3,505.0 L 208.6,356.5 L 210.2,324.2 L 274.4,324.9 L 273.7,343.6 L 335.5,347.0 L 333.6,305.1 L 275.0,303.9 L 274.6,309.3 L 210.3,308.3 L 209.3,217.9 L 206.4,55.0 L 206.4,22.2 L 169.5,24.3 L 169.3,55.0 L 168.1,219.2 L 168.9,250.8 L 83.0,251.5 L 82.1,234.1 L 6.4,233.6 L 7.0,265.2 L 170.1,263.6 L 171.8,355.8 L 173.6,505.0 L 174.6,535.1 Z' fill='#fff3c4' fill-rule='evenodd' stroke='#b8a24a' stroke-width='1'/>
+<polygon points='173.6,505.0 169.3,55.0 189.5,55.0 206.4,55.0 208.3,505.0 189.5,505.0 173.6,505.0' fill='#c9d6e2' stroke='#5b7a99' stroke-width='1.5'/>
+<text x='187.2' y='79.0' font-family='sans-serif' font-size='10' fill='#33475b' text-anchor='middle'>P-01 General Anaya</text>
+<polyline points='189.5,505.0 189.5,326.3 189.5,308.3 189.5,248.3 189.5,230.3 189.5,55.0' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='76.0,248.0 76.0,269.0' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='76.0,290.0 76.0,269.0' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='321.7,325.4 302.2,325.4' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='302.2,344.9 302.2,325.4' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='189.5,230.3 176.0,298.7' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='189.5,248.3 185.0,298.7' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='189.5,308.3 194.0,298.7' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='189.5,326.3 203.0,298.7' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='289.0,327.8 274.2,323.5' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='302.2,325.4 289.0,327.8' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='89.4,268.3 99.8,272.8' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='76.0,269.0 89.4,268.3' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='84.6,279.3 95.0,283.8' fill='none' stroke='#c0392b' stroke-width='2.5' stroke-dasharray='6,3' marker-end='url(#arrow)'/>
+<polyline points='76.0,269.0 84.6,279.3' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='292.4,316.3 277.6,312.0' fill='none' stroke='#c0392b' stroke-width='2.5' stroke-dasharray='6,3' marker-end='url(#arrow)'/>
+<polyline points='302.2,325.4 292.4,316.3' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='76.0,269.0 55.0,269.0' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='302.2,305.9 302.2,325.4' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<circle cx='55.0' cy='269.0' r='6' fill='#1e8e3e'/>
+<text x='64.0' y='273.0' font-family='sans-serif' font-size='10' fill='#1e8e3e' text-anchor='start'>Acceso poniente</text>
+<circle cx='302.2' cy='305.9' r='6' fill='#1e8e3e'/>
+<text x='311.2' y='309.9' font-family='sans-serif' font-size='10' fill='#1e8e3e' text-anchor='start'>Acceso oriente</text>
+<circle cx='76.0' cy='248.0' r='6' fill='#1e8e3e'/>
+<text x='85.0' y='252.0' font-family='sans-serif' font-size='10' fill='#1e8e3e' text-anchor='start'></text>
+<circle cx='76.0' cy='290.0' r='6' fill='#1e8e3e'/>
+<text x='85.0' y='294.0' font-family='sans-serif' font-size='10' fill='#1e8e3e' text-anchor='start'></text>
+<circle cx='321.7' cy='325.4' r='6' fill='#1e8e3e'/>
+<text x='330.7' y='329.4' font-family='sans-serif' font-size='10' fill='#1e8e3e' text-anchor='start'></text>
+<circle cx='302.2' cy='344.9' r='6' fill='#1e8e3e'/>
+<text x='311.2' y='348.9' font-family='sans-serif' font-size='10' fill='#1e8e3e' text-anchor='start'></text>
+<rect x='347' y='36' width='14' height='4' fill='#b8a24a'/>
+<text x='366.7' y='41.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>área de estación</text>
+<rect x='347' y='52' width='14' height='4' fill='#5b7a99'/>
+<text x='366.7' y='57.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>andén</text>
+<rect x='347' y='68' width='14' height='4' fill='#1f6feb'/>
+<text x='366.7' y='73.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>pasillo</text>
+<rect x='347' y='84' width='14' height='4' fill='#e07b00'/>
+<text x='366.7' y='89.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>escaleras</text>
+<rect x='347' y='100' width='14' height='4' fill='#c0392b'/>
+<text x='366.7' y='105.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>escalera eléctrica</text>
+<rect x='347' y='116' width='14' height='4' fill='#1e8e3e'/>
+<text x='366.7' y='121.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>acceso</text>
+<line x1='40.0' y1='546.0078415439757' x2='100.0' y2='546.0078415439757' stroke='#333' stroke-width='2'/><text x='70.0' y='542.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='middle'>20 m</text>
+</svg>

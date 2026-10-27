@@ -289,6 +289,29 @@ class OsmDocument:
             way.label = label
         return conflicts, deleted, kept
 
+    def settle_deletes(self) -> list[int]:
+        """Revoca la baja de los nodos que el documento final todavía usa.
+
+        `adopt_way` decide las bajas con los ways que hay en ese momento,
+        y el contexto (vías, calzadas, bardas) se embebe después: sin
+        este repaso el archivo propondría borrar en OSM nodos de ways
+        ajenos que viajan intactos. Devuelve los ids que se conservaron.
+        """
+        used = set()
+        for way in self.ways:
+            if way.action != "delete":
+                used |= set(way.nodes)
+        for rel in self.relations.values():
+            if rel.action != "delete":
+                used |= {ref for kind, ref, _ in rel.members
+                         if kind == "node"}
+        kept = []
+        for node in self.nodes.values():
+            if node.action == "delete" and node.id in used:
+                node.action = None
+                kept.append(node.id)
+        return kept
+
     # ---------------- soldadura ----------------
 
     def weld(self, tolerance: float = SNAP_TOLERANCE_M) -> int:

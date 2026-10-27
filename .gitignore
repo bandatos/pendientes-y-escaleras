@@ -19,3 +19,6 @@ data/osm/sat/
 
 # Sesiones de JOSM (archivo personal del editor)
 *.jos
+
+# Croquis del STC: planos con marca de agua, no se redistribuyen (task-39)
+data/croquis/

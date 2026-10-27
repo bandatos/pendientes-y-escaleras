@@ -1,0 +1,1547 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<osm version='0.6' upload='never' generator='JOSM'>
+  <bounds minlat='19.3691856' minlon='-99.1419957' maxlat='19.3707282' maxlon='-99.1411165' origin='pendientes-y-escaleras' />
+  <node id='-30425' action='modify' lat='19.36929464921' lon='-99.14173104035' />
+  <node id='-30426' action='modify' lat='19.3706358628' lon='-99.1415283775' />
+  <node id='-30427' action='modify' lat='19.37062777552' lon='-99.14146920376' />
+  <node id='-30428' action='modify' lat='19.37061943684' lon='-99.14140818998' />
+  <node id='-30429' action='modify' lat='19.36927909483' lon='-99.14161718049' />
+  <node id='-30430' action='modify' lat='19.36928669107' lon='-99.14167278602' />
+  <node id='-30431' action='modify' lat='19.36999766796' lon='-99.14198284296' />
+  <node id='-30435' action='modify' lat='19.3701091969' lon='-99.14198468043' />
+  <node id='-30436' action='modify' lat='19.3700847672' lon='-99.14180734893' />
+  <node id='-30442' action='modify' lat='19.36962555887' lon='-99.14120014233' />
+  <node id='-30446' action='modify' lat='19.3698287' lon='-99.14129344602' />
+  <node id='-30447' action='modify' lat='19.36980722293' lon='-99.14112625077' />
+  <node id='-30448' action='modify' lat='19.36957626609' lon='-99.14116200062' />
+  <node id='-30453' lat='19.3698984' lon='-99.1416232' />
+  <node id='-30454' lat='19.3698868' lon='-99.1415384' />
+  <node id='-30455' action='modify' lat='19.36997592818' lon='-99.14181971718' />
+  <node id='-30456' lat='19.3699455' lon='-99.1416209' />
+  <node id='-30457' lat='19.3698926' lon='-99.1415808' />
+  <node id='-30458' action='modify' lat='19.36976785078' lon='-99.14117560856' />
+  <node id='-30459' lat='19.3698396' lon='-99.1415408' />
+  <node id='-30460' lat='19.3700964' lon='-99.1415499' />
+  <node id='-30461' lat='19.3700428' lon='-99.141558' />
+  <node id='-30462' lat='19.3698945' lon='-99.141595' />
+  <node id='-30463' lat='19.3698639' lon='-99.1415852' />
+  <node id='-30464' lat='19.3698906' lon='-99.1415667' />
+  <node id='-30465' lat='19.3698103' lon='-99.1415933' />
+  <node id='-30466' action='modify' lat='19.36963870863' lon='-99.1412205141' />
+  <node id='-30467' action='modify' lat='19.36975785909' lon='-99.14120054109' />
+  <node id='-30468' action='modify' lat='19.37001019917' lon='-99.14196123008' />
+  <node id='-30469' action='modify' lat='19.36999324807' lon='-99.14183909969' />
+  <node id='-30470' action='modify' lat='19.36998266216' lon='-99.14196245461' />
+  <node id='-30471' action='modify' lat='19.36996624365' lon='-99.14184669448' />
+  <node id='-30472' action='modify' lat='19.36962912459' lon='-99.14117588036' />
+  <node id='-30473' action='modify' lat='19.36975470103' lon='-99.14115590734' />
+  <node id='-30474' lat='19.3699366' lon='-99.1416141'>
+    <tag k='amenity' v='ticket_validator' />
+    <tag k='barrier' v='turnstile' />
+    <tag k='level' v='1' />
+  </node>
+  <node id='-30475' lat='19.3698485' lon='-99.1415475'>
+    <tag k='amenity' v='ticket_validator' />
+    <tag k='barrier' v='turnstile' />
+    <tag k='level' v='1' />
+  </node>
+  <node id='-30477' action='modify' lat='19.3696317494' lon='-99.14134212763' />
+  <node id='-30478' action='modify' lat='19.37014940791' lon='-99.14160367625' />
+  <node id='-30479' action='modify' lat='19.36997034099' lon='-99.14163139411' />
+  <node id='-30483' action='modify' lat='19.36997968127' lon='-99.14200472822' />
+  <node id='-30484' action='modify' lat='19.36992846156' lon='-99.14163293249' />
+  <node id='-30485' action='modify' lat='19.36974117952' lon='-99.14166192193' />
+  <node id='-30486' action='modify' lat='19.36919934237' lon='-99.14174080525' />
+  <node id='-30487' action='modify' lat='19.36918618976' lon='-99.14163702358' />
+  <node id='-30488' action='modify' lat='19.36972992655' lon='-99.14154739626' />
+  <node id='-30489' action='modify' lat='19.36981589002' lon='-99.14153408995' />
+  <node id='-30494' action='modify' lat='19.36986221118' lon='-99.14152540145' />
+  <node id='-30495' action='modify' lat='19.37013333183' lon='-99.14148343457' />
+  <node id='-30496' action='modify' lat='19.37071337663' lon='-99.14140179348' />
+  <node id='-30497' action='modify' lat='19.37072740083' lon='-99.14150586784' />
+  <node id='-30595' action='modify' lat='19.3697918811' lon='-99.14117217131' />
+  <node id='-30602' action='modify' lat='19.36961159074' lon='-99.14120301671' />
+  <node id='-30608' action='modify' lat='19.36978397679' lon='-99.14130243713' />
+  <node id='-30629' action='modify' lat='19.36959954597' lon='-99.1413309852' />
+  <node id='-30647' action='modify' lat='19.36995508078' lon='-99.1418261572' />
+  <node id='-30671' action='modify' lat='19.36999779111' lon='-99.14181958918' />
+  <node id='-30689' action='modify' lat='19.37006895822' lon='-99.14197079871' />
+  <node id='30384907' timestamp='2025-11-02T19:44:48Z' uid='16289897' user='Quixlian' version='19' changeset='174119153' lat='19.3574711' lon='-99.1437985' />
+  <node id='30384911' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='16' changeset='157684449' lat='19.363302' lon='-99.1426389' />
+  <node id='30385122' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='16' changeset='157684449' lat='19.3640887' lon='-99.1425087' />
+  <node id='30385123' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='14' changeset='157684449' lat='19.3656822' lon='-99.1422384' />
+  <node id='30385125' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='16' changeset='157684449' lat='19.3686193' lon='-99.1417566' />
+  <node id='30385126' action='modify' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='13' changeset='183283371' lat='19.3699015' lon='-99.1415795'>
+    <tag k='name' v='Portales' />
+    <tag k='network' v='STC Metro' />
+    <tag k='opening_hours' v='Mo-Fr 05:00-24:00; Sa 06:00-24:00; Su 07:00-24:00' />
+    <tag k='operator' v='Sistema de Transporte Colectivo' />
+    <tag k='public_transport' v='station' />
+    <tag k='railway' v='station' />
+    <tag k='station' v='subway' />
+    <tag k='subway' v='yes' />
+    <tag k='wikidata' v='Q3356960' />
+    <tag k='wikimedia_commons' v='Category:Estación Portales (Metro de México)' />
+    <tag k='wikipedia' v='es:Portales (estación del Metro de Ciudad de México)' />
+  </node>
+  <node id='30385138' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='15' changeset='157684449' lat='19.3868356' lon='-99.139033' />
+  <node id='30385140' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='15' changeset='157684449' lat='19.3887912' lon='-99.1387485' />
+  <node id='30385142' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='15' changeset='157684449' lat='19.3913479' lon='-99.1383683' />
+  <node id='30385143' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='15' changeset='157684449' lat='19.3928132' lon='-99.1381469' />
+  <node id='30385144' timestamp='2013-04-13T17:42:47Z' uid='105022' user='Ken Arroyo Ohori' version='14' changeset='15715371' lat='19.3940982' lon='-99.1379548' />
+  <node id='30385147' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='16' changeset='157693647' lat='19.3984583' lon='-99.1372519' />
+  <node id='30385150' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='16' changeset='157693647' lat='19.4028118' lon='-99.1365702' />
+  <node id='30788895' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='9' changeset='101806438' lat='19.370825' lon='-99.1514417' />
+  <node id='268486626' timestamp='2022-08-03T23:11:01Z' uid='16289897' user='Quixlian' version='6' changeset='124455952' lat='19.3766714' lon='-99.1407496' />
+  <node id='270601381' timestamp='2021-03-04T20:19:22Z' uid='6967122' user='Avocadough!' version='6' changeset='100444189' lat='19.3767179' lon='-99.1404648' />
+  <node id='275513275' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.3724753' lon='-99.1540431' />
+  <node id='275513297' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101806438' lat='19.370768' lon='-99.1511341' />
+  <node id='275513298' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101806438' lat='19.3709682' lon='-99.1523687' />
+  <node id='275513299' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101806438' lat='19.3711199' lon='-99.1533571' />
+  <node id='275513300' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101806438' lat='19.3712435' lon='-99.1542523' />
+  <node id='275513301' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='9' changeset='101806438' lat='19.3713296' lon='-99.1547934' />
+  <node id='275674782' timestamp='2023-08-12T19:21:33Z' uid='16289897' user='Quixlian' version='10' changeset='139799945' lat='19.3667682' lon='-99.1422524' />
+  <node id='275674877' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='12' changeset='101806438' lat='19.3655449' lon='-99.1424752' />
+  <node id='275677079' timestamp='2023-08-12T19:21:33Z' uid='16289897' user='Quixlian' version='13' changeset='139799945' lat='19.3679167' lon='-99.1420649' />
+  <node id='275711580' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3728932' lon='-99.1412789' />
+  <node id='275717574' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.3704605' lon='-99.149044' />
+  <node id='275717575' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='4' changeset='69751811' lat='19.3728212' lon='-99.1485895' />
+  <node id='275717581' timestamp='2018-08-15T12:12:15Z' uid='2237750' user='chachafish' version='4' changeset='61683614' lat='19.3723017' lon='-99.1471107' />
+  <node id='275717715' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='9' changeset='101806438' lat='19.3693385' lon='-99.1418238' />
+  <node id='275717719' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.3703308' lon='-99.1482203' />
+  <node id='275717722' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.3698332' lon='-99.1450705' />
+  <node id='275717756' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='7' changeset='133274472' lat='19.3702127' lon='-99.1416336' />
+  <node id='275717758' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='4' changeset='69751811' lat='19.3715405' lon='-99.1447782' />
+  <node id='275717760' timestamp='2018-08-15T12:12:15Z' uid='2237750' user='chachafish' version='3' changeset='61683614' lat='19.3725791' lon='-99.1478314' />
+  <node id='275717763' timestamp='2019-04-30T20:31:47Z' uid='9319448' user='Unicorn Ostrich' version='3' changeset='69750687' lat='19.3727557' lon='-99.1482835' />
+  <node id='275718314' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='4' changeset='69751811' lat='19.3720407' lon='-99.1463053' />
+  <node id='275718318' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.3700909' lon='-99.1466663' />
+  <node id='275719326' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101810049' lat='19.3721368' lon='-99.1413746' />
+  <node id='275719624' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='5' changeset='69751811' lat='19.3717787' lon='-99.1455406' />
+  <node id='275719631' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='9' changeset='101806438' lat='19.3699586' lon='-99.145876' />
+  <node id='275720136' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='5' changeset='69751811' lat='19.3717402' lon='-99.1487878'>
+    <tag k='highway' v='turning_circle' />
+  </node>
+  <node id='275720139' timestamp='2018-08-15T12:12:15Z' uid='2237750' user='chachafish' version='4' changeset='61683614' lat='19.3716112' lon='-99.1479998' />
+  <node id='275720147' timestamp='2018-08-15T12:12:15Z' uid='2237750' user='chachafish' version='5' changeset='61683614' lat='19.3711203' lon='-99.1448519' />
+  <node id='275721164' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='7' changeset='101806438' lat='19.3697102' lon='-99.1442443' />
+  <node id='275721165' timestamp='2018-08-15T12:12:15Z' uid='2237750' user='chachafish' version='5' changeset='61683614' lat='19.3709896' lon='-99.1440138' />
+  <node id='275721166' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='5' changeset='69751811' lat='19.3712787' lon='-99.1439585' />
+  <node id='275721490' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3758489' lon='-99.140851' />
+  <node id='275724555' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101806438' lat='19.3695875' lon='-99.1434547'>
+    <tag k='highway' v='turning_circle' />
+  </node>
+  <node id='275724556' timestamp='2019-04-30T21:40:34Z' uid='9319448' user='Unicorn Ostrich' version='7' changeset='69752324' lat='19.3708774' lon='-99.1432264' />
+  <node id='275724557' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='5' changeset='69751811' lat='19.371056' lon='-99.1431994' />
+  <node id='275728255' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='11' changeset='101806438' lat='19.3694633' lon='-99.1426748' />
+  <node id='275728371' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='3' changeset='69751811' lat='19.3709545' lon='-99.1428904' />
+  <node id='275728374' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3743512' lon='-99.1410578' />
+  <node id='276503426' timestamp='2023-03-06T20:53:57Z' uid='12491771' user='LabelMaker' version='7' changeset='133379344' lat='19.3762616' lon='-99.1405131' />
+  <node id='276503460' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101810049' lat='19.3747652' lon='-99.1407156' />
+  <node id='276503540' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3737945' lon='-99.140849' />
+  <node id='276503599' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3727495' lon='-99.1410008' />
+  <node id='276503834' timestamp='2021-03-24T16:25:20Z' uid='11601501' user='ElectricJellyfish' version='7' changeset='101661103' lat='19.3707941' lon='-99.1370136' />
+  <node id='276503835' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.37137' lon='-99.1412125' />
+  <node id='276504280' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='5' changeset='163616623' lat='19.3703837' lon='-99.1404675' />
+  <node id='276504282' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='5' changeset='163616623' lat='19.3704775' lon='-99.1402447' />
+  <node id='276504283' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='5' changeset='163616623' lat='19.3702945' lon='-99.1401551' />
+  <node id='276504286' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='4' changeset='101810049' lat='19.3702049' lon='-99.1402427' />
+  <node id='276504287' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='5' changeset='163616623' lat='19.3701894' lon='-99.1402936' />
+  <node id='276504410' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3707394' lon='-99.141305' />
+  <node id='276504912' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='4' changeset='101810049' lat='19.3699713' lon='-99.1394412' />
+  <node id='276504914' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='8' changeset='133275053' lat='19.3696586' lon='-99.1372926' />
+  <node id='276505007' timestamp='2020-11-05T16:26:32Z' uid='9029309' user='Kaarti_B' version='9' changeset='93613716' lat='19.3692764' lon='-99.141472' />
+  <node id='276505101' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='5' changeset='133275053' lat='19.3689963' lon='-99.1396396' />
+  <node id='276505158' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='8' changeset='133274472' lat='19.3686347' lon='-99.141573' />
+  <node id='276506068' timestamp='2019-03-27T17:16:22Z' uid='8725953' user='koyel' version='7' changeset='68594865' lat='19.368254' lon='-99.1428736' />
+  <node id='276506069' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='11' changeset='133274472' lat='19.3681357' lon='-99.142028' />
+  <node id='276506282' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101810049' lat='19.3691037' lon='-99.1403481' />
+  <node id='276506368' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='7' changeset='101810049' lat='19.3684638' lon='-99.1404646' />
+  <node id='276506900' timestamp='2019-04-30T20:31:47Z' uid='9319448' user='Unicorn Ostrich' version='8' changeset='69750687' lat='19.3643098' lon='-99.142292' />
+  <node id='276506963' timestamp='2019-04-30T21:15:30Z' uid='9319448' user='Unicorn Ostrich' version='9' changeset='69751811' lat='19.3641452' lon='-99.1423203' />
+  <node id='276507103' timestamp='2020-10-28T17:10:56Z' uid='7674729' user='UncoolGuyJake' version='8' changeset='93192043' lat='19.3643964' lon='-99.1426659' />
+  <node id='276507889' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101810049' lat='19.3698633' lon='-99.1389769' />
+  <node id='276508230' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='5' changeset='133275053' lat='19.368274' lon='-99.1392694' />
+  <node id='276508232' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3689253' lon='-99.1391527' />
+  <node id='276509198' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='8' changeset='163616623' lat='19.3711139' lon='-99.1393455' />
+  <node id='276509199' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='4' changeset='133275053' lat='19.3691925' lon='-99.1398818' />
+  <node id='276509264' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='4' changeset='163616623' lat='19.3696316' lon='-99.1406156' />
+  <node id='276509359' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='7' changeset='163616623' lat='19.3711917' lon='-99.1399125' />
+  <node id='276510289' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='7' changeset='163616623' lat='19.3709939' lon='-99.1384706' />
+  <node id='276510342' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='6' changeset='163616623' lat='19.3709602' lon='-99.1382246' />
+  <node id='276510364' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='6' changeset='163616623' lat='19.3708285' lon='-99.1372643' />
+  <node id='276510409' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='7' changeset='101806438' lat='19.3673249' lon='-99.141789' />
+  <node id='276510489' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.36671' lon='-99.141895' />
+  <node id='276510538' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='9' changeset='101806438' lat='19.3660977' lon='-99.1420015' />
+  <node id='276510732' timestamp='2020-07-20T20:20:19Z' uid='9946192' user='Ross Alinne Pelcastre Briones' version='9' changeset='88264311' lat='19.3654849' lon='-99.1421014' />
+  <node id='276510837' timestamp='2020-07-20T20:20:19Z' uid='9946192' user='Ross Alinne Pelcastre Briones' version='9' changeset='88264311' lat='19.364882' lon='-99.1421944' />
+  <node id='276510897' timestamp='2019-04-30T20:31:47Z' uid='9319448' user='Unicorn Ostrich' version='8' changeset='69750687' lat='19.3636542' lon='-99.1424171' />
+  <node id='276510932' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.3630489' lon='-99.14252' />
+  <node id='276512779' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101810049' lat='19.361545' lon='-99.142792' />
+  <node id='554206746' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='4' changeset='166423588' lat='19.3699988' lon='-99.1418753' />
+  <node id='554206747' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='3' changeset='166423588' lat='19.3699558' lon='-99.1415542' />
+  <node id='554206748' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='3' changeset='166423588' lat='19.3698619' lon='-99.1415688' />
+  <node id='554206749' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='3' changeset='166423588' lat='19.3698285' lon='-99.1412795' />
+  <node id='554702943' timestamp='2024-09-06T04:50:51Z' uid='16289897' user='Quixlian' version='5' changeset='156255874' lat='19.4032836' lon='-99.1364964' />
+  <node id='844588558' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='7' changeset='101806438' lat='19.3699068' lon='-99.1417364' />
+  <node id='844588564' timestamp='2022-08-03T23:11:01Z' uid='16289897' user='Quixlian' version='8' changeset='124455952' lat='19.3679289' lon='-99.1419746' />
+  <node id='844588569' timestamp='2022-08-03T23:11:01Z' uid='16289897' user='Quixlian' version='6' changeset='124455952' lat='19.3695047' lon='-99.1417315' />
+  <node id='844588574' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='7' changeset='101806438' lat='19.3700322' lon='-99.141656' />
+  <node id='844588576' timestamp='2022-08-03T23:11:01Z' uid='16289897' user='Quixlian' version='10' changeset='124455952' lat='19.3682027' lon='-99.1419333' />
+  <node id='845838790' timestamp='2019-04-30T20:31:47Z' uid='9319448' user='Unicorn Ostrich' version='4' changeset='69750687' lat='19.3681943' lon='-99.1417403' />
+  <node id='845838791' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101810049' lat='19.3702724' lon='-99.1413969' />
+  <node id='845838792' action='modify' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101810049' lat='19.37000723923' lon='-99.14135936012' />
+  <node id='845838797' timestamp='2019-04-30T20:31:47Z' uid='9319448' user='Unicorn Ostrich' version='6' changeset='69750687' lat='19.3678627' lon='-99.14179' />
+  <node id='1122529169' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101810049' lat='19.3617957' lon='-99.1427537' />
+  <node id='1122529285' timestamp='2025-05-27T07:47:40Z' uid='18069' user='Claudius Henrichs' version='7' changeset='166811439' lat='19.361942' lon='-99.1428711'>
+    <tag k='name' v='Ermita' />
+    <tag k='network' v='STC Metro' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='railway' v='stop' />
+    <tag k='subway' v='yes' />
+  </node>
+  <node id='1129724690' timestamp='2020-10-28T14:10:57Z' uid='7674729' user='UncoolGuyJake' version='5' changeset='93184679' lat='19.370766' lon='-99.1424859' />
+  <node id='1534367574' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='4' changeset='101810049' lat='19.3704752' lon='-99.1403581' />
+  <node id='2306119006' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='6' changeset='133274472' lat='19.3679713' lon='-99.1420559' />
+  <node id='2306119010' timestamp='2019-03-27T17:16:22Z' uid='8725953' user='koyel' version='2' changeset='68594865' lat='19.368113' lon='-99.1428974' />
+  <node id='2354784543' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3622724' lon='-99.1426663' />
+  <node id='2354784552' timestamp='2020-10-28T17:10:56Z' uid='7674729' user='UncoolGuyJake' version='6' changeset='93192043' lat='19.364213' lon='-99.1426952' />
+  <node id='2354784563' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.375071' lon='-99.1409507' />
+  <node id='2354784567' timestamp='2019-04-30T20:31:47Z' uid='9319448' user='Unicorn Ostrich' version='5' changeset='69750687' lat='19.3663215' lon='-99.1419622' />
+  <node id='2354784569' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='6' changeset='101810049' lat='19.3711088' lon='-99.1415226' />
+  <node id='2354784575' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3718907' lon='-99.1414047' />
+  <node id='2354784586' timestamp='2020-11-03T18:40:11Z' uid='10382389' user='RConnorsCarte19' version='7' changeset='93498442' lat='19.3641885' lon='-99.1423102' />
+  <node id='2354784588' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='6' changeset='133274472' lat='19.3680855' lon='-99.1420365' />
+  <node id='3981306883' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='2' changeset='157684449' lat='19.367913' lon='-99.1418635' />
+  <node id='3981306884' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='2' changeset='157684449' lat='19.3682144' lon='-99.1418187' />
+  <node id='3981306889' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='3' changeset='101810049' lat='19.3704578' lon='-99.1403971' />
+  <node id='3981306890' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='3' changeset='101810049' lat='19.3704817' lon='-99.1403156' />
+  <node id='3981306895' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='2' changeset='157684449' lat='19.3643935' lon='-99.142457' />
+  <node id='4172090199' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='4' changeset='108644861' lat='19.37159' lon='-99.1410449' />
+  <node id='4453743649' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='7' changeset='101806438' lat='19.3705178' lon='-99.1494171'>
+    <tag k='amenity' v='bicycle_parking' />
+    <tag k='name' v='BiciEstacionamiento' />
+  </node>
+  <node id='4790101439' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101806438' lat='19.3706904' lon='-99.1506049' />
+  <node id='4790178261' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='8' changeset='101806438' lat='19.3702111' lon='-99.1474496' />
+  <node id='5197203900' action='modify' timestamp='2024-11-05T00:04:11Z' uid='223574' user='caprilo' version='2' changeset='158760649' lat='19.37004735386' lon='-99.1418119644'>
+    <tag k='description' v='Acceso poniente' />
+    <tag k='entrance' v='yes' />
+    <tag k='level' v='0' />
+    <tag k='name' v='Metro Portales' />
+    <tag k='network' v='STC Metro' />
+    <tag k='note:miro_id' v='3458764662275664956' />
+    <tag k='note:stop_id' v='L2-PORTALES-E-01' />
+    <tag k='railway' v='subway_entrance' />
+    <tag k='wikipedia' v='es:Portales (estación del Metro de Ciudad de México)' />
+  </node>
+  <node id='5197203901' action='modify' timestamp='2017-10-29T00:43:36Z' uid='3459015' user='Amemiya52' version='1' changeset='53330526' lat='19.36963053966' lon='-99.14132618769'>
+    <tag k='entrance' v='yes' />
+    <tag k='level' v='0' />
+    <tag k='name' v='Portales' />
+    <tag k='network' v='STC Metro' />
+    <tag k='note:miro_id' v='3458764662275664958' />
+    <tag k='note:stop_id' v='L2-PORTALES-E-02' />
+    <tag k='railway' v='subway_entrance' />
+  </node>
+  <node id='5331793481' timestamp='2018-08-15T12:12:16Z' uid='2237750' user='chachafish' version='2' changeset='61683614' lat='19.3724411' lon='-99.1474711' />
+  <node id='5410500569' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101806438' lat='19.3725476' lon='-99.1545239' />
+  <node id='5410500570' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='4' changeset='101810049' lat='19.372268' lon='-99.1521371' />
+  <node id='5410500571' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='4' changeset='101810049' lat='19.3723551' lon='-99.1531549' />
+  <node id='5833649831' timestamp='2018-08-15T02:23:40Z' uid='2237750' user='chachafish' version='2' changeset='61673736' lat='19.3713651' lon='-99.1464216' />
+  <node id='5833649832' timestamp='2018-08-15T12:12:15Z' uid='2237750' user='chachafish' version='3' changeset='61683614' lat='19.3712414' lon='-99.1456281' />
+  <node id='5833649833' timestamp='2018-08-15T12:12:16Z' uid='2237750' user='chachafish' version='3' changeset='61683614' lat='19.3714942' lon='-99.1472495' />
+  <node id='5834344838' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='5' changeset='101810049' lat='19.3721237' lon='-99.1512022' />
+  <node id='5851698156' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='3' changeset='101810049' lat='19.3690434' lon='-99.1399661' />
+  <node id='5851698164' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='2' changeset='101810049' lat='19.3702241' lon='-99.140212' />
+  <node id='5851698165' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='2' changeset='101810049' lat='19.3702497' lon='-99.1401869' />
+  <node id='5851698169' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='2' changeset='101810049' lat='19.370431' lon='-99.1404296' />
+  <node id='5851698180' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='4' changeset='183283371' lat='19.3686257' lon='-99.1415145'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='5851698182' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='2' changeset='101810049' lat='19.3694467' lon='-99.1402927' />
+  <node id='6096082157' timestamp='2018-11-27T17:10:57Z' uid='8782056' user='Jnanesh Nanjundaiah' version='1' changeset='64944273' lat='19.376892' lon='-99.1404433' />
+  <node id='6135626757' timestamp='2019-03-27T17:16:22Z' uid='8725953' user='koyel' version='2' changeset='68594865' lat='19.3682773' lon='-99.1428697' />
+  <node id='6135626763' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='3' changeset='101810049' lat='19.3720002' lon='-99.1503813' />
+  <node id='6135626764' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='4' changeset='183283371' lat='19.3693525' lon='-99.141946'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='6135695728' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='3' changeset='163616623' lat='19.3708989' lon='-99.1377777' />
+  <node id='6439743742' timestamp='2020-10-28T14:10:57Z' uid='7674729' user='UncoolGuyJake' version='2' changeset='93184679' lat='19.3708844' lon='-99.1426857' />
+  <node id='8011272542' timestamp='2020-10-15T21:52:40Z' uid='232801' user='CENTSOARER' version='1' changeset='92545007' lat='19.3695823' lon='-99.1421206' />
+  <node id='8011272543' timestamp='2020-10-15T21:52:40Z' uid='232801' user='CENTSOARER' version='1' changeset='92545007' lat='19.3695548' lon='-99.1419401' />
+  <node id='8011272544' timestamp='2020-10-15T21:52:40Z' uid='232801' user='CENTSOARER' version='1' changeset='92545007' lat='19.3694321' lon='-99.1419612' />
+  <node id='8011272545' timestamp='2020-10-15T21:52:40Z' uid='232801' user='CENTSOARER' version='1' changeset='92545007' lat='19.3694597' lon='-99.1421416' />
+  <node id='8048160687' timestamp='2021-03-26T17:04:34Z' uid='11601501' user='ElectricJellyfish' version='2' changeset='101806438' lat='19.3705994' lon='-99.1499969' />
+  <node id='8059239663' timestamp='2020-10-28T14:10:57Z' uid='7674729' user='UncoolGuyJake' version='1' changeset='93184679' lat='19.3708452' lon='-99.1425984' />
+  <node id='8066317756' timestamp='2020-10-30T18:06:01Z' uid='10456881' user='sbburg' version='1' changeset='93304247' lat='19.3699032' lon='-99.139243' />
+  <node id='8076076617' action='modify' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='2' changeset='101810049' lat='19.36999367735' lon='-99.1412827767' />
+  <node id='8226931581' timestamp='2020-12-14T08:27:51Z' uid='10334722' user='Absarokan' version='1' changeset='95793276' lat='19.3680247' lon='-99.1376848' />
+  <node id='8226931582' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='2' changeset='133275053' lat='19.3686676' lon='-99.1375423' />
+  <node id='8565445536' timestamp='2021-03-26T18:00:51Z' uid='11601501' user='ElectricJellyfish' version='1' changeset='101810049' lat='19.3723819' lon='-99.1529694' />
+  <node id='8682792612' timestamp='2021-04-30T10:00:00Z' uid='12205237' user='BunicaStream' version='1' changeset='103902609' lat='19.3692488' lon='-99.141308' />
+  <node id='8840210593' timestamp='2021-06-16T21:02:37Z' uid='13418136' user='Chris Datega' version='1' changeset='106490305' lat='19.3705753' lon='-99.149815' />
+  <node id='8840210595' timestamp='2023-01-21T22:43:33Z' uid='16289897' user='Quixlian' version='2' changeset='131555819' lat='19.3730045' lon='-99.1494043'>
+    <tag k='highway' v='traffic_signals' />
+    <tag k='traffic_signals' v='signal' />
+  </node>
+  <node id='8840210596' timestamp='2023-01-21T22:43:33Z' uid='16289897' user='Quixlian' version='2' changeset='131555819' lat='19.3718808' lon='-99.149593'>
+    <tag k='highway' v='stop' />
+  </node>
+  <node id='8952274688' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3715683' lon='-99.1408972' />
+  <node id='8952274689' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3713516' lon='-99.140933' />
+  <node id='8952274690' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3713734' lon='-99.1410807' />
+  <node id='8952274691' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3717211' lon='-99.1410243' />
+  <node id='8952274692' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3716895' lon='-99.140966' />
+  <node id='8952274693' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.371579' lon='-99.1409337' />
+  <node id='8952274694' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3715959' lon='-99.1410432' />
+  <node id='8952274695' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3715958' lon='-99.1409106' />
+  <node id='8952274696' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3717154' lon='-99.1409641' />
+  <node id='8952274697' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3716818' lon='-99.1409198' />
+  <node id='8952274712' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3716986' lon='-99.1411621' />
+  <node id='8952274713' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.371746' lon='-99.1410432'>
+    <tag k='crossing' v='unmarked' />
+    <tag k='crossing:markings' v='no' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='8952274714' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3717516' lon='-99.140992' />
+  <node id='8952274715' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.371721' lon='-99.1407272'>
+    <tag k='amenity' v='parking_entrance' />
+  </node>
+  <node id='8952282724' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861' lat='19.3720022' lon='-99.1411155' />
+  <node id='10708041943' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='1' changeset='133274472' lat='19.368048' lon='-99.1416653' />
+  <node id='10708041944' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='1' changeset='133274472' lat='19.3699591' lon='-99.1417164' />
+  <node id='10708041945' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='1' changeset='133274472' lat='19.3699834' lon='-99.1416976' />
+  <node id='10708041946' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='1' changeset='133274472' lat='19.3702226' lon='-99.1417117' />
+  <node id='10708041947' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3702425' lon='-99.1417797'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708041948' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='1' changeset='133274472' lat='19.3702757' lon='-99.1418431' />
+  <node id='10708041949' action='modify' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='1' changeset='133274472' lat='19.36999966961' lon='-99.14129751657' />
+  <node id='10708041950' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='2' changeset='163616623' lat='19.3713561' lon='-99.1411114'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708041951' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3707009' lon='-99.1412093'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125543' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3680336' lon='-99.1377418'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125554' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='2' changeset='163616623' lat='19.3696793' lon='-99.1374198'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125556' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3686796' lon='-99.1376167'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125557' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3682897' lon='-99.1393646'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125559' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3682629' lon='-99.1392025'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125561' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.369093' lon='-99.1402803'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125562' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3690499' lon='-99.1400074'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125563' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3691657' lon='-99.139836'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125565' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3692195' lon='-99.1399278'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125566' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='1' changeset='133275053' lat='19.3690714' lon='-99.1396887' />
+  <node id='10708125567' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3690551' lon='-99.1396737'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125568' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='1' changeset='133275053' lat='19.3690922' lon='-99.1397107' />
+  <node id='10708125570' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3689337' lon='-99.1392062'>
+    <tag k='crossing' v='marked' />
+    <tag k='crossing:markings' v='yes' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='10708125571' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='1' changeset='133275053' lat='19.3689177' lon='-99.1391013'>
+    <tag k='crossing' v='marked' />
+    <tag k='highway' v='crossing' />
+  </node>
+  <node id='11110456780' timestamp='2023-08-12T19:21:33Z' uid='16289897' user='Quixlian' version='1' changeset='139799945' lat='19.3675814' lon='-99.1421196' />
+  <node id='11110456784' timestamp='2023-08-12T19:21:33Z' uid='16289897' user='Quixlian' version='1' changeset='139799945' lat='19.3674066' lon='-99.1421482' />
+  <node id='12238960659' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.4028191' lon='-99.1366141' />
+  <node id='12238960660' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.4020761' lon='-99.1367353' />
+  <node id='12238960661' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.4017277' lon='-99.1367959' />
+  <node id='12238960662' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.4001254' lon='-99.137029' />
+  <node id='12238960663' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3996774' lon='-99.1370863' />
+  <node id='12238960664' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3984652' lon='-99.1372882' />
+  <node id='12238960665' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3963689' lon='-99.1376352' />
+  <node id='12238960666' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3959662' lon='-99.1377106' />
+  <node id='12238960667' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3944182' lon='-99.1379663' />
+  <node id='12238960668' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3940976' lon='-99.1380062' />
+  <node id='12238960669' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3936292' lon='-99.1380741' />
+  <node id='12238960670' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3928235' lon='-99.1381924' />
+  <node id='12238960671' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3913518' lon='-99.1384108' />
+  <node id='12238960672' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.390419' lon='-99.1385529' />
+  <node id='12238960673' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3891836' lon='-99.1387308' />
+  <node id='12238960674' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3887922' lon='-99.1387923' />
+  <node id='12238960675' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3883991' lon='-99.1388662' />
+  <node id='12238960676' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3868407' lon='-99.1391041' />
+  <node id='12238960677' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3863012' lon='-99.1391721' />
+  <node id='12238960678' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3856335' lon='-99.1392696' />
+  <node id='12238960679' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3843371' lon='-99.1394691' />
+  <node id='12238960680' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.383371' lon='-99.1396154' />
+  <node id='12238960681' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3826949' lon='-99.1397174' />
+  <node id='12238960682' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3806733' lon='-99.140031' />
+  <node id='12238960683' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3803557' lon='-99.1400913' />
+  <node id='12238960684' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3788015' lon='-99.140325' />
+  <node id='12238960685' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3784719' lon='-99.1403681' />
+  <node id='12238960686' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3784648' lon='-99.1403184' />
+  <node id='12238960687' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3787933' lon='-99.1402624' />
+  <node id='12238960688' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.380347' lon='-99.1400194' />
+  <node id='12238960689' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3806651' lon='-99.1399766' />
+  <node id='12238960690' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3826852' lon='-99.1396694' />
+  <node id='12238960691' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3833687' lon='-99.1395673' />
+  <node id='12238960692' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3843329' lon='-99.1394281' />
+  <node id='12238960693' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3856248' lon='-99.1392304' />
+  <node id='12238960694' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3862885' lon='-99.1391266' />
+  <node id='12238960695' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3883912' lon='-99.1387942' />
+  <node id='12238960696' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3891743' lon='-99.1386949' />
+  <node id='12238960697' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3904173' lon='-99.1385077' />
+  <node id='12238960698' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3944023' lon='-99.1378999' />
+  <node id='12238960699' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3959565' lon='-99.1376458' />
+  <node id='12238960700' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3963672' lon='-99.137583' />
+  <node id='12239140301' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3996677' lon='-99.1370484' />
+  <node id='12239140302' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.4001161' lon='-99.136971' />
+  <node id='12239140303' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.4017215' lon='-99.1367212' />
+  <node id='12239140304' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.403286' lon='-99.136537' />
+  <node id='12239140305' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3779549' lon='-99.1404472' />
+  <node id='12239140306' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3779556' lon='-99.1404066' />
+  <node id='12239140307' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3773074' lon='-99.140545' />
+  <node id='12239140308' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3768666' lon='-99.1406021' />
+  <node id='12239140309' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3707378' lon='-99.1414114' />
+  <node id='12239140310' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3712695' lon='-99.1413395' />
+  <node id='12239140311' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3729217' lon='-99.1410901' />
+  <node id='12239140312' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3747789' lon='-99.1408135' />
+  <node id='12239140313' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.375838' lon='-99.1406769' />
+  <node id='12239140314' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3768624' lon='-99.1405539' />
+  <node id='12239140315' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3758361' lon='-99.1407255' />
+  <node id='12239140316' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3747843' lon='-99.1408573' />
+  <node id='12239140317' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3729408' lon='-99.141137' />
+  <node id='12239140318' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3713268' lon='-99.1413742' />
+  <node id='12239140319' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3707474' lon='-99.1414756' />
+  <node id='12239140320' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='2' changeset='157693647' lat='19.3691774' lon='-99.1416501' />
+  <node id='12239140321' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3691888' lon='-99.1417067' />
+  <node id='12239140322' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3686227' lon='-99.1417857' />
+  <node id='12239140323' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3682154' lon='-99.1418465' />
+  <node id='12239140324' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3679171' lon='-99.1418972' />
+  <node id='12239140325' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3670166' lon='-99.1420104' />
+  <node id='12239140326' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3670106' lon='-99.1420391' />
+  <node id='12239140327' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3656891' lon='-99.1422641' />
+  <node id='12239140328' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3644001' lon='-99.1424912' />
+  <node id='12239140329' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3640942' lon='-99.1425459' />
+  <node id='12239140330' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.363312' lon='-99.1426837' />
+  <node id='12239140331' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3627355' lon='-99.1427268' />
+  <node id='12239140332' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3627478' lon='-99.1427891' />
+  <node id='12239140333' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3598686' lon='-99.1432509' />
+  <node id='12239140334' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3598764' lon='-99.1432986' />
+  <node id='12239140335' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.3593735' lon='-99.1434076' />
+  <node id='12239140336' timestamp='2024-10-09T18:17:09Z' uid='16289897' user='Quixlian' version='1' changeset='157684449' lat='19.359365' lon='-99.1433703' />
+  <node id='12239140337' timestamp='2025-11-02T19:44:48Z' uid='16289897' user='Quixlian' version='3' changeset='174119153' lat='19.3574747' lon='-99.1438477' />
+  <node id='12239966474' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.4020688' lon='-99.1366837' />
+  <node id='12239966489' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3971725' lon='-99.1374977' />
+  <node id='12239966490' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.397166' lon='-99.137462' />
+  <node id='12239981922' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3788026' lon='-99.1403389' />
+  <node id='12239981923' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3784037' lon='-99.1403943' />
+  <node id='12239981924' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3775795' lon='-99.1405177' />
+  <node id='12239981925' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3787896' lon='-99.1402487' />
+  <node id='12239981926' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.378384' lon='-99.1403181' />
+  <node id='12239981927' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3775704' lon='-99.140447' />
+  <node id='12239981928' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3771936' lon='-99.1405718' />
+  <node id='12239981929' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3768352' lon='-99.1406204' />
+  <node id='12239981930' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3765226' lon='-99.1406578' />
+  <node id='12239981931' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3762034' lon='-99.1406952' />
+  <node id='12239981932' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3771714' lon='-99.1404997' />
+  <node id='12239981933' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.376813' lon='-99.1405441' />
+  <node id='12239981934' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3765056' lon='-99.1405843' />
+  <node id='12239981935' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3761955' lon='-99.1406204' />
+  <node id='12239981936' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.374805' lon='-99.1408727' />
+  <node id='12239981937' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3747906' lon='-99.1407992' />
+  <node id='12239981938' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3743327' lon='-99.1409421' />
+  <node id='12239981939' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3743196' lon='-99.1408686' />
+  <node id='12239981940' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.372848' lon='-99.1411612' />
+  <node id='12239981941' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3728074' lon='-99.1410946' />
+  <node id='12239981942' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3713292' lon='-99.1413927' />
+  <node id='12239981943' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3713161' lon='-99.1413192' />
+  <node id='12239981944' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3707483' lon='-99.1414857' />
+  <node id='12239981945' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3707339' lon='-99.1413969' />
+  <node id='12239981946' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3691916' lon='-99.14172' />
+  <node id='12239981947' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3689417' lon='-99.1417519' />
+  <node id='12239981948' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3691759' lon='-99.1416313' />
+  <node id='12239981949' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3689299' lon='-99.1416784' />
+  <node id='12239981950' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3689908' lon='-99.1417161' />
+  <node id='12239981951' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3689883' lon='-99.1416989' />
+  <node id='12239981952' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.3690515' lon='-99.1416886' />
+  <node id='12239981953' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647' lat='19.369054' lon='-99.1417058' />
+  <node id='12536076455' timestamp='2025-01-27T11:30:28Z' uid='21827516' user='OurtheCanal' version='1' changeset='161814403' lat='19.3714025' lon='-99.1443265' />
+  <node id='12663037467' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='1' changeset='163616623' lat='19.3702084' lon='-99.1403595' />
+  <node id='12663037468' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='1' changeset='163616623' lat='19.3701602' lon='-99.1403718' />
+  <node id='12663037470' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='1' changeset='163616623' lat='19.3704132' lon='-99.1403102' />
+  <node id='12663037471' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='1' changeset='163616623' lat='19.3703648' lon='-99.1402849' />
+  <node id='12663037472' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='1' changeset='163616623' lat='19.3703831' lon='-99.1402456' />
+  <node id='12663037473' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='1' changeset='163616623' lat='19.3704314' lon='-99.1402709' />
+  <node id='12846702819' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.37011' lon='-99.1419844' />
+  <node id='12846702820' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3699951' lon='-99.1420014' />
+  <node id='12846702821' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3699428' lon='-99.1416178' />
+  <node id='12846702822' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3692118' lon='-99.141721' />
+  <node id='12846702823' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3691958' lon='-99.1416209' />
+  <node id='12846702824' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3698367' lon='-99.1415269' />
+  <node id='12846702825' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3698062' lon='-99.1412958' />
+  <node id='12846702826' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3697408' lon='-99.1413051' />
+  <node id='12846702827' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3697248' lon='-99.1411818' />
+  <node id='12846702828' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3697016' lon='-99.1411834' />
+  <node id='12846702829' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3696972' lon='-99.1411418' />
+  <node id='12846702830' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3698411' lon='-99.1411202' />
+  <node id='12846702831' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3698687' lon='-99.141285' />
+  <node id='12846702832' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.369844' lon='-99.1412866' />
+  <node id='12846702833' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3698774' lon='-99.1415207' />
+  <node id='12846702834' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3707189' lon='-99.1413959' />
+  <node id='12846702835' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.370732' lon='-99.1414945' />
+  <node id='12846702836' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3699879' lon='-99.1416024' />
+  <node id='12846702837' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3700155' lon='-99.1418258' />
+  <node id='12846702838' action='delete' timestamp='2025-05-18T10:17:13Z' uid='22911583' user='abranruis' version='1' changeset='166423588' lat='19.3700867' lon='-99.1418165' />
+  <node id='12866155189' timestamp='2025-05-27T07:47:40Z' uid='18069' user='Claudius Henrichs' version='1' changeset='166811439' lat='19.3619496' lon='-99.1429303'>
+    <tag k='name' v='Ermita' />
+    <tag k='network' v='STC Metro' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='railway' v='stop' />
+    <tag k='subway' v='yes' />
+  </node>
+  <node id='12866155190' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3697754' lon='-99.1416197'>
+    <tag k='name' v='Portales' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='railway' v='stop' />
+    <tag k='subway' v='yes' />
+  </node>
+  <node id='12866155191' timestamp='2026-05-28T03:53:20Z' uid='10107184' user='tanzwiese' version='2' changeset='183283371' lat='19.3697686' lon='-99.1415597'>
+    <tag k='name' v='Portales' />
+    <tag k='public_transport' v='stop_position' />
+    <tag k='railway' v='stop' />
+    <tag k='subway' v='yes' />
+  </node>
+  <node id='13283955743' timestamp='2025-11-05T21:31:07Z' uid='23232870' user='mikeee26' version='1' changeset='174260907' lat='19.3697506' lon='-99.1423385' />
+  <node id='13283955744' timestamp='2025-11-05T21:31:07Z' uid='23232870' user='mikeee26' version='1' changeset='174260907' lat='19.3697372' lon='-99.1422283' />
+  <node id='13283955745' timestamp='2025-11-05T21:31:07Z' uid='23232870' user='mikeee26' version='1' changeset='174260907' lat='19.3696548' lon='-99.1422425' />
+  <node id='13283955746' timestamp='2025-11-05T21:31:07Z' uid='23232870' user='mikeee26' version='1' changeset='174260907' lat='19.3696387' lon='-99.1421191' />
+  <node id='13283955747' timestamp='2025-11-05T21:31:07Z' uid='23232870' user='mikeee26' version='1' changeset='174260907' lat='19.3694586' lon='-99.1421476' />
+  <node id='13283955748' timestamp='2025-11-05T21:31:07Z' uid='23232870' user='mikeee26' version='1' changeset='174260907' lat='19.3694935' lon='-99.1423878' />
+  <way id='-31614'>
+    <nd ref='-30425' />
+    <nd ref='-30426' />
+    <nd ref='-30427' />
+    <nd ref='-30428' />
+    <nd ref='-30429' />
+    <nd ref='-30430' />
+    <nd ref='-30425' />
+    <tag k='area' v='yes' />
+    <tag k='level' v='0' />
+    <tag k='name' v='Portales' />
+    <tag k='note:miro_id' v='3458764662275664937' />
+    <tag k='note:stop_id' v='L2-PORTALES-P-01' />
+    <tag k='public_transport' v='platform' />
+    <tag k='railway' v='platform' />
+    <tag k='subway' v='yes' />
+  </way>
+  <way id='-31615'>
+    <nd ref='-30430' />
+    <nd ref='-30465' />
+    <nd ref='-30463' />
+    <nd ref='-30461' />
+    <nd ref='-30460' />
+    <nd ref='-30427' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0' />
+    <tag k='note:stop_id' v='L2-PORTALES-P-01' />
+  </way>
+  <way id='-31616' action='modify'>
+    <nd ref='-30483' />
+    <nd ref='-30647' />
+    <nd ref='-30671' />
+    <nd ref='5197203900' />
+    <nd ref='-30436' />
+    <nd ref='-30435' />
+    <nd ref='-30483' />
+    <tag k='building' v='yes' />
+  </way>
+  <way id='-31620' action='modify'>
+    <nd ref='-30608' />
+    <nd ref='-30446' />
+    <nd ref='-30447' />
+    <nd ref='-30448' />
+    <nd ref='-30629' />
+    <nd ref='5197203901' />
+    <nd ref='-30608' />
+    <tag k='building' v='yes' />
+  </way>
+  <way id='-31624'>
+    <nd ref='-30453' />
+    <nd ref='-30462' />
+    <nd ref='-30457' />
+    <nd ref='-30464' />
+    <nd ref='-30454' />
+    <tag k='bridge' v='yes' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='layer' v='1' />
+    <tag k='level' v='1' />
+  </way>
+  <way id='-31625'>
+    <nd ref='-30455' />
+    <nd ref='-30456' />
+    <nd ref='-30474' />
+    <nd ref='-30457' />
+    <tag k='bridge' v='yes' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='layer' v='1' />
+    <tag k='level' v='1' />
+    <tag k='name' v='Pasillo vestibular poniente' />
+    <tag k='note:miro_id' v='3458764662275664944' />
+    <tag k='note:pathway_id' v='3458764662275664944' />
+  </way>
+  <way id='-31626' action='modify'>
+    <nd ref='-30458' />
+    <nd ref='-30595' />
+    <nd ref='-30459' />
+    <nd ref='-30475' />
+    <nd ref='-30457' />
+    <tag k='bridge' v='yes' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='layer' v='1' />
+    <tag k='level' v='1' />
+    <tag k='name' v='Pasillo vestibular oriente' />
+    <tag k='note:miro_id' v='3458764662275664945' />
+    <tag k='note:pathway_id' v='3458764662275664945' />
+  </way>
+  <way id='-31627'>
+    <nd ref='-30460' />
+    <nd ref='-30453' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664946' />
+    <tag k='note:pathway_id' v='3458764662275664946' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31628'>
+    <nd ref='-30461' />
+    <nd ref='-30462' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664947' />
+    <tag k='note:pathway_id' v='3458764662275664947' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31629'>
+    <nd ref='-30463' />
+    <nd ref='-30464' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664948' />
+    <tag k='note:pathway_id' v='3458764662275664948' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31630'>
+    <nd ref='-30465' />
+    <nd ref='-30454' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664949' />
+    <tag k='note:pathway_id' v='3458764662275664949' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31631'>
+    <nd ref='-30466' />
+    <nd ref='-30467' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664952' />
+    <tag k='note:pathway_id' v='3458764662275664952' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31632'>
+    <nd ref='-30442' />
+    <nd ref='-30466' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0' />
+  </way>
+  <way id='-31633'>
+    <nd ref='-30458' />
+    <nd ref='-30467' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='1' />
+  </way>
+  <way id='-31634'>
+    <nd ref='-30468' />
+    <nd ref='-30469' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664953' />
+    <tag k='note:pathway_id' v='3458764662275664953' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31635'>
+    <nd ref='-30431' />
+    <nd ref='-30468' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0' />
+  </way>
+  <way id='-31636'>
+    <nd ref='-30455' />
+    <nd ref='-30469' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='1' />
+  </way>
+  <way id='-31637'>
+    <nd ref='-30470' />
+    <nd ref='-30471' />
+    <tag k='conveying' v='forward' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664954' />
+    <tag k='note:pathway_id' v='3458764662275664954' />
+    <tag k='oneway:foot' v='yes' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31638'>
+    <nd ref='-30431' />
+    <nd ref='-30470' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0' />
+  </way>
+  <way id='-31639'>
+    <nd ref='-30455' />
+    <nd ref='-30471' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='1' />
+  </way>
+  <way id='-31640'>
+    <nd ref='-30472' />
+    <nd ref='-30473' />
+    <tag k='conveying' v='forward' />
+    <tag k='highway' v='steps' />
+    <tag k='incline' v='up' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0;1' />
+    <tag k='note:miro_id' v='3458764662275664955' />
+    <tag k='note:pathway_id' v='3458764662275664955' />
+    <tag k='oneway:foot' v='yes' />
+    <tag k='wheelchair' v='no' />
+  </way>
+  <way id='-31641'>
+    <nd ref='-30442' />
+    <nd ref='-30472' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0' />
+  </way>
+  <way id='-31642'>
+    <nd ref='-30458' />
+    <nd ref='-30473' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='1' />
+  </way>
+  <way id='-31643' action='modify'>
+    <nd ref='-30431' />
+    <nd ref='-30689' />
+    <nd ref='5197203900' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0' />
+    <tag k='note:miro_id' v='3458764662275664957' />
+    <tag k='note:pathway_id' v='3458764662275664957' />
+  </way>
+  <way id='-31644' action='modify'>
+    <nd ref='5197203901' />
+    <nd ref='-30602' />
+    <nd ref='-30442' />
+    <tag k='highway' v='footway' />
+    <tag k='indoor' v='yes' />
+    <tag k='level' v='0' />
+    <tag k='note:miro_id' v='3458764662275664959' />
+    <tag k='note:pathway_id' v='3458764662275664959' />
+  </way>
+  <way id='-31647'>
+    <nd ref='5197203901' />
+    <nd ref='-30477' />
+    <nd ref='8076076617' />
+    <tag k='highway' v='footway' />
+    <tag k='level' v='0' />
+  </way>
+  <way id='25310964' timestamp='2025-01-27T11:30:28Z' uid='21827516' user='OurtheCanal' version='24' changeset='161814403'>
+    <nd ref='275717756' />
+    <nd ref='10708041946' />
+    <nd ref='10708041947' />
+    <nd ref='10708041948' />
+    <nd ref='1129724690' />
+    <nd ref='8059239663' />
+    <nd ref='6439743742' />
+    <nd ref='275728371' />
+    <nd ref='275724557' />
+    <nd ref='275721166' />
+    <nd ref='12536076455' />
+    <nd ref='275717758' />
+    <nd ref='275719624' />
+    <nd ref='275718314' />
+    <nd ref='275717581' />
+    <nd ref='5331793481' />
+    <nd ref='275717760' />
+    <nd ref='275717763' />
+    <nd ref='275717575' />
+    <nd ref='8840210595' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calzada Santa Cruz' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='25367531' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='12' changeset='133274472'>
+    <nd ref='276503834' />
+    <nd ref='276510364' />
+    <nd ref='6135695728' />
+    <nd ref='276510342' />
+    <nd ref='276510289' />
+    <nd ref='276509198' />
+    <nd ref='276509359' />
+    <nd ref='10708041950' />
+    <nd ref='276503835' />
+    <tag k='highway' v='residential' />
+    <tag k='lanes' v='1' />
+    <tag k='name' v='Calle Benito Juárez' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='25367573' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='7' changeset='163616623'>
+    <nd ref='276504410' />
+    <nd ref='10708041951' />
+    <nd ref='276504280' />
+    <nd ref='12663037467' />
+    <nd ref='276504287' />
+    <nd ref='276504286' />
+    <nd ref='5851698164' />
+    <nd ref='5851698165' />
+    <nd ref='276504283' />
+    <nd ref='276504912' />
+    <nd ref='8066317756' />
+    <nd ref='276507889' />
+    <nd ref='10708125554' />
+    <nd ref='276504914' />
+    <tag k='highway' v='residential' />
+    <tag k='lanes' v='2' />
+    <tag k='name' v='Calle Albert' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='25367579' timestamp='2025-12-14T23:11:11Z' uid='3790985' user='ofr1tz' version='19' changeset='175938158'>
+    <nd ref='275513301' />
+    <nd ref='275513300' />
+    <nd ref='275513299' />
+    <nd ref='275513298' />
+    <nd ref='30788895' />
+    <nd ref='275513297' />
+    <nd ref='4790101439' />
+    <nd ref='8048160687' />
+    <nd ref='8840210593' />
+    <nd ref='4453743649' />
+    <nd ref='275717574' />
+    <nd ref='275717719' />
+    <nd ref='4790178261' />
+    <nd ref='275718318' />
+    <nd ref='275719631' />
+    <nd ref='275717722' />
+    <nd ref='275721164' />
+    <nd ref='275724555' />
+    <nd ref='275728255' />
+    <nd ref='6135626764' />
+    <nd ref='275717715' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Avenida Víctor Hugo' />
+    <tag k='name:etymology:wikidata' v='Q535' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='25367584' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='8' changeset='133275053'>
+    <nd ref='276505101' />
+    <nd ref='10708125567' />
+    <nd ref='10708125566' />
+    <nd ref='10708125568' />
+    <nd ref='10708125563' />
+    <nd ref='276509199' />
+    <nd ref='10708125565' />
+    <nd ref='5851698182' />
+    <nd ref='276509264' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calle Hamburgo' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='25367596' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='10' changeset='133275053'>
+    <nd ref='276505158' />
+    <nd ref='5851698180' />
+    <nd ref='276506368' />
+    <nd ref='10708125557' />
+    <nd ref='276508230' />
+    <nd ref='10708125559' />
+    <nd ref='10708125543' />
+    <nd ref='8226931581' />
+    <tag k='highway' v='residential' />
+    <tag k='lanes' v='1' />
+    <tag k='name' v='Calle Suiza' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='25367696' timestamp='2020-11-02T16:28:57Z' uid='10456881' user='sbburg' version='11' changeset='93430643'>
+    <nd ref='5851698182' />
+    <nd ref='276506282' />
+    <nd ref='276506368' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calle Miraflores' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='25367894' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='6' changeset='163616623'>
+    <nd ref='276509264' />
+    <nd ref='12663037468' />
+    <nd ref='276504287' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calle Berlín' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='43763067' action='delete' timestamp='2009-11-04T11:39:57Z' uid='58410' user='tlacuilo' version='1' changeset='3032014'>
+    <tag k='highway' v='footway' />
+    <tag k='layer' v='2' />
+  </way>
+  <way id='70828936' timestamp='2026-07-06T20:09:31Z' uid='14310854' user='martin_pg' version='22' changeset='185226195'>
+    <nd ref='844588574' />
+    <nd ref='10708041945' />
+    <nd ref='10708041944' />
+    <nd ref='844588558' />
+    <nd ref='275717715' />
+    <nd ref='276506069' />
+    <nd ref='2354784588' />
+    <nd ref='2306119006' />
+    <nd ref='275677079' />
+    <nd ref='11110456780' />
+    <nd ref='11110456784' />
+    <nd ref='275674782' />
+    <nd ref='275674877' />
+    <nd ref='276507103' />
+    <nd ref='2354784552' />
+    <tag k='cycleway:left' v='no' />
+    <tag k='cycleway:right' v='track' />
+    <tag k='cycleway:right:segregated' v='yes' />
+    <tag k='highway' v='secondary' />
+    <tag k='lanes' v='3' />
+    <tag k='maxspeed' v='50' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='parking:both' v='no' />
+    <tag k='sidewalk' v='right' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='70828939' timestamp='2026-07-02T18:16:02Z' uid='14310854' user='martin_pg' version='16' changeset='184992420'>
+    <nd ref='844588576' />
+    <nd ref='844588564' />
+    <tag k='foot' v='no' />
+    <tag k='highway' v='trunk' />
+    <tag k='lanes' v='2' />
+    <tag k='layer' v='-1' />
+    <tag k='maxspeed' v='80' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='parking:both' v='no' />
+    <tag k='ref' v='RADIAL 3' />
+    <tag k='sidewalk' v='no' />
+    <tag k='surface' v='asphalt' />
+    <tag k='tunnel' v='yes' />
+  </way>
+  <way id='70979972' timestamp='2025-06-14T05:59:13Z' uid='16289897' user='Quixlian' version='12' changeset='167599898'>
+    <nd ref='845838790' />
+    <nd ref='845838791' />
+    <tag k='foot' v='no' />
+    <tag k='highway' v='trunk' />
+    <tag k='lanes' v='2' />
+    <tag k='maxspeed' v='80' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='ref' v='RADIAL 3' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='70979976' timestamp='2025-06-14T05:59:13Z' uid='16289897' user='Quixlian' version='11' changeset='167599898'>
+    <nd ref='845838797' />
+    <nd ref='845838790' />
+    <tag k='bicycle' v='no' />
+    <tag k='foot' v='no' />
+    <tag k='highway' v='trunk' />
+    <tag k='lanes' v='2' />
+    <tag k='maxspeed' v='80' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='ref' v='RADIAL 3' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='126772566' timestamp='2026-07-02T18:16:02Z' uid='14310854' user='martin_pg' version='16' changeset='184992420'>
+    <nd ref='844588569' />
+    <nd ref='844588576' />
+    <tag k='cutting' v='yes' />
+    <tag k='foot' v='no' />
+    <tag k='highway' v='trunk' />
+    <tag k='lanes' v='2' />
+    <tag k='maxspeed' v='80' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='parking:both' v='no' />
+    <tag k='ref' v='RADIAL 3' />
+    <tag k='sidewalk' v='no' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='140036291' timestamp='2019-05-09T19:45:42Z' uid='3321532' user='JAAS' version='5' changeset='70087501'>
+    <nd ref='276504282' />
+    <nd ref='3981306890' />
+    <nd ref='1534367574' />
+    <nd ref='3981306889' />
+    <nd ref='5851698169' />
+    <nd ref='276504280' />
+    <tag k='highway' v='footway' />
+  </way>
+  <way id='221578126' timestamp='2021-01-22T18:34:40Z' uid='9218955' user='jedimasterflint' version='9' changeset='97991932'>
+    <nd ref='2306119010' />
+    <nd ref='276506068' />
+    <nd ref='6135626757' />
+    <nd ref='275728255' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calle Antillas' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='312086250' timestamp='2025-05-27T07:47:40Z' uid='18069' user='Claudius Henrichs' version='11' changeset='166811439'>
+    <nd ref='554702943' />
+    <nd ref='30385150' />
+    <nd ref='12239966474' />
+    <nd ref='12239140303' />
+    <nd ref='12239140302' />
+    <nd ref='12239140301' />
+    <nd ref='30385147' />
+    <nd ref='12239966490' />
+    <nd ref='12238960700' />
+    <nd ref='12238960699' />
+    <nd ref='12238960698' />
+    <nd ref='30385144' />
+    <nd ref='30385143' />
+    <nd ref='30385142' />
+    <nd ref='12238960697' />
+    <nd ref='12238960696' />
+    <nd ref='30385140' />
+    <nd ref='12238960695' />
+    <nd ref='30385138' />
+    <nd ref='12238960694' />
+    <nd ref='12238960693' />
+    <nd ref='12238960692' />
+    <nd ref='12238960691' />
+    <nd ref='12238960690' />
+    <nd ref='12238960689' />
+    <nd ref='12238960688' />
+    <nd ref='12238960687' />
+    <nd ref='12238960686' />
+    <nd ref='12239140306' />
+    <nd ref='12239140314' />
+    <nd ref='12239140313' />
+    <nd ref='12239140312' />
+    <nd ref='12239140311' />
+    <nd ref='12239140310' />
+    <nd ref='12239140309' />
+    <nd ref='12866155191' />
+    <nd ref='12239140320' />
+    <nd ref='30385125' />
+    <nd ref='3981306884' />
+    <nd ref='3981306883' />
+    <nd ref='12239140325' />
+    <nd ref='30385123' />
+    <nd ref='3981306895' />
+    <nd ref='30385122' />
+    <nd ref='30384911' />
+    <nd ref='12239140331' />
+    <nd ref='1122529285' />
+    <nd ref='12239140333' />
+    <nd ref='12239140336' />
+    <nd ref='30384907' />
+    <tag k='electrified' v='rail' />
+    <tag k='frequency' v='0' />
+    <tag k='gauge' v='1435' />
+    <tag k='layer' v='1' />
+    <tag k='name' v='Línea 2' />
+    <tag k='operator' v='Sistema de Transporte Colectivo' />
+    <tag k='operator:wikidata' v='Q735042' />
+    <tag k='railway' v='subway' />
+    <tag k='rubber_tires' v='yes' />
+    <tag k='voltage' v='750' />
+  </way>
+  <way id='561069818' timestamp='2024-01-20T22:47:36Z' uid='16289897' user='Quixlian' version='15' changeset='146495222'>
+    <nd ref='1129724690' />
+    <nd ref='275724556' />
+    <nd ref='275721165' />
+    <nd ref='275720147' />
+    <nd ref='5833649832' />
+    <nd ref='5833649831' />
+    <nd ref='5833649833' />
+    <nd ref='275720139' />
+    <nd ref='275720136' />
+    <nd ref='8840210596' />
+    <nd ref='6135626763' />
+    <nd ref='5834344838' />
+    <nd ref='5410500570' />
+    <nd ref='8565445536' />
+    <nd ref='5410500571' />
+    <nd ref='275513275' />
+    <nd ref='5410500569' />
+    <tag k='highway' v='residential' />
+    <tag k='lanes' v='2' />
+    <tag k='name' v='Calle Necaxa' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='617525573' timestamp='2026-07-02T16:23:21Z' uid='14310854' user='martin_pg' version='21' changeset='184986099'>
+    <nd ref='268486626' />
+    <nd ref='275721490' />
+    <nd ref='2354784563' />
+    <nd ref='275728374' />
+    <nd ref='275711580' />
+    <nd ref='275719326' />
+    <nd ref='2354784575' />
+    <nd ref='2354784569' />
+    <nd ref='275717756' />
+    <nd ref='844588574' />
+    <tag k='foot' v='yes' />
+    <tag k='highway' v='trunk' />
+    <tag k='lanes' v='5' />
+    <tag k='maxspeed' v='80' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='parking:both' v='no' />
+    <tag k='ref' v='RADIAL 3' />
+    <tag k='sidewalk' v='right' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='619189487' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='7' changeset='133274472'>
+    <nd ref='276512779' />
+    <nd ref='1122529169' />
+    <nd ref='2354784543' />
+    <nd ref='276510932' />
+    <nd ref='276510897' />
+    <nd ref='276506963' />
+    <nd ref='2354784586' />
+    <nd ref='276506900' />
+    <nd ref='276510837' />
+    <nd ref='276510732' />
+    <nd ref='276510538' />
+    <nd ref='2354784567' />
+    <nd ref='276510489' />
+    <nd ref='276510409' />
+    <nd ref='10708041943' />
+    <nd ref='276505158' />
+    <nd ref='276505007' />
+    <nd ref='845838792' />
+    <nd ref='845838791' />
+    <tag k='highway' v='secondary' />
+    <tag k='lanes' v='2' />
+    <tag k='maxspeed' v='50' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='619196694' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='6' changeset='163616623'>
+    <nd ref='276504283' />
+    <nd ref='276504282' />
+    <nd ref='276509359' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calle Berlín' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='649612500' timestamp='2025-06-14T05:59:13Z' uid='16289897' user='Quixlian' version='9' changeset='167599898'>
+    <nd ref='845838791' />
+    <nd ref='276504410' />
+    <nd ref='276503835' />
+    <nd ref='8952274712' />
+    <nd ref='8952282724' />
+    <nd ref='276503599' />
+    <nd ref='276503540' />
+    <nd ref='276503460' />
+    <nd ref='276503426' />
+    <nd ref='270601381' />
+    <nd ref='6096082157' />
+    <tag k='foot' v='yes' />
+    <tag k='highway' v='trunk' />
+    <tag k='lanes' v='4' />
+    <tag k='maxspeed' v='80' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='ref' v='RADIAL 3' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='679802211' timestamp='2020-10-26T17:53:40Z' uid='7466823' user='Whimsical Otter' version='2' changeset='93074198'>
+    <nd ref='275728255' />
+    <nd ref='1129724690' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calle Antillas' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='832651320' timestamp='2023-03-04T01:41:13Z' uid='12491771' user='LabelMaker' version='7' changeset='133275053'>
+    <nd ref='8226931582' />
+    <nd ref='10708125556' />
+    <nd ref='10708125571' />
+    <nd ref='276508232' />
+    <nd ref='10708125570' />
+    <nd ref='276505101' />
+    <nd ref='5851698156' />
+    <nd ref='10708125562' />
+    <nd ref='10708125561' />
+    <nd ref='276506282' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Avenida Víctor Hugo' />
+    <tag k='oneway' v='yes' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='859462272' timestamp='2020-10-15T21:52:40Z' uid='232801' user='CENTSOARER' version='1' changeset='92545007'>
+    <nd ref='8011272545' />
+    <nd ref='8011272544' />
+    <nd ref='8011272543' />
+    <nd ref='8011272542' />
+    <nd ref='8011272545' />
+    <tag k='amenity' v='bank' />
+    <tag k='atm' v='yes' />
+    <tag k='building' v='yes' />
+    <tag k='name' v='BanBajío' />
+  </way>
+  <way id='866467938' timestamp='2020-11-02T23:31:05Z' uid='10028118' user='InnerPace' version='1' changeset='93444516'>
+    <nd ref='276509264' />
+    <nd ref='8076076617' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Calle Hamburgo' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='884689744' timestamp='2025-12-14T23:11:11Z' uid='3790985' user='ofr1tz' version='4' changeset='175938158'>
+    <nd ref='276506282' />
+    <nd ref='8682792612' />
+    <tag k='highway' v='residential' />
+    <tag k='name' v='Avenida Víctor Hugo' />
+    <tag k='name:etymology:wikidata' v='Q535' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='967661335' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861'>
+    <nd ref='4172090199' />
+    <nd ref='8952274688' />
+    <nd ref='8952274689' />
+    <nd ref='8952274690' />
+    <nd ref='4172090199' />
+    <tag k='amenity' v='bank' />
+    <tag k='brand' v='Santander' />
+    <tag k='brand:wikidata' v='Q5835668' />
+    <tag k='brand:wikipedia' v='en:Santander Bank' />
+    <tag k='building' v='yes' />
+    <tag k='name' v='Santander' />
+  </way>
+  <way id='967661336' timestamp='2024-05-01T16:28:47Z' uid='6816132' user='CjMalone' version='2' changeset='150758630'>
+    <nd ref='8952274691' />
+    <nd ref='8952274696' />
+    <nd ref='8952274692' />
+    <nd ref='8952274697' />
+    <nd ref='8952274695' />
+    <nd ref='8952274693' />
+    <nd ref='8952274694' />
+    <nd ref='8952274691' />
+    <tag k='brand' v='Oxxo' />
+    <tag k='brand:wikidata' v='Q1342538' />
+    <tag k='brand:wikipedia' v='es:Oxxo' />
+    <tag k='building' v='yes' />
+    <tag k='name' v='Oxxo' />
+    <tag k='operator' v='FEMSA Comercio' />
+    <tag k='shop' v='convenience' />
+    <tag k='website' v='https://www.oxxo.com/tiendas?cr=50QVZ' />
+  </way>
+  <way id='967661340' timestamp='2021-07-26T20:24:58Z' uid='232801' user='CENTSOARER' version='1' changeset='108644861'>
+    <nd ref='8952274712' />
+    <nd ref='8952274713' />
+    <nd ref='8952274714' />
+    <nd ref='8952274715' />
+    <tag k='highway' v='service' />
+    <tag k='oneway' v='yes' />
+  </way>
+  <way id='1083627058' timestamp='2026-07-02T18:16:02Z' uid='14310854' user='martin_pg' version='11' changeset='184992420'>
+    <nd ref='844588574' />
+    <nd ref='844588569' />
+    <tag k='foot' v='no' />
+    <tag k='highway' v='trunk' />
+    <tag k='lanes' v='2' />
+    <tag k='maxspeed' v='80' />
+    <tag k='maxspeed:type' v='sign' />
+    <tag k='name' v='Calzada de Tlalpan' />
+    <tag k='oneway' v='yes' />
+    <tag k='parking:both' v='no' />
+    <tag k='ref' v='RADIAL 3' />
+    <tag k='sidewalk' v='no' />
+    <tag k='surface' v='asphalt' />
+  </way>
+  <way id='1126131298' timestamp='2023-01-01T03:31:02Z' uid='16289897' user='Quixlian' version='1' changeset='130737247'>
+    <nd ref='8682792612' />
+    <nd ref='276505007' />
+    <tag k='highway' v='footway' />
+  </way>
+  <way id='1151093905' timestamp='2023-03-04T00:46:36Z' uid='12491771' user='LabelMaker' version='1' changeset='133274472'>
+    <nd ref='845838792' />
+    <nd ref='10708041949' />
+    <nd ref='8076076617' />
+    <tag k='highway' v='footway' />
+  </way>
+  <way id='1322667667' timestamp='2025-05-27T07:47:40Z' uid='18069' user='Claudius Henrichs' version='4' changeset='166811439'>
+    <nd ref='12239140304' />
+    <nd ref='12238960659' />
+    <nd ref='12238960660' />
+    <nd ref='12238960661' />
+    <nd ref='12238960662' />
+    <nd ref='12238960663' />
+    <nd ref='12238960664' />
+    <nd ref='12239966489' />
+    <nd ref='12238960665' />
+    <nd ref='12238960666' />
+    <nd ref='12238960667' />
+    <nd ref='12238960668' />
+    <nd ref='12238960669' />
+    <nd ref='12238960670' />
+    <nd ref='12238960671' />
+    <nd ref='12238960672' />
+    <nd ref='12238960673' />
+    <nd ref='12238960674' />
+    <nd ref='12238960675' />
+    <nd ref='12238960676' />
+    <nd ref='12238960677' />
+    <nd ref='12238960678' />
+    <nd ref='12238960679' />
+    <nd ref='12238960680' />
+    <nd ref='12238960681' />
+    <nd ref='12238960682' />
+    <nd ref='12238960683' />
+    <nd ref='12238960684' />
+    <nd ref='12238960685' />
+    <nd ref='12239140305' />
+    <nd ref='12239140307' />
+    <nd ref='12239140308' />
+    <nd ref='12239140315' />
+    <nd ref='12239140316' />
+    <nd ref='12239140317' />
+    <nd ref='12239140318' />
+    <nd ref='12239140319' />
+    <nd ref='12866155190' />
+    <nd ref='12239140321' />
+    <nd ref='12239140322' />
+    <nd ref='12239140323' />
+    <nd ref='12239140324' />
+    <nd ref='12239140326' />
+    <nd ref='12239140327' />
+    <nd ref='12239140328' />
+    <nd ref='12239140329' />
+    <nd ref='12239140330' />
+    <nd ref='12239140332' />
+    <nd ref='12866155189' />
+    <nd ref='12239140334' />
+    <nd ref='12239140335' />
+    <nd ref='12239140337' />
+    <tag k='electrified' v='rail' />
+    <tag k='frequency' v='0' />
+    <tag k='gauge' v='1435' />
+    <tag k='layer' v='1' />
+    <tag k='name' v='Línea 2' />
+    <tag k='operator' v='Sistema de Transporte Colectivo' />
+    <tag k='operator:wikidata' v='Q735042' />
+    <tag k='railway' v='subway' />
+    <tag k='rubber_tires' v='yes' />
+    <tag k='voltage' v='750' />
+  </way>
+  <way id='1322749531' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647'>
+    <nd ref='12239981922' />
+    <nd ref='12239981923' />
+    <nd ref='12239981924' />
+    <nd ref='12239981928' />
+    <nd ref='12239981929' />
+    <nd ref='12239981930' />
+    <nd ref='12239981931' />
+    <nd ref='12239981936' />
+    <nd ref='12239981938' />
+    <nd ref='12239981940' />
+    <nd ref='12239981942' />
+    <nd ref='12239981944' />
+    <tag k='barrier' v='fence' />
+  </way>
+  <way id='1322749532' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647'>
+    <nd ref='12239981925' />
+    <nd ref='12239981926' />
+    <nd ref='12239981927' />
+    <nd ref='12239981932' />
+    <nd ref='12239981933' />
+    <nd ref='12239981934' />
+    <nd ref='12239981935' />
+    <nd ref='12239981937' />
+    <nd ref='12239981939' />
+    <nd ref='12239981941' />
+    <nd ref='12239981943' />
+    <nd ref='12239981945' />
+    <tag k='barrier' v='fence' />
+  </way>
+  <way id='1322749533' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647'>
+    <nd ref='12239981946' />
+    <nd ref='12239981947' />
+    <tag k='barrier' v='fence' />
+  </way>
+  <way id='1322749534' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647'>
+    <nd ref='12239981948' />
+    <nd ref='12239981949' />
+    <tag k='barrier' v='fence' />
+  </way>
+  <way id='1322749535' timestamp='2024-10-10T00:23:28Z' uid='16289897' user='Quixlian' version='1' changeset='157693647'>
+    <nd ref='12239981950' />
+    <nd ref='12239981951' />
+    <nd ref='12239981952' />
+    <nd ref='12239981953' />
+    <nd ref='12239981950' />
+    <tag k='building' v='yes' />
+  </way>
+  <way id='1367360612' timestamp='2025-03-14T16:12:38Z' uid='18570611' user='Juan MAS' version='1' changeset='163616623'>
+    <nd ref='12663037470' />
+    <nd ref='12663037471' />
+    <nd ref='12663037472' />
+    <nd ref='12663037473' />
+    <nd ref='12663037470' />
+    <tag k='amenity' v='community_centre' />
+    <tag k='building' v='yes' />
+  </way>
+  <way id='1387762582' action='modify' timestamp='2026-05-28T06:02:59Z' uid='18069' user='Claudius Henrichs' version='5' changeset='183286393'>
+    <nd ref='-30478' />
+    <nd ref='-30479' />
+    <nd ref='-30671' />
+    <nd ref='5197203900' />
+    <nd ref='-30436' />
+    <nd ref='-30435' />
+    <nd ref='-30483' />
+    <nd ref='-30647' />
+    <nd ref='-30484' />
+    <nd ref='-30485' />
+    <nd ref='-30425' />
+    <nd ref='-30486' />
+    <nd ref='-30487' />
+    <nd ref='-30429' />
+    <nd ref='-30488' />
+    <nd ref='-30489' />
+    <nd ref='-30608' />
+    <nd ref='5197203901' />
+    <nd ref='-30629' />
+    <nd ref='-30448' />
+    <nd ref='-30447' />
+    <nd ref='-30494' />
+    <nd ref='-30495' />
+    <nd ref='-30428' />
+    <nd ref='-30496' />
+    <nd ref='-30497' />
+    <nd ref='-30426' />
+    <nd ref='-30478' />
+    <tag k='building' v='train_station' />
+    <tag k='internet_access' v='wlan' />
+    <tag k='internet_access:fee' v='no' />
+    <tag k='layer' v='2' />
+    <tag k='name' v='Portales' />
+    <tag k='network' v='Línea 2' />
+    <tag k='operator' v='Sistema de Transporte Colectivo Metro' />
+    <tag k='public_transport' v='station' />
+    <tag k='station' v='subway' />
+    <tag k='subway' v='yes' />
+  </way>
+  <way id='1447807576' timestamp='2025-11-05T21:31:07Z' uid='23232870' user='mikeee26' version='1' changeset='174260907'>
+    <nd ref='13283955743' />
+    <nd ref='13283955744' />
+    <nd ref='13283955745' />
+    <nd ref='13283955746' />
+    <nd ref='13283955747' />
+    <nd ref='13283955748' />
+    <nd ref='13283955743' />
+    <tag k='building' v='yes' />
+    <tag k='name' v='La Alpina' />
+    <tag k='shop' v='confectionery' />
+  </way>
+  <relation id='8429776' action='modify' timestamp='2025-05-27T07:47:40Z' uid='18069' user='Claudius Henrichs' version='5' changeset='166811439'>
+    <member type='node' ref='30385126' role='' />
+    <member type='node' ref='12866155191' role='stop' />
+    <member type='node' ref='12866155190' role='stop' />
+    <member type='node' ref='5197203900' role='' />
+    <member type='node' ref='5197203901' role='' />
+    <member type='way' ref='1387762582' role='train_station' />
+    <tag k='name' v='Portales' />
+    <tag k='public_transport' v='stop_area' />
+    <tag k='type' v='public_transport' />
+  </relation>
+</osm>
