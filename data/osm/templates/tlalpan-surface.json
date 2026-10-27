@@ -57,7 +57,7 @@
   "edges": [
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 0,
      "geometry": [{"spine": "P-01", "u": 16}, {"spine": "P-01", "u": {"arm": "mid"}, "dv": -4.5}],
-     "comment": "Escalera 1 al puente, lado norte (miro_id en Portales 3458764662275664946); arranca en la senda del andén y desemboca en la losa. Las cuatro van en abanico y quedan exentas de la regla de los bancos: nacen del andén, no de un vestíbulo. Su estándar está pendiente (Ricardo lo decide aparte): cada estación conserva las suyas."},
+     "comment": "Escalera 1 al puente, lado norte (miro_id en Portales 3458764662275664946); arranca en la senda del andén y desemboca en la losa. Las cuatro van en abanico y quedan exentas de la regla de los bancos: nacen del andén, no de un vestíbulo. Su estándar ya está decidido (componente tlalpan-surface: pasarela longitudinal, dos fijas por lado en serie, 12,5 m o el máximo que quepa) y la plantilla todavía no lo aprende (task-45): cada estación conserva las suyas."},
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 1,
      "geometry": [{"spine": "P-01", "u": 10}, {"spine": "P-01", "u": {"arm": "mid"}, "dv": -1.5}],
      "comment": "Escalera 2, lado norte (miro_id 3458764662275664947)."},
@@ -128,7 +128,7 @@
                   [19.3530588, -99.1451146]]
       },
       "local": {
-        "comment": "Losa, pasillos del puente, torniquetes y escaleras del andén como los dejó la 04 (desde la 02, siguiendo la edición de Ricardo en Portales 02): mientras Ricardo decide el estándar de las escaleras del andén, cada estación conserva las suyas. La losa corre a lo largo de la senda, 1,4 m al oriente, con el vestíbulo N-01 sobre ella a media distancia entre los brazos y un torniquete a 5 m de cada lado.",
+        "comment": "Losa, pasillos del puente, torniquetes y escaleras del andén como los dejó la 04 (desde la 02, siguiendo la edición de Ricardo en Portales 02): mientras la plantilla no aprende el estándar ya decidido de las escaleras del andén (task-45), cada estación conserva las suyas. La losa corre a lo largo de la senda, 1,4 m al oriente, con el vestíbulo N-01 sobre ella a media distancia entre los brazos y un torniquete a 5 m de cada lado.",
         "edges": {
           "P-01>N-01:2:0": {"geometry": [{"spine": "P-01", "u": 19.01}, {"spine": "P-01", "u": 15.5, "dv": 1.4}]},
           "P-01>N-01:2:1": {"geometry": [{"spine": "P-01", "u": 8.5}, {"spine": "P-01", "u": 5.0, "dv": 1.4}]},

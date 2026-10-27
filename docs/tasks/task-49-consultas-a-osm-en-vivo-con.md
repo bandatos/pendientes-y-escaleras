@@ -10,7 +10,7 @@ source: ["[[2026-10-27-sesion-seis-estaciones-afinadas-y-primera-publicacion]]"]
 
 # Consultas a OSM en vivo con un User-Agent fijo del proyecto
 
-`references/general.md` pide confirmar las bajas de nodos contra OSM en vivo. Cada turno del 27 de octubre de 2026 improvisó su consulta (Overpass o la API 0.6), y uno puso el correo de Ricardo en la cabecera User-Agent de una petición a overpass-api.de; Ricardo quedó avisado ese día. Hay que dejar un script o módulo en `api/utils/osm/` con un User-Agent fijo del proyecto (`api/utils/osm/overpass.py` ya tiene uno), que reciba una lista de ids y devuelva versión, visibilidad y ways o relaciones que los usan, con espejo de respaldo (overpass.kumi.systems respondió cuando overpass-api.de dio 502), y que los agentes lo usen en vez de curl a mano.
+`references/general.md` pide confirmar las bajas de nodos contra OSM en vivo. Cada turno del 27 de octubre de 2026 improvisó su consulta (Overpass o la API 0.6), y dos de ellos (el diff de Portales y el turno de Portales 05) pusieron el correo de Ricardo en la cabecera User-Agent de al menos cuatro peticiones, a overpass-api.de y a api.openstreetmap.org; Ricardo quedó avisado ese día, aunque con el conteo de una sola petición, que era lo que decía el primer reporte. Hay que dejar un script o módulo en `api/utils/osm/` con un User-Agent fijo del proyecto (`api/utils/osm/overpass.py` ya tiene uno), que reciba una lista de ids y devuelva versión, visibilidad y ways o relaciones que los usan, con espejo de respaldo (overpass.kumi.systems respondió cuando overpass-api.de dio 502), y que los agentes lo usen en vez de curl a mano.
 
 ## Criterios de aceptación
 

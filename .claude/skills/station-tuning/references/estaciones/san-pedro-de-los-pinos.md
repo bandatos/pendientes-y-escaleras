@@ -1,6 +1,6 @@
 # San Pedro de los Pinos (Línea 7)
 
-Carpeta `data/osm/l7-san-pedro-de-los-pinos/`. Estación de origen de la cascada de la Línea 7: la plantilla nació del trazo que Ricardo corrigió a mano en JOSM (su versión 03), pero la referencia vigente es la última versión aprobada (la 08, en producción), y la plantilla todavía no aprende de ella los largos, las puertas ni el área de abajo. La versión vigente es la más alta de la carpeta.
+Carpeta `data/osm/l7-san-pedro-de-los-pinos/`. Estación de origen de la cascada de la Línea 7: la plantilla nació del trazo que Ricardo corrigió a mano en JOSM (su versión 03), pero la referencia vigente es la última versión aprobada (la 08, en producción), y la plantilla todavía no aprende de ella los largos, las puertas ni el área de abajo. La versión vigente es la más alta de la carpeta. Sus tareas: `docs/tasks/task-26` (revisión de los trazos) y `docs/tasks/task-38` (aprendizaje de la plantilla).
 
 ## Hechos propios
 

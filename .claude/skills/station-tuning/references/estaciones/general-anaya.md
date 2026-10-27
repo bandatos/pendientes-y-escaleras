@@ -10,7 +10,7 @@ Carpeta `data/osm/l2-general-anaya/`. Componente: superficie de la Calzada de Tl
 - **Andén** de 150 m, con la senda en v 1,02.
 - **Calzada.** Sus caras quedan en v ±14 y OSM no tiene banquetas mapeadas ahí, así que los accesos no llevan conector. E-01 queda en (11,94, −34,62) y E-02 en (−19,15, 29,34).
 - **Nodo de estación** a media distancia entre los ejes de los brazos (u ≈ −2,97), movido unos 14 m de donde estaba en OSM.
-- **Escaleras del andén** de 3,8 m, las de la generación (Pablo no las tocó). El estándar del componente ya está fijado (`componentes/tlalpan-surface.md`: el largo de las de acceso, 12,5 m, o el máximo que quepa) y la plantilla todavía no lo aplica.
+- **Escaleras del andén** de 9,11 m en la 06: llegada fija sobre la pasarela y pie corrido, el máximo que cabe con 1,5 m libres (estándar en `componentes/tlalpan-surface.md`). Pablo no las tocó; la plantilla todavía no las genera y viven en el bloque `local` de la estación.
 
 ## Versiones
 
@@ -19,3 +19,4 @@ Carpeta `data/osm/l2-general-anaya/`. Componente: superficie de la Calzada de Tl
 - 03, de Pablo: alargó los bancos de acceso a 12,5 m.
 - 04, endereza la deriva que dejó la edición de Pablo.
 - 05, nodo de estación.
+- 06, escaleras del andén de 9,11 m.

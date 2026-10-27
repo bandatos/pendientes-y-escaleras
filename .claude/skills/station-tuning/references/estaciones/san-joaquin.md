@@ -1,6 +1,6 @@
 # San Joaquín (Línea 7)
 
-Carpeta `data/osm/l7-san-joaquin/`. Componentes: andén profundo de la Línea 7 y cascada de la Línea 7 (que su cascada sea el mismo componente que la de San Pedro y no una variante propia lo supuso la sesión del 22 de octubre de 2026: por confirmar con Ricardo), sin espejo, rumbo 7,7° (cuerda de la vía de la Línea 7 en OSM) y ancla en el centroide del KML; el comando exacto está en `data/osm/README.md`. Primera estación que corrió el ciclo completo; la versión vigente es la más alta de la carpeta.
+Carpeta `data/osm/l7-san-joaquin/`. Componentes: andén profundo de la Línea 7 y cascada de la Línea 7 (que su cascada sea el mismo componente que la de San Pedro y no una variante propia lo supuso la sesión del 22 de octubre de 2026: por confirmar con Ricardo), sin espejo, rumbo 7,7° (cuerda de la vía de la Línea 7 en OSM) y ancla en el centroide del KML; el comando exacto está en `data/osm/README.md`. Primera estación que corrió el ciclo completo; la versión vigente es la más alta de la carpeta. La tarea que lleva la estación es `docs/tasks/task-29`.
 
 ## Hechos propios
 

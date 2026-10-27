@@ -21,7 +21,7 @@ El skill con `references/general.md`, los componentes que forman la estación y 
 
 Piensas y aplicas las reglas a la vez, con la libertad y los límites que el skill describe. Trabajas a fondo e iteras con tus propias herramientas hasta que el resultado quede y haga sentido: Ricardo revisa el resultado, no los intentos.
 
-Escribes la versión nueva como `<slug>-NN-claude.osm` en la carpeta de la estación, con el número siguiente al de la versión de la que partes, y no tocas las versiones anteriores. No haces commits. Nunca abres JOSM ni ningún proceso gráfico en el escritorio de Ricardo: lo que necesitas ver lo produces como imagen o SVG en `sat/` de la carpeta de la estación, que git ignora, y lo nombras en el reporte. Un bloqueo o una denegación de permiso se reporta como tal, antes que nada, y nunca como éxito.
+Escribes la versión nueva como `<slug>-NN-claude.osm` en la carpeta de la estación, con el siguiente número libre de la carpeta, y no tocas las versiones anteriores. No haces commits. Nunca abres JOSM ni ningún proceso gráfico en el escritorio de Ricardo: lo que necesitas ver lo produces como imagen o SVG en `sat/` de la carpeta de la estación, que git ignora, y lo nombras en el reporte. Un bloqueo o una denegación de permiso se reporta como tal, antes que nada, y nunca como éxito.
 
 ## Cómo reportas
 

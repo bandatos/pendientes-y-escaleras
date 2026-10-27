@@ -28,3 +28,7 @@ Residuos que hoy deja la plantilla y que esta task debe bajar: General Anaya ban
 
 - [ ] Regenerar General Anaya con --out contra la 06 y Portales contra la 05 da residuo por elemento menor que la tolerancia acordada en task-38, escaleras del andén incluidas
 - [ ] El bloque `local` de General Anaya ya no lleva las escaleras del andén ni la losa
+
+## Notas de trabajo
+
+- 27 de octubre de 2026 (madrugada, hallazgo del crítico, hipótesis sin verificar en imagen): los polígonos de andén publicados de General Anaya y Portales (`railway=platform`, de 10 a 13 m de ancho) contienen las dos vías de OSM a lo largo de los 150 m. O las vías de OSM están corridas, o el andén es demasiado ancho; viene del hecho «el andén ocupa la franja entera del KML». Verificar sobre Esri antes de tocar la plantilla; si el andén es el que sobra, es un cambio de esta task y una corrección en OSM contra ids del servidor.

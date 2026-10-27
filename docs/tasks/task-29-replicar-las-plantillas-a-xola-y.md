@@ -1,7 +1,7 @@
 ---
 type: task
 id: task-29
-title: Replicar las plantillas a Xola y San Joaquín
+title: "Replicar la plantilla de Tlalpan a Xola (L2); la parte de San Joaquín quedó cumplida"
 state: open
 date: 2026-09-02
 owner: ai
@@ -11,7 +11,7 @@ related: ["[[adr-0006]]", "[[adr-0010]]", "[[adr-0014]]", "[[task-36]]", "[[task
 validate-paths: false
 ---
 
-# Replicar las plantillas a Xola y San Joaquín
+# Replicar la plantilla de Tlalpan a Xola (L2); la parte de San Joaquín quedó cumplida
 
 Segundo paso del plan de Ricardo: una vez afinadas las dos plantillas ([[task-26]]), generar las estaciones hermanas y comparar. Xola ya exporta sin errores contra `tlalpan-surface` (mismo perfil de etiquetas que Portales, hereda el puente); San Joaquín tiene en la base los mismos 14 nodos, 26 aristas y modos que San Pedro de los Pinos, pero la dirección de almacenamiento de sus aristas bidireccionales difiere y el generador necesitó canonicalizarlas para exportarla. Xola requiere además decidir sus tres elevadores, presentes en `data/raw/elevadores_escaleras_v4.csv` y ausentes en la base (el generador falla con error nombrado ante un elevador hasta que `tags.py` los soporte como nodo `highway=elevator`). Rumbos: Xola 8,7° del GTFS; San Joaquín sin shape, medir sobre la calle como en San Pedro.
 
@@ -19,7 +19,8 @@ Dos cuidados: el índice entre pathways paralelos se asigna por orden de `miro_i
 
 ## Criterios de aceptación
 
-- [ ] Xola (`data/osm/l7-xola/`) y San Joaquín (`data/osm/l7-san-joaquin/`) generados y validados (San Joaquín hecho el 21 de octubre)
+- [ ] Xola (`data/osm/l2-xola/`, Línea 2, componente `tlalpan-surface`) generada y validada
+- [x] San Joaquín (`data/osm/l7-san-joaquin/`) generada, validada, aprobada (09) y publicada (changeset 191086058)
 - [ ] Las diferencias contra Portales y San Pedro caben en la plantilla o quedan anotadas como adiciones
 
 ## Notas de trabajo
@@ -39,4 +40,4 @@ Dos cuidados: el índice entre pathways paralelos se asigna por orden de `miro_i
   - **Cosmético.** En `san-joaquin-level-3.svg` las etiquetas de los dos andenes se enciman; arreglo de dos líneas en `preview.py` que cambiaría también las previews de San Pedro y Portales.
 - 22 de octubre de 2026 ([[2026-10-22-sesion-ciclo-de-afinacion-y-san-joaquin]]): San Joaquín corrió el ciclo de [[adr-0015]] hasta `san-joaquin-06-claude.osm` (turnos de Ricardo 02, 03 y 05). Respuestas a los llamados de arriba: pellizcos del KML, multipolígono con islas; `closed_doors` y la puerta norte del oriente, al bloque por estación de [[task-38]]. Puertas en los anillos de explanadas ajenas: se quedan acopladas, porque son del mismo nivel y colindantes («yo creo que está bien que quede acoplado, sobre todo si es del mismo nivel y claramente son colindantes»). Queda Xola.
 - 22 de octubre de 2026 (sesión de San Antonio): Ricardo aprobó `san-joaquin-06-claude.osm` («P2. Sí San Joaquín», ante «¿cuentan ya como aprobadas?»): aprobada (06); el cierre de estación como acto propio sigue pendiente de definir ([[task-41]], punto 3). Sus hechos de estación (eje del pasillo central en u = 4,0, largos 21 / 21 / 14,4, cambio de andén de 8,9 m, área de la 06, puertas) viven ahora en el bloque `stations.0200L7-SANJOAQUIN` de `l7-deep-cascade.json`; regenerar con `--out` fuera de la carpeta reproduce la 06 (26/26 pathways a < 0,1 m, 92/92 vértices del área a < 0,3 m). Quedan cuatro pasillos de calle hasta 0,26 m distintos porque en la 06 Ricardo ortogonalizó los pabellones de OSM (nodos 5582691813/16/19); el coordinador recomienda aceptarlo como diferencia (es una corrección a OSM, se sube a OSM), pendiente de Ricardo en [[task-41]]. Las referencias del skill nombraban a Xola como estación del andén profundo de L7: es de la L2 de superficie (`tlalpan-surface`), y se corrigió.
-- 27 de octubre de 2026 ([[2026-10-27-sesion-seis-estaciones-afinadas-y-primera-publicacion]]): San Joaquín aprobada en `san-joaquin-09-claude.osm`, sobre la 07 de Pablo: una sola puerta por pabellón (quitó las cuatro laterales), centro del pabellón alineado con la entrada, nombre «Entrada Metro San Joaquín», reversibles de arriba hacia abajo con `incline=down` ([[adr-0016]]), par de −1 a 0 a 3,0 m con el oriente corrido −0,47 m, paso bajo las vías enderezado. `-pub` lista, pendiente de publicar. Xola sigue sin generar y ahora espera a [[task-45]] (vestíbulo longitudinal de Tlalpan).
+- 27 de octubre de 2026 ([[2026-10-27-sesion-seis-estaciones-afinadas-y-primera-publicacion]]): San Joaquín aprobada en `san-joaquin-09-claude.osm`, sobre la 07 de Pablo: una sola puerta por pabellón (quitó las cuatro laterales), centro del pabellón alineado con la entrada, nombre «Entrada Metro San Joaquín», reversibles de arriba hacia abajo con `incline=down` ([[adr-0016]]), par de −1 a 0 a 3,0 m con el oriente corrido −0,47 m, paso bajo las vías enderezado. Publicada por Ricardo en el changeset 191086058 (00:5x del 27 de octubre), que salió con el comentario corto de San Pedro por error; la aclaración va en la discusión de ese changeset. Con eso la parte de San Joaquín de esta task está cumplida y la task queda solo para Xola, que es de la Línea 2 (`l2-xola/`, no `l7-`) y espera a [[task-45]] (vestíbulo longitudinal de Tlalpan).
