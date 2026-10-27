@@ -28,11 +28,13 @@ El primer turno es de análisis y trazo: un agente lee la estación completa (su
 
 El cierre es aprender: lo que la estación enseñó se escribe en las referencias de este skill, en la plantilla o en el generador, para que la siguiente estación salga mejor desde el primer saque. Si la sesión cambió reglas que alcanzan a otras estaciones, el coordinador pregunta a Ricardo si quiere aplicarlas a la última versión de las que correspondan (las del mismo componente o todas) y genera para cada una un turno nuevo que él revisa.
 
-Cuando la ventana de contexto se acerca a 250 mil tokens, el coordinador se lo dice a Ricardo y él decide si la revisión sigue en una sesión nueva; el estado queda escrito para el relevo en la tarea que lleva la estación (hoy San Pedro y Portales en task-26, con el defecto de San Pedro en task-40; San Joaquín en task-29).
+Cuando la ventana de contexto se acerca a 250 mil tokens, el coordinador se lo dice a Ricardo y él decide si la revisión sigue en una sesión nueva; el estado queda escrito para el relevo en la tarea de la estación, enlazada desde su archivo en `references/estaciones/`.
 
 ## Lo que siempre le llega a Ricardo
 
 Solo lo que aporta: lo que Ricardo no sabe y le sirve para decidir o revisar. Lo que se revisó y no produjo cambio, o lo que él ya sabe porque lo hizo o lo dijo («no tocaste elementos de OSM», «el orden de las escaleras estaba bien»), no se reporta; el silencio sobre un rubro significa que no hubo nada.
+
+Lo que sí llega, llega entero: cada cambio o hallazgo con el detalle que requiera para entenderse y decidirse (qué elemento, cuánto se movió, por qué, qué alternativa había), aunque el mensaje se alargue. Resumir varios cambios no triviales en una frase es el error, no la extensión: un resumen que obliga a Ricardo a preguntar «¿cuál exactamente?» le cuesta más que el párrafo completo. Lo que se filtra es lo que no aporta, nunca el detalle de lo que sí.
 
 - **Todo el diff, no solo lo que él enlistó.** Cuando Ricardo sube una versión, su mensaje cuenta parte de lo que hizo. El turno compara la versión completa contra la anterior y le presenta también lo que no mencionó, con una hipótesis de si fue intencional. Ricardo valida o corrige cada caso; a él le interesa justamente encontrar lo que no vio.
 - **Cada cambio a un elemento que viene de OSM**, con la hipótesis de intención: algunos son obvios, otros no, y adivinar está bien, pero él confirma uno por uno.
