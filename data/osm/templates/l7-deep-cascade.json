@@ -215,6 +215,118 @@
      "geometry": ["E-02", "N-09"]}
   ],
   "stations": {
+    "0200L7-CONSTITUYENTES": {
+      "comment": "Hechos de Constituyentes (versión 04, 27 de octubre de 2026, sin revisar por Ricardo). El grafo es el de San Pedro un nivel más hondo: andenes en -4 y paso bajo las vías en -5; por lado tres conjuntos de tres escaleras (-4→-3 hasta N-02/N-06, -3→-2 hasta N-09/N-08, -2→-1 hasta el vestíbulo de torniquetes N-03/N-07) y de ahí un pasillo a la entrada, sin pabellón en el grafo. «keys» cambia de papel N-03/N-09 (oriente) y N-07/N-08 (poniente) respecto de San Pedro: el tercer banco de la plantilla sube al vestíbulo de torniquetes y el pasillo a la calle sale de él. Los accesos son las entradas de OSM bajo los dos techos angostos (1357108706 y 1368217717), en la plaza hundida (-1), sin adoptar los techos como pabellón.",
+      "keys": {"N-03": "N-09", "N-09": "N-03", "N-07": "N-08", "N-08": "N-07"},
+      "area": {
+        "source": "KML de la estación con dos cambios (26 de octubre de 2026): costuras de hasta 0.45 m tratadas como pellizcos (con los 0.3 m de omisión la boca de la salida lateral norte del andén oriente quedaba tras un muro de 0.2 a 0.4 m y su isla abierta al contorno; se abren también los dos muros de 0.3 a 0.4 m del rectángulo oriente) y, en el poniente, sin la espiga de 0.5 m entre la salida lateral norte y el rectángulo de salida, que dejaba la isla en L tocando el contorno. Versión 02 (26 de octubre de 2026, Ricardo): sin las dos islas delgadas de 1.1 a 1.9 m que el KML dibujaba dentro de los rectángulos de salida (la L del poniente, en u 7.4 a 18.7 y v -24.6 a -35.4, y la angosta del oriente, en u 7.7 a 9.3 y v 23.7 a 32.7): no son muros. Quedan las cuatro islas de las salidas laterales.",
+        "outer": [[19.41188302, -99.19127918],[19.41188723, -99.19129136],[19.41188023, -99.19131684],[19.41186479, -99.19135757],[19.41204023, -99.19142726],[19.41198465, -99.19156189],[19.41180812, -99.19149862],[19.41178824, -99.19154501],[19.41177436, -99.19157647],[19.41176249, -99.19159091],[19.41174106, -99.19160533],[19.41172229, -99.1916096],[19.41170438, -99.19161135],[19.41167594, -99.19160892],[19.41186835, -99.19169426],[19.41178628, -99.19187985],[19.41167308, -99.19182195],[19.41166256, -99.19185491],[19.41146703, -99.19177211],[19.41144389, -99.19175602],[19.41142199, -99.19173193],[19.41141415, -99.19169855],[19.41141661, -99.19166913],[19.41141928, -99.19164114],[19.41146534, -99.19153578],[19.41134108, -99.19148627],[19.41131708, -99.19146895],[19.41129705, -99.19144473],[19.41128407, -99.19140748],[19.41127929, -99.19137179],[19.41128026, -99.1913359],[19.41129603, -99.19129093],[19.41073027, -99.19105635],[19.41077556, -99.19092112],[19.41133326, -99.19114752],[19.41135869, -99.191076],[19.41137753, -99.19104898],[19.41139445, -99.19103205],[19.41141898, -99.19102192],[19.41143721, -99.19101971],[19.41147168, -99.19102211],[19.41151613, -99.19103914],[19.41162901, -99.19108054],[19.41165227, -99.19101502],[19.41167109, -99.19097176],[19.41169171, -99.19095349],[19.41171161, -99.19094178],[19.41173723, -99.19093724],[19.41175752, -99.19094185],[19.41213829, -99.19111641],[19.4120486, -99.19134738]],
+        "inner": [
+          [[19.41156077, -99.19124387],[19.41159683, -99.19114939],[19.4115067, -99.19111036],[19.41148623, -99.19110364],[19.4114604, -99.191098],[19.41144329, -99.19110127],[19.41142424, -99.19111912],[19.41140149, -99.19117697]],
+          [[19.41136121, -99.19132105],[19.41135238, -99.1913457],[19.41134859, -99.19137288],[19.41135295, -99.19138948],[19.41135895, -99.19140516],[19.41137562, -99.19141737],[19.4114916, -99.19146706],[19.4115207, -99.19138449]],
+          [[19.41180303, -99.19133324],[19.41181504, -99.19130094],[19.41181718, -99.19128673],[19.41181936, -99.19127043],[19.41181577, -99.19125134],[19.41177427, -99.19123264],[19.41177454, -99.19122531],[19.41176525, -99.19121658],[19.41169778, -99.19118702],[19.41166189, -99.19128416]],
+          [[19.41161951, -99.19142301],[19.41158543, -99.19150982],[19.41168639, -99.1915459],[19.41169974, -99.1915436],[19.41171124, -99.19154016],[19.41172115, -99.19153417],[19.41172728, -99.1915201],[19.41174628, -99.19147421]]
+        ]
+      },
+      "osm_tags": {
+        "way/1368217717": {"building": "roof",
+                           "comment": "El techo poniente decía building=metro_constituyentes; es un techo como el oriente (1357108706, building=roof). Ricardo, 26 de octubre de 2026."}
+      },
+      "nodes": {
+        "N-01": {"comment": "Constituyentes: vestíbulo de andén oriente en -4, al pie del primer conjunto."},
+        "N-02": {"comment": "Constituyentes: mezzanine -3 oriente."},
+        "N-09": {"comment": "Constituyentes: mezzanine -2 oriente, no centro de pabellón."},
+        "N-03": {"comment": "Constituyentes: vestíbulo de torniquetes oriente (-1), del que sale el pasillo a la entrada."},
+        "E-02": {"building": null, "osm_node": 4808628384, "level": -1, "connect_to": [942368909],
+                 "comment": "Constituyentes: la entrada 4808628384 de OSM (wheelchair=yes), bajo el techo 1357108706, en la plaza hundida. Nivel -1 provisional: Miró la tiene en 0 y la corrección va allá (Ricardo, 26 de octubre de 2026). Un solo connector, en -1, al andador 942368909 frente a la puerta, en el pie de la escalera 1357109655 que baja de la banqueta a la plaza."},
+        "N-05": {"comment": "Constituyentes: vestíbulo de andén poniente en -4."},
+        "N-06": {"comment": "Constituyentes: mezzanine -3 poniente."},
+        "N-08": {"comment": "Constituyentes: mezzanine -2 poniente, no centro de pabellón."},
+        "N-07": {"comment": "Constituyentes: vestíbulo de torniquetes poniente (-1)."},
+        "E-01": {"building": null, "osm_node": 4808628383, "level": -1,
+                 "detach_from": [488572090], "connect_to": [488572090],
+                 "connector_level": 0,
+                 "connector_tags": {"fixme": "Escalera exterior de la banqueta (0) a la plaza hundida (-1), fuera del sistema del Metro, trazada por indicación de Ricardo (26 de octubre de 2026), no relevada: sigue la dirección de la peatonal 488572090 hasta un pie fijo en la plaza. Falta confirmar su forma, sus tramos y su ancho."},
+                 "comment": "Constituyentes: la entrada 4808628383 de OSM, movida bajo el techo poniente 1368217717 en la posición espejo de E-02 (local, osm_node_at) y suelta de la peatonal 488572090, que conserva su trazo. La punta de esa peatonal está en la banqueta, en el 0 (Ricardo, 26 de octubre de 2026), y a la plaza hundida se baja por una escalera exterior que sigue la dirección de la peatonal hasta un pie fijo (local, connector_foot): el connector es esa escalera, -1;0, más un andador en el -1 del pie a la entrada (Ricardo, 26 de octubre de 2026). La escalera no está relevada."}
+      },
+      "fit": {"cascades": null},
+      "banks": {
+        "cascada-oriente-3": {"place": ["from"], "stacked_on": null, "stack_offset": null},
+        "cascada-poniente-3": {"place": ["from"], "stacked_on": null, "stack_offset": null}
+      },
+      "extra_ways": {
+        "vestibulo-oriente": {"level": -4},
+        "vestibulo-poniente": {"level": -4},
+        "paso-bajo-vias": {"level": -5},
+        "mezzanine-oriente": {"level": -3},
+        "mezzanine-poniente": {"level": -3},
+        "mezzanine2-oriente": {"geometry": [{"bank": "cascada-oriente-2", "end": "to"}, "N-09"], "level": -2,
+                               "comment": "Mezzanine -2 oriente: del pie del segundo conjunto al del tercero."},
+        "mezzanine2-poniente": {"geometry": [{"bank": "cascada-poniente-2", "end": "to"}, "N-08"], "level": -2},
+        "torniquetes-oriente": {"geometry": [{"bank": "cascada-oriente-3", "end": "to"}, "N-03"]},
+        "torniquetes-poniente": {"geometry": [{"bank": "cascada-poniente-3", "end": "to"}, "N-07"]}
+      },
+      "edges": {
+        "N-09>N-03:4:1": {"bank": "cascada-oriente-3",
+                          "comment": "Constituyentes: el tercer conjunto tiene tres escaleras, no dos."},
+        "N-08>N-07:4:1": {"bank": "cascada-poniente-3"}
+      },
+      "local": {
+        "comment": "Marco de Constituyentes: rumbo 338.8° (tramo de la vía 320892187 sobre el andén y franja del KML más angosta), ancla en el centroide del KML. Pasillo central en u = 2.3 en los dos lados (ejes del KML: 1.7 al oriente, 2.8 al poniente). Caracol paralelo a las vías (Ricardo, 26 de octubre de 2026, versión 04): la orientación sale de la figura de cada rectángulo de salida, que mide unos 54 × 28 m al oriente (u -3.5 a 50.5, v 16.4 a 44.5) y 48 × 21 a 24 m al poniente (u -3.8 a 44.6, v -24.1 a -45.1/-48.7): las escaleras corren por el lado largo (u) y las tres franjas se reparten en el corto (v), todas de 21 m. Los tres conjuntos ocupan la mitad sur del rectángulo, de u 0 a 21, bajo el techo y la plaza hundida (Ricardo, 27 de octubre de 2026: el -2→-1 arranca al norte de la entrada pero puede pasar bajo la plaza): el -2→-1 sube hacia el norte hasta el vestíbulo -1 de torniquetes en u = 22.5, detrás del techo y lejos de la plaza; media vuelta en -2 por el muro sur (u = -1.5) y el -3→-2 sube hacia el sur; media vuelta en -3 en u = 22 y el -4→-3 sube desde el sur, donde desemboca, en u = -1, junto a la boca del pasillo central en el vestíbulo transversal -4. Franjas a 2.2 m de claro entre escaleras de conjuntos vecinos (ejes a 5.8 m). Oriente: 26.2, 32.0, 37.8, a 2.8 m de claro del vestíbulo -4 (v = 21.6): con 2.2 la primera escalera pasaría a 0.2 m del nodo 8726342593 de OSM (13.23, 24.0), pie de la escalera 1357109655 y punta del connector de E-02. Poniente: -29.4, -35.2, -41.0, a 6.7 m del vestíbulo -4 (v = -20.9): así el pasillo de la entrada (v = -35.94) pasa sobre el -3→-2, como en el oriente (v = 32.69 sobre 30.2/32.0/33.8), y no junto al -2→-1, que ahí ya va casi en el -1.",
+        "station_node": {"u": 2.3},
+        "nodes": {
+          "N-03": {"u": 22.5, "v": 32.69, "comment": "A la altura de la entrada, detrás del techo, en la cabecera del tercer conjunto."},
+          "N-07": {"u": 22.5, "v": -35.94},
+          "E-01": {"osm_node_at": [17.76, -35.94],
+                   "connector_foot": [13.6968, -21.2943],
+                   "comment": "Bajo el techo poniente, a la misma fracción del techo que E-02 en el oriente (0.457 del largo desde la punta del lado de las vías, 0.489 del ancho): la entrada de OSM estaba en (21.47, -21.44). El pie de la escalera exterior es el punto de la recta de la peatonal 488572090, prolongada desde su punta (21.47, -21.43), que en planta queda a la mitad entre las dos primeras escaleras, de norte a sur, del conjunto -3→-2 de la versión 03 (u = 14.60 y 12.79): (13.70, -21.29). Fijo: no se mueve con la cascada (Ricardo, 26 de octubre de 2026)."}
+        },
+        "banks": {
+          "cascada-oriente-1": {"junction": [-1.0, 26.2], "direction": "+u", "length": 21, "lead": [1.0, 1.0],
+                                "comment": "-4→-3, franja junto al vestíbulo -4. N-01 es su pie, en el sur, junto a la boca del pasillo central; la cabecera en u = 22, donde da media vuelta al segundo."},
+          "cascada-oriente-2": {"junction": [22.0, 32.0], "direction": "-u", "length": 21, "lead": [1.0, 1.5],
+                                "comment": "-3→-2 de vuelta hacia el sur, franja de en medio; 1.5 m en su extremo lejano (el -2, al sur), regla de la cascada."},
+          "cascada-oriente-3": {"junction": [-1.5, 37.8], "direction": "+u", "length": 21, "lead": [1.5, 1.5],
+                                "comment": "-2→-1, franja lejana, hacia el norte hasta el vestíbulo -1. Tramos de 1.5 m, no 1: abajo, para que el pasillo -2 de la media vuelta quede ortogonal con el 1.5 del segundo; arriba, para que el vestíbulo -1 (u = 22.5) no quede colineal con la media vuelta -3 (u = 22) a 0.7 m ni a 0.3 m del tramo corto de la escalera -3→-2 más cercana."},
+          "cascada-poniente-1": {"junction": [-1.0, -29.4], "direction": "+u", "length": 21, "lead": [1.0, 1.0]},
+          "cascada-poniente-2": {"junction": [22.0, -35.2], "direction": "-u", "length": 21, "lead": [1.0, 1.5]},
+          "cascada-poniente-3": {"junction": [-1.5, -41.0], "direction": "+u", "length": 21, "lead": [1.5, 1.5]}
+        },
+        "edges": {
+          "P-01>N-01:1:0": {"geometry": [{"spine": "P-01", "u": -27.3}, {"elbow": [-27.3, 21.6], "radius": 8.58, "segments": 4}, [-1.0, 21.6]],
+                            "comment": "Vestíbulo transversal oriente en el eje del KML (v = 21.6; Ricardo, 26 de octubre de 2026). La salida lateral sur llega hasta el pie del primer conjunto (u = -1)."},
+          "P-01>N-01:1:1": {"geometry": [{"spine": "P-01", "u": 2.3}, {"spine": "P-01", "u": 2.3, "dv": 8.8}, [2.3, 21.6]]},
+          "P-01>N-01:1:2": {"geometry": [{"spine": "P-01", "u": 27.9}, [27.9, 21.6]],
+                            "comment": "La salida lateral norte del andén oriente no da vuelta como las otras tres: en el KML desemboca en el rectángulo de salida, y ahí entra recta al vestíbulo -4, que la lleva hacia el sur hasta el pie del primer conjunto."},
+          "P-02>N-05:1:0": {"geometry": [{"spine": "P-02", "u": -25.8}, {"elbow": [-25.8, -20.9], "radius": 8.58, "segments": 4}, [-1.0, -20.9]],
+                            "comment": "Vestíbulo transversal poniente en v = -20.9, 0.6 m hacia las vías del eje del KML (-21.5): la escalera exterior que baja a la plaza hundida pasa encima (v -21.29 a -21.43, u 13.7 a 21.47) y en el eje quedaría a 0.2 m de ella."},
+          "P-02>N-05:1:1": {"geometry": [{"spine": "P-02", "u": 2.3}, {"spine": "P-02", "u": 2.3, "dv": -8.8}, [2.3, -20.9]]},
+          "P-02>N-05:1:2": {"geometry": [{"spine": "P-02", "u": 27.2}, {"elbow": [27.2, -20.9], "radius": 8.58, "segments": 4}, [18.62, -20.9]],
+                            "comment": "Desemboca en el vestíbulo -4 donde este da vuelta hacia el rectángulo de salida."},
+          "N-04>N-01:2:0": {"geometry": [{"spine": "P-01", "u": 0.4, "dv": 1.0}, {"spine": "P-01", "u": 2.3, "dv": 8.8}],
+                            "comment": "Escalera de cambio de andén de unos 8 m (sin dato de la estación)."},
+          "N-04>N-05:2:0": {"geometry": [{"spine": "P-02", "u": 0.4, "dv": -1.0}, {"spine": "P-02", "u": 2.3, "dv": -8.8}]}
+        },
+        "extra_ways": {
+          "vestibulo-oriente": {"geometry": [[27.9, 21.6], [2.3, 21.6], [-1.0, 21.6], "N-01"],
+                                "comment": "Vestíbulo transversal -4 oriente: de la salida lateral norte hacia el sur, recibe el pasillo central y la salida lateral sur y da vuelta al pie del primer conjunto (N-01)."},
+          "vestibulo-poniente": {"geometry": [[18.62, -20.9], [2.3, -20.9], [-1.0, -20.9], "N-05"],
+                                 "comment": "Vestíbulo transversal -4 poniente: de la salida lateral norte (u = 18.62) hacia el sur, recibe el pasillo central y la salida lateral sur y entra al rectángulo de salida por su extremo sur, hasta el pie del primer conjunto (N-05). Pasa bajo la escalera exterior de arriba, a 0.4 m."},
+          "paso-bajo-vias": {"geometry": [{"spine": "P-01", "u": 0.4, "dv": 1.0}, {"spine": "P-02", "u": 0.4, "dv": -1.0}]},
+          "mezzanine-oriente": {"geometry": [{"bank": "cascada-oriente-1", "end": "to"}, "N-02"],
+                                "comment": "Media vuelta en -3 en u = 22, del primer conjunto al segundo."},
+          "mezzanine-poniente": {"geometry": [{"bank": "cascada-poniente-1", "end": "to"}, "N-06"]},
+          "mezzanine2-oriente": {"geometry": [{"bank": "cascada-oriente-2", "end": "to"}, "N-09"],
+                                 "comment": "Media vuelta en -2 por el muro sur (u = -1.5), del segundo conjunto al tercero."},
+          "mezzanine2-poniente": {"geometry": [{"bank": "cascada-poniente-2", "end": "to"}, "N-08"]},
+          "torniquetes-oriente": {"geometry": [{"bank": "cascada-oriente-3", "end": "to"}, "N-03"],
+                                  "turnstile": {"from": "N-03", "distance": 2.555},
+                                  "comment": "Vestíbulo de torniquetes oriente, en u = 22.5 detrás del techo: de la cabecera del tercer conjunto hacia las vías hasta la altura de la entrada. El torniquete va a la mitad: provisional, no está relevado."},
+          "torniquetes-poniente": {"geometry": [{"bank": "cascada-poniente-3", "end": "to"}, "N-07"],
+                                   "turnstile": {"from": "N-07", "distance": 2.53}}
+        }
+      }
+    },
     "0200L7-SANANTONIO": {
       "comment": "Hechos de San Antonio (versión 02, 22 de octubre de 2026, sin revisar por Ricardo), con el croquis del STC (plano L7-12, 2002) como fuente de la planta subterránea. Los accesos son a cielo abierto: no hay pabellón (sin N-08 ni N-09) y cada vestíbulo de torniquetes sube a la calle por una sola escalera fija, que en el croquis es de dos tramos con un descanso (en L al poniente, en U al oriente) y desemboca, sin tramo corto, en la entrada que OSM ya tiene. Esa escalera no es un banco: va como geometría de su arista, y la cascada de cada lado queda en dos conjuntos. El encaje no acomoda la cascada de San Pedro en esta área, así que todo se coloca en «local».",
       "nodes": {
