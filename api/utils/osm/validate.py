@@ -85,6 +85,7 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
 
     errors += _check_incline(doc)
     errors += _check_incline_order(doc)
+    warnings += _check_reversible_sense(doc)
     warnings += _check_cross_level_nodes(doc)
     warnings += _check_bank_tips(doc)
     errors += _check_area_rings(doc)
@@ -311,10 +312,6 @@ def _check_incline(doc: OsmDocument) -> list[str]:
             conveying = way.tags.get("conveying")
             if conveying not in (None, "forward", "backward", "reversible"):
                 out.append(f"way {way.id}: conveying '{conveying}'")
-            if conveying == "reversible" and incline != "up":
-                out.append(
-                    f"way {way.id}: escalera reversible no dibujada de "
-                    f"abajo hacia arriba")
         elif len(parts) == 2 and incline is None:
             out.append(f"way {way.id}: cambia de nivel y no trae incline")
     return out
@@ -370,6 +367,28 @@ def _check_incline_order(doc: OsmDocument) -> list[str]:
                 f"way {way.id} ({way.label}): incline={incline} pero se "
                 f"dibuja del nivel {start:g} al {end:g}; la geometría de "
                 f"la plantilla parece escrita al revés")
+    return out
+
+
+def _check_reversible_sense(doc: OsmDocument) -> list[str]:
+    """Reversible dibujada de abajo hacia arriba: convención anterior.
+
+    Desde el 27 de octubre de 2026 la reversible va en su sentido
+    principal, que en L7 es bajar. Es aviso y no error porque una
+    familia con `reversible_runs: up` la dibuja hacia arriba a propósito
+    y el validador no lee la plantilla; la coherencia entre `incline` y
+    el orden de los nodos la sigue cuidando `_check_incline_order`.
+    """
+    out = []
+    for way in doc.ways:
+        if way.foreign or way.tags.get("highway") != "steps":
+            continue
+        if (way.tags.get("conveying") == "reversible"
+                and way.tags.get("incline") == "up"):
+            out.append(
+                f"way {way.id} ({way.label}): escalera reversible con "
+                f"incline=up; la convención vigente la dibuja de arriba "
+                f"hacia abajo con incline=down")
     return out
 
 

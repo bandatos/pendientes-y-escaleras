@@ -2366,9 +2366,8 @@ class StationBuilder:
             bank, tip_from, tip_to = self._bank_segment(spec, layout)
             tips = (tip_from, tip_to)
             points = [tip_from, tip_to]
-        # Bidireccional se dibuja siempre de abajo hacia arriba; el de un
-        # solo sentido conserva la flecha que el equipo trazó en Miró.
-        reverse = pw.is_bidirectional and lt < lf
+        reverse = T.draws_reversed(pw.mode_id, pw.is_bidirectional, lf, lt,
+                                   self.template.reversible_runs)
         if reverse:
             points = list(reversed(points))
         try:

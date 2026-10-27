@@ -34,6 +34,8 @@ Cuando la ventana de contexto se acerca a 250 mil tokens, el coordinador se lo d
 
 Solo lo que aporta: lo que Ricardo no sabe y le sirve para decidir o revisar. Lo que se revisó y no produjo cambio, o lo que él ya sabe porque lo hizo o lo dijo («no tocaste elementos de OSM», «el orden de las escaleras estaba bien»), no se reporta; el silencio sobre un rubro significa que no hubo nada.
 
+Lo que sí llega, llega entero: cada cambio o hallazgo con el detalle que requiera para entenderse y decidirse (qué elemento, cuánto se movió, por qué, qué alternativa había), aunque el mensaje se alargue. Resumir varios cambios no triviales en una frase es el error, no la extensión: un resumen que obliga a Ricardo a preguntar «¿cuál exactamente?» le cuesta más que el párrafo completo. Lo que se filtra es lo que no aporta, nunca el detalle de lo que sí.
+
 - **Todo el diff, no solo lo que él enlistó.** Cuando Ricardo sube una versión, su mensaje cuenta parte de lo que hizo. El turno compara la versión completa contra la anterior y le presenta también lo que no mencionó, con una hipótesis de si fue intencional. Ricardo valida o corrige cada caso; a él le interesa justamente encontrar lo que no vio.
 - **Cada cambio a un elemento que viene de OSM**, con la hipótesis de intención: algunos son obvios, otros no, y adivinar está bien, pero él confirma uno por uno.
 - **La capa de cada hallazgo.** Cada cosa que un turno cambia o propone se clasifica como general (todas las estaciones), de componente (las que comparten ese andén o esa entrada) o de la estación. El coordinador intuye la capa; Ricardo la valida.

@@ -4,10 +4,11 @@ La salida desde el pasillo central hasta el pabellón, en tres conjuntos de esca
 
 ## Lo que rige
 
-- Separación de 1,8 m entre ejes en todos los conjuntos; nodo de encuentro en el eje del conjunto; tramos cortos de 1 m a los nodos de encuentro (1,5 m en el extremo lejano del segundo conjunto).
+- Separación de 1,8 m entre ejes en los dos tríos (−3 a −2 y −2 a −1) y de **3,0 m en el par de −1 a la calle**, paralelas, dato de Pablo confirmado por Ricardo (`spacing` de `cascada-oriente-3` y `cascada-poniente-3`). La reversible de cada trío se dibuja de arriba hacia abajo con `incline=down` (`general.md`). Nodo de encuentro en el eje del conjunto; tramos cortos de 1 m a los nodos de encuentro (1,5 m en el extremo lejano del segundo conjunto).
+- El par de 3,0 m deja menos holgura sobre el trío de abajo que el de 1,8 m: con los corrimientos de la plantilla el generador avisa 0,20 m en San Pedro oriente y 0,15 m en los dos lados de San Joaquín, bajo el umbral de 0,3 m; los `stack_offset` quedan por reajustar desde las versiones aprobadas (en San Joaquín Pablo corrió el par oriente −0,47 m).
 - El tercer conjunto se corre en bloque respecto del eje del segundo, hacia el lado contrario a donde llegan los pasillos de −1 y −2, lo justo para que nada se encime entre niveles: en San Joaquín 0,45 m (un cuarto de la separación). En San Pedro poniente el motivo fue otro, que una conexión de −2 pasaba sobre la punta de una escalera de −1 a la calle (0,5 m).
 - Los pasillos de −2 y −1 son ortogonales: salen del nodo de encuentro sobre el eje del conjunto y, donde pasan sobre otro conjunto, van a medio claro (0,9 m del eje).
-- Los largos son de cada estación (ver `general.md`). San Joaquín: 21 / 21 / 14,4 m. San Pedro: 17 / 20,5 / 12,5 m al oriente y 17 / 16 / 8,5 m al poniente.
+- Los largos son de cada estación (ver `general.md`). San Joaquín: 21 / 21 / 14,4 m. San Pedro: 16,5 / 13,6 / 12,9 m al oriente y 21,9 / 21,5 / 14,3 m al poniente. La plantilla todavía trae los de la versión 03 de San Pedro (17 / 20,5 / 12,5 y 17 / 16 / 8,5 m) hasta que aprenda de su versión aprobada.
 - Regla de slots en todos los conjuntos; la fija en medio.
 - El pabellón adoptado de OSM recibe una puerta en cada lado salvo el de las escaleras; cuál está clausurada es un hecho de la estación.
 - En una estación hermana la cascada se mueve en bloque, probando primero tal como está dibujada y luego las ocho simetrías ancladas al pabellón de OSM; cabe la que deja todo dentro del área y el centro del pabellón dentro del pabellón, y entre las que caben se prefiere la que no mete las escaleras por el muro de la entrada de OSM, luego la paralela, luego la de aproche más corto. Acortar es el último recurso.

@@ -6,7 +6,7 @@ Carpeta `data/osm/l7-polanco/`. Componentes: andén profundo de la Línea 7 (`co
 
 - **Un solo lateral por andén.** Es la única de la familia con una salida lateral por andén, al norte, de unos 9 m de ancho (no los 6,5 m del componente) y con patas diagonales, 4,2° al oriente y 7,9° al poniente, que el `elbow` de la plantilla no expresa.
 - **Lóbulos sur del KML.** Son nichos electromecánicos y no llevan trazo (dato de Pablo).
-- **Salida doble al oriente.** Acceso doble con las dos bocas a 18,67 m una de otra y un descanso compartido; las dos escaleras miden 9,34 m. El generador aún no dibuja el acceso doble (`componentes/acceso-cielo-abierto.md`).
+- **Salida doble al oriente.** Acceso doble con las dos bocas a 18,67 m una de otra y el descanso compartido que dejó Pablo; las dos escaleras miden 9,95 y 8,73 m (no las 9,34 m iguales de antes). El generador aún no dibuja el acceso doble (`componentes/acceso-cielo-abierto.md`).
 - **Escaleras a la calle** de 10 m en el norponiente y el surponiente: regla de Pablo solo para Polanco.
 - **Pestaña sur** alargada 4,5 m por Pablo.
 - **Entradas de OSM** movidas de 3,1 a 11,9 m por dato de campo; la de 11,9 m excede el tope general de 10 m y se aceptó.

@@ -196,7 +196,8 @@ class FamilyTemplate:
         self.banks: dict[str, dict] = data.get("banks", {})
         self.station_area: str = data.get("station_area", "kml")
         # Hacia dónde corre de ordinario una escalera reversible, que
-        # decide de qué lado del banco va: en L7 bajan.
+        # decide de qué lado del banco va y en qué sentido se dibuja: en
+        # L7 bajan.
         self.reversible_runs: str = data.get("reversible_runs", "down")
         # El edificio de acceso mueve el acceso a la puerta y el nodo
         # interior al centro del lado opuesto; el resto de la plantilla

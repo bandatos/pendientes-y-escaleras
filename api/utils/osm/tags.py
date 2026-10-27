@@ -207,6 +207,25 @@ MODE_NAMES = {
 UNSUPPORTED_MODES = (MODE_MOVING_WALKWAY, MODE_ELEVATOR)
 
 
+def draws_reversed(mode_id: int, is_bidirectional: bool,
+                   level_from: float, level_to: float,
+                   reversible_runs: str = "down") -> bool:
+    """¿El way se dibuja al revés del pathway (de `to` hacia `from`)?
+
+    Un pathway de un solo sentido conserva la flecha que el equipo trazó
+    en Miró. Uno bidireccional se dibuja de abajo hacia arriba, salvo la
+    escalera eléctrica reversible, que va en su sentido principal: en L7
+    baja, así que se dibuja de arriba hacia abajo con `incline=down`
+    (dato de campo de Pablo, confirmado por Ricardo el 27 de octubre de
+    2026).
+    """
+    if not is_bidirectional or level_from == level_to:
+        return False
+    if mode_id == MODE_ESCALATOR and reversible_runs == "down":
+        return level_to > level_from
+    return level_to < level_from
+
+
 def way_tags_for_pathway(mode_id: int, is_bidirectional: bool,
                          level_from: float, level_to: float,
                          reversed_drawing: bool) -> dict:
@@ -214,8 +233,7 @@ def way_tags_for_pathway(mode_id: int, is_bidirectional: bool,
 
     `level_from`/`level_to` son los niveles de los stops origen y destino
     del pathway; `reversed_drawing` indica que el way se dibuja al revés
-    del pathway (caso bidireccional que se dibuja siempre de abajo hacia
-    arriba).
+    del pathway (`draws_reversed`).
     """
     if mode_id in UNSUPPORTED_MODES:
         raise UnsupportedModeError(
@@ -224,16 +242,11 @@ def way_tags_for_pathway(mode_id: int, is_bidirectional: bool,
             f"de exportar una estación que lo use")
     if mode_id not in MODE_NAMES:
         raise UnsupportedModeError(f"modo de pathway desconocido: {mode_id}")
-    lo, hi = (level_to, level_from) if reversed_drawing else (
+    first, last = (level_to, level_from) if reversed_drawing else (
         level_from, level_to)
     levels = [level_from, level_to]
     if mode_id in (MODE_STAIRS, MODE_ESCALATOR):
-        if hi > lo:
-            incline = "up"
-        elif hi < lo:
-            incline = "down"
-        else:
-            incline = "up"
+        incline = "down" if last < first else "up"
         conveying = None
         if mode_id == MODE_ESCALATOR:
             conveying = "reversible" if is_bidirectional else "forward"
@@ -241,7 +254,7 @@ def way_tags_for_pathway(mode_id: int, is_bidirectional: bool,
     else:
         incline = None
         if level_from != level_to:
-            incline = "up" if hi > lo else "down"
+            incline = "up" if last > first else "down"
         tags = footway_tags(levels, incline=incline)
     if not is_bidirectional:
         # También en las eléctricas de un solo sentido: GraphHopper y

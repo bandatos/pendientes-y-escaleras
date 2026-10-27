@@ -77,8 +77,8 @@
       "from": "N-03", "to": "N-09", "place": ["from", "to"],
       "stacked_on": "cascada-oriente-2", "stack_offset": -0.5,
       "junction": [-1.0, 31.0], "length": 12.5,
-      "lead": [1.0, 1.0], "spacing": 1.8,
-      "comment": "Dos escaleras -1→0 hacia el norte, encima de las -2→-1. El conjunto entero, nodos de encuentro incluidos, se corre de lado respecto del eje de abajo lo justo para que ninguna línea quede a menos de 0.3 m de otra de otro nivel: 0.5 m aquí, 0.45 m (un cuarto de la separación) en San Joaquín. Coloca N-03 y el centro del pabellón (N-09), que queda donde desembocan."
+      "lead": [1.0, 1.0], "spacing": 3.0,
+      "comment": "Dos escaleras -1→0 hacia el norte, encima de las -2→-1, a 3.0 m entre ejes (dato de Pablo, confirmado por Ricardo el 27 de octubre de 2026; los tríos siguen a 1.8 m). El conjunto entero, nodos de encuentro incluidos, se corre de lado respecto del eje de abajo lo justo para que ninguna línea quede a menos de 0.3 m de otra de otro nivel: 0.5 m aquí, 0.45 m (un cuarto de la separación) en San Joaquín; con el par a 3.0 m la holgura baja a 0.20 m y el stack_offset queda por reajustar. Coloca N-03 y el centro del pabellón (N-09), que queda donde desembocan."
     },
     "cascada-poniente-1": {
       "from": "N-05", "to": "N-06", "place": ["from"],
@@ -94,7 +94,7 @@
       "from": "N-07", "to": "N-08", "place": ["from", "to"],
       "stacked_on": "cascada-poniente-2", "stack_offset": -2.25,
       "junction": [-11.5, -38.75], "length": 8.5,
-      "lead": [1.0, 1.0], "spacing": 1.8,
+      "lead": [1.0, 1.0], "spacing": 3.0,
       "comment": "Corrido -2.25 m (una separación más un cuarto), confirmado por Ricardo el 22 de octubre de 2026: con los -2 m de San Pedro 05 su nodo de encuentro alto (N-08) quedaba a 0.2 m en planta de la reversible -2→-1 de abajo; así queda a 0.45 m, como en San Joaquín."
     }
   },
