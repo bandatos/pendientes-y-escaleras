@@ -2,12 +2,13 @@
 type: decision
 id: adr-0012
 title: "Sentido de las escaleras eléctricas: la flecha de Miró es el sentido real en las unidireccionales, las bidireccionales se dibujan del nivel alto al bajo, y la regla de pares se retira"
-state: accepted
+state: superseded
 date: 2026-09-02
 origin: ricardo
 deliberation: confirmed
 rationale: recorded
 source: ["[[2026-09-02-sesion-integracion-osm-y-niveles]]", "[[2026-09-02-sesion-primeras-dos-estaciones-josm]]"]
+superseded-by: "[[adr-0016]]"
 affects: ["api/utils/osm/tags.py", "api/utils/osm/builder.py", "api/utils/miro/pathway_mixin.py", "api/.claude/skills/miro-api/SKILL.md"]
 related: ["[[adr-0010]]", "[[task-24]]"]
 ---

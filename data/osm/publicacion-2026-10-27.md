@@ -1,6 +1,6 @@
 # Publicación en OSM de seis estaciones, 27 de octubre de 2026
 
-Ya publicadas por Ricardo: General Anaya (changeset 191085829) y Portales (changeset 191085874). Pendientes: Polanco, San Joaquín, San Pedro de los Pinos y San Antonio.
+Las seis las publicó Ricardo con su cuenta la madrugada del 27 de octubre de 2026: General Anaya (changeset 191085829), Portales (191085874), Polanco (191085961), San Antonio (191086008), San Joaquín (191086058) y San Pedro de los Pinos (191086111). Cada changeset contiene exactamente su archivo `-pub`, verificado contra el servidor. El changeset de San Joaquín (191086058) lleva por error el comentario corto de San Pedro; como un changeset cerrado no se edita, la aclaración y el texto correcto van como primer comentario en su discusión.
 
 Archivos para subir con JOSM, uno por estación, generados con `publish_station_osm` a partir de la versión aprobada de cada una. Son copias sin las etiquetas de traza (`note:*`) y sin `upload='never'`, por eso en JOSM la flecha de subir aparece activa. Las versiones de trabajo siguen en la carpeta de cada estación.
 

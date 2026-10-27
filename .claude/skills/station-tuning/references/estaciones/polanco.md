@@ -1,6 +1,6 @@
 # Polanco (Línea 7)
 
-Carpeta `data/osm/l7-polanco/`. Componentes: andén profundo de la Línea 7 (`componentes/anden-l7-profundo.md`), cascada de la Línea 7 en su forma de caracol (`componentes/cascada-san-pedro.md`) y acceso a cielo abierto (`componentes/acceso-cielo-abierto.md`). Marco de la 01: rumbo 6,5° y ancla 19.4335865,-99.1909774, en el centroide del KML. Sus hechos viven en el bloque `stations.0200L7-POLANCO` de `data/osm/templates/l7-deep-cascade.json`, que empieza con `keys` porque los sufijos del tablero nombran otros papeles que en las hermanas. La versión vigente es la más alta de la carpeta. La tarea que lleva la estación se enlaza aquí cuando se abra.
+Carpeta `data/osm/l7-polanco/`. Componentes: andén profundo de la Línea 7 (`componentes/anden-l7-profundo.md`), cascada de la Línea 7 en su forma de caracol (`componentes/cascada-san-pedro.md`) y acceso a cielo abierto (`componentes/acceso-cielo-abierto.md`). Marco de la 01: rumbo 6,5° y ancla 19.4335865,-99.1909774, en el centroide del KML. Sus hechos viven en el bloque `stations.0200L7-POLANCO` de `data/osm/templates/l7-deep-cascade.json`, que empieza con `keys` porque los sufijos del tablero nombran otros papeles que en las hermanas. La versión vigente es la más alta de la carpeta. La tarea que lleva la estación es `docs/tasks/task-44`.
 
 ## Hechos propios
 

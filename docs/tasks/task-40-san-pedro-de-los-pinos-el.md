@@ -2,7 +2,7 @@
 type: task
 id: task-40
 title: "San Pedro de los Pinos: el pasillo de −1 poniente sale del área por una muesca del KML"
-state: open
+state: closed
 date: 2026-10-22
 owner: ai
 parent: "[[task-26]]"
@@ -31,4 +31,8 @@ La pregunta de los radios de los codos sigue sin presentarse; la regla vigente e
 
 ## Criterios de aceptación
 
-- [ ] La siguiente versión de San Pedro no tiene tramos fuera del área según segcheck.py
+- [x] La siguiente versión de San Pedro no tiene tramos fuera del área según segcheck.py
+
+## Notas de trabajo
+
+- 27 de octubre de 2026 ([[2026-10-27-sesion-seis-estaciones-afinadas-y-primera-publicacion]]): resuelto en `san-pedro-de-los-pinos-07-claude.osm`, sobre la 06 de Pablo: la muesca se rellenó (vértices −30188 y −30189 fuera; el borde va de −30187 a −30190) y `segcheck` no encuentra tramos fuera del área; el tramo u = 9 queda a 1,47 m del borde. Pablo además agrandó el área 8,55 m y 7,8 m al sur en los lóbulos, con lo que «el poniente no cabe sin forzar el área» dejó de ser cierto. La esquina −30215 se llevó al muro del pabellón oriente en la 08. Versión aprobada: la 08.

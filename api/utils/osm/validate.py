@@ -294,8 +294,42 @@ def _check_inside_area(doc: OsmDocument) -> list[str]:
     return out
 
 
+def _tag_levels(way) -> tuple[int, ...]:
+    levels = way.tags.get("level", "")
+    return tuple(sorted(int(p) for p in levels.split(";") if p.strip()))
+
+
+def _landing_ways(doc: OsmDocument) -> set[int]:
+    """Footways de dos niveles que son el descanso entre dos tramos.
+
+    Pablo dibujó el acceso oriente de San Antonio como dos `steps` -1;0
+    unidos por un descanso plano; el descanso hereda el `level` de los
+    tramos pero no sube ni baja, así que no lleva `incline`. Cuenta como
+    descanso solo si sus dos puntas tocan escaleras de los mismos dos
+    niveles.
+    """
+    steps_at = defaultdict(set)
+    for way in doc.ways:
+        if way.tags.get("highway") != "steps":
+            continue
+        span = _tag_levels(way)
+        if len(span) == 2:
+            for nid in (way.nodes[0], way.nodes[-1]):
+                steps_at[nid].add(span)
+    out = set()
+    for way in doc.ways:
+        if way.tags.get("highway") != "footway" or len(way.nodes) < 2:
+            continue
+        span = _tag_levels(way)
+        if len(span) == 2 and all(span in steps_at[n]
+                                  for n in (way.nodes[0], way.nodes[-1])):
+            out.add(way.id)
+    return out
+
+
 def _check_incline(doc: OsmDocument) -> list[str]:
     out = []
+    landings = _landing_ways(doc)
     for way in doc.ways:
         # Una escalera de OSM que entra como escenografía trae las
         # etiquetas de quien la mapeó (en General Anaya, sin level).
@@ -312,7 +346,8 @@ def _check_incline(doc: OsmDocument) -> list[str]:
             conveying = way.tags.get("conveying")
             if conveying not in (None, "forward", "backward", "reversible"):
                 out.append(f"way {way.id}: conveying '{conveying}'")
-        elif len(parts) == 2 and incline is None:
+        elif (len(parts) == 2 and incline is None
+              and way.id not in landings):
             out.append(f"way {way.id}: cambia de nivel y no trae incline")
     return out
 

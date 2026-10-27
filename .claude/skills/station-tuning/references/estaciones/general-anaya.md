@@ -1,6 +1,6 @@
 # General Anaya (Línea 2)
 
-Carpeta `data/osm/l2-general-anaya/`. Componente: superficie de la Calzada de Tlalpan (`componentes/tlalpan-surface.md`, plantilla `data/osm/templates/tlalpan-surface.json`); marco de la 01: rumbo 16,1° y ancla 19.3532707,-99.1450020. Medidas en ese marco (u a lo largo del andén, v transversal). La versión vigente es la más alta de la carpeta. La tarea que lleva la estación se enlaza aquí cuando se abra.
+Carpeta `data/osm/l2-general-anaya/`. Componente: superficie de la Calzada de Tlalpan (`componentes/tlalpan-surface.md`, plantilla `data/osm/templates/tlalpan-surface.json`); marco de la 01: rumbo 16,1° y ancla 19.3532707,-99.1450020. Medidas en ese marco (u a lo largo del andén, v transversal). La versión vigente es la más alta de la carpeta. La tarea que lleva la estación es `docs/tasks/task-43`.
 
 ## Hechos propios
 

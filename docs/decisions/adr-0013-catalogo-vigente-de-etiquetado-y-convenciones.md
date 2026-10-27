@@ -10,7 +10,7 @@ rationale: recorded
 source: ["[[2026-09-02-sesion-integracion-osm-y-niveles]]"]
 supersedes: "[[adr-0010]]"
 affects: ["api/utils/osm/tags.py", "api/utils/osm/builder.py", "api/utils/osm/validate.py", "api/utils/osm/template.py", "api/utils/osm/document.py", "data/osm/templates/"]
-related: ["[[adr-0011]]", "[[adr-0012]]", "[[adr-0004]]", "[[adr-0006]]", "[[task-11]]", "[[task-13]]", "[[task-18]]", "[[task-19]]", "[[task-27]]"]
+related: ["[[adr-0016]]", "[[adr-0011]]", "[[adr-0012]]", "[[adr-0004]]", "[[adr-0006]]", "[[task-11]]", "[[task-13]]", "[[task-18]]", "[[task-19]]", "[[task-27]]"]
 ---
 
 # Catálogo vigente de etiquetado y convenciones del generador de .osm: consolida adr-0004 y adr-0010 con lo decidido en adr-0011 y adr-0012
