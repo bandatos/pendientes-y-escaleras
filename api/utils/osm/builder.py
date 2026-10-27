@@ -4,6 +4,7 @@ from __future__ import annotations
 import math
 from collections import Counter
 
+from . import arms as A
 from . import fit as F
 from . import tags as T
 from .document import SNAP_TOLERANCE_M, OsmDocument
@@ -334,6 +335,7 @@ class StationBuilder:
         """
         spec = self.template.fit
         data = self.template.data
+        arms = data.get("arms")
         if spec and self._area_rings and self._band is not None:
             groups = [self._cascade_group(name, raw) for name, raw
                       in sorted(spec.get("cascades", {}).items())]
@@ -343,7 +345,7 @@ class StationBuilder:
                 data = F.warp_template_data(data, warp, in_cascade)
             for group in groups:
                 data = self._fit_cascade(data, group, warp)
-        elif not self.template.local_patch:
+        elif not self.template.local_patch and not arms:
             self.template.area_rings = self._area_rings
             return
         # Los hechos de la estación escritos en su propio marco van
@@ -355,10 +357,46 @@ class StationBuilder:
             self.report["fit"].append(
                 f"bloque de {old.station}: piezas «local» aplicadas sobre el "
                 f"encaje ({', '.join(sorted(old.local_patch))})")
+        if arms:
+            # Después del bloque local, para que también él pueda nombrar
+            # los brazos en vez de escribir sus u.
+            data = self._resolve_arms(data, arms)
         self.template = FamilyTemplate(data, old.path)
         self.template.station = old.station
         self.template.area_override = old.area_override
         self.template.area_rings = self._area_rings
+
+    def _resolve_arms(self, data: dict, spec: dict) -> dict:
+        """Plantilla con los brazos del puente y los lóbulos medidos.
+
+        Las puertas que la plantilla ubica en la cara de un lóbulo quedan
+        sobre el anillo del área, y se anotan para que el área las tome
+        como vértices: el pabellón es el lóbulo, y su puerta es un punto
+        de su muro.
+        """
+        if not self._area_rings or self._band is None:
+            raise TemplateError(
+                f"la plantilla {self.template.family} nombra los brazos del "
+                f"área (`arm`) y esta exportación no tiene área de estación "
+                f"ni franja medida")
+        probe = float(spec.get("probe", A.DEFAULT_ARM_PROBE_M))
+        try:
+            arms = A.measure_arms(self._area_rings[0], self._band, probe)
+            data, doors = A.resolve_arm_refs(data, arms)
+        except A.ArmError as exc:
+            raise TemplateError(f"brazos del área: {exc}")
+        for side, arm in sorted(arms.items()):
+            self.report["fit"].append(
+                f"brazo {side}: eje en u={arm.axis_u:.2f} (u de "
+                f"{arm.span[0]:.2f} a {arm.span[1]:.2f}); lóbulo de u "
+                f"{arm.lobe[0]:.2f} a {arm.lobe[1]:.2f} y v {arm.face_v:.2f}"
+                f" a {arm.wall_v:.2f} ({arm.lobe[1] - arm.lobe[0]:.1f} × "
+                f"{abs(arm.wall_v - arm.face_v):.1f} m); puerta en "
+                f"({arm.door[0]:.2f}, {arm.door[1]:.2f})")
+        for key in doors:
+            spec_node = data["nodes"][key]
+            self._snap_to_area(key, (spec_node["u"], spec_node["v"]))
+        return data
 
     def _cascade_group(self, name: str, raw: dict) -> dict:
         nodes = set()
@@ -1069,9 +1107,20 @@ class StationBuilder:
             where = ""
             if not spec.get("building"):
                 point = self.context.local(node.osm_id)
-                self.template.overrides[key] = point
                 where = (f", y queda donde OSM lo tiene ({point[0]:.1f}, "
                          f"{point[1]:.1f})")
+                if spec.get("relocate"):
+                    # La versión aprobada movió la entrada de OSM (Polanco
+                    # 05: hasta la punta de la pestaña del área); es un
+                    # cambio a OSM y por eso sale en el reporte.
+                    osm_point = point
+                    point = (float(spec["u"]), float(spec["v"]))
+                    moved = math.hypot(point[0] - osm_point[0],
+                                       point[1] - osm_point[1])
+                    where = (f", movida por la plantilla de ({osm_point[0]:.1f}"
+                             f", {osm_point[1]:.1f}) a ({point[0]:.1f}, "
+                             f"{point[1]:.1f}), {moved:.1f} m")
+                self.template.overrides[key] = point
             self.report["osm"].append(
                 f"el acceso {key} es la entrada {node.osm_id} de OSM "
                 f"(«{node.tags.get('name', '')}»), por la plantilla{where}")
@@ -1526,6 +1575,10 @@ class StationBuilder:
         for key in sorted(self._entrance_nodes):
             start_id = self._entrance_nodes[key]
             start = self.doc.nodes[start_id]
+            spec = self.template.nodes.get(key) or {}
+            if "connector" in spec:
+                self._declared_connector(key, start_id, spec["connector"])
+                continue
             plan = self._buildings.get(key, {})
             plaza = plan.get("plaza_way")
             done = set()
@@ -1571,6 +1624,40 @@ class StationBuilder:
                     "length": dist, "vertex": nid, "shared": False,
                     "through_plaza": plaza is not None,
                 })
+
+    def _declared_connector(self, key: str, start_id: int, spec) -> None:
+        """El connector que la versión aprobada dibujó a mano.
+
+        Reemplaza los rectos al vértice más cercano de cada peatonal: en
+        Polanco Pablo los llevó en L por la banqueta hasta un vértice
+        concreto. `false` deja el acceso sin connector, a propósito.
+        """
+        if not spec:
+            self.report["connectors"].append({
+                "key": key, "way": None, "highway": None, "footway": None,
+                "length": 0.0, "vertex": None, "shared": False,
+                "through_plaza": False, "declared": "sin connector"})
+            return
+        target = self.context.nodes.get(int(spec["osm_node"]))
+        if target is None:
+            self.warnings.append(
+                f"la plantilla lleva el connector de {key} al nodo OSM "
+                f"{spec['osm_node']}, que el contexto no trae; queda sin "
+                f"connector")
+            return
+        end_id = self.doc.add_foreign_node(target)
+        ids = [start_id] + [self.doc.node_at(float(u), float(v))
+                            for u, v in spec.get("points", [])] + [end_id]
+        way = self.doc.add_way_from_ids(
+            ids, T.connector_tags(), [0.0], kind="connector",
+            label=f"{key}->{target.osm_id}")
+        nodes = [self.doc.nodes[n] for n in way.nodes]
+        length = sum(math.hypot(b.u - a.u, b.v - a.v)
+                     for a, b in zip(nodes, nodes[1:]))
+        self.report["connectors"].append({
+            "key": key, "way": None, "highway": "footway", "footway": None,
+            "length": length, "vertex": target.osm_id, "shared": False,
+            "through_plaza": False, "declared": "de la plantilla"})
 
     def _plaza_crossing(self, plaza, start_id: int, end_id: int):
         """Nodo compartido donde el connector cruza el borde de la plaza.
@@ -1640,7 +1727,9 @@ class StationBuilder:
         for u, v in ring:
             nid = None
             for node in self.doc.nodes.values():
-                if node.foreign or node.action == "delete":
+                # Un nodo de OSM que adoptamos y colocamos (la puerta de un
+                # lóbulo) es tan nuestro como uno nuevo.
+                if (node.foreign and node.frozen) or node.action == "delete":
                     continue
                 if math.hypot(node.u - u, node.v - v) <= SNAP_TOLERANCE_M:
                     nid = node.id
@@ -1872,13 +1961,18 @@ class StationBuilder:
         """
         for spec in self.template.extra_ways:
             points = self.template.resolve_geometry(spec["geometry"])
-            levels = [float(x) for x in spec.get("levels", [spec["level"]])]
+            raw = spec["levels"] if "levels" in spec else [spec["level"]]
+            levels = [float(x) for x in raw]
             tags = T.footway_tags(levels)
             if spec.get("name"):
                 tags["name"] = spec["name"]
             tags.update(spec.get("tags", {}))
             way = self.doc.add_way(points, tags, levels, kind="extra",
                                    label=spec.get("name", "extra"))
+            # La segunda boca de un acceso doble (Polanco oriente) no es
+            # un nodo del grafo; el extra_way que llega a ella la etiqueta.
+            if spec.get("end_tags"):
+                self.doc.nodes[way.nodes[-1]].tags.update(spec["end_tags"])
             # Los torniquetes de una estación pueden caer en un tramo que
             # el grafo no modela —el vestíbulo de San Pedro solo recibe
             # escaleras, y un torniquete no va sobre `highway=steps`.

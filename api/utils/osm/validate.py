@@ -296,6 +296,10 @@ def _check_inside_area(doc: OsmDocument) -> list[str]:
 def _check_incline(doc: OsmDocument) -> list[str]:
     out = []
     for way in doc.ways:
+        # Una escalera de OSM que entra como escenografía trae las
+        # etiquetas de quien la mapeó (en General Anaya, sin level).
+        if way.foreign:
+            continue
         levels = way.tags.get("level", "")
         parts = [int(p) for p in levels.split(";") if p.strip()]
         incline = way.tags.get("incline")

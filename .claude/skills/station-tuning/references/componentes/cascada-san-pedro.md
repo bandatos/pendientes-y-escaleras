@@ -11,3 +11,11 @@ La salida desde el pasillo central hasta el pabellón, en tres conjuntos de esca
 - Regla de slots en todos los conjuntos; la fija en medio.
 - El pabellón adoptado de OSM recibe una puerta en cada lado salvo el de las escaleras; cuál está clausurada es un hecho de la estación.
 - En una estación hermana la cascada se mueve en bloque, probando primero tal como está dibujada y luego las ocho simetrías ancladas al pabellón de OSM; cabe la que deja todo dentro del área y el centro del pabellón dentro del pabellón, y entre las que caben se prefiere la que no mete las escaleras por el muro de la entrada de OSM, luego la paralela, luego la de aproche más corto. Acortar es el último recurso.
+
+## La regla del caracol
+
+Regla de Ricardo para la caja de la cascada, textual: «el rectángulo a lo largo se divide en 2 partes iguales: una vez que entras (por las escaleras), das la vuelta y en el siguiente medio rectángulo está casi siempre la taquilla, luego das media vuelta y te encuentras el trío de escaleras, vuelves a dar la vuelta y te encuentras otro trío de escaleras (en la estación Constituyentes hay 3 tríos), luego giras un poco (o directo) y ya estás en el pasillo central».
+
+- La escalera de entrada, la que baja de la calle, no siempre sigue la regla: su forma es de cada estación (en Polanco y San Antonio, a cielo abierto, ver `acceso-cielo-abierto.md`).
+- En Polanco las dos mitades quedan a 10,5 m entre ejes al oriente y a 11,8 m al poniente; los números viven en el bloque `stations.0200L7-POLANCO` de la plantilla (`local.banks`), y el comentario de su `local` cuenta el caracol de esa estación.
+- Que San Pedro y San Joaquín, con pabellón y el tercer conjunto apilado, sean el mismo caracol con otra entrada o un componente distinto no está resuelto; este archivo los guarda juntos mientras tanto.

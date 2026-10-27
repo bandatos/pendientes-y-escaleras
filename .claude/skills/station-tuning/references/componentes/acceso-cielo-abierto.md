@@ -1,0 +1,10 @@
+# Componente: acceso a cielo abierto
+
+Acceso sin pabellón: la escalera fija sube de la estación directo a la banqueta, sin edificio que la cubra. Lo tienen Polanco y San Antonio en la Línea 7. Su JSON vive hoy en el bloque de cada estación dentro de `data/osm/templates/l7-deep-cascade.json` (`stations.<stop_id>`: la arista de la escalera a la calle y el nodo de acceso `E-NN`); no hay todavía una pieza común del componente (partición pendiente en task-38).
+
+## Lo que rige
+
+- **La escalera es geometría de su arista.** La escalera fija a la calle no es un banco: es la arista del grafo con sus vértices (recta, en L o en U, según la estación), que llega al nodo de acceso sin tramo corto.
+- **La boca es la entrada de OSM.** El `railway=subway_entrance` que OSM ya tiene se adopta y se mueve a la punta de la pestaña del área, donde la escalera sale a la calle (el tope general de 10 m para mover un acceso puede excederse con dato de campo, y se reporta). La boca es vértice del anillo del área. Esto es convención decidida el 26 de octubre de 2026 y una excepción explícita a la regla de que el área solo comparte nodos con edificios: aquí no hay edificio y la boca es el borde real de la estación.
+- **Un solo conector por boca**, en L por la banqueta, como los dejó Pablo: de la boca a la banqueta mapeada, con un quiebre, no en diagonal. Si OSM no tiene banqueta mapeada, la boca queda sin conector.
+- **Acceso doble.** Un acceso con `is_double` en la base (marca «[IZQ/DER]» del tablero) son dos bocas gemelas: dos nodos de acceso con el mismo `stop_id` y dos escaleras con el mismo `pathway_id`, que nacen de un descanso compartido y se bifurcan hacia cada boca. Pendientes del generador: todavía no lo dibuja (se traza a mano, como en Polanco oriente), y `diff_station_osm` empareja solo una de las dos escaleras gemelas, porque la traza no las distingue; hace falta un índice de duplicado en la traza.

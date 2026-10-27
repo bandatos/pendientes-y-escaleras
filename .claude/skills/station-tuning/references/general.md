@@ -38,15 +38,18 @@ Un número que el generador consume vive en JSON (`data/osm/templates/`); un cri
 - Los accesos de OSM se mueven hasta el punto medio del muro del pabellón al que estaban pegados, hasta unos 10 m. Ricardo confirmó que siga así como lógica general.
 - Conectar o soldar un trazo nuestro a un elemento de OSM se decide por categoría, con criterio: se acopla cuando es del mismo nivel y claramente colindante (el edificio de la estación, la acera, el anillo de una explanada); no se sueldan jardines ni líneas que siguen otra lógica, aunque toquen el área. Si aparece algo que tiene sentido conectar y no cae en estas categorías, se conecta, se reporta y se propone la categoría.
 - Lo demás de OSM entra congelado como escenografía. El nodo `railway=station` es la excepción: se mueve, aunque doble un poco la vía de OSM de la que es vértice, sin aviso. Dónde va lo dice el componente.
+- Un puente peatonal que OSM ya tiene se borra solo si cae sobre el área de la estación, porque nuestro trazo del vestíbulo-puente lo reemplaza con más detalle; si queda fuera del área no es de la estación y se queda. En Portales el way 43763067 cruzaba sobre el área y se borró; en General Anaya el 43763040 está a 70 m del andén y se quedó.
+- Un nodo de OSM se da de baja solo si ningún objeto de OSM lo usa, y eso se confirma contra OSM en vivo (Overpass, con un User-Agent propio en la petición), no solo contra `context.json`: la caché trae lo que hay a 250 m de lo dibujado y un way que pasa por el nodo puede quedar fuera de ella. El generador ya no da de baja los nodos que el contexto usa; la consulta en vivo es la segunda comprobación, antes de que la versión se dé por buena.
 - El contexto se trae a 120 m de lo dibujado y se consulta a 250 m; edificios y barreras entran; puentes y túneles son destino válido de conector, porque muchos accesos del Metro no están a nivel de calle.
 - Cada cambio a un elemento de OSM que haga Ricardo o un turno se presenta con hipótesis de intención; Ricardo confirma uno por uno.
+- Pendiente del generador, no regla cumplida: el validador debería eximir a los ways de OSM congelados, que no son nuestros. Hoy no lo hace (`_check_incline` de `api/utils/osm/validate.py` revisa todos los `highway=steps`) y falla por escaleras ajenas con `level=''`. Hasta que se corrija, esos errores se leen y se descartan uno por uno; no se «arreglan» poniéndole `level` a un objeto de OSM.
 
 ## Los pabellones y accesos
 
-- Un pabellón adoptado recibe una puerta en el punto medio de cada lado salvo el de las escaleras, un nodo central y un pasillo de cada puerta al centro; la puerta clausurada sale como `disused`.
+- Cuántas puertas recibe un pabellón adoptado y en qué muros lo dice su componente: en la cascada de la Línea 7, una en cada lado salvo el de las escaleras (`componentes/cascada-san-pedro.md`); en la superficie de Tlalpan, una sola hacia la Calzada (`componentes/tlalpan-surface.md`). En todos los casos cada puerta lleva un pasillo al nodo central del pabellón y la clausurada sale como `disused`.
 - Las puertas laterales pueden correrse a lo largo de su muro cuando la estación lo pide; eso es un hecho de la estación, no una regla.
 
 ## Fuentes
 
 - Esri World Imagery para leer la estación, nunca para medir (el skill dice cómo).
-- Los croquis del STC («Proyecto de espacios publicitarios», 2002) son la fuente más precisa conocida de la planta subterránea: escala gráfica, muros fiables a ±0,5 m, cotas de anuncios no fiables. Ricardo los dejó para después; ver la tarea del croquis en `docs/tasks/`.
+- Los croquis del STC («Proyecto de espacios publicitarios», 2002) no son métricos: la escala gráfica es un sello idéntico en todas las páginas, la franja de andenes está dibujada 1,75 veces más ancha que la real (San Antonio, San Pedro, Mixcoac, Barranca) y a lo largo de las vías no son coherentes ni consigo mismos (errores de hasta 3,5 m). Sirven para la disposición, los sentidos, los carriles, los torniquetes y los largos fuera de la franja; los muros siguen siendo los del KML. El hallazgo está en la tarea de San Antonio (task-41) y el detalle de los croquis en la tarea del croquis (task-39).

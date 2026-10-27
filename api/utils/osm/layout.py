@@ -12,6 +12,10 @@ from pathlib import Path
 # Las líneas del Metro van en el stop_id de la estación: 0200L7-SANJOAQUIN.
 _LINE_RE = re.compile(r"L([0-9A-Z]+)-")
 
+# Autor de la copia de publicación: repite el número de su versión y no es
+# un turno, así que contarla la volvería «la última».
+PUB_AUTHOR = "pub"
+
 
 class LayoutError(ValueError):
     pass
@@ -31,9 +35,10 @@ def station_dir(osm_dir: Path, stop_id: str, slug: str) -> Path:
 
 
 def _versions(folder: Path, slug: str) -> list[tuple[int, Path]]:
-    version_re = re.compile(rf"{re.escape(slug)}-(\d{{2}})-[a-z]+\.osm")
+    version_re = re.compile(rf"{re.escape(slug)}-(\d{{2}})-([a-z]+)\.osm")
     return [(int(m.group(1)), p) for p in folder.glob("*.osm")
-            if (m := version_re.fullmatch(p.name))]
+            if (m := version_re.fullmatch(p.name))
+            and m.group(2) != PUB_AUTHOR]
 
 
 def next_version_path(folder: Path, slug: str,

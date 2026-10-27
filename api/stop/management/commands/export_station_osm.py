@@ -199,6 +199,12 @@ class Command(BaseCommand):
                 f"{plaza}, nodo interior {item['inner'] or '—'}, puertas "
                 f"cerradas {item['closed_doors'] or 'ninguna'}")
         for item in builder.report["connectors"]:
+            if item.get("declared"):
+                self.stdout.write(
+                    f"  connector {item['key']} {item['declared']}"
+                    + (f" → nodo {item['vertex']}: {item['length']:.1f} m"
+                       if item["vertex"] else ""))
+                continue
             self.stdout.write(
                 f"  connector {item['key']} → way {item['way']} "
                 f"({item['highway']}"
