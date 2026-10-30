@@ -30,3 +30,7 @@ Enfoque propuesto, sin diseñar: una segunda pasada al final de `--all-stations`
 
 - [ ] Está decidido cómo se modela un pathway entre dos estaciones (a qué parent_station pertenece o si GTFS lo admite entre dos)
 - [ ] El importador resuelve los 5 conectores listados en una segunda pasada o los reporta con un motivo propio distinto de «stop not found»
+
+## Notas de trabajo
+
+- 30 de octubre de 2026 ([[2026-10-30-sesion-l2-superficie-seis-estaciones-y-plantilla]]): el andador Chabacano–San Antonio Abad es la Calzada Flotante; Ricardo la describió y su trazo en OSM va en sesión aparte, [[task-64]]. Esta task sigue solo para el modelado del pathway entre estaciones en la base y el importador de Miró.

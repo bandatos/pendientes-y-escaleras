@@ -7,6 +7,7 @@ from collections import Counter
 from . import arms as A
 from . import fit as F
 from . import tags as T
+from . import vestibule as V
 from .document import SNAP_TOLERANCE_M, OsmDocument
 from .geometry import (LocalFrame, band_edges, closest_point_on_rings,
                        distance_to_ring,
@@ -361,6 +362,8 @@ class StationBuilder:
             # Después del bloque local, para que también él pueda nombrar
             # los brazos en vez de escribir sus u.
             data = self._resolve_arms(data, arms)
+        data, lines = V.expand_vestibule(data)
+        self.report["fit"] += lines
         self.template = FamilyTemplate(data, old.path)
         self.template.station = old.station
         self.template.area_override = old.area_override
@@ -392,7 +395,11 @@ class StationBuilder:
                 f"{arm.lobe[0]:.2f} a {arm.lobe[1]:.2f} y v {arm.face_v:.2f}"
                 f" a {arm.wall_v:.2f} ({arm.lobe[1] - arm.lobe[0]:.1f} × "
                 f"{abs(arm.wall_v - arm.face_v):.1f} m); puerta en "
-                f"({arm.door[0]:.2f}, {arm.door[1]:.2f})")
+                f"({arm.door[0]:.2f}, {arm.door[1]:.2f})"
+                + (f"; lóbulo {LOBE_LABELS[arm.orientation]}, pie del "
+                   f"banco en ({arm.foot[0]:.2f}, {arm.foot[1]:.2f})"
+                   if arm.orientation else ""))
+            self.warnings += arm.notes
         for key in doors:
             spec_node = data["nodes"][key]
             self._snap_to_area(key, (spec_node["u"], spec_node["v"]))
@@ -1977,9 +1984,13 @@ class StationBuilder:
             # el grafo no modela —el vestíbulo de San Pedro solo recibe
             # escaleras, y un torniquete no va sobre `highway=steps`.
             turn = spec.get("turnstile")
-            if turn:
-                self._pending_turnstiles.append(
-                    (way, turn, levels[0], levels[-1]))
+            # Una lista lleva varios torniquetes sobre el mismo tramo: la
+            # pasarela del vestíbulo de Tlalpan, uno a cada lado del nodo
+            # de encuentro.
+            for item in (turn if isinstance(turn, list) else [turn]):
+                if item:
+                    self._pending_turnstiles.append(
+                        (way, item, levels[0], levels[-1]))
 
     # ---------------- bancos de escaleras ----------------
 
@@ -2444,6 +2455,10 @@ def _on_segment(node, a, b, tol: float = 0.05) -> bool:
 
 BANK_DIRECTIONS = {"+u": (1.0, 0.0), "-u": (-1.0, 0.0),
                    "+v": (0.0, 1.0), "-v": (0.0, -1.0)}
+
+
+LOBE_LABELS = {"deep": "hondo (banco sobre el eje del brazo)",
+               "wide": "ancho (banco a lo largo de u)"}
 
 
 def _direction(raw) -> tuple[float, float]:

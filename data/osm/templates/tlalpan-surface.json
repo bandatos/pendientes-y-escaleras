@@ -1,6 +1,6 @@
 {
   "family": "tlalpan-surface",
-  "description": "Andén central en el camellón de la Calzada de Tlalpan, vestíbulo-puente en el nivel +1 que cruza la calzada, y un pabellón de acceso en cada acera, que es el lóbulo del área del KML. Los dos brazos del puente no son colineales (en Portales van corridos 10,4 m, en General Anaya 19,6 m) y se juntan sobre el centro del andén; sus ejes y los lóbulos los mide el generador en el área (sección arms), no se escriben a mano. Estaciones hermanas: Xola, Nativitas, Viaducto, Villa de Cortés, General Anaya, Ermita.",
+  "description": "Andén central en el camellón de la Calzada de Tlalpan, vestíbulo-puente en el nivel +1 que cruza la calzada, y un pabellón de acceso en cada acera, que es el lóbulo del área del KML. Los dos brazos del puente no son colineales (en Portales van corridos 10,6 m, en General Anaya 19,6 m) y se juntan sobre una pasarela longitudinal de nivel 1 que corre a lo largo del andén, con los torniquetes encima (sección vestibule); sus ejes y los lóbulos los mide el generador en el área (sección arms), no se escriben a mano. Estaciones hermanas: Xola, Nativitas, Viaducto, Villa de Cortés, General Anaya, Ermita.",
   "station_area": "kml",
   "axes": "u = metros sobre el eje del andén, positivo hacia el rumbo. v = metros a la derecha del eje; con rumbo ~8°, v>0 es el oriente. La franja del KML mide unos 13 m de ancho y su eje está a v ≈ -0.8 del ancla, así que el andén cuelga del eje de la franja (band_side) y no de una v escrita a mano.",
   "arms": {
@@ -9,7 +9,7 @@
   },
   "station_node": {
     "u": {"arm": "mid"},
-    "comment": "Dónde va el nodo railway=station de OSM: sobre el eje de la franja (su v la pone el generador), a media distancia entre los ejes de los dos brazos del puente (Ricardo, cierre de General Anaya). Como el vestíbulo N-01 ocupa ese punto, el generador corre el nodo sobre el eje hasta despejarlo."
+    "comment": "Dónde va el nodo railway=station de OSM: sobre el eje de la franja (su v la pone el generador), a media distancia entre los ejes de los dos brazos del puente (Ricardo, cierre de General Anaya). El nodo de encuentro N-01 queda en la misma u pero sobre la pasarela, 1,4 m al oriente de la senda, así que ya no hace falta correr el nodo de estación para despejarlo."
   },
   "nodes": {
     "P-01": {
@@ -18,14 +18,14 @@
       "spine_v": 0, "spine_margin": 0,
       "comment": "Andén central; la línea de circulación va por su eje. Supuesto D1: en esta familia las vías quedan fuera de la franja del KML, así que el andén la ocupa entera a lo ancho (width \"band\", unos 13 m) y sus dos bordes largos son los del área, con los que comparte los cuatro vértices. A lo largo manda la plantilla: 150 m centrados en el tramo de franja (length_fit \"centred\"), así que las puntas quedan dentro del área y no son vértices suyos. Las dos vías railway=subway que OSM traza aquí (v ≈ +3.4 y -3.1) caen dentro del polígono, pero son un trazo esquemático de línea que no se abre en las estaciones."
     },
-    "N-01": {"u": {"arm": "mid"}, "v": -0.8, "comment": "Vestíbulo y torniquetes, sobre la losa del puente, encima del centro del andén y a media distancia entre los ejes de los dos brazos. Su v real la da la senda del andén."},
-    "N-02": {"u": {"arm": "+v"}, "v": 26.0, "comment": "Cabecera oriente del puente, sobre el eje del brazo oriente; la recoloca el banco acceso-oriente en su nodo de encuentro de arriba, así que esta v no se usa."},
+    "N-01": {"u": {"arm": "mid"}, "v": -0.8, "comment": "Nodo de encuentro de los dos brazos del puente, sobre la pasarela del vestíbulo; su u la pone la sección vestibule (meeting) y su v real la da la senda del andén, así que esta v no se usa."},
+    "N-02": {"u": {"arm": "+v"}, "v": 26.0, "comment": "Cabecera oriente del puente: el nodo de encuentro de arriba del banco acceso-oriente, que la pone sobre el eje del brazo en un lóbulo hondo y en el borde del brazo en uno ancho; esta u y esta v no se usan."},
     "N-03": {"u": {"arm": "-v"}, "v": -26.0, "comment": "Cabecera poniente del puente, sobre el eje del brazo poniente; la recoloca el banco acceso-poniente."},
-    "N-04": {"u": {"arm": "+v"}, "v": 38.6, "comment": "Pie del banco oriente, dentro del pabellón; lo recoloca el banco acceso-oriente, a 3 m del muro del fondo."},
+    "N-04": {"u": {"arm": "+v"}, "v": 38.6, "comment": "Pie del banco oriente, dentro del pabellón; lo recoloca el banco acceso-oriente."},
     "N-05": {"u": {"arm": "-v"}, "v": -36.8, "comment": "Pie del banco poniente, dentro del pabellón; lo recoloca el banco acceso-poniente."},
     "E-01": {
       "locate": {"arm": "-v", "at": "door"},
-      "comment": "Acceso poniente: la única puerta del pabellón, en el medio de la cara del lóbulo que da a la Calzada (el tramo fuera del brazo), y vértice del área. Sin building: el pabellón es el lóbulo del KML, no un cuadrado. En Portales el nodo 5197203900 de OSM se adopta como esta puerta y por eso se mueve."
+      "comment": "Acceso poniente: la única puerta del pabellón, en la cara del lóbulo que da a la Calzada, y vértice del área: en un lóbulo hondo, en el medio del tramo más largo de la cara fuera del brazo; en uno ancho, en el medio del tramo de la cara que queda fuera de las escaleras, del lado del pie del banco (Portales 05). Sin building: el pabellón es el lóbulo del KML, no un cuadrado. En Portales el nodo 5197203900 de OSM se adopta como esta puerta y por eso se mueve."
     },
     "E-02": {
       "locate": {"arm": "+v", "at": "door"},
@@ -35,49 +35,53 @@
   "banks": {
     "acceso-oriente": {
       "from": "N-04", "to": "N-02",
-      "junction": {"arm": "+v", "at": "wall", "inset": 3},
-      "direction": "-v", "length": 12.5, "lead": 1.5, "spacing": 1.8,
-      "comment": "Escalera fija y eléctrica que sube (la eléctrica a la derecha de quien sube) del pabellón oriente a la cabecera del puente, sobre el eje del brazo: pie a 3 m del muro del fondo del pabellón, 1,8 m entre ejes y puntas de 1,5 m. Largo de 12,5 m, provisional (Pablo). La circulación es en U: se entra por la cara de la Calzada, se camina al fondo y se sube de regreso hacia el puente."
+      "lobe": {"arm": "+v", "inset": 3},
+      "length": 12.5, "lead": 1.5, "spacing": 1.8,
+      "comment": "Escalera fija y eléctrica que sube (la eléctrica a la derecha de quien sube; de un solo sentido, no reversible) del pabellón oriente a la cabecera del puente, con puntas de 1,5 m y un largo de 12,5 m, provisional (Pablo). La orientación la da el lado largo del lóbulo (Ricardo, 27 de octubre de 2026: «se parece más a la lógica de la L7 donde el rectángulo tiene un lado más largo y eso indica la orientación de las escaleras»). Las dos ramas, lóbulo hondo y lóbulo ancho, están en data/osm/README.md (banks) y en el skill station-tuning (componentes/tlalpan-surface.md). En un lóbulo ancho la separación es fondo/4 (4,48 m en Portales; la 05 tiene 4,7)."
     },
     "acceso-poniente": {
       "from": "N-05", "to": "N-03",
-      "junction": {"arm": "-v", "at": "wall", "inset": 3},
-      "direction": "+v", "length": 12.5, "lead": 1.5, "spacing": 1.8,
+      "lobe": {"arm": "-v", "inset": 3},
+      "length": 12.5, "lead": 1.5, "spacing": 1.8,
       "comment": "Como acceso-oriente, del pabellón poniente a la cabecera poniente del puente."
     }
   },
-  "extra_ways": [
-    {"id": "losa",
-     "geometry": [{"spine": "P-01", "u": {"arm": "mid"}, "dv": -4.5},
-                  {"spine": "P-01", "u": {"arm": "mid"}, "dv": 4.5}],
-     "level": 1,
-     "tags": {"bridge": "yes", "layer": "1"},
-     "comment": "Losa del vestíbulo-puente sobre el andén: la línea transversal donde desembocan las cuatro escaleras del andén y donde se juntan los dos pasillos del puente. El grafo modela todo el vestíbulo como un solo nodo (N-01), así que el reparto se dibuja aquí; la forma real de la losa se afina en JOSM."}
-  ],
+  "vestibule": {
+    "platform": "P-01", "node": "N-01",
+    "centre": {"arm": "mid"},
+    "meeting": {"arm": "mid"},
+    "comment": "Vestíbulo de nivel 1 de Portales (portales-02-rick, injertado en la 05), decidido por Ricardo el 27 de octubre de 2026 en vez de la losa transversal: una pasarela a lo largo del andén con los torniquetes encima, a la que llegan en serie las cuatro escaleras del andén y los dos brazos del puente. Todo cuelga de centre; el nodo de encuentro de los brazos va en meeting, a media distancia entre sus ejes (Ricardo, 27 de octubre de 2026: la misma regla que el nodo de estación). El generador comprueba que el nodo de encuentro quede entre los torniquetes.",
+    "walkway": {"id": "pasarela", "dv": 1.4, "reach": [18.1, -18.1], "level": 1,
+                "tags": {"bridge": "yes", "layer": "1"},
+                "comment": "Pasarela longitudinal del vestíbulo, 1,4 m al oriente de la senda, de la llegada de una escalera exterior a la otra, en un solo way con el nodo de encuentro de vértice y un torniquete a cada lado de él."},
+    "turnstiles": [4.1, -4.1],
+    "stairs": {
+      "landings": {"P-01>N-01:2:0": 18.1, "P-01>N-01:2:1": 7.1,
+                   "P-01>N-01:2:2": -7.1, "P-01>N-01:2:3": -18.1},
+      "length": 12.5, "clear": 1.5,
+      "comment": "Dos fijas por lado, en serie y en diagonal, del pie sobre la senda a la llegada sobre la pasarela, que queda fija (las de Portales 05 simetrizadas: J + 18,38, + 7,93, − 6,34, − 17,88). Largo el de las escaleras de acceso, 12,5 m, o el máximo que deje 1,5 m en u entre el pie de la interior y la llegada de la exterior (y 1,5 m hasta la punta del andén); el pie es el que se corre. El índice va por miro_id: 0 y 1 al norte, exterior e interior; 2 y 3 al sur, interior y exterior (Portales y General Anaya)."
+    },
+    "arms": {
+      "N-03>N-01:1:0": {"axis": {"arm": "-v"}, "cross": -2.8},
+      "N-02>N-01:1:0": {"axis": {"arm": "+v"}, "cross": 2.35},
+      "comment": "Cada brazo baja por su eje hasta antes de la pasarela, cruza en transversal hasta la u del nodo de encuentro y llega a él; si su cabecera quedó fuera del eje (el banco de un lóbulo ancho), antes llega al eje en transversal. El oriente cruza 2,35 m más allá de la pasarela (Portales 05); el poniente, del otro lado de la senda, 1,4 m al poniente de ella (2,8 m antes de la pasarela, General Anaya 06), lo que deja la esquina a 1,4 m del nodo de estación. El brazo cuyo eje ya cae en el nodo de encuentro baja derecho (el poniente de Portales 05)."
+    }
+  },
+  "extra_ways": [],
   "edges": [
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 0,
-     "geometry": [{"spine": "P-01", "u": 16}, {"spine": "P-01", "u": {"arm": "mid"}, "dv": -4.5}],
-     "comment": "Escalera 1 al puente, lado norte (miro_id en Portales 3458764662275664946); arranca en la senda del andén y desemboca en la losa. Las cuatro van en abanico y quedan exentas de la regla de los bancos: nacen del andén, no de un vestíbulo. Su estándar ya está decidido (componente tlalpan-surface: pasarela longitudinal, dos fijas por lado en serie, 12,5 m o el máximo que quepa) y la plantilla todavía no lo aprende (task-45): cada estación conserva las suyas."},
+     "comment": "Escalera 1 al vestíbulo, lado norte, exterior (miro_id en Portales 3458764662275664946); su geometría la pone la sección vestibule. Nace del andén, así que queda exenta de la regla de los bancos."},
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 1,
-     "geometry": [{"spine": "P-01", "u": 10}, {"spine": "P-01", "u": {"arm": "mid"}, "dv": -1.5}],
-     "comment": "Escalera 2, lado norte (miro_id 3458764662275664947)."},
+     "comment": "Escalera 2, lado norte, interior (miro_id 3458764662275664947)."},
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 2,
-     "geometry": [{"spine": "P-01", "u": -10}, {"spine": "P-01", "u": {"arm": "mid"}, "dv": 1.5}],
-     "comment": "Escalera 3, lado sur (miro_id 3458764662275664948)."},
+     "comment": "Escalera 3, lado sur, interior (miro_id 3458764662275664948)."},
     {"from": "P-01", "to": "N-01", "mode": 2, "index": 3,
-     "geometry": [{"spine": "P-01", "u": -16}, {"spine": "P-01", "u": {"arm": "mid"}, "dv": 4.5}],
-     "comment": "Escalera 4, lado sur (miro_id 3458764662275664949)."},
+     "comment": "Escalera 4, lado sur, exterior (miro_id 3458764662275664949)."},
 
     {"from": "N-03", "to": "N-01", "mode": 1, "index": 0,
-     "geometry": ["N-03", {"spine": "P-01", "u": {"arm": "-v"}, "dv": -5.0},
-                  {"spine": "P-01", "u": {"arm": "mid"}}],
-     "turnstile": {"from": "N-01", "distance": 6},
      "tags": {"bridge": "yes", "layer": "1"},
-     "comment": "Pasillo poniente del puente: baja recto por el eje del brazo poniente, entra sobre el andén y se dobla hacia el vestíbulo. Cruza la calzada, de ahí bridge y layer. El torniquete marca el límite de la zona pagada."},
+     "comment": "Pasillo poniente del puente: baja por el eje del brazo poniente hasta el vestíbulo; su geometría la pone la sección vestibule. Cruza la calzada, de ahí bridge y layer."},
     {"from": "N-02", "to": "N-01", "mode": 1, "index": 0,
-     "geometry": ["N-02", {"spine": "P-01", "u": {"arm": "+v"}, "dv": 5.0},
-                  {"spine": "P-01", "u": {"arm": "mid"}}],
-     "turnstile": {"from": "N-01", "distance": 6},
      "tags": {"bridge": "yes", "layer": "1"},
      "comment": "Pasillo oriente del puente, por el eje del brazo oriente; no es la continuación del poniente."},
 
@@ -91,14 +95,68 @@
      "bank": "acceso-oriente", "slot": 1},
 
     {"from": "N-05", "to": "E-01", "mode": 1, "index": 0,
-     "geometry": ["N-05", {"arm": "-v", "at": "wall", "inset": 3, "u": "door"}, "E-01"],
+     "geometry": ["N-05", {"arm": "-v", "at": "foot", "u": "door"}, "E-01"],
      "comment": "Circulación en U dentro del pabellón: de la puerta derecho hacia el fondo y, a la altura del pie del banco, hacia él."},
     {"from": "E-02", "to": "N-04", "mode": 1, "index": 0,
-     "geometry": ["E-02", {"arm": "+v", "at": "wall", "inset": 3, "u": "door"}, "N-04"]}
+     "geometry": ["E-02", {"arm": "+v", "at": "foot", "u": "door"}, "N-04"]}
   ],
   "stations": {
+    "020L12-ERMITA": {
+      "comment": "Ermita, solo la parte de Línea 2 (export con --line L2; el padre agrupa L2 y L12). OSM tiene un solo railway=station «Ermita» (12679525779), 207 m al sur, en la franja de L12: no es de L2 y no se mueve ni se crea otro (Ricardo, 27 de octubre de 2026).",
+      "station_node": null
+    },
+    "0200L2-VILLADECORT": {
+      "comment": "Hechos propios de Villa de Cortés (primer turno, villa-de-cortes-01-claude.osm; marco de la 01: rumbo 8,3, ancla 19.3875836,-99.1389625). Cada lado del KML es un solo rectángulo, puente y pabellón del mismo ancho (oeste 18,7 × 33,5 m, oriente 13,3 × 41,6 m desde el borde de la franja): el brazo no se abre en lóbulo y la plantilla todavía no sabe medirlo. PROVISIONAL: la 01 se generó con un envoltorio que toma el brazo entero como lóbulo (hondo) y pone la puerta en el muro +u a la v del pie del banco; ver la duda de «brazo sin lóbulo» en el reporte del turno.",
+      "nodes": {
+        "E-01": {"osm_node": 13653654624, "relocate": true,
+                 "connector": false,
+                 "comment": "La entrada de OSM poniente (Biff, marzo de 2026, sobre Bing) cae 7,9 m al norte del muro +u del pabellón del KML; se enlaza y se lleva a la puerta. PROVISIONAL, como la puerta. Sin connector: la única peatonal cercana es el puente de OSM 221926316, que cae sobre el área y se borra en la versión."},
+        "E-02": {"osm_node": 13648121868, "relocate": true, "connector": false,
+                 "comment": "La entrada de OSM oriente es vértice del edificio 1488931042 (building=yes, 8 niveles), que Biff dibujó sobre Bing como pabellón y que en Esri cae 12 m al norte del pabellón del KML, sobre árboles; se enlaza y se lleva a la puerta, y el edificio se borra a mano en la versión (el pabellón es el área). Sin acera mapeada cerca."}
+      },
+      "edges": {
+        "N-05>E-01:1:0": {"geometry": ["N-05", "E-01"],
+                          "comment": "Sin U: la puerta del muro lateral queda a la v del pie del banco y se entra derecho."},
+        "E-02>N-04:1:0": {"geometry": ["E-02", "N-04"]}
+      },
+      "area": {
+        "source": "KML de Villa de Cortés, a escuadra en villa-de-cortes-01-claude.osm",
+        "comment": "Los muros de los dos rectángulos de acceso a escuadra con el marco (vértices corridos 0,74 m como máximo): el muro sur del poniente se abría 1,1 m hacia el fondo y la plantilla lo leía como un lóbulo falso. La franja queda como la dibujó el KML.",
+        "outer": [
+                  [19.3868613, -99.1391403], [19.386841, -99.1390149], [19.3873806, -99.1389257],
+                  [19.3874759, -99.138907], [19.3874224, -99.1385209], [19.3875408, -99.1385027],
+                  [19.3875943, -99.1388888], [19.3877953, -99.1388625], [19.3883682, -99.1387878],
+                  [19.388385, -99.1388998], [19.3878033, -99.1389989], [19.3876414, -99.1390169],
+                  [19.3876856, -99.1393359], [19.3875184, -99.1393616], [19.3874747, -99.1390458],
+                  [19.3873987, -99.1390605]]
+      }
+    },
+    "0200L2-XOLA": {
+      "comment": "Hechos propios de Xola (primer turno, xola-01-claude.osm). Las dos entradas de OSM son las puertas de los pabellones: 5160032504 está a 0,6 m de la puerta oriente que da la regla y 5160032503 a 9,6 m de la poniente, porque el lóbulo poniente es ancho (20,9 × 13,1 m) y la regla lleva la puerta cerca de la punta. Los connectors se limitan al enlace corto y evidente a la banqueta de cada lado.",
+      "nodes": {
+        "E-01": {"osm_node": 5160032503, "relocate": true,
+                 "connector": {"points": [], "osm_node": 5580858041}},
+        "E-02": {"osm_node": 5160032504, "relocate": true,
+                 "connector": {"points": [], "osm_node": 8319476398}}
+      },
+      "area": {
+        "source": "KML de Xola, corregido en xola-01-claude.osm",
+        "comment": "El KML se cruza a sí mismo donde el muro sur del brazo poniente llega a la cara del lóbulo: sus vértices 2 y 3 están invertidos (el muro baja 0,67 m más allá de la cara y la cara arranca 2,1 m antes del muro). Se cambian los dos por el punto donde se cruzan, en (4,35, -28,44) del marco de la 01; el área pierde 0,7 m².",
+        "outer": [[19.3954256, -99.1378351], [19.395245, -99.1378662], [19.3952747, -99.1380653],
+                  [19.3954136, -99.1380481], [19.3954306, -99.13817], [19.395245, -99.1382028],
+                  [19.3951964, -99.1378736], [19.3950182, -99.1379047], [19.3944358, -99.1379973],
+                  [19.3944187, -99.1378864], [19.3949975, -99.1377748], [19.3950878, -99.1377601],
+                  [19.3950284, -99.1373496], [19.3951434, -99.137331], [19.3951784, -99.1375343],
+                  [19.3951029, -99.1375417], [19.3951405, -99.1377513], [19.3954053, -99.1377085],
+                  [19.3959453, -99.1376216], [19.3959653, -99.1377396]]
+      }
+    },
     "0200L2-PORTALES": {
       "comment": "Hechos propios de Portales, de su versión aprobada (portales-03-pablo.osm).",
+      "vestibule": {
+        "centre": {"arm": "-v"}, "meeting": {"arm": "-v"},
+        "comment": "Excepción de Portales (Ricardo, 27 de octubre de 2026): el vestíbulo y el nodo de encuentro van en el eje del brazo poniente, como en la 05, no a media distancia entre los dos brazos."
+      },
       "area": {
         "source": "portales-03-pablo.osm",
         "comment": "El área como la dejó Pablo en la 03: el lóbulo oriente ensanchado hacia el sur hasta u -35,2 (25,8 × 17,9 m, el KML dibujaba 13 × 20 m), el poniente de 14,5 × 19 m con la cara hacia la Calzada en v -27,3, y las esquinas cuadradas. Sin los vértices de andén ni las dos puertas, que el generador vuelve a meter.",
@@ -111,8 +169,18 @@
                   [19.3701333, -99.1414834], [19.3707134, -99.1414018], [19.3707274, -99.1415059]]
       }
     },
+    "0200L2-NATIVITAS": {
+      "comment": "Hechos propios de Nativitas (primer turno, 27 de octubre de 2026). Lo demás —lóbulos hondos, bancos sobre el eje del brazo, vestíbulo longitudinal, nodo de estación— sale de la plantilla. El puente peatonal de OSM 43763069 cae sobre el área y se borra a mano en la versión (el generador no sabe borrar ways).",
+      "nodes": {
+        "E-01": {"osm_node": 5156348346, "relocate": true,
+                 "connector": {"points": [], "osm_node": 554206757},
+                 "comment": "La única entrada de OSM de Nativitas cae 1,1 m al sur de la puerta del pabellón poniente, sobre la cara del lóbulo que da a la Calzada; la base no la enlaza, así que se adopta como esta puerta y se lleva a ella. Un solo connector, a la punta de la banqueta 864674193 (6,5 m por fuera de la cara); el automático a 531159099/880536187 cruzaba el pabellón."},
+        "E-02": {"connector": false,
+                 "comment": "Sin connector: la única peatonal cercana era el puente de OSM 43763069, que se borra; la acera oriente no está mapeada."}
+      }
+    },
     "0200L2-GRALANAYA": {
-      "comment": "Hechos propios de General Anaya, de su versión aprobada (general-anaya-04-claude.osm; la 05 solo mueve el nodo de estación, que ya sale de la plantilla). Los lóbulos son asimétricos: 14,1 × 20,3 m al oriente y 10,2 × 25,3 m al poniente, con los ejes de los brazos en u 6,85 y -12,79.",
+      "comment": "Hechos propios de General Anaya, de su versión aprobada (general-anaya-06-claude.osm): el área ortogonalizada de la 04. Lo demás —puente, vestíbulo longitudinal, escaleras del andén, nodo de estación— ya sale de la plantilla. Los lóbulos son asimétricos: 14,1 × 20,3 m al oriente y 10,2 × 25,3 m al poniente, con los ejes de los brazos en u 6,85 y -12,79.",
       "area": {
         "source": "general-anaya-04-claude.osm",
         "comment": "El KML ortogonalizado en la 04: esquinas cuadradas y lóbulos de 14,1 × 20,3 m (oriente) y 10,2 × 25,3 m (poniente). Sin los vértices de andén ni las dos puertas, que el generador vuelve a meter.",
@@ -126,32 +194,27 @@
                   [19.3533639, -99.1450313], [19.353436, -99.1452947], [19.3534862, -99.1452794],
                   [19.3535495, -99.1455105], [19.353461, -99.1455375], [19.3533246, -99.1450394],
                   [19.3530588, -99.1451146]]
-      },
-      "local": {
-        "comment": "Losa, pasillos del puente, torniquetes y escaleras del andén como los dejó la 04 (desde la 02, siguiendo la edición de Ricardo en Portales 02): mientras la plantilla no aprende el estándar ya decidido de las escaleras del andén (task-45), cada estación conserva las suyas. La losa corre a lo largo de la senda, 1,4 m al oriente, con el vestíbulo N-01 sobre ella a media distancia entre los brazos y un torniquete a 5 m de cada lado.",
-        "edges": {
-          "P-01>N-01:2:0": {"geometry": [{"spine": "P-01", "u": 19.01}, {"spine": "P-01", "u": 15.5, "dv": 1.4}]},
-          "P-01>N-01:2:1": {"geometry": [{"spine": "P-01", "u": 8.5}, {"spine": "P-01", "u": 5.0, "dv": 1.4}]},
-          "P-01>N-01:2:2": {"geometry": [{"spine": "P-01", "u": -14.5}, {"spine": "P-01", "u": -11.0, "dv": 1.4}]},
-          "P-01>N-01:2:3": {"geometry": [{"spine": "P-01", "u": -25.0}, {"spine": "P-01", "u": -21.5, "dv": 1.4}]},
-          "N-03>N-01:1:0": {"geometry": ["N-03", {"spine": "P-01", "u": {"arm": "-v"}, "dv": -1.4},
-                                         {"spine": "P-01", "u": {"arm": "mid"}, "dv": -1.4},
-                                         {"spine": "P-01", "u": {"arm": "mid"}, "dv": 1.4}],
-                            "turnstile": null},
-          "N-02>N-01:1:0": {"geometry": ["N-02", {"spine": "P-01", "u": {"arm": "+v"}, "dv": 3.8},
-                                         {"spine": "P-01", "u": {"arm": "mid"}, "dv": 3.8},
-                                         {"spine": "P-01", "u": {"arm": "mid"}, "dv": 1.4}],
-                            "turnstile": null}
-        },
-        "extra_ways": {
-          "losa": {"geometry": [{"spine": "P-01", "u": {"arm": "mid"}, "dv": 1.4},
-                                {"spine": "P-01", "u": 15.5, "dv": 1.4}],
-                   "turnstile": {"from": "N-01", "distance": 5}},
-          "losa-sur": {"geometry": [{"spine": "P-01", "u": {"arm": "mid"}, "dv": 1.4},
-                                    {"spine": "P-01", "u": -21.5, "dv": 1.4}],
-                       "level": 1, "tags": {"bridge": "yes", "layer": "1"},
-                       "turnstile": {"from": "N-01", "distance": 5}}
+      }
+    },
+    "0200L2-VIADUCTO": {
+      "comment": "Hechos propios de Viaducto (viaducto-02-claude.osm, primer turno). Lóbulos hondos: 13,1 × 26,1 m al oriente y 13,1 × 26,4 m al poniente, con los ejes de los brazos en u 8,5 y −11,1 (marco de la 01: rumbo 8,3, ancla 19.4008868,-99.1368843).",
+      "nodes": {
+        "E-02": {
+          "connector": false,
+          "comment": "Sin conector: las peatonales de OSM más cercanas son las dos bocas y el túnel del cruce de u ≈ 30, que quedan del otro lado de la lateral; no hay banqueta mapeada junto al pabellón."
         }
+      },
+      "area": {
+        "source": "viaducto-02-claude.osm",
+        "comment": "El KML con los lóbulos y brazos a escuadra (vértices corridos 0,6 m como máximo) y las dos puntas de la franja en las de la huella que OSM ya tenía (way 217341597): al sur sus esquinas 2266139624 y 2266139597, al norte 2266139564, 12239966472 y 2266139680, que comparte con las bardas 1322749521 y 1322749522 (la punta norte se alarga 1,2 m). Sin los vértices de andén ni las dos puertas, que el generador vuelve a meter.",
+        "outer": [[19.4010887, -99.1369223], [19.400821, -99.1369623], [19.4008781, -99.1373747],
+                  [19.4007607, -99.1373927], [19.4007263, -99.137144], [19.400796, -99.1371333],
+                  [19.4007734, -99.1369698], [19.4006681, -99.1369859], [19.4001383, -99.1370634],
+                  [19.4001235, -99.1369586], [19.4006545, -99.1368568], [19.40093, -99.1368159],
+                  [19.4009031, -99.1366216], [19.4008899, -99.1366237], [19.4008563, -99.1363809],
+                  [19.4009732, -99.1363629], [19.4010072, -99.1366088], [19.4009528, -99.1366172],
+                  [19.4009795, -99.1368101], [19.4010624, -99.1368004], [19.4016698, -99.136721],
+                  [19.4016829, -99.1368138], [19.4016845, -99.1368252]]
       }
     }
   }

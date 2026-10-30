@@ -2,7 +2,7 @@
 type: task
 id: task-45
 title: "Plantilla de Tlalpan: vestíbulo longitudinal de nivel 1 y escaleras del andén en serie"
-state: open
+state: closed
 date: 2026-10-27
 owner: ai
 source: ["[[2026-10-27-sesion-seis-estaciones-afinadas-y-primera-publicacion]]"]
@@ -32,3 +32,4 @@ Residuos que hoy deja la plantilla y que esta task debe bajar: General Anaya ban
 ## Notas de trabajo
 
 - 27 de octubre de 2026 (madrugada, hallazgo del crítico, hipótesis sin verificar en imagen): los polígonos de andén publicados de General Anaya y Portales (`railway=platform`, de 10 a 13 m de ancho) contienen las dos vías de OSM a lo largo de los 150 m. O las vías de OSM están corridas, o el andén es demasiado ancho; viene del hecho «el andén ocupa la franja entera del KML». Verificar sobre Esri antes de tocar la plantilla; si el andén es el que sobra, es un cambio de esta task y una corrección en OSM contra ids del servidor.
+- 30 de octubre de 2026 ([[2026-10-30-sesion-l2-superficie-seis-estaciones-y-plantilla]]): implementada el 27 de octubre en `api/utils/osm/vestibule.py` y en la sección `vestibule` de la plantilla; el bloque `local` de General Anaya desapareció. El nodo de encuentro va a media distancia entre los ejes de los brazos, con Portales como excepción de estación, y el banco oriente de Portales lo resolvió la regla del lado largo del lóbulo, sin excepción ([[adr-0017]]). Regenerada, General Anaya coincide con la 06 dentro de 1 m salvo las escaleras exteriores del andén (12,5 contra 9,11 m: rige la regla escrita; Ricardo respondió «P3. Tiene sentido que las interiores sean un poco más cortas porque van a la plataforma, eso es lo que preguntaste?», y si General Anaya y Portales publicadas se corrigen sigue siendo pregunta suya, en [[task-69]]); Portales, dentro de 1 m en todo salvo la eléctrica oriente (1,1 m, por largo). La tolerancia de [[task-38]] sigue sin acordarse; los residuos quedan medidos en el record. La hipótesis del andén que contiene las vías pasó a [[task-74]]. Se cierra.

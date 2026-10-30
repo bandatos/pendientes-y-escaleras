@@ -78,3 +78,7 @@ De [[2026-10-22-sesion-ciclo-de-afinacion-y-san-joaquin]]:
 - **26.** Superado: tramos cortos de 1 m al nodo de encuentro, que va en el eje del conjunto ([[adr-0014]], nota del 22 de octubre).
 
 Siguen abiertos 2, 3, 5, 6, 10, 12 a 20 y la parte de 24 que no tocó el multipolígono.
+
+## Notas de trabajo
+
+- 30 de octubre de 2026 ([[2026-10-30-sesion-l2-superficie-seis-estaciones-y-plantilla]]): pruebas propuestas por los ejecutores del 27 de octubre, sin escribir, en espera de que Ricardo las acepte (regla de testing: se proponen, no se escriben sin pedir). En un `test_vestibule.py` nuevo junto a `api/utils/osm/vestibule.py`: (a) con llegadas ±18,1 / ±7,1 y largo 12,5, las exteriores miden 12,5 m y las interiores 9,60 m, y la escalera se acorta junto a la punta del andén; (b) un nodo de encuentro fuera de los torniquetes lanza `TemplateError`; (c) un brazo con eje a 0,25 m o menos del nodo de encuentro baja derecho (2 puntos), si no hace el tramo transversal (4 puntos). En `test_arms.py`: (d) un lóbulo más ancho que hondo da `direction` ±u, el pie a fondo/4 del muro, la cabecera en el borde del brazo, separación fondo/4 y la puerta entre el muro de la punta y el arranque de las escaleras; (e) un lóbulo hondo con `lobe` da el mismo `junction` que `at: wall`, la garantía de que General Anaya no cambia; (f) un lóbulo ancho corto acorta el banco y avisa, y por debajo de 6 m lanza `ArmError`. Y para `vestibule.py`: (g) una cabecera fuera del eje mete el quiebre `[eje, v de la cabecera]`.

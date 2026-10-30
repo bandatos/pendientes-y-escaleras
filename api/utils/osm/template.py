@@ -14,7 +14,8 @@ class TemplateError(Exception):
     pass
 
 
-PATCH_DICT_SECTIONS = ("nodes", "banks", "fit", "station_node")
+PATCH_DICT_SECTIONS = ("nodes", "banks", "fit", "station_node",
+                       "vestibule")
 
 
 def _merge(base, patch):
@@ -122,7 +123,7 @@ def patch_template_data(data: dict, block: dict, where: str) -> dict:
         patch = block[section]
         if patch is None:
             out.pop(section, None)
-        elif section in ("fit", "station_node"):
+        elif section in ("fit", "station_node", "vestibule"):
             out[section] = _merge(out.get(section) or {}, patch)
         else:
             pieces = out.setdefault(section, {})

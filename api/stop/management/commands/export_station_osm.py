@@ -75,6 +75,16 @@ class Command(BaseCommand):
                                  f"{overpass_mod.CONTEXT_EMBED_M:g}). Con "
                                  "--refresh-context la consulta cubre "
                                  "además ese radio.")
+        parser.add_argument("--line",
+                            help="Solo los hijos cuyo stop_id empieza con "
+                                 "esta línea (L2): para un padre que agrupa "
+                                 "dos líneas. La carpeta de la estación "
+                                 "toma también esta línea.")
+        parser.add_argument("--context-cache",
+                            help="Ruta de la caché de contexto de OSM; por "
+                                 "omisión context.json en la carpeta de la "
+                                 "estación. Sirve para una corrida de "
+                                 "prueba que no debe crear esa carpeta.")
         parser.add_argument("--station-area", choices=STATION_AREA_MODES,
                             help="Área de estación a emitir; por omisión "
                                  "la que declare la plantilla. «kml» "
@@ -99,12 +109,16 @@ class Command(BaseCommand):
                 f"{templates_dir}; hay: {', '.join(available) or 'ninguna'}")
 
         try:
-            graph = load_station_graph(opts["stop_id"])
+            graph = load_station_graph(opts["stop_id"], line=opts["line"])
         except Stop.DoesNotExist:
             raise CommandError(
                 f"no hay ninguna estación con stop_id «{opts['stop_id']}»")
         except Exception as exc:
             raise CommandError(f"no se pudo leer el grafo: {exc}")
+        if not graph.stops:
+            raise CommandError(
+                f"«{opts['stop_id']}» no tiene hijos"
+                + (f" con prefijo {opts['line']}-" if opts["line"] else ""))
 
         try:
             template = FamilyTemplate.load(template_path, graph.stop_id)
@@ -114,7 +128,9 @@ class Command(BaseCommand):
                            mirror=opts["mirror"])
         slug = slugify(graph.station_name)
         try:
-            folder = station_dir(OSM_DIR, graph.stop_id, slug)
+            folder = (OSM_DIR / f"{opts['line'].lower()}-{slug}"
+                      if opts["line"]
+                      else station_dir(OSM_DIR, graph.stop_id, slug))
         except LayoutError as exc:
             raise CommandError(str(exc))
         context, context_source = self._context(opts, graph, frame, folder,
@@ -256,7 +272,8 @@ class Command(BaseCommand):
             return None, "omitido (--no-context)"
         osm_ids = sorted({s.osm_id for s in graph.stops.values()
                           if s.osm_id and (s.osm_type or "node") == "node"})
-        path = folder / "context.json"
+        path = (Path(opts["context_cache"]) if opts["context_cache"]
+                else folder / "context.json")
         try:
             # La distancia de embebido se mide desde lo dibujado, cuyas
             # puntas de andén llegan a ~90 m del ancla; 130 deja margen.

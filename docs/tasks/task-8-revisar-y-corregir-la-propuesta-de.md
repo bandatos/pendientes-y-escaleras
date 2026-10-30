@@ -29,3 +29,7 @@ El documento se corrige moviendo estaciones entre listas directamente en la refe
 - [ ] Las asignaciones provisionales quedan revisadas o marcadas para verificación de campo
 - [ ] Se identificó qué familia levantar primero entre LA, L12 oriente, LB norte, L5 oriente y L5/L6 subterránea
 - [ ] La referencia [[2026-08-26-agrupamiento-estaciones-familias]] y su CSV quedan actualizados con las correcciones
+
+## Notas de trabajo
+
+- 30 de octubre de 2026 ([[2026-10-30-sesion-l2-superficie-seis-estaciones-y-plantilla]]): la referencia dice que San Antonio Abad tiene cuatro accesos; la base, el tablero de Miró y la imagen Esri sostienen tres (E-01, E-02 y E-03 «Acceso Calzada Flotante»); el oriente queda tapado por una sombra en la imagen, así que no se corrige a tres sin preguntarle a Ricardo ([[task-61]]). Hipótesis del ejecutor, sin verificar contra la fuente de la referencia: el cuarto cuenta el andador a Chabacano como salida. La descripción de `tlalpan-surface.json` no lista a San Antonio Abad entre las hermanas, aunque la referencia sí.

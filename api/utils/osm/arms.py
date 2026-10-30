@@ -16,12 +16,27 @@ Una referencia es un dict con `arm` («+v», «-v» o «mid»):
   largo de la cara del lóbulo que da a la franja, fuera del brazo;
 - `"at": "wall"`, el punto [u, v] sobre el muro del fondo del lóbulo,
   corrido `inset` metros hacia la franja; su u es la del eje del brazo, o
-  la de la puerta con `"u": "door"`.
+  la de la puerta con `"u": "door"`;
+- `"at": "foot"`, el nodo de encuentro del pie del banco de acceso de ese
+  lado (ver abajo); con `"u": "door"`, el punto de esa v en la u de la
+  puerta: la esquina de la circulación en U.
+
+Un banco con `lobe` (`{"arm": "+v", "inset": 3}`)
+es el banco de acceso del lóbulo, y su orientación la da el lado largo
+del lóbulo. En un lóbulo hondo (más profundo en v que ancho en u) el
+banco va sobre el eje del brazo, con el pie a `inset` metros del muro del
+fondo, y sube hacia la franja. En un lóbulo ancho va a lo largo de u, en
+el centro de la mitad del fondo del lóbulo, con un cuarto del fondo entre
+ejes (`wide_spacing` lo fija a mano); sube hacia el brazo, con su nodo de encuentro de arriba
+en el borde del brazo y el pie al menos a `inset` metros del muro de la
+punta, y la puerta pasa al medio del tramo de la cara que queda entre ese
+muro y el arranque de las escaleras. Resolver un banco así cambia el
+brazo (puerta, pie): las referencias se resuelven después.
 """
 from __future__ import annotations
 
 import copy
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from .geometry import ring_crossings, ring_spans_at_u
 
@@ -30,6 +45,9 @@ DEFAULT_ARM_PROBE_M = 2.0
 # lóbulo: por debajo es el ruido del trazo del KML en el pasillo.
 LOBE_EXTRA_WIDTH_M = 1.0
 LOBE_SCAN_STEP_M = 0.05
+# Por debajo, un banco de acceso acortado ya no es una escalera de un piso:
+# el lóbulo no lo aloja y se avisa como error.
+MIN_LOBE_BANK_M = 6.0
 
 
 class ArmError(ValueError):
@@ -44,10 +62,30 @@ class Arm:
     face_v: float
     lobe: tuple[float, float]
     door: tuple[float, float]
+    ring: list = field(default=None, repr=False)
+    # Lo pone el banco de acceso del lóbulo al resolverse: "deep" o "wide",
+    # y el nodo de encuentro de su pie.
+    orientation: str | None = None
+    foot: tuple[float, float] | None = None
+    notes: list = field(default_factory=list)
 
     @property
     def axis_u(self) -> float:
         return (self.span[0] + self.span[1]) / 2
+
+    @property
+    def width(self) -> float:
+        return self.lobe[1] - self.lobe[0]
+
+    @property
+    def depth(self) -> float:
+        return abs(self.wall_v - self.face_v)
+
+    def face_point(self, u: float) -> tuple[float, float]:
+        """El punto de la cara del lóbulo en esa u, sobre el anillo."""
+        walls = [a if self.side == "+v" else b
+                 for a, b in ring_spans_at_u(self.ring, u)]
+        return (u, min(walls, key=lambda w: abs(w - self.face_v)))
 
 
 def _span_containing(cuts: list[float], u: float):
@@ -110,12 +148,81 @@ def measure_arm(ring, band, side: str,
     walls = [a if side == "+v" else b
              for a, b in ring_spans_at_u(ring, door_u)]
     door_v = min(walls, key=lambda w: abs(w - face_v))
-    return Arm(side, span, wall_v, face_v, lobe, (door_u, door_v))
+    return Arm(side, span, wall_v, face_v, lobe, (door_u, door_v),
+               ring=ring)
 
 
 def measure_arms(ring, band, probe: float = DEFAULT_ARM_PROBE_M) -> dict:
     return {side: measure_arm(ring, band, side, probe)
             for side in ("+v", "-v")}
+
+
+def _lobe_bank(key: str, bank: dict, arms: dict):
+    """El banco de acceso de un lóbulo, orientado por su lado largo.
+
+    Devuelve el banco con `junction`, `direction` y `spacing` escritos y
+    sus dos nodos de encuentro, y deja en el brazo la orientación, el pie
+    y, en un lóbulo ancho, la puerta nueva.
+    """
+    ref = bank.pop("lobe")
+    side = ref.get("arm")
+    if side not in ("+v", "-v"):
+        raise ArmError(f"el banco {key} pide el lóbulo de un brazo "
+                       f"desconocido: «{side}»")
+    arm = arms[side]
+    toward_band = -1.0 if side == "+v" else 1.0
+    length = float(bank["length"])
+    raw_lead = bank.get("lead", 1.5)
+    lead_from, lead_to = ((float(raw_lead[0]), float(raw_lead[1]))
+                          if isinstance(raw_lead, (list, tuple))
+                          else (float(raw_lead), float(raw_lead)))
+    if arm.depth >= arm.width:
+        arm.orientation = "deep"
+        foot = (arm.axis_u,
+                arm.wall_v + toward_band * float(ref.get("inset", 3.0)))
+        bank["direction"] = "-v" if side == "+v" else "+v"
+        head = (foot[0], foot[1] + toward_band * (lead_from + length
+                                                  + lead_to))
+    else:
+        # El banco ocupa la mitad del fondo del lóbulo, la que no recorre
+        # quien entra por la cara, y sube hacia el brazo desde el lado
+        # más largo del lóbulo; arriba lo espera el pasillo del puente en
+        # el borde del brazo.
+        arm.orientation = "wide"
+        bank_v = arm.wall_v + toward_band * arm.depth / 4
+        below = arm.span[0] - arm.lobe[0]
+        above = arm.lobe[1] - arm.span[1]
+        sign = 1.0 if below >= above else -1.0
+        head_u = arm.span[0] if sign > 0 else arm.span[1]
+        far_end = arm.lobe[0] if sign > 0 else arm.lobe[1]
+        # El pie queda a `inset` metros del muro de la punta, como en el
+        # lóbulo hondo queda del muro del fondo; si no cabe, se acorta la
+        # escalera, como las del andén.
+        inset = float(ref.get("inset", 3.0))
+        room = (head_u - far_end) * sign - inset - lead_from - lead_to
+        if room < length:
+            if room < MIN_LOBE_BANK_M:
+                raise ArmError(
+                    f"el banco {key} no cabe a lo largo del lóbulo {side}: "
+                    f"entre el brazo y el muro de la punta quedan "
+                    f"{room:.1f} m de escalera")
+            bank["length"] = length = room
+            arm.notes.append(
+                f"banco {key}: acortado a {room:.2f} m para dejar el pie "
+                f"a {inset:g} m del muro de la punta del lóbulo {side}")
+        foot_u = head_u - sign * (lead_to + length + lead_from)
+        stair_start = foot_u + sign * lead_from
+        foot = (foot_u, bank_v)
+        head = (head_u, bank_v)
+        bank["direction"] = "+u" if sign > 0 else "-u"
+        # Una escalera al centro de cada cuarto del fondo: separación =
+        # fondo / 4 (decisión de Ricardo, 2026-10-27). `wide_spacing` la
+        # fija a mano si una estación lo pide.
+        bank["spacing"] = float(ref.get("wide_spacing", arm.depth / 4))
+        arm.door = arm.face_point((far_end + stair_start) / 2)
+    bank["junction"] = [foot[0], foot[1]]
+    arm.foot = foot
+    return bank, foot, head
 
 
 def _resolve(ref: dict, arms: dict):
@@ -137,6 +244,13 @@ def _resolve(ref: dict, arms: dict):
         toward_band = -1.0 if side == "+v" else 1.0
         u = arm.door[0] if ref.get("u") == "door" else arm.axis_u
         return [u, arm.wall_v + toward_band * float(ref.get("inset", 0.0))]
+    if at == "foot":
+        if arm.foot is None:
+            raise ArmError(
+                f"la referencia al pie del banco del lado {side} no tiene "
+                f"banco: ningún banco declara `lobe` de ese brazo")
+        u = arm.door[0] if ref.get("u") == "door" else arm.foot[0]
+        return [u, arm.foot[1]]
     raise ArmError(f"la referencia `arm` no conoce «at»: «{at}»")
 
 
@@ -159,6 +273,16 @@ def resolve_arm_refs(data: dict, arms: dict) -> tuple[dict, list[str]]:
         return value
 
     out = copy.deepcopy(data)
+    # Los bancos de lóbulo van primero: en un lóbulo ancho mueven la
+    # puerta, y el pie es un punto que otras piezas nombran.
+    nodes = out.setdefault("nodes", {})
+    for key, bank in out.get("banks", {}).items():
+        if not isinstance(bank, dict) or "lobe" not in bank:
+            continue
+        bank, foot, head = _lobe_bank(key, bank, arms)
+        for end, point in ((bank["from"], foot), (bank["to"], head)):
+            if end in nodes:
+                nodes[end]["u"], nodes[end]["v"] = point
     for key, spec in out.get("nodes", {}).items():
         locate = spec.pop("locate", None)
         if locate is None:

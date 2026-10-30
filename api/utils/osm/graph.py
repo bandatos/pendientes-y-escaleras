@@ -58,11 +58,21 @@ def stop_key(stop_id: str) -> str:
     return m.group(1) if m else stop_id
 
 
-def load_station_graph(station_stop_id: str) -> StationGraph:
+def load_station_graph(station_stop_id: str,
+                       line: str | None = None) -> StationGraph:
+    """Grafo de la estación; con `line` ('L2'), solo los hijos de esa línea.
+
+    El filtro existe para las estaciones de trasbordo cuyos hijos de dos
+    líneas cuelgan de un mismo padre (Ermita: L2 y L12 bajo
+    `020L12-ERMITA`). Los pathways que cruzan a la otra línea se caen
+    solos, porque uno de sus extremos queda fuera.
+    """
     parent = Stop.objects.select_related("station").get(
         stop_id=station_stop_id)
     rows = (Stop.objects.filter(parent_station=parent)
             .select_related("level", "location_type"))
+    if line:
+        rows = rows.filter(stop_id__startswith=f"{line.upper()}-")
     stops: dict[str, GraphStop] = {}
     by_db_id: dict[int, GraphStop] = {}
     for s in rows:
