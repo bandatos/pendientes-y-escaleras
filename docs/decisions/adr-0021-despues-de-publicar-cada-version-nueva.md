@@ -36,7 +36,7 @@ La carpeta `correcciones/` nació el 27 de octubre ([[task-54]]) para un caso m�
 ## Alternativas descartadas
 
 - **Archivo mínimo + descargar el contexto en JOSM a la misma capa**: funciona, pero depende de que Ricardo haga el paso cada vez y el repo no guarda lo que vio.
-- **Lo que Ricardo matizó al aceptar**: «me gusta tu idea, pero sin negativos, son muy difíciles de manejar, simplemente consecutivos y -pub para lo que se sube, creo que no hay pierde así». El coordinador lo leyó como numeración simple y consecutiva, sin más categoría que `-pub`, y mantuvo el autor `-claude` en los nombres; a qué se refiere «sin negativos» no se le preguntó.
+- **Lo que Ricardo matizó al aceptar**: «me gusta tu idea, pero sin negativos, son muy difíciles de manejar, simplemente consecutivos y -pub para lo que se sube, creo que no hay pierde así». El coordinador lo leyó como numeración simple y consecutiva, sin más categoría que `-pub`, y mantuvo el autor `-claude` en los nombres; a qué se refiere «sin negativos» no se le preguntó. Ricardo confirmó el 30 de octubre, al leer el cierre, que la lectura del coordinador (numeración consecutiva con sufijo de autor y `-pub` solo para lo que sube) es exactamente lo que quería.
 
 ## Consecuencias
 
