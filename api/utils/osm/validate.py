@@ -88,6 +88,7 @@ def validate(doc: OsmDocument) -> tuple[list[str], list[str], dict]:
     warnings += _check_reversible_sense(doc)
     warnings += _check_cross_level_nodes(doc)
     warnings += _check_bank_tips(doc)
+    warnings += _check_platform_crossings(doc)
     errors += _check_area_rings(doc)
     errors += _check_inside_area(doc)
     errors += _check_connectivity(doc)
@@ -465,6 +466,67 @@ def _check_bank_tips(doc: OsmDocument) -> list[str]:
                 out.append(
                     f"el footway {way.id} ({way.label}) pasa por la punta "
                     f"{nid} de una escalera de banco")
+    return out
+
+
+def unjoined_platform_crossings(doc: OsmDocument):
+    """Cruces de un way de circulación con el anillo de su andén sin nodo.
+
+    Solo cuentan los ways de un solo nivel igual al del andén: uno de
+    otro nivel, o una escalera de dos, pasa por encima o por debajo y no
+    debe compartir nada. Se lee de las etiquetas y no de `way.kind` para
+    que valga igual sobre un archivo editado a mano. Un cruce a menos de
+    `MIN_NODE_DISTANCE_M` de un nodo que ya comparten los dos ways ya
+    está resuelto. Devuelve (andén, way, i del anillo, i del way, punto).
+    """
+    platforms = [w for w in doc.ways
+                 if not w.foreign and w.tags.get("railway") == "platform"
+                 and w.tags.get("area") == "yes" and len(w.nodes) > 3
+                 and len(_tag_levels(w)) == 1]
+    out = []
+    for platform in platforms:
+        level = _tag_levels(platform)
+        ring = [doc.nodes[n] for n in platform.nodes]
+        for way in doc.ways:
+            if (way is platform or way.foreign
+                    or way.tags.get("highway") not in ("footway", "steps")
+                    or way.tags.get("area") == "yes"
+                    or _tag_levels(way) != level):
+                continue
+            shared = set(way.nodes) & set(platform.nodes)
+            line = [doc.nodes[n] for n in way.nodes]
+            for i in range(len(ring) - 1):
+                p, q = ring[i], ring[i + 1]
+                for j in range(len(line) - 1):
+                    a, b = line[j], line[j + 1]
+                    hit = segment_intersection((p.u, p.v), (q.u, q.v),
+                                               (a.u, a.v), (b.u, b.v))
+                    if hit is None or any(
+                            math.hypot(doc.nodes[n].u - hit[0],
+                                       doc.nodes[n].v - hit[1])
+                            < MIN_NODE_DISTANCE_M for n in shared):
+                        continue
+                    out.append((platform, way, i, j, hit))
+    return out
+
+
+def _check_platform_crossings(doc: OsmDocument) -> list[str]:
+    """Way del nivel del andén que entra a él «por el aire».
+
+    Es aviso y no error: el generador ya mete el nodo, así que esto caza
+    un archivo editado a mano; JOSM lo marcaría como cruce de ways.
+    """
+    found = defaultdict(list)
+    for platform, way, _, _, _ in unjoined_platform_crossings(doc):
+        found[(platform.id, way.id)].append((platform, way))
+    out = []
+    for pairs in found.values():
+        platform, way = pairs[0]
+        out.append(
+            f"el way {way.id} ({way.label or way.tags.get('highway')}, "
+            f"level={way.tags.get('level')}) cruza el andén {platform.id} "
+            f"({platform.label or platform.tags.get('name')}) de su mismo "
+            f"nivel sin nodo compartido en {len(pairs)} punto(s)")
     return out
 
 

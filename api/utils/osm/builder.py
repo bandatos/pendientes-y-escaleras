@@ -23,6 +23,7 @@ from .graph import StationGraph
 from .kml import fold_name
 from .overpass import CONTEXT_EMBED_M
 from .template import FamilyTemplate, TemplateError
+from .validate import MIN_NODE_DISTANCE_M, unjoined_platform_crossings
 
 LOCATION_PLATFORM = 0
 LOCATION_ENTRANCE = 2
@@ -167,6 +168,7 @@ class StationBuilder:
         self.doc.weld()
         self._build_turnstiles()
         self._build_connectors()
+        self._join_platform_crossings()
         self._build_station_area()
         self._build_context_extras()
         self._place_station_node()
@@ -1694,6 +1696,53 @@ class StationBuilder:
             self.doc.insert_node_id(plaza, nid)
             return nid
         return None
+
+    def _join_platform_crossings(self) -> None:
+        """Nodo compartido donde un way de su nivel cruza el andén.
+
+        Sin él el pasillo entra al andén «por el aire» y JOSM lo marca
+        como cruce en cuanto los dos llevan `layer`. Un vértice existente
+        de cualquiera de los dos a menos de `MIN_NODE_DISTANCE_M` del
+        cruce se reutiliza: un nodo nuevo ahí rompería la distancia
+        mínima entre nodos. La senda del andén no se toca: corre por
+        dentro, y si cruza el anillo es un defecto de la plantilla.
+        """
+        for ring, way, _, _, hit in unjoined_platform_crossings(self.doc):
+            if way.kind == "spine":
+                self.warnings.append(
+                    f"la senda del andén {way.label} cruza el anillo del "
+                    f"andén {ring.label} en ({hit[0]:.2f}, {hit[1]:.2f}); "
+                    f"no se le mete nodo")
+        # Cada inserción mueve los índices de los segmentos; se vuelve a
+        # buscar desde cero, con un tope por si un cruce no se resolviera.
+        for _ in range(500):
+            pending = [c for c in unjoined_platform_crossings(self.doc)
+                       if c[1].kind != "spine"]
+            if not pending:
+                return
+            ring, way, i, j, hit = pending[0]
+            nid = self._crossing_vertex(ring, i, way, j, hit)
+            if nid not in ring.nodes:
+                ring.nodes.insert(i + 1, nid)
+            if nid not in way.nodes:
+                way.nodes.insert(j + 1, nid)
+            self.report["platforms"].append(
+                f"{ring.label}: nodo compartido {nid} con el way "
+                f"{way.id} ({way.label}) en ({hit[0]:.2f}, {hit[1]:.2f})")
+        raise RuntimeError("los cruces con los andenes no convergen")
+
+    def _crossing_vertex(self, ring, i: int, way, j: int, hit) -> int:
+        candidates = [ring.nodes[i], ring.nodes[i + 1],
+                      way.nodes[j], way.nodes[j + 1]]
+        best = None
+        for nid in candidates:
+            node = self.doc.nodes[nid]
+            d = math.hypot(node.u - hit[0], node.v - hit[1])
+            if d < MIN_NODE_DISTANCE_M and (best is None or d < best[0]):
+                best = (d, nid)
+        if best is not None:
+            return best[1]
+        return self.doc.node_at(*hit)
 
     def _build_station_area(self) -> None:
         mode = self.station_area

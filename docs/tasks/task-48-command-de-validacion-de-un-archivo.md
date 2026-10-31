@@ -19,3 +19,7 @@ En el mismo movimiento: `compose_station_imagery` toma el marco de `general-anay
 
 - [ ] Existe el command y valida las seis versiones aprobadas del 27 de octubre con el resultado que dieron los scripts de scratch
 - [ ] `compose_station_imagery` lee el marco de la 01
+
+## Notas de trabajo
+
+- 30 de octubre de 2026 ([[2026-10-30-sesion-layer-nodos-de-anden-y-snapshots-post-publicacion]]): existió un precursor desechable, `check_file.py`, que reconstruye un `OsmDocument` mínimo desde un archivo (marco de la 01 con `diff.read_frame`, id positivo = ajeno, sin `action=delete`) y corre reglas de `validate.py`; con él se midió el aviso de cruces con el andén sobre las copias publicadas (4/6/6/6). Ojo: sobre un snapshot del servidor todos los ids son positivos, así que «ajeno» no puede deducirse del signo; hay que marcar lo nuestro por el changeset de origen. Es la base de este command.

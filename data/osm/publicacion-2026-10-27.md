@@ -88,12 +88,59 @@ Primer comentario en la discusión del changeset:
 
 > Estación San Antonio, Línea 7. Mapeo colaborativo de Bandatos: el equipo recorrió y visitó la estación. Agregamos el área de la estación (multipolígono con cuatro islas), los dos andenes, pasillos, 16 escaleras y dos torniquetes de los niveles −4 a 0; el acceso poniente es a cielo abierto y el oriente queda bajo el edificio de Tintoreto. Modificamos las dos entradas existentes, que movimos 6 y 4 m (la poniente a la punta real de la pestaña del acceso), y el edificio del acceso oriente, que redibujamos sobre la imagen y alargamos a 12,8 m. Movimos el nodo de estación 16 m a la mitad del pasillo central. No borramos ningún objeto.
 
-## Corrección pendiente: el jardín poniente de San Pedro de los Pinos
+## Corrección del jardín poniente de San Pedro de los Pinos (resuelta en iD el 30 de octubre)
 
 Ricardo notó al final de la madrugada que el jardín poniente de San Pedro «quedó sin forma». Es nuestra explanada poniente (`highway=pedestrian` + `area=yes`), en el servidor el way 1572119592 creado por el changeset 191086111. Ricardo le había dado su forma real en sus versiones 02 y 03 (cinco vértices siguiendo los paramentos, con chaflán al sureste); la 04, regenerada desde la plantilla, la devolvió al rectángulo de la 01 porque el generador solo sabe dibujar un cuadro alrededor de la entrada y ningún bloque de estación guarda esa geometría, y así viajó hasta la 08 publicada. El rectángulo invade la escuela vecina (way 790807303) por el norte, cruza la banqueta 1275346680 por el sur y se mete en el arroyo de Revolución al oriente.
 
-La corrección no se sube con una copia `-pub` de la 09 (duplicaría la estación entera, porque la 09 hereda los ids negativos que ya se crearon). Va contra los ids del servidor, con el archivo `l7-san-pedro-de-los-pinos/correcciones/2026-10-27-jardin-poniente.osm`: mueve los cuatro vértices del way 1572119592 a la forma de la 03 y agrega el quinto del chaflán; `check_station_osm_live` lo da sin conflictos. En JOSM: abrir ese archivo, revisar sobre Esri (`sat/garden-west-09.png` muestra rojo lo publicado y verde la corrección) y subir con `source=survey`, `imagery_used=Esri World Imagery` y este comentario:
+La corrección no se sube con una copia `-pub` de la 09 (duplicaría la estación entera, porque la 09 hereda los ids negativos que ya se crearon). Va contra los ids del servidor, con el archivo «2026-10-27-jardin-poniente.osm» de la entonces carpeta `correcciones/` de San Pedro (borrado el 30 de octubre de 2026, vive en el commit 270df85): mueve los cuatro vértices del way 1572119592 a la forma de la 03 y agrega el quinto del chaflán; `check_station_osm_live` lo da sin conflictos. En JOSM: abrir ese archivo, revisar sobre Esri (`sat/garden-west-09.png` muestra rojo lo publicado y verde la corrección) y subir con `source=survey`, `imagery_used=Esri World Imagery` y este comentario:
 
 > Metro San Pedro de los Pinos (L7): el jardín poniente vuelve a seguir su borde real; el rectángulo del changeset 191086111 invadía la escuela vecina y la banqueta.
 
-La explanada oriente (way 1572119589) perdió la forma en el mismo salto: Ricardo la había llevado a siete vértices y unos 2430 m² en su 03, la 04 la devolvió al cuadro de 1100 m², y Pablo trabajó sobre esa base degradada en su 06 (la estiró al sur; quedó en seis vértices y unos 1300 m²), que es lo publicado. Es el mismo error de base que en Portales. Las coordenadas de la forma de la 03 con ids del servidor están en `l7-san-pedro-de-los-pinos/correcciones/2026-10-27-explanada-oriente.md`. Si Ricardo quiere también la forma de su 03 ahí, las coordenadas están en el reporte del turno (`.claude/scratch/spp-garden/`) y se prepara el archivo igual.
+La explanada oriente (way 1572119589) perdió la forma en el mismo salto: Ricardo la había llevado a siete vértices y unos 2430 m² en su 03, la 04 la devolvió al cuadro de 1100 m², y Pablo trabajó sobre esa base degradada en su 06 (la estiró al sur; quedó en seis vértices y unos 1300 m²), que es lo publicado. Es el mismo error de base que en Portales. Las coordenadas de la forma de la 03 con ids del servidor están en el archivo «2026-10-27-explanada-oriente.md» de esa misma carpeta (borrado el 30 de octubre de 2026, vive en el commit 270df85). Si Ricardo quiere también la forma de su 03 ahí, las coordenadas están en el reporte del turno (`.claude/scratch/spp-garden/`) y se prepara el archivo igual.
+
+**30 de octubre de 2026.** Ricardo decidió devolver también la oriente y resolvió las dos directamente en iD, changeset 191252788 (comentario: «Edito el área real de las explanadas peatonales del metro San Pedro de los Pinos, aún falta detallar las jardineras»): la oriente (way 1572119589) quedó en v2 con cinco vértices y ya no comparte el nodo 11841847656 con la banqueta; la poniente (way 1572119592) sigue en v1 pero sus cuatro nodos se movieron a v2, sin el quinto vértice del chaflán. Los archivos de `correcciones/` del 27 no se suben, porque el servidor ya no coincide con sus versiones, y se borraron ese mismo día junto con las carpetas `correcciones/`: viven en el historial de git (commit 270df85). Desde entonces una estación publicada no tiene carpeta de correcciones; lo chico se corrige en iD y lo masivo con una versión de la cadena (`README.md`, «Después de publicar»).
+
+## Layer y nodos de andén en las cuatro estaciones de la Línea 7, 30 de octubre de 2026
+
+En iD, los pasillos y escaleras subterráneos que subimos el 27 aparecían cruzando las calles de superficie: el validador de cruces de iD solo exime por `level` cuando los dos ways son interiores, y los nuestros no llevaban `layer`. Además, los pasillos del nivel −3 entraban a los andenes sin compartir nodo con su contorno. La corrección son cuatro versiones nuevas, una por estación, cada una un snapshot completo del servidor en el bbox de su changeset (`README.md`, «Después de publicar»), bajado el 30 de octubre: llevan `action='modify'` solo los ways creados por el changeset del 27 que reciben `layer` (el nivel más bajo, de −1 a −4), los dos andenes, que reciben los nodos compartidos, y esos nodos nuevos. Ni la vía ni ningún way ajeno se tocan. `check_station_osm_live` da las cuatro «sin conflictos con OSM». Son versiones `-claude`: la `-pub` se escribe con `publish_station_osm` cuando Ricardo acepte subirlas.
+
+| Estación | Versión | Elementos | Ways con `layer` nuevo | Andenes | Nodos nuevos | Agregar / Modificar / Borrar |
+|---|---|---|---|---|---|---|
+| Polanco (L7) | `polanco-08-claude.osm` | 565 | 56 | 2 | 4 | 4 / 58 / 0 |
+| San Antonio (L7) | `san-antonio-07-claude.osm` | 906 | 57 | 2 | 6 | 6 / 59 / 0 |
+| San Joaquín (L7) | `san-joaquin-10-claude.osm` | 645 | 61 | 2 | 6 | 6 / 63 / 0 |
+| San Pedro de los Pinos (L7) | `san-pedro-de-los-pinos-10-claude.osm` | 572 | 61 | 2 | 6 | 6 / 63 / 0 |
+
+Se suben con `source=survey` y sin `imagery_used`: no se calcó nada sobre la imagen. Un changeset por estación. El comentario del changeset admite 255 caracteres; el texto completo va como primer comentario en la discusión.
+
+**Polanco** (`l7-polanco/polanco-08-claude.osm`). Comentario del changeset:
+
+> Metro Polanco (L7): pasillos y escaleras subterráneos del changeset 191085961 llevan layer además de level, para que el validador no los cruce con las calles; los del −3 comparten nodo con los andenes (4 nodos nuevos). No borramos nada.
+
+Primer comentario en la discusión:
+
+> Metro Polanco (L7): los pasillos y escaleras subterráneos del changeset 191085961 llevan ahora layer además de level, para que el validador de cruces no los confunda con las calles de superficie; los pasillos del nivel −3 comparten nodo con el contorno de los andenes (4 nodos nuevos). No borramos nada.
+
+**San Antonio** (`l7-san-antonio/san-antonio-07-claude.osm`). Comentario del changeset:
+
+> Metro San Antonio (L7): pasillos y escaleras subterráneos del changeset 191086008 llevan layer además de level, para que el validador no los cruce con las calles; los del −3 comparten nodo con los andenes (6 nodos nuevos). No borramos nada.
+
+Primer comentario en la discusión:
+
+> Metro San Antonio (L7): los pasillos y escaleras subterráneos del changeset 191086008 llevan ahora layer además de level, para que el validador de cruces no los confunda con las calles de superficie; los pasillos del nivel −3 comparten nodo con el contorno de los andenes (6 nodos nuevos). No borramos nada.
+
+**San Joaquín** (`l7-san-joaquin/san-joaquin-10-claude.osm`). Comentario del changeset:
+
+> Metro San Joaquín (L7): pasillos y escaleras subterráneos del changeset 191086058 llevan layer además de level, para que el validador no los cruce con las calles; los del −3 comparten nodo con los andenes (6 nodos nuevos). No borramos nada.
+
+Primer comentario en la discusión:
+
+> Metro San Joaquín (L7): los pasillos y escaleras subterráneos del changeset 191086058 llevan ahora layer además de level, para que el validador de cruces no los confunda con las calles de superficie; los pasillos del nivel −3 comparten nodo con el contorno de los andenes (6 nodos nuevos). No borramos nada.
+
+**San Pedro de los Pinos** (`l7-san-pedro-de-los-pinos/san-pedro-de-los-pinos-10-claude.osm`). Comentario del changeset:
+
+> Metro San Pedro de los Pinos (L7): pasillos y escaleras subterráneos del changeset 191086111 llevan layer además de level, para que el validador no los cruce con las calles; los del −3 comparten nodo con los andenes (6 nodos nuevos). No borramos nada.
+
+Primer comentario en la discusión:
+
+> Metro San Pedro de los Pinos (L7): los pasillos y escaleras subterráneos del changeset 191086111 llevan ahora layer además de level, para que el validador de cruces no los confunda con las calles de superficie; los pasillos del nivel −3 comparten nodo con el contorno de los andenes (6 nodos nuevos). No borramos nada.

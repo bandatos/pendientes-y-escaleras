@@ -24,3 +24,8 @@ Lo que destapó el jardín poniente de San Pedro ([[task-54]]): Ricardo dibujó 
 - [ ] `compose_station_imagery` muestra explanadas, edificios y entradas del `.osm` recibido
 - [ ] El validador avisa de una explanada sobre un edificio de OSM o cruzando una banqueta sin nodo compartido, con test
 - [ ] `publish_station_osm` avisa o se niega cuando la estación ya tiene una versión publicada
+- [ ] `export_station_osm` avisa o se niega a escribir dentro de la carpeta cuando ya hay una `-pub` (así nació la 09 de San Pedro; adr-0021)
+
+## Notas de trabajo
+
+- 30 de octubre de 2026 ([[2026-10-30-sesion-layer-nodos-de-anden-y-snapshots-post-publicacion]]): la causa de fondo queda acotada por convención ([[adr-0021]]): después de publicar nada se regenera desde la plantilla, así que una explanada afinada a mano ya no puede perderse por regeneración en una estación publicada; sigue abierto para las estaciones no publicadas (regenerar con `--out` y comparar). La `09-claude` de San Pedro, regenerada con ids negativos después de publicar, se borró.

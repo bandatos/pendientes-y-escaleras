@@ -6,6 +6,7 @@ que ninguna otra parte del código debe escribir literales de tags.
 """
 from __future__ import annotations
 
+import math
 import re
 
 
@@ -56,6 +57,20 @@ def level_value(*indexes: float) -> str:
     return ";".join(str(v) for v in sorted(vals))
 
 
+def underground_layer(*indexes: float) -> dict:
+    """`layer` de un way subterráneo: el más bajo de sus niveles.
+
+    iD solo exime un cruce por `level` cuando los dos ways son interiores;
+    una calle de superficie no lleva `level`, así que sin `layer` el
+    pasillo de −1 queda en capa 0 y «cruza» la avenida. `layer` se suma
+    a `indoor` y `level`, sin `tunnel`. Un way de nivel 0 o superior no
+    lo lleva: el puente de Tlalpan lo recibe del bloque `tags` de la
+    plantilla.
+    """
+    lowest = math.floor(min(float(i) for i in indexes))
+    return {"layer": str(lowest)} if lowest < 0 else {}
+
+
 def platform_tags(station_name: str, stop_name: str, level_index: float,
                   level_name: str | None, underground: bool) -> dict:
     # Sin `level:ref`: el rótulo de la señalética no es del andén sino de
@@ -85,6 +100,7 @@ def platform_spine_tags(level_index: float) -> dict:
         "highway": "footway",
         "indoor": "yes",
         "level": level_value(level_index),
+        **underground_layer(level_index),
     }
 
 
@@ -93,6 +109,7 @@ def footway_tags(levels: list[float], incline: str | None = None) -> dict:
         "highway": "footway",
         "indoor": "yes",
         "level": level_value(*levels),
+        **underground_layer(*levels),
     }
     if incline:
         tags["incline"] = incline
@@ -113,6 +130,7 @@ def steps_tags(levels: list[float], incline: str,
         "level": level_value(*levels),
         "incline": incline,
         "wheelchair": "no",
+        **underground_layer(*levels),
     }
     if conveying:
         tags["conveying"] = conveying
