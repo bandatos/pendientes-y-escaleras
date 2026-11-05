@@ -332,8 +332,9 @@ def _check_incline(doc: OsmDocument) -> list[str]:
     out = []
     landings = _landing_ways(doc)
     for way in doc.ways:
-        # Una escalera de OSM que entra como escenografía trae las
-        # etiquetas de quien la mapeó (en General Anaya, sin level).
+        # Las escaleras de OSM que entran como escenografía (en
+        # Constituyentes, las de la plaza hundida, sin `level`) no son
+        # nuestras: quedan exentas como de la regla de `level`.
         if way.foreign:
             continue
         levels = way.tags.get("level", "")
@@ -388,7 +389,7 @@ def _check_incline_order(doc: OsmDocument) -> list[str]:
     levels = _node_levels(doc)
     out = []
     for way in doc.ways:
-        if way.tags.get("highway") != "steps":
+        if way.foreign or way.tags.get("highway") != "steps":
             continue
         incline = way.tags.get("incline")
         if incline not in ("up", "down"):

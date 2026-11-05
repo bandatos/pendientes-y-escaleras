@@ -1,0 +1,47 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='610' height='566' viewBox='0 0 610 566'>
+<rect width='100%' height='100%' fill='#ffffff'/>
+<defs><marker id='arrow' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='3.5' markerHeight='3.5' orient='auto'><path d='M 0 0 L 10 5 L 0 10 z' fill='#444'/></marker></defs>
+<text x='40.0' y='24' font-family='sans-serif' font-size='16' fill='#222'>Barranca del Muerto — nivel -3</text>
+<path d='M 276.5,371.2 L 291.7,370.3 L 300.2,367.1 L 308.1,362.9 L 316.9,351.6 L 319.2,339.2 L 318.4,296.8 L 337.2,297.2 L 337.0,329.4 L 442.5,329.4 L 445.8,266.1 L 318.5,265.7 L 316.9,212.6 L 313.8,201.7 L 305.2,191.3 L 296.8,188.6 L 289.8,187.3 L 275.5,187.1 L 275.2,55.0 L 265.4,55.1 L 263.7,55.1 L 244.2,55.4 L 242.5,55.5 L 232.7,55.6 L 231.6,186.4 L 210.3,187.7 L 205.2,190.2 L 196.7,196.9 L 192.5,204.7 L 190.0,214.2 L 188.5,225.9 L 189.0,264.2 L 185.1,264.0 L 182.5,261.9 L 175.4,260.4 L 170.3,259.3 L 164.7,261.2 L 158.2,263.9 L 53.5,262.9 L 50.9,328.8 L 128.8,328.8 L 128.5,321.9 L 139.0,321.7 L 140.1,296.6 L 159.4,296.4 L 163.9,297.8 L 173.3,299.1 L 179.4,298.1 L 185.1,295.3 L 190.2,295.1 L 190.4,343.7 L 191.8,352.5 L 196.1,360.5 L 202.0,365.6 L 205.8,367.3 L 214.0,368.4 L 231.8,369.8 L 231.8,509.2 L 242.5,509.8 L 244.2,509.9 L 263.7,511.1 L 265.4,511.2 L 275.7,511.5 L 276.5,371.2 Z M 276.1,297.2 L 298.9,297.2 L 299.7,326.3 L 299.3,339.3 L 296.8,344.5 L 293.8,347.3 L 286.8,350.3 L 275.6,351.2 L 276.1,297.2 Z M 231.7,349.9 L 219.1,350.5 L 210.5,348.5 L 209.7,345.3 L 209.0,339.3 L 209.5,296.2 L 232.6,296.0 L 231.7,349.9 Z M 276.5,205.2 L 284.1,205.7 L 292.3,208.1 L 296.4,210.8 L 298.9,217.7 L 299.0,264.9 L 275.6,264.5 L 276.5,205.2 Z M 231.6,264.5 L 209.9,264.5 L 210.6,214.7 L 211.6,210.7 L 214.3,207.2 L 219.6,206.1 L 231.6,205.2 L 231.6,264.5 Z' fill='#fff3c4' fill-rule='evenodd' stroke='#b8a24a' stroke-width='1'/>
+<polygon points='263.7,511.1 263.7,55.1 265.4,55.1 275.2,55.0 275.7,511.5 265.4,511.2 263.7,511.1' fill='#c9d6e2' stroke='#5b7a99' stroke-width='1.5'/>
+<text x='267.5' y='79.0' font-family='sans-serif' font-size='10' fill='#33475b' text-anchor='middle'>P-01 El Rosario</text>
+<polygon points='231.8,509.2 232.7,55.6 242.5,55.5 244.2,55.4 244.2,509.9 242.5,509.8 231.8,509.2' fill='#c9d6e2' stroke='#5b7a99' stroke-width='1.5'/>
+<text x='238.5' y='79.4' font-family='sans-serif' font-size='10' fill='#33475b' text-anchor='middle'>P-02 Barranca del Muerto</text>
+<polyline points='265.4,511.2 265.4,361.2 265.4,280.6 265.4,196.2 265.4,55.1' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='242.5,509.8 242.5,359.9 242.5,280.6 242.5,195.8 242.5,55.5' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='308.8,280.6 342.1,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='199.7,280.6 133.9,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='265.4,361.2 286.3,361.2 294.9,359.5 302.2,354.6 307.1,347.3 308.8,338.7 308.8,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='345.1,275.2 408.1,275.2' fill='none' stroke='#c0392b' stroke-width='2.5' stroke-dasharray='6,3' marker-end='url(#arrow)'/>
+<polyline points='342.1,280.6 345.1,275.2' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='290.9,280.6 268.4,286.3' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='345.1,280.6 408.1,280.6' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='342.1,280.6 345.1,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='345.1,286.0 408.1,286.0' fill='none' stroke='#c0392b' stroke-width='2.5' stroke-dasharray='6,3' marker-end='url(#arrow)'/>
+<polyline points='342.1,280.6 345.1,286.0' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='242.5,359.9 217.7,359.9 210.8,358.5 205.0,354.6 201.1,348.8 199.7,341.9 199.7,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='130.9,286.0 67.9,286.0' fill='none' stroke='#c0392b' stroke-width='2.5' stroke-dasharray='6,3' marker-end='url(#arrow)'/>
+<polyline points='133.9,280.6 130.9,286.0' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='130.9,275.2 67.9,275.2' fill='none' stroke='#c0392b' stroke-width='2.5' stroke-dasharray='6,3' marker-end='url(#arrow)'/>
+<polyline points='133.9,280.6 130.9,275.2' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='130.9,280.6 67.9,280.6' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<polyline points='133.9,280.6 130.9,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='242.5,280.6 217.0,280.6 199.7,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='265.4,280.6 290.9,280.6 308.8,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='265.4,196.2 286.3,196.2 294.9,197.9 302.2,202.8 307.1,210.1 308.8,218.7 308.8,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='242.5,195.8 222.2,195.8 213.6,197.5 206.3,202.4 201.4,209.7 199.7,218.3 199.7,280.6' fill='none' stroke='#1f6feb' stroke-width='2.5' stroke-dasharray='none'/>
+<polyline points='217.0,280.6 239.5,286.3' fill='none' stroke='#e07b00' stroke-width='2.5' stroke-dasharray='none' marker-end='url(#arrow)'/>
+<rect x='460' y='36' width='14' height='4' fill='#b8a24a'/>
+<text x='480.1' y='41.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>área de estación</text>
+<rect x='460' y='52' width='14' height='4' fill='#5b7a99'/>
+<text x='480.1' y='57.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>andén</text>
+<rect x='460' y='68' width='14' height='4' fill='#1f6feb'/>
+<text x='480.1' y='73.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>pasillo</text>
+<rect x='460' y='84' width='14' height='4' fill='#e07b00'/>
+<text x='480.1' y='89.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>escaleras</text>
+<rect x='460' y='100' width='14' height='4' fill='#c0392b'/>
+<text x='480.1' y='105.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>escalera eléctrica</text>
+<rect x='460' y='116' width='14' height='4' fill='#1e8e3e'/>
+<text x='480.1' y='121.0' font-family='sans-serif' font-size='10' fill='#333' text-anchor='start'>acceso</text>
+<line x1='40.0' y1='552.4600364784594' x2='100.0' y2='552.4600364784594' stroke='#333' stroke-width='2'/><text x='70.0' y='548.5' font-family='sans-serif' font-size='10' fill='#333' text-anchor='middle'>20 m</text>
+</svg>

@@ -158,9 +158,25 @@ def door_tags(closed: bool = False) -> dict:
     return {key: "subway_entrance", "entrance": "yes", "level": "0"}
 
 
-def connector_tags() -> dict:
-    """Tramo del acceso a la banqueta: exterior, así que sin `indoor`."""
-    return {"highway": "footway", "level": "0"}
+def connector_tags(level_index: float = 0.0) -> dict:
+    """Tramo del acceso a la banqueta: exterior, así que sin `indoor`.
+
+    Va en el nivel del acceso: 0 de ordinario, -1 donde el acceso da a
+    una plaza hundida (Constituyentes).
+    """
+    return {"highway": "footway", "level": level_value(level_index)}
+
+
+def connector_steps_tags(level_index: float, far_level: float,
+                         incline: str) -> dict:
+    """Connector que cambia de nivel: una escalera exterior, sin `indoor`.
+
+    Se dibuja del acceso al vértice de la peatonal, así que el `incline`
+    es el de ir del nivel del acceso al del otro extremo. Lleva
+    `wheelchair=no` como toda escalera.
+    """
+    return {"highway": "steps", "level": level_value(level_index, far_level),
+            "incline": incline, "wheelchair": "no"}
 
 
 def access_building_tags() -> dict:

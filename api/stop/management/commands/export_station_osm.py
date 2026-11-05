@@ -227,7 +227,12 @@ class Command(BaseCommand):
                 + (f"/{item['footway']}" if item["footway"] else "")
                 + f"): {item['length']:.1f} m"
                 + (f" — mismo vértice {item['vertex']}, sin tramo propio"
-                   if item["shared"] else ""))
+                   if item["shared"] else "")
+                + (f" — partido en el pie ({item['foot']['foot'][0]:.2f}, "
+                   f"{item['foot']['foot'][1]:.2f}): andador de "
+                   f"{item['foot']['walk']:.1f} m y escalera exterior de "
+                   f"{item['foot']['steps']:.1f} m"
+                   if item.get("foot") else ""))
         for item in builder.report["untemplated"]:
             self.stdout.write(
                 f"  fixme: el pathway {item['pathway_id']} ({item['label']}) "

@@ -179,6 +179,9 @@ class FamilyTemplate:
         self.station: str | None = None
         self.local_patch: dict | None = None
         self.area_override: dict | None = None
+        # Etiquetas que el bloque cambia en objetos de OSM («way/ID» o
+        # «node/ID» → {clave: valor o None}); las aplica el builder.
+        self.osm_tags: dict = {}
         # El encaje en una hermana reescribe la plantilla a partir de los
         # datos crudos, así que se conservan tal como vinieron.
         self.data = data
@@ -268,8 +271,9 @@ class FamilyTemplate:
         Las piezas de la raíz del bloque se aplican aquí, en el marco de
         la estación de referencia y antes del encaje; las de `local`, en
         el marco de la propia estación y después del encaje
-        (`apply_local_patch`); `area` sustituye el polígono del KML, y
-        `keys` renombra las claves de la plantilla a las de la estación
+        (`apply_local_patch`); `area` sustituye el polígono del KML;
+        `osm_tags` cambia etiquetas de objetos de OSM que el archivo trae
+        congelados, y `keys` renombra las claves de la plantilla a las de la estación
         antes que todo lo demás, así que el resto del bloque ya habla en
         las claves de la estación.
         """
@@ -277,11 +281,12 @@ class FamilyTemplate:
             data = json.load(fh)
         stations = data.pop("stations", None) or {}
         block = stations.get(station) if station else None
-        local, area = None, None
+        local, area, osm_tags = None, None, None
         if block:
             block = dict(block)
             local = block.pop("local", None)
             area = block.pop("area", None)
+            osm_tags = block.pop("osm_tags", None)
             keys = block.pop("keys", None)
             if keys:
                 data = rename_template_keys(data, keys, station)
@@ -290,6 +295,7 @@ class FamilyTemplate:
         template.station = station if block else None
         template.local_patch = local
         template.area_override = area
+        template.osm_tags = osm_tags or {}
         return template
 
     def apply_local_patch(self, data: dict) -> dict:
